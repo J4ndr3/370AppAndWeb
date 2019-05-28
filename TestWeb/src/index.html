@@ -160,31 +160,31 @@
             <h2 class="Header">Add Ranger</h2>
             <br>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID">
+              <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
             </div>
           </div>
           
           <div class="form-group">
           <div class="col-sm-10">
-              <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name">
+              <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name" required>
             </div>
           </div>
           
           <div class="form-group">
               <div class="col-sm-10">
-                  <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname">
+                  <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
                 </div>
               </div>
 
               <div class="form-group">
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell">
+                      <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
                     </div>
                   </div>
 
           <div class="form-group">
             <div class="col-sm-10">          
-                <select class="form-control" id="Select1" onchange="selectColor()">
+                <select class="form-control" id="Select1" onchange="selectColor()" required>
                     <option selected disabled hidden value="Gender...">Gender...</option>
                     <option>Male</option>
                     <option>Female</option>
@@ -195,7 +195,7 @@
 
           <div class="form-group">
               <div class="col-sm-10">          
-                  <select class="form-control" id="Select2" onchange="selectColor1()">
+                  <select class="form-control" id="Select2" onchange="selectColor1()" required>
                       <option selected disabled hidden value="Status...">Status...</option>
                       <option>Active</option>
                       <option>Inactive</option>

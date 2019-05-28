@@ -169,6 +169,7 @@ h2{
 input{
     background-color: rgb(33,90,97) !important;
     color: white !important; 
+    border-color:  rgb(126,206,208) !important;
 }
 input:-ms-input-placeholder{
     color:rgb(126,206,208) !important;
@@ -188,11 +189,13 @@ input::-moz-placeholder {  /* Firefox 19+ */
     #Select1{
     background-color: rgb(33,90,97) !important;
     color: rgb(126,206,208) !important;
+    border-color:  rgb(126,206,208) !important;
     }
 
     #Select2{
         background-color: rgb(33,90,97) !important;
         color: rgb(126,206,208) !important;
+        border-color:  rgb(126,206,208) !important;
         }
 
     #Save{
