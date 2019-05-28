@@ -38,7 +38,7 @@
 
 <body>
   <nav class="navbar navbar-expand-sm">
-    <!-- Brand/logo -->
+    <!-- logo -->
     <a class="navbar-brand" href="#">
       <img src="/assets/ERP_LOGO.svg" alt="logo" style="width:50px;height:70px;padding-left:5px;padding-right:5px;">
     </a>
@@ -129,7 +129,7 @@
     </ul>
   </nav>
   <div class="logoutbutton">
-    <button class="Logout" href="#" id="Out">LOGOUT</a> 
+    <button class="Logout" href="#" id="Out" data-toggle="modal" data-target="#myModal">LOG OUT</button> 
 </div>
 <br>
   <br>
@@ -209,6 +209,43 @@
     <br>
     <br>
     </div>
+
+    
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;"/>Error</h4>
+              <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body"  >
+              <p>The input provided is incorrect. Please try again.</p>
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
+    <!-- <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;"/>Error</h4>
+              <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body"  >
+              <p>This record already exists. Please try again</p>
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" >Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
 
   <app-root></app-root>
 </body>

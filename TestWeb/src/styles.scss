@@ -102,6 +102,10 @@ a{
     width:100%;
    
 }
+.Logout:hover{
+    border: 1px solid lightgray;
+}
+
 
 
 h1{
@@ -138,7 +142,7 @@ h1{
 
 #addBTN:hover{
     width:142px;
-    border: 2px solid grey;
+    border: 1px solid lightgrey;
     height:60px;
     margin-right:0px;
     padding-right:0px;
@@ -223,9 +227,21 @@ input::-moz-placeholder {  /* Firefox 19+ */
         margin-right:0px;
         float:right;
     }
+
+    #Save:hover{
+        border: 1px solid lightgray;
+    }
     
     form{
         height:100%;
 
+    }
+
+    .modal-dialog{
+        width:300% !important;
+    }
+
+    #modalClose:hover{
+        border: 1px solid lightgrey;
     }
     
