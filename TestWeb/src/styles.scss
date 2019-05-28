@@ -4,7 +4,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body{
-    background-color: rgba(0,52,55,0.7);
+    background-color: rgb(3,70,76);
     font-family: Montserrat;
     width:auto;
 }
@@ -29,23 +29,23 @@ li{
 // }
 
 nav{
-    background-color: rgb(0,52,55);
+    background-color:  rgb(3,36,51);
     height:80px;   
-    width:auto;
+    width:100%;
 }
 
 a{
     color:white;
     text-align:center;
-    padding-top:20px;
+    padding-top:3%;
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    width: auto;
     font-size: 100%;
+    
 }
 .navbar-brand{
-    background-color: rgb(0,52,55);
+    background-color: rgb(3,36,51);
     padding-top:0%;
     margin-top:0%;
     padding-left:3%;
@@ -54,15 +54,16 @@ a{
 
 .nav-link:hover{
     color:white;
-    background-color:rgba(126,206,208,0.2);
+    background-color:rgb(62,105,112);
     height:100%;
     padding-top:30px;
     margin-top: 0px;
+   
 }
 
 .dropdown-item:hover{
   color:white !important;
-    background-color: rgb(0,52, 55);
+    background-color:rgb(3,35,51);
 }
 
 .dropdown-item{
@@ -79,14 +80,28 @@ a{
 }
 
 .dropdown-menu{
-    background-color: rgba(0,52,55,0.8);
+    background-color: rgba(3,35,51,0.8);
 }
 
-.logout{
+.logoutbutton{
     float:right;
     padding-top:0px;
     margin-top: 0px;
+    margin-right:0%;
+    
 }
+
+.Logout{
+    height:80px;  
+    background-color: rgb(126,206,208);
+    border:none;
+    margin-right: 0px;
+    margin-left:290px;
+    width:60%;
+   
+}
+
+
 h1{
     text-align:center;
     color:white;

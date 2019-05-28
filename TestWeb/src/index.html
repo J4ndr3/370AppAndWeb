@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -33,6 +33,7 @@
     }
     
   </script>
+  
 </head>
 
 <body>
@@ -125,17 +126,11 @@
           <a class="dropdown-item">- Marker</a>
         </div>
       </li>
-
-      <li class="nav-item dropdown"> </li>
-      <li class="nav-item dropdown" style="color: rgb(0,52,55) !important">hhh</li>
-      
-      
-      <li class="nav-item dropdown" style="background-color: rgb(126,206,208); margin-right:0px; width:300px;">
-        <a class="nav-link" href="#" id="navbardrop" style=" color:black; padding:auto; margin-left: 0px; ">
-          LOGOUT</a>
-      </li>
     </ul>
-
+    <br><br>
+<div class="logoutbutton">
+    <button class="Logout" href="#" id="Out">LOGOUT</a> 
+</div>
   </nav>
   <br>
   <h1>RANGERS</h1>
@@ -143,13 +138,13 @@
 
   <div class="outer">
     <div class="button">
-      <button type="button" class="btn btn-default btn-sm" id="addBTN"> ADD NEW <img src="/assets/ios-add.svg" class="plus"  style="background-color: rgb(126,206,208)"/></button>
+      <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW <img src="/assets/ios-add.svg" class="plus"  style="background-color: rgb(126,206,208)"/></button>
       </div>
   </div>
   
-  <div class="inner">
+  <div class="inner collapse" id="demo">
     <div class="close">
-      <button class="btn btn-default btn-sm" id="closeBTN"><img src="/assets/ios-close.svg" class="closePic"/></button>
+      <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo"><img src="/assets/ios-close.svg" class="closePic"/></button>
     </div>
 
     <div class="inputForm">
