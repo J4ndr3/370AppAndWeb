@@ -31,7 +31,8 @@ li{
 nav{
     background-color:  rgb(3,36,51);
     height:80px;   
-    width:100%;
+    width:80%;
+    float: left;
 }
 
 a{
@@ -88,7 +89,7 @@ a{
     padding-top:0px;
     margin-top: 0px;
     margin-right:0%;
-    
+    width: 20%;
 }
 
 .Logout{
@@ -96,8 +97,7 @@ a{
     background-color: rgb(126,206,208);
     border:none;
     margin-right: 0px;
-    margin-left:290px;
-    width:60%;
+    width:100%;
    
 }
 
