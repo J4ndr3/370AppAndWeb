@@ -6,6 +6,33 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/download/glyphicons/0.1.0/glyphicons.js"></script>
+
+  <!-- Moenie delete nie, verander net vir alle dropdowns/selects dat die initial value blou is en dan as n vlue gekies is, word dit wit -->
+  <script>
+    function selectColor() {
+    var x = document.getElementById("Select1").value;
+    if(x != "Gender..."){
+      document.getElementById("Select1").style="color: white !important";
+    }
+    else
+    {
+      document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
+    }
+    }
+    
+    function selectColor1() {
+    var x = document.getElementById("Select2").value;
+    if(x != "Status..."){
+      document.getElementById("Select2").style="color: white !important";
+    }
+    else
+    {
+      document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
+    }
+    }
+    
+  </script>
 </head>
 
 <body>
@@ -110,8 +137,86 @@
     </ul>
 
   </nav>
+  <br>
+  <h1>RANGERS</h1>
+  <br>
+
+  <div class="outer">
+    <div class="button">
+      <button type="button" class="btn btn-default btn-sm" id="addBTN"> ADD NEW <img src="/assets/ios-add.svg" class="plus"  style="background-color: rgb(126,206,208)"/></button>
+      </div>
+  </div>
+  
+  <div class="inner">
+    <div class="close">
+      <button class="btn btn-default btn-sm" id="closeBTN"><img src="/assets/ios-close.svg" class="closePic"/></button>
+    </div>
+
+    <div class="inputForm">
+      <br>
+        <form class="form-horizontal" action="/action_page.php">
+
+          <div class="form-group">
+            <h2 class="Header">Add Ranger</h2>
+            <br>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID">
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <div class="col-sm-10">
+              <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name">
+            </div>
+          </div>
+          
+          <div class="form-group">
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname">
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell">
+                    </div>
+                  </div>
+
+          <div class="form-group">
+            <div class="col-sm-10">          
+                <select class="form-control" id="Select1" onchange="selectColor()">
+                    <option selected disabled hidden value="Gender...">Gender...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-sm-10">          
+                  <select class="form-control" id="Select2" onchange="selectColor1()">
+                      <option selected disabled hidden value="Status...">Status...</option>
+                      <option>Active</option>
+                      <option>Inactive</option>
+                      <option>Other</option>
+                    </select>
+              </div>
+            </div>
+
+          <div class="form-group">        
+            <div class="col-sm-offset-2 col-sm-10" id="savediv">
+              <button type="submit" class="btn btn-default" id="Save">Save</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    <br>
+    <br>
+    </div>
 
   <app-root></app-root>
 </body>
 
 </html>
+    

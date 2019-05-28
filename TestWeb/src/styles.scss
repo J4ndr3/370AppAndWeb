@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import "~bootstrap/dist/css/bootstrap.css";
+
 body{
     background-color: rgba(0,52,55,0.7);
     font-family: Montserrat;
@@ -14,6 +16,11 @@ li{
     color:white;
     height: 80px;
     width:auto;
+}
+
+.plus{
+   width:40px; 
+    height:40px;
 }
 
 // .navbar-nav{
@@ -80,3 +87,123 @@ a{
     padding-top:0px;
     margin-top: 0px;
 }
+h1{
+    text-align:center;
+    color:white;
+    font-display: Montserrat bold;
+    
+}
+.outer{
+    margin:auto;
+    width: 80%;
+    background-color: rgba(0,52,55,0.7);
+    padding:0px;
+    margin-bottom:4%;
+}
+
+.button{
+    float:right;
+    margin-right:0px;
+    padding-right:0px;
+    
+}
+#addBTN{
+    width:140px;
+    text-align: left;
+    color: white;
+    font-size: 100%;
+    height:60px;
+    margin-right:0px;
+    padding-right:0px;
+}
+
+#addBTN:hover{
+    width:142px;
+    border: 2px solid grey;
+    height:60px;
+    margin-right:0px;
+    padding-right:0px;
+}
+
+.inner{
+    width:80%;
+    margin:auto;
+    background-color: rgb(33,90,97);
+    height:auto;
+}
+
+.close{
+    width:60px;
+    height:60px;
+    float: left;
+}
+
+#closeBTN{
+    width:60px;
+    height:60px;
+    float: left;
+}
+
+.closePic{
+    fill:white;
+    color: white;
+}
+
+.inputForm{
+    width:50%;
+    margin: auto;
+}
+h2{
+    font-size: 150%;
+    color:white;
+    margin-left:13%;
+}
+
+.col-sm-10{
+    margin-left:0%;
+    width:80%;
+    margin:auto;
+    
+}
+
+input{
+    background-color: rgb(33,90,97) !important;
+    color: white !important; 
+}
+input:-ms-input-placeholder{
+    color:rgb(126,206,208) !important;
+}
+input::-webkit-input-placeholder {
+    color: rgb(126,206,208) !important;
+    }
+
+input:-moz-placeholder { /* Firefox 18- */
+    color: rgb(126,206,208) !important;  
+    }
+         
+input::-moz-placeholder {  /* Firefox 19+ */
+    color: rgb(126,206,208) !important;  
+    }
+ 
+    #Select1{
+    background-color: rgb(33,90,97) !important;
+    color: rgb(126,206,208) !important;
+    }
+
+    #Select2{
+        background-color: rgb(33,90,97) !important;
+        color: rgb(126,206,208) !important;
+        }
+
+    #Save{
+        background-color: rgb(126,206,208) !important;
+        color:rgb(0,52, 55);
+        margin-right:0px;
+        float:right;
+    }
+    
+    form{
+        height:100%;
+
+    }
+    
