@@ -106,7 +106,36 @@ a{
     border: 1px solid lightgray;
 }
 
+.search{
+    float:left;
+    width:50%;
+    font-size: 100%;
+    margin-left:0px;
+    padding-left:0px;
+}
 
+#SearchBTN{
+    margin-top:2.5%;
+    width:80%;
+    height:80%;
+    margin-bottom:0%;
+    margin-left:0%;
+}
+
+#Search{
+    margin-top:1.5%;
+    width: 10%;
+    height:100%;
+    margin-left:0%;
+}
+
+.searchBtnIMG{
+    height:100%;
+}
+
+#Search:hover{
+ border: 2px solid rgba(3,70,76,0.01);
+}
 
 h1{
     text-align:center;
@@ -156,10 +185,8 @@ th{
 
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
-   background-color:  rgb(33,90,97);// Choose your own color here
+   background-color:  rgb(33,90,97);
  }
-
-
 
 .button{
     float:right;
