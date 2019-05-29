@@ -124,6 +124,43 @@ h1{
     margin-bottom:4%;
 }
 
+.table{
+    margin:auto;
+    width: 80%;
+    background-color:  rgba(0,52,55,0.7);
+    padding:0px;
+    margin-bottom:4%;
+}
+
+table{
+    width: 100% !important;
+    border-bottom: 1px solid;
+    border-color: rgb(126,206,208) !important;
+}
+
+td{
+    text-align: center;
+    color:white !important;
+    font-display: Montserrat;
+    border-bottom: 1px solid;
+    border-color: rgb(126,206,208) !important;
+}
+ 
+th{
+    color: rgb(126,206,208) !important;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-color: rgb(126,206,208) !important;
+    
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color:  rgb(33,90,97);// Choose your own color here
+ }
+
+
+
 .button{
     float:right;
     margin-right:0px;
@@ -165,6 +202,25 @@ h1{
     width:60px;
     height:60px;
     float: left;
+}
+
+#editbtn{
+    width:25px;
+    height:25px;
+    margin-top:0px;
+    padding-top:0px;
+}
+
+.edit{
+    width:25px;
+    height:25px;
+    margin-top:0px;
+    padding-top:0px;
+    
+}
+
+.edit:hover{
+    border:1px solid;
 }
 
 .closePic{
