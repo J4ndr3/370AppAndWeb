@@ -1,27 +1,77 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+    <ion-buttons slot="end">
+      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+    </ion-buttons>
+      <ion-buttons slot="end" >
+      <ion-menu-button style="color: white !important"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      Register
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
+    <div class="inputForm">
+        <br>
+    <form class="form-horizontal" action="/action_page.php">
+      <div class="form-group">
+        <br>
+        <div class="col-sm-40">
+          <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
+        </div>
       </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
+
+      <div class="form-group">
+        <div class="col-sm-40">
+          <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-40">
+          <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-40">
+          <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
+        </div>
+      </div>
+
+      <!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
+
+      <div class="form-group">
+        <div class="col-sm-40">
+          <select class="form-control" id="Select1" onchange="selectColor()" required>
+            <option selected disabled hidden value="Gender...">Gender...</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-40">
+          <select class="form-control" id="Select2" onchange="selectColor1()" required>
+            <option selected disabled hidden value="Status...">Status...</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!--Moenie die save button verander nie-->
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-40" id="savediv">
+          <button type="submit" class="btn btn-default" id="Save">Save</button>
+        </div>
+      </div>
+    </form>
     </div>
-  -->
 </ion-content>

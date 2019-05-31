@@ -1,7 +1,7 @@
 <ion-header >
   <ion-toolbar>
       <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" (click)="openNote()">
       <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
     </ion-buttons>
       <ion-buttons slot="end" >
@@ -13,10 +13,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--ion-background-color:rgb(3,70,76);">
+<ion-content>
   <br>
       <ion-img src="/assets/SVGS-01.svg" style="margin: auto; width: 35%"></ion-img>
-      <br>
         <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: white; font-size: 20px">John doe</ion-card-title>
         <p style="margin: auto; text-align: center;color:rgb(102,173,177);font-size:12px">Reward Status: <b>100 Points</b></p>
         <hr style="height:0pt; visibility:hidden;" />
