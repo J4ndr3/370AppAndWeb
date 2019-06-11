@@ -7,6 +7,7 @@ import { IncidentComponent } from './incident/incident.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RangerComponent } from './ranger/ranger.component';
+import { ModifyRangerComponent } from './modify-ranger/modify-ranger.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RangerComponent } from './ranger/ranger.component';
     IncidentComponent,
     HomeComponent,
     NavComponent,
-    RangerComponent
+    RangerComponent,
+    ModifyRangerComponent
   ],
   imports: [
     BrowserModule,
