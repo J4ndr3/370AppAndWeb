@@ -1,11 +1,13 @@
 <!--NAVIGATION BAR - MOENIE verander nie-->
-<nav class="navbar navbar-expand-sm">
+<nav class="navbar navbar-expand-sm fixed-top">
   <!-- logo -->
-  <a class="navbar-brand" routerLink="/">
-    <img src="/assets/logo_ERP-03.png" alt="logo" id="logo">
+  <div class="container-fluid">
+  <a class="navbar-brand " routerLink="/">
+    <img src="/assets/logo_ERP-03.png" alt="ERP logo" id="logo">
   </a>
   <!-- Links -->
-  <ul class="navbar-nav">
+  <div id="left">
+  <ul class="navbar-nav navbar-left">
     <li class="nav-item dropdown"><a class="nav-link" routerLink="/">HOME</a></li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -63,6 +65,7 @@
       </a>
       <div class="dropdown-menu">
           <a class="dropdown-item">- Capture Message</a>
+          <a class="dropdown-item" routerLink="/notify">- Notifications</a>
           <a class="dropdown-item">- Incident Type</a>
           <a routerLink="/incident"  class="dropdown-item" >- Incident Level</a>
       </div>
@@ -88,8 +91,26 @@
         <a class="dropdown-item">- Marker</a>
       </div>
     </li>
-  </ul>
-</nav>
-<div class="logoutbutton">
-  <button class="Logout" href="#" id="Out" data-toggle="modal" data-target="#myModal">LOG OUT</button> 
+  <br>
+</ul>
 </div>
+<div id="right">
+    <div class="dropdown Logout" id="logoutbutton">
+      <a class="nav-link dropdown-toggle" href="#" id="logoutbutton" data-toggle="dropdown">
+        John Doe
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/profile" >- Profile</a>
+        <a class="dropdown-item">- Help</a>
+        <a class="dropdown-item" id="Out" data-toggle="modal" data-target="#myModal">- Logout</a>
+      </div>
+    </div>
+</div>
+</div>
+</nav>
+
+
+<!-- <div class="logoutbutton">
+  <button class="Logout" href="#" id="Out" data-toggle="modal" data-target="#myModal">LOG OUT</button>  -->
+<!-- </div> -->
+

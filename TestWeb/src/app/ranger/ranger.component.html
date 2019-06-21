@@ -2,21 +2,20 @@
 <br>
 <br>
 <h1>RANGERS</h1>
+<hr/>
 <br>
 
 <div class="outer">
   <!--Moenie buttons en search bar verander nie-->
   <div class="button">
     <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
-      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(126,206,208)" /></button>
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
   </div>
 
   <div class="search">
-    <form action="/action_page.php">
+    <form action="/action_page.php" id="searchform">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"> <button
-          class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg"
-            class="SearchbtnIMG" /></button>
+        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
       </div>
     </form>
   </div>
@@ -36,7 +35,7 @@
   <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
   <div class="inputForm">
     <br>
-    <form class="form-horizontal" action="/action_page.php">
+    <form class="form-horizontal"  id="modifyForm" action="/action_page.php">
 
       <div class="form-group">
         <h2 class="Header">Add Ranger</h2>
@@ -123,7 +122,7 @@
         <td>100</td>
         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
         <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
       </tr>
       <tr>
@@ -152,6 +151,25 @@
 
 </div>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
+            style="width:40px; margin-top:0px;" />Warning</h4>
+        <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
+          id="modalClose">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -161,7 +179,7 @@
         <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
       </div>
       <div class="modal-body">
-        <p>The input provided is incorrect. Please try again.</p>
+        <p>This record already exists. Please try again</p>
         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
           id="modalClose">Close</button>
       </div>
@@ -169,8 +187,6 @@
   </div>
 </div>
 
-
-<!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
 <!-- <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -180,7 +196,7 @@
         <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
       </div>
       <div class="modal-body">
-        <p>This record already exists. Please try again</p>
+        <p>The input provided is incorrect. Please try again.</p>
         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
           id="modalClose">Close</button>
       </div>

@@ -1,11 +1,16 @@
 <br>
 <br>
 <h1>MODIFY RANGER</h1>
+<hr>
 <br>
 
-<div class="inputForm">
+<div class="inner">
+  <div class="back">
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/rangers">
+          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+      </div>
   <br>
-  <form class="form-horizontal" action="/action_page.php">
+  <form class="form-horizontal" id="modifyForm" action="/action_page.php">
 
     <div class="form-group">
       <h2 class="Header">Ranger Information:</h2>
@@ -62,6 +67,8 @@
       <div class="col-sm-offset-2 col-sm-10" id="savediv">
         <button type="submit" class="btn btn-default" id="Save">Save</button>
       </div>
+      <br>
+      <br>
     </div>
   </form>
 </div>
