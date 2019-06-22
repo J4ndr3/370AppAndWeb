@@ -7,6 +7,7 @@ import { ModifyRangerComponent } from './modify-ranger/modify-ranger.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'incident', component:IncidentComponent},

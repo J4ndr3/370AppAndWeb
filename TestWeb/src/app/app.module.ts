@@ -10,6 +10,10 @@ import { RangerComponent } from './ranger/ranger.component';
 import { ModifyRangerComponent } from './modify-ranger/modify-ranger.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { timeout } from 'q';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,19 @@ import { NotificationsComponent } from './notifications/notifications.component'
     RangerComponent,
     ModifyRangerComponent,
     ProfileComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+     closeButton:true,
+     positionClass:"toast-bottom-center",
+     timeOut:20000,
+      }  
+    ) 
   ],
   providers: [],
   bootstrap: [AppComponent]

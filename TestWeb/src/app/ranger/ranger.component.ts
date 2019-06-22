@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ranger',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RangerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
-
+  showToast(){
+    this.toastrService.show("Message", "Message");
+  }
 }

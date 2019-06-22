@@ -2,6 +2,12 @@
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 @import "~bootstrap/dist/css/bootstrap.css";
+@import '~ngx-toastr/toastr.css'; 
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';
+
 
 body{
     background-color: rgb(207,209,211);
@@ -315,7 +321,16 @@ input:-moz-placeholder { /* Firefox 18- */
 input::-moz-placeholder {  /* Firefox 19+ */
     color: rgba(227, 231, 237,0.8) !important;  
     }
- 
+
+textarea::-moz-placeholder{
+    color: rgba(227, 231, 237,0.8) !important;  
+}
+textarea::-ms-input-placeholder{
+    color: rgba(227, 231, 237,0.8) !important;  
+}
+textarea::-webkit-input-placeholder{
+    color: rgba(227, 231, 237,0.8) !important;  
+}
     #Select1{
     background-color:  rgba(0,24,26,0.2) !important;
     color: rgba(227, 231, 237,0.8) !important;
@@ -384,3 +399,24 @@ input::-moz-placeholder {  /* Firefox 19+ */
         background-color: inherit;
     }
    
+
+
+.custom-modal-header {
+    text-align: center;
+    color: #17b6bb;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-top: 4px solid;
+}
+
+
+.modal-title {
+    font-size: 18px;
+    color: rgb(62,105,112);
+}
+
+.form-group {
+    margin-bottom: 15px !important;
+}
+
+
