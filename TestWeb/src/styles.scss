@@ -15,6 +15,7 @@ body{
     margin-bottom: 0%;
     position: static;
   }
+
 hr{
     background-color:rgb(205,21,67);
     height:2px;
@@ -95,7 +96,6 @@ nav{
     background-color: rgba(0,24,26,0.7);
 }
 
-
 #right{
     height:80px; 
     margin-right:0px !important;
@@ -112,8 +112,6 @@ nav{
     border:none;
     width:100%;
 }
-
-
 
 .search{
     float:left !important;
@@ -153,9 +151,9 @@ h1{
     text-align:center;
     color:black;
     font-display: Montserrat bold;
-    margin-bottom:1%;
-    
+    margin-bottom:0.5%;
 }
+
 .outer{
     margin:auto;
     width: 80%;
