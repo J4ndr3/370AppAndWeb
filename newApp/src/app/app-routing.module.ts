@@ -26,7 +26,8 @@ const routes: Routes = [
   {
     path:'list3', 
     loadChildren: './list3/list3.component'
-  }
+  },  { path: 'registerform', loadChildren: './registerform/registerform.module#RegisterformPageModule' }
+
   
 ];
 
