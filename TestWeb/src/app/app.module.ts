@@ -41,7 +41,7 @@ import { MatButtonModule} from '@angular/material';
     ToastrModule.forRoot({
      closeButton:true,
      positionClass:"toast-bottom-center",
-     timeOut:20000,
+     timeOut:4000,
       }  
     ) 
   ],

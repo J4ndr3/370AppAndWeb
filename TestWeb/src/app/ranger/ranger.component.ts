@@ -13,6 +13,6 @@ export class RangerComponent implements OnInit {
   ngOnInit() {
   }
   showToast(){
-    this.toastrService.show("Message", "Message");
+    this.toastrService.show("Record added successfully", "Success!");
   }
 }
