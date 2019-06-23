@@ -9,12 +9,32 @@
 @import '~ngx-toastr/toastr-bs4-alert';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+
+
 body{
     background-color: rgb(207,209,211);
     font-family: Montserrat;
     padding-top: 75px;
 }
 
+.float{
+    float:right;
+}
+.headers{
+    background-color: rgb(62,105,112);
+}
+.white{
+    color:white;
+}
+#resolvedbtn{
+    background-color: rgb(205,21,67);
+    
+}
+
+.panels{
+    width:80%;
+    margin:auto;
+}
 .footer {
     left: 0;
     width: 100%;

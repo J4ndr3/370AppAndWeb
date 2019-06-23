@@ -16,7 +16,7 @@ import { timeout } from 'q';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatButtonModule} from '@angular/material';
-
+import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-md'
 
 @NgModule({
   declarations: [
@@ -42,8 +42,9 @@ import { MatButtonModule} from '@angular/material';
      closeButton:true,
      positionClass:"toast-bottom-center",
      timeOut:4000,
-      }  
-    ) 
+      }
+    ) ,
+    ButtonsModule, WavesModule, CardsFreeModule,  
   ],
   providers: [],
   bootstrap: [AppComponent]
