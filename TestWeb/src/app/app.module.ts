@@ -13,6 +13,9 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { timeout } from 'q';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatButtonModule} from '@angular/material';
 
 
 @NgModule({
@@ -29,8 +32,12 @@ import { timeout } from 'q';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatButtonModule,
     ToastrModule.forRoot({
      closeButton:true,
      positionClass:"toast-bottom-center",

@@ -126,7 +126,31 @@
         <div class="form-group">
           <textarea class="form-control" id="Message" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
         </div>
-        <button type="submit" class="btn btn-default" style="float: right !important;" (click)="showToast()" data-dismiss="modal"  id="modalClose">Send Message</button>
+        <button type="submit" class="btn btn-default" style="float: right !important;" mat-button (click)="openSnackBar('Party', 'act')" data-dismiss="modal"  id="modalClose">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editmessage" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header custom-modal-header">
+        <h4 class="modal-title" style="text-align: left !important;">Capture Message</h4>
+        <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label>Please complete the following fields:</label>
+        <div class="form-group">
+          <input type="text" class="form-control" id="TitleInput"  placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-control" id="Message" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-default" style="float: right !important;" mat-button (click)="openSnackBar('Party', 'act')" data-dismiss="modal"  id="modalClose">Send Message</button>
         </form>
       </div>
     </div>
