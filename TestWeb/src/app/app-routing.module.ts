@@ -10,6 +10,7 @@ import { IncidentLevelComponent } from './incident-level/incident-level.componen
 import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component';
 import { IncidentTypeComponent } from './incident-type/incident-type.component';
 import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component';
+import { PatrolLogComponent } from './patrol-log/patrol-log.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:"incident-level", component:IncidentLevelComponent},
   {path:"incident-level-modify",component:IncidentLevelModifyComponent},
   {path:"incident-type", component: IncidentTypeComponent},
-  {path:"incident-type-modify", component: IncidentTypeModifyComponent}
+  {path:"incident-type-modify", component: IncidentTypeModifyComponent},
+  {path:'patrol', component:PatrolLogComponent}
 ];
 
 @NgModule({

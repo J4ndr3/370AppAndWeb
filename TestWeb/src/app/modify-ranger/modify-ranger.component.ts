@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modify-ranger',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModifyRangerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
-
+  Toast(){
+    this.toastrService.show("Ranger information modified.", "Success!");
+  }
 }

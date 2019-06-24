@@ -20,7 +20,8 @@ import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-m
 import { IncidentLevelComponent } from './incident-level/incident-level.component';
 import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component';
 import { IncidentTypeComponent } from './incident-type/incident-type.component';
-import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component'
+import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component';
+import { PatrolLogComponent } from './patrol-log/patrol-log.component'
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { IncidentTypeModifyComponent } from './incident-type-modify/incident-typ
     IncidentLevelModifyComponent,
     IncidentTypeComponent,
     IncidentTypeModifyComponent,
+    PatrolLogComponent,
     
   ],
   imports: [
