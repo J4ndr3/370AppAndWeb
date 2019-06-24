@@ -16,7 +16,9 @@ import { timeout } from 'q';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatButtonModule} from '@angular/material';
-import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-md'
+import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-md';
+import { IncidentLevelComponent } from './incident-level/incident-level.component';
+import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-m
     ModifyRangerComponent,
     ProfileComponent,
     NotificationsComponent,
+    IncidentLevelComponent,
+    IncidentLevelModifyComponent,
     
   ],
   imports: [
