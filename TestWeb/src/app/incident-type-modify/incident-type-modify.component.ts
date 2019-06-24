@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-incident-type-modify',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidentTypeModifyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
-
+  Toast(){
+    this.toastrService.show("Incident type modified.", "Success!");
+  }
 }

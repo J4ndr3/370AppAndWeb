@@ -20,6 +20,10 @@ body{
 .float{
     float:right;
 }
+
+.float-r{
+    float:left;
+}
 .headers{
     background-color: rgb(62,105,112);
 }
@@ -444,3 +448,13 @@ textarea::-webkit-input-placeholder{
 }
 
 
+.media{
+    width:97% !important;
+    border-left: 6px solid rgb(205,21,67) !important;
+    background-color: rgba(62,105,112,0.3) !important;
+    margin:auto;
+    border-right:2px solid rgba(62,105,112,0.3) !important;
+    border-top:2px solid rgba(62,105,112,0.3) !important;
+    border-bottom:2px solid rgba(62,105,112,0.3) !important;
+
+}
