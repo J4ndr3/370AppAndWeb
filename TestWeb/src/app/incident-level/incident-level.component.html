@@ -1,7 +1,6 @@
-<!--Verander opskrif vir elke page-->
 <br>
 <br>
-<h1>RANGERS</h1>
+<h1>INCIDENT LEVEL</h1>
 <hr/>
 <br/>
 <div class="outer">
@@ -11,13 +10,13 @@
       <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
   </div>
 
-  <div class="search">
+  <!-- <div class="search">
     <form action="/action_page.php" id="searchform">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-      </div>
-    </form>
-  </div>
+      </div> -->
+    <!-- </form>
+  </div> -->
 </div>
 <br>
 <br>
@@ -37,52 +36,10 @@
     <form class="form-horizontal"  id="modifyForm" action="/action_page.php">
 
       <div class="form-group">
-        <h2 class="Header">Add Ranger</h2>
+        <h2 class="Header">Add Incident Level</h2>
         <br>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
-        </div>
-      </div>
-
-      <!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
-
-      <div class="form-group">
-        <div class="col-sm-10">
-          <select class="form-control" id="Select1" onchange="selectColor()" required>
-            <option selected disabled hidden value="Gender...">Gender...</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-10">
-          <select class="form-control" id="Select2" onchange="selectColor1()" required>
-            <option selected disabled hidden value="Status...">Status...</option>
-            <option>Active</option>
-            <option>Inactive</option>
-            <option>Other</option>
-          </select>
+          <input type="text" class="form-control" id="Level" placeholder="Level Description..." name="Level" required >
         </div>
       </div>
 
@@ -104,42 +61,30 @@
   <table class="table table-striped">
     <thead>
       <tr id="header">
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Cellphone No.</th>
-        <th>Status</th>
-        <th>Reward Points</th>
+        <th></th>
+        <th style="text-align: left;">Incident Level Description</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>085748392</td>
-        <td>Active</td>
-        <td>100</td>
+        <td></td>
+        <td style="text-align: left;">High Severity Level</td>
         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-        <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+        <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/incident-level-modify'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
       </tr>
       <tr>
-        <td>Jane</td>
-        <td>Doe</td>
-        <td>0874635271</td>
-        <td>Inactive</td>
-        <td>400</td>
+          <td></td>
+        <td style="text-align: left;">Medium Severity Level</td>
         <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
       </tr>
       <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>0826799056</td>
-        <td>Active</td>
-        <td>200</td>
+          <td></td>
+        <td style="text-align: left;">Low Severity Level</td>
         <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button>

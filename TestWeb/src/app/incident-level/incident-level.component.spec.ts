@@ -1,22 +1,20 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestPage } from './test.page';
+import { IncidentLevelComponent } from './incident-level.component';
 
-describe('TestPage', () => {
-  let component: TestPage;
-  let fixture: ComponentFixture<TestPage>;
+describe('IncidentLevelComponent', () => {
+  let component: IncidentLevelComponent;
+  let fixture: ComponentFixture<IncidentLevelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestPage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [ IncidentLevelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestPage);
+    fixture = TestBed.createComponent(IncidentLevelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
