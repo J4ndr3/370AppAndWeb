@@ -10,6 +10,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'incident', component:IncidentComponent},
   {path: 'rangers', component: RangerComponent},
   {path: 'modify-ranger', component: ModifyRangerComponent},
