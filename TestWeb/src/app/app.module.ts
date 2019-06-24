@@ -21,7 +21,12 @@ import { IncidentLevelComponent } from './incident-level/incident-level.componen
 import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component';
 import { IncidentTypeComponent } from './incident-type/incident-type.component';
 import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component';
-import { PatrolLogComponent } from './patrol-log/patrol-log.component'
+import { PatrolLogComponent } from './patrol-log/patrol-log.component';
+import { RegisteruserComponent } from './registeruser/registeruser.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -38,6 +43,10 @@ import { PatrolLogComponent } from './patrol-log/patrol-log.component'
     IncidentTypeComponent,
     IncidentTypeModifyComponent,
     PatrolLogComponent,
+    RegisteruserComponent,
+    VehicleComponent,
+   
+    
     
   ],
   imports: [

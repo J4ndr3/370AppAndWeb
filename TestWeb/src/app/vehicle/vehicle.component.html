@@ -1,15 +1,15 @@
 <!--Verander opskrif vir elke page-->
 <br>
 <br>
-<h1>RANGERS</h1>
+<h1>VEHICLES</h1>
 <hr/>
 <br/>
 <div class="outer">
   <!--Moenie buttons en search bar verander nie-->
-  <div class="button">
+  <!--<div class="button">
     <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
       <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
-  </div>
+  </div> -->
 
   <div class="search">
     <form action="/action_page.php" id="searchform">
@@ -37,7 +37,7 @@
     <form class="form-horizontal"  id="modifyForm" action="/action_page.php">
 
       <div class="form-group">
-        <h2 class="Header">Register Ranger</h2>
+        <h2 class="Header">Add Vehicle</h2>
         <br>
         <div class="col-sm-10">
           <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
@@ -55,63 +55,13 @@
           <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
         </div>
       </div>
-      <div class="form-group">
-      <div class="checkbox">
-          <label class="form-control"><input type="checkbox"  value="">Ranger Roles</label>
-        </div> 
-        <div class="checkbox">
-          <label class="form-control"><input type="checkbox"  value="">All Admin Roles</label>
-        </div>
-        <div class="checkbox disabled">
-          <label class="form-control"><input type="checkbox"  value="" disabled>Reports only</label>
-        </div>
-      </div>
-        <div class="form-group">
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="Actions" placeholder="Actions..." name="Actions" required>
-            </div>
-          </div>
 
-          <div class="form-group">
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="Email" placeholder="Email..." name="Email" required>
-              </div>
-            </div>
       <div class="form-group">
         <div class="col-sm-10">
           <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
         </div>
       </div>
-      <div class="form-group">
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="EmergencyName" placeholder="Emergency Name..." name="Emergency Name" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="EmergencyNumber" placeholder="Emergency Number..." name="Emergency Number" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-sm-10">
-              <input type="text" class="form-control" id="MedicalAid" placeholder="Medical Aid..." name="Medical Aid" required>
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-sm-10">
-            <select class="form-control" id="Select1" onchange="selectColor()" required>
-              <option selected disabled hidden value="Gender...">Bloodtype...</option>
-              <option>A+</option>
-              <option>B+</option>
-              <option>O+</option>
-              <option>AB+</option>
-              <option>A-</option>
-              <option>B-</option>
-              <option>AB-</option>
-              <option>O-</option>
-            </select>
-          </div>
-        </div>
+
       <!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
 
       <div class="form-group">
@@ -124,11 +74,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group">
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="JobTitle" placeholder="Job Title..." name="Job Title" required>
-          </div>
-      </div>
+
       <div class="form-group">
         <div class="col-sm-10">
           <select class="form-control" id="Select2" onchange="selectColor1()" required>
@@ -150,7 +96,7 @@
   </div>
   <br>
   <br>
-</div>
+</div> 
 <!--TABLE-->
 <br>
 
@@ -158,80 +104,41 @@
   <table class="table table-striped">
     <thead>
       <tr id="header">
-        <th>Name</th>
-        <th>Surname</th>
-        <th> User Roles</th>
-        <th>Actions</th>
-        <th>Email</th>
-        <th>Cellphone</th>
-        <th>ID</th>
-        <th>Emergency Name</th>
-        <th>Emergency Number</th>
-        <th>Medical Aid</th>
-        <th>Bloodtype</th>
-        <th>Gender</th>
-        <th>Job title</th>
-        <th>Status</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>Registration number</th>       
+        <!--<th>Actions</th>-->
       </tr>
     </thead>
-    <tbody>
+    <tbody id="mytable">
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>Ranger</td>
-        <td>actions...?</td>
-        <td>jondoe@gmail.com</td>
-        <td>085748392</td>
-        <td>9712080065099</td>
-        <td>Esther</td>
-        <td>0837789039</td>
-        <td>Liberty</td>
-        <td>O+</td>
-        <td>Male</td>
-        <td>Project Manager</td>
-        <td>Active</td>
+        <td>Hundai</td>
+        <td>i20</td>
+        <td>Red</td>
+        <td>YSF 354 GP</td>
         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-        <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+        <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
+              src="/assets/ios-trash.svg" class="edit" /></button> -->
       </tr>
       <tr>
-          <td>Tim</td>
-          <td>Sxheepers</td>
-          <td>Admin</td>
-          <td>actions...?</td>
-          <td>tim0097@gmail.com</td>
-          <td>0857760990</td>
-          <td>89776653859</td>
-          <td>Wian</td>
-          <td>0126887594</td>
-          <td>Discovery</td>
-          <td>A+</td>
-          <td>Other</td>
-          <td>Systems Analyst</td>
-          <td>Inactive</td>
-        <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+        <td>Hundai</td>
+        <td>i10</td>
+        <td>Blue</td>
+        <td>HD 987 GP</td>
+        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
+              src="/assets/ios-trash.svg" class="edit" /></button> -->
       </tr>
       <tr>
-          <td>Jane</td>
-          <td>Viljoen</td>
-          <td>Ranger, Reports</td>
-          <td>actions...?</td>
-          <td>Jan@gmail.com</td>
-          <td>0828865321</td>
-          <td>8612140088096</td>
-          <td>Ronel</td>
-          <td>0126007554</td>
-          <td>Discovery</td>
-          <td>A-</td>
-          <td>Female</td>
-          <td>Software Developer</td>
-          <td>Active</td>
-        <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+        <td>Rav</td>
+        <td>4</td>
+        <td>Orange</td>
+        <td>UGLY01 GP</td>
+        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
+              src="/assets/ios-trash.svg" class="edit" /></button>-->
       </tr>
     </tbody>
   </table>
