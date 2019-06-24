@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { IncidentLevelComponent } from './incident-level/incident-level.component';
 import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component';
+import { IncidentTypeComponent } from './incident-type/incident-type.component';
+import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path:"notify", component: NotificationsComponent},
   {path:"incident-level", component:IncidentLevelComponent},
-  {path:"incident-level-modify",component:IncidentLevelModifyComponent}
+  {path:"incident-level-modify",component:IncidentLevelModifyComponent},
+  {path:"incident-type", component: IncidentTypeComponent},
+  {path:"incident-type-modify", component: IncidentTypeModifyComponent}
 ];
 
 @NgModule({

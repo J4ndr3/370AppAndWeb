@@ -18,7 +18,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatButtonModule} from '@angular/material';
 import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-md';
 import { IncidentLevelComponent } from './incident-level/incident-level.component';
-import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component'
+import { IncidentLevelModifyComponent } from './incident-level-modify/incident-level-modify.component';
+import { IncidentTypeComponent } from './incident-type/incident-type.component';
+import { IncidentTypeModifyComponent } from './incident-type-modify/incident-type-modify.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { IncidentLevelModifyComponent } from './incident-level-modify/incident-l
     NotificationsComponent,
     IncidentLevelComponent,
     IncidentLevelModifyComponent,
+    IncidentTypeComponent,
+    IncidentTypeModifyComponent,
     
   ],
   imports: [
