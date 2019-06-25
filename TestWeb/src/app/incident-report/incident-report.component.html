@@ -1,0 +1,91 @@
+<br>
+<h1>Incident Report</h1>
+<hr>
+<br>
+<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary">Date Picker</button></div>
+
+<br>
+<div class="collapse" id="demo" align="center" style="width:474.8px; background-color:rgba(62, 105, 112, 0.3); margin: auto;">
+    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+    </ngb-datepicker>
+
+    <ng-template #t let-date let-focused="focused">
+        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)" [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+    </ng-template>
+
+
+</div>
+<br>
+<img src="./assets/Capturea.PNG" alt="Italian Trulli" style="width:95%;height:95%;" class="center">
+<br>
+<hr>
+<br>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Title</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Cellphone</th>
+                <th>Incident level</th>
+                <th>Date</th>
+                <th>Time</th>
+
+                <!--<th>Actions</th>-->
+            </tr>
+        </thead>
+        <tbody id="mytable">
+            <tr>
+                <td>Fence cutting</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>085748392</td>
+                <td>Medium</td>
+                <td>2019/04/17</td>
+                <td>22:59</td>
+
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
+            src="/assets/ios-trash.svg" class="edit" /></button> -->
+            </tr>
+            <tr>
+                <td>Poaching</td>
+                <td>Tim</td>
+                <td>Sxheepers</td>
+                <td>0857760990</td>
+                <td>High</td>
+                <td>2019/08/27</td>
+                <td>23:19</td>
+
+                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+            src="/assets/ios-trash.svg" class="edit" /></button> -->
+            </tr>
+            <tr>
+                <td>Unauthorized access</td>
+                <td>Jane</td>
+                <td>Viljoen</td>
+                <td>0828865321</td>
+                <td>Medium</td>
+                <td>2019/06/12</td>
+                <td>21:49</td>
+                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+            src="/assets/ios-trash.svg" class="edit" /></button>-->
+            </tr>
+        </tbody>
+        <tfoot style="background-color:rgba(205, 21, 67);">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total incidents</td>
+            <td>:</td>
+            <td>3</td>
+        </tfoot>
+    </table>
+</div>
