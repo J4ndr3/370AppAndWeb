@@ -26,11 +26,16 @@ defaultView="dayGridMonth"
 }"
 [plugins]="calendarPlugins"
 [weekends]="calendarWeekends"
-[events]="calendarEvents"
-(dateClick)="handleDateClick($event)"
+[events]="[ {
+    title:  'John Doe',
+    start:  '2019-06-25T14:30:00',
+    end:'2019-06-25T16:30:00',
+    allDay: false 
+  }]"
 [nowIndicator]="true"
 [eventStartEditable]="true"
 [eventDurationEditable]="true"
 [displayEventTime]="true"
+[displayEventEnd]="true"
 ></full-calendar>
 </div>

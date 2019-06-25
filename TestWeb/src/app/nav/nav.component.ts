@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable} from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BlockScrollStrategy } from '@angular/cdk/overlay';
+import { RouterLink, Router } from '@angular/router';
 
 
 
@@ -11,8 +12,6 @@ import { BlockScrollStrategy } from '@angular/cdk/overlay';
 })
 export class NavComponent implements OnInit {
   display='none';
-  message: string = 'Message Sent Successfully!';
-  actionButtonLabel: string = 'Edit Message';
   action: boolean = true;
   setAutoHide: boolean = true;
   autoHide: number = 10000;
@@ -22,7 +21,7 @@ export class NavComponent implements OnInit {
 
 
   addExtraClass: boolean = false;
-  constructor(public snackBar: MatSnackBar ) {}
+  constructor(public snackBar: MatSnackBar, private router: Router ) {}
 
   ngOnInit() {
   }
@@ -32,9 +31,16 @@ export class NavComponent implements OnInit {
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
-    let snackbarref=this.snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined, config);
+    let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'Edit Message' : undefined, config);
     snackbarref.onAction().subscribe(()=>{document.getElementById("mymodClick").click()});
     } 
-  
+    openSnackBar1() {
+      let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'View Message' : undefined, config);
+    snackbarref.onAction().subscribe(()=>{this.router.navigateByUrl('/notify')});
+    } 
 }
 
