@@ -19,15 +19,23 @@ const routes: Routes = [
     path: 'nav', 
     loadChildren: './nav/nav.module#NavPageModule' 
   },
-  {
-    path:'list2', 
-    loadChildren: './list2/list2.component'
-  },
-  {
-    path:'list3', 
-    loadChildren: './list3/list3.component'
-  }
-  
+  { path: 'modifyranger',
+   loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
+   },  
+   { path: 'registerform',
+   loadChildren: './registerform/registerform.module#registerformPageModule'
+   },  
+  { path: 'rangerprofile', 
+  loadChildren: './rangerprofile/rangerprofile.module#RangerprofilePageModule'
+   },
+  { path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule' },
+  { path: 'shiftbookings', loadChildren: './shiftbookings/shiftbookings.module#ShiftbookingsPageModule' },
+  { path: 'rangerpatrol', loadChildren: './rangerpatrol/rangerpatrol.module#RangerpatrolPageModule' },
+  { path: 'rewards', loadChildren: './rewards/rewards.module#RewardsPageModule' },
+  { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+  { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
+ 
 ];
 
 @NgModule({

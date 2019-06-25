@@ -16,10 +16,57 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'My Profile',
+      url: '/rangerprofile',
+      icon: 'contact'
+    },
+    
+    {
+      title: 'Notifications',
+      url: '/notifications',
+      icon: 'chatboxes'
+    },
+    {
+      title: 'Bookings',
+      url: '/shiftbookings',
+      icon: 'calendar'
+    },
+    {
+      title: 'Patrol',
+      url: '/rangerpatrol',
+      icon: 'navigate'
+    },
+    {
+      title: 'Rewards',
+      url: '/rewards',
+      icon: 'star'
+    },
+    {
       title: 'List',
       url: '/list',
       icon: 'list'
-    }
+    },
+    {
+      title: 'My Vehicles',
+      url: '/vehicles',
+      icon: 'logo-model-s'
+    },
+    {
+      title: 'Settings',
+      url: '/settings',
+      icon: 'build'
+    },
+    {
+      title: 'Help',
+      url: '/helppage',
+      icon: 'help'
+    },
+    {
+      title: 'Logout',
+      url: '/Logout',
+      icon: 'log-out'
+    },
+    
   ];
 
   constructor(
