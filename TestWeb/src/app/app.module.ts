@@ -32,6 +32,12 @@ import { MarkerComponent } from './marker/marker.component';
 import { MarkerModComponent } from './marker-mod/marker-mod.component';
 import { MarkerTypeComponent } from './marker-type/marker-type.component';
 import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { ReserveModComponent } from './reserve-mod/reserve-mod.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityModComponent } from './security-mod/security-mod.component';
+import { GateComponent } from './gate/gate.component';
+import { GateModComponent } from './gate-mod/gate-mod.component';
 
 
 
@@ -61,6 +67,12 @@ import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.compon
     MarkerModComponent,
     MarkerTypeComponent,
     MarkerTypeModComponent,
+    ReserveComponent,
+    ReserveModComponent,
+    SecurityComponent,
+    SecurityModComponent,
+    GateComponent,
+    GateModComponent,
    
     
     

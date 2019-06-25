@@ -21,6 +21,12 @@ import { MarkerComponent } from './marker/marker.component';
 import { MarkerTypeComponent } from './marker-type/marker-type.component';
 import { MarkerModComponent } from './marker-mod/marker-mod.component';
 import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { ReserveModComponent } from './reserve-mod/reserve-mod.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityModComponent } from './security-mod/security-mod.component';
+import { GateComponent } from './gate/gate.component';
+import { GateModComponent } from './gate-mod/gate-mod.component';
 
 
 
@@ -47,6 +53,12 @@ const routes: Routes = [
   {path: 'markertype', component:MarkerTypeComponent},
   {path: 'markermod', component:MarkerModComponent},
   {path: 'markertypemod', component:MarkerTypeModComponent},
+  {path: 'reserve', component:ReserveComponent},
+  {path: 'reservemod', component:ReserveModComponent},
+  {path: 'security', component:SecurityComponent},
+  {path: 'securitymod', component:SecurityModComponent},
+  {path: 'gate', component:GateComponent},
+  {path: 'gatemod', component:GateModComponent},
 ];
 
 @NgModule({
