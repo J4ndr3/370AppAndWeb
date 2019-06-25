@@ -26,9 +26,9 @@ const routes: Routes = [
   { path: 'modifyranger',
    loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
    },  
-   { path: 'registerform',
-   loadChildren: './registerform/registerform.module#registerformPageModule'
-   },  
+  //  { path: 'registerform',
+  //  loadChildren: './registerform/registerform.module#registerformPageModule'
+  //  },  
   { path: 'rangerprofile', 
   loadChildren: './rangerprofile/rangerprofile.module#RangerprofilePageModule'
    },
