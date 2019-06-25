@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   autoHide: number = 10000;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  modal:HTMLElement= document.getElementById('messagepopup');
+  
 
 
   addExtraClass: boolean = false;
@@ -33,7 +33,7 @@ export class NavComponent implements OnInit {
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
     let snackbarref=this.snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined, config);
-    snackbarref.onAction().subscribe(()=>this.modal.toggleAttribute);
+    snackbarref.onAction().subscribe(()=>{document.getElementById('myModClick').click()});
     } 
   
 }

@@ -8,6 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
+  <script src='fullcalendar/core/main.js'></script>
+  <script src='fullcalendar/daygrid/main.js'></script>
+  <script src='fullcalendar/bootstrap/main.js'></script>
+  <script>
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    plugins: [ 'bootstrap' ],
+    themeSystem: 'bootstrap'
+  });
+  </script>
+  
 </head>
 <body>
   <app-root></app-root>

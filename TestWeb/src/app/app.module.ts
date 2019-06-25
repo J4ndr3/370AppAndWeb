@@ -24,6 +24,7 @@ import { IncidentTypeModifyComponent } from './incident-type-modify/incident-typ
 import { PatrolLogComponent } from './patrol-log/patrol-log.component';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; 
 
 
 
@@ -45,9 +46,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     PatrolLogComponent,
     RegisteruserComponent,
     VehicleComponent,
+  
    
-    
-    
   ],
   imports: [
     BrowserModule,
@@ -64,6 +64,7 @@ import { VehicleComponent } from './vehicle/vehicle.component';
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

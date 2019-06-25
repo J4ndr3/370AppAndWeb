@@ -8,8 +8,22 @@
 @import '~bootstrap/scss/mixins';
 @import '~ngx-toastr/toastr-bs4-alert';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
+@import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 
 
+
+.app-top {
+    margin: 0 0 3em;
+  }
+  
+  .app-calendar {
+    margin: 0 auto;
+    max-width: 900px;
+  }
 
 body{
     background-color: rgb(207,209,211);
@@ -17,6 +31,10 @@ body{
     padding-top: 75px;
 }
 
+.cal{
+    width:90%;
+    margin:auto;
+}
 .float{
     float:right;
 }
