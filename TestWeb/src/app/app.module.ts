@@ -24,7 +24,15 @@ import { IncidentTypeModifyComponent } from './incident-type-modify/incident-typ
 import { PatrolLogComponent } from './patrol-log/patrol-log.component';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
-
+import { PerformanceComponent } from './performance/performance.component';
+import { IncidentReportComponent } from './incident-report/incident-report.component';
+import { VehiclesReportComponent } from './vehicles-report/vehicles-report.component';
+import { AssetsReportComponent } from './assets-report/assets-report.component';
+import { RewardsReportComponent } from './rewards-report/rewards-report.component';
+import { StatusReportComponent } from './status-report/status-report.component';
+import { RangersReportComponent } from './rangers-report/rangers-report.component';
+import { MarkersReportComponent } from './markers-report/markers-report.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -45,7 +53,14 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     PatrolLogComponent,
     RegisteruserComponent,
     VehicleComponent,
-   
+    PerformanceComponent,
+    IncidentReportComponent,
+    VehiclesReportComponent,
+    AssetsReportComponent,
+    RewardsReportComponent,
+    StatusReportComponent,
+    RangersReportComponent,
+    MarkersReportComponent,
     
     
   ],
@@ -64,6 +79,7 @@ import { VehicleComponent } from './vehicle/vehicle.component';
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
