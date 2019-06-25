@@ -35,6 +35,21 @@ import { MarkersReportComponent } from './markers-report/markers-report.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import { LoginComponent } from './login/login.component';
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserroleModifyComponent } from './userrole-modify/userrole-modify.component';
+import { AccessLevelModComponent } from './access-level-mod/access-level-mod.component';
+import { MarkerComponent } from './marker/marker.component';
+import { MarkerModComponent } from './marker-mod/marker-mod.component';
+import { MarkerTypeComponent } from './marker-type/marker-type.component';
+import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { ReserveModComponent } from './reserve-mod/reserve-mod.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityModComponent } from './security-mod/security-mod.component';
+import { GateComponent } from './gate/gate.component';
+import { GateModComponent } from './gate-mod/gate-mod.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +78,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MarkersReportComponent,
     
     
+  
+    LoginComponent,
+    UserroleComponent,
+    UserroleModifyComponent,
+    AccessLevelModComponent,
+    MarkerComponent,
+    MarkerModComponent,
+    MarkerTypeComponent,
+    MarkerTypeModComponent,
+    ReserveComponent,
+    ReserveModComponent,
+    SecurityComponent,
+    SecurityModComponent,
+    GateComponent,
+    GateModComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -80,6 +111,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,6 @@ export class HomePage {
 
   constructor(private navController: NavController, private router: Router) {}
 openNote(){
-  this.navController.navigateRoot('/list')
+  this.navController.navigateRoot('/registerform')
 }
 }

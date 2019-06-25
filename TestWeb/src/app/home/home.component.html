@@ -1,11 +1,36 @@
 <br>
 <br>
+<br>
 <h1>Rangers on duty</h1>
-<hr/>
+<hr class="hrow"/>
 <br>
 <div id="mapDiv">
     <img src="/assets/Map.PNG" id="Map"/>
 </div>
 <div id="homearrow">
     <button class="btn btn-default btn-sm" id="downbtn"><img src="/assets/ios-arrow-dropdown.svg"/></button>
+</div>
+<br>
+<div>
+    <h1>Bookings</h1>
+    <hr class="hrow"/>
+</div>
+<div class='app-calendar'>
+<full-calendar
+#calendar
+defaultView="dayGridMonth"
+[header]="{
+  left: 'prev,next today',
+  center: 'title',
+  right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+}"
+[plugins]="calendarPlugins"
+[weekends]="calendarWeekends"
+[events]="calendarEvents"
+(dateClick)="handleDateClick($event)"
+[nowIndicator]="true"
+[eventStartEditable]="true"
+[eventDurationEditable]="true"
+[displayEventTime]="true"
+></full-calendar>
 </div>

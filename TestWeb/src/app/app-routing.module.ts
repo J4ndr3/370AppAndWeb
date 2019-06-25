@@ -22,6 +22,22 @@ import {RewardsReportComponent} from './rewards-report/rewards-report.component'
 import {StatusReportComponent} from './status-report/status-report.component';
 import {RangersReportComponent} from './rangers-report/rangers-report.component';
  
+import { LoginComponent } from './login/login.component';
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserroleModifyComponent } from './userrole-modify/userrole-modify.component';
+import { AccessLevelModComponent } from './access-level-mod/access-level-mod.component';
+import { MarkerComponent } from './marker/marker.component';
+import { MarkerTypeComponent } from './marker-type/marker-type.component';
+import { MarkerModComponent } from './marker-mod/marker-mod.component';
+import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.component';
+import { ReserveComponent } from './reserve/reserve.component';
+import { ReserveModComponent } from './reserve-mod/reserve-mod.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityModComponent } from './security-mod/security-mod.component';
+import { GateComponent } from './gate/gate.component';
+import { GateModComponent } from './gate-mod/gate-mod.component';
+
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -46,6 +62,20 @@ const routes: Routes = [
   {path: 'status-report', component:StatusReportComponent},
   {path: 'vehicles-report', component:VehiclesReportComponent},
   {path: 'performance', component:PerformanceComponent},
+  {path: 'login', component:LoginComponent},
+  {path: 'userrole', component:UserroleComponent},
+  {path: 'userrolemod', component:UserroleModifyComponent},
+  {path: 'AccessMod', component:AccessLevelModComponent},
+  {path: 'marker', component:MarkerComponent},
+  {path: 'markertype', component:MarkerTypeComponent},
+  {path: 'markermod', component:MarkerModComponent},
+  {path: 'markertypemod', component:MarkerTypeModComponent},
+  {path: 'reserve', component:ReserveComponent},
+  {path: 'reservemod', component:ReserveModComponent},
+  {path: 'security', component:SecurityComponent},
+  {path: 'securitymod', component:SecurityModComponent},
+  {path: 'gate', component:GateComponent},
+  {path: 'gatemod', component:GateModComponent},
 ];
 
 @NgModule({
