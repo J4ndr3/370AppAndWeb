@@ -4,25 +4,25 @@
 <br>
 <h1>REGISTER USER</h1>
 <hr />
-
+<div >
 <div #ref>
   <form #regform id="regForm" (ngSubmit)="onSubmit()">
       <h1>Register:</h1>
       <!-- One "tab" for each step in the form: -->
-      <div class="tab">Name:
+      <div class="tab col-sm-10">Name:
           <p><input class="form-control" placeholder="First name..." oninput="this.className = ''" name="fname"></p>
           <p><input  class="form-control" placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
       </div>
-      <div class="tab">Contact Info:
+      <div class="tab col-sm-10">Contact Info:
           <p><input  class="form-control" placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
           <p><input  class="form-control" placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
       </div>
-      <div class="tab">Birthday:
+      <div class="tab col-sm-10">Birthday:
           <p><input  class="form-control" placeholder="dd" oninput="this.className = ''" name="dd"></p>
           <p><input   class="form-control"placeholder="mm" oninput="this.className = ''" name="nn"></p>
           <p><input  class="form-control" placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
       </div>
-      <div class="tab">Login Info:
+      <div class="tab col-sm-10">Login Info:
           <p><input  class="form-control" placeholder="Username..." oninput="this.className = ''" name="uname"></p>
           <p><input  class="form-control" placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
       </div>
@@ -40,4 +40,5 @@
           <span class="step"></span>
       </div>
   </form>
+</div>
 </div>
