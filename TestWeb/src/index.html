@@ -14,7 +14,10 @@
   <script>
   var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: [ 'bootstrap' ],
-    themeSystem: 'bootstrap'
+    themeSystem: 'bootstrap',
+    eventOverlap: function(stillEvent, movingEvent) {
+    return stillEvent.allDay && movingEvent.allDay;
+  }
   });
   </script>
   

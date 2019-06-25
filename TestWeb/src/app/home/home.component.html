@@ -2,7 +2,7 @@
 <br>
 <br>
 <h1>Rangers on duty</h1>
-<hr/>
+<hr class="hrow"/>
 <br>
 <div id="mapDiv">
     <img src="/assets/Map.PNG" id="Map"/>
@@ -28,5 +28,9 @@ defaultView="dayGridMonth"
 [weekends]="calendarWeekends"
 [events]="calendarEvents"
 (dateClick)="handleDateClick($event)"
+[nowIndicator]="true"
+[eventStartEditable]="true"
+[eventDurationEditable]="true"
+[displayEventTime]="true"
 ></full-calendar>
 </div>
