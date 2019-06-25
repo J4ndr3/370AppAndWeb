@@ -27,13 +27,13 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
   
-    openSnackBar(message: string, action: string) {
+    openSnackBar() {
       let config = new MatSnackBarConfig();
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
     let snackbarref=this.snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined, config);
-    snackbarref.onAction().subscribe(()=>this.modal.toggleAttribute);
+    snackbarref.onAction().subscribe(()=>{document.getElementById("mymodClick").click()});
     } 
   
 }

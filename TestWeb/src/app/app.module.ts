@@ -24,6 +24,14 @@ import { IncidentTypeModifyComponent } from './incident-type-modify/incident-typ
 import { PatrolLogComponent } from './patrol-log/patrol-log.component';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { LoginComponent } from './login/login.component';
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserroleModifyComponent } from './userrole-modify/userrole-modify.component';
+import { AccessLevelModComponent } from './access-level-mod/access-level-mod.component';
+import { MarkerComponent } from './marker/marker.component';
+import { MarkerModComponent } from './marker-mod/marker-mod.component';
+import { MarkerTypeComponent } from './marker-type/marker-type.component';
+import { MarkerTypeModComponent } from './marker-type-mod/marker-type-mod.component';
 
 
 
@@ -45,6 +53,14 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     PatrolLogComponent,
     RegisteruserComponent,
     VehicleComponent,
+    LoginComponent,
+    UserroleComponent,
+    UserroleModifyComponent,
+    AccessLevelModComponent,
+    MarkerComponent,
+    MarkerModComponent,
+    MarkerTypeComponent,
+    MarkerTypeModComponent,
    
     
     
