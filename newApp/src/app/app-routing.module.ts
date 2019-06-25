@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
+  {
+    path: 'registerform',
+    loadChildren: './registerform/registerform.module#RegisterformPageModule'
+  },
   { 
     path: 'nav', 
     loadChildren: './nav/nav.module#NavPageModule' 
