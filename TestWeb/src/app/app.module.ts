@@ -110,7 +110,7 @@ import { GateModComponent } from './gate-mod/gate-mod.component';
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
-    NgbModule
+    NgbModule,
     FullCalendarModule,
   ],
   providers: [],
