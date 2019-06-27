@@ -106,7 +106,7 @@ import { GateModComponent } from './gate-mod/gate-mod.component';
     ToastrModule.forRoot({
      closeButton:true,
      positionClass:"toast-bottom-center",
-     timeOut:20000,
+     timeOut:5000,
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
