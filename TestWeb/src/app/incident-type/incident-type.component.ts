@@ -12,6 +12,10 @@ export class IncidentTypeComponent implements OnInit {
   ngOnInit() {
   }
   showToast(){
-    this.toastrService.show("Record added successfully", "Success!");
+    this.toastrService.show("Record could not be added", "Error!");
+  }
+
+  Delete(){
+    this.toastrService.show("Record Removed", "Success!");
   }
 }
