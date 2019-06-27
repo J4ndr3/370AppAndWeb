@@ -1,5 +1,4 @@
-<br>
-<br>
+
 <h1>INCIDENT LEVEL</h1>
 <hr class="hrow"/>
 <br/>
@@ -91,9 +90,11 @@
       </tr>
     </tbody>
   </table>
-
+ 
 
 </div>
+<br>
+<br>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
 <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
   <div class="modal-dialog">
@@ -106,7 +107,7 @@
       <div class="modal-body">
         <p>This record will be permanently deleted. Are you sure you want to continue?</p>
         <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
-          id="modalClose">Delete</button>
+          id="modalClose" (click)="Delete()">Delete</button>
       </div>
     </div>
   </div>
