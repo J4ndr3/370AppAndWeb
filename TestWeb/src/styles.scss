@@ -15,6 +15,8 @@
 @import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
 
+
+
 #regForm {
     background-color: rgba(62, 105, 112, 0.7)!important;
     margin: 100px auto;
@@ -81,9 +83,7 @@
     
   }
 
-body{
-    background-color: rgb(207,209,211);
-}
+
 #forgot {
     color: rgb(205, 21, 67);
 }
@@ -553,28 +553,6 @@ option {
 
 /* You can add global styles to this file, and also import other style files */
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
-@import "~bootstrap/dist/css/bootstrap.css";
-@import '~ngx-toastr/toastr.css';
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-@import '~ngx-toastr/toastr-bs4-alert';
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
-@import '~@fullcalendar/timegrid/main.css';
-@import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
-
-#regForm {
-    background-color: rgba(62, 105, 112, 0.7)!important;
-    margin: 100px auto;
-    padding: 40px;
-    width: 70%;
-    min-width: 300px;
-}
 
 .media {
     width: 97% !important;
@@ -586,9 +564,7 @@ option {
     border-bottom: 2px solid rgba(62, 105, 112, 0.3) !important;}
 /* Hide all steps by default: */
 
-.tab {
-    display: none;
-}
+
 
 #nextBtn {
     background-color: rgb(134, 158, 195) !important;
@@ -637,20 +613,11 @@ option {
     margin: 0 0 3em;
 }
 
-.app-calendar {
-    margin: 0 auto;
-    max-width: 900px;
-}
-
 
     #forgot {
         color: rgb(205, 21, 67);
     }
-    body {
-        background-color: rgb(207, 209, 211);
-        font-family: Montserrat;
-        padding-top: 75px;
-    }
+  
     .cal {
         width: 90%;
         margin: auto;
@@ -900,8 +867,4 @@ option {
     .app-top {
         margin: 0 0 3em;
     }
-    .app-calendar {
-        margin: 0 auto;
-        max-width: 900px;
-    }
-   
+  
