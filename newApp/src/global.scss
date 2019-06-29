@@ -9,11 +9,56 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
 ion-toolbar {
     --background: rgb(3,36,51);
   }
   ion-title{
     color: white;
+    
+  }
+
+  .incident_title{
+    width:100% !important; 
+    margin-left:0 !important; 
+    padding-left:5% !important;
+     margin-bottom:0 !important; 
+     margin-top:2px !important; 
+     padding-top:0 !important;
+     padding-bottom:0 !important;
+     font-size:130% !important;
+  }
+  ion-button{
+    --background: rgb(126,206,208);
+    color:black;
+    margin:auto;
+  }
+  ion-thumbnail{
+      --size: 80px;
+  }
+
+  ion-card{
+      width: 100% !important;
+      padding:0 !important;
+      margin:auto !important;
+  }
+  
+  ion-list-header{
+    font-size:100% !important;
+
+  }
+
+  .radio{
+    font-size: 85% !important;
+    padding-bottom:0px !important;
+    size:small !important;
   }
 .erplog{
     fill: white;
@@ -27,147 +72,21 @@ br {
  }
  ion-content{
   --ion-background-color:rgb(3,70,76);
+  padding:0 !important;
  }
  .inputForm{
-  width:50%;
-  margin: auto;
+  width:100%;
+  margin: auto !important;
 }
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 
 
 
-.nav-item{
-    margin-left:0% !important;
-    text-align: center;
-    color:white;
-    height: 80px;
-    width:100% !important;
-    padding-left:1% !important;
-}
-
-.plus{
-   width:40px; 
-    height:40px;
-}
-
-.navbar-nav{
-padding-left:5%;
-padding-right:5%;
-width: auto;
-}
-
-nav{
-    background-color:  rgb(3,36,51);
-    height:80px;   
-    width:80%;
-    float: left;
-    margin-top:0%;
-}
-
-.nav-link{
-    color:white;
-    text-align:center;
-    padding-top:30px;
-    margin-top: 0px;
-    font-size: 100%;
-    width:auto;
-}
-.navbar-brand{
-    background-color: rgb(3,36,51);
-    padding-top:0%;
-    margin-top:0%;
-    width: 80px;
-    margin-left:1%;
-   
-    
-}
 #logo{
     height:60px !important;
     width: 100% !important;
     margin-right:0% !important;
-}
-
-.nav-link:hover{
-    color:white;
-    background-color:rgb(62,105,112);
-    height:100%;
-    padding-top:30px;
-    margin-top: 0px;
-   
-}
-
-.dropdown-item:hover{
-  color:white !important;
-    background-color:rgb(3,35,51);
-}
-
-.dropdown-item{
-    color:white !important;
-    padding-top:4px;
-    padding-bottom:4px;
-    margin-top:4px;
-    margin-bottom:4px;
-}
-
-#navbardrop:hover{
-    background-color:rgba(126,206,208,0.2);
-    height:80px; 
-}
-
-.dropdown-menu{
-    background-color: rgba(3,35,51,0.8);
-}
-
-.logoutbutton{
-    float:right;
-    padding-top:0px;
-    margin-top: 0px;
-    margin-right:0%;
-    width: 20%;
-}
-
-.Logout{
-    height:80px;  
-    background-color: rgb(126,206,208);
-    border:none;
-    margin-right: 0px;
-    width:100%;
-   
-}
-.Logout:hover{
-    border: 1px solid lightgray;
-}
-
-.search{
-    float:left;
-    width:50%;
-    font-size: 100%;
-    margin-left:0px;
-    padding-left:0px;
-}
-
-#SearchBTN{
-    margin-top:2.5%;
-    width:80%;
-    height:80%;
-    margin-bottom:0%;
-    margin-left:0%;
-}
-
-#Search{
-    margin-top:1.5%;
-    width: 10%;
-    height:100%;
-    margin-left:0%;
-}
-
-.searchBtnIMG{
-    height:100%;
-}
-
-#Search:hover{
- border: 2px solid rgba(3,70,76,0.01);
 }
 
 h1{
@@ -186,65 +105,6 @@ h1{
     margin-bottom:4%;
 }
 
-.table{
-    margin:auto;
-    width: 80%;
-    background-color:  rgba(0,52,55,0.7);
-    padding:0px;
-    margin-bottom:4%;
-}
-
-table{
-    width: 100% !important;
-    border-bottom: 1px solid;
-    border-color: rgb(126,206,208) !important;
-}
-
-td{
-    text-align: center;
-    color:white !important;
-    font-display: Montserrat;
-    border-bottom: 1px solid;
-    border-color: rgb(126,206,208) !important;
-}
- 
-th{
-    color: rgb(126,206,208) !important;
-    text-align: center;
-    border-bottom: 1px solid;
-    border-color: rgb(126,206,208) !important;
-    
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td, 
-.table-striped>tbody>tr:nth-child(odd)>th {
-   background-color:  rgb(33,90,97);
- }
-
-.button{
-    float:right;
-    margin-right:0px;
-    padding-right:0px;
-    
-}
-#addBTN{
-    width:140px;
-    text-align: left;
-    color: white;
-    font-size: 100%;
-    height:60px;
-    margin-right:0px;
-    padding-right:0px;
-}
-
-#addBTN:hover{
-    width:142px;
-    border: 1px solid lightgrey;
-    height:60px;
-    margin-right:0px;
-    padding-right:0px;
-}
-
 .inner{
     width:80%;
     margin:auto;
@@ -252,46 +112,7 @@ th{
     height:auto;
 }
 
-.close{
-    width:60px;
-    height:60px;
-    float: left;
-}
 
-#closeBTN{
-    width:60px;
-    height:60px;
-    float: left;
-}
-
-#editbtn{
-    width:25px;
-    height:25px;
-    margin-top:0px;
-    padding-top:0px;
-}
-
-.edit{
-    width:25px;
-    height:25px;
-    margin-top:0px;
-    padding-top:0px;
-    
-}
-
-.edit:hover{
-    border:1px solid;
-}
-
-.closePic{
-    fill:white;
-    color: white;
-}
-
-.inputForm{
-    width:60%;
-    margin: auto;
-}
 h2{
     font-size: 150%;
     color:white;
@@ -299,87 +120,64 @@ h2{
 }
 
 .col-sm-10{
-    margin-left:0%;
-    width:80%;
+    margin:0;
+    width:100%;
     margin:auto;
     
 }
-
-input{
+ion-select{
+    width:80% !important;
+    margin:auto !important;
+}
+ion-input{
     background-color: rgb(33,90,97) !important;
     color: white !important; 
-    border-color:  rgb(126,206,208) !important;
-}
-input:-ms-input-placeholder{
-    color:rgb(126,206,208) !important;
-}
-input::-webkit-input-placeholder {
-    color: rgb(126,206,208) !important;
+    border:  2px solid rgb(126,206,208) !important;
+    width:100% !important;
+    margin:auto !important;
+    border-radius: 5%;
+    :-ms-input-placeholder{
+        color:rgb(126,206,208) !important;
     }
-
-input:-moz-placeholder { /* Firefox 18- */
-    color: rgb(126,206,208) !important;  
-    }
-         
-input::-moz-placeholder {  /* Firefox 19+ */
-    color: rgb(126,206,208) !important;  
-    }
- 
-    #Select1{
-    background-color: rgb(33,90,97) !important;
-    color: rgb(126,206,208) !important;
-    border-color:  rgb(126,206,208) !important;
-    }
-
-    #Select2{
-        background-color: rgb(33,90,97) !important;
+    ::-webkit-input-placeholder{
         color: rgb(126,206,208) !important;
-        border-color:  rgb(126,206,208) !important;
+    }
+    :-moz-placeholder{
+        color: rgb(126,206,208) !important; 
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+        color: rgb(126,206,208) !important;  
         }
+}
 
-    #Save{
-        background-color: rgb(126,206,208) !important;
-        color:rgb(0,52, 55);
-        margin-right:0px;
-        float:right;
+ion-textarea{
+    height:auto !important ;
+    min-height:20% !important;
+    background-color: rgb(33,90,97) !important;
+    color: white !important; 
+    border:  2px solid rgb(126,206,208) !important;
+    border-radius: 5%;
+    width:100% !important;
+    margin:auto !important;
+    :-ms-input-placeholder{
+        color:rgb(126,206,208) !important;
     }
+    ::-webkit-input-placeholder{
+        color: rgb(126,206,208) !important;
+    }
+    :-moz-placeholder{
+        color: rgb(126,206,208) !important; 
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+        color: rgb(126,206,208) !important;  
+        }
+}
+.ion-padding-start{
+    -webkit-padding-start: 0.5%;
+}
 
-    #Save:hover{
-        border: 1px solid lightgray;
-    }
-    
     form{
         height:100%;
 
     }
-
-    .modal-dialog{
-        width:300% !important;
-    }
-
-    #modalClose:hover{
-        border: 1px solid lightgrey;
-    }
     
-    #mapDiv{
-        width:100%;
-        height:500px;
-    }
-
-    #Map{
-        width:100%;
-        height:100%;
-        border-top:10px solid rgb(126,206,208);
-        border-bottom:10px solid rgb(126,206,208);
-    }
-    
-    #homearrow{
-        margin:auto;
-        height:5%;
-        width:5%;
-    }
-    #downbtn{
-        height:100%;
-        width:100%;
-        background-color: inherit;
-    }

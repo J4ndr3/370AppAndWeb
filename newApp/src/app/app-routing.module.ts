@@ -38,7 +38,8 @@ const routes: Routes = [
   { path: 'rewards', loadChildren: './rewards/rewards.module#RewardsPageModule' },
   { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
-  { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
+  { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },  { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
+
  
 ];
 
