@@ -12,3 +12,104 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <br/>
+  <br/>
+    <ion-title>
+        Ranger Profile Information
+      </ion-title>
+      <br/>
+      
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               Ranger Identity & Login details
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                 <p><input placeholder="First Name..." oninput="this.className = ''" name="fname"></p>
+                <p><input placeholder="Last Name..." oninput="this.className = ''" name="lname"></p>
+                <p><input placeholder="Ranger Username..." oninput="this.className = ''" name="username"></p>
+                    <p><input placeholder="Password..." oninput="this.className = ''" name="password"></p>
+                    <p><input placeholder="Confirm Password..." oninput="this.className = ''" name="confirmpassword"></p>
+              </div>
+            </div>      
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                My Personal details
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <p><input placeholder="Identification Number..." oninput="this.className = ''" name="rangerId"></p>
+                <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+                <p><input placeholder="Cellphone..." oninput="this.className = ''" name="phone"></p>
+                <div class="form-group">
+                    <div class="col-sm-40">
+                      <select class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Gender...">Gender...</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+            </div>
+            <p><input placeholder="Jobtitle..." oninput="this.className = ''" name="jobtitle"></p>
+                <div class="form-group">
+                        <div class="col-sm-40">
+                          <select class="form-control" id="Select2" onchange="selectColor1()" required>
+                            <option selected disabled hidden value="Status...">Status...</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                My Medical Details
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <p><input placeholder="Emergency contact's Name" oninput="this.className = ''" name="emergencycontactName"></p>
+                <p><input placeholder="Emergency contact Number" oninput="this.className = ''" name="EmergencycontactNumber"></p>
+                <p><input placeholder="Medical Aid" oninput="this.className = ''" name="MedicalAid"></p>
+                <div class="form-group">
+                        <div class="col-sm-40">
+                          <select class="form-control" id="Select1" onchange="selectColor()" required>
+                            <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
+                            <option>A+</option>
+                            <option>B+</option>
+                            <option>AB+</option>
+                            <option>O+</option>
+                            <option>A-</option>
+                            <option>B-</option>
+                            <option>AB-</option>
+                            <option>O-</option>
+                          </select>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</ion-content>
