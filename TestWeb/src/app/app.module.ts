@@ -50,6 +50,9 @@ import { SecurityComponent } from './security/security.component';
 import { SecurityModComponent } from './security-mod/security-mod.component';
 import { GateComponent } from './gate/gate.component';
 import { GateModComponent } from './gate-mod/gate-mod.component';
+import { RewardAddComponent } from './reward-add/reward-add.component';
+import { RewardModifyComponent } from './reward-modify/reward-modify.component';
+import { RewardEventModifyComponent } from './reward-event-modify/reward-event-modify.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +96,9 @@ import { GateModComponent } from './gate-mod/gate-mod.component';
     SecurityModComponent,
     GateComponent,
     GateModComponent,
+    RewardAddComponent,
+    RewardModifyComponent,
+    RewardEventModifyComponent,
    
   ],
   imports: [
@@ -110,7 +116,7 @@ import { GateModComponent } from './gate-mod/gate-mod.component';
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
-    NgbModule
+    NgbModule,
     FullCalendarModule,
   ],
   providers: [],

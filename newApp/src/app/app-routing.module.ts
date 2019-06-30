@@ -39,6 +39,8 @@ const routes: Routes = [
   { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
+  { path: 'rewardtype', loadChildren: './rewardtype/rewardtype.module#RewardtypePageModule' },
+
  
 ];
 
