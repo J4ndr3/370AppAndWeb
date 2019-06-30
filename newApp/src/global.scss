@@ -122,12 +122,30 @@ h2{
 .col-sm-10{
     margin:0;
     width:100%;
-    margin:auto;
-    
+    margin:auto;   
 }
+
 ion-select{
     width:80% !important;
     margin:auto !important;
+    background-color: rgb(33,90,97) !important;
+    color:white!important;
+    border:  2px solid rgb(126,206,208) !important;
+    width:100% !important;
+    margin:auto !important;
+    border-radius: 5%;
+    :-ms-input-placeholder{
+        color:rgb(126,206,208) !important;
+    }
+    ::-webkit-input-placeholder{
+        color: rgb(126,206,208) !important;
+    }
+    :-moz-placeholder{
+        color: rgb(126,206,208) !important; 
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+        color: rgb(126,206,208) !important;  
+        }
 }
 ion-input{
     background-color: rgb(33,90,97) !important;
@@ -156,7 +174,7 @@ ion-textarea{
     background-color: rgb(33,90,97) !important;
     color: white !important; 
     border:  2px solid rgb(126,206,208) !important;
-    border-radius: 5%;
+    border-radius: 2%;
     width:100% !important;
     margin:auto !important;
     :-ms-input-placeholder{
@@ -180,4 +198,16 @@ ion-textarea{
         height:100%;
 
     }
-    
+
+    .card-header{
+        background-color:  rgb(126,206,208) !important; 
+    }
+    #collapseOne{
+        background-color: rgb(33,90,97) !important;
+    }
+    #collapseTwo{
+        background-color: rgb(33,90,97) !important;
+    }
+    #collapseThree{
+        background-color: rgb(33,90,97) !important;
+    }
