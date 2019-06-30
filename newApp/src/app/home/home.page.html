@@ -25,5 +25,21 @@
    
     <ion-img src="/assets/SVGS-07.svg" style="margin: auto; width: 65%;padding-bottom:5%;"></ion-img>
    
-    <ion-img src="/assets/SVGS-04.svg" style="margin: auto; width: 25%;padding-bottom:5%;" routerLink="/incidents"></ion-img>
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed" >
+        <ion-fab-button color="dark" class="fabIncident">
+            <ion-img src="/assets/SVGS-04.svg" style="margin: auto; width: 100%;" ></ion-img>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button><ion-img src="/assets/SVGS-02.svg" style="margin: auto; width: 100%;" ></ion-img></ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+          <ion-fab-button><ion-img src="/assets/SVGS-01.svg" style="margin: auto; width: 100%;" ></ion-img></ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+          <ion-fab-button routerLink="/incidents" class="new"><ion-icon name="add"></ion-icon></ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+
+      
+    
 </ion-content>
