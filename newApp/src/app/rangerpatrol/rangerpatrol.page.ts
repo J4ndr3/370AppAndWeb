@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { container } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-rangerpatrol',
@@ -7,7 +6,7 @@ import { container } from '@angular/core/src/render3';
   styleUrls: ['./rangerpatrol.page.scss'],
 })
 export class RangerpatrolPage implements OnInit {
-@ViewChild('Regform')containerELTRef:ElementRef;
+@ViewChild('regform')containerEltRef:ElementRef;
   constructor(private renderer:Renderer2) { }
 currentTab =0;
   ngOnInit() {
@@ -30,13 +29,19 @@ currentTab =0;
             //... and fix the Previous/Next buttons:
             if (n == 0) {
                 document.getElementById("prevBtn").style.display = "none";
+                document.getElementById("nextBtn").innerHTML = "Check in";
             } else {
                 document.getElementById("prevBtn").style.display = "inline";
             }
-            if (n == (x.length - 1)) {
-                document.getElementById("nextBtn").innerHTML = "Submit";
-            } else {
-                document.getElementById("nextBtn").innerHTML = "Next";
+            
+            if (n == 3) {
+                document.getElementById("nextBtn").innerHTML = "Done";
+            } 
+            if(n ==1){
+                document.getElementById("nextBtn").innerHTML = "Start Patrol";
+            }
+            if(n ==2){
+                document.getElementById("nextBtn").innerHTML = "Check Out";
             }
             //... and run a function that will display the correct step indicator:
             this.fixStepIndicator(n)
