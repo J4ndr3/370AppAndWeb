@@ -23,49 +23,9 @@ const routes: Routes = [
     path: 'nav', 
     loadChildren: './nav/nav.module#NavPageModule' 
   },
-  { path: 'modifyranger',
-   loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
-   },  
-  //  { path: 'registerform',
-  //  loadChildren: './registerform/registerform.module#registerformPageModule'
+  // { path: 'modifyranger',
+  //  loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
   //  },  
-  { path: 'rangerprofile', 
-  loadChildren: './rangerprofile/rangerprofile.module#RangerprofilePageModule'
-   },
-  { path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule' },
-  { path: 'shiftbookings', loadChildren: './shiftbookings/shiftbookings.module#ShiftbookingsPageModule' },
-  { path: 'rangerpatrol', loadChildren: './rangerpatrol/rangerpatrol.module#RangerpatrolPageModule' },
-  { path: 'rewards', loadChildren: './rewards/rewards.module#RewardsPageModule' },
-  { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
-  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
-  { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },  { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
-
-<<<<<<< HEAD
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
-  {
-    path: 'registerform',
-    loadChildren: './registerform/registerform.module#RegisterformPageModule'
-  },
-  { 
-    path: 'nav', 
-    loadChildren: './nav/nav.module#NavPageModule' 
-  },
- // { path: 'modifyranger',
- //  loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
- //  },  
   //  { path: 'registerform',
   //  loadChildren: './registerform/registerform.module#registerformPageModule'
   //  },  
@@ -79,6 +39,8 @@ const routes: Routes = [
   { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
+  { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
+
  
 ];
 
@@ -89,15 +51,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-=======
- 
-];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
->>>>>>> 81071ebfe444e386e25cbb1846877970877d3e4e
