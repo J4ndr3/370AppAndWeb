@@ -23,9 +23,9 @@ const routes: Routes = [
     path: 'nav', 
     loadChildren: './nav/nav.module#NavPageModule' 
   },
-  // { path: 'modifyranger',
-  //  loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
-  //  },  
+  /*{ path: 'modifyranger',
+   loadChildren: './modifyranger/modifyranger.module#ModifyrangerPageModule'
+   },  */
   //  { path: 'registerform',
   //  loadChildren: './registerform/registerform.module#registerformPageModule'
   //  },  

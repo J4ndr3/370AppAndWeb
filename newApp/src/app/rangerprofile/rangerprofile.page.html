@@ -16,27 +16,29 @@
 <ion-content>
   <br/>
   <br/>
+  <div class="col-sm-10">
     <ion-title>
-        Ranger Profile Information
+      Ranger Profile Information
       </ion-title>
       <br/>
-      
-    <div id="accordion">
+      <div class="inputForm">
+          
+    <div id="accordion" >
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                Ranger Identity & Login details
               </button>
             </h5>
           </div>
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
-                 <p><input placeholder="First Name..." oninput="this.className = ''" name="fname"></p>
-                <p><input placeholder="Last Name..." oninput="this.className = ''" name="lname"></p>
-                <p><input placeholder="Ranger Username..." oninput="this.className = ''" name="username"></p>
-                    <p><input placeholder="Password..." oninput="this.className = ''" name="password"></p>
-                    <p><input placeholder="Confirm Password..." oninput="this.className = ''" name="confirmpassword"></p>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..."  required="true"></ion-input>
               </div>
             </div>      
         </div>
@@ -44,35 +46,37 @@
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 My Personal details
               </button>
             </h5>
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-                <p><input placeholder="Identification Number..." oninput="this.className = ''" name="rangerId"></p>
-                <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-                <p><input placeholder="Cellphone..." oninput="this.className = ''" name="phone"></p>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Identification Number..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Email..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Phone..."  required="true"></ion-input>
+                
                 <div class="form-group">
                     <div class="col-sm-40">
-                      <select class="form-control" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Gender...</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                      </select>
+                      
+                      <ion-select placeholder="Select Gender..." class="ion-padding-start form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                        <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
+                        <ion-select-option>Male</ion-select-option>
+                        <ion-select-option>Female</ion-select-option>
+                        <ion-select-option>Other</ion-select-option>
+                      </ion-select>
                     </div>
             </div>
-            <p><input placeholder="Jobtitle..." oninput="this.className = ''" name="jobtitle"></p>
-                <div class="form-group">
+            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Job Title..."  required="true"></ion-input>
+                
+            <div class="form-group">
                         <div class="col-sm-40">
-                          <select class="form-control" id="Select2" onchange="selectColor1()" required>
-                            <option selected disabled hidden value="Status...">Status...</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
-                            <option>Other</option>
-                          </select>
+                            <ion-select placeholder="Select Status..." class="ion-padding-start form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select-option>Active</ion-select-option>
+                            <ion-select-option>Inactive</ion-select-option>
+                            <ion-select-option>Other</ion-select-option>
+                          </ion-select>
                         </div>
                       </div>
             </div>
@@ -82,34 +86,36 @@
         <div class="card">
           <div class="card-header" id="headingThree">
             <h5 class="mb-0">
-              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <button class="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 My Medical Details
               </button>
             </h5>
           </div>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-                <p><input placeholder="Emergency contact's Name" oninput="this.className = ''" name="emergencycontactName"></p>
-                <p><input placeholder="Emergency contact Number" oninput="this.className = ''" name="EmergencycontactNumber"></p>
-                <p><input placeholder="Medical Aid" oninput="this.className = ''" name="MedicalAid"></p>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Name..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Number..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Medical Aid..."  required="true"></ion-input>
                 <div class="form-group">
-                        <div class="col-sm-40">
-                          <select class="form-control" id="Select1" onchange="selectColor()" required>
-                            <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
-                            <option>A+</option>
-                            <option>B+</option>
-                            <option>AB+</option>
-                            <option>O+</option>
-                            <option>A-</option>
-                            <option>B-</option>
-                            <option>AB-</option>
-                            <option>O-</option>
-                          </select>
+                        <div class="col-sm-40">         
+                          <ion-select placeholder="Select Bloodtype..." class="ion-padding-start form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select-option>A+</ion-select-option>
+                            <ion-select-option>B+</ion-select-option>
+                            <ion-select-option>AB+</ion-select-option>
+                            <ion-select-option>O+</ion-select-option>
+                            <ion-select-option>A-</ion-select-option>
+                            <ion-select-option>B-</ion-select-option>
+                            <ion-select-option>AB-</ion-select-option>
+                            <ion-select-option>O-</ion-select-option>
+                          </ion-select>
                         </div>
                       </div>
             </div>
           </div>
         </div>
       </div>
-    
+   <br/>
+   
+      <div style="float: right;"><ion-button style="margin-bottom:10%;">Save Changes</ion-button></div>
+    </div></div>
 </ion-content>
