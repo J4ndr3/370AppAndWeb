@@ -78,8 +78,9 @@
 
 .app-calendar {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 70%;
     background-color: rgba(62, 105, 112, 0.9);
+    height:auto;
 }
 
 #forgot {
@@ -924,7 +925,7 @@ th {
 }
 
 .fc-today {
-    background: #bbbbbb !important;
+    background: rgba(207, 209, 211,0.5) !important;
     border: none !important;
     border-top: 1px solid #ddd !important;
     font-weight: bold;
@@ -933,4 +934,23 @@ th {
 .fc-event {
     background-color: #17b6bb !important;
     border: none !important;
+    text-align: left !important;
 }
+
+.fc-more-popover{
+    height:200px !important;
+    // max-height: 30%;
+    overflow-y: scroll;
+}
+
+.fc {
+    direction: ltr;
+    text-align: left !important; }
+
+    
+    .fc-event-time, .fc-event-title {
+        padding: 0 1px;
+        text-align: left !important;
+    }
+
+   
