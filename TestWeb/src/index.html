@@ -15,19 +15,28 @@
   <script src='fullcalendar/core/main.js'></script>
   <script src='fullcalendar/daygrid/main.js'></script>
   <script src='fullcalendar/bootstrap/main.js'></script>
+  <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+<link href='fullcalendar/core/main.css' rel='stylesheet' />
+<link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+<link href='fullcalendar/bootstrap/main.css' rel='stylesheet' />
+
+
+
+
   <script>
   var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: [ 'bootstrap' ],
     themeSystem: 'bootstrap',
     eventOverlap: function(stillEvent, movingEvent) {
     return stillEvent.allDay && movingEvent.allDay;},
-    eventBackgroundColor: rgb(62, 105, 112),
+    eventBackgroundColor: 'rgb(62, 105, 112)' ,
     
   eventTimeFormat: { // like '14:30:00'
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit'
-  }
+  },
   });
   </script>
   
