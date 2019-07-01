@@ -7,14 +7,14 @@
             <h1>Register:</h1>
             <!-- One "tab" for each step in the form: -->
             <div class="tab col-sm-10">Step 1 -Ranger Name & Surname
-                <p><input class="form-control" placeholder="First Name..." name="fname"></p>
-                <p><input class="form-control" placeholder="Last Name..." name="lname"></p>
+                <p><input class="form-control" placeholder="First Name..." name="fname" value="Jandre"></p>
+                <p><input class="form-control" placeholder="Last Name..." name="lname" value="Labuschagne"></p>
 
             </div>
             <div class="tab col-sm-10">Step 2 - Personal information:
-                <p><input class="form-control" placeholder="Identification Number..." name="rangerId"></p>
-                <p><input class="form-control" placeholder="E-mail..." name="email"></p>
-                <p><input class="form-control" placeholder="Cellphone..." name="phone"></p>
+                <p><input class="form-control" placeholder="Identification Number..." name="rangerId" value="9802065030082"></p>
+                <p><input class="form-control" placeholder="E-mail..." name="email" value="jandrelab1@gmail.com"></p>
+                <p><input class="form-control" placeholder="Cellphone..." name="phone" value="0713307791"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -25,7 +25,7 @@
                   </select>
                     </div>
                 </div>
-                <p><input class="form-control" placeholder="Jobtitle..." name="jobtitle"></p>
+                <p><input class="form-control" placeholder="Jobtitle..." name="jobtitle" value="Developer"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <select class="form-control" id="Select2" onchange="selectColor1()" required>
@@ -38,9 +38,9 @@
                 </div>
             </div>
             <div class="tab col-sm-10">Step 3 - Medical information:
-                <p><input class="form-control" placeholder="Emergency contact's Name" name="emergencycontactName"></p>
-                <p><input class="form-control" placeholder="Emergency contact Number" name="EmergencycontactNumber"></p>
-                <p><input class="form-control" placeholder="Medical Aid" name="MedicalAid"></p>
+                <p><input class="form-control" placeholder="Emergency contact's Name" name="emergencycontactName" value="Marinda"></p>
+                <p><input class="form-control" placeholder="Emergency contact Number" name="EmergencycontactNumber" value="0722988445"></p>
+                <p><input class="form-control" placeholder="Medical Aid" name="MedicalAid" value="Discovery"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -58,9 +58,9 @@
                 </div>
             </div>
             <div class="tab col-sm-10">Step 4 - Login Info:
-                <p><input class="form-control" placeholder="Ranger Username..." name="username"></p>
-                <p><input class="form-control" placeholder="Password..." name="password"></p>
-                <p><input class="form-control" placeholder="Confirm Password..." name="confirmpassword"></p>
+                <p><input class="form-control" placeholder="Ranger Username..." name="username" value="J4ndr3"></p>
+                <p><input class="form-control" placeholder="Password..." name="password" value="Jandre"></p>
+                <p><input class="form-control" placeholder="Confirm Password..." name="confirmpassword" value="Jandre"></p>
             </div>
             <div style="overflow:auto;">
                 <div style="float:right;">
@@ -73,8 +73,23 @@
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
-                <span class="step"></span>
+                <span class="step" data-toggle="modal" data-target="#Delmodal"></span>
             </div>
         </form>
+    </div>
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-checkmark-circle.svg" style="width:40px; margin-top:0px;" />Success</h4>
+                <button type="button" (click)="openModal(false)" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The user has been added successfull</p>
+                <button type="button" routerLink="/rangers" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Go to Rangers</button>
+            </div>
+        </div>
     </div>
 </div>
