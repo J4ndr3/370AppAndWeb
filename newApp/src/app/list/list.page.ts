@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  BarcodeScannerOptions,
+  BarcodeScanner
+} from "@ionic-native/barcode-scanner/ngx";
 
 @Component({
   selector: 'app-list',
@@ -6,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
+  encodeData: any;
+  scannedData: {};
+  barcodeScannerOptions: BarcodeScannerOptions;
   private selectedItem: any;
   private icons = [
     'flask',
@@ -20,7 +27,13 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
+  constructor(private barcodeScanner: BarcodeScanner) {
+    this.encodeData = "https://www.FreakyJolly.com";
+    //Options
+    this.barcodeScannerOptions = {
+      showTorchButton: true,
+      showFlipCameraButton: true
+    };
     for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
@@ -28,6 +41,32 @@ export class ListPage implements OnInit {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+  }
+
+  qr() {
+    this.barcodeScanner
+      .scan()
+      .then(barcodeData => {
+        alert("Barcode data " + JSON.stringify(barcodeData));
+        this.scannedData = barcodeData;
+      })
+      .catch(err => {
+        console.log("Error", err);
+      });
+  }
+ 
+  encodedText() {
+    this.barcodeScanner
+      .encode(this.barcodeScanner.Encode.TEXT_TYPE, this.encodeData)
+      .then(
+        encodedData => {
+          console.log(encodedData);
+          this.encodeData = encodedData;
+        },
+        err => {
+          console.log("Error occured : " + err);
+        }
+      );
   }
 
   ngOnInit() {
