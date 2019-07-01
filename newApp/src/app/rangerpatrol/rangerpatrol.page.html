@@ -33,9 +33,7 @@
     h1 {
         text-align: center;
     }
-    h5{
-      color:black;
-    }
+    
     
     input {
         padding: 10px;
@@ -56,7 +54,7 @@
     }
     
     button {
-        background-color: #4CAF50;
+        background-color: rgb(126,206,208) !important;;
         color: #ffffff;
         border: none;
         padding: 10px 20px;
@@ -93,13 +91,14 @@
     .step.finish {
         background-color: #4CAF50;
     }
+    
 </style>
 <ion-content>
     <div #ref class ="col-sm-10">
-        <form #regform id="regForm" action="">
-            <h1>Register:</h1>
+        <form #regform id="regForm" action="" style="background-color: whitesmoke">
+           
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">Step 1 -Select Shift Booking Reference for current Patrol
+            <div class="tab">Select Shift Booking Reference for current Patrol
                 <div class="form-group">
                     <div class="col-sm-40">
                       <select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()" required>
@@ -110,24 +109,84 @@
                       </select>
                     </div>
             </div></div>
-            <div class="tab">Step 2 - Capture QR Code to checkout assets:
-            
-            <p>OR</p>   
+            <div class="tab">Scan assets to Checkout:
+                    <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">
+                    <ion-buttons data-toggle ="collapse" data-target="#demo" type="button" style="background-color: rgb(102,173,177); width: 70%;margin: auto;padding-bottom:7px; padding-top:8px">
+                        <p style="margin: auto; text-align: left; color:rgba(3,70,76); font-size:16px">
+                            <b>PREVIOUS REWARDS</b><b style="color: rgb(102,173,177)">...</b>
+                        </p>
+                    </ion-buttons>
+                    <br>
+            <br>
+           <div class ="collapse" id="demo" > <p align="center">OR</p>   
             <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
-            <h5 > Assets Checked out for this Patrol:</h5> 
-            
-                <div class = "list list-inset">
-                    <div class = "item">Car Magnet</div>
-                    <div class = "item">Gate 13 Key</div>
-                    <div class = "item">Flashlight</div>
-                 </div>             
+            <button type="button" >Add to checkout list</button>
+          </div>
+        
+            <div class="col-md-10 user-container">
+                
+                <table class="table table-striped">
+                  <thead>
+                  </thead>
+                  <tbody>
+                  <tr>   
+                    <td>Car Magnet</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  <tr>   
+                    <td>flashlight</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  <tr>   
+                    <td>Gate 13 Key</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  </tbody>
+                </table>
+              </div>              
             </div>
+            <div class="tab">My Live Location
+            <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="auto" height="auto">
+            <br>
+            <br>
+            <button type="button" >Report Incident</button>
+            </div>
+            <div class="tab">Return Assets used during patrol
+                    <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">
+                    <br>
+            <br>
+                    <p align="center">OR</p>   
+                    
+                    <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
+                    <button type="button" >Return asset</button>
+                    <br> <br>
+                    <div class="col-md-10 user-container">                      
+                        <table class="table table-striped">
+                          <thead>
+                          </thead>
+                          <tbody>
+                          <tr>   
+                            <td>Car Magnet</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          <tr>   
+                            <td>flashlight</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          <tr>   
+                            <td>Gate 13 Key</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>              
+                    </div>
             <br/>
             
             <div style="overflow:auto;">
                 <div style="float:right;">
-                    <button type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
-                    <button type="button" id="nextBtn" (click)="nextPrev(1)">Check in</button>
+                    <button type="button" id="prevBtn" (click)="nextPrev(-1)"><img src="./assets/ios-arrow-round-back.svg" alt="Previous" width="30px" height="20px" style="filter:invert(1)"></button>
+                    <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
                 </div>
             </div>
             <!-- Circles which indicates the steps of the form: -->

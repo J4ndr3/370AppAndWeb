@@ -50,6 +50,7 @@ import { SecurityComponent } from './security/security.component';
 import { SecurityModComponent } from './security-mod/security-mod.component';
 import { GateComponent } from './gate/gate.component';
 import { GateModComponent } from './gate-mod/gate-mod.component';
+import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { GateModComponent } from './gate-mod/gate-mod.component';
     SecurityModComponent,
     GateComponent,
     GateModComponent,
+    ResetPassworComponent,
    
   ],
   imports: [

@@ -1,42 +1,80 @@
-
 <!--Verander opskrif vir elke page-->
 <h1>REGISTER USER</h1>
-<hr class="hrow"/>
-<div >
-<div #ref>
-  <form #regform id="regForm" (ngSubmit)="onSubmit()">
-      <h1>Register:</h1>
-      <!-- One "tab" for each step in the form: -->
-      <div class="tab col-sm-10">Name:
-          <p><input class="form-control" placeholder="First name..." oninput="this.className = ''" name="fname"></p>
-          <p><input  class="form-control" placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-      </div>
-      <div class="tab col-sm-10">Contact Info:
-          <p><input  class="form-control" placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-          <p><input  class="form-control" placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-      </div>
-      <div class="tab col-sm-10">Birthday:
-          <p><input  class="form-control" placeholder="dd" oninput="this.className = ''" name="dd"></p>
-          <p><input   class="form-control"placeholder="mm" oninput="this.className = ''" name="nn"></p>
-          <p><input  class="form-control" placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-      </div>
-      <div class="tab col-sm-10">Login Info:
-          <p><input  class="form-control" placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-          <p><input  class="form-control" placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-      </div>
-      <div style="overflow:auto;">
-          <div style="float:right;">
-              <button class="btn btn-default btn-sm" type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
-              <button class="btn btn-default btn-sm" type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
-          </div>
-      </div>
-      <!-- Circles which indicates the steps of the form: -->
-      <div style="text-align:center;margin-top:40px;">
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-          <span class="step"></span>
-      </div>
-  </form>
-</div>
+<hr class="hrow" />
+<div>
+    <div #ref>
+        <form #regform id="regForm" (ngSubmit)="onSubmit()">
+            <h1>Register:</h1>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab col-sm-10">Step 1 -Ranger Name & Surname
+                <p><input class="form-control" placeholder="First Name..." name="fname"></p>
+                <p><input class="form-control" placeholder="Last Name..." name="lname"></p>
+
+            </div>
+            <div class="tab col-sm-10">Step 2 - Personal information:
+                <p><input class="form-control" placeholder="Identification Number..." name="rangerId"></p>
+                <p><input class="form-control" placeholder="E-mail..." name="email"></p>
+                <p><input class="form-control" placeholder="Cellphone..." name="phone"></p>
+                <div class="form-group">
+                    <div class="col-sm-40">
+                        <select class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Gender...">Gender...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                    </div>
+                </div>
+                <p><input class="form-control" placeholder="Jobtitle..." name="jobtitle"></p>
+                <div class="form-group">
+                    <div class="col-sm-40">
+                        <select class="form-control" id="Select2" onchange="selectColor1()" required>
+                    <option selected disabled hidden value="Status...">Status...</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Other</option>
+                  </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab col-sm-10">Step 3 - Medical information:
+                <p><input class="form-control" placeholder="Emergency contact's Name" name="emergencycontactName"></p>
+                <p><input class="form-control" placeholder="Emergency contact Number" name="EmergencycontactNumber"></p>
+                <p><input class="form-control" placeholder="Medical Aid" name="MedicalAid"></p>
+                <div class="form-group">
+                    <div class="col-sm-40">
+                        <select class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
+                    <option>A+</option>
+                    <option>B+</option>
+                    <option>AB+</option>
+                    <option>O+</option>
+                    <option>A-</option>
+                    <option>B-</option>
+                    <option>AB-</option>
+                    <option>O-</option>
+                  </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab col-sm-10">Step 4 - Login Info:
+                <p><input class="form-control" placeholder="Ranger Username..." name="username"></p>
+                <p><input class="form-control" placeholder="Password..." name="password"></p>
+                <p><input class="form-control" placeholder="Confirm Password..." name="confirmpassword"></p>
+            </div>
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button class="btn btn-default btn-sm" type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
+                    <button class="btn btn-default btn-sm" type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </form>
+    </div>
 </div>
