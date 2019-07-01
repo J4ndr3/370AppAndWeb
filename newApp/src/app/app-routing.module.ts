@@ -40,6 +40,8 @@ const routes: Routes = [
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
   { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
+  { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
+  
 
  
 ];
