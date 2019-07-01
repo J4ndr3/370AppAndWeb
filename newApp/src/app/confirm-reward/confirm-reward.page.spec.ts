@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { List2Component } from './list2.component';
+import { ConfirmRewardPage } from './confirm-reward.page';
 
-describe('List2Component', () => {
-  let component: List2Component;
-  let fixture: ComponentFixture<List2Component>;
+describe('ConfirmRewardPage', () => {
+  let component: ConfirmRewardPage;
+  let fixture: ComponentFixture<ConfirmRewardPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ List2Component ],
+      declarations: [ ConfirmRewardPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(List2Component);
+    fixture = TestBed.createComponent(ConfirmRewardPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

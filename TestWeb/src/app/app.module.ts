@@ -112,7 +112,7 @@ import { RewardEventModifyComponent } from './reward-event-modify/reward-event-m
     ToastrModule.forRoot({
      closeButton:true,
      positionClass:"toast-bottom-center",
-     timeOut:4000,
+     timeOut:5000,
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  

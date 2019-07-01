@@ -10,6 +10,7 @@ import { FormatterInput } from '@fullcalendar/core/datelib/formatting';
 import { DateRangeInput } from '@fullcalendar/core/datelib/date-range';
 import { RawLocale, LocaleSingularArg } from '@fullcalendar/core/datelib/locale';
 import { OverlapFunc, AllowFunc } from '@fullcalendar/core/validation';
+
 import {
   EventSourceInput,
   EventInputTransformer,
@@ -32,7 +33,9 @@ export class HomeComponent implements OnInit {
   calendarPlugins = [dayGridPlugin, timeGridPlugin];
   calendarWeekends = true;
   calendarEvents: EventInput[] = [
-    { title: 'Event Now', start: new Date() }
+    { title: 'Now', start: new Date() },
+      { title: 'event 1', start: '11:00', date: '2019-06-25', allDay:false },
+    
   ];
 
   gotoPast() {

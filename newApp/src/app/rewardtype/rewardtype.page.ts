@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-rewardtype',
   templateUrl: './rewardtype.page.html',
@@ -11,5 +12,5 @@ export class RewardtypePage implements OnInit {
 
   ngOnInit() {
   }
-
+ 
 }

@@ -10,7 +10,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src='fullcalendar/core/main.js'></script>
   <script src='fullcalendar/daygrid/main.js'></script>
   <script src='fullcalendar/bootstrap/main.js'></script>
@@ -19,7 +20,13 @@
     plugins: [ 'bootstrap' ],
     themeSystem: 'bootstrap',
     eventOverlap: function(stillEvent, movingEvent) {
-    return stillEvent.allDay && movingEvent.allDay;
+    return stillEvent.allDay && movingEvent.allDay;},
+    eventBackgroundColor: rgb(62, 105, 112),
+    
+  eventTimeFormat: { // like '14:30:00'
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
   }
   });
   </script>

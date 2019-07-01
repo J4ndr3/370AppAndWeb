@@ -14,4 +14,7 @@ export class IncidentLevelComponent implements OnInit {
   showToast(){
     this.toastrService.show("Record added successfully", "Success!");
   }
+  Delete(){
+    this.toastrService.show("Record Removed", "Success!");
+  }
 }
