@@ -1,9 +1,9 @@
-
-<h1>RANGERS ON DUTY</h1>
-<hr class="hrow"/>
+<h1>
+    RANGERS ON DUTY</h1>
+<hr class="hrow" />
 <br>
 <div id="mapDiv">
-  <img src="/assets/Map.PNG" id="Map"/>
+    <img src="/assets/Map.PNG" id="Map" />
 </div>
 <div id="homearrow">
     <button class="btn btn-default btn-sm" id="downbtn"><img src="/assets/ios-arrow-dropdown.svg"/></button>
@@ -11,32 +11,18 @@
 <br>
 <div>
     <h1>BOOKINGS</h1>
-    <hr class="hrow"/>
+    <hr class="hrow" />
 </div>
 <div class='app-calendar'>
-<full-calendar
-#calendar
-defaultView="dayGridMonth"
-[header]="{
+    <full-calendar #calendar defaultView="dayGridMonth" [header]="{
   left: 'prev,next today',
   center: 'title',
   right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-}"
-[plugins]="calendarPlugins"
-[weekends]="calendarWeekends"
-[events]="[ {
+}" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="[ {
     title:  'John Doe',
-    start:  '2019-06-25T14:30:00',
-    end:'2019-06-25T16:30:00',
-    allDay: false 
-  }]"
-[nowIndicator]="true"
-[eventStartEditable]="true"
-[eventDurationEditable]="true"
-[displayEventTime]="true"
-[displayEventEnd]="true"
-></full-calendar>
+    start:  '2019-07-01T14:30:00',
+    end:'2019-07-01T16:30:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  }]" [nowIndicator]="true" [eventStartEditable]="true" [eventDurationEditable]="true" [displayEventTime]="true" [displayEventEnd]="true"></full-calendar>
 </div>
-
-
-  
