@@ -1,0 +1,280 @@
+<br>
+<h1>REWARDS</h1>
+<hr class="hrow" />
+<!--Moenie buttons en search bar verander nie-->
+<div align="center">
+    <div ngbDropdown>
+        <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Select Reward Type</button>
+        <div ngbDropdownMenu style="background-color:rgba(62, 105, 112);">
+            <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Product Reward</button>
+            <button data-toggle="collapse" data-target="#demo2" ngbDropdownItem>Event Reward</button>
+        </div>
+    </div>
+</div>
+<br>
+<!--Moenie die button verander nie-->
+<div class=" collapse" id="demo1">
+    <h3 align=" center ">Product Rewards</h3>
+    <div class="outer">
+        <div class="button">
+            <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo3"> ADD NEW
+                      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br>
+
+
+    <!--TABLE-->
+    <div>
+
+        <div>
+            <div class="inner collapse" id="demo3">
+                <div class="close">
+                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
+                      <img src="/assets/ios-close.svg" class="closePic" /></button>
+                </div>
+
+                <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+                <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+                <div class="inputForm">
+                    <br>
+
+                    <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+
+                        <div class="form-group">
+                            <h2 class="Header">Add Product Reward</h2>
+                            <br>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Level" placeholder="Product Name..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Quantity..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Points Required..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Description..." name="Level" required>
+
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="Select1" onchange="selectColor()" required>
+                                          <option selected disabled hidden value="Gender...">Access Level...</option>
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>-->
+
+                            <br>
+                        </div>
+
+                        <!--Moenie die save button verander nie-->
+
+                    </form>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="table">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr id="header ">
+                            <th style="text-align: left; ">Product Name</th>
+                            <th>Quantity</th>
+                            <th>Points required</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left; ">Hat</td>
+                            <td>12</td>
+                            <td>600</td>
+                            <td>A sports cap with ERP Logo</td>
+                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn " data-toggle="modal " data-target="#Delmodal "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; ">Key Chain</td>
+                            <td>50</td>
+                            <td>250</td>
+                            <td>Stainless steel with a rhino</td>
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; ">Walking stick</td>
+                            <td>5</td>
+                            <td>900</td>
+                            <td>Wood crafted walking stick</td>
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="collapse" id="demo2">
+    <h3 align=" center ">Event Rewards</h3>
+    <div class="outer">
+        <div class="button">
+            <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
+                                      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <div>
+
+        <div>
+
+            <div class="inner collapse" id="demo">
+                <div class="close">
+                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
+                              <img src="/assets/ios-close.svg" class="closePic" /></button>
+                </div>
+
+                <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+                <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+                <div class="inputForm">
+                    <br>
+                    <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+
+                        <div class="form-group">
+                            <h2 class="Header">Add Event Reward</h2>
+                            <br>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Level" placeholder="Event Name..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Points Required..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Description..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Date..." name="Level" required>
+                                <br>
+                                <input type="text" class="form-control" id="Level" placeholder="Address..." name="Level" required>
+
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                            <div class="col-sm-10">
+                                                <select class="form-control" id="Select1" onchange="selectColor()" required>
+                                                  <option selected disabled hidden value="Gender...">Access Level...</option>
+                                                  <option>1</option>
+                                                  <option>2</option>
+                                                  <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>-->
+
+
+                        </div>
+                        <br>
+                        <!--Moenie die save button verander nie-->
+
+                    </form>
+                </div>
+                <br>
+            </div>
+            <br>
+            <div class="table">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr id="header ">
+                            <th style="text-align: left; ">Event Name</th>
+                            <th>Points required</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left; ">Sun City</td>
+                            <td>18000</td>
+                            <td>2 day vacation in a 3 bed bungalo</td>
+                            <td>2019/04/16</td>
+                            <td>Sun City Resort,R556,SunCity, 0316</td>
+                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn " data-toggle="modal " data-target="#Delmodal "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; ">San Lameer</td>
+                            <td>26000</td>
+                            <td>4 days in a 4 bedroom bungalo</td>
+                            <td>2019/06/17</td>
+                            <td>Sanlameew, Southbroom</td>
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left; ">Carnival City</td>
+                            <td>20000</td>
+                            <td>4 tickets for a trevor Noah show</td>
+                            <td>2019/09/23</td>
+                            <td>Century Rd, Elsburg Rd, Brakpan, Boksburg, 1540</td>
+                            <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              src="/assets/ios-trash.svg " class="edit " /></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade " id="Delmodal " data-backdrop="static " role="dialog ">
+    <div class="modal-dialog ">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h4 class="modal-title " style="text-align: left !important; "><img src="/assets/ios-alert.svg " style="width:40px; margin-top:0px; " />Warning</h4>
+                <button type="button " class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+            </div>
+            <div class="modal-body ">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button " class="btn btn-default " data-dismiss="modal " style="float: right !important; " id="modalClose ">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

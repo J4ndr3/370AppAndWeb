@@ -46,6 +46,7 @@
 
             <div class="form-group">
                 <div class="col-sm-40">
+
                     <input type="text" class="form-control" id="Password" placeholder="Password..." name="Password" required>
                 </div>
             </div>
@@ -59,10 +60,25 @@
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-40" id="savediv">
-                    <button type="submit" routerLink="/list2" class="btn btn-default" id="Save">NEXT</button>
+                    <button type="submit" routerlink="/list2" class="btn btn-default" id="Save">NEXT</button>
                 </div>
             </div>
         </form>
     </div>
+
+
+    <input type="text" class="form-control" id="Confirm Password" placeholder="Confirm Password..." name="Confirm Password" required>
+    </div>
+    </div>
+
+    <!--Moenie die save button verander nie-->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-40" id="savediv">
+            <button type="submit" routerLink="/list2" class="btn btn-default" id="Save">NEXT</button>
+        </div>
+    </div>
+    </form>
+    </div>
     <ion-button (click)="qr()">Qr code</ion-button>
+
 </ion-content>
