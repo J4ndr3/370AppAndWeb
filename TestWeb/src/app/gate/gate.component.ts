@@ -12,6 +12,6 @@ export class GateComponent implements OnInit {
   ngOnInit() {
   }
   showToast(){
-    this.toastrService.show("Gate added.", "Success!");
+    this.toastrService.show("Record added successfully.", "Success!");
   }
 }

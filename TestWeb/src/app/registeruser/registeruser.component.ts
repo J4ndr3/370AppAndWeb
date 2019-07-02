@@ -1,5 +1,5 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
 @Component({
   selector: 'app-registeruser',
@@ -8,13 +8,16 @@ import {Router} from "@angular/router";
 })
 export class RegisteruserComponent implements OnInit {
   @ViewChild("regform",{static:false}) containerEltRef: ElementRef;
-  constructor(private router: Router) { }
+  constructor(private router: Router,private toastrService: ToastrService) { }
   currentTab = 0;
   ngOnInit() {
    
   }
   goUsers() {
     this.router.navigate(['rangers']);
+  }
+  showToast(){
+    this.toastrService.show("Record added successfully.", "Success!");
   }
   ngAfterViewInit()
   {
@@ -59,7 +62,7 @@ nextPrev(n) {
             if (this.currentTab >= x.length) {
                 // ... the form gets submitted:
                 this.goUsers();
-                alert("Hallo");
+                this.toastrService.show("Record added successfully.", "Success!");
                 return false;
             }
             // Otherwise, display the correct tab:

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-marker-type-mod',
   templateUrl: './marker-type-mod.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarkerTypeModComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
-
+  showToast(){
+    this.toastrService.show("Record modified successfully.", "Success!");
+  }
 }

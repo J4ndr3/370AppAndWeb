@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-reward-add',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RewardAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
+  showToast(){
+    this.toastrService.show("Record could not be added", "Error!");
+  }
 
+  Event(){
+    this.toastrService.show("This record was added successfully", "Success!");
+  }
 }

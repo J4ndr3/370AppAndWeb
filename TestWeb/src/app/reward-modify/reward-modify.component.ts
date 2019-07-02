@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-reward-modify',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RewardModifyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
   }
-
+ 
+  showToast(){
+    this.toastrService.show("Record modified successfully", "Success!");
+  }
+  Delete(){
+    this.toastrService.show("Record Removed", "Success!");
+  }
 }
