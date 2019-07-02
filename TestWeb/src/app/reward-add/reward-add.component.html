@@ -109,7 +109,7 @@
                             <td>A sports cap with ERP Logo</td>
                             <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn " data-toggle="modal " data-target="#Delmodal "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                         <tr>
@@ -118,7 +118,7 @@
                             <td>250</td>
                             <td>Stainless steel with a rhino</td>
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                         <tr>
@@ -127,7 +127,7 @@
                             <td>900</td>
                             <td>Wood crafted walking stick</td>
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                     </tbody>
@@ -188,7 +188,7 @@
                             <br>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
+                                    <button type="submit" class="btn btn-default" id="Save" (click)="Event()" data-toggle="collapse" data-target="#demo">Save</button>
                                 </div>
                             </div>
                             <!--<div class="form-group">
@@ -234,7 +234,7 @@
                             <td>Sun City Resort,R556,SunCity, 0316</td>
                             <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn " data-toggle="modal " data-target="#Delmodal "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                         <tr>
@@ -244,7 +244,7 @@
                             <td>2019/06/17</td>
                             <td>Sanlameew, Southbroom</td>
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                         <tr>
@@ -254,7 +254,7 @@
                             <td>2019/09/23</td>
                             <td>Century Rd, Elsburg Rd, Brakpan, Boksburg, 1540</td>
                             <td> <button class="btn btn-default btn-sm " id="editbtn " routerLink='/reward-event-modify'><img src="/assets/ios-create.svg "
-              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn "><img
+              class="edit " /></button><button class="btn btn-default btn-sm " id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg " class="edit " /></button></td>
                         </tr>
                     </tbody>
@@ -264,16 +264,32 @@
     </div>
 </div>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
-<div class="modal fade " id="Delmodal " data-backdrop="static " role="dialog ">
-    <div class="modal-dialog ">
-        <div class="modal-content ">
-            <div class="modal-header ">
-                <h4 class="modal-title " style="text-align: left !important; "><img src="/assets/ios-alert.svg " style="width:40px; margin-top:0px; " />Warning</h4>
-                <button type="button " class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button " class="btn btn-default " data-dismiss="modal " style="float: right !important; " id="modalClose ">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Delete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record already exists. Please try again</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
             </div>
         </div>
     </div>
