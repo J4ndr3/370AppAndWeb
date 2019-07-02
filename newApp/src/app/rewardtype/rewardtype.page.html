@@ -17,8 +17,8 @@
     <h4>SELECT TYPE</h4>
     <br>
     <ion-item lines="none">
-        <button data-toggle="collapse" data-target="#demo" type="button" style="background-color: rgb(102,173,177); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:rgba(3,70,76);border-radius: 5px !important"><b>Product</b></button>
-        <button data-toggle="collapse" data-target="#demo1" style="background-color: rgb(102,173,177); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:rgba(3,70,76);border-radius: 5px !important"><b>Event</b></button>
+        <button data-toggle="collapse" data-target="#demo" type="button" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white;border-radius: 5px !important"><b>Product</b></button>
+        <button data-toggle="collapse" data-target="#demo1" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white;border-radius: 5px !important"><b>Event</b></button>
     </ion-item>
     <div class="collapse" id="demo">
 
@@ -27,8 +27,9 @@
             <!--Moenie buttons en search bar verander nie-->
             <div class="search">
                 <form action="/action_page.php" id="searchform">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"> <button style="background-color: rgb(102,173,177);" class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" width="25px" height="22px" /></button>
+                    <div class="input-group" style="background-color: rgb(207, 209, 211)">
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" style="border-radius: 5px !important"> <button style="background-color: rgb(102,116,143); border-radius: 5px !important;" class="btn btn-default"
+                            type="submit" id="Search"><img src="/assets/ios-search.svg" style="filter: invert(2)" width="25px" height="22px" /></button>
                     </div>
                 </form>
             </div>
@@ -36,7 +37,7 @@
 
 
         <div class="col-sm-10">
-            <ion-title align="center">
+            <ion-title align="center" style="color: black">
                 Product Reward
             </ion-title>
             <br/>
@@ -47,7 +48,7 @@
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn " data-toggle="collapse" data-target="#collapseOne" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
-                       <b>Ranger Cap</b>
+                       <b style="color:white">Ranger Cap</b>
                       </button>
                             </h5>
                         </div>
@@ -62,7 +63,7 @@
                                 <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important ">
                                     <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                 <p style="margin: auto;  font-size:16px">
-                                                        <b>Claim</b>
+                                                        <b style="color:white">Claim</b>
                                                 </p>
                                             </button>
                             </div>
@@ -72,7 +73,7 @@
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
                                     <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <b>Key Chain</b> 
+                                        <b style="color:white">Key Chain</b> 
                       </button>
                                 </h5>
                             </div>
@@ -88,7 +89,7 @@
                                     <button type="button" class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
                                         <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                     <p style="margin: auto;  font-size:16px">
-                                                            <b>Claim</b>
+                                                            <b style="color:white">Claim</b>
                                                     </p>
                                                 </button>
                                 </div>
@@ -99,7 +100,7 @@
                             <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
                                     <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                       <b>Walking Stick</b> 
+                       <b style="color:white">Walking Stick</b> 
                       </button>
                                 </h5>
                             </div>
@@ -113,7 +114,7 @@
                                     <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
                                         <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                     <p style="margin: auto;  font-size:16px">
-                                                            <b>Claim</b>
+                                                            <b style="color:white">Claim</b>
                                                     </p>
                                                 </button>
                                 </div>
@@ -136,14 +137,15 @@
             <!--Moenie buttons en search bar verander nie-->
             <div class="search">
                 <form action="/action_page.php" id="searchform">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button style="background-color: rgb(102,173,177);" class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG"  width="25px" height="22px"  /></button>
+                    <div class="input-group" style="background-color: rgb(207, 209, 211)">
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" style="border-radius: 5px !important"><button style="background-color: rgb(102,116,143); border-radius: 5px " class="btn btn-default"
+                            type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" style="filter: invert(2)"  width="25px" height="22px"  /></button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-sm-10">
-            <ion-title align="center">
+            <ion-title align="center" style="color: black">
                 Event Reward
             </ion-title>
             <br/>
@@ -154,7 +156,7 @@
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                                 <button class="btn " data-toggle="collapse" data-target="#collapseOne" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
-                       <b>Sun City</b>
+                       <b style="color:white">Sun City</b>
                       </button>
                             </h5>
                         </div>
@@ -169,7 +171,7 @@
                                 <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
                                     <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                 <p style="margin: auto;  font-size:16px">
-                                                        <b>Claim</b>
+                                                        <b style="color:white">Claim</b>
                                                 </p>
                                             </button>
                             </div>
@@ -179,7 +181,7 @@
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
                                     <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <b>San Lameer</b> 
+                                        <b style="color:white">San Lameer</b> 
                       </button>
                                 </h5>
                             </div>
@@ -197,7 +199,7 @@
                                     <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
                                         <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                     <p style="margin: auto;  font-size:16px">
-                                                            <b>Claim</b>
+                                                            <b style="color:white">Claim</b>
                                                     </p>
                                                 </button>
                                 </div>
@@ -208,7 +210,7 @@
                             <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
                                     <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                       <b>Carnival City</b> 
+                       <b style="color:white">Carnival City</b> 
                       </button>
                                 </h5>
                             </div>
@@ -224,7 +226,7 @@
                                     <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
                                         <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                     <p style="margin: auto;  font-size:16px">
-                                                            <b>Claim</b>
+                                                            <b style="color:white">Claim</b>
                                                     </p>
                                                 </button>
                                 </div>
