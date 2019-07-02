@@ -35,7 +35,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     NgCalendarModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     StatusBar,

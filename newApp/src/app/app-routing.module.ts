@@ -41,6 +41,8 @@ const routes: Routes = [
   { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
   { path: 'rewardtype', loadChildren: './rewardtype/rewardtype.module#RewardtypePageModule' },
   { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
+  { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
+  
   { path: 'generagevoucher', loadChildren: './generagevoucher/generagevoucher.module#GeneragevoucherPageModule' },
   { path: 'confirm-reward', loadChildren: './confirm-reward/confirm-reward.module#ConfirmRewardPageModule' },
   { path: 'voucher', loadChildren: './voucher/voucher.module#VoucherPageModule' },

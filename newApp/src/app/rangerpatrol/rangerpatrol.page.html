@@ -110,17 +110,18 @@
                     </div>
             </div></div>
             <div class="tab">Scan assets to Checkout:
-                    <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">
-                    <ion-buttons data-toggle ="collapse" data-target="#demo" type="button" style="background-color: rgb(102,173,177); width: 70%;margin: auto;padding-bottom:7px; padding-top:8px">
-                        <p style="margin: auto; text-align: left; color:rgba(3,70,76); font-size:16px">
-                            <b>PREVIOUS REWARDS</b><b style="color: rgb(102,173,177)">...</b>
+
+                <p align="center">  <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center">
+                </p>  
+                    <button data-toggle ="collapse" data-target="#demo" type="button"style="float: right;">
+                        <p style="margin: auto; text-align: left; color:white; font-size:16px">
+                            Enter Code Here
                         </p>
-                    </ion-buttons>
-                    <br>
-            <br>
-           <div class ="collapse" id="demo" > <p align="center">OR</p>   
+                    </button>
+                    <br><br>
+           <div class ="collapse" id="demo" >  
             <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
-            <button type="button" >Add to checkout list</button>
+            <button type="button" style="float: right;"><ion-icon name="add"></ion-icon></button>
           </div>
         
             <div class="col-md-10 user-container">
@@ -146,20 +147,30 @@
               </div>              
             </div>
             <div class="tab">My Live Location
+                <p align="center">
             <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="auto" height="auto">
-            <br>
-            <br>
-            <button type="button" >Report Incident</button>
+          </p>
+          <div align="center"><button type="button" style= "background-color: red !important;;">Report Incident</button>
+          </div><br>
             </div>
             <div class="tab">Return Assets used during patrol
-                    <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">
-                    <br>
-            <br>
-                    <p align="center">OR</p>   
+                <p align="center"> <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">  </p>
                     
-                    <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
-                    <button type="button" >Return asset</button>
+                    <button data-toggle ="collapse" data-target="#demo" type="button"style="float: right;">
+                        <p style="margin: auto; text-align: left; color:white; font-size:16px">
+                            Enter Code Here
+                        </p>
+                    </button>
                     <br> <br>
+           <div class ="collapse" id="demo" >  
+            <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
+            <br>
+            <button type="button" style="float: right;"><ion-icon name="add"></ion-icon></button>
+          </div>
+        
+                    <br>
+             
+                    
                     <div class="col-md-10 user-container">                      
                         <table class="table table-striped">
                           <thead>
