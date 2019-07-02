@@ -18,5 +18,5 @@ export class RewardEventModifyComponent implements OnInit {
   }
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
-}
+  }
 }

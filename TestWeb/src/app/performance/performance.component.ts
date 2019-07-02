@@ -16,7 +16,7 @@ export class PerformanceComponent {
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("chartdiv", am4charts.XYChart);
-
+      am4core.useTheme(this.am4themes_myTheme);
       chart.paddingRight = 40;
   
 
@@ -28,7 +28,7 @@ export class PerformanceComponent {
       }
 
       chart.data = data;
-
+      
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
 
@@ -42,14 +42,30 @@ export class PerformanceComponent {
 
       series.tooltipText = "{valueY.value}";
       chart.cursor = new am4charts.XYCursor();
-
+      series.strokeWidth=3;
+      series.stroke=am4core.color("rgb(205, 21, 67)");
       let scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(series);
       chart.scrollbarX = scrollbarX;
-
       this.chart = chart;
     });
   }
+   am4themes_myTheme(target) {
+    if (target instanceof am4core.InterfaceColorSet) {
+      target.setFor("secondaryButton", am4core.color("#00181a").lighten(0.5));
+      target.setFor("secondaryButtonHover", am4core.color("#00181a").lighten(-0.5));
+      target.setFor("secondaryButtonDown", am4core.color("#00181a").lighten(-0.5));
+      target.setFor("secondaryButtonActive", am4core.color("#00181a").lighten(-0.2));
+      target.setFor("secondaryButtonText", am4core.color("cd1543"));
+      target.setFor("secondaryButtonStroke", am4core.color("#cd1543").lighten(3));
+      
+    }
+    if (target instanceof am4core.Scrollbar) {
+      target.stroke = am4core.color("#00181a");
+    }
+  }
+  
+  
 
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {
