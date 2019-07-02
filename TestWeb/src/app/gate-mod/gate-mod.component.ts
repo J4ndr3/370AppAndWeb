@@ -13,6 +13,6 @@ export class GateModComponent implements OnInit {
   ngOnInit() {
   }
   showToast(){
-    this.toastrService.show("Gate modified.", "Success!");
+    this.toastrService.show("Record modified successfully.", "Success!");
   }
 }
