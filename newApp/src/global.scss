@@ -18,6 +18,7 @@
         @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
         ion-toolbar {
             --background: rgb(3, 36, 51);
+
         }
         
         ion-title {
@@ -36,8 +37,8 @@
         }
         
         ion-button {
-            --background: rgb(126, 206, 208);
-            color: black;
+            --background: rgb(102,116,143);
+            color: white;
             margin: auto;
         }
         
@@ -73,7 +74,7 @@
         }
         
         ion-content {
-            --ion-background-color: rgb(3, 70, 76);
+            --ion-background-color: rgb(207, 209, 211);
             padding: 0 !important;
         }
         
@@ -92,7 +93,7 @@
         
         h1 {
             text-align: center;
-            color: white;
+            color: black;
             font-display: Montserrat bold;
             margin-top: 5%;
             margin-bottom: 1%;
@@ -115,7 +116,7 @@
         
         h2 {
             font-size: 150%;
-            color: white;
+            color: black;
             margin-left: 13%;
         }
         
@@ -129,70 +130,70 @@
             --padding-start: 0.5% !important;
             width: 80% !important;
             margin: auto !important;
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgb(51, 69, 105) !important;
             color: white!important;
-            border: 2px solid rgb(126, 206, 208) !important;
+            border: 2px solid rgba(207, 209, 211, 0.9) !important;
             width: 100% !important;
             margin: auto !important;
             border-radius: 5%;
              :-ms-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-webkit-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              :-moz-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-moz-placeholder {
                 /* Firefox 19+ */
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8)!important;
             }
         }
         
         ion-input {
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgb(51, 69, 105) !important;
             color: white !important;
-            border: 2px solid rgb(126, 206, 208) !important;
+            border: 2px solid rgba(207, 209, 211, 0.7)!important;
             width: 100% !important;
             margin: auto !important;
             border-radius: 5%;
              :-ms-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-webkit-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              :-moz-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-moz-placeholder {
                 /* Firefox 19+ */
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
         }
         
         ion-textarea {
             height: auto !important;
             min-height: 20% !important;
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgb(51, 69, 105) !important;
             color: white !important;
-            border: 2px solid rgb(126, 206, 208) !important;
+            border: 2px solid rgba(207, 209, 211, 0.7) !important;
             border-radius: 2%;
             width: 100% !important;
             margin: auto !important;
              :-ms-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-webkit-input-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8)!important;
             }
              :-moz-placeholder {
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
              ::-moz-placeholder {
                 /* Firefox 19+ */
-                color: rgb(126, 206, 208) !important;
+                color: rgba(227, 231, 237, 0.8) !important;
             }
         }
         
@@ -205,7 +206,7 @@
         }
         
         .card-header {
-            background-color: rgb(126, 206, 208) !important;
+            background-color: rgb(102,116,143) !important;
         }
         
         #collapseOne {
@@ -222,7 +223,7 @@
         
         h4 {
             text-align: center;
-            color: white;
+            color: black;
             font-display: Montserrat bold;
             margin-top: 5%;
             margin-bottom: 1%;
@@ -230,7 +231,7 @@
         
         h6 {
             text-align: center;
-            color: white;
+            color: black;
             font-display: Montserrat bold;
             margin-top: 5%;
             margin-bottom: 1%;
@@ -261,7 +262,7 @@
         }
         
         .buttonA1 {
-            background-color: rgb(126, 206, 208);
+            background-color: rgb(102,116,143);
             margin: auto;
             width: 100%;
             padding-bottom: 7px;
@@ -269,4 +270,5 @@
             border: rgba(0, 24, 26, 0.725);
             border-style: solid;
             border-width: 4px;
+            color: rgb(3, 70, 76);
         }

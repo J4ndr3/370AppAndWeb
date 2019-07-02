@@ -13,6 +13,6 @@ export class ModifyRangerComponent implements OnInit {
   ngOnInit() {
   }
   Toast(){
-    this.toastrService.show("Ranger information modified.", "Success!");
+    this.toastrService.show("Record modified successfully.", "Success!");
   }
 }

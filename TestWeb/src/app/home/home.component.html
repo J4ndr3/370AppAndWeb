@@ -2,9 +2,12 @@
     RANGERS ON DUTY</h1>
 <hr class="hrow" />
 <br>
-<div id="mapDiv">
-    <img src="/assets/Map.PNG" id="Map" />
+<div id="mapDiv" >
+  
+    <img src="/assets/Map.PNG" id="Map"/>
 </div>
+<br>
+
 <div id="homearrow">
     <button class="btn btn-default btn-sm" id="downbtn"><img src="/assets/ios-arrow-dropdown.svg"/></button>
 </div>
@@ -24,5 +27,55 @@
     end:'2019-07-01T16:30:00',
     allDay: false,
     backgroundColor: 'green' 
-  }]" [nowIndicator]="true" [eventStartEditable]="true" [eventDurationEditable]="true" [displayEventTime]="true" [displayEventEnd]="true"></full-calendar>
+  },{
+    title:  'Jane Doe',
+    start:  '2019-07-01T16:30:00',
+    end:'2019-07-01T18:30:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  },{
+    title:  'Judy Duly',
+    start:  '2019-07-02T15:00:00',
+    end:'2019-07-02T18:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  },{
+    title:  'John Doe',
+    start:  '2019-07-02T07:00:00',
+    end:'2019-07-02T10:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  },{
+    title:  'Jenny Green',
+    start:  '2019-07-01T07:00:00',
+    end:'2019-07-01T10:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  }
+  ,{
+    title:  'Amy Holt',
+    start:  '2019-07-01T12:00:00',
+    end:'2019-07-01T15:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  }
+  ,{
+    title:  'Andy Holt',
+    start:  '2019-07-02T17:00:00',
+    end:'2019-07-02T20:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  },{
+    title:  'Evan Green',
+    start:  '2019-07-01T19:00:00',
+    end:'2019-07-01T21:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  },{
+    title:  'Jane Doe',
+    start:  '2019-07-03T09:00:00',
+    end:'2019-07-03T11:00:00',
+    allDay: false,
+    backgroundColor: 'green' 
+  }]" [nowIndicator]="true" [eventStartEditable]="true" [eventDurationEditable]="true" [displayEventTime]="true" [displayEventEnd]="true" [eventLimit]='4' [eventLimitClick]="popover"></full-calendar>
 </div>

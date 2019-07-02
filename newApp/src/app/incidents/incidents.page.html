@@ -18,7 +18,7 @@
 
     <ion-card-header>
         
-      <ion-title class="incident_title">
+      <ion-title class="incident_title"  style="color: black !important" >
         Incident Information:
       </ion-title>
     
@@ -30,21 +30,21 @@
     <div class="form-group">  
         <div class="col-sm-10">
           <ion-radio-group>
-                <ion-label style="color:white;" >Severity Level</ion-label>
+                <ion-label style="color:black;" >Severity Level</ion-label>
               
               <ion-item>
-                <ion-label style="width:90%; color:white;" class="radio">High</ion-label>
-                <ion-radio slot="start" value="high" checked style=" color:white;"></ion-radio>
+                <ion-label style="width:90%; color:black;" class="radio">High</ion-label>
+                <ion-radio slot="start" value="high" checked style=" color:black;"></ion-radio>
               </ion-item>
           
               <ion-item>
-                <ion-label style="width:90%; color:white;" class="radio">Medium</ion-label>
-                <ion-radio slot="start" value="medium" style=" color:white;"></ion-radio>
+                <ion-label style="width:90%; color:black;" class="radio">Medium</ion-label>
+                <ion-radio slot="start" value="medium" style=" color:black;"></ion-radio>
               </ion-item>
           
               <ion-item>
-                <ion-label style="width:90%; color:white;" class="radio">Low</ion-label>
-                <ion-radio slot="start" value="low" style=" color:white;"></ion-radio>
+                <ion-label style="width:90%; color:black;" class="radio">Low</ion-label>
+                <ion-radio slot="start" value="low" style=" color:black;"></ion-radio>
               </ion-item>
             </ion-radio-group>
           <br>
@@ -52,7 +52,7 @@
         <ion-textarea placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
        
         <div style="float:left;"><ion-button style="margin-bottom:10%;"><ion-icon name="camera" size="medium"></ion-icon></ion-button></div>      
-        <div style="float:right;"><ion-button style="margin-bottom:10%;"> Report</ion-button></div>
+        <div style="float:right;"><ion-button style="margin-bottom:10%; --background: rgb(205, 21, 67) !important"> Report</ion-button></div>
      </div> 
     </div>
 </form>
