@@ -1,6 +1,6 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -8,12 +8,14 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 })
 export class RegisteruserComponent implements OnInit {
   @ViewChild("regform",{static:false}) containerEltRef: ElementRef;
-  constructor() { }
+  constructor(private router: Router) { }
   currentTab = 0;
   ngOnInit() {
    
   }
-  onSubmit(){alert("Done")}
+  goUsers() {
+    this.router.navigate(['rangers']);
+  }
   ngAfterViewInit()
   {
     // let elt = this.containerEltRef.nativeElement.querySelector('.tab');
@@ -36,6 +38,7 @@ export class RegisteruserComponent implements OnInit {
             }
             if (n == (x.length - 1)) {
                 document.getElementById("nextBtn").innerHTML = "Submit";
+                
             } else {
                 document.getElementById("nextBtn").innerHTML = "Next";
             }
@@ -55,7 +58,8 @@ nextPrev(n) {
             // if you have reached the end of the form...
             if (this.currentTab >= x.length) {
                 // ... the form gets submitted:
-                this.containerEltRef.nativeElement.Submit();
+                this.goUsers();
+                alert("Hallo");
                 return false;
             }
             // Otherwise, display the correct tab:

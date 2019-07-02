@@ -39,9 +39,17 @@ const routes: Routes = [
   { path: 'vehicles', loadChildren: './vehicles/vehicles.module#VehiclesPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'helppage', loadChildren: './helppage/helppage.module#HelppagePageModule' },
+  { path: 'rewardtype', loadChildren: './rewardtype/rewardtype.module#RewardtypePageModule' },
   { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
   { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
   
+  { path: 'generagevoucher', loadChildren: './generagevoucher/generagevoucher.module#GeneragevoucherPageModule' },
+  { path: 'confirm-reward', loadChildren: './confirm-reward/confirm-reward.module#ConfirmRewardPageModule' },
+  { path: 'voucher', loadChildren: './voucher/voucher.module#VoucherPageModule' },
+  { path: 'generated-vouchers', loadChildren: './generated-vouchers/generated-vouchers.module#GeneratedVouchersPageModule' },
+  { path: 'view-vouchar', loadChildren: './view-vouchar/view-vouchar.module#ViewVoucharPageModule' },
+  { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },
+
 
  
 ];

@@ -1,119 +1,163 @@
+<h1>
+    REWARDS REPORT</h1>
+<hr class="hrow" />
+<div align="center">
+    <div class="col">
+        <div ngbDropdown>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Select Reward Type</button>
+            <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
+                <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Product Reward</button>
+                <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Event Reward</button>
 
-<h1>REWARDS REPORT</h1>
-<hr class="hrow"/>
-<h3 align="center">Product Reward</h3>
-<br>
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr id="header">
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="collapse" id="demo">
+    <h3 align="center">Product Reward</h3>
 
-                <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Points required</th>
-                <th>Description</th>
+    <div class="outer">
+        <div class="button">
+            <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr id="header">
+
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Points required</th>
+                    <th>Description</th>
 
 
-                <!--<th>Actions</th>-->
-            </tr>
-        </thead>
-        <tbody id="mytable">
-            <tr>
-                <td>Hat</td>
-                <td>12</td>
-                <td>600</td>
-                <td>A sports cap with ERP Logo</td>
+                    <!--<th>Actions</th>-->
+                </tr>
+            </thead>
+            <tbody id="mytable">
+                <tr>
+                    <td>Hat</td>
+                    <td>12</td>
+                    <td>600</td>
+                    <td>A sports cap with ERP Logo</td>
 
-                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>Key Chain</td>
-                <td>50</td>
-                <td>250</td>
-                <td>Stainless steel with a rhino</td>
+                </tr>
+                <tr>
+                    <td>Key Chain</td>
+                    <td>50</td>
+                    <td>250</td>
+                    <td>Stainless steel with a rhino</td>
 
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>Walking stick</td>
-                <td>5</td>
-                <td>900</td>
-                <td>Wood crafted walking stick</td>
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                </tr>
+                <tr>
+                    <td>Walking stick</td>
+                    <td>5</td>
+                    <td>900</td>
+                    <td>Wood crafted walking stick</td>
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button>-->
-            </tr>
-        </tbody>
-        <tfoot style="background-color:rgba(205, 21, 67);">
+                </tr>
+            </tbody>
+            <tfoot style="background-color:rgba(205, 21, 67);">
 
-            <td></td>
-            <td>Product Rewards</td>
-            <td>:</td>
-            <td>3</td>
-        </tfoot>
-    </table>
+                <td></td>
+                <td>Product Rewards</td>
+                <td>:</td>
+                <td>3</td>
+            </tfoot>
+        </table>
+    </div>
 </div>
 <br>
-<hr class="hrow"/>
-<h3 align="center">Event Reward</h3>
-<br>
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr id="header">
 
-                <th>Event Name</th>
-                <th>Date</th>
-                <th>Points required</th>
-                <th>Description</th>
+<div class="collapse" id="demo1">
+    <h3 align="center">Event Reward</h3>
+    <div class="outer">
+        <div class="button">
+            <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+        </div>
+        <!--Moenie buttons en search bar verander nie-->
+        <div class="search">
+            <form action="/action_page.php" id="searchform">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr id="header">
+
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Points required</th>
+                    <th>Description</th>
 
 
-                <!--<th>Actions</th>-->
-            </tr>
-        </thead>
-        <tbody id="mytable">
-            <tr>
-                <td>Sun City</td>
-                <td>2019/04/16</td>
-                <td>18000</td>
-                <td>2 day vacation in a 3 bed bungalo</td>
+                    <!--<th>Actions</th>-->
+                </tr>
+            </thead>
+            <tbody id="mytable">
+                <tr>
+                    <td>Sun City</td>
+                    <td>2019/04/16</td>
+                    <td>18000</td>
+                    <td>2 day vacation in a 3 bed bungalo</td>
 
-                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>San Lameer</td>
-                <td>2019/06/17</td>
-                <td>26000</td>
-                <td>4 days in a 4 bedroom bungalo</td>
+                </tr>
+                <tr>
+                    <td>San Lameer</td>
+                    <td>2019/06/17</td>
+                    <td>26000</td>
+                    <td>4 days in a 4 bedroom bungalo</td>
 
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>Carnival City</td>
-                <td>2019/09/23</td>
-                <td>20000</td>
-                <td>4 tickets for a trevor Noah show</td>
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                </tr>
+                <tr>
+                    <td>Carnival City</td>
+                    <td>2019/09/23</td>
+                    <td>20000</td>
+                    <td>4 tickets for a trevor Noah show</td>
+                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button>-->
-            </tr>
-        </tbody>
-        <tfoot style="background-color:rgba(205, 21, 67);">
+                </tr>
+            </tbody>
+            <tfoot style="background-color:rgba(205, 21, 67);">
 
-            <td></td>
-            <td>Event Rewards</td>
-            <td>:</td>
-            <td>3</td>
-        </tfoot>
-    </table>
+                <td></td>
+                <td>Event Rewards</td>
+                <td>:</td>
+                <td>3</td>
+            </tfoot>
+        </table>
+    </div>
 </div>

@@ -1,6 +1,6 @@
-
-<h1>STATUS REPORT</h1>
-<hr class="hrow"/>
+<h1>
+    STATUS REPORT</h1>
+<hr class="hrow" />
 <br>
 <div align="center">
     <div class="col">
@@ -14,189 +14,231 @@
         </div>
     </div>
     <br>
-
-    <div class="table" class="collapse" id="demo">
-
+    <div class="collapse" id="demo">
         <br>
         <h3 align="center">Ranger Status Report</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+            <div class="search">
+                <form action="/action_page.php" id="searchform">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <br>
-        <table class="table table-striped">
-            <thead>
-                <tr id="header">
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Cellphone</th>
-                    <th>Email</th>
-                    <th>Status</th>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Cellphone</th>
+                        <th>Email</th>
+                        <th>Status</th>
 
-                    <!--<th>Actions</th>-->
-                </tr>
-            </thead>
-            <tbody id="mytable">
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>085748392</td>
-                    <td>John@gmail.com</td>
-                    <td>Active</td>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>085748392</td>
+                        <td>John@gmail.com</td>
+                        <td>Active</td>
 
 
-                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
-                    <td>Tim</td>
-                    <td>Sxheepers</td>
-                    <td>0857760990</td>
-                    <td>Tim@gmail.com</td>
-                    <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Tim</td>
+                        <td>Sxheepers</td>
+                        <td>0857760990</td>
+                        <td>Tim@gmail.com</td>
+                        <td>Active</td>
 
 
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
-                    <td>Jane</td>
-                    <td>Viljoen</td>
-                    <td>0828865321</td>
-                    <td>Jane@gmail.com</td>
-                    <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Jane</td>
+                        <td>Viljoen</td>
+                        <td>0828865321</td>
+                        <td>Jane@gmail.com</td>
+                        <td>Active</td>
 
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button>-->
-                </tr>
-            </tbody>
-            <tfoot style="background-color:rgba(205, 21, 67);">
-                <td></td>
-                <td></td>
-                <td>Total Active Rangers</td>
-                <td>:</td>
-                <td>3</td>
-            </tfoot>
-        </table>
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Rangers</td>
+                    <td>:</td>
+                    <td>3</td>
+                </tfoot>
+            </table>
+        </div>
     </div>
     <br>
-    <div class="table" class="collapse" id="demo1">
-
-        <h3 align="center">Asset Status</h3>
+    <div class="collapse" id="demo1">
         <br>
-        <table class="table table-striped">
-            <thead>
-                <tr id="header">
-                    <th>Asset Name</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Description</th>
+        <h3 align="center">Asset Status</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+            <div class="search">
+                <form action="/action_page.php" id="searchform">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th>Asset Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Description</th>
 
 
-                    <!--<th>Actions</th>-->
-                </tr>
-            </thead>
-            <tbody id="mytable">
-                <tr>
-                    <td>Night core</td>
-                    <td>Flash light</td>
-                    <td>Active</td>
-                    <td>1000 lumens</td>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr>
+                        <td>Night core</td>
+                        <td>Flash light</td>
+                        <td>Active</td>
+                        <td>1000 lumens</td>
 
-                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
-                    <td>Surefire</td>
-                    <td>Spot light</td>
-                    <td>Inactive</td>
-                    <td>10000 Lumens</td>
+                    </tr>
+                    <tr>
+                        <td>Surefire</td>
+                        <td>Spot light</td>
+                        <td>Inactive</td>
+                        <td>10000 Lumens</td>
 
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
-                    <td>Fenix</td>
-                    <td>Flash light</td>
-                    <td>Active</td>
-                    <td>1200 Lumens</td>
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                    </tr>
+                    <tr>
+                        <td>Fenix</td>
+                        <td>Flash light</td>
+                        <td>Active</td>
+                        <td>1200 Lumens</td>
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
             src="/assets/ios-trash.svg" class="edit" /></button>-->
-                </tr>
-            </tbody>
-            <tfoot style="background-color:rgba(205, 21, 67);">
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
 
-                <td></td>
-                <td>Total Active Assets</td>
-                <td>:</td>
-                <td>2</td>
-            </tfoot>
-        </table>
+                    <td></td>
+                    <td>Total Active Assets</td>
+                    <td>:</td>
+                    <td>2</td>
+                </tfoot>
+            </table>
+        </div>
     </div>
-
-    <div class="table" class="collapse" id="demo2">
-
-        <h3 align="center">Vehicle Status</h3>
+    <div class="collapse" id="demo2">
         <br>
-        <table class="table table-striped">
-            <thead>
-                <tr id="header">
+        <h3 align="center">Vehicle Status</h3>
+        <div class="outer">
+            <div class="button">
+                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+            </div>
+            <!--Moenie buttons en search bar verander nie-->
+            <div class="search">
+                <form action="/action_page.php" id="searchform">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
 
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Colour</th>
-                    <th>Registration number</th>
-                    <th>Status</th>
-                    <!--<th>Actions</th>-->
-                </tr>
-            </thead>
-            <tbody id="mytable">
-                <tr>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Colour</th>
+                        <th>Registration number</th>
+                        <th>Status</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr>
 
-                    <td>Hundai</td>
-                    <td>i20</td>
-                    <td>Red</td>
-                    <td>YSF 354 GP</td>
-                    <td>In Repair</td>
-                    <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                        <td>Hundai</td>
+                        <td>i20</td>
+                        <td>Red</td>
+                        <td>YSF 354 GP</td>
+                        <td>In Repair</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
                     class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
                     src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
+                    </tr>
+                    <tr>
 
-                    <td>Hundai</td>
-                    <td>i10</td>
-                    <td>Blue</td>
-                    <td>HD 987 GP</td>
-                    <td>Active</td>
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                        <td>Hundai</td>
+                        <td>i10</td>
+                        <td>Blue</td>
+                        <td>HD 987 GP</td>
+                        <td>Active</td>
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
                     class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
                     src="/assets/ios-trash.svg" class="edit" /></button> -->
-                </tr>
-                <tr>
+                    </tr>
+                    <tr>
 
 
-                    <td>Rav</td>
-                    <td>4</td>
-                    <td>Orange</td>
-                    <td>UGLY01 GP</td>
-                    <td>Inactive</td>
-                    <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+                        <td>Rav</td>
+                        <td>4</td>
+                        <td>Orange</td>
+                        <td>UGLY01 GP</td>
+                        <td>Inactive</td>
+                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
                     class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
                     src="/assets/ios-trash.svg" class="edit" /></button>-->
-                </tr>
-            </tbody>
-            <tfoot style="background-color:rgba(205, 21, 67);">
-                <td></td>
-                <td></td>
-                <td>Total Active Vehicles</td>
-                <td>:</td>
-                <td>2</td>
-            </tfoot>
-        </table>
+                    </tr>
+                </tbody>
+                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <td></td>
+                    <td></td>
+                    <td>Total Active Vehicles</td>
+                    <td>:</td>
+                    <td>2</td>
+                </tfoot>
+            </table>
+        </div>
     </div>
