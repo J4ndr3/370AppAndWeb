@@ -50,10 +50,11 @@
     
     .tab {
         display: none;
+        font-display:Montserrat;
     }
     
     button {
-        background-color: #4CAF50;
+        background-color:rgb(205,21,67);
         color: #ffffff;
         border: none;
         padding: 10px 20px;
@@ -67,7 +68,7 @@
     }
     
     #prevBtn {
-        background-color: #bbbbbb;
+        background-color:rgba(205,21,67,0.5) !important;
     }
     /* Make circles that indicate the steps of the form: */
     
@@ -93,70 +94,68 @@
 </style>
 <ion-content>
     <div #ref>
-        <form #regform id="regForm" action="">
-            <h1>Register:</h1>
+        <form #regform id="regForm" action="" style="background-color: slategray">
+            
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">Step 1 -Ranger Name & Surname
-                <p><input placeholder="First Name..." oninput="this.className = ''" name="fname"></p>
-                <p><input placeholder="Last Name..." oninput="this.className = ''" name="lname"></p>
+            <div class="tab"><p style="font-display:Montserrat"> 1-Ranger Name & Surname</p>
+                <p><ion-input class="form-control" placeholder="First Name..."  name="fname"></ion-input></p>
+                <p><ion-input class="form-control" placeholder="Last Name..."  name="lname"></ion-input></p>
 
             </div>
             <div class="tab">Step 2 - Personal information:
-                <p><input placeholder="Identification Number..." oninput="this.className = ''" name="rangerId"></p>
-                <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-                <p><input placeholder="Cellphone..." oninput="this.className = ''" name="phone"></p>
+                <p><ion-input placeholder="Identification Number..." name="rangerId"></ion-input></p>
+                <p><ion-input placeholder="E-mail..." name="email"></ion-input></p>
+                <p><ion-input placeholder="Cellphone..."  name="phone"></ion-input></p>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                            <option selected disabled hidden value="Gender...">Gender...</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Other</option>
-                          </select>
+                        <ion-select placeholder="Select Gender"class="form-control" id="Select1" onchange="selectColor()" required>
+                            <ion-select-option>Male</ion-select-option>
+                            <ion-select-option>Female</ion-select-option>
+                            <ion-select-option>Other</ion-select-option>
+                          </ion-select>
                     </div>
                 </div>
-                <p><input placeholder="Jobtitle..." oninput="this.className = ''" name="jobtitle"></p>
+                <p><ion-input placeholder="Jobtitle..."  name="jobtitle"></ion-input></p>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select2" onchange="selectColor1()" required>
-                            <option selected disabled hidden value="Status...">Status...</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
-                            <option>Other</option>
-                          </select>
+                        <ion-select placeholder="Select Status"class="form-control" id="Select2" onchange="selectColor1()" required>
+                            <ion-select-option>Active</ion-select-option>
+                            <ion-select-option>Inactive</ion-select-option>
+                            <ion-select-option>Other</ion-select-option>
+                          </ion-select>
                     </div>
                 </div>
             </div>
             <div class="tab">Step 3 - Medical information:
-                <p><input placeholder="Emergency contact's Name" oninput="this.className = ''" name="emergencycontactName"></p>
-                <p><input placeholder="Emergency contact Number" oninput="this.className = ''" name="EmergencycontactNumber"></p>
-                <p><input placeholder="Medical Aid" oninput="this.className = ''" name="MedicalAid"></p>
+                <p><ion-input placeholder="Emergency contact's Name"  name="emergencycontactName"></ion-input></p>
+                <p><ion-input placeholder="Emergency contact Number"  name="EmergencycontactNumber"></ion-input></p>
+                <p><ion-input placeholder="Medical Aid"  name="MedicalAid"></ion-input></p>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                            <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
-                            <option>A+</option>
-                            <option>B+</option>
-                            <option>AB+</option>
-                            <option>O+</option>
-                            <option>A-</option>
-                            <option>B-</option>
-                            <option>AB-</option>
-                            <option>O-</option>
-                          </select>
+                        <ion-select class="form-control" placeholder="Bloodype" id="Select1" onchange="selectColor()" required>
+                            
+                            <ion-select-option>A+</ion-select-option>
+                            <ion-select-option>B+</ion-select-option>
+                            <ion-select-option>AB+</ion-select-option>
+                            <ion-select-option>O+</ion-select-option>
+                            <ion-select-option>A-</ion-select-option>
+                            <ion-select-option>B-</ion-select-option>
+                            <ion-select-option>AB-</ion-select-option>
+                            <ion-select-option>O-</ion-select-option>
+                          </ion-select>
                     </div>
                 </div>
             </div>
             <div class="tab">Step 4 - Login Info:
-                <p><input placeholder="Ranger Username..." oninput="this.className = ''" name="username"></p>
-                <p><input placeholder="Password..." oninput="this.className = ''" name="password"></p>
-                <p><input placeholder="Confirm Password..." oninput="this.className = ''" name="confirmpassword"></p>
+                <p><ion-input placeholder="Ranger Username..."  name="username"></ion-input></p>
+                <p><ion-input placeholder="Password..."  name="password"></ion-input></p>
+                <p><ion-input placeholder="Confirm Password..."  name="confirmpassword"></ion-input></p>
             </div>
             <div style="overflow:auto;">
                 <div style="float:right;">
-                    <button type="button" id="prevBtn" (click)="nextPrev(-1) " class="btn btn-default btn-sm">Previous</button>
-                    <button type="button" id="nextBtn" (click)="nextPrev(1)" class="btn btn-default btn-sm">Next</button>
-                </div>
+                    <button type="button" style="background-color: rgb(102,116,143); border-radius:5px" id="prevBtn" (click)="nextPrev(-1) " class="btn btn-default btn-sm">Previous</button>
+                    <button type="button" border-radius='5px' id="nextBtn" (click)="nextPrev(1)" class="btn btn-default btn-sm">Next</button>
+                </div> 
             </div>
             <!-- Circles which indicates the steps of the form: -->
             <div style="text-align:center;margin-top:40px;">
