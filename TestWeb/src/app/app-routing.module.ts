@@ -40,6 +40,7 @@ import { RewardAddComponent } from './reward-add/reward-add.component';
 import { RewardModifyComponent } from './reward-modify/reward-modify.component';
 import { RewardEventModifyComponent } from './reward-event-modify/reward-event-modify.component';
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
+import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 
 
 
@@ -84,6 +85,7 @@ const routes: Routes = [
   {path: 'reward-modify', component:RewardModifyComponent},
   {path: 'reward-event-modify', component:RewardEventModifyComponent},
   {path: 'reset', component:ResetPassworComponent},
+  {path: 'view-ranger', component:ViewRangerComponent},
 ];
 
 @NgModule({

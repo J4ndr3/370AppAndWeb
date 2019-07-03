@@ -54,6 +54,7 @@ import { RewardAddComponent } from './reward-add/reward-add.component';
 import { RewardModifyComponent } from './reward-modify/reward-modify.component';
 import { RewardEventModifyComponent } from './reward-event-modify/reward-event-modify.component';
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
+import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
     RewardModifyComponent,
     RewardEventModifyComponent,
     ResetPassworComponent,
+    ViewRangerComponent,
    
   ],
   imports: [
