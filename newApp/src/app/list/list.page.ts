@@ -3,7 +3,7 @@ import {
   BarcodeScannerOptions,
   BarcodeScanner
 } from "@ionic-native/barcode-scanner/ngx";
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -27,7 +27,7 @@ export class ListPage implements OnInit {
     'build'
   ];
   public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(private barcodeScanner: BarcodeScanner) {
+  constructor(private barcodeScanner: BarcodeScanner,public toastController: ToastController) {
     this.encodeData = "https://www.FreakyJolly.com";
     //Options
     this.barcodeScannerOptions = {
@@ -70,6 +70,10 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+  private async presentToast() {
+    const toast = await this.toastController.create({message:"Success",duration:3000});
+    toast.present();
   }
   // add back when alpha.4 is out
   // navigate(item) {
