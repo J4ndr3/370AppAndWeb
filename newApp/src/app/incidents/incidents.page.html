@@ -52,7 +52,7 @@
         <ion-textarea placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
        
         <div style="float:left;"><ion-button style="margin-bottom:10%;"><ion-icon name="camera" size="medium"></ion-icon></ion-button></div>      
-        <div style="float:right;"><ion-button style="margin-bottom:10%; --background: rgb(205, 21, 67) !important"> Report</ion-button></div>
+        <div style="float:right;"><ion-button (click)="presentToast()" style="margin-bottom:10%; --background: rgb(205, 21, 67) !important"> Report</ion-button></div>
      </div> 
     </div>
 </form>
