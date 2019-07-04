@@ -46,7 +46,7 @@ button {
   font-weight: bold;
     padding: 10px 20px;
     font-size: 13px;
-    font-family: Montserrat;;
+    font-family: Montserrat;
     cursor: pointer;
 }
 
@@ -55,7 +55,9 @@ button:hover {
 }
 
 #prevBtn {
-  background-color:rgba(205,21,67,0.5) !important;
+  background-color:rgba(227, 231, 237, 0.8)!important;
+  color: rgb(102,116,143);
+  font-weight: bold;
 }
 /* Make circles that indicate the steps of the form: */
 
@@ -76,5 +78,5 @@ button:hover {
 /* Mark the steps that are finished and valid: */
 
 .step.finish {
-    background-color: #4CAF50;
+    background-color: rgb(205,21,67);
 }

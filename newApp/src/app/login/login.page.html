@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+      <ion-buttons slot="end">
+          <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+      </ion-buttons>
+      <ion-buttons slot="end">
+          <ion-menu-button style="color: white !important"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          Login
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Login as Admin</h1>
+  <hr class="hrow"/>
+  <br/>
+  <div class="inputForm">
+      <br>
+      <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+  
+          <div class="form-group">
+              <br>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="ID" placeholder="Username..." name="ID" required maxlength="13">
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="Name" placeholder="Password..." name="Name" required>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                  <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Login</button>
+                  <a id="forgot" href="">Forgt Password ?</a>
+              </div>
+          </div>
+      </form>
+  </div>
+</ion-content>
