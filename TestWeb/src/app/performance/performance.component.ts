@@ -35,10 +35,14 @@ export class PerformanceComponent {
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.tooltip.disabled = true;
       valueAxis.renderer.minWidth = 35;
+      valueAxis.title.text="HOURS PATROLLED";
+      valueAxis.title.text.bold;
 
       let series = chart.series.push(new am4charts.LineSeries());
       series.dataFields.dateX = "date";
       series.dataFields.valueY = "value";
+      
+      
 
       series.tooltipText = "{valueY.value}";
       chart.cursor = new am4charts.XYCursor();
@@ -48,6 +52,7 @@ export class PerformanceComponent {
       scrollbarX.series.push(series);
       chart.scrollbarX = scrollbarX;
       this.chart = chart;
+      
     });
   }
    am4themes_myTheme(target) {

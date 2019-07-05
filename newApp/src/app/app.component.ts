@@ -61,12 +61,12 @@ export class AppComponent {
     },
     {
       title: 'Help',
-      url: '/helppage',
+      url: '/resetpassword',
       icon: 'help'
     },
     {
       title: 'Logout',
-      url: '/Logout',
+      url: '/login',
       icon: 'log-out'
     },
     
