@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+        <ion-buttons slot="end" (click)="openNote()">
+            <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button style="color: white !important"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Home
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <ion-img src="/assets/SVGS-01.svg" style="margin: auto; width: 25%"></ion-img>
+    <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 20px">John Doe</ion-card-title>
+    <p style="margin: auto; text-align: center;color:rgb(102,116,143);font-size:12px">Reward Status: <b>100 Points</b></p>
+    <hr style="height:0pt; visibility:hidden;" />
+    <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%;"></ion-img>
+
+    <ion-img src="/assets/SVGS-06.svg" style="margin: auto; width: 65%;padding-bottom:5%;"></ion-img>
+
+    <ion-img src="/assets/SVGS-07.svg" style="margin: auto; width: 65%;padding-bottom:5%;" routerLink="/rewards"></ion-img>
+
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button color="light" class="fabIncident">
+            <ion-img src="/assets/SVGS-04.svg" style="margin: auto; width: 100% !important; --background:rgb(205, 21, 67) !important"></ion-img>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+            <ion-fab-button>
+                <ion-img src="/assets/SVGS-02.svg" style="margin: auto; width: 100%;"></ion-img>
+            </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+            <ion-fab-button>
+                <ion-img src="/assets/SVGS-10.svg" style="margin: auto; width: 100%;"></ion-img>
+            </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+            <ion-fab-button routerLink="/incidents" class="new">
+                <ion-icon name="add" color="light"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+
+
+
+</ion-content>

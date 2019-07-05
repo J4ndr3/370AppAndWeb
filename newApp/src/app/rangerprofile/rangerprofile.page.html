@@ -1,0 +1,119 @@
+<ion-header >
+  <ion-toolbar>
+      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+    <ion-buttons slot="end">
+      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+    </ion-buttons>
+      <ion-buttons slot="end" >
+      <ion-menu-button style="color: white !important"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br/>
+  <br/>
+  <div class="col-sm-10">
+    
+      <br/>
+      <div class="inputForm">
+          
+    <div id="accordion" >
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn " data-toggle="collapse" style="width: 100%" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               <b>My Identity & Login details</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..."  required="true"></ion-input>
+                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..."  required="true"></ion-input>
+              </div>
+            </div>      
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn collapsed" data-toggle="collapse" style="width: 100%" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+               <b>My Personal details</b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Identification Number..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Email..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Phone..."  required="true"></ion-input>
+                
+                <div class="form-group">
+                    <div class="col-sm-40">
+                      
+                      <ion-select placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                        <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
+                        <ion-select-option>Male</ion-select-option>
+                        <ion-select-option>Female</ion-select-option>
+                        <ion-select-option>Other</ion-select-option>
+                      </ion-select>
+                    </div>
+            </div>
+            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Job Title..."  required="true"></ion-input>
+                
+            <div class="form-group">
+                        <div class="col-sm-40">
+                            <ion-select placeholder="Select Status..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select-option>Active</ion-select-option>
+                            <ion-select-option>Inactive</ion-select-option>
+                            <ion-select-option>Other</ion-select-option>
+                          </ion-select>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn collapsed" style="width: 100%" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+               <b> My Medical Details </b>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Name..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Number..."  required="true"></ion-input>
+                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Medical Aid..."  required="true"></ion-input>
+                <div class="form-group">
+                        <div class="col-sm-40">         
+                          <ion-select placeholder="Select Bloodtype..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select-option>A+</ion-select-option>
+                            <ion-select-option>B+</ion-select-option>
+                            <ion-select-option>AB+</ion-select-option>
+                            <ion-select-option>O+</ion-select-option>
+                            <ion-select-option>A-</ion-select-option>
+                            <ion-select-option>B-</ion-select-option>
+                            <ion-select-option>AB-</ion-select-option>
+                            <ion-select-option>O-</ion-select-option>
+                          </ion-select>
+                        </div>
+                      </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   <br/>
+   
+      <div style="float: right;"><ion-button style="margin-bottom:10%;">Save Changes</ion-button></div>
+    </div></div>
+</ion-content>

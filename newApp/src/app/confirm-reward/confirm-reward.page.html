@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+        <ion-buttons style="border-radius: 7px" slot="end">
+            <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button style="color: white !important"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Confirmation
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div>
+        <br>
+        <h4 style="color: rgb(3, 36, 51)">You claimed a hat</h4>
+        <h1 style="color: rgb(3, 36, 51)">Well done !</h1>
+    </div>
+    <ion-img src="/assets/ios-checkmark-circle-outline.svg" style="margin: auto; width: 50%; color:rgb(102,173,177)"></ion-img>
+    <br>
+    <p align="center" style="margin: auto; color:rgb(102,116,143)">Are you sure you want to <b>CLAIM</b> this reward?</p>
+    <br>
+    <ion-item lines="none">
+        <button type="button" routerLink="/" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Cancel</b></button>
+        <button type="button" routerLink="/voucher" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Confirm</b></button>
+    </ion-item>
+</ion-content>

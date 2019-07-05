@@ -1,0 +1,212 @@
+<ion-header >
+  <ion-toolbar>
+      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+    <ion-buttons slot="end">
+      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+    </ion-buttons>
+      <ion-buttons slot="end" >
+      <ion-menu-button style="color: white !important"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Ranger Patrol
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        background-color: #f1f1f1;
+    }
+    
+    #regForm {
+        background-color: #ffffff;
+        margin: 10% auto;
+        font-family: Raleway;
+        padding: 20px;
+        width: 90%;
+        
+    }
+    
+    h1 {
+        text-align: center;
+    }
+    
+    
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 17px;
+        font-family: Raleway;
+        border: 1px solid #aaaaaa;
+    }
+    /* Mark input boxes that gets an error on validation: */
+    
+    input.invalid {
+        background-color: #ffdddd;
+    }
+    /* Hide all steps by default: */
+    
+    .tab {
+        display: none;
+    }
+    
+    button {
+        background-color: rgb(126,206,208) !important;;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 17px;
+        font-family: Raleway;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        opacity: 0.8;
+    }
+    
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+    /* Make circles that indicate the steps of the form: */
+    
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+    
+    .step.active {
+        opacity: 1;
+    }
+    /* Mark the steps that are finished and valid: */
+    
+    .step.finish {
+        background-color: #4CAF50;
+    }
+    
+</style>
+<ion-content>
+    <div #ref class ="col-sm-10">
+        <form #regform id="regForm" action="" style="background-color: whitesmoke">
+           
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">Select Shift Booking Reference for current Patrol
+                <div class="form-group">
+                    <div class="col-sm-40">
+                      <select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Date & Time...">Booking Reference</option>
+                        <option>12 May 14:00</option>
+                        <option>17 May 16:30</option>
+                        <option>I havn't made a Booking...</option>
+                      </select>
+                    </div>
+            </div></div>
+            <div class="tab">Scan assets to Checkout:
+
+                <p align="center">  <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center">
+                </p>  
+                    <button data-toggle ="collapse" data-target="#demo" type="button"style="float: right;">
+                        <p style="margin: auto; text-align: left; color:white; font-size:16px">
+                            Enter Code Here
+                        </p>
+                    </button>
+                    <br><br>
+           <div class ="collapse" id="demo" >  
+            <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
+            <button type="button" style="float: right;"><ion-icon name="add"></ion-icon></button>
+          </div>
+        
+            <div class="col-md-10 user-container">
+                
+                <table class="table table-striped">
+                  <thead>
+                  </thead>
+                  <tbody>
+                  <tr>   
+                    <td>Car Magnet</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  <tr>   
+                    <td>flashlight</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  <tr>   
+                    <td>Gate 13 Key</td>       
+                    <td> <ion-icon name="close"></ion-icon></td> 
+                  </tr>
+                  </tbody>
+                </table>
+              </div>              
+            </div>
+            <div class="tab">My Live Location
+                <p align="center">
+            <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="auto" height="auto">
+          </p>
+          <div align="center"><button type="button" style= "background-color: red !important;;">Report Incident</button>
+          </div><br>
+            </div>
+            <div class="tab">Return Assets used during patrol
+                <p align="center"> <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto">  </p>
+                    
+                    <button data-toggle ="collapse" data-target="#demo" type="button"style="float: right;">
+                        <p style="margin: auto; text-align: left; color:white; font-size:16px">
+                            Enter Code Here
+                        </p>
+                    </button>
+                    <br> <br>
+           <div class ="collapse" id="demo" >  
+            <p><input placeholder="Enter QR-Code here..." oninput="this.className = ''" name="EnterQRCode"></p>
+            <br>
+            <button type="button" style="float: right;"><ion-icon name="add"></ion-icon></button>
+          </div>
+        
+                    <br>
+             
+                    
+                    <div class="col-md-10 user-container">                      
+                        <table class="table table-striped">
+                          <thead>
+                          </thead>
+                          <tbody>
+                          <tr>   
+                            <td>Car Magnet</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          <tr>   
+                            <td>flashlight</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          <tr>   
+                            <td>Gate 13 Key</td>       
+                            <td> <ion-icon name="close"></ion-icon></td> 
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>              
+                    </div>
+            <br/>
+            
+            <div style="overflow:auto;">
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" (click)="nextPrev(-1)"><img src="./assets/ios-arrow-round-back.svg" alt="Previous" width="30px" height="20px" style="filter:invert(1)"></button>
+                    <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        </form>
+    </div>
+</ion-content>

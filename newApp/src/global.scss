@@ -1,0 +1,271 @@
+        // http://ionicframework.com/docs/theming/
+        @import '~@ionic/angular/css/core.css';
+        @import '~@ionic/angular/css/normalize.css';
+        @import '~@ionic/angular/css/structure.css';
+        @import '~@ionic/angular/css/typography.css';
+        @import '~@ionic/angular/css/display.css';
+        @import '~@ionic/angular/css/padding.css';
+        @import '~@ionic/angular/css/float-elements.css';
+        @import '~@ionic/angular/css/text-alignment.css';
+        @import '~@ionic/angular/css/text-transformation.css';
+        @import '~@ionic/angular/css/flex-utils.css';
+        @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+        @import "~bootstrap/dist/css/bootstrap.css";
+        @import '~bootstrap/scss/functions';
+        @import '~bootstrap/scss/variables';
+        @import '~bootstrap/scss/mixins';
+        @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+        ion-toolbar {
+            --background: rgb(3, 36, 51);
+
+        }
+        
+        ion-title {
+            color: white;
+        }
+        
+        .incident_title {
+            width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 5% !important;
+            margin-bottom: 0 !important;
+            margin-top: 2px !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            font-size: 130% !important;
+        }
+        
+        ion-button {
+            --background: rgb(102,116,143);
+            color: white;
+            margin: auto;
+        }
+        
+        ion-thumbnail {
+            --size: 80px;
+        }
+        
+        ion-card {
+            width: 100% !important;
+            padding: 0 !important;
+            margin: auto !important;
+        }
+        
+        ion-list-header {
+            font-size: 100% !important;
+        }
+        
+        .radio {
+            font-size: 85% !important;
+            padding-bottom: 0px !important;
+            size: small !important;
+        }
+        
+        .erplog {
+            fill: white;
+            width: 10%;
+            filter: invert(1);
+            margin-left: 5%;
+        }
+        
+        br {
+            line-height: 90%;
+        }
+        
+        ion-content {
+            --ion-background-color: rgb(207, 209, 211);
+            padding: 0 !important;
+        }
+        
+        .inputForm {
+            width: 100%;
+            margin: auto !important;
+        }
+        /* You can add global styles to this file, and also import other style files */
+        
+        @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+        #logo {
+            height: 60px !important;
+            width: 100% !important;
+            margin-right: 0% !important;
+        }
+        
+        h1 {
+            text-align: center;
+            color: black;
+            font-display: Montserrat bold;
+            margin-top: 5%;
+            margin-bottom: 1%;
+        }
+        
+        .outer {
+            margin: auto;
+            width: 80%;
+            background-color: rgba(0, 52, 55, 0.7);
+            padding: 0px;
+            margin-bottom: 4%;
+        }
+        
+        .inner {
+            width: 80%;
+            margin: auto;
+            background-color: rgb(33, 90, 97);
+            height: auto;
+        }
+        
+        h2 {
+            font-size: 150%;
+            color: black;
+            margin-left: 13%;
+        }
+        
+        .col-sm-10 {
+            margin: 0;
+            width: 100%;
+            margin: auto;
+        }
+        
+        ion-select {
+            --padding-start: 0.5% !important;
+            width: 80% !important;
+            margin: auto !important;
+            background-color: rgb(51, 69, 105) !important;
+            color: white!important;
+            border: 2px solid rgba(207, 209, 211, 0.9) !important;
+            width: 100% !important;
+            margin: auto !important;
+            border-radius: 5%;
+             :-ms-input-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-webkit-input-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             :-moz-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-moz-placeholder {
+                /* Firefox 19+ */
+                color: rgba(227, 231, 237, 0.8)!important;
+            }
+        }
+        
+        ion-input {
+            background-color: rgb(51, 69, 105) !important;
+            color: white !important;
+            border: 2px solid rgba(207, 209, 211, 0.7)!important;
+            width: 100% !important;
+            margin: auto !important;
+            border-radius: 5%;
+             :-ms-input-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-webkit-input-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             :-moz-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-moz-placeholder {
+                /* Firefox 19+ */
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+        }
+        
+        ion-textarea {
+            height: auto !important;
+            min-height: 20% !important;
+            background-color: rgb(51, 69, 105) !important;
+            color: white !important;
+            border: 2px solid rgba(207, 209, 211, 0.7) !important;
+            border-radius: 2%;
+            width: 100% !important;
+            margin: auto !important;
+             :-ms-input-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-webkit-input-placeholder {
+                color: rgba(227, 231, 237, 0.8)!important;
+            }
+             :-moz-placeholder {
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+             ::-moz-placeholder {
+                /* Firefox 19+ */
+                color: rgba(227, 231, 237, 0.8) !important;
+            }
+        }
+        
+        .ion-padding-start {
+            -webkit-padding-start: 0.5% !important;
+        }
+        
+        form {
+            height: 100%;
+        }
+        
+        .card-header {
+            background-color: rgb(102,116,143) !important;
+        }
+        
+        #collapseOne {
+            background-color: rgb(33, 90, 97) !important;
+        }
+        
+        #collapseTwo {
+            background-color: rgb(33, 90, 97) !important;
+        }
+        
+        #collapseThree {
+            background-color: rgb(33, 90, 97) !important;
+        }
+        
+        h4 {
+            text-align: center;
+            color: black;
+            font-display: Montserrat bold;
+            margin-top: 5%;
+            margin-bottom: 1%;
+        }
+        
+        h6 {
+            text-align: center;
+            color: black;
+            font-display: Montserrat bold;
+            margin-top: 5%;
+            margin-bottom: 1%;
+        }
+        
+        .table-striped>tbody>tr:nth-child(odd)>td,
+        .table-striped>tbody>tr:nth-child(odd)>th {
+            background-color: rgba(207, 209, 211, 0.75) !important;
+        }
+        
+        .divA1 {
+            background-color: rgba(0, 24, 26, 0.23);
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+        }
+        
+        .divA2 {
+            background-color: rgb(207, 209, 211);
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .buttonA1 {
+            background-color: rgb(102,116,143);
+            margin: auto;
+            width: 100%;
+            padding-bottom: 6px;
+            padding-top: 8px;
+            color: rgb(3, 70, 76);
+        }

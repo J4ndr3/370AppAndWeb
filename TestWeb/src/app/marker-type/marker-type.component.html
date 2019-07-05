@@ -1,0 +1,119 @@
+
+<h1>MARKER TYPE</h1>
+<hr class="hrow"/>
+<br/>
+<div class="outer">
+    <!--Moenie buttons en search bar verander nie-->
+    <div class="button">
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+    </div>
+
+    <div class="search">
+        <form action="/action_page.php" id="searchform">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<!--Moenie die button verander nie-->
+<div class="inner collapse" id="demo">
+    <div class="close">
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
+      <img src="/assets/ios-close.svg" class="closePic" /></button>
+    </div>
+
+    <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
+    <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
+    <div class="inputForm">
+        <br>
+        <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+
+            <div class="form-group">
+                <h2 class="Header">Add Marker Type</h2>
+                <br>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Level" placeholder="Marker Type Description..." name="Level" required>
+                </div>
+                <br>
+                <div class="col-sm-10">
+                    <select class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Gender...">Points Worth...</option>
+                        <option>10</option>
+                        <option>7</option>
+                        <option>5</option>
+                      </select>
+                </div>
+            </div>
+
+            <!--Moenie die save button verander nie-->
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10" id="savediv">
+                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+<!--TABLE-->
+<br>
+
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th style="text-align: left;">Type</th>
+                <th style="text-align: left;">Points worth</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left;">High</td>
+                <td style="text-align: left;">10</td>
+                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/markertypemod'><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Medium</td>
+                <td style="text-align: left;">7</td>
+                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr>
+            <tr>
+                <td style="text-align: left;">Low</td>
+                <td style="text-align: left;">5</td>
+                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+              src="/assets/ios-trash.svg" class="edit" /></button>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
