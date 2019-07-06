@@ -56,7 +56,7 @@ export class AppComponent {
     },
     {
       title: 'Settings',
-      url: '/settings',
+      url: '/modifybooking',
       icon: 'build'
     },
     {

@@ -1,0 +1,42 @@
+<ion-header >
+  <ion-toolbar>
+      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+    <ion-buttons slot="end">
+      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+    </ion-buttons>
+      <ion-buttons slot="end" >
+      <ion-menu-button style="color: white !important"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Modify Booking
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    <br> <br> <br>
+<ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+  <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
+  <ion-select-option>I'm patrolling alone</ion-select-option>
+  <ion-select-option>Rijnhardt</ion-select-option>
+  <ion-select-option>Lize</ion-select-option>
+</ion-select>
+<ion-select placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+    <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
+    <ion-select-option>ERP Bakkie</ion-select-option>
+    <ion-select-option>Honda CRV</ion-select-option>
+    <ion-select-option>Hundai i20</ion-select-option>
+  </ion-select>
+<ion-item>
+<ion-label>Start</ion-label>
+<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+</ion-item>
+<ion-item>
+<ion-label>End</ion-label>
+<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+</ion-item>
+<ion-item>
+<ion-label>All Day?</ion-label>
+<ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+</ion-item>
+<ion-button fill="outline" expand="block" (click)="addEvent()" >Modify Shift Booking</ion-button>
+</ion-content>
