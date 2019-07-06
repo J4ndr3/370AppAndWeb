@@ -127,7 +127,8 @@
         }
         
         ion-select {
-            --padding-start: 0.5% !important;
+            --padding-start: 0.3% !important;
+            -webkit-padding-start:5% !important;
             width: 80% !important;
             margin: auto !important;
             background-color: rgb(51, 69, 105) !important;
@@ -182,6 +183,7 @@
             border-radius: 2%;
             width: 100% !important;
             margin: auto !important;
+           
              :-ms-input-placeholder {
                 color: rgba(227, 231, 237, 0.8) !important;
             }
@@ -198,7 +200,8 @@
         }
         
         .ion-padding-start {
-            -webkit-padding-start: 0.5% !important;
+          --padding-start: 0.3% !important;
+          -webkit-padding-start:5% !important;
         }
         
         form {

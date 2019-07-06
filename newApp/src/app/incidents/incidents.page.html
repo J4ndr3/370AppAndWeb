@@ -29,26 +29,19 @@
       <form class="form-horizontal"  id="modifyForm" action="/action_page.php"> 
     <div class="form-group">  
         <div class="col-sm-10">
-          <ion-radio-group>
-                <ion-label style="color:black;" >Severity Level</ion-label>
-              
-              <ion-item>
-                <ion-label style="width:90%; color:black;" class="radio">High</ion-label>
-                <ion-radio slot="start" value="high" checked style=" color:black;"></ion-radio>
-              </ion-item>
+          <ion-select  id="Select1" placeholder="Incident type..." class="form-control" style="margin-bottom:2% !important;" >
+              <ion-select-option>
+                <ion-label style="width:90%; color:black;" class="radio">Poaching</ion-label>
+              </ion-select-option>
           
-              <ion-item>
-                <ion-label style="width:90%; color:black;" class="radio">Medium</ion-label>
-                <ion-radio slot="start" value="medium" style=" color:black;"></ion-radio>
-              </ion-item>
+              <ion-select-option>
+                <ion-label style="width:90%; color:black;" class="radio">Injured Animal</ion-label>
+              </ion-select-option>
           
-              <ion-item>
-                <ion-label style="width:90%; color:black;" class="radio">Low</ion-label>
-                <ion-radio slot="start" value="low" style=" color:black;"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          <br>
-          <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Title..."  required="true"></ion-input>
+              <ion-select-option>
+                <ion-label style="width:90%; color:black;" class="radio">Other</ion-label>
+              </ion-select-option>
+            </ion-select>
         <ion-textarea placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
        
         <div style="float:left;"><ion-button style="margin-bottom:10%;"><ion-icon name="camera" size="medium"></ion-icon></ion-button></div>      
