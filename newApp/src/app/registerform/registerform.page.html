@@ -58,9 +58,9 @@
         color: #ffffff;
         border: none;
         padding: 10px 20px;
-        font-size: 17px;
-        font-family: Raleway;
-        cursor: pointer;
+        
+        font-size: 13px;
+    font-family: Montserrat;
     }
     
     button:hover {
@@ -89,7 +89,7 @@
     /* Mark the steps that are finished and valid: */
     
     .step.finish {
-        background-color: #4CAF50;
+        background-color:rgb(205,21,67);
     }
 </style>
 <ion-content>
@@ -97,12 +97,12 @@
         <form #regform id="regForm" action="" style="background-color: slategray">
             
             <!-- One "tab" for each step in the form: -->
-            <div class="tab"><p style="font-display:Montserrat"> 1-Ranger Name & Surname</p>
+            <div class="tab"><p style="font-display:Montserrat; color: white;" align="center" > 1-Ranger Name & Surname</p>
                 <p><ion-input class="form-control" placeholder="First Name..."  name="fname"></ion-input></p>
                 <p><ion-input class="form-control" placeholder="Last Name..."  name="lname"></ion-input></p>
 
             </div>
-            <div class="tab">Step 2 - Personal information:
+            <div class="tab"><p style="color: white;" align="center">Step 2 - Personal information:</p>
                 <p><ion-input placeholder="Identification Number..." name="rangerId"></ion-input></p>
                 <p><ion-input placeholder="E-mail..." name="email"></ion-input></p>
                 <p><ion-input placeholder="Cellphone..."  name="phone"></ion-input></p>
@@ -115,7 +115,7 @@
                           </ion-select>
                     </div>
                 </div>
-                <p><ion-input placeholder="Jobtitle..."  name="jobtitle"></ion-input></p>
+                <p><ion-input placeholder="Organization title..."  name="Organizationtitle"></ion-input></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <ion-select placeholder="Select Status"class="form-control" id="Select2" onchange="selectColor1()" required>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab">Step 3 - Medical information:
+            <div class="tab"><p style="color: white;" align="center">Step 3 - Medical information:</p>
                 <p><ion-input placeholder="Emergency contact's Name"  name="emergencycontactName"></ion-input></p>
                 <p><ion-input placeholder="Emergency contact Number"  name="EmergencycontactNumber"></ion-input></p>
                 <p><ion-input placeholder="Medical Aid"  name="MedicalAid"></ion-input></p>
@@ -146,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab">Step 4 - Login Info:
+            <div class="tab"><p style="color: white;" align="center">Step 4 - Login Info:</p>
                 <p><ion-input placeholder="Ranger Username..."  name="username"></ion-input></p>
                 <p><ion-input placeholder="Password..."  name="password"></ion-input></p>
                 <p><ion-input placeholder="Confirm Password..."  name="confirmpassword"></ion-input></p>

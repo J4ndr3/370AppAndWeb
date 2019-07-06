@@ -2,4 +2,17 @@
     --background: rgb(205, 21, 67) !important;
     
 }
+.Selected{
+    --background: rgb(102, 116, 143) !important;
+    color:white !important;
+}
+
+.NotSelected{
+    --background: rgba(102, 116, 143,0.6) !important;
+    color: black !important;
+}
+
+.Selected:hover{
+    background-color: lightgrey !important;
+}
 
