@@ -1,6 +1,6 @@
-
-<h1>MODIFY MARKER</h1>
-<hr class="hrow"/>
+<h1>
+    MODIFY MARKER</h1>
+<hr class="hrow" />
 <br>
 
 <div class="inner">
@@ -12,7 +12,7 @@
     <form class="form-horizontal" id="modifyForm" action="/action_page.php">
 
         <div class="form-group">
-
+            <h2 class="Header">Marker Information:</h2>
             <br>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="Level" placeholder="Marker Description..." name="Level" required>
@@ -21,9 +21,8 @@
             <div class="col-sm-10">
                 <select class="form-control" id="Select1" onchange="selectColor()" required>
                     <option selected disabled hidden value="Gender...">Reserve...</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option>Rietvallei</option>
+                          <option>Dinokeng</option>
                   </select>
             </div>
             <br>
@@ -37,7 +36,12 @@
             </div>
             <br>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Status..." name="Level" required>
+                <select class="form-control" id="Select1" onchange="selectColor()" required>
+                              <option selected disabled hidden value="Gender...">Status...</option>
+                              <option>Active </option>
+                              <option>Inactive</option>
+                              <option>Disabled</option>
+                            </select>
             </div>
             <br>
             <div class="col-sm-10">

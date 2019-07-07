@@ -1,48 +1,60 @@
 <h1>
-    MODIFY GATE</h1>
+    MODIFY VEHICLE</h1>
 <hr class="hrow" />
 <br>
 
 <div class="inner">
     <div class="back">
-        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/gate">
-          <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
+        <button class="btn btn-default btn-sm" id="backBTN" routerLink="/security">
+        <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
     </div>
-
     <br>
     <form class="form-horizontal" id="modifyForm" action="/action_page.php">
 
         <div class="form-group">
-            <h2 class="Header">Gate Information:</h2>
-            <br>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Name..." name="Level" required>
-            </div>
-            <br>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Description..." name="Level" required>
-            </div>
-            <br>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Latitude ..." name="Level" required>
-            </div>
-            <br>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Longitude..." name="Level" required>
-            </div>
+            <h2 class="Header">Vehicle Information:</h2>
             <br>
             <div class="col-sm-10">
                 <select class="form-control" id="Select1" onchange="selectColor()" required>
-                  <option selected disabled hidden value="Reserve...">Reserve...</option>
-                  <option>Rietvallei</option>
-                  <option>Dinokeng</option>
-                </select>
+      <option selected disabled hidden value="Gender...">Model...</option>
+      <option>Hundai</option>
+      <option>i10</option>
+      <option>Other</option>
+    </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select class="form-control" id="Select1" onchange="selectColor()" required>
+      <option selected disabled hidden value="Gender...">Model...</option>
+      <option>i20</option>
+      <option>i10</option>
+      <option>Other</option>
+    </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <select class="form-control" id="Select1" onchange="selectColor()" required>
+      <option selected disabled hidden value="Gender...">Color...</option>
+      <option>Red</option>
+      <option>White</option>
+      <option>Black</option>
+    </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Cell" placeholder="Registration Number..." name="Cell" required>
             </div>
         </div>
         <!--Moenie die save button verander nie-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" routerLink="/gate">Save</button>
+                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" routerLink="/security">Save</button>
             </div>
             <br>
             <br>

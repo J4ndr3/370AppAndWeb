@@ -1,6 +1,6 @@
-
-<h1>MARKER</h1>
-<hr class="hrow"/>
+<h1>
+    MARKER</h1>
+<hr class="hrow" />
 <br/>
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
@@ -60,7 +60,12 @@
                 </div>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="Status..." name="Level" required>
+                    <select class="form-control" id="Select1" onchange="selectColor()" required>
+                              <option selected disabled hidden value="Gender...">Status...</option>
+                              <option>Active </option>
+                              <option>Inactive</option>
+                              <option>Disabled</option>
+                            </select>
                 </div>
                 <br>
                 <div class="col-sm-10">
@@ -102,7 +107,7 @@
         </thead>
         <tbody>
             <tr>
-                <td style="text-align: left;">Front gate</td>
+                <td style="text-align: left;">Front gate exit notification</td>
                 <td style="text-align: left;">Rietvallei</td>
                 <td style="text-align: left;">High</td>
                 <td style="text-align: left;">24/06/2019</td>
@@ -115,7 +120,7 @@
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
             <tr>
-                <td style="text-align: left;">Left gate</td>
+                <td style="text-align: left;">Marker next to high risk fence</td>
                 <td style="text-align: left;">Rietvallei</td>
                 <td style="text-align: left;">Meduim</td>
                 <td style="text-align: left;">24/06/2019</td>
@@ -127,7 +132,7 @@
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
             <tr>
-                <td style="text-align: left;">Right gate</td>
+                <td style="text-align: left;">Close to dam</td>
                 <td style="text-align: left;">Rietvallei</td>
                 <td style="text-align: left;">Meduim</td>
                 <td style="text-align: left;">24/06/2019</td>

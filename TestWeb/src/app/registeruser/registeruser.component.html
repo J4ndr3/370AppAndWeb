@@ -72,9 +72,11 @@
                 <p><input class="form-control" placeholder="Password..." name="password" value="Jandre"></p>
                 <p><input class="form-control" placeholder="Confirm Password..." name="confirmpassword" value="Jandre"></p>
             </div>
-            <div style="overflow:auto;">
-                <div style="float:right;">
+            <div style="overflow:auto;" class="col-sm-10">
+                <div style="float:left;">
                     <button class="btn btn-default btn-sm" type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
+                </div>
+                <div style="float:right;">
                     <button class="btn btn-default btn-sm" type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
                 </div>
             </div>

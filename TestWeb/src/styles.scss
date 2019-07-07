@@ -80,7 +80,7 @@
     margin: 0 auto;
     max-width: 70%;
     background-color: rgba(62, 105, 112, 0.9);
-    height:auto;
+    height: auto;
 }
 
 #forgot {
@@ -655,7 +655,7 @@ option {
 .footer {
     left: 0;
     width: 100%;
-    bottom:0;
+    bottom: 0;
     position: static;
 }
 
@@ -925,7 +925,7 @@ th {
 }
 
 .fc-today {
-    background: rgba(207, 209, 211,0.5) !important;
+    background: rgba(207, 209, 211, 0.5) !important;
     border: none !important;
     border-top: 1px solid #ddd !important;
     font-weight: bold;
@@ -937,20 +937,25 @@ th {
     text-align: left !important;
 }
 
-.fc-more-popover{
-    height:200px !important;
+.fc-more-popover {
+    height: 200px !important;
     // max-height: 30%;
     overflow-y: scroll;
 }
 
 .fc {
     direction: ltr;
-    text-align: left !important; }
+    text-align: left !important;
+}
 
+.fc-event-time,
+.fc-event-title {
+    padding: 0 1px;
+    text-align: left !important;
+}
 
-    .fc-event-time, .fc-event-title {
-        padding: 0 1px;
-        text-align: left !important;
-    }
-
-   
+.login {
+    width: 60%;
+    margin: auto;
+    background-color: rgba(62, 105, 112, 0.2)!important;
+}
