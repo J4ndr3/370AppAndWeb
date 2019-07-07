@@ -18,7 +18,6 @@
         @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
         ion-toolbar {
             --background: rgb(3, 36, 51);
-
         }
         
         ion-title {
@@ -37,7 +36,7 @@
         }
         
         ion-button {
-            --background: rgb(102,116,143);
+            --background: rgb(102, 116, 143);
             color: white;
             margin: auto;
         }
@@ -91,7 +90,8 @@
             margin-right: 0% !important;
         }
         
-        h1 {
+        h1,
+        p {
             text-align: center;
             color: black;
             font-display: Montserrat bold;
@@ -127,7 +127,8 @@
         }
         
         ion-select {
-            --padding-start: 0.5% !important;
+            --padding-start: 0.3% !important;
+            -webkit-padding-start:5% !important;
             width: 80% !important;
             margin: auto !important;
             background-color: rgb(51, 69, 105) !important;
@@ -182,6 +183,7 @@
             border-radius: 2%;
             width: 100% !important;
             margin: auto !important;
+           
              :-ms-input-placeholder {
                 color: rgba(227, 231, 237, 0.8) !important;
             }
@@ -198,7 +200,8 @@
         }
         
         .ion-padding-start {
-            -webkit-padding-start: 0.5% !important;
+          --padding-start: 0.3% !important;
+          -webkit-padding-start:5% !important;
         }
         
         form {
@@ -206,19 +209,22 @@
         }
         
         .card-header {
-            background-color: rgb(102,116,143) !important;
+            background-color: rgb(102, 116, 143) !important;
         }
         
         #collapseOne {
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgba(102, 116, 143, 0.7) !important;
+            color: white !important;
         }
         
         #collapseTwo {
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgba(102, 116, 143, 0.7) !important;
+            color: white !important;
         }
         
         #collapseThree {
-            background-color: rgb(33, 90, 97) !important;
+            background-color: rgba(102, 116, 143, 0.7) !important;
+            color: white !important;
         }
         
         h4 {
@@ -262,7 +268,7 @@
         }
         
         .buttonA1 {
-            background-color: rgb(102,116,143);
+            background-color: rgb(205, 21, 67);
             margin: auto;
             width: 100%;
             padding-bottom: 6px;

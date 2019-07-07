@@ -38,7 +38,7 @@ currentTab =0;
                 document.getElementById("nextBtn").innerHTML = "Done";
             } 
             if(n ==1){
-                document.getElementById("nextBtn").innerHTML = "Start Patrol";
+                document.getElementById("nextBtn").innerHTML = "Next";
             }
             if(n ==2){
                 document.getElementById("nextBtn").innerHTML = "Check Out";

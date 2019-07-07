@@ -72,7 +72,7 @@ export class ListPage implements OnInit {
   ngOnInit() {
   }
   private async presentToast() {
-    const toast = await this.toastController.create({message:"Success",duration:3000});
+    const toast = await this.toastController.create({message:"Success.",duration:3000});
     toast.present();
   }
   // add back when alpha.4 is out

@@ -56,17 +56,17 @@ export class AppComponent {
     },
     {
       title: 'Settings',
-      url: '/settings',
+      url: '/modifybooking',
       icon: 'build'
     },
     {
       title: 'Help',
-      url: '/helppage',
+      url: '/resetpassword',
       icon: 'help'
     },
     {
       title: 'Logout',
-      url: '/Logout',
+      url: '/login',
       icon: 'log-out'
     },
     

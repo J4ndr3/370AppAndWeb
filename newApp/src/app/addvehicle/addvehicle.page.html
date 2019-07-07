@@ -54,13 +54,13 @@
       }
       
       button {
-          background-color: rgb(126,206,208) !important;;
-          color: #ffffff;
-          border: none;
-          padding: 10px 20px;
-          font-size: 17px;
-          font-family: Raleway;
-          cursor: pointer;
+        background-color:rgba(227, 231, 237, 0.8);
+      color: rgb(102,116,143);
+    font-weight: bold;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-family: Montserrat;;
+      cursor: pointer;
       }
       
       button:hover {
@@ -89,16 +89,16 @@
       /* Mark the steps that are finished and valid: */
       
       .step.finish {
-          background-color: #4CAF50;
+          background-color: rgb(205,21,67);
       }
       
   </style>
   <ion-content>
       <div #ref class ="col-sm-10">
-          <form #regform id="regForm" action="" style="background-color: whitesmoke">
+          <form #regform id="regForm" action="" style="background-color:slategrey">
              
               <!-- One "tab" for each step in the form: -->
-              <div class="tab">Registration Details
+              <div class="tab"><p style="color: white;" align="center">Registration Details</p>
                   <div class="form-group">
                     
                       <div class="col-sm-40">   
@@ -118,7 +118,7 @@
                        </div>
                       </div>
               </div></div>
-              <div class="tab">Vehicle Specifications
+              <div class="tab"><p style="color: white;" align="center">Vehicle Specifications</p>
                   <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
                   <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
                   <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
@@ -130,9 +130,11 @@
                 </div>              
               </div>   
               <div style="overflow:auto;">
-                  <div style="float:right;">
-                      <button type="button" id="prevBtn" (click)="nextPrev(-1)"><img src="./assets/ios-arrow-round-back.svg" alt="Previous" width="30px" height="20px" style="filter:invert(1)"></button>
-                      <button type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+                  <div >
+                      <button style =" float:left; border-radius:5px; color:rgb(102,116,143); background-color: rgba(227, 231, 237, 0.8) "type="button" id="prevBtn" (click)="nextPrev(-1)"><img src="./assets/ios-arrow-round-back.svg" alt="Previous" width="30px" height="20px" style=" color:rgb(102,116,143)"></button>
+                  </div> 
+                  <div style="float: right">
+                      <button style ="border-radius:5px;" type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
                   </div>
               </div>
               <!-- Circles which indicates the steps of the form: -->

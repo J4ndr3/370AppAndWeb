@@ -20,12 +20,12 @@
     <!-- Card for adding a new event -->
     <ion-card>
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
-        <ion-card-title>Booking Shift <ion-icon name="add-circle"></ion-icon></ion-card-title>
+        <ion-card-title>Book Shift <ion-icon name="add-circle"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
        <ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
               <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
-              <ion-select-option>Im patrolling alone</ion-select-option>
+              <ion-select-option>I'm patrolling alone</ion-select-option>
               <ion-select-option>Rijnhardt</ion-select-option>
               <ion-select-option>Lize</ion-select-option>
             </ion-select>
@@ -51,20 +51,20 @@
    
       </ion-card-content>
     </ion-card>
-   
+   <br>
     <ion-row>
         
         <ion-col size="3">
-            <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'secondary'" (click)="today()">Today</ion-button>
+            <ion-button expand="block" id="today"  (click)="today()">Today</ion-button>
           </ion-col>
       <ion-col size="3">
-        <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'secondary'" (click)="changeMode('month')">Month</ion-button>
+        <ion-button expand="block" id="month"[ngClass]="calendar.mode == 'month' ? 'Selected' : 'NotSelected'" (click)="changeMode('month')">Month</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'secondary'" (click)="changeMode('week')">Week</ion-button>
+        <ion-button expand="block" [ngClass]="calendar.mode == 'week' ? 'Selected' : 'NotSelected'" (click)="changeMode('week')">Week</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'secondary'" (click)="changeMode('day')">Day</ion-button>
+        <ion-button expand="block" [ngClass]="calendar.mode == 'day' ? 'Selected' : 'NotSelected'" (click)="changeMode('day')">Day</ion-button>
       </ion-col>
    
       <!-- Move back one screen of the slides -->
@@ -93,7 +93,7 @@
     endHour="24"
     step="60"
     startingDayWeek="1" 
-    style="width: fit-content">
+    style="width: fit-content; ">
     </calendar>
    
   </ion-content>

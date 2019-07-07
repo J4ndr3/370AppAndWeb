@@ -48,7 +48,12 @@ const routes: Routes = [
   { path: 'voucher', loadChildren: './voucher/voucher.module#VoucherPageModule' },
   { path: 'generated-vouchers', loadChildren: './generated-vouchers/generated-vouchers.module#GeneratedVouchersPageModule' },
   { path: 'view-vouchar', loadChildren: './view-vouchar/view-vouchar.module#ViewVoucharPageModule' },
-  { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },
+  { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },  { path: 'resetpassword', loadChildren: './resetpassword/resetpassword.module#ResetpasswordPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'modifybooking', loadChildren: './modifybooking/modifybooking.module#ModifybookingPageModule' },
+
+  
+
 
 
  

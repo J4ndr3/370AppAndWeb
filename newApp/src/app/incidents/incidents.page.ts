@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-incidents',
   templateUrl: './incidents.page.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncidentsPage implements OnInit {
 
-  constructor() { }
+  constructor(public toastController: ToastController) { }
 
   ngOnInit() {
   }
+
+  private async presentToast() {
+    const toast = await this.toastController.create({message:"Incident could not be reported.",duration:3000});
+    toast.present();}
 
 }
