@@ -29,8 +29,10 @@ export class AddvehiclePage implements OnInit {
             if (n == 0) {
                 document.getElementById("prevBtn").style.display = "none";
                 document.getElementById("nextBtn").innerHTML = "Next";
+                document.getElementById("Steps").style.marginTop = "90%";
             } else {
                 document.getElementById("prevBtn").style.display = "inline";
+                document.getElementById("Steps").style.marginTop = "67%";
             }
             
             if (n == 3) {

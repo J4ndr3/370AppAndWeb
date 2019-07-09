@@ -12,158 +12,145 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<style>
 
-</style>
+
 <ion-content>
 
   <div #ref class="col-sm-10">
-    <form #regform id="regForm" action="">
-      <ion-card>
-        <ion-card-content>
-      <!-- One "tab" for each step in the form: -->
-      <div class="tab" style="color:black; text-align:left;">
-        <div class="form-group">
-          <div class="col-sm-10">
-
-
-            <ion-label>Select shift booking reference for current patrol:</ion-label>
-
-
-            <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()"
-              required>
-              <ion-select-option>12 May 14:00</ion-select-option>
-              <ion-select-option>17 May 16:30</ion-select-option>
-              <ion-select-option>I haven't made a Booking...</ion-select-option>
-            </ion-select>
+    
+        <form #regform id="regForm" action="" style="height:78%" >
+            <ion-card>
+              <ion-card-content>
+          <!-- One "tab" for each step in the form: -->
+          <div class="tab" style="color:black; text-align:left; padding:0% !important">
+            <div class="form-group">
+              <div class="col-sm-10">
+                <ion-label>Select shift booking reference for current patrol:</ion-label>
+                <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()"
+                  required>
+                  <ion-select-option>12 May 14:00</ion-select-option>
+                  <ion-select-option>17 May 16:30</ion-select-option>
+                  <ion-select-option>No booking...</ion-select-option>
+                </ion-select>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="tab" style="color:black" align="center">Scan assets to Checkout:
-        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
-        <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;" >Enter Code Here</ion-button>
-        <div class="collapse" id="demo">
-          <ion-input class="ion-padding-start form-control" placeholder="Enter QR-Code here..." name="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
-          <ion-button style="float:right;"><ion-icon name="add"  size="medium"></ion-icon></ion-button>
+          <div class="tab" style="color:black;">
+            <ion-label>Scan assets to Checkout:</ion-label>
+            <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center"
+              style="margin-bottom:5% !important;">
+            <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
+              Enter Code Here</ion-button>
+            <div class="collapse" id="demo" style="margin-bottom:5% !important;">
+              <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode"
+                style="margin-bottom:5% !important;"></ion-input>
+              <ion-button style="float:right; margin-bottom:10% !important;">
+                <ion-icon name="add" size="medium"></ion-icon>
+              </ion-button>
+            </div>
 
-          <br><br><br>
-        </div>
+            <div style="width: 100% " class="col-md-10 ">
 
-        <div style="width: 100% " class="col-md-10 ">
-
-          <table
-            class="table table-striped; background-color:rgb(102,116,143); border: 1px solid rgba(227, 231, 237, 0.8);width: 100% !important)">
-            <thead>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="color: white">Car Magnet</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-              <tr>
-                <td style="color: white">flashlight</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-              <tr>
-                <td style="color: white">Gate 13 Key</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="tab" align="center" style="color:white;">My Live Location
-        <p align="center">
-          <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="auto" height="auto">
-        </p>
-        <div align="center"><button
-            style="border-radius:5% !important; background-color: rgb(205,21,67); color:white;">Report Incident</button>
-        </div><br>
-      </div>
-      <div class="tab" align="center" style="color:white">Return Assets used during patrol
-        <p align="center"> <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto"> </p>
-
-        <button data-toggle="collapse" data-target="#demo"
-          style="color:rgb(102,116,143);float: right; border-radius:5px !important;  font-size:16px">
-
-          <b>Enter Code Here</b>
-
-        </button>
-        <br> <br>
-        <div class="collapse" id="demo">
-          <p>
-            <ion-input placeholder="Enter QR-Code here..." name="EnterQRCode"></ion-input>
-          </p>
-
-          <br>
-          <button
-            style="float: right;border-radius:5px; color:rgb(102,116,143); background-color: rgba(227, 231, 237, 0.8)">
-            <ion-icon name="add"></ion-icon>
-          </button>
-        </div>
-
-        <br>
+              <table class="table table-striped" style="width: 100% !important;">
+                <thead>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color: black">Car Magnet</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="color: black">Flashlight</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="color: black">Gate 13 Key</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
 
-        <div class="col-md-10 user-container">
-          <table
-            class="table table-striped; background-color:rgb(102,116,143); border: 1px solid rgba(227, 231, 237, 0.8);width: 100% !important)">
-            <thead>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="color: white">Car Magnet</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-              <tr>
-                <td style="color: white">flashlight</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-              <tr>
-                <td style="color: white">Gate 13 Key</td>
-                <td style="color: white">
-                  <ion-icon name="close"></ion-icon>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <br/>
+          <div class="tab" style="color:black;">
+            <ion-label>My Live Location</ion-label>
+            <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="100%" height="auto"
+              style="margin-bottom:10% !important; padding:0% !important">
+            <ion-button
+              style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
+              Report Incident</ion-button>
+          </div>
 
-      <div style="overflow:auto;width: 100%; background-color: rgb(102,116,143)"></div>
-      <ion-item lines="none" color=" rgb(102,116,143)" width="100%">
+          <div class="tab" style="color:black">
+            <ion-label>Return Assets used during patrol</ion-label>
+            <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
+            <ion-button data-toggle="collapse" data-target="#demo2"
+              style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
 
-        <button style="border-radius:5px; color:rgb(102,116,143); background-color: rgba(227, 231, 237, 0.8); "
-          id="prevBtn" (click)="nextPrev(-1)">Back</button>
-        <button style="border-radius:5px;" id="nextBtn" (click)="nextPrev(1)">Next</button>
+            <div class="collapse" id="demo2">
+              <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode"
+                style="margin-bottom:5% !important;"></ion-input>
+              <ion-button style="float:right; margin-bottom:10% !important;">
+                <ion-icon name="add" size="Medium"></ion-icon>
+              </ion-button>
+            </div>
 
-      </ion-item>
-      </ion-card-content>
-    </ion-card>
+            <div class="col-md-10 user-container">
+              <table class="table table-striped" style="width: 100% !important">
+                <thead>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color: black">Car Magnet</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="color: black">flashlight</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="color: black">Gate 13 Key</td>
+                    <td style="color: black">
+                      <ion-icon name="close"></ion-icon>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-      <!-- Circles which indicates the steps of the form: -->
-      <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-      </div>
-    </form>
+
+          <div style="overflow:auto;width: 100%;"></div>
+          <ion-item lines="none" width="100%">
+            <ion-button size="Medium" id="prevBtn" (click)="nextPrev(-1)">Back</ion-button>
+            <ion-button size="Medium" id="nextBtn" (click)="nextPrev(1)">Next</ion-button>
+
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      
+          <!-- Circles which indicates the steps of the form: -->
+          <div id="Steps" align="center">
+              <span class="step"></span>
+              <span class="step"></span>
+              <span class="step"></span>
+            </div>
+        </form>
+   
+    
   </div>
+ 
+ 
 </ion-content>

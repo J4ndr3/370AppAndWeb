@@ -15,15 +15,29 @@ body {
 }
 
 
-h1 {
-    text-align: center;
-}
 ion-button {
     --background: rgb(102, 116, 143);
     color: white;
     margin: auto;
 }
 
+h1,
+p {
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size:100% !important;
+}
+
+ion-label{
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
 
 ion-input {
     background-color: rgb(51, 69, 105) !important;
@@ -57,31 +71,24 @@ input.invalid {
     display: none;
 }
 
-button {
-  background-color:rgba(227, 231, 237, 0.8);
-    color: rgb(102,116,143);
-  font-weight: bold;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-family: Montserrat;
-    cursor: pointer;
-}
 
 button:hover {
     opacity: 0.8;
 }
 
 #prevBtn {
-  background-color:rgba(227, 231, 237, 0.8)!important;
-  color: rgb(102,116,143);
-  font-weight: bold;
+    --background: rgb(102, 116, 143);
+    color: white;
+    margin: auto;
 }
 /* Make circles that indicate the steps of the form: */
+
+
 
 .step {
     height: 15px;
     width: 15px;
-    margin: 0 2px;
+    margin: 0 2px 0 0;
     background-color: #bbbbbb;
     border: none;
     border-radius: 50%;
@@ -96,4 +103,9 @@ button:hover {
 
 .step.finish {
     background-color: rgb(205,21,67);
+}
+
+tr, td{
+ border-bottom: 1px solid white;
+ border-top: 1px solid white;
 }

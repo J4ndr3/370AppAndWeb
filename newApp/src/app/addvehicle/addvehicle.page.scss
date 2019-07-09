@@ -8,3 +8,114 @@ button {
       font-family: Montserrat;;
       cursor: pointer;
   }
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(207, 209, 211) !important;
+}
+
+#regForm {
+    background-color:rgb(207, 209, 211)!important;
+    margin: auto !important;
+    width: 100%;
+    
+}
+
+
+ion-button {
+    --background: rgb(102, 116, 143);
+    color: white;
+    margin: auto;
+}
+
+h1,
+p {
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size:100% !important;
+}
+
+ion-label{
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+ion-input {
+    background-color: rgb(51, 69, 105) !important;
+    color: white !important;
+    border: 2px solid rgba(207, 209, 211, 0.7)!important;
+    width: 100% !important;
+    margin: auto !important;
+    border-radius: 5px !important;
+     :-ms-input-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     ::-webkit-input-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     :-moz-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+}
+/* Mark input boxes that gets an error on validation: */
+
+input.invalid {
+    background-color: #ffdddd;
+}
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+
+button:hover {
+    opacity: 0.8;
+}
+
+#prevBtn {
+    --background: rgb(102, 116, 143);
+    color: white;
+ 
+}
+/* Make circles that indicate the steps of the form: */
+
+
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px 0 0;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: rgb(205,21,67);
+}
+
+tr, td{
+ border-bottom: 1px solid white;
+ border-top: 1px solid white;
+}
