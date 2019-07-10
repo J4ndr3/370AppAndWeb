@@ -14,4 +14,7 @@ export class LoginComponent implements OnInit {
   showToast(){
     this.toastrService.show("Logged in.", "Success!");
   }
+  showToastF(){
+    this.toastrService.show("Failed to Login, check your Username and Password.", "Error!");
+  }
 }

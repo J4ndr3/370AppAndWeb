@@ -17,7 +17,7 @@ export class RegisteruserComponent implements OnInit {
     this.router.navigate(['rangers']);
   }
   showToast(){
-    this.toastrService.show("Record added successfully.", "Success!");
+    this.toastrService.show("Record added successfully", "Success!");
   }
   ngAfterViewInit()
   {

@@ -14,4 +14,7 @@ export class MarkerModComponent implements OnInit {
   showToast(){
     this.toastrService.show("Record modified successfully.", "Success!");
   }
+  showToastE(){
+    this.toastrService.show("Record could not be modified.", "Error!");
+  }
 }
