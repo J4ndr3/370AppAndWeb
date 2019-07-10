@@ -29,8 +29,18 @@ export class RegisterformPage implements OnInit {
             //... and fix the Previous/Next buttons:
             if (n == 0) {
                 document.getElementById("prevBtn").style.display = "none";
+                document.getElementById("Steps2").style.marginTop = "75%";
             } else {
                 document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == 3) {
+                document.getElementById("Steps2").style.marginTop = "62%";
+            } 
+            if(n ==1){
+                document.getElementById("Steps2").style.marginTop = "20%";
+            }
+            if(n ==2){
+                document.getElementById("Steps2").style.marginTop = "47%";
             }
             if (n == (x.length - 1)) {
                 document.getElementById("nextBtn").innerHTML = "Submit";

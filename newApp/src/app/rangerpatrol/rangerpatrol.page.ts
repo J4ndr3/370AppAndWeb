@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
   styleUrls: ['./rangerpatrol.page.scss'],
 })
 export class RangerpatrolPage implements OnInit {
-@ViewChild('regform')containerEltRef:ElementRef;
+@ViewChild('patrolform')containerEltRef:ElementRef;
   constructor(private renderer:Renderer2) { }
 currentTab =0;
   ngOnInit() {
@@ -30,7 +30,7 @@ currentTab =0;
             if (n == 0) {
                 document.getElementById("prevBtn").style.display = "none";
                 document.getElementById("nextBtn").innerHTML = "Check in";
-                document.getElementById("Steps").style.marginTop = "95%";
+                document.getElementById("Steps").style.marginTop = "85%";
             } else {
                 document.getElementById("prevBtn").style.display = "inline";
             }
@@ -46,7 +46,7 @@ currentTab =0;
             if(n ==2){
                 document.getElementById("nextBtn").innerHTML = "<ion-icon name='exit' size='Medium'></ion-icon>";
                 document.getElementById("nextBtn").style.width = "40%";
-                document.getElementById("Steps").style.marginTop = "10%";
+               document.getElementById("Steps").style.marginTop = "10%";
             }
             //... and run a function that will display the correct step indicator:
             this.fixStepIndicator(n)

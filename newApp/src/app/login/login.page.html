@@ -13,32 +13,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  
-  
-  
-  <div class="inputForm">
+<ion-content class="login">
+
+  <div class="inputForm" style="background-color:rgba(207, 209, 211,0.6); margin-top:30% !important;" >
       <br>
       <form class="form-horizontal" id="modifyForm" action="/action_page.php">
   
           <div class="form-group">
-              <br>
-              <p style="color:rgb(102,116,143)">Enter Login Details:</p>
+              
+              <h5 style="color:white" align=center>Enter Login Details:</h5>
               <div class="col-sm-10">
-                  <ion-input type="text" class="form-control" id="ID" placeholder="Username..." name="ID" required maxlength="13"></ion-input>
-              </div>
-          </div>
-  
-          <div class="form-group">
-              <div class="col-sm-10">
-                  <ion-input type="text" class="form-control" id="Name" placeholder="Password..." name="Name" required></ion-input>
+                  <ion-input type="text" class="form-control ion-padding-start" id="ID" placeholder="Username..." name="ID" required maxlength="13" style="margin-bottom: 2% !important"></ion-input>
+                  <ion-input type="text" class="form-control ion-padding-start" id="Name" placeholder="Password..." name="Name" required></ion-input>
               </div>
           </div>
           <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10" id="savediv">
                     <div style="float: right;"><ion-button style="margin-bottom:10%;" >Login</ion-button></div>
-                  <a id="forgot" href="">Forgt Password ?</a>
+                  <a id="forgot" href="" style="color:white;">Forgot Password?</a>
               </div>
+              <br>
           </div>
       </form>
   </div>
