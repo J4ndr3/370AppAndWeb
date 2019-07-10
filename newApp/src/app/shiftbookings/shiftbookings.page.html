@@ -20,7 +20,7 @@
     <!-- Card for adding a new event -->
     <ion-card>
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
-        <ion-card-title>Book Shift <ion-icon name="add-circle"></ion-icon></ion-card-title>
+        <ion-card-title align="center" style="font-size: 25px">Book Shift <ion-icon name="add-circle" size="medium"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
        <ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
