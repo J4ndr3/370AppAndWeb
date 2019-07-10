@@ -4,30 +4,61 @@
 }
 
 body {
-    background-color: #f1f1f1;
+    background-color: rgb(207, 209, 211) !important;
 }
 
 #regForm {
-    background-color: #ffffff;
-    margin: 10% auto;
-    
-    padding: 20px;
-    width: 90%;
-    
-}
-
-
-h1 {
-    text-align: center;
-}
-
-
-input {
-    padding: 10px;
+    background-color:rgb(207, 209, 211)!important;
+    margin: auto !important;
     width: 100%;
-    font-size: 14px;
-    font-family: Montserrat;
-    border: 1px solid #aaaaaa;
+    
+}
+
+
+ion-button {
+    --background: rgb(102, 116, 143);
+    color: white;
+    margin: auto;
+}
+
+h1,
+p {
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size:100% !important;
+}
+
+ion-label{
+    text-align: left;
+    color: black;
+    font-display: Montserrat bold;
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+ion-input {
+    background-color: rgb(51, 69, 105) !important;
+    color: white !important;
+    border: 2px solid rgba(207, 209, 211, 0.7)!important;
+    width: 100% !important;
+    margin: auto !important;
+    border-radius: 5px !important;
+     :-ms-input-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     ::-webkit-input-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     :-moz-placeholder {
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
+     ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgba(227, 231, 237, 0.8) !important;
+    }
 }
 /* Mark input boxes that gets an error on validation: */
 
@@ -40,31 +71,24 @@ input.invalid {
     display: none;
 }
 
-button {
-  background-color:rgba(227, 231, 237, 0.8);
-    color: rgb(102,116,143);
-  font-weight: bold;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-family: Montserrat;
-    cursor: pointer;
-}
 
 button:hover {
     opacity: 0.8;
 }
 
 #prevBtn {
-  background-color:rgba(227, 231, 237, 0.8)!important;
-  color: rgb(102,116,143);
-  font-weight: bold;
+    --background: rgb(102, 116, 143);
+    color: white;
+    margin: auto;
 }
 /* Make circles that indicate the steps of the form: */
+
+
 
 .step {
     height: 15px;
     width: 15px;
-    margin: 0 2px;
+    margin: 0 2px 0 0;
     background-color: #bbbbbb;
     border: none;
     border-radius: 50%;
@@ -79,4 +103,9 @@ button:hover {
 
 .step.finish {
     background-color: rgb(205,21,67);
+}
+
+tr, td{
+ border-bottom: 1px solid white;
+ border-top: 1px solid white;
 }
