@@ -14,4 +14,7 @@ export class ResetPassworComponent implements OnInit {
   showToast(){
     this.toastrService.show("Record modified successfully.", "Success!");
   }
+  showToastE(){
+    this.toastrService.show("Email not found please try again.", "Error!");
+  }
 }
