@@ -16,7 +16,7 @@ export class HomePage {
     this.navController.navigateRoot('/registerform')
   }
   private async presentToast() {
-    const toast = await this.toastController.create({ message: "Patrol could not be logged.", duration: 3000 });
+    const toast = await this.toastController.create({ message: "Booking unsuccessful", duration: 3000 });
     toast.present();
   }
   private async err() {
@@ -31,7 +31,7 @@ export class HomePage {
   private async err1() {
     const alert = await this.alertCtrl.create({
       header: "Error",
-      message: 'The record already exists.  Please try again.',
+      message: 'OTP does not match the sent OTP',
       buttons: ['OK']
     });
     alert.present();
@@ -39,8 +39,8 @@ export class HomePage {
   private async err2() {
     const alert = await this.alertCtrl.create({
       header: "Warning",
-      message: 'The record will be permanently deleted.  Are you sure you want to continue?',
-      buttons: [{text:'Cancel'},{text:'Delete'}] 
+      message: 'Are you sure you want to modify this record?',
+      buttons: [{text:'Cancel'},{text:'OK'}] 
     });
     alert.present();
   }

@@ -37,7 +37,7 @@ export class RegisterformPage implements OnInit {
                 document.getElementById("Steps2").style.marginTop = "62%";
             } 
             if(n ==1){
-                document.getElementById("Steps2").style.marginTop = "20%";
+                document.getElementById("Steps2").style.marginTop = "37%";
             }
             if(n ==2){
                 document.getElementById("Steps2").style.marginTop = "47%";

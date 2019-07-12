@@ -38,15 +38,19 @@ currentTab =0;
             if (n == 3) {
                 document.getElementById("nextBtn").innerHTML = "Done";
                 document.getElementById("Steps").style.marginTop = "10%";
+                
             } 
             if(n ==1){
                 document.getElementById("nextBtn").innerHTML = "Next";
                 document.getElementById("Steps").style.marginTop = "10%";
             }
             if(n ==2){
+                document.getElementById("prevBtn").style.display = "none";
                 document.getElementById("nextBtn").innerHTML = "<ion-icon name='exit' size='Medium'></ion-icon>";
                 document.getElementById("nextBtn").style.width = "40%";
-               document.getElementById("Steps").style.marginTop = "10%";
+               //document.getElementById("Steps").style.marginTop = "10%";
+               document.getElementById("Steps").style.display="none";
+
             }
             //... and run a function that will display the correct step indicator:
             this.fixStepIndicator(n)
