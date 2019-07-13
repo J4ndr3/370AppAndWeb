@@ -16,16 +16,16 @@
 
 <ion-content>
 
-  <div #ref class="col-sm-10">
+  <div #ref >
     
-        <form #regform id="regForm" action="" style="height:78%" >
-            <ion-card>
+        <form #patrolform id="regForm" action="" style="height:78%; width:100%;" >
+            <ion-card style=" width:100% !important;">
               <ion-card-content>
           <!-- One "tab" for each step in the form: -->
           <div class="tab" style="color:black; text-align:left; padding:0% !important">
             <div class="form-group">
               <div class="col-sm-10">
-                <ion-label>Select shift booking reference for current patrol:</ion-label>
+                <ion-label align="center" style="margin-bottom:5% !important">Select shift booking reference for current patrol:</ion-label>
                 <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()"
                   required>
                   <ion-select-option>12 May 14:00</ion-select-option>
@@ -37,13 +37,13 @@
           </div>
 
           <div class="tab" style="color:black;">
-            <ion-label>Scan assets to Checkout:</ion-label>
+            <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
             <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center"
               style="margin-bottom:5% !important;">
             <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
               Enter Code Here</ion-button>
             <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-              <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode"
+              <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode"
                 style="margin-bottom:5% !important;"></ion-input>
               <ion-button style="float:right; margin-bottom:10% !important;">
                 <ion-icon name="add" size="medium"></ion-icon>
@@ -81,7 +81,7 @@
 
 
           <div class="tab" style="color:black;">
-            <ion-label>My Live Location</ion-label>
+            <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
             <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="100%" height="auto"
               style="margin-bottom:10% !important; padding:0% !important">
             <ion-button
@@ -90,7 +90,7 @@
           </div>
 
           <div class="tab" style="color:black">
-            <ion-label>Return Assets used during patrol</ion-label>
+            <ion-label align="center" style="margin-bottom:5% !important" >Check in assets:</ion-label>
             <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
             <ion-button data-toggle="collapse" data-target="#demo2"
               style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
@@ -104,7 +104,7 @@
             </div>
 
             <div class="col-md-10 user-container">
-              <table class="table table-striped" style="width: 100% !important">
+              <table class="table table-striped" style="width: 100% !important; padding-bottom:2% !important" >
                 <thead>
                 </thead>
                 <tbody>
@@ -115,7 +115,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td style="color: black">flashlight</td>
+                    <td style="color: black">Flashlight</td>
                     <td style="color: black">
                       <ion-icon name="close"></ion-icon>
                     </td>
@@ -128,6 +128,7 @@
                   </tr>
                 </tbody>
               </table>
+              <ion-textarea placeholder="Feedback..." class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
             </div>
           </div>
 

@@ -19,8 +19,8 @@
     <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 20px">John Doe</ion-card-title>
     <p style="margin: auto; text-align: center;color:rgb(102,116,143);font-size:12px">Reward Status: <b>100 Points</b></p>
     <hr style="height:0pt; visibility:hidden;" />
-    <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important"></ion-img>
-
+    <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important" (click)="err2()"></ion-img>
+    <!-- <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important" (click)="err2()"></ion-img> -->
     <ion-img src="/assets/SVGS-06.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 5px !important"></ion-img>
 
     <ion-img src="/assets/SVGS-07.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 5px !important" routerLink="/rewards"></ion-img>
@@ -31,12 +31,12 @@
         </ion-fab-button>
         <ion-fab-list side="top">
             <ion-fab-button>
-                <ion-img src="/assets/SVGS-02.svg" style="margin: auto; width: 100%;"></ion-img>
+                <ion-img src="/assets/SVGS-02.svg" (click)="err1()" style="margin: auto; width: 100%;"></ion-img>
             </ion-fab-button>
         </ion-fab-list>
         <ion-fab-list side="start">
             <ion-fab-button>
-                <ion-img src="/assets/SVGS-10.svg" (click)="presentToast()" style="margin: auto; width: 100%;"></ion-img>
+                <ion-img src="/assets/SVGS-10.svg" (click)="presentToast()" (click)="err()" style="margin: auto; width: 100%;"></ion-img>
             </ion-fab-button>
         </ion-fab-list>
         <ion-fab-list side="end">

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController} from '@ionic/angular';
-import {Router} from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,37 @@ import { ToastController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private navController: NavController, private router: Router,public toastController: ToastController) {}
-openNote(){
-  this.navController.navigateRoot('/registerform')
-}
-private async presentToast() {
-  const toast = await this.toastController.create({message:"Patrol could not be logged.",duration:3000});
-  toast.present();}
+  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController) { }
+  openNote() {
+    this.navController.navigateRoot('/registerform')
+  }
+  private async presentToast() {
+    const toast = await this.toastController.create({ message: "Booking unsuccessful", duration: 3000 });
+    toast.present();
+  }
+  private async err() {
+    const alert = await this.alertCtrl.create({
+      header: "Error",
+      message: 'The input provided is incorrect. Please try again.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
+  private async err1() {
+    const alert = await this.alertCtrl.create({
+      header: "Error",
+      message: 'OTP does not match the sent OTP',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+  private async err2() {
+    const alert = await this.alertCtrl.create({
+      header: "Warning",
+      message: 'Are you sure you want to modify this record?',
+      buttons: [{text:'Cancel'},{text:'OK'}] 
+    });
+    alert.present();
+  }
 }

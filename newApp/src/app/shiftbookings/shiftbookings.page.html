@@ -20,7 +20,7 @@
     <!-- Card for adding a new event -->
     <ion-card>
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
-        <ion-card-title>Book Shift <ion-icon name="add-circle"></ion-icon></ion-card-title>
+        <ion-card-title align="center" style="font-size: 25px">Book Shift <ion-icon name="add-circle" size="medium"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
        <ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
@@ -43,7 +43,7 @@
           <ion-label>End</ion-label>
           <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
         </ion-item>
-        <ion-item>
+        <ion-item style="margin-bottom: 10%">
           <ion-label>All Day?</ion-label>
           <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
         </ion-item>
