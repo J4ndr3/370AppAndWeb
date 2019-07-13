@@ -13,7 +13,7 @@ export class RewardAddComponent implements OnInit {
   ngOnInit() {
   }
   showToast(){
-    this.toastrService.show("Record could not be added", "Error!");
+    this.toastrService.show("Reward could not be modified", "Error");
   }
 
   Event(){
