@@ -30,9 +30,9 @@ export class HomePage {
 
   private async err1() {
     const alert = await this.alertCtrl.create({
-      header: "Error",
-      message: 'The record already exists.  Please try again.',
-      buttons: ['OK']
+      header: "Login Error",
+      message: 'Username or password is incorrect. Please try again.',
+      buttons: ['Ok']
     });
     alert.present();
   }
@@ -44,4 +44,9 @@ export class HomePage {
     });
     alert.present();
   }
+  private async changeText()
+{
+  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+  toast.present();
+}
 }
