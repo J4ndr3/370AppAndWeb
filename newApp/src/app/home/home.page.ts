@@ -44,4 +44,9 @@ export class HomePage {
     });
     alert.present();
   }
+  private async changeText()
+{
+  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+  toast.present();
+}
 }
