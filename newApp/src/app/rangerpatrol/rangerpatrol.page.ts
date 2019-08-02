@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-rangerpatrol',
   templateUrl: './rangerpatrol.page.html',
@@ -7,7 +9,10 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
 })
 export class RangerpatrolPage implements OnInit {
 @ViewChild('patrolform')containerEltRef:ElementRef;
-  constructor(private renderer:Renderer2) { }
+
+scannnedcode=null;
+
+  constructor(private renderer:Renderer2,) { }
 currentTab =0;
   ngOnInit() {
 
@@ -105,6 +110,5 @@ validateForm() {
             }
             //... and adds the "active" class on the current step:
             x[n].className += " active";
-        }
-
+        }     
 }

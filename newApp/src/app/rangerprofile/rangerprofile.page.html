@@ -35,6 +35,7 @@
           </div>
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
+               
               <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
                 placeholder="First Name..." required="true"></ion-input>
               <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
@@ -62,7 +63,7 @@
             <div class="card-body">
               <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
                 placeholder="Identification Number..." required="true"></ion-input>
-              <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
+              <ion-input type="Email" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
                 placeholder="Email..." required="true"></ion-input>
               <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;"
                 placeholder="Phone..." required="true"></ion-input>
@@ -123,10 +124,8 @@
       <br />
 
       <div style="float: right;">
-        <ion-button style="margin-bottom:10%;">Save Changes</ion-button>
+        <ion-button style="margin-bottom:10%;" (click)="containsmodifications()">Save Changes</ion-button>
       </div>
     </div>
   </div>
-  <!-- </ion-card-content>
-  </ion-card> -->
 </ion-content>
