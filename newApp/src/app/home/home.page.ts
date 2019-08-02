@@ -16,7 +16,7 @@ export class HomePage {
     this.navController.navigateRoot('/registerform')
   }
   private async presentToast() {
-    const toast = await this.toastController.create({ message: "Booking unsuccessful", duration: 3000 });
+    const toast = await this.toastController.create({ message: "Check-in successful", duration: 3000 });
     toast.present();
   }
   private async err() {
@@ -40,7 +40,7 @@ export class HomePage {
     const alert = await this.alertCtrl.create({
       header: "Warning",
       message: 'Are you sure you want to modify this record?',
-      buttons: [{text:'Cancel'},{text:'OK'}] 
+      buttons: [{text:'Modify'},{text:'OK'}] 
     });
     alert.present();
   }

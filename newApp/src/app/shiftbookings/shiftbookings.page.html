@@ -23,6 +23,12 @@
         <ion-card-title align="center" style="font-size: 25px">Book Shift <ion-icon name="add-circle" size="medium"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
+          <ion-select placeholder="Select Reserve..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+              <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
+              <ion-select-option>Rietvlei</ion-select-option>
+              <ion-select-option>Dinokeng</ion-select-option>
+              <ion-select-option>Other</ion-select-option>
+            </ion-select>
        <ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
               <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
               <ion-select-option>I'm patrolling alone</ion-select-option>

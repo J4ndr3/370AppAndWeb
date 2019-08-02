@@ -44,26 +44,26 @@ export class AppComponent {
       url: '/rewards',
       icon: 'star'
     },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
+    // {
+    //   title: 'List',
+    //   url: '/list',
+    //   icon: 'list'
+    // },
     {
       title: 'My Vehicles',
       url: '/vehicles',
       icon: 'logo-model-s'
     },
-    {
-      title: 'Settings',
-      url: '/modifybooking',
-      icon: 'build'
-    },
-    {
-      title: 'Help',
-      url: '/resetpassword',
-      icon: 'help'
-    },
+    // {
+    //   title: 'Settings',
+    //   url: '/modifybooking',
+    //   icon: 'build'
+    // },
+    // {
+    //   title: 'Help',
+    //   url: '/resetpassword',
+    //   icon: 'help'
+    // },
     {
       title: 'Logout',
       url: '/login',
