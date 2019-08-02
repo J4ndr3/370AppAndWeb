@@ -42,7 +42,12 @@ import { RewardEventModifyComponent } from './reward-event-modify/reward-event-m
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
-
+import { SupplierComponent } from './supplier/supplier.component';
+import { ModifySupplierComponent } from './modify-supplier/modify-supplier.component';
+import { AssetComponent } from './asset/asset.component';
+import { OrderComponent } from './order/order.component';
+import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
+import { ModifyOrderComponent } from './modify-order/modify-order.component';
 
 
 const routes: Routes = [
@@ -88,6 +93,13 @@ const routes: Routes = [
   {path: 'reset', component:ResetPassworComponent},
   {path: 'view-ranger', component:ViewRangerComponent},
   {path: 'mod-vehicle', component:ModVehicleComponent},
+  {path: 'supplier', component:SupplierComponent},
+  {path:'modify-supplier', component:ModifySupplierComponent},
+  {path: 'asset', component: AssetComponent},
+  {path: 'order', component: OrderComponent},
+  {path: 'modify-asset', component: ModifyAssetComponent},
+  {path: 'modify-order', component: ModifyOrderComponent},
+
 ];
 
 @NgModule({
