@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
+import { FcmService } from '../fcm.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,12 +12,16 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController) { }
+  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
   openNote() {
     this.navController.navigateRoot('/registerform')
   }
   private async presentToast() {
+<<<<<<< HEAD
     const toast = await this.toastController.create({ message: "Check-in successful", duration: 3000 });
+=======
+    const toast = await this.toastController.create({ message: "Registered Successfully", duration: 3000 });
+>>>>>>> 7e65b65511f6ca7988a728b6a7699ec25bf2e133
     toast.present();
   }
   private async err() {
@@ -44,4 +49,15 @@ export class HomePage {
     });
     alert.present();
   }
+  private async changeText()
+{
+  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+  toast.present();
+}
+private async hallo(){
+  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+      toast.present();
+  
+  
+}
 }

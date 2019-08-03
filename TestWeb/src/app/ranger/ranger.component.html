@@ -185,10 +185,10 @@
                 <td>Active</td>
                 <td>200</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(ranger.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" routerLink='/view-ranger'/></button>
+                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" routerLink='/view-ranger'/></button></td>
             </tr>
             <tr>
                 <td>Tim Scheepers</td>
@@ -266,6 +266,7 @@
     </div>
 </div>
 
+<button (click)="sendNote()">Hallo</button>
 <!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

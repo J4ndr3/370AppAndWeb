@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:733797340390:android:7717605e30fc7c24",
+        "mobilesdk_app_id": "1:733797340390:android:3c42aa72c5519fc3",
         "android_client_info": {
-          "package_name": "com.Shieldpoint.ERPRangers"
+          "package_name": "ngo.erp.shieldpoint.rangers"
         }
       },
       "oauth_client": [
@@ -32,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "733797340390-q88abmkbt087mj2508lodl5qthqd26p3.apps.googleusercontent.com",
+              "client_id": "733797340390-ii8brnfggh70n149ulpgf2ogt4ck6ro0.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.Shieldpoint.ERPRangers"
+                "bundle_id": "ngo.erp.shieldpoint.rangers"
               }
             }
           ]

@@ -82,22 +82,22 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  private async presentToast(message) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 3000
-    });
-    toast.present();
-  }
+  // private async presentToast(message) {
+  //   const toast = await this.toastController.create({
+  //     message,
+  //     duration: 3000
+  //   });
+  //   toast.present();
+  // }
 
   private notificationSetup() {
     this.fcm.getToken();
     this.fcm.onNotifications().subscribe(
       (msg) => {
         if (this.platform.is('ios')) {
-          this.presentToast(msg.aps.alert);
+          // this.presentToast(msg.aps.alert);
         } else {
-          this.presentToast(msg.body);
+          // this.presentToast(msg.body);
         }
       });
   }
