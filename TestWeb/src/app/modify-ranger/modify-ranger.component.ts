@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { ERPService } from '..//erp.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modify-ranger',
@@ -14,5 +16,8 @@ export class ModifyRangerComponent implements OnInit {
   }
   Toast(){
     this.toastrService.show("Record modified successfully.", "Success!");
+  }
+  edit(ID){
+    window.alert(ID);
   }
 }
