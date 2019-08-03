@@ -12,7 +12,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
-
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { FormsModule } from '@angular/forms';
 import {Geolocation} from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
@@ -42,22 +42,16 @@ const firebaseConfig = {
     AngularFirestoreModule,
     NgCalendarModule,
     FormsModule,
-    
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Firebase,
-    QRScanner,
-<<<<<<< HEAD
-    BarcodeScanner,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Geolocation
-=======
-    
+        QRScanner,
+        Camera,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     
->>>>>>> e4cfc7f799d2276f15c9c9e6f7725c568059ae61
   ],
   bootstrap: [AppComponent]
 })

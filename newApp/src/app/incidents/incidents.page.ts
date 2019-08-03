@@ -17,7 +17,7 @@ export class IncidentsPage implements OnInit {
     const toast = await this.toastController.create({message:"Incident could not be reported.",duration:3000});
     toast.present();}
 
-    openCamera(){
+    OpenCamera(){
       const options: CameraOptions = {
         quality: 100,
         destinationType: this.camera.DestinationType.FILE_URI,
@@ -32,7 +32,6 @@ export class IncidentsPage implements OnInit {
       }, (err) => {
        // Handle error
       });
-    }
-    
+    }    
 }
 

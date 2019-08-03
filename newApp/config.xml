@@ -90,6 +90,6 @@
         <string>We use your location for full functionality of certain app features.</string>
     </edit-config>
     <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
-        <string>You can take photos</string>
-    </config-file>
+ <string>You can take photos</string>
+</config-file>
 </widget>

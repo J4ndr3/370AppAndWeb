@@ -137,25 +137,25 @@ export class RangerpatrolPage implements OnInit {
         //... and adds the "active" class on the current step:
         x[n].className += " active";
     }
-    startTracking() {
-        this.isTracking = true;
-        this.trackRoute = [];
+//     startTracking() {
+//         this.isTracking = true;
+//         this.trackRoute = [];
         
-        this.positionSubscription = this.geolocation.watchPosition(res=>{}).subscribe(data => {
-                setTimeout(() =>{
-                    this.trackRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
-                    this.redrawPath(this.trackRoute)
-                }
+//         this.positionSubscription = this.geolocation.watchPosition(res=>{}).subscribe(data => {
+//                 setTimeout(() =>{
+//                     this.trackRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
+//                     this.redrawPath(this.trackRoute)
+//                 }
                    
                 
-    )
-    })
-}
-redrawPath(path){
+//     )
+//     })
+// }
+// redrawPath(path){
 
-}
-stopTracking(){
-            //... and adds the "active" class on the current step:
-            x[n].className += " active";
-        }     
-}
+// }
+// stopTracking(){
+//             //... and adds the "active" class on the current step:
+//             x[n].className += " active";
+//         }     
+ }
