@@ -65,26 +65,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr *ngFor="let Level of IncidentLevel" >
                 <td></td>
-                <td style="text-align: left;">High Severity Level</td>
+                <td style="text-align: left;">{{Level.Description}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/incident-level-modify'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td></td>
-                <td style="text-align: left;">Medium Severity Level</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td></td>
-                <td style="text-align: left;">Low Severity Level</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
         </tbody>

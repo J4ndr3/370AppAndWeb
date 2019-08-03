@@ -86,6 +86,9 @@ export class ERPService {
   PutOrganisation(id, obj) {
     return this.http.put('http://localhost:30264/api/Caus/' + id, obj)
   }
+  GetIncident_Level(){
+    return this.http.get('http://localhost:30264/api/Incident_Level')
+  }
   sendNotif(title,message) {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -17,11 +17,7 @@ export class HomePage {
     this.navController.navigateRoot('/registerform')
   }
   private async presentToast() {
-<<<<<<< HEAD
     const toast = await this.toastController.create({ message: "Check-in successful", duration: 3000 });
-=======
-    const toast = await this.toastController.create({ message: "Registered Successfully", duration: 3000 });
->>>>>>> 7e65b65511f6ca7988a728b6a7699ec25bf2e133
     toast.present();
   }
   private async err() {
