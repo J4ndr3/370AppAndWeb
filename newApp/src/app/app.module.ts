@@ -14,7 +14,9 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { FormsModule } from '@angular/forms';
-
+import {Geolocation} from '@ionic-native/geolocation';
+import { IonicStorageModule } from '@ionic/storage';
+import { from } from 'rxjs';
 const firebaseConfig = {
   apiKey: "AIzaSyDPkIMLCVqfgX48Vyx9xl6HpPvs4UfiOnQ",
   authDomain: "jandre-17a91.firebaseapp.com",
@@ -30,6 +32,7 @@ const firebaseConfig = {
   entryComponents: [],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
@@ -43,7 +46,8 @@ const firebaseConfig = {
     Firebase,
     QRScanner,
     BarcodeScanner,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation
   ],
   bootstrap: [AppComponent]
 })

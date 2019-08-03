@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
+import { FcmService } from '../fcm.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,7 +12,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController) { }
+  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
   openNote() {
     this.navController.navigateRoot('/registerform')
   }
@@ -48,5 +49,11 @@ export class HomePage {
 {
   const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
   toast.present();
+}
+private async hallo(){
+  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+      toast.present();
+  
+  
 }
 }
