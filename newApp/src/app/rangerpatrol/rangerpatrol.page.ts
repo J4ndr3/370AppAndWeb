@@ -5,6 +5,9 @@ import { Storage } from '@ionic/storage';
 import { filter } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 declare var google;
+
+
+
 @Component({
     selector: 'app-rangerpatrol',
     templateUrl: './rangerpatrol.page.html',
@@ -117,6 +120,7 @@ export class RangerpatrolPage implements OnInit {
                 // and set the current valid status to false
                 valid = false;
             }
+<<<<<<< HEAD
         }
         // If the valid status is true, mark the step as finished and valid:
         if (valid) {
@@ -154,4 +158,9 @@ redrawPath(path){
 stopTracking(){
 
 }
+=======
+            //... and adds the "active" class on the current step:
+            x[n].className += " active";
+        }     
+>>>>>>> e4cfc7f799d2276f15c9c9e6f7725c568059ae61
 }

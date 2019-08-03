@@ -57,6 +57,12 @@ import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SupplierComponent } from './supplier/supplier.component';
+import { ModifySupplierComponent } from './modify-supplier/modify-supplier.component';
+import { OrderComponent } from './order/order.component';
+import { ModifyOrderComponent } from './modify-order/modify-order.component';
+import { AssetComponent } from './asset/asset.component';
+import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +112,12 @@ import { HttpClientModule } from '@angular/common/http';
     ResetPassworComponent,
     ViewRangerComponent,
     ModVehicleComponent,
+    SupplierComponent,
+    ModifySupplierComponent,
+    OrderComponent,
+    ModifyOrderComponent,
+    AssetComponent,
+    ModifyAssetComponent,
    
   ],
   imports: [
