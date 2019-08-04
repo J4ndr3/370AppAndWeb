@@ -20,6 +20,7 @@ export class IncidentLevelComponent implements OnInit {
   ngOnInit() {
       this.data.GetIncident_Level().subscribe(res=>{
         this.IncidentLevel = res;
+        console.log(res)
       });
     }
 

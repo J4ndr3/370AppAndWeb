@@ -271,3 +271,6 @@ C:\Users\Lize Haupt\Desktop\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
 C:\Users\Lize Haupt\Desktop\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Cors.dll
 C:\Users\Lize Haupt\Desktop\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.dll
 C:\Users\Lize Haupt\Desktop\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.xml
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Cors.dll
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.dll
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.xml
