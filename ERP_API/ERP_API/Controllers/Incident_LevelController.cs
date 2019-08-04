@@ -54,6 +54,8 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutIncident_Level(int id, Incident_Level incident_Level)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -104,6 +106,8 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Level))]
         public IHttpActionResult DeleteIncident_Level(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             Incident_Level incident_Level = db.Incident_Level.Find(id);
             if (incident_Level == null)
             {
