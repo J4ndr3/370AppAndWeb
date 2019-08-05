@@ -11,7 +11,6 @@ using System.Web.Http.Description;
 using ERP_API.Models;
 using System.Dynamic;
 using System.Web.Http.Cors;
-
 namespace ERP_API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -26,6 +25,10 @@ namespace ERP_API.Controllers
         {
 
             
+<<<<<<< HEAD
+=======
+           
+>>>>>>> 244ce4e8ac403b59cc5965bd721b7bd571900f85
 
                 db.Configuration.ProxyCreationEnabled = false;
                 List<Incident_Level> Level = db.Incident_Level.ToList();
@@ -38,6 +41,11 @@ namespace ERP_API.Controllers
                     toReturn.Add(m);
                 }
                 return toReturn;
+<<<<<<< HEAD
+=======
+
+            
+>>>>>>> 244ce4e8ac403b59cc5965bd721b7bd571900f85
         }
 
         // GET: api/Incident_Level/5

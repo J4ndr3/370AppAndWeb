@@ -51,7 +51,7 @@
                 <option>Spar</option>
                 <option>Builders Warehouse</option>
                 <option>Game</option>
-                <option>Add new...</option>
+                <option routerLink="/supplier"class="dropdown-item"> Supplier</option>
                         </select>
                         </div>
                 </div>
@@ -105,7 +105,8 @@
                 <th>Supplier</th>
                 <th>Type</th>
                 <th>Status</th>
-                <th>QR Code</th>
+                <th>Generate QR Code</th>
+                <th></th>
                 <th>Actions</th>
                 
                 
@@ -113,16 +114,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>CAMPMASTER 700L Flashlight</td>
-                <td>Makro</td>
-                <td>Flashlight</td>
-                <td>Active</td>
+            <tr *ngFor="let Asset of Assets">
+                <td>{{Your.Atribute1}}</td>
+                <td>{{Your.Attribute2}}</td>
+                <td>{{Your.Attribute3}}</td>
+                <td>{{Your.Attribute3}}</td>
                 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
-                    <button type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                    class="edit" /></button></td>
+                    <button (click)="generateQRCode()" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
+                    class="edit"  /></button> 
+                    <!-- <a [href]="href" *ngIf="display" (click)="downloadImage()" download> -->
+                </td>
+                 
+                <td> 
+                        <div id = "content" #content>
+                                <div id="contentToConvert">
+                                    <div id="QR" align="centre"></div>
+                                    
+
+     
+                    <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "value" ></ngx-qrcode>
+                </div>
+            </div>
+                </td>
+                
                 <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
