@@ -14,9 +14,7 @@ import htmlToImage from 'html-to-image';
 })
 export class AssetComponent implements OnInit {
 @ViewChild('content', {static: false}) Content: Element;
-@ViewChild('screen',{static: false}) screen: ElementRef;
-  @ViewChild('canvas',{static: false}) canvas: ElementRef;
-  @ViewChild('downloadLink',{static: false}) downloadLink: ElementRef;
+
 
  
 
@@ -25,8 +23,7 @@ qrcodename : string;
   elementType: 'url' | 'canvas' | 'img' = 'url';
   value: string;
   display = false;
-  href : string;
-
+  
   constructor(private toastrService: ToastrService) { }
 
   ngOnInit() {
