@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'; 
+import {ERPService} from '..//erp.service';          
+import { FormBuilder,FormGroup } from '@angular/forms';          
 
 @Component({
   selector: 'app-reward-add',
@@ -7,10 +9,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./reward-add.component.sass']
 })
 export class RewardAddComponent implements OnInit {
-
-  constructor(private toastrService: ToastrService) { }
+  RewardAdds: object;
+  AddForm: FormGroup;
+  NewRewardAdd:object;
+  RewardAddSelection:number =0;
+  RewardAddOptions:Array<object>; 
+  
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.data.GetRewardAdd().subscribe(res=>{
+      this.RewardAdds = res;
+    });
+
   }
   showToast(){
     this.toastrService.show("Reward could not be modified", "Error");
