@@ -1,4 +1,7 @@
 import { Component, OnInit,Renderer2, ViewChild,ElementRef } from '@angular/core';
+import {ERPService} from '..//erp.service';
+import { FormBuilder,FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registerform',
@@ -7,19 +10,46 @@ import { Component, OnInit,Renderer2, ViewChild,ElementRef } from '@angular/core
 })
 export class RegisterformPage implements OnInit {
   @ViewChild('regform') containerEltRef: ElementRef;
-  constructor(private renderer: Renderer2) { }
+
+  RegisterformPages:object;
+  AddForm: FormGroup;
+    NewRegisterformPage:object;
+    RegisterformPageSelection:number=0;
+    RegisterformPageOptions:Array<object>;
+    RegisterformPageOptionS:Array<object>;
+
+  constructor(private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
+  
+
   ngOnInit() {
-   
+    this.AddForm = this.formBuilder.group({
+        fname: [""], // Names for your input
+          lname: [""], // Names for your input 
+          rangerId: [""],
+          email: [""],
+          phone:[""],
+          emergencycontactName:[""],
+          EmergencycontactNumber:[""],
+          MedicalAid:[""],
+          Organizationtitle:[""],
+          username:[""],
+          password:[""],
+          confirmpassword:[""],
+          selectgender:[""],
+          selectbloodtype:[""]
+        });
+    this.data.GetRegisterFormPage().subscribe(res=>{
+      this.RegisterformPages = res;
+    });
   }
+
   ngAfterViewInit()
   {
     // let elt = this.containerEltRef.nativeElement.querySelector('.tab');
     // this.renderer.addClass(elt, 'newClass'); //Adds new class to element
      // Current tab is set to be the first tab (0)
-        this.showTab(this.currentTab); // Display the current tab
-
-       
+        this.showTab(this.currentTab); // Display the current tab  
   }
    showTab(n) {
             // This function will display the specified tab of the form...
@@ -63,7 +93,7 @@ nextPrev(n) {
             // if you have reached the end of the form...
             if (this.currentTab >= x.length) {
                 // ... the form gets submitted:
-                this.containerEltRef.nativeElement.Submit();
+                this.addRegisterformPage();
                 return false;
             }
             // Otherwise, display the correct tab:
@@ -102,4 +132,57 @@ validateForm() {
             x[n].className += " active";
         }
 
+        addRegisterformBtn() {
+           
+        
+            /* if there is a select/ dropdown use the following method to populate data for it */
+    this.data.GetRegisterFormPage().subscribe((res) => {
+        this.RegisterformPageOptions = JSON.parse(JSON.stringify(res));
+      }); 
+    
+     /* if there is a select/ dropdown use the following method to populate data for it */
+     this.data.GetRegisterFormPage().subscribe((res) => {
+        this.RegisterformPageOptionS = JSON.parse(JSON.stringify(res));
+      }); 
+    }
+  
+
+    addRegisterformPage() {
+        var fname = this.AddForm.get('fname').value; // Names for your input
+        var lname = this.AddForm.get('lname').value; // Names for your input
+        var rangerId = this.AddForm.get('rangerId').value;
+        var email = this.AddForm.get('email').value; // Names for your input
+        var emergencycontactName = this.AddForm.get('emergencycontactName').value; // Names for your input
+        var EmergencycontactNumber = this.AddForm.get('EmergencycontactNumber').value;
+        var MedicalAid = this.AddForm.get('MedicalAid').value;
+        var username = this.AddForm.get('username').value;
+        var password = this.AddForm.get('password').value;
+        var confirmpassword = this.AddForm.get('confirmpassword').value;
+        var selectgender = this.AddForm.get('selectgender').value;
+        var selectbloodtype = this.AddForm.get('selectbloodtype').value;
+        var Organizationtitle = this.AddForm.get('Organizationtitle').value;
+    
+        if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="") {
+          //Modal popup
+        }
+        else {
+          this.NewRegisterformPage = {
+            "Name": fname, // Names for your input
+            "Surname": lname, // Names for your input
+            "RangerID": rangerId,
+            "Email": email,
+            "EmergencyContactName": emergencycontactName,
+            "EmergencyContactNumber": EmergencycontactNumber,
+            "MedicalAid": MedicalAid,
+            "Username": username,
+            "Password": password,
+            "ConfirmPassword": confirmpassword,
+            "SelectGender": selectgender,
+            "SelectBloodtype": selectbloodtype,  
+            "Organizationtitle":Organizationtitle,
+          };
+          this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+            this.ngOnInit()
+          });}}
+    
 }

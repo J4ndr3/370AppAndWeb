@@ -15,18 +15,15 @@
 
 <ion-content>
     <div #ref>
-        <form #regform id="regForm" action="">
+        <form #regform id="regForm" action="" [formGroup]="AddForm" (ngSubmit)="addAddvehiclePage()">
             <ion-card>
                 <ion-card-content>
                     <div class="tab">
                         <div class="form-group">
                             <div class="col-sm-10">
                                 <ion-label style="color: black; margin-bottom:2% !important;" align="center" >Registration Details</ion-label>
-                                <ion-input type="text" class="ion-padding-start form-control"
-                                    style="margin-bottom:2% !important;" placeholder="Car Registration..."
-                                    required="true"></ion-input>
-                                <ion-select placeholder="Select Colour..." class="form-control" id="Select1"
-                                    style="margin-bottom:10% !important;" onchange="selectColor()" required>
+                                <ion-input type="text" class="ion-padding-start form-control"  style="margin-bottom:2% !important;" placeholder="Car Registration..."   required="true" formControlName="CarRegistration" name="CarRegistration" ></ion-input>
+                                <ion-select placeholder="Select Colour..." class="form-control" id="Select1" style="margin-bottom:10% !important;" onchange="selectColor()" formControlName="SelectColour" name ="SelectColour"required>
                                     <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
                                     <ion-select-option>Red</ion-select-option>
                                     <ion-select-option>Yellow</ion-select-option>
@@ -40,11 +37,11 @@
                                     <div class="col-sm-10">
                         <ion-label style="color: black; margin-bottom:2% !important;" align="center" >Vehicle Specifications</ion-label>
                         <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:2% !important;" placeholder="Make..." required="true"></ion-input>
+                            style="margin-bottom:2% !important;" placeholder="Make..." name ="Make" formControlName="Make" required="true"></ion-input>
                         <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:2% !important;" placeholder="Model..." required="true"></ion-input>
+                            style="margin-bottom:2% !important;" placeholder="Model..." name ="Model" formControlName="Model" required="true"></ion-input>
                         <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:10% !important;" placeholder="Type Description..." required="true">
+                            style="margin-bottom:10% !important;" placeholder="Type Description..." name ="TypeDescription" formControlName="TypeDescription" required="true">
                         </ion-input>
                             </div>  </div>        
                     </div>

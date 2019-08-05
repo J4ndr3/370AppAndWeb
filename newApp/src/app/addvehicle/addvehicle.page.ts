@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import {ERPService} from '..//erp.service';
+import { FormBuilder,FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-addvehicle',
@@ -6,10 +9,18 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/co
   styleUrls: ['./addvehicle.page.scss'],
 })
 export class AddvehiclePage implements OnInit {
+    AddvehiclePages: object;
+AddForm: FormGroup;
+NewAddvehiclePage:object;
+AddvehiclePageSelection:number =0;
+AddvehiclePageOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
+
   @ViewChild('regform')containerEltRef:ElementRef;
-  constructor(private renderer:Renderer2) { }
+
+  constructor(private renderer:Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab =0;
   ngOnInit() {
+   
   }
   ngAfterViewInit()
   {
@@ -98,4 +109,42 @@ validateForm() {
             //... and adds the "active" class on the current step:
             x[n].className += " active";
         }
+
+        addAddvehicleBtn() {
+            this.AddForm = this.formBuilder.group({
+                CarRegistration: [""], // Names for your input
+                SelectColour: [""], // Names for your input 
+                Make: [""],
+                Model:[""],
+                TypeDescription:[""]
+            });
+        /* if there is a select/ dropdown use the following method to populate data for it */
+            this.data.GetAddvehiclePage().subscribe((res) => {
+              this.AddvehiclePageOptions = JSON.parse(JSON.stringify(res));
+            }); 
+          }
+
+          addAddvehiclePage() {
+            var CarRegistration = this.AddForm.get('CarRegistration').value; // Names for your input
+            var SelectColour = this.AddForm.get('SelectColour').value; // Names for your input
+            var Make = this.AddForm.get('Make').value;
+            var Model = this.AddForm.get('Model').value;
+            var TypeDescription = this.AddForm.get('TypeDescription').value;
+        
+            if ((CarRegistration||SelectColour||Make||Model||TypeDescription)=="") {
+              //Modal popup
+            }
+            else {
+              this.NewAddvehiclePage = {
+                "CarRegistration": CarRegistration, // Names for your input
+                "SelectColour": SelectColour, // Names for your input
+                "Make": Make,
+                "Model":Model,
+                "TypeDescription":TypeDescription
+              };
+              this.data.PostRanger(this.NewAddvehiclePage).subscribe(res => {
+                this.ngOnInit()
+              });}}
+        
+        
 }
