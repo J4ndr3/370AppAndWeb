@@ -22,7 +22,7 @@ namespace ERP_API.Models
     
         public int Order_ID { get; set; }
         public Nullable<int> Supplier_ID { get; set; }
-        public byte[] Status { get; set; }
+        public bool Status { get; set; }
         public System.DateTime Date { get; set; }
     
         public virtual Supplier Supplier { get; set; }

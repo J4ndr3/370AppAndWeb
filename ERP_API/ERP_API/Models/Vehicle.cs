@@ -26,7 +26,7 @@ namespace ERP_API.Models
         public string Colour { get; set; }
         public int Model_ID { get; set; }
         public Nullable<int> Vehicle_Type_ID { get; set; }
-        public byte[] Status { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         public virtual Model Model { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
