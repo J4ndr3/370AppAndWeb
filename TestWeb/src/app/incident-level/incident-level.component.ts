@@ -32,6 +32,29 @@ export class IncidentLevelComponent implements OnInit {
     this.toastrService.show("Record Removed", "Success!");
   }
 
+  addLevelBtn() {
+    this.AddForm = this.formBuilder.group({
+      Description: [""], // Names for your input
+     
+    });
+  }
+
+  addLevel() {
+    var Description = this.AddForm.get('Description').value; // Names for your input
+    
+    if (Description=="") {
+      //Modal popup
+    }
+    else {
+      this.NewLevel = {
+        "Description": Description, // Names for your input
+      };
+      this.data.PostIncident_Level(this.NewLevel).subscribe(res => {
+        this.ngOnInit()
+      });
+    }}
+
+
   EditLevel(ID){
    console.log(ID);
   this.router.navigateByUrl("/incident-level-modify",ID);

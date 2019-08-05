@@ -31,13 +31,13 @@
     <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
     <div class="inputForm">
         <br>
-        <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addLevel()">
 
             <div class="form-group">
                 <h2 class="Header">Add Incident Level</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="Level Description..." name="Level" required>
+                    <input type="text" class="form-control" id="Level" placeholder="Level Description..." formControlName="Description"  name="Level" required>
                 </div>
             </div>
 

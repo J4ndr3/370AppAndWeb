@@ -92,6 +92,11 @@ export class ERPService {
   DeleteIncident_Level(id) {
     return this.http.delete('http://localhost:51389/api/Incident_Level/' + id)
   }
+  PostIncident_Level(obj){
+    return this.http.post('http://localhost:51389/api/Incident_Level', obj)
+  }
+
+
   sendNotif(title,message) {
     const httpOptions = {
       headers: new HttpHeaders({
