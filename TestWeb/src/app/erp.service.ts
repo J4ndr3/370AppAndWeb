@@ -92,6 +92,13 @@ export class ERPService {
   DeleteIncident_Level(id) {
     return this.http.delete('http://localhost:51389/api/Incident_Level/' + id)
   }
+  GetRewardAdd(){
+    return this.http.get('http://localhost:51389/api/Product_Reward')
+  }
+  GetRewardAdd1(){
+    return this.http.get('http://localhost:51389/api/Event_Reward')
+  }
+
   sendNotif(title,message) {
     const httpOptions = {
       headers: new HttpHeaders({
