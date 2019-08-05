@@ -19,9 +19,9 @@ export class IncidentLevelModifyComponent implements OnInit {
   
 
   ngOnInit() {
-  console.log();
+  
     this.LevelSelection = this.route.snapshot.params['ID'];
-
+    console.log(this.LevelSelection);
   }
   Toast(){
     this.toastrService.show("Incident level modified.", "Success!");

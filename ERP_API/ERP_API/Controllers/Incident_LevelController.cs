@@ -24,17 +24,27 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Level
         public List<dynamic> GetIncident_Level()
         {
-            db.Configuration.ProxyCreationEnabled = false;
-            List<Incident_Level> Level = db.Incident_Level.ToList();
-            List<dynamic> toReturn = new List<dynamic>();
-            foreach (Incident_Level Item in Level)
+
+            try
             {
-                dynamic m = new ExpandoObject();
-                m.ID = Item.Incident_Level_ID;
-                m.Description = Item.Description;
-                toReturn.Add(m);
+
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Incident_Level> Level = db.Incident_Level.ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Incident_Level Item in Level)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Incident_Level_ID;
+                    m.Description = Item.Description;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+
             }
-            return toReturn;
+            catch (Exception err)
+            {
+                return BadRequest(err);
+            }
         }
 
         // GET: api/Incident_Level/5
@@ -91,15 +101,32 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Level))]
         public IHttpActionResult PostIncident_Level(Incident_Level incident_Level)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                string response = "";
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                if (db.Incident_Level.Count(e => e.Description == incident_Level.Description) > 0)
+                {
+                    response = "exists";
+                    return BadRequest(response);
+                }
+                else
+                {
+                    db.Incident_Level.Add(incident_Level);
+                    db.SaveChanges();
+
+                    return CreatedAtRoute("DefaultApi", new { id = incident_Level.Incident_Level_ID }, incident_Level);
+                }
             }
 
-            db.Incident_Level.Add(incident_Level);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = incident_Level.Incident_Level_ID }, incident_Level);
+            catch (Exception err)
+            {
+                return BadRequest(err.ToString());
+            }
         }
 
         // DELETE: api/Incident_Level/5
