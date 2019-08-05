@@ -34,7 +34,7 @@ export class IncidentLevelComponent implements OnInit {
 
   EditLevel(ID){
    console.log(ID);
-  //this.router.navigateByUrl("[/incident-level-modify]",ID);
+  this.router.navigateByUrl("/incident-level-modify",ID);
   }
 
   DeleteLevel(ID){
