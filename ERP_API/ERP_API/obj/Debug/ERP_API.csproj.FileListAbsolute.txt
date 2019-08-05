@@ -367,3 +367,6 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Sy
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Cors.dll
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.dll
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.xml

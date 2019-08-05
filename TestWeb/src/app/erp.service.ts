@@ -98,6 +98,24 @@ export class ERPService {
   GetRewardAdd1(){
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
+  PostRewardAdd(obj){
+    return this.http.post('http://localhost:51389/api/Product_Reward', obj)
+  }
+  PostRewardAdd1(obj){
+    return this.http.post('http://localhost:51389/api/Event_Reward', obj)
+  }
+  GetEventType(){
+    return this.http.get('http://localhost:51389/api/Event_Type')
+  }
+  PostEventType(obj){
+    return this.http.post('http://localhost:51389/api/Event_Type', obj)
+  }
+  GetProductType(){
+    return this.http.get('http://localhost:51389/api/Product_Type')
+  }
+  PostProductType(obj){
+    return this.http.post('http://localhost:51389/api/Product_Type', obj)
+  }
 
   sendNotif(title,message) {
     const httpOptions = {
