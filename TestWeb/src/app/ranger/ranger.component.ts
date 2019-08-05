@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ModifyRangerComponent } from 'src/app/modify-ranger/modify-ranger.component'
 
 @Component({
   selector: 'app-ranger',
@@ -24,7 +25,7 @@ export class RangerComponent implements OnInit {
   MedicalAidOptions: Array<object>;
   BloodSelection: number = 0;
   BloodOptions: Array<object>;
-  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyRangerComponent) { }
 
   ngOnInit() {
     this.data.GetRanger().subscribe(res => {
@@ -112,5 +113,13 @@ export class RangerComponent implements OnInit {
   
   showToast() {
     this.toastrService.show("Record added successfully", "Success!");
+  }
+  edit(ID){
+    this.mod.edit(1);
+  }
+  sendNote(){
+    console.log("hit");
+    this.data.sendNotif("Test fire","Hallo werk die.").subscribe(resp=>{console.log(resp);});
+    
   }
 }
