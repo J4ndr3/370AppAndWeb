@@ -5,6 +5,8 @@ import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
 import htmlToImage from 'html-to-image';
+import {ERPService} from '..//erp.service';          
+import { FormBuilder,FormGroup } from '@angular/forms';          
 
 
 @Component({
@@ -14,6 +16,11 @@ import htmlToImage from 'html-to-image';
 })
 export class AssetComponent implements OnInit {
 @ViewChild('content', {static: false}) Content: Element;
+Asset: object;
+AddForm: FormGroup;
+NewAsset:object;
+AssetSelection:number =0;
+AssetOptions:Array<object>; 
 
 
  
@@ -24,14 +31,21 @@ qrcodename : string;
   value: string;
   display = false;
   
-  constructor(private toastrService: ToastrService) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.qrcodename = '0123'
       this.display = false;
       this.value = this.qrcodename;
       this.display = true;
-  }
+
+      this.data.GetAsset().subscribe(res=>{
+        this.Asset = res;
+
+      });
+    }
+  
+  
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
   }
@@ -59,8 +73,11 @@ qrcodename : string;
       pdf.save('QR.pdf'); // Generated PDF
       
       });
+    }
 
+    
+  /* if there is a select/ dropdown use the following method to populate data for it */
+      
+    
   
-
-}
 }

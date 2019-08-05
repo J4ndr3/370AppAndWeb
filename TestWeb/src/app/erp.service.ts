@@ -98,7 +98,15 @@ export class ERPService {
   GetRewardAdd1(){
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
-
+  GetAsset(){
+    return this.http.get('http://localhost:51389/api/Asset')
+  }
+  GetSupplier(){
+    return this.http.get('http://localhost:51389/api/Supplier')
+  }
+  PostSupplier(obj) {
+    return this.http.post('http://localhost:51389/api/Supplier', obj)
+  }
   sendNotif(title,message) {
     const httpOptions = {
       headers: new HttpHeaders({
