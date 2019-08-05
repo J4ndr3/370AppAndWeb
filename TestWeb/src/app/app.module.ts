@@ -139,7 +139,7 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
     FullCalendarModule,
     HttpClientModule
   ],
-  providers: [ModifyRangerComponent],
+  providers: [ModifyRangerComponent,NavComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

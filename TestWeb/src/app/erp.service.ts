@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { url } from 'inspector';
 import { HttpHeaders } from '@angular/common/http';
+import {NavComponent} from '../app/nav/nav.component'
 // declare var require: any;
 @Injectable({
   providedIn: 'root'
 })
 export class ERPService {
-  
-  constructor(private http: HttpClient) { }
+  nError:any;
+  nMessage:any;
+  constructor(private http: HttpClient,private nav:NavComponent) { }
   GetRanger() {
     return this.http.get('http://localhost:30264/api/Caus')
   }
@@ -95,7 +97,9 @@ export class ERPService {
   PostIncident_Level(obj){
     return this.http.post('http://localhost:51389/api/Incident_Level', obj)
   }
-
+  GetIncidents(){
+    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+  }
   GetRewardAdd(){
     return this.http.get('http://localhost:51389/api/Product_Reward')
   }
@@ -122,5 +126,12 @@ export class ERPService {
     // });
     return this.http.post(url,body,httpOptions)
     
+  }
+  showModal(err,message){
+    this.nError=err;
+    this.nMessage=message;
+    this.nav.err = err;
+    this.nav.message=message;
+    document.getElementById('generalMod').click();
   }
 }
