@@ -96,6 +96,12 @@ export class ERPService {
     return this.http.post('http://localhost:51389/api/Incident_Level', obj)
   }
 
+  GetRewardAdd(){
+    return this.http.get('http://localhost:51389/api/Product_Reward')
+  }
+  GetRewardAdd1(){
+    return this.http.get('http://localhost:51389/api/Event_Reward')
+  }
 
   sendNotif(title,message) {
     const httpOptions = {
