@@ -56,6 +56,7 @@ import { RewardEventModifyComponent } from './reward-event-modify/reward-event-m
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
+import { HttpClientModule } from '@angular/common/http';
 import { SupplierComponent } from './supplier/supplier.component';
 import { ModifySupplierComponent } from './modify-supplier/modify-supplier.component';
 import { OrderComponent } from './order/order.component';
@@ -137,8 +138,9 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule,
     FullCalendarModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ModifyRangerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

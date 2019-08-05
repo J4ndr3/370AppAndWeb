@@ -26,13 +26,6 @@
     <Property Name="Asset_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'INF370.dbo.Asset_Supplier' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Asset_Supplier">
-          <Property Name="Asset_ID" Type="int" />
-          <Property Name="Asset_Type_ID" Type="int" />
-          <Property Name="Supplier_ID" Type="int" />
-        </EntityType>-->
   <EntityType Name="Asset_Type">
     <Key>
       <PropertyRef Name="Asset_Type_ID" />
@@ -487,15 +480,6 @@ warning 6002: The table/view 'INF370.dbo.Ranger_Vehicle' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-error 6004: The table 'INF370.dbo.Asset_Supplier' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Asset_Sup__Asset__44FF419A" />-->
-  <!--Errors Found During Generation:
-error 6004: The table 'INF370.dbo.Asset_Supplier' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Asset_Sup__Asset__45F365D3" />-->
-  <!--Errors Found During Generation:
-error 6004: The table 'INF370.dbo.Asset_Supplier' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Asset_Sup__Suppl__46E78A0C" />-->
   <Association Name="FK__Cellphone__Range__21B6055D">
     <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
     <End Role="Cellphone" Type="Self.Cellphone" Multiplicity="*" />

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firebase } from '@ionic-native/firebase/ngx';
 import { Platform } from '@ionic/angular';
 import { AngularFirestore } from 'angularfire2/firestore';
-
+import { ToastController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +10,7 @@ export class FcmService {
 
   constructor(private firebase: Firebase,
     private afs: AngularFirestore,
-    private platform: Platform) { }
+    private platform: Platform, public toastController: ToastController) { }
     async getToken() {
       let token;
   
@@ -41,5 +41,10 @@ export class FcmService {
   
     onNotifications() {
       return this.firebase.onNotificationOpen();
+    }
+    
+     getNot(){
+      this.firebase.subscribe('ERP');
+      
     }
 }
