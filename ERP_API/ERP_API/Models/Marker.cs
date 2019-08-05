@@ -20,7 +20,7 @@ namespace ERP_API.Models
         public string Description { get; set; }
         public int Reserve_ID { get; set; }
         public int Marker_Type_ID { get; set; }
-        public byte[] Status { get; set; }
+        public bool Status { get; set; }
         public System.DateTime Modified { get; set; }
     
         public virtual Marker_Type Marker_Type { get; set; }

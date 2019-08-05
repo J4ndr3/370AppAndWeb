@@ -33,7 +33,7 @@ import { StatusReportComponent } from './status-report/status-report.component';
 import { RangersReportComponent } from './rangers-report/rangers-report.component';
 import { MarkersReportComponent } from './markers-report/markers-report.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import { LoginComponent } from './login/login.component';
@@ -65,6 +65,7 @@ import { AssetComponent } from './asset/asset.component';
 import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { EventTypeComponent } from './event-type/event-type.component';
+import { ERPService } from './erp.service';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { EventTypeComponent } from './event-type/event-type.component';
   ],
   imports: [
     BrowserModule,
+    NgxQRCodeModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -143,7 +145,7 @@ import { EventTypeComponent } from './event-type/event-type.component';
     FullCalendarModule,
     HttpClientModule
   ],
-  providers: [ModifyRangerComponent],
+  providers: [ModifyRangerComponent,GateModComponent,ERPService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

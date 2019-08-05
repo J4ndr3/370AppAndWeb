@@ -22,7 +22,7 @@ namespace ERP_API.Models
         }
     
         public int Marker_Type_ID { get; set; }
-        public byte[] Type { get; set; }
+        public string Type { get; set; }
         public int Points_Worth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

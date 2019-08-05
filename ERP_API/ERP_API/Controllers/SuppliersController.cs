@@ -9,23 +9,43 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods:"*")]
     public class SuppliersController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Suppliers
-        public IQueryable<Supplier> GetSuppliers()
+        public List<dynamic> GetSuppliers()
         {
-            return db.Suppliers;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Supplier> Level = db.Suppliers.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Supplier Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.ID = Item.Supplier_ID;
+                m.Name = Item.Name;
+                m.Contact = Item.Contact;
+                m.Email = Item.Email;
+                m.Address = Item.Address;
+                toReturn.Add(m);
+            }
+            return toReturn;
+
+
+
         }
 
         // GET: api/Suppliers/5
         [ResponseType(typeof(Supplier))]
         public IHttpActionResult GetSupplier(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Supplier supplier = db.Suppliers.Find(id);
             if (supplier == null)
             {
@@ -39,6 +59,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutSupplier(int id, Supplier supplier)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +95,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Supplier))]
         public IHttpActionResult PostSupplier(Supplier supplier)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +111,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Supplier))]
         public IHttpActionResult DeleteSupplier(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Supplier supplier = db.Suppliers.Find(id);
             if (supplier == null)
             {
