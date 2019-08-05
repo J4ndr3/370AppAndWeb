@@ -146,6 +146,12 @@ nID:any;
 
 
   }
+  GetRewardAdd(){
+    return this.http.get('http://localhost:51389/api/Product_Reward')
+  }
+  GetRewardAdd1(){
+    return this.http.get('http://localhost:51389/api/Event_Reward')
+  }
   GetGates() {
     return this.http.get('http://localhost:51389/api/Gates')
   }
