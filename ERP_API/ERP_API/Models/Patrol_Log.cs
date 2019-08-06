@@ -18,8 +18,8 @@ namespace ERP_API.Models
         public Patrol_Log()
         {
             this.Feedbacks = new HashSet<Feedback>();
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
             this.Incident_Image = new HashSet<Incident_Image>();
+            this.Incident_Patrol = new HashSet<Incident_Patrol>();
             this.Patrol_Asset = new HashSet<Patrol_Asset>();
             this.Patrol_Marker = new HashSet<Patrol_Marker>();
             this.Trackings = new HashSet<Tracking>();
@@ -31,15 +31,15 @@ namespace ERP_API.Models
         public string Route { get; set; }
         public System.DateTime Checkin { get; set; }
         public System.DateTime Checkout { get; set; }
-        public byte[] Checked_in { get; set; }
+        public Nullable<bool> Checked_in { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual Patrol_Booking Patrol_Booking { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident_Image> Incident_Image { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrol_Asset> Patrol_Asset { get; set; }
         public virtual Ranger Ranger { get; set; }

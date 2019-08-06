@@ -22,10 +22,10 @@ namespace ERP_API.Models
         }
     
         public int Access_ID { get; set; }
-        public byte[] Web { get; set; }
-        public byte[] Report { get; set; }
-        public byte[] Write { get; set; }
-        public byte[] App { get; set; }
+        public Nullable<bool> Web { get; set; }
+        public Nullable<bool> Report { get; set; }
+        public Nullable<bool> Write { get; set; }
+        public Nullable<bool> App { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ranger> Rangers { get; set; }

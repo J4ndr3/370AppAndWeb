@@ -9,9 +9,12 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RangersController : ApiController
     {
         private INF370Entities db = new INF370Entities();
@@ -19,6 +22,7 @@ namespace ERP_API.Controllers
         // GET: api/Rangers
         public IQueryable<Ranger> GetRangers()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.Rangers;
         }
 

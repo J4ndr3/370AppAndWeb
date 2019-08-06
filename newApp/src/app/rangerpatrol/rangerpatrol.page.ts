@@ -5,7 +5,8 @@ import { Storage } from '@ionic/storage';
 import { filter } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 declare var google;
-
+import {ERPService} from '..//erp.service';
+import { FormBuilder,FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -14,6 +15,12 @@ declare var google;
     styleUrls: ['./rangerpatrol.page.scss'],
 })
 export class RangerpatrolPage implements OnInit {
+    RangerpatrolPage: object;
+AddForm: FormGroup;
+NewRangerpatrolPage:object;
+RangerpatrolPageSelection:number =0;
+RangerpatrolPageOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
+
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     currentMapTrack = null;
@@ -21,7 +28,7 @@ export class RangerpatrolPage implements OnInit {
     trackRoute = [];
     positionSubscription: Subscription;
     @ViewChild('patrolform') containerEltRef: ElementRef;
-    constructor(private renderer: Renderer2, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage) { }
+    constructor(private renderer: Renderer2, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage,private data: ERPService, private formBuilder: FormBuilder) { }
     currentTab = 0;
     ionViewDidLoad() {
         this.plt.ready().then(() => {
@@ -137,6 +144,43 @@ export class RangerpatrolPage implements OnInit {
         //... and adds the "active" class on the current step:
         x[n].className += " active";
     }
+
+    addRangerpatrolPageBtn() {
+        this.AddForm = this.formBuilder.group({
+            BookingReference: [""], // Names for your input
+            EnterQRCode: [""], // Names for your input 
+            EnterQRCode1:[""],
+            Feedback:[""]
+
+        });
+    /* if there is a select/ dropdown use the following method to populate data for it */
+        this.data.Getrangerpatrol().subscribe((res) => {
+          this.RangerpatrolPageOptions = JSON.parse(JSON.stringify(res));
+        }); 
+      }
+    
+      addrangerpatrolpage() {
+        var BookingReference = this.AddForm.get('BookingReference').value; // Names for your input
+        var EnterQRCode = this.AddForm.get('EnterQRCode').value; // Names for your input
+        var EnterQRCode1 = this.AddForm.get('EnterQRCode1').value;
+        var Feedback = this.AddForm.get('Feedback').value;
+    
+        if ((BookingReference||EnterQRCode||EnterQRCode1||Feedback)=="") {
+          //Modal popup
+        }
+        else {
+          this.NewRangerpatrolPage = {
+            "BookingReference": BookingReference, // Names for your input
+            "EnterQRCode": EnterQRCode, // Names for your input
+            "EnterQRCode1": EnterQRCode1,
+            "Feedback": Feedback
+            
+          };
+          this.data.PostRanger(this.NewRangerpatrolPage).subscribe(res => {
+            this.ngOnInit()
+          });}}
+    
+    
 //     startTracking() {
 //         this.isTracking = true;
 //         this.trackRoute = [];

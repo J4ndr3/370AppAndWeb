@@ -4,457 +4,457 @@
     <EntitySetMapping Name="Access_Level">
       <EntityTypeMapping TypeName="INF370Model.Access_Level">
         <MappingFragment StoreEntitySet="Access_Level">
-          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
-          <ScalarProperty Name="Web" ColumnName="Web" />
-          <ScalarProperty Name="Report" ColumnName="Report" />
-          <ScalarProperty Name="Write" ColumnName="Write" />
           <ScalarProperty Name="App" ColumnName="App" />
+          <ScalarProperty Name="Write" ColumnName="Write" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="Web" ColumnName="Web" />
+          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Assets">
       <EntityTypeMapping TypeName="INF370Model.Asset">
         <MappingFragment StoreEntitySet="Asset">
-          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
           <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+          <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Asset_Status">
       <EntityTypeMapping TypeName="INF370Model.Asset_Status">
         <MappingFragment StoreEntitySet="Asset_Status">
-          <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Asset_Type">
       <EntityTypeMapping TypeName="INF370Model.Asset_Type">
         <MappingFragment StoreEntitySet="Asset_Type">
-          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cellphones">
       <EntityTypeMapping TypeName="INF370Model.Cellphone">
         <MappingFragment StoreEntitySet="Cellphone">
-          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Event_Reward">
       <EntityTypeMapping TypeName="INF370Model.Event_Reward">
         <MappingFragment StoreEntitySet="Event_Reward">
-          <ScalarProperty Name="Event_Reward_ID" ColumnName="Event_Reward_ID" />
-          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Location" ColumnName="Location" />
-          <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+          <ScalarProperty Name="Event_Reward_ID" ColumnName="Event_Reward_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Event_Type">
       <EntityTypeMapping TypeName="INF370Model.Event_Type">
         <MappingFragment StoreEntitySet="Event_Type">
-          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Feedbacks">
       <EntityTypeMapping TypeName="INF370Model.Feedback">
         <MappingFragment StoreEntitySet="Feedback">
-          <ScalarProperty Name="Feedback_ID" ColumnName="Feedback_ID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Feedback_ID" ColumnName="Feedback_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Gates">
       <EntityTypeMapping TypeName="INF370Model.Gate">
         <MappingFragment StoreEntitySet="Gate">
-          <ScalarProperty Name="Gate_ID" ColumnName="Gate_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Descriprion" ColumnName="Descriprion" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
           <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Descriprion" ColumnName="Descriprion" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Gate_ID" ColumnName="Gate_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Genders">
       <EntityTypeMapping TypeName="INF370Model.Gender">
         <MappingFragment StoreEntitySet="Gender">
-          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incidents">
       <EntityTypeMapping TypeName="INF370Model.Incident">
         <MappingFragment StoreEntitySet="Incident">
-          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
-          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
+          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
+          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incident_Level">
       <EntityTypeMapping TypeName="INF370Model.Incident_Level">
         <MappingFragment StoreEntitySet="Incident_Level">
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incident_Status">
       <EntityTypeMapping TypeName="INF370Model.Incident_Status">
         <MappingFragment StoreEntitySet="Incident_Status">
-          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incident_Type">
       <EntityTypeMapping TypeName="INF370Model.Incident_Type">
         <MappingFragment StoreEntitySet="Incident_Type">
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Makes">
       <EntityTypeMapping TypeName="INF370Model.Make">
         <MappingFragment StoreEntitySet="Make">
-          <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Markers">
       <EntityTypeMapping TypeName="INF370Model.Marker">
         <MappingFragment StoreEntitySet="Marker">
-          <ScalarProperty Name="Marker_ID" ColumnName="Marker_ID" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Marker_ID" ColumnName="Marker_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Marker_Type">
       <EntityTypeMapping TypeName="INF370Model.Marker_Type">
         <MappingFragment StoreEntitySet="Marker_Type">
-          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Points_Worth" ColumnName="Points_Worth" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Medical_Aid">
       <EntityTypeMapping TypeName="INF370Model.Medical_Aid">
         <MappingFragment StoreEntitySet="Medical_Aid">
-          <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Models">
       <EntityTypeMapping TypeName="INF370Model.Model">
         <MappingFragment StoreEntitySet="Model">
-          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Model1" ColumnName="Model" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Model1" ColumnName="Model" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Notifications">
       <EntityTypeMapping TypeName="INF370Model.Notification">
         <MappingFragment StoreEntitySet="Notification">
-          <ScalarProperty Name="Notification_ID" ColumnName="Notification_ID" />
-          <ScalarProperty Name="Meassage" ColumnName="Meassage" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Meassage" ColumnName="Meassage" />
+          <ScalarProperty Name="Notification_ID" ColumnName="Notification_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="INF370Model.Order">
         <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Order_Line">
       <EntityTypeMapping TypeName="INF370Model.Order_Line">
         <MappingFragment StoreEntitySet="Order_Line">
-          <ScalarProperty Name="Line_ID" ColumnName="Line_ID" />
-          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
-          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
-          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
           <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+          <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+          <ScalarProperty Name="Line_ID" ColumnName="Line_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Organisations">
       <EntityTypeMapping TypeName="INF370Model.Organisation">
         <MappingFragment StoreEntitySet="Organisation">
-          <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Patrol_Booking">
       <EntityTypeMapping TypeName="INF370Model.Patrol_Booking">
         <MappingFragment StoreEntitySet="Patrol_Booking">
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
-          <ScalarProperty Name="End_Time" ColumnName="End_Time" />
-          <ScalarProperty Name="Passenger_ID" ColumnName="Passenger_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
           <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Passenger_ID" ColumnName="Passenger_ID" />
+          <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+          <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Patrol_Log">
       <EntityTypeMapping TypeName="INF370Model.Patrol_Log">
         <MappingFragment StoreEntitySet="Patrol_Log">
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Route" ColumnName="Route" />
-          <ScalarProperty Name="Checkin" ColumnName="Checkin" />
-          <ScalarProperty Name="Checkout" ColumnName="Checkout" />
           <ScalarProperty Name="Checked_in" ColumnName="Checked_in" />
+          <ScalarProperty Name="Checkout" ColumnName="Checkout" />
+          <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_Reward">
       <EntityTypeMapping TypeName="INF370Model.Product_Reward">
         <MappingFragment StoreEntitySet="Product_Reward">
-          <ScalarProperty Name="Product_Reward_ID" ColumnName="Product_Reward_ID" />
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+          <ScalarProperty Name="Product_Reward_ID" ColumnName="Product_Reward_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_Type">
       <EntityTypeMapping TypeName="INF370Model.Product_Type">
         <MappingFragment StoreEntitySet="Product_Type">
-          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rangers">
       <EntityTypeMapping TypeName="INF370Model.Ranger">
         <MappingFragment StoreEntitySet="Ranger">
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Cell" ColumnName="Cell" />
-          <ScalarProperty Name="genderID" ColumnName="genderID" />
-          <ScalarProperty Name="Emerg_Name" ColumnName="Emerg_Name" />
-          <ScalarProperty Name="Emerg_Contact" ColumnName="Emerg_Contact" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
-          <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
-          <ScalarProperty Name="Points" ColumnName="Points" />
-          <ScalarProperty Name="Blood_Type" ColumnName="Blood_Type" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
-          <ScalarProperty Name="OTP" ColumnName="OTP" />
-          <ScalarProperty Name="Smartphone" ColumnName="Smartphone" />
-          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
-          <ScalarProperty Name="GUID" ColumnName="GUID" />
           <ScalarProperty Name="GUID_Exp" ColumnName="GUID_Exp" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+          <ScalarProperty Name="Smartphone" ColumnName="Smartphone" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Blood_Type" ColumnName="Blood_Type" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
+          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Emerg_Contact" ColumnName="Emerg_Contact" />
+          <ScalarProperty Name="Emerg_Name" ColumnName="Emerg_Name" />
+          <ScalarProperty Name="genderID" ColumnName="genderID" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Redeem_Reward">
       <EntityTypeMapping TypeName="INF370Model.Redeem_Reward">
         <MappingFragment StoreEntitySet="Redeem_Reward">
-          <ScalarProperty Name="Redeem_ID" ColumnName="Redeem_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Voucher_code" ColumnName="Voucher_code" />
           <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Voucher_code" ColumnName="Voucher_code" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Redeem_ID" ColumnName="Redeem_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reserves">
       <EntityTypeMapping TypeName="INF370Model.Reserve">
         <MappingFragment StoreEntitySet="Reserve">
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Lat" ColumnName="Lat" />
           <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Security_Company">
       <EntityTypeMapping TypeName="INF370Model.Security_Company">
         <MappingFragment StoreEntitySet="Security_Company">
-          <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Cell" ColumnName="Cell" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Suppliers">
       <EntityTypeMapping TypeName="INF370Model.Supplier">
         <MappingFragment StoreEntitySet="Supplier">
-          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Contact" ColumnName="Contact" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Trackings">
       <EntityTypeMapping TypeName="INF370Model.Tracking">
         <MappingFragment StoreEntitySet="Tracking">
-          <ScalarProperty Name="Tracking_ID" ColumnName="Tracking_ID" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Tracking_ID" ColumnName="Tracking_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User_Role">
       <EntityTypeMapping TypeName="INF370Model.User_Role">
         <MappingFragment StoreEntitySet="User_Role">
-          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
-          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+          <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vehicles">
       <EntityTypeMapping TypeName="INF370Model.Vehicle">
         <MappingFragment StoreEntitySet="Vehicle">
-          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
-          <ScalarProperty Name="Registration" ColumnName="Registration" />
-          <ScalarProperty Name="Colour" ColumnName="Colour" />
-          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
-          <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
           <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
+          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="Registration" ColumnName="Registration" />
+          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Vehicle_Type">
       <EntityTypeMapping TypeName="INF370Model.Vehicle_Type">
         <MappingFragment StoreEntitySet="Vehicle_Type">
-          <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
           <ScalarProperty Name="Type_Description" ColumnName="Type_Description" />
+          <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incident_Image">
       <EntityTypeMapping TypeName="INF370Model.Incident_Image">
         <MappingFragment StoreEntitySet="Incident_Image">
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
+          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Incident_Patrol">
       <EntityTypeMapping TypeName="INF370Model.Incident_Patrol">
         <MappingFragment StoreEntitySet="Incident_Patrol">
-          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
-          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
-          <ScalarProperty Name="Lat" ColumnName="Lat" />
-          <ScalarProperty Name="Lng" ColumnName="Lng" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
+          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
+          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Patrol_Asset">
       <EntityTypeMapping TypeName="INF370Model.Patrol_Asset">
         <MappingFragment StoreEntitySet="Patrol_Asset">
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
-          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Patrol_Marker">
       <EntityTypeMapping TypeName="INF370Model.Patrol_Marker">
         <MappingFragment StoreEntitySet="Patrol_Marker">
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
           <ScalarProperty Name="Date_Time_Passed" ColumnName="Date_Time_Passed" />
+          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ranger_Vehicle">
       <EntityTypeMapping TypeName="INF370Model.Ranger_Vehicle">
         <MappingFragment StoreEntitySet="Ranger_Vehicle">
-          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
-          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
-          <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
           <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
+          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
+          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="Ranger_Reserve" TypeName="INF370Model.Ranger_Reserve" StoreEntitySet="Ranger_Reserve">
-      <EndProperty Name="Ranger">
-        <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-      </EndProperty>
       <EndProperty Name="Reserve">
         <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+      </EndProperty>
+      <EndProperty Name="Ranger">
+        <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

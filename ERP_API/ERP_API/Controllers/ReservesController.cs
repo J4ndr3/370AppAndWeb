@@ -9,17 +9,33 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ReservesController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Reserves
-        public IQueryable<Reserve> GetReserves()
+        public List<dynamic> GetReserves()
         {
-            return db.Reserves;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Reserve> Reserve = db.Reserves.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Reserve Item in Reserve)
+            {
+                dynamic m = new ExpandoObject();
+                m.ID = Item.Reserve_ID;
+                m.Description = Item.Description;
+                m.Name = Item.Name;
+                m.Lat = Item.Lat;
+                m.Lng = Item.Lng;
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Reserves/5
