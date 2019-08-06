@@ -12,21 +12,15 @@ namespace ERP_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Marker
+    public partial class Ranger_Reserve
     {
-        public int Marker_ID { get; set; }
-        public decimal Longitude { get; set; }
-        public decimal Lattitude { get; set; }
-        public string Description { get; set; }
+        public int Ranger_ID { get; set; }
         public int Reserve_ID { get; set; }
-        public int Marker_Type_ID { get; set; }
-        public bool Status { get; set; }
-        public System.DateTime Modified { get; set; }
     
-        public virtual Marker_Type Marker_Type { get; set; }
-        public virtual Marker_Type Marker_Type1 { get; set; }
-        public virtual Marker_Type Marker_Type2 { get; set; }
-        public virtual Marker_Type Marker_Type3 { get; set; }
+        public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
         public virtual Reserve Reserve { get; set; }
         public virtual Reserve Reserve1 { get; set; }
         public virtual Reserve Reserve2 { get; set; }

@@ -18,7 +18,13 @@ namespace ERP_API.Models
         public Vehicle()
         {
             this.Patrol_Booking = new HashSet<Patrol_Booking>();
+            this.Patrol_Booking1 = new HashSet<Patrol_Booking>();
+            this.Patrol_Booking2 = new HashSet<Patrol_Booking>();
+            this.Patrol_Booking3 = new HashSet<Patrol_Booking>();
             this.Ranger_Vehicle = new HashSet<Ranger_Vehicle>();
+            this.Ranger_Vehicle1 = new HashSet<Ranger_Vehicle>();
+            this.Ranger_Vehicle2 = new HashSet<Ranger_Vehicle>();
+            this.Ranger_Vehicle3 = new HashSet<Ranger_Vehicle>();
         }
     
         public int Vehicle_ID { get; set; }
@@ -29,10 +35,28 @@ namespace ERP_API.Models
         public Nullable<bool> Status { get; set; }
     
         public virtual Model Model { get; set; }
+        public virtual Model Model1 { get; set; }
+        public virtual Model Model2 { get; set; }
+        public virtual Model Model3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrol_Booking> Patrol_Booking { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Booking> Patrol_Booking1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Booking> Patrol_Booking2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Booking> Patrol_Booking3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ranger_Vehicle> Ranger_Vehicle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger_Vehicle> Ranger_Vehicle1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger_Vehicle> Ranger_Vehicle2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger_Vehicle> Ranger_Vehicle3 { get; set; }
         public virtual Vehicle_Type Vehicle_Type { get; set; }
+        public virtual Vehicle_Type Vehicle_Type1 { get; set; }
+        public virtual Vehicle_Type Vehicle_Type2 { get; set; }
+        public virtual Vehicle_Type Vehicle_Type3 { get; set; }
     }
 }

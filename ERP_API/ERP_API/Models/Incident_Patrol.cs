@@ -30,13 +30,40 @@ namespace ERP_API.Models
         public string Description { get; set; }
     
         public virtual Incident Incident { get; set; }
+        public virtual Incident Incident1 { get; set; }
+        public virtual Incident Incident2 { get; set; }
+        public virtual Incident Incident3 { get; set; }
         public virtual Incident_Level Incident_Level { get; set; }
+        public virtual Incident_Level Incident_Level1 { get; set; }
+        public virtual Incident_Level Incident_Level2 { get; set; }
+        public virtual Incident_Level Incident_Level3 { get; set; }
         public virtual Incident_Status Incident_Status { get; set; }
+        public virtual Incident_Status Incident_Status1 { get; set; }
+        public virtual Incident_Status Incident_Status2 { get; set; }
+        public virtual Incident_Status Incident_Status3 { get; set; }
         public virtual Incident_Type Incident_Type { get; set; }
+        public virtual Incident_Type Incident_Type1 { get; set; }
+        public virtual Incident_Type Incident_Type2 { get; set; }
+        public virtual Incident_Type Incident_Type3 { get; set; }
         public virtual Patrol_Booking Patrol_Booking { get; set; }
+        public virtual Patrol_Booking Patrol_Booking1 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking2 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking3 { get; set; }
         public virtual Patrol_Log Patrol_Log { get; set; }
+        public virtual Patrol_Log Patrol_Log1 { get; set; }
+        public virtual Patrol_Log Patrol_Log2 { get; set; }
+        public virtual Patrol_Log Patrol_Log3 { get; set; }
         public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
         public virtual Reserve Reserve { get; set; }
+        public virtual Reserve Reserve1 { get; set; }
+        public virtual Reserve Reserve2 { get; set; }
+        public virtual Reserve Reserve3 { get; set; }
         public virtual Security_Company Security_Company { get; set; }
+        public virtual Security_Company Security_Company1 { get; set; }
+        public virtual Security_Company Security_Company2 { get; set; }
+        public virtual Security_Company Security_Company3 { get; set; }
     }
 }

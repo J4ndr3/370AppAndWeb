@@ -23,10 +23,28 @@ namespace ERP_API.Models
         public byte[] Image { get; set; }
     
         public virtual Incident Incident { get; set; }
+        public virtual Incident Incident1 { get; set; }
+        public virtual Incident Incident2 { get; set; }
+        public virtual Incident Incident3 { get; set; }
         public virtual Incident_Level Incident_Level { get; set; }
+        public virtual Incident_Level Incident_Level1 { get; set; }
+        public virtual Incident_Level Incident_Level2 { get; set; }
+        public virtual Incident_Level Incident_Level3 { get; set; }
         public virtual Incident_Type Incident_Type { get; set; }
+        public virtual Incident_Type Incident_Type1 { get; set; }
+        public virtual Incident_Type Incident_Type2 { get; set; }
+        public virtual Incident_Type Incident_Type3 { get; set; }
         public virtual Patrol_Booking Patrol_Booking { get; set; }
+        public virtual Patrol_Booking Patrol_Booking1 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking2 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking3 { get; set; }
         public virtual Patrol_Log Patrol_Log { get; set; }
+        public virtual Patrol_Log Patrol_Log1 { get; set; }
+        public virtual Patrol_Log Patrol_Log2 { get; set; }
+        public virtual Patrol_Log Patrol_Log3 { get; set; }
         public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
     }
 }

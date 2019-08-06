@@ -18,16 +18,34 @@ namespace ERP_API.Models
         public Marker_Type()
         {
             this.Markers = new HashSet<Marker>();
+            this.Markers1 = new HashSet<Marker>();
+            this.Markers2 = new HashSet<Marker>();
+            this.Markers3 = new HashSet<Marker>();
             this.Patrol_Marker = new HashSet<Patrol_Marker>();
+            this.Patrol_Marker1 = new HashSet<Patrol_Marker>();
+            this.Patrol_Marker2 = new HashSet<Patrol_Marker>();
+            this.Patrol_Marker3 = new HashSet<Patrol_Marker>();
         }
     
         public int Marker_Type_ID { get; set; }
-        public string Type { get; set; }
+        public bool Type { get; set; }
         public int Points_Worth { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Marker> Markers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Marker> Markers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Marker> Markers2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Marker> Markers3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrol_Marker> Patrol_Marker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Marker> Patrol_Marker1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Marker> Patrol_Marker2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Marker> Patrol_Marker3 { get; set; }
     }
 }
