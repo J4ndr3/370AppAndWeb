@@ -23,7 +23,6 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Level
         public List<dynamic> GetIncident_Level()
         {
-
             db.Configuration.ProxyCreationEnabled = false;
             List<Incident_Level> Level = db.Incident_Level.ToList();
             List<dynamic> toReturn = new List<dynamic>();

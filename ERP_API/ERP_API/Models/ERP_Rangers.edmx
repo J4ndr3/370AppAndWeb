@@ -2406,9 +2406,15 @@ error 6004: The table 'INF370.dbo.Asset_Supplier' is referenced by a relationshi
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Cell" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="genderID" Type="Int32" Nullable="false" />
+<<<<<<< HEAD
           <Property Name="Emerg_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Emerg_Contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="Binary" MaxLength="1" FixedLength="true" Nullable="true" />
+=======
+          <Property Name="Emerg_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emerg_Contact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+>>>>>>> 993975f3856e9ae1db571bf6c6b167cede4e996b
           <Property Name="User_Role_ID" Type="Int32" Nullable="false" />
           <Property Name="Medical_Aid_ID" Type="Int32" Nullable="false" />
           <Property Name="Points" Type="Int32" Nullable="false" />
