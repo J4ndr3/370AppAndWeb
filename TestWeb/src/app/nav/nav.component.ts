@@ -17,8 +17,8 @@ export class NavComponent implements OnInit {
   autoHide: number = 10000;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  
-
+  err:any;
+  message:any;
 
   addExtraClass: boolean = false;
   constructor(public snackBar: MatSnackBar, private router: Router ) {}

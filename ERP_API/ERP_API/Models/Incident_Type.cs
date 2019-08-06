@@ -18,8 +18,8 @@ namespace ERP_API.Models
         public Incident_Type()
         {
             this.Incidents = new HashSet<Incident>();
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
             this.Incident_Image = new HashSet<Incident_Image>();
+            this.Incident_Patrol = new HashSet<Incident_Patrol>();
         }
     
         public int Incident_Type_ID { get; set; }
@@ -30,8 +30,8 @@ namespace ERP_API.Models
         public virtual ICollection<Incident> Incidents { get; set; }
         public virtual Incident_Level Incident_Level { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident_Image> Incident_Image { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
     }
 }

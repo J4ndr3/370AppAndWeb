@@ -9,23 +9,53 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GatesController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Gates
-        public IQueryable<Gate> GetGates()
+        public List<dynamic> GetGates()
         {
-            return db.Gates;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Gate> Gate = db.Gates.Include(zz => zz.Reserve).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Gate Item in Gate)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Gate_ID;
+                    m.Descriprion = Item.Descriprion;
+                    m.Reserve = Item.Reserve.Name;
+                    m.Lattitude = Item.Lattitude;
+                    m.Longitude = Item.Longitude;
+                    m.Name = Item.Name;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+            
+            
         }
 
         // GET: api/Gates/5
         [ResponseType(typeof(Gate))]
         public IHttpActionResult GetGate(int id)
         {
+
+            db.Configuration.ProxyCreationEnabled = false;
             Gate gate = db.Gates.Find(id);
             if (gate == null)
             {
@@ -39,6 +69,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGate(int id, Gate gate)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +105,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Gate))]
         public IHttpActionResult PostGate(Gate gate)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +121,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Gate))]
         public IHttpActionResult DeleteGate(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Gate gate = db.Gates.Find(id);
             if (gate == null)
             {

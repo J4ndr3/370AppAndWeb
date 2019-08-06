@@ -9,23 +9,37 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Product_TypeController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Product_Type
-        public IQueryable<Product_Type> GetProduct_Type()
+        public List<dynamic> GetProduct_Type()
         {
-            return db.Product_Type;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Product_Type> Level = db.Product_Type.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Product_Type Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.ID = Item.Prod_ID;
+                m.Description = Item.Description;
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Product_Type/5
         [ResponseType(typeof(Product_Type))]
         public IHttpActionResult GetProduct_Type(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Product_Type product_Type = db.Product_Type.Find(id);
             if (product_Type == null)
             {
@@ -39,6 +53,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct_Type(int id, Product_Type product_Type)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +89,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Product_Type))]
         public IHttpActionResult PostProduct_Type(Product_Type product_Type)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +105,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Product_Type))]
         public IHttpActionResult DeleteProduct_Type(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Product_Type product_Type = db.Product_Type.Find(id);
             if (product_Type == null)
             {

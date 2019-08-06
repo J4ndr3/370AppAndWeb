@@ -38,22 +38,23 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         ASSETS
     </a>
-    <div class="dropdown-menu">
-            <a routerLink="/order"class="dropdown-item">- Order</a>
-        <a routerLink="/supplier"class="dropdown-item">- Supplier</a>
-        <a routerLink="/asset"class="dropdown-item">- Asset</a>
-        
-        
-    </div>
-</li>
+                    <div class="dropdown-menu">
+                        <a routerLink="/order" class="dropdown-item">- Order</a>
+                        <a routerLink="/supplier" class="dropdown-item">- Supplier</a>
+                        <a routerLink="/asset" class="dropdown-item">- Asset</a>
 
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         REWARDS
       </a>
                     <div class="dropdown-menu">
                         <a routerLink="/reward-add" class="dropdown-item">- Reward</a>
-
+                        <a routerLink="/event-type" class="dropdown-item">- Event Type</a>
+                        <a routerLink="/product-type" class="dropdown-item">- Product Type</a>
                     </div>
                 </li>
 
@@ -172,10 +173,27 @@
                     <div class="form-group">
                         <textarea class="form-control" id="Message" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
                     </div>
-                    <button class="btn btn-default btn-sm"  style="float:left !important"><img
+                    <button class="btn btn-default btn-sm" style="float:left !important"><img
                         src="/assets/ios-trash copy.svg" style="height:30px !important;" /></button>
                     <button type="submit" class="btn btn-default" style="float: right !important;" mat-button (click)="openSnackBar1()" data-dismiss="modal" id="modalClose">Send Message</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal for general error -->
+<a hidden data-toggle="modal" data-target="#genErr" id="generalMod"></a>
+<div class="modal fade" id="genErr" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Unexpected error has occured please try again later!</p>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
             </div>
         </div>
     </div>

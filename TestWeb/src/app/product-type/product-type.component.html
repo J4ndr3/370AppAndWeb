@@ -1,11 +1,11 @@
 <h1>
-    INCIDENT LEVEL</h1>
+    PRODUCT TYPE</h1>
 <hr class="hrow" />
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
     <div class="button">
         <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
-      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+  <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
     </div>
 
     <div class="search">
@@ -24,20 +24,20 @@
 <div class="inner collapse" id="demo">
     <div class="close">
         <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
-      <img src="/assets/ios-close.svg" class="closePic" /></button>
+  <img src="/assets/ios-close.svg" class="closePic" /></button>
     </div>
 
     <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
     <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
     <div class="inputForm">
         <br>
-        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addLevel()">
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addProductType()">
 
             <div class="form-group">
-                <h2 class="Header">Add Incident Level</h2>
+                <h2 class="Header">Add Product Type</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="Level Description..." formControlName="Description"  name="Level" required>
+                    <input type="text" class="form-control" id="Level" placeholder="Type Description..." name="Level" formControlName="Description" required>
                 </div>
             </div>
 
@@ -60,18 +60,18 @@
         <thead>
             <tr id="header">
                 <th></th>
-                <th style="text-align: left;">Incident Level Description</th>
+                <th style="text-align: left;">Product Type Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Level of IncidentLevel" >
+            <tr *ngFor="let ProductType of ProductTypes">
                 <td></td>
-                <td style="text-align: left;">{{Level.Description}}</td>
+                <td style="text-align: left;">{{ProductType.Description}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)=EditLevel(Level.ID)><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)=DeleteLevel(Level.ID)><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
+          class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)=DeleteLevel(Level.ID)><img
+          src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
         </tbody>
     </table>
@@ -114,43 +114,43 @@
 </div>
 
 <!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
-            style="width:40px; margin-top:0px;" />Error</h4>
-        <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>The input provided is incorrect. Please try again.</p>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
-          id="modalClose">Close</button>
-      </div>
-    </div>
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
+        style="width:40px; margin-top:0px;" />Error</h4>
+    <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
   </div>
+  <div class="modal-body">
+    <p>The input provided is incorrect. Please try again.</p>
+    <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
+      id="modalClose">Close</button>
+  </div>
+</div>
+</div>
 </div> -->
 
 <!-- <script>
-    function selectColor() {
-    var x = document.getElementById("Select1").value;
-    if(x != "Gender..."){
-      document.getElementById("Select1").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-    function selectColor1() {
-    var x = document.getElementById("Select2").value;
-    if(x != "Status..."){
-      document.getElementById("Select2").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select2").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-  </script> -->
+function selectColor() {
+var x = document.getElementById("Select1").value;
+if(x != "Gender..."){
+  document.getElementById("Select1").style="color: white !important";
+}
+else
+{
+  document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
+}
+}
+
+function selectColor1() {
+var x = document.getElementById("Select2").value;
+if(x != "Status..."){
+  document.getElementById("Select2").style="color: white !important";
+}
+else
+{
+  document.getElementById("Select2").style.color = "rgb(126,206,208) !important;";
+}
+}
+
+</script> -->

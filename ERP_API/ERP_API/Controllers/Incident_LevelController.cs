@@ -11,7 +11,6 @@ using System.Web.Http.Description;
 using ERP_API.Models;
 using System.Dynamic;
 using System.Web.Http.Cors;
-
 namespace ERP_API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
@@ -24,33 +23,27 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Level
         public List<dynamic> GetIncident_Level()
         {
-
-            try
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Incident_Level> Level = db.Incident_Level.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Incident_Level Item in Level)
             {
-
-                db.Configuration.ProxyCreationEnabled = false;
-                List<Incident_Level> Level = db.Incident_Level.ToList();
-                List<dynamic> toReturn = new List<dynamic>();
-                foreach (Incident_Level Item in Level)
-                {
-                    dynamic m = new ExpandoObject();
-                    m.ID = Item.Incident_Level_ID;
-                    m.Description = Item.Description;
-                    toReturn.Add(m);
-                }
-                return toReturn;
-
+                dynamic m = new ExpandoObject();
+                m.ID = Item.Incident_Level_ID;
+                m.Description = Item.Description;
+                toReturn.Add(m);
             }
-            catch (Exception err)
-            {
-                return BadRequest(err);
-            }
+            return toReturn;
+
         }
+
 
         // GET: api/Incident_Level/5
         [ResponseType(typeof(Incident_Level))]
         public IHttpActionResult GetIncident_Level(int id)
         {
+ 
+                db.Configuration.ProxyCreationEnabled = false;
             Incident_Level incident_Level = db.Incident_Level.Find(id);
             if (incident_Level == null)
             {
@@ -58,6 +51,7 @@ namespace ERP_API.Controllers
             }
 
             return Ok(incident_Level);
+
         }
 
         // PUT: api/Incident_Level/5
@@ -101,6 +95,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Level))]
         public IHttpActionResult PostIncident_Level(Incident_Level incident_Level)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             try
             {
                 string response = "";
@@ -134,18 +129,19 @@ namespace ERP_API.Controllers
         public IHttpActionResult DeleteIncident_Level(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
+         
+                Incident_Level incident_Level = db.Incident_Level.Find(id);
+                if (incident_Level == null)
+                {
+                    return NotFound();
+                }
+                db.Incident_Level.Remove(incident_Level);
+                db.SaveChanges();
 
-            Incident_Level incident_Level = db.Incident_Level.Find(id);
-            if (incident_Level == null)
-            {
-                return NotFound();
+                return Ok(incident_Level);
             }
 
-            db.Incident_Level.Remove(incident_Level);
-            db.SaveChanges();
-
-            return Ok(incident_Level);
-        }
+        
 
         protected override void Dispose(bool disposing)
         {

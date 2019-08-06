@@ -4,120 +4,120 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a29bcb62a25944cb91c4ea8dbdb01605" Name="Diagram1">
-        <EntityTypeShape EntityType="INF370Model.Access_Level" Width="1.5" PointX="0.75" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Asset" Width="1.5" PointX="16" PointY="50.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Asset_Status" Width="1.5" PointX="13.75" PointY="50" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Asset_Type" Width="1.5" PointX="13.75" PointY="52.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Cellphone" Width="1.5" PointX="7.5" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Event_Reward" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Event_Type" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Feedback" Width="1.5" PointX="10.5" PointY="33.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Gate" Width="1.5" PointX="9.75" PointY="44.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Gender" Width="1.5" PointX="3" PointY="31.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident" Width="1.5" PointX="13" PointY="22.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident_Level" Width="1.5" PointX="8.5" PointY="24.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident_Status" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident_Type" Width="1.5" PointX="10.75" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Make" Width="1.5" PointX="3" PointY="50.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Marker" Width="1.5" PointX="12.75" PointY="46.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Marker_Type" Width="1.5" PointX="16" PointY="45.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Medical_Aid" Width="1.5" PointX="3" PointY="34" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Model" Width="1.5" PointX="5.25" PointY="50.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Notification" Width="1.5" PointX="7.5" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Order" Width="1.5" PointX="16" PointY="55.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Order_Line" Width="1.5" PointX="18.25" PointY="51.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Organisation" Width="1.5" PointX="3" PointY="36.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Patrol_Booking" Width="1.5" PointX="9.75" PointY="37.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Patrol_Log" Width="1.5" PointX="13" PointY="35.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Product_Reward" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Product_Type" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Ranger" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Redeem_Reward" Width="1.5" PointX="7.5" PointY="42.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Reserve" Width="1.5" PointX="7.5" PointY="46" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Security_Company" Width="1.5" PointX="9.75" PointY="51.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Supplier" Width="1.5" PointX="13.75" PointY="55.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Tracking" Width="1.5" PointX="15.25" PointY="30.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.User_Role" Width="1.5" PointX="3" PointY="41.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Vehicle" Width="1.5" PointX="7.5" PointY="51.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Vehicle_Type" Width="1.5" PointX="5.25" PointY="53.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident_Image" Width="1.5" PointX="15.25" PointY="34.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Incident_Patrol" Width="1.5" PointX="15.25" PointY="39.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Patrol_Asset" Width="1.5" PointX="18.25" PointY="34.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Patrol_Marker" Width="1.5" PointX="18.25" PointY="39.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="INF370Model.Ranger_Vehicle" Width="1.5" PointX="7.5" PointY="37.375" IsExpanded="true" />
-        <AssociationConnector Association="INF370Model.FK__Ranger__Access_I__1ED998B2" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__User_Role__Acces__1273C1CD" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Asset__Asset_Sta__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Asset__Asset_Typ__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Order_Lin__Asset__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_As__Asset__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Order_Lin__Asset__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_As__Asset__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Cellphone__Range__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Event_Rew__Type___1CBC4616" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Feedback__Patrol__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Feedback__Patrol__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Feedback__Ranger__60A75C0F" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Gate__Reserve_ID__0D7A0286" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger__genderID__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__70DDC3D8" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident__Incide__6A30C649" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident__Incide__6B24EA82" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident__Incide__6C190EBB" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__656C112C" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__72C60C4A" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__7F2BE32F" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__73BA3083" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__71D1E811" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Incid__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Model__Make_ID__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Make___300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Marker__Marker_T__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Marker__Reserve___03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Marke__0A9D95DB" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger__Medical___1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Model__2F10007B" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Vehicle__Model_I__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Notificat__Range__5BE2A6F2" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Order__Supplier___49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Order_Lin__Order__4E88ABD4" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Order_Lin__Suppl__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger__Organisa__1DE57479" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Patro__75A278F5" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Patro__7B5B524B" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_As__Patro__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Passe__37A5467C" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Range__36B12243" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Reser__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Vehic__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Lo__Patro__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Patro__07C12930" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Tracking__Patrol__208CD6FA" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Patro__74AE54BC" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Patro__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_As__Patro__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Lo__Range__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Patro__06CD04F7" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Tracking__Patrol__1F98B2C1" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Product_R__Prod___17F790F9" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Range__76969D2E" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Range__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_As__Range__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Range__08B54D69" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger__User_Rol__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Range__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Redeem_Re__Range__1332DBDC" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Tracking__Ranger__2180FB33" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Reser__778AC167" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Reser__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Security___Reser__6EF57B66" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Incident___Secur__787EE5A0" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Vehic__2E1BDC42" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Vehicle__Vehicle__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Vehic__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="INF370Model.Ranger_Reserve" ManuallyRouted="false" />
+      <Diagram DiagramId="a29bcb62a25944cb91c4ea8dbdb01605" Name="Diagram1" ZoomLevel="112">
+        <EntityTypeShape EntityType="INF370Model.Access_Level" Width="1.5" PointX="0.75" PointY="26.5" />
+        <EntityTypeShape EntityType="INF370Model.Asset" Width="1.5" PointX="18" PointY="23.25" />
+        <EntityTypeShape EntityType="INF370Model.Asset_Status" Width="1.5" PointX="15.75" PointY="25.125" />
+        <EntityTypeShape EntityType="INF370Model.Asset_Type" Width="1.5" PointX="15.75" PointY="22.375" />
+        <EntityTypeShape EntityType="INF370Model.Cellphone" Width="1.5" PointX="7.5" PointY="46.625" />
+        <EntityTypeShape EntityType="INF370Model.Event_Reward" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="INF370Model.Event_Type" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="INF370Model.Feedback" Width="1.5" PointX="15" PointY="33.375" />
+        <EntityTypeShape EntityType="INF370Model.Gate" Width="1.5" PointX="9.75" PointY="28" />
+        <EntityTypeShape EntityType="INF370Model.Gender" Width="1.5" PointX="3" PointY="36.375" />
+        <EntityTypeShape EntityType="INF370Model.Incident" Width="1.5" PointX="15.75" PointY="46.625" />
+        <EntityTypeShape EntityType="INF370Model.Incident_Level" Width="1.5" PointX="11.25" PointY="45.75" />
+        <EntityTypeShape EntityType="INF370Model.Incident_Status" Width="1.5" PointX="13.5" PointY="48.75" />
+        <EntityTypeShape EntityType="INF370Model.Incident_Type" Width="1.5" PointX="13.5" PointY="45.625" />
+        <EntityTypeShape EntityType="INF370Model.Make" Width="1.5" PointX="6" PointY="43.5" />
+        <EntityTypeShape EntityType="INF370Model.Marker" Width="1.5" PointX="12.75" PointY="29.25" />
+        <EntityTypeShape EntityType="INF370Model.Marker_Type" Width="1.5" PointX="10.5" PointY="31.75" />
+        <EntityTypeShape EntityType="INF370Model.Medical_Aid" Width="1.5" PointX="3" PointY="31.625" />
+        <EntityTypeShape EntityType="INF370Model.Model" Width="1.5" PointX="8.25" PointY="43.125" />
+        <EntityTypeShape EntityType="INF370Model.Notification" Width="1.5" PointX="7.5" PointY="49.375" />
+        <EntityTypeShape EntityType="INF370Model.Order" Width="1.5" PointX="18" PointY="19" />
+        <EntityTypeShape EntityType="INF370Model.Order_Line" Width="1.5" PointX="20.25" PointY="22.75" />
+        <EntityTypeShape EntityType="INF370Model.Organisation" Width="1.5" PointX="3" PointY="34" />
+        <EntityTypeShape EntityType="INF370Model.Patrol_Booking" Width="1.5" PointX="12.75" PointY="32.875" />
+        <EntityTypeShape EntityType="INF370Model.Patrol_Log" Width="1.5" PointX="15" PointY="27.875" />
+        <EntityTypeShape EntityType="INF370Model.Product_Reward" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="INF370Model.Product_Type" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="INF370Model.Ranger" Width="1.5" PointX="5.25" PointY="30.375" />
+        <EntityTypeShape EntityType="INF370Model.Redeem_Reward" Width="1.5" PointX="7.5" PointY="52.125" />
+        <EntityTypeShape EntityType="INF370Model.Reserve" Width="1.5" PointX="7.5" PointY="29" />
+        <EntityTypeShape EntityType="INF370Model.Security_Company" Width="1.5" PointX="9.75" PointY="34.75" />
+        <EntityTypeShape EntityType="INF370Model.Supplier" Width="1.5" PointX="15.75" PointY="18.875" />
+        <EntityTypeShape EntityType="INF370Model.Tracking" Width="1.5" PointX="20.25" PointY="36.125" />
+        <EntityTypeShape EntityType="INF370Model.User_Role" Width="1.5" PointX="3" PointY="41.125" />
+        <EntityTypeShape EntityType="INF370Model.Vehicle" Width="1.5" PointX="10.5" PointY="41.625" />
+        <EntityTypeShape EntityType="INF370Model.Vehicle_Type" Width="1.5" PointX="8.25" PointY="40.625" />
+        <EntityTypeShape EntityType="INF370Model.Incident_Image" Width="1.5" PointX="15" PointY="37" />
+        <EntityTypeShape EntityType="INF370Model.Incident_Patrol" Width="1.5" PointX="18" PointY="31.375" />
+        <EntityTypeShape EntityType="INF370Model.Patrol_Asset" Width="1.5" PointX="20.25" PointY="32.125" />
+        <EntityTypeShape EntityType="INF370Model.Patrol_Marker" Width="1.5" PointX="20.25" PointY="28" />
+        <EntityTypeShape EntityType="INF370Model.Ranger_Vehicle" Width="1.5" PointX="7.5" PointY="33.375" />
+        <AssociationConnector Association="INF370Model.FK__Ranger__Access_I__0F624AF8" />
+        <AssociationConnector Association="INF370Model.FK__User_Role__Acces__1F98B2C1" />
+        <AssociationConnector Association="INF370Model.FK__Asset__Asset_Sta__59FA5E80" />
+        <AssociationConnector Association="INF370Model.FK__Asset__Asset_Typ__5AEE82B9" />
+        <AssociationConnector Association="INF370Model.FK__Order_Lin__Asset__7B5B524B" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_As__Asset__7F2BE32F" />
+        <AssociationConnector Association="INF370Model.FK__Order_Lin__Asset__7C4F7684" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_As__Asset__00200768" />
+        <AssociationConnector Association="INF370Model.FK__Cellphone__Range__5EBF139D" />
+        <AssociationConnector Association="INF370Model.FK__Event_Rew__Type___5FB337D6" />
+        <AssociationConnector Association="INF370Model.FK__Feedback__Patrol__60A75C0F" />
+        <AssociationConnector Association="INF370Model.FK__Feedback__Patrol__619B8048" />
+        <AssociationConnector Association="INF370Model.FK__Feedback__Ranger__628FA481" />
+        <AssociationConnector Association="INF370Model.FK__Gate__Reserve_ID__6383C8BA" />
+        <AssociationConnector Association="INF370Model.FK__Ranger__genderID__10566F31" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__6754599E" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__6D0D32F4" />
+        <AssociationConnector Association="INF370Model.FK__Incident__Incide__6477ECF3" />
+        <AssociationConnector Association="INF370Model.FK__Incident__Incide__656C112C" />
+        <AssociationConnector Association="INF370Model.FK__Incident__Incide__66603565" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__693CA210" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__6EF57B66" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__75A278F5" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__6FE99F9F" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__68487DD7" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Incid__6E01572D" />
+        <AssociationConnector Association="INF370Model.FK__Model__Make_ID__787EE5A0" />
+        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Make___160F4887" />
+        <AssociationConnector Association="INF370Model.FK__Marker__Marker_T__76969D2E" />
+        <AssociationConnector Association="INF370Model.FK__Marker__Reserve___778AC167" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Marke__09A971A2" />
+        <AssociationConnector Association="INF370Model.FK__Ranger__Medical___114A936A" />
+        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Model__17036CC0" />
+        <AssociationConnector Association="INF370Model.FK__Vehicle__Model_I__208CD6FA" />
+        <AssociationConnector Association="INF370Model.FK__Notificat__Range__797309D9" />
+        <AssociationConnector Association="INF370Model.FK__Order__Supplier___7A672E12" />
+        <AssociationConnector Association="INF370Model.FK__Order_Lin__Order__7D439ABD" />
+        <AssociationConnector Association="INF370Model.FK__Order_Lin__Suppl__7E37BEF6" />
+        <AssociationConnector Association="INF370Model.FK__Ranger__Organisa__123EB7A3" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Patro__6B24EA82" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Patro__71D1E811" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_As__Patro__02084FDA" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Passe__03F0984C" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Range__04E4BC85" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Reser__05D8E0BE" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Bo__Vehic__06CD04F7" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Lo__Patro__07C12930" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Patro__0B91BA14" />
+        <AssociationConnector Association="INF370Model.FK__Tracking__Patrol__1DB06A4F" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Patro__6A30C649" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Patro__70DDC3D8" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_As__Patro__01142BA1" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Lo__Range__08B54D69" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Patro__0A9D95DB" />
+        <AssociationConnector Association="INF370Model.FK__Tracking__Patrol__1CBC4616" />
+        <AssociationConnector Association="INF370Model.FK__Product_R__Prod___0E6E26BF" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Range__6C190EBB" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Range__72C60C4A" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_As__Range__02FC7413" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Range__0C85DE4D" />
+        <AssociationConnector Association="INF370Model.FK__Ranger__User_Rol__1332DBDC" />
+        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Range__17F790F9" />
+        <AssociationConnector Association="INF370Model.FK__Redeem_Re__Range__1AD3FDA4" />
+        <AssociationConnector Association="INF370Model.FK__Tracking__Ranger__1EA48E88" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Reser__73BA3083" />
+        <AssociationConnector Association="INF370Model.FK__Patrol_Ma__Reser__0D7A0286" />
+        <AssociationConnector Association="INF370Model.FK__Security___Reser__1BC821DD" />
+        <AssociationConnector Association="INF370Model.FK__Incident___Secur__74AE54BC" />
+        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Vehic__18EBB532" />
+        <AssociationConnector Association="INF370Model.FK__Vehicle__Vehicle__2180FB33" />
+        <AssociationConnector Association="INF370Model.FK__Ranger_Ve__Vehic__19DFD96B" />
+        <AssociationConnector Association="INF370Model.Ranger_Reserve" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

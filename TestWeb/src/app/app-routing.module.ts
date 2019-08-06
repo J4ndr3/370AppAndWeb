@@ -48,6 +48,8 @@ import { AssetComponent } from './asset/asset.component';
 import { OrderComponent } from './order/order.component';
 import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ModifyOrderComponent } from './modify-order/modify-order.component';
+import { EventTypeComponent } from './event-type/event-type.component';
+import { ProductTypeComponent } from './product-type/product-type.component';
 
 
 const routes: Routes = [
@@ -99,7 +101,8 @@ const routes: Routes = [
   {path: 'order', component: OrderComponent},
   {path: 'modify-asset', component: ModifyAssetComponent},
   {path: 'modify-order', component: ModifyOrderComponent},
-
+  {path: 'event-type', component: EventTypeComponent},
+  {path: 'product-type', component: ProductTypeComponent},
 ];
 
 @NgModule({

@@ -9,19 +9,56 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Incident_PatrolController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Patrol
-        public IQueryable<Incident_Patrol> GetIncident_Patrol()
+        public List<dynamic> GetIncident_Patrol()
         {
-            return db.Incident_Patrol;
-        }
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Incident_Patrol> incidents = db.Incident_Patrol
+                    .Include(zz => zz.Incident_Type).
+                    Include(zz => zz.Incident_Status).
+                    Include(zz => zz.Incident_Level).
+                    Include(zz => zz.Ranger).
+                    Include(zz => zz.Incident).
+                    Where(x => x.Incident_Status.Incident_Status_ID == 2).ToList();
+                
+                foreach (Incident_Patrol Item in incidents)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Incident_ID;
+                    m.Description = Item.Incident.Description;
+                    m.Type = Item.Incident_Type.Description;
+                    m.Level = Item.Incident_Level.Description;
+                    m.Date = Item.Incident_Status.Description;
 
+                    m.Time = Item.Date + Item.Time;
+                    m.Lat = Item.Lat;
+                    m.lng = Item.Lng;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch(Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+            
+            
+        }
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult GetIncident_Patrol(int id)
