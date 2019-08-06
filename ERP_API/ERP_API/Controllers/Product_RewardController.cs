@@ -9,23 +9,40 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
-
+using System.Dynamic;
+using System.Web.Http.Cors;
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Product_RewardController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Product_Reward
-        public IQueryable<Product_Reward> GetProduct_Reward()
+        public List<dynamic>GetProduct_Reward()
         {
-            return db.Product_Reward;
+
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Product_Reward> Level = db.Product_Reward.Include(zz=>zz.Product_Type).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Product_Reward Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.PName = Item.Name;
+                m.PQuantity = Item.Quantity;
+                m.PPoints = Item.Points;
+                m.PDescription = Item.Product_Type.Description;
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Product_Reward/5
         [ResponseType(typeof(Product_Reward))]
         public IHttpActionResult GetProduct_Reward(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             Product_Reward product_Reward = db.Product_Reward.Find(id);
             if (product_Reward == null)
             {
@@ -39,6 +56,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct_Reward(int id, Product_Reward product_Reward)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +92,8 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Product_Reward))]
         public IHttpActionResult PostProduct_Reward(Product_Reward product_Reward)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +109,8 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Product_Reward))]
         public IHttpActionResult DeleteProduct_Reward(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
+
             Product_Reward product_Reward = db.Product_Reward.Find(id);
             if (product_Reward == null)
             {

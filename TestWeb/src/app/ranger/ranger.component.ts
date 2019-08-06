@@ -115,11 +115,11 @@ export class RangerComponent implements OnInit {
     this.toastrService.show("Record added successfully", "Success!");
   }
   edit(ID){
-    this.mod.edit(1);
+    this.mod.edit(ID);
   }
   sendNote(){
     console.log("hit");
-    this.data.sendNotif("Test fire","Hallo werk die.").subscribe(resp=>{console.log(resp);});
+    this.data.sendNotif("Test fire","Hallo werk die.");
     
   }
 }
