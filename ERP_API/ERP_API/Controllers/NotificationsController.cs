@@ -9,19 +9,45 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Web.Http.Cors;
+using System.Dynamic;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class NotificationsController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Notifications
-        public IQueryable<Notification> GetNotifications()
+        public List<dynamic> GetNotifications()
         {
-            return db.Notifications;
-        }
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Notification> note = db.Notifications
+                    .Include(zz=>zz.Ranger).ToList();
 
+                foreach (Notification Item in note)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Notification_ID;
+                    m.Date = Item.Date;
+                    m.Message = Item.Meassage;
+                    m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+
+
+        }
         // GET: api/Notifications/5
         [ResponseType(typeof(Notification))]
         public IHttpActionResult GetNotification(int id)

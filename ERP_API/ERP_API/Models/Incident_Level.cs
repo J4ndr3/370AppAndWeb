@@ -18,9 +18,21 @@ namespace ERP_API.Models
         public Incident_Level()
         {
             this.Incidents = new HashSet<Incident>();
-            this.Incident_Image = new HashSet<Incident_Image>();
+            this.Incidents1 = new HashSet<Incident>();
+            this.Incidents2 = new HashSet<Incident>();
+            this.Incidents3 = new HashSet<Incident>();
             this.Incident_Patrol = new HashSet<Incident_Patrol>();
             this.Incident_Type = new HashSet<Incident_Type>();
+            this.Incident_Image = new HashSet<Incident_Image>();
+            this.Incident_Patrol1 = new HashSet<Incident_Patrol>();
+            this.Incident_Type1 = new HashSet<Incident_Type>();
+            this.Incident_Image1 = new HashSet<Incident_Image>();
+            this.Incident_Patrol2 = new HashSet<Incident_Patrol>();
+            this.Incident_Type2 = new HashSet<Incident_Type>();
+            this.Incident_Type3 = new HashSet<Incident_Type>();
+            this.Incident_Patrol3 = new HashSet<Incident_Patrol>();
+            this.Incident_Image2 = new HashSet<Incident_Image>();
+            this.Incident_Image3 = new HashSet<Incident_Image>();
         }
     
         public int Incident_Level_ID { get; set; }
@@ -29,10 +41,34 @@ namespace ERP_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident> Incidents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image { get; set; }
+        public virtual ICollection<Incident> Incidents1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident> Incidents2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident> Incidents3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident_Type> Incident_Type { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Image> Incident_Image { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Patrol> Incident_Patrol1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Type> Incident_Type1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Image> Incident_Image1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Patrol> Incident_Patrol2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Type> Incident_Type2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Type> Incident_Type3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Patrol> Incident_Patrol3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Image> Incident_Image2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incident_Image> Incident_Image3 { get; set; }
     }
 }

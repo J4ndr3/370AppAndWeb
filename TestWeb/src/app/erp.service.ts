@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { url } from 'inspector';
 import { HttpHeaders } from '@angular/common/http';
+import {NavComponent} from '../app/nav/nav.component'
 // declare var require: any;
 @Injectable({
   providedIn: 'root'
 })
 export class ERPService {
-nID:any;
-  constructor(private http: HttpClient) { }
+  nError:any;
+  nMessage:any;
+  nID:any;
+  constructor(private http: HttpClient,private nav:NavComponent) { }
   GetRanger() {
     return this.http.get('http://localhost:30264/api/Caus')
   }
@@ -92,6 +95,12 @@ nID:any;
   DeleteIncident_Level(id) {
     return this.http.delete('http://localhost:51389/api/Incident_Level/' + id)
   }
+  PostIncident_Level(obj){
+    return this.http.post('http://localhost:51389/api/Incident_Level', obj)
+  }
+  GetIncidents(){
+    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+  }
   sendNotif(title, message) {
     // const httpOptions = {
     //   headers: new HttpHeaders({
@@ -152,6 +161,52 @@ nID:any;
   GetRewardAdd1(){
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
+  PostRewardAdd(obj){
+    return this.http.post('http://localhost:51389/api/Product_Reward', obj)
+  }
+  PostRewardAdd1(obj){
+    return this.http.post('http://localhost:51389/api/Event_Reward', obj)
+  }
+  GetEventType(){
+    return this.http.get('http://localhost:51389/api/Event_Type')
+  }
+  PostEventType(obj){
+    return this.http.post('http://localhost:51389/api/Event_Type', obj)
+  }
+  GetProductType(){
+    return this.http.get('http://localhost:51389/api/Product_Type')
+  }
+  PostProductType(obj){
+    return this.http.post('http://localhost:51389/api/Product_Type', obj)
+  }
+  GetAsset(){
+    return this.http.get('http://localhost:51389/api/Asset')
+  }
+  GetSupplier(){
+    return this.http.get('http://localhost:51389/api/Supplier')
+  }
+  PostSupplier(obj) {
+    return this.http.post('http://localhost:51389/api/Supplier', obj)
+  }
+  // sendNotif(title,message) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Postman-Token': '7946b969-a677-4a17-8fc0-23e6a5f1081d',
+  //       'cache-control': 'no-cache',
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'key=AAAAqtm61OY:APA91bFuJ-nIBwEtNOviWzhO7lJCyeaIS84Ay2XP9CjY-hHe4O6GR7XVHAL7TVzjd5pLwRZ6wQgwFbKYMKrdIFMthWtpLFMRCjOUyONqXvoTkgxqAqfZ-0dyuet0p2s-DhvujLydLfZT'
+  //     })
+  //   };
+  //   var url: 'https://fcm.googleapis.com/fcm/send';
+  //   var body:"{to: '/topics/ERP',notification:{body: message,  content_available: true,priority: 'high',title: title},data:{body: message,content_available: true,priority: 'high',title: title}}";
+  //   console.log("1");
+  //   // request(options, function (error, response, body) {
+  //   //   if (error) throw new Error(error);
+
+  //   //   console.log(body);
+  //   // });
+  //   return this.http.post(url,body,httpOptions)
+    
   GetGates() {
     return this.http.get('http://localhost:51389/api/Gates')
   }
@@ -169,5 +224,12 @@ nID:any;
   }
   DeleteGate(id) {
     return this.http.delete('http://localhost:51389/api/Gates/' + id)
+  }
+  showModal(err,message){
+    this.nError=err;
+    this.nMessage=message;
+    this.nav.err = err;
+    this.nav.message=message;
+    document.getElementById('generalMod').click();
   }
 }

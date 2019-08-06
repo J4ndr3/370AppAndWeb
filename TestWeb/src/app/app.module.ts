@@ -63,6 +63,8 @@ import { OrderComponent } from './order/order.component';
 import { ModifyOrderComponent } from './modify-order/modify-order.component';
 import { AssetComponent } from './asset/asset.component';
 import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
+import { ProductTypeComponent } from './product-type/product-type.component';
+import { EventTypeComponent } from './event-type/event-type.component';
 import { ERPService } from './erp.service';
 
 @NgModule({
@@ -119,6 +121,8 @@ import { ERPService } from './erp.service';
     ModifyOrderComponent,
     AssetComponent,
     ModifyAssetComponent,
+    ProductTypeComponent,
+    EventTypeComponent,
    
   ],
   imports: [
@@ -141,7 +145,7 @@ import { ERPService } from './erp.service';
     FullCalendarModule,
     HttpClientModule
   ],
-  providers: [ModifyRangerComponent,GateModComponent,ERPService],
+  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

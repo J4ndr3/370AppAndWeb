@@ -19,6 +19,12 @@ export class IncidentLevelComponent implements OnInit {
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+
+    this.AddForm = this.formBuilder.group({
+      Description: [""], // Names for your input
+     
+    });
+
       this.data.GetIncident_Level().subscribe(res=>{
         this.IncidentLevel = res;
         console.log(res)
@@ -31,6 +37,22 @@ export class IncidentLevelComponent implements OnInit {
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
   }
+
+  addLevel() {
+    var Description = this.AddForm.get('Description').value; // Names for your input
+    
+    if (Description=="") {
+      //Modal popup
+    }
+    else {
+      this.NewLevel = {
+        "Description": Description, // Names for your input
+      };
+      this.data.PostIncident_Level(this.NewLevel).subscribe(res => {
+        this.ngOnInit()
+      });
+    }}
+
 
   EditLevel(ID){
    console.log(ID);

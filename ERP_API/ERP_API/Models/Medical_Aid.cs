@@ -18,6 +18,9 @@ namespace ERP_API.Models
         public Medical_Aid()
         {
             this.Rangers = new HashSet<Ranger>();
+            this.Rangers1 = new HashSet<Ranger>();
+            this.Rangers2 = new HashSet<Ranger>();
+            this.Rangers3 = new HashSet<Ranger>();
         }
     
         public int Medical_Aid_ID { get; set; }
@@ -25,5 +28,11 @@ namespace ERP_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ranger> Rangers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger> Rangers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger> Rangers2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ranger> Rangers3 { get; set; }
     }
 }

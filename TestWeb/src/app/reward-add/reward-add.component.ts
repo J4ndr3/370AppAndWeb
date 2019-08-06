@@ -30,7 +30,15 @@ export class RewardAddComponent implements OnInit {
     this.data.GetRewardAdd1().subscribe(res=>{
       this.RewardAdds1 = res;
     });
-    
+    this.AddForm = this.formBuilder.group({
+      PName: [""], // Names for your input
+      PQuantity: [""], // Names for your input 
+      PPoints: [""],
+      PDescription: [""]
+    });
+    this.data.GetRewardAdd().subscribe((res) => {
+      this.RewardAddOptions = JSON.parse(JSON.stringify(res));
+    }); 
 
   }
   showToast(){
@@ -40,21 +48,11 @@ export class RewardAddComponent implements OnInit {
   Event(){
     this.toastrService.show("This record was added successfully", "Success!");
   }
-  addRewardAddBtn() {
-    this.AddForm = this.formBuilder.group({
-      PName: [""], // Names for your input
-      PQuantity: [""], // Names for your input 
-      Points: [""],
-      PDescription: [""]
-    });
-    this.data.GetRewardAdd().subscribe((res) => {
-      this.RewardAddOptions = JSON.parse(JSON.stringify(res));
-    }); 
-  }
+  
     addRewardAdd() {
       var PName = this.AddForm.get('PName').value; // Names for your input
       var PQuantity = this.AddForm.get('PQuantity').value; // Names for your input
-      var PPoints = this.AddForm.get('Points').value;
+      var PPoints = this.AddForm.get('PPoints').value;
       var PDescription = this.AddForm.get('PDescription').value;
   
       if ((PName||PQuantity||PPoints||PDescription)=="") {
@@ -68,7 +66,7 @@ export class RewardAddComponent implements OnInit {
           "PDescription":PDescription,
           
         };
-        this.data.PostRanger(this.NewRewardAdd).subscribe(res => {
+        this.data.PostRewardAdd(this.NewRewardAdd).subscribe(res => {
           this.ngOnInit();
           this.showToast();
         });

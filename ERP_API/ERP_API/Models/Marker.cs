@@ -24,6 +24,12 @@ namespace ERP_API.Models
         public System.DateTime Modified { get; set; }
     
         public virtual Marker_Type Marker_Type { get; set; }
+        public virtual Marker_Type Marker_Type1 { get; set; }
+        public virtual Marker_Type Marker_Type2 { get; set; }
+        public virtual Marker_Type Marker_Type3 { get; set; }
         public virtual Reserve Reserve { get; set; }
+        public virtual Reserve Reserve1 { get; set; }
+        public virtual Reserve Reserve2 { get; set; }
+        public virtual Reserve Reserve3 { get; set; }
     }
 }

@@ -22,7 +22,16 @@ namespace ERP_API.Models
         public int Ranger_ID { get; set; }
     
         public virtual Patrol_Booking Patrol_Booking { get; set; }
+        public virtual Patrol_Booking Patrol_Booking1 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking2 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking3 { get; set; }
         public virtual Patrol_Log Patrol_Log { get; set; }
+        public virtual Patrol_Log Patrol_Log1 { get; set; }
+        public virtual Patrol_Log Patrol_Log2 { get; set; }
+        public virtual Patrol_Log Patrol_Log3 { get; set; }
         public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
     }
 }

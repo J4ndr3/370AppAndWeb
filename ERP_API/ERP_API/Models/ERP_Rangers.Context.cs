@@ -65,6 +65,7 @@ namespace ERP_API.Models
         public virtual DbSet<Incident_Patrol> Incident_Patrol { get; set; }
         public virtual DbSet<Patrol_Asset> Patrol_Asset { get; set; }
         public virtual DbSet<Patrol_Marker> Patrol_Marker { get; set; }
+        public virtual DbSet<Ranger_Reserve> Ranger_Reserve { get; set; }
         public virtual DbSet<Ranger_Vehicle> Ranger_Vehicle { get; set; }
     }
 }

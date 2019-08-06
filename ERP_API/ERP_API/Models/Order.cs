@@ -18,6 +18,9 @@ namespace ERP_API.Models
         public Order()
         {
             this.Order_Line = new HashSet<Order_Line>();
+            this.Order_Line1 = new HashSet<Order_Line>();
+            this.Order_Line2 = new HashSet<Order_Line>();
+            this.Order_Line3 = new HashSet<Order_Line>();
         }
     
         public int Order_ID { get; set; }
@@ -26,7 +29,16 @@ namespace ERP_API.Models
         public System.DateTime Date { get; set; }
     
         public virtual Supplier Supplier { get; set; }
+        public virtual Supplier Supplier1 { get; set; }
+        public virtual Supplier Supplier2 { get; set; }
+        public virtual Supplier Supplier3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Line> Order_Line { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Line> Order_Line1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Line> Order_Line2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order_Line> Order_Line3 { get; set; }
     }
 }

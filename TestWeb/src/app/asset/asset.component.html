@@ -51,7 +51,7 @@
                 <option>Spar</option>
                 <option>Builders Warehouse</option>
                 <option>Game</option>
-                <option>Add new...</option>
+                <option routerLink="/supplier"class="dropdown-item"> Supplier</option>
                         </select>
                         </div>
                 </div>
@@ -114,11 +114,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>CAMPMASTER 700L Flashlight</td>
-                <td>Makro</td>
-                <td>Flashlight</td>
-                <td>Active</td>
+            <tr *ngFor="let Asset of Assets">
+                <td>{{Your.Atribute1}}</td>
+                <td>{{Your.Attribute2}}</td>
+                <td>{{Your.Attribute3}}</td>
+                <td>{{Your.Attribute3}}</td>
                 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
