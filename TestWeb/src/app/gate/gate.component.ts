@@ -16,6 +16,7 @@ export class GateComponent implements OnInit {
   ReserveSelection:number =0;
   ReserveOptions:Array<object>; 
   nGate:object;
+  searchtext;
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder,private mod:GateModComponent ) { }
 
   ngOnInit() {
