@@ -89,7 +89,7 @@ export class ERPService {
   PutOrganisation(id, obj) {
     return this.http.put('http://localhost:30264/api/Caus/' + id, obj)
   }
-  GetIncident_Level() {
+  GetIncident_Levels() {
     return this.http.get('http://localhost:51389/api/Incident_Level')
   }
   DeleteIncident_Level(id) {
@@ -98,9 +98,33 @@ export class ERPService {
   PostIncident_Level(obj){
     return this.http.post('http://localhost:51389/api/Incident_Level', obj)
   }
+  GetIncident_Level(id) {
+    return this.http.get('http://localhost:51389/api/Incident_Level/'+id)
+  }
+  PutIncident_Level(id, obj) {
+    return this.http.put('http://localhost:51389/api/Incident_Level/' + id, obj)
+  }
+  GetIncident_Types() {
+    return this.http.get('http://localhost:51389/api/Incident_Type')
+  }
+  DeleteIncident_Type(id) {
+    return this.http.delete('http://localhost:51389/api/Incident_Type/' + id)
+  }
+  PostIncident_Type(obj){
+    return this.http.post('http://localhost:51389/api/Incident_Type', obj)
+  }
+  GetIncident_Type(id) {
+    return this.http.get('http://localhost:51389/api/Incident_Type/'+id)
+  }
+  PutIncident_Type(id, obj) {
+    return this.http.put('http://localhost:51389/api/Incident_Type/' + id, obj)
+  }
   GetIncidents(){
     return this.http.get('http://localhost:51389/api/Incident_Patrol')
   }
+
+
+
   sendNotif(title, message) {
     // const httpOptions = {
     //   headers: new HttpHeaders({

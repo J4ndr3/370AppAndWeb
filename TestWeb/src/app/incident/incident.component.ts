@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms'; 
 
+
 @Component({
   selector: 'app-incident',
   templateUrl: './incident.component.html',
@@ -19,7 +20,7 @@ export class IncidentComponent implements OnInit {
       this.Incident = res;
       if (this.Incident[0]=="Not readable")
       {
-        this.data.showModal("Error","An unexpected error has occured please try again at a later time")
+        this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Incident = null ;
       }
       console.log(this.Incident);

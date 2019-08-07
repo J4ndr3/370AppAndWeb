@@ -2,6 +2,8 @@ import { Component, OnInit, Injectable} from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BlockScrollStrategy } from '@angular/cdk/overlay';
 import { RouterLink, Router } from '@angular/router';
+import { ERPService } from '../erp.service';
+
 
 
 
@@ -19,13 +21,15 @@ export class NavComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   err:any;
   message:any;
-
   addExtraClass: boolean = false;
   constructor(public snackBar: MatSnackBar, private router: Router ) {}
 
   ngOnInit() {
+    
+
   }
   
+
     openSnackBar() {
       let config = new MatSnackBarConfig();
     config.verticalPosition = this.verticalPosition;

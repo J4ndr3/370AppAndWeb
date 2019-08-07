@@ -46,6 +46,7 @@
         "jquery": "^3.4.1",
         "jspdf": "^1.5.3",
         "mobiscroll": "^3.0.0-beta6",
+        "ng2-search-filter": "^0.5.1",
         "ngx-bootstrap": "^5.0.0",
         "ngx-qrcode2": "0.0.9",
         "ngx-snackbar": "^2.0.1",

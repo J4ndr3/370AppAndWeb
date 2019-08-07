@@ -43,8 +43,8 @@ namespace ERP_API.Controllers
                     m.Type = Item.Incident_Type.Description;
                     m.Level = Item.Incident_Level.Description;
                     m.Date = Item.Incident_Status.Description;
-
-                    m.Time = Item.Date + Item.Time;
+                    m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
+                    m.Date = Item.Date.ToShortDateString() + " " + Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
                     toReturn.Add(m);

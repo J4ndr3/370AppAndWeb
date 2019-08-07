@@ -66,6 +66,7 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { EventTypeComponent } from './event-type/event-type.component';
 import { ERPService } from './erp.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -143,9 +144,10 @@ import { ERPService } from './erp.service';
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
-  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent],
+  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentLevelModifyComponent, IncidentTypeModifyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

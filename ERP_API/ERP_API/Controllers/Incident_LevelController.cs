@@ -23,7 +23,9 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Level
         public List<dynamic> GetIncident_Level()
         {
-            db.Configuration.ProxyCreationEnabled = false;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
             List<Incident_Level> Level = db.Incident_Level.ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Incident_Level Item in Level)
@@ -34,7 +36,13 @@ namespace ERP_API.Controllers
                 toReturn.Add(m);
             }
             return toReturn;
-
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
 

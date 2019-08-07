@@ -7,7 +7,7 @@
     <div *ngFor="let Item of Incident" class="panel-group ">
         <mdb-card class="mb-3" borderColor="black">
           <mdb-card-header  class="headers" >
-          <h5 class="white">{{Item.Type}}</h5> <p class="white"><small class="text-white float"><i>Reported 3 minutes ago by {{Item.Name}}</i></small></p>
+          <h5 class="white">{{Item.Type}}</h5> <p class="white"><small class="text-white float"><i>Reported at {{Item.Date}} by {{Item.Name}}</i></small></p>
           <p class="white"><small class="text-white float-r"><i>{{Item.Level}} Severity Level</i></small></p>
           </mdb-card-header>
             <mdb-card-body>
