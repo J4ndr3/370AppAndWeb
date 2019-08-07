@@ -16,7 +16,6 @@ EditForm : FormGroup;
 ReserveSelection:number =0;
 ReserveOptions:Array<object>; 
 nGate:object;
-theID:any;
 rcv: object;
   constructor(private toastrService: ToastrService, private router:Router,private data: ERPService, private formBuilder: FormBuilder) { }
 
@@ -34,15 +33,28 @@ rcv: object;
       this.edt();
   }
   edit(ID){
-    this.router.navigateByUrl("/gatemod");
-    this.ngOnInit();
-    this.data.nID = ID;
+    this.data.GetGate(ID).subscribe(res=>{
+      if (res==1)
+      {
+        alert("Not found");
+        this.router.navigateByUrl("/gate");
+      }
+      else{
+        this.router.navigateByUrl("/gatemod");
+        this.ngOnInit();
+        this.data.nID = ID;
+      }})
+    
   }
   edt(){
-    this.data.GetGate(this.data.nID).subscribe(res=>{
+    this.data.GetGate(this.data.nID).subscribe(res=>{     
       this.Gate = res;
-      console.log(res);
-      this.EditForm.setValue({ID:this.Gate.Gate_ID,Name:this.Gate.Name,Descriprion:this.Gate.Descriprion,Lattitude:this.Gate.Lattitude,Longitude:this.Gate.Longitude,Reserve:this.Gate.Reserve_ID})    
+      this.EditForm.setValue({ID:this.Gate.Gate_ID,
+        Name:this.Gate.Name,
+        Descriprion:this.Gate.Descriprion,
+        Lattitude:this.Gate.Lattitude,
+        Longitude:this.Gate.Longitude,
+        Reserve:this.Gate.Reserve_ID})    
     })
   }
   update(){
@@ -53,7 +65,7 @@ rcv: object;
     var Reserve = this.EditForm.get('Reserve').value;
     var ID = this.EditForm.get('ID').value;
 
-    if ((Name||Descriprion||Lattitude||Longitude||Reserve) == ""||(Name||Descriprion||Lattitude||Longitude||Reserve)==null || Name =="") {
+    if (Descriprion==""||Lattitude==""||Longitude==""||Reserve=="" || Name =="") {
       document.getElementById("inputErr").click();
     }
     else {

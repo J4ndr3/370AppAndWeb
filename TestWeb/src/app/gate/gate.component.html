@@ -12,7 +12,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchtext" autocomplete="off" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -89,7 +89,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Gate of Gates">
+            <tr *ngFor="let Gate of Gates |filter:searchtext">
                 <td style="text-align: left;">{{Gate.Name}}</td>
                 <td style="text-align: left;">{{Gate.Descriprion}}</td>
                 <td style="text-align: left;">{{Gate.Lattitude}}</td>

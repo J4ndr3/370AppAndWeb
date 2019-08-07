@@ -57,7 +57,6 @@
         "ionic2-calendar": "^0.5.2",
         "moment": "^2.24.0",
         "ngx-qrcode2": "0.0.9",
-        "phonegap-plugin-barcodescanner": "^8.1.0",
         "phonegap-plugin-push": "^2.2.3",
         "rxjs": "^6.5.2",
         "tslib": "^1.10.0",
@@ -125,9 +124,7 @@
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "To track yourpatrol"
             },
-            "phonegap-plugin-barcodescanner": {
-                "ANDROID_SUPPORT_V4_VERSION": "27.+"
-            },
+            "phonegap-plugin-barcodescanner": {},
             "cordova-plugin-camera": {
                 "ANDROID_SUPPORT_V4_VERSION": "27.+"
             },

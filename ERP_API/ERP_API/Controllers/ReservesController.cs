@@ -18,7 +18,7 @@ namespace ERP_API.Controllers
     public class ReservesController : ApiController
     {
         private INF370Entities db = new INF370Entities();
-
+        
         // GET: api/Reserves
         public List<dynamic> GetReserves()
         {
@@ -42,6 +42,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Reserve))]
         public IHttpActionResult GetReserve(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Reserve reserve = db.Reserves.Find(id);
             if (reserve == null)
             {
@@ -55,41 +56,50 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutReserve(int id, Reserve reserve)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != reserve.Reserve_ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(reserve).State = EntityState.Modified;
-
+            db.Configuration.ProxyCreationEnabled = false;
             try
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ReserveExists(id))
+                if (!ModelState.IsValid)
                 {
-                    return NotFound();
+                    return BadRequest(ModelState);
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return StatusCode(HttpStatusCode.NoContent);
+                if (id != reserve.Reserve_ID)
+                {
+                    return BadRequest();
+                }
+
+                db.Entry(reserve).State = EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReserveExists(id))
+                    {
+                        return Ok(1);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            catch
+            {
+                return Ok(2);
+            }
         }
 
         // POST: api/Reserves
         [ResponseType(typeof(Reserve))]
         public IHttpActionResult PostReserve(Reserve reserve)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -105,6 +115,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Reserve))]
         public IHttpActionResult DeleteReserve(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Reserve reserve = db.Reserves.Find(id);
             if (reserve == null)
             {

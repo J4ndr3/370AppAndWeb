@@ -66,7 +66,7 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { EventTypeComponent } from './event-type/event-type.component';
 import { ERPService } from './erp.service';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
 
 @NgModule({
   declarations: [
@@ -147,7 +147,51 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     Ng2SearchPipeModule
   ],
-  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentLevelModifyComponent, IncidentTypeModifyComponent],
+  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentComponent,
+    HomeComponent,
+    RangerComponent,
+    ProfileComponent,
+    NotificationsComponent,
+    IncidentLevelComponent,
+    IncidentLevelModifyComponent,
+    IncidentTypeComponent,
+    IncidentTypeModifyComponent,
+    PatrolLogComponent,
+    RegisteruserComponent,
+    VehicleComponent,
+    PerformanceComponent,
+    IncidentReportComponent,
+    VehiclesReportComponent,
+    AssetsReportComponent,
+    RewardsReportComponent,
+    StatusReportComponent,
+    RangersReportComponent,
+    MarkersReportComponent,
+    LoginComponent,
+    UserroleComponent,
+    UserroleModifyComponent,
+    AccessLevelModComponent,
+    MarkerComponent,
+    MarkerModComponent,
+    MarkerTypeComponent,
+    MarkerTypeModComponent,
+    ReserveModComponent,
+    SecurityModComponent,
+    GateComponent,
+    RewardAddComponent,
+    RewardModifyComponent,
+    RewardEventModifyComponent,
+    ResetPassworComponent,
+    ViewRangerComponent,
+    ModVehicleComponent,
+    SupplierComponent,
+    ModifySupplierComponent,
+    OrderComponent,
+    ModifyOrderComponent,
+    AssetComponent,
+    ModifyAssetComponent,
+    ProductTypeComponent,
+    EventTypeComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

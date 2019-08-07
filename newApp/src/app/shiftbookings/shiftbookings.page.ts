@@ -3,6 +3,8 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shiftbookings',
@@ -30,7 +32,7 @@ export class ShiftbookingsPage implements OnInit {
  
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
-  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,public toastController: ToastController) { }
+  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,public toastController: ToastController,private router: Router) { }
 
   ngOnInit() {
     this.resetEvent();
@@ -101,7 +103,9 @@ export class ShiftbookingsPage implements OnInit {
     const alert = await this.alertCtrl.create({
       header: "Booking Details",
       message: 'From: ' + start + '<br><br>To: ' + end,
-      buttons: ['Modify','OK']
+      buttons: [{text:'Modify',handler: () => {
+        this.router.navigateByUrl('/modifybooking');
+      }},'OK']
     });
     alert.present();
   }
