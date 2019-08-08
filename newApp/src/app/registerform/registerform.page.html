@@ -13,17 +13,17 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content> 
     <div #ref>
-        <form #regform id="regForm" action="" [formGroup]="AddForm" (ngSubmit)="addRegisterformPage()">
+
+        <form #regform id="regForm" action="" [formGroup]="AddForm" (ngSubmit)="addRegisterformPage()">     
             <ion-card>
                 <ion-card-content>
             <!-- One "tab" for each step in the form: -->
             <div class="tab border-lable-flt">
                 <div class="col-sm-10">
-                        
+
                 <h6 style="color: black; margin-bottom:5% !important" align="center" > 1. Ranger Name & Surname</h6>
-                
                 <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="First Name..."  name="fname" formControlName="fname" type="text" required></ion-input>
                 <ion-input class="form-control ion-padding-start" style="margin-bottom:10% !important;" placeholder="Last Name..."  name="lname"formControlName="lname" type="text" required></ion-input>
                 </div>
@@ -32,7 +32,7 @@
             <div class="tab">
                     <div class="col-sm-10">
                 <h6 style="color: black; margin-bottom:5% !important" align="center">2. Personal information:</h6>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Identification Number..." name="rangerId" formControlName="rangerId" type="Number"required></ion-input>
+                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Identification Number..." name="rangerId" formControlName="rangerId" type="Identification"required></ion-input>
                 <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="E-mail..." name="email" formControlName="email" required></ion-input>
                 <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Cellphone..."  name="phone" formControlName="phone" required></ion-input>
                 <ion-select placeholder="Select Gender..."class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
