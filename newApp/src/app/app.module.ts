@@ -47,6 +47,7 @@ const firebaseConfig = {
     HttpClientModule
   ],
   providers: [
+    RangerprofilePageModifyComponent,
     StatusBar,
     SplashScreen,
     Firebase,
