@@ -13,10 +13,10 @@ export class RegisterformPage implements OnInit {
 
   RegisterformPages:object;
   AddForm: FormGroup;
-    NewRegisterformPage:object;
-    RegisterformPageSelection:number=0;
-    RegisterformPageOptions:Array<object>;
-    RegisterformPageOptionS:Array<object>;
+  NewRegisterformPage:object;
+  RegisterformPageSelection:number=0;
+  RegisterformPageOptions:Array<object>;
+  RegisterformPageOptionS:Array<object>;
 
   constructor(private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
@@ -181,8 +181,10 @@ validateForm() {
             "SelectBloodtype": selectbloodtype,  
             "Organizationtitle":Organizationtitle,
           };
-          this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-            this.ngOnInit()
-          });}}
+          console.log(this.NewRegisterformPage)
+          // this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+          //   this.ngOnInit()
+          // });
+        }}
     
 }
