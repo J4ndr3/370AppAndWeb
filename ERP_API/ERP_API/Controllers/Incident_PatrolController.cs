@@ -14,10 +14,7 @@ using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> ce772546966c63f835f046bf973460b2d80988d4
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Incident_PatrolController : ApiController
     {
@@ -26,7 +23,7 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol
         public List<dynamic> GetIncident_Patrol()
         {
-<<<<<<< HEAD
+
             db.Configuration.ProxyCreationEnabled = false;
             List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
             List<dynamic> toReturn = new List<dynamic>();
