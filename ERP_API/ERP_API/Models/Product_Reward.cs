@@ -14,6 +14,15 @@ namespace ERP_API.Models
     
     public partial class Product_Reward
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Product_Reward()
+        {
+            this.Redeem_Reward = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward1 = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward2 = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward3 = new HashSet<Redeem_Reward>();
+        }
+    
         public int Product_Reward_ID { get; set; }
         public int Prod_ID { get; set; }
         public int Quantity { get; set; }
@@ -21,5 +30,16 @@ namespace ERP_API.Models
         public string Name { get; set; }
     
         public virtual Product_Type Product_Type { get; set; }
+        public virtual Product_Type Product_Type1 { get; set; }
+        public virtual Product_Type Product_Type2 { get; set; }
+        public virtual Product_Type Product_Type3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward3 { get; set; }
     }
 }

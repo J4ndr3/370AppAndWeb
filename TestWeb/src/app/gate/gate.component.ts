@@ -16,6 +16,7 @@ export class GateComponent implements OnInit {
   ReserveSelection:number =0;
   ReserveOptions:Array<object>; 
   nGate:object;
+  searchtext;
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder,private mod:GateModComponent ) { }
 
   ngOnInit() {
@@ -81,17 +82,18 @@ export class GateComponent implements OnInit {
   }
   delete(ID){
     this.data.nID = ID;
-    console.log(ID);
     document.getElementById('del').click();
-    console.log("is you working")
   }
   del(){
     this.data.DeleteGate(this.data.nID).subscribe(res=>{
-      console.log(res)
       if (res!=null)
       {
         this.delSuccessToast();
         this.ngOnInit();
+      }
+      else if (res==2)
+      {
+        alert("You are not allowed to delete this record");
       }
       else
       {

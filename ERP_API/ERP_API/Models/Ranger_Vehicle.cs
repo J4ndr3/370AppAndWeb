@@ -21,9 +21,24 @@ namespace ERP_API.Models
         public Nullable<int> Vehicle_Type_ID { get; set; }
     
         public virtual Make Make { get; set; }
+        public virtual Make Make1 { get; set; }
+        public virtual Make Make2 { get; set; }
+        public virtual Make Make3 { get; set; }
         public virtual Model Model { get; set; }
+        public virtual Model Model1 { get; set; }
+        public virtual Model Model2 { get; set; }
+        public virtual Model Model3 { get; set; }
         public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
         public virtual Vehicle Vehicle { get; set; }
+        public virtual Vehicle Vehicle1 { get; set; }
+        public virtual Vehicle Vehicle2 { get; set; }
+        public virtual Vehicle Vehicle3 { get; set; }
         public virtual Vehicle_Type Vehicle_Type { get; set; }
+        public virtual Vehicle_Type Vehicle_Type1 { get; set; }
+        public virtual Vehicle_Type Vehicle_Type2 { get; set; }
+        public virtual Vehicle_Type Vehicle_Type3 { get; set; }
     }
 }

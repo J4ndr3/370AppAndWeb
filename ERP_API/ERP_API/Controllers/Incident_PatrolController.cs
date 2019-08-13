@@ -14,6 +14,10 @@ using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Incident_PatrolController : ApiController
     {
@@ -22,6 +26,7 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol
         public List<dynamic> GetIncident_Patrol()
         {
+<<<<<<< HEAD
             db.Configuration.ProxyCreationEnabled = false;
             List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
             List<dynamic> toReturn = new List<dynamic>();
@@ -46,8 +51,44 @@ namespace ERP_API.Controllers
                 toReturn.Add(m);
             }
             return toReturn;
+=======
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Incident_Patrol> incidents = db.Incident_Patrol
+                    .Include(zz => zz.Incident_Type).
+                    Include(zz => zz.Incident_Status).
+                    Include(zz => zz.Incident_Level).
+                    Include(zz => zz.Ranger).
+                    Include(zz => zz.Incident).
+                    Where(x => x.Incident_Status.Incident_Status_ID == 2).ToList();
+                
+                foreach (Incident_Patrol Item in incidents)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Incident_ID;
+                    m.Description = Item.Incident.Description;
+                    m.Type = Item.Incident_Type.Description;
+                    m.Level = Item.Incident_Level.Description;
+                    m.Date = Item.Incident_Status.Description;
+                    m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
+                    m.Date = Item.Date.ToShortDateString() + " " + Item.Time;
+                    m.Lat = Item.Lat;
+                    m.lng = Item.Lng;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch(Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+            
+            
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
         }
-
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult GetIncident_Patrol(int id)

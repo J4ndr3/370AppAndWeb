@@ -13,10 +13,11 @@ import { Firebase } from '@ionic-native/firebase/ngx';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import {Geolocation} from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 import { from } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
 
@@ -42,9 +43,11 @@ const firebaseConfig = {
     AngularFirestoreModule,
     NgCalendarModule,
     FormsModule,
-
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
+    RangerprofilePageModifyComponent,
     StatusBar,
     SplashScreen,
     Firebase,

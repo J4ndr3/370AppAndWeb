@@ -119,7 +119,7 @@ export class RangerComponent implements OnInit {
   }
   sendNote(){
     console.log("hit");
-    this.data.sendNotif("Test fire","Hallo werk die.");
+    this.data.sendNotif("Full moon","Tonight is a full moon be on the lookout.");
     
   }
 }

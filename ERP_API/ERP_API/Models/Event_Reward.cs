@@ -14,6 +14,15 @@ namespace ERP_API.Models
     
     public partial class Event_Reward
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Event_Reward()
+        {
+            this.Redeem_Reward = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward1 = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward2 = new HashSet<Redeem_Reward>();
+            this.Redeem_Reward3 = new HashSet<Redeem_Reward>();
+        }
+    
         public int Event_Reward_ID { get; set; }
         public int Type_ID { get; set; }
         public System.DateTime Date { get; set; }
@@ -22,5 +31,16 @@ namespace ERP_API.Models
         public string Name { get; set; }
     
         public virtual Event_Type Event_Type { get; set; }
+        public virtual Event_Type Event_Type1 { get; set; }
+        public virtual Event_Type Event_Type2 { get; set; }
+        public virtual Event_Type Event_Type3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Redeem_Reward> Redeem_Reward3 { get; set; }
     }
 }

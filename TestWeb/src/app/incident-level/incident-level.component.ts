@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms'; 
 import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
+import { IncidentLevelModifyComponent}  from '../incident-level-modify/incident-level-modify.component'
 
 @Component({
   selector: 'app-incident-level',
@@ -16,10 +17,16 @@ export class IncidentLevelComponent implements OnInit {
   LevelSelection:number =0;
   del:object;
   
-  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private router: Router , private mod: IncidentLevelModifyComponent) { }
 
   ngOnInit() {
-      this.data.GetIncident_Level().subscribe(res=>{
+
+    this.AddForm = this.formBuilder.group({
+      Description: [""], // Names for your input
+     
+    });
+
+      this.data.GetIncident_Levels().subscribe(res=>{
         this.IncidentLevel = res;
         console.log(res)
       });
@@ -28,20 +35,54 @@ export class IncidentLevelComponent implements OnInit {
   showToast(){
     this.toastrService.show("Record added successfully", "Success!");
   }
-  Delete(){
+  delSuccessToast(){
     this.toastrService.show("Record Removed", "Success!");
   }
 
-  EditLevel(ID){
-   console.log(ID);
-  this.router.navigateByUrl("/incident-level-modify",ID);
+  delToast(){
+    this.toastrService.show("Record could not be removed", "Error!");
   }
+  addLevel() {
+    var Description = this.AddForm.get('Description').value; // Names for your input
+    
+    if (Description=="") {
+      //Modal popup
+    }
+    else {
+      this.NewLevel = {
+        "Description": Description, // Names for your input
+      };
+      this.data.PostIncident_Level(this.NewLevel).subscribe(res => {
+        this.ngOnInit()
+      });
+    }}
 
-  DeleteLevel(ID){
-    this.data.DeleteIncident_Level(ID).subscribe(res=>{
-      this.del=res
-      console.log(this.del)
-      this.ngOnInit()
-    });
+
+    edit(ID){
+      this.mod.edit(ID);
+    }
+  
+    delete(ID){
+      this.data.nID = ID;
+      document.getElementById('del').click();
+    }
+  
+  DeleteLevel(){
+    this.data.DeleteIncident_Level(this.data.nID).subscribe(res=>{
+        if (res!=null)
+        {
+          this.delSuccessToast();
+          this.ngOnInit();
+        }
+        else if (res==2)
+        {
+          alert("You are not allowed to delete this record");
+        }
+        else
+        {
+          this.delToast()
+        }
+      }
+    );
   }
 }

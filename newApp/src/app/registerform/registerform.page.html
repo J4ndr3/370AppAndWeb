@@ -15,75 +15,75 @@
 
 <ion-content>
     <div #ref>
-        <form #regform id="regForm" action="" >
+
+        <form #regform id="regForm" action="" [formGroup]="AddForm" (ngSubmit)="addRegisterformPage()">
             <ion-card>
                 <ion-card-content>
-            <!-- One "tab" for each step in the form: -->
-            <div class="tab border-lable-flt">
-                <div class="col-sm-10">
-                        
-                <h6 style="color: black; margin-bottom:5% !important" align="center" > 1. Ranger Name & Surname</h6>
-                
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="First Name..."  name="fname"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:10% !important;" placeholder="Last Name..."  name="lname"></ion-input>
-                </div>
-            </div>
+                    <!-- One "tab" for each step in the form: -->
+                    <div class="tab border-lable-flt">
+                        <div class="col-sm-10">
 
-            <div class="tab">
-                    <div class="col-sm-10">
-                <h6 style="color: black; margin-bottom:5% !important" align="center">2. Personal information:</h6>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Identification Number..." name="rangerId"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="E-mail..." name="email"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Cellphone..."  name="phone"></ion-input>
-                <ion-select placeholder="Select Gender..."class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" required>
-                    <ion-select-option>Male</ion-select-option>
-                    <ion-select-option>Female</ion-select-option>
-                    <ion-select-option>Other</ion-select-option>
-                </ion-select>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;"placeholder="Select Organization..."  name="Organizationtitle"></ion-input>
-                
-                </div>
-            </div>
+                            <h6 style="color: black; margin-bottom:5% !important" align="center"> 1. Ranger Name & Surname</h6>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="First Name..." name="fname" formControlName="fname" type="text" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:10% !important;" placeholder="Last Name..." name="lname" formControlName="lname" type="text" required></ion-input>
+                        </div>
+                    </div>
 
-            <div class="tab">
-                <div class="col-sm-10">
-                <h6 style="color: black; margin-bottom:5% !important" align="center">3.Medical information:</h6>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Emergency contact Name..."  name="emergencycontactName"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;"placeholder="Emergency contact Number..."  name="EmergencycontactNumber"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Medical Aid"  name="MedicalAid"></ion-input>
-                <ion-select class="form-control" style="margin-bottom:10% !important;" placeholder="Bloodype..." id="Select1" onchange="selectColor()" required>
-                    <ion-select-option>A+</ion-select-option>
-                    <ion-select-option>B+</ion-select-option>
-                    <ion-select-option>AB+</ion-select-option>
-                    <ion-select-option>O+</ion-select-option>
-                    <ion-select-option>A-</ion-select-option>
-                    <ion-select-option>B-</ion-select-option>
-                    <ion-select-option>AB-</ion-select-option>
-                    <ion-select-option>O-</ion-select-option>
-                </ion-select>
-            </div>
-        </div>
+                    <div class="tab">
+                        <div class="col-sm-10">
+                            <h6 style="color: black; margin-bottom:5% !important" align="center">2. Personal information:</h6>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Identification Number..." name="rangerId" formControlName="rangerId" type="Identification" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="E-mail..." name="email" formControlName="email" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Cellphone..." name="phone" formControlName="phone" required></ion-input>
+                            <ion-select placeholder="Select Gender..." class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option>Male</ion-select-option>
+                                <ion-select-option>Female</ion-select-option>
+                                <ion-select-option>Other</ion-select-option>
+                            </ion-select>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Select Organization..." name="Organizationtitle" formControlName="Organizationtitle"></ion-input>
 
-            <div class="tab">
-                <div class="col-sm-10">
-                <h6 style="color: black; margin-bottom:5% !important" align="center"> 4. Login Info:</h6>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Ranger Username..."  name="username"></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;"placeholder="Password..."  name="password" type="password" ></ion-input>
-                <ion-input class="form-control ion-padding-start" style="margin-bottom:10% !important;" placeholder="Confirm Password..."  name="confirmpassword" type="password"></ion-input>
-            </div>
-        </div>
+                        </div>
+                    </div>
 
-            <div class="col-sm-10" style="margin-bottom:5% !important;">
+                    <div class="tab">
+                        <div class="col-sm-10">
+                            <h6 style="color: black; margin-bottom:5% !important" align="center">3.Medical information:</h6>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Emergency contact Name..." name="emergencycontactName" formControlName="emergencycontactName" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Emergency contact Number..." name="EmergencycontactNumber" formControlName="EmergencycontactNumber" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Medical Aid" name="MedicalAid" formControlName="MedicalAid" required></ion-input>
+                            <ion-select class="form-control" name="selectbloodtype" style="margin-bottom:10% !important;" placeholder="Bloodype..." id="Select1" onchange="selectColor()" formControlName="selectbloodtype" required>
+                                <ion-select-option>A+</ion-select-option>
+                                <ion-select-option>B+</ion-select-option>
+                                <ion-select-option>AB+</ion-select-option>
+                                <ion-select-option>O+</ion-select-option>
+                                <ion-select-option>A-</ion-select-option>
+                                <ion-select-option>B-</ion-select-option>
+                                <ion-select-option>AB-</ion-select-option>
+                                <ion-select-option>O-</ion-select-option>
+                            </ion-select>
+                        </div>
+                    </div>
+
+                    <div class="tab">
+                        <div class="col-sm-10">
+                            <h6 style="color: black; margin-bottom:5% !important" align="center"> 4. Login Info:</h6>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Ranger Username..." name="username" formControlName="username" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Password..." name="password" type="password" formControlName="password" required></ion-input>
+                            <ion-input class="form-control ion-padding-start" style="margin-bottom:10% !important;" placeholder="Confirm Password..." name="confirmpassword" type="password" formControlName="confirmpassword" required></ion-input>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-10" style="margin-bottom:5% !important;">
                         <div style="margin-bottom:5% !important;">
-                            <ion-button id="prevBtn" (click)="nextPrev(-1)"  style="float: left;margin-bottom:5% !important;"> Back</ion-button>
-                            <ion-button id="nextBtn" (click)="nextPrev(1)" style="float: right;margin-bottom:5% !important;" > Next</ion-button>
-                        </div>        
-            </div>
-            <!-- Circles which indicates the steps of the form: -->
-            
-        </ion-card-content>
-        </ion-card>
-        <div style="text-align:center;" id="Steps2">
+                            <ion-button id="prevBtn" (click)="nextPrev(-1)" style="float: left;margin-bottom:5% !important;"> Back</ion-button>
+                            <ion-button id="nextBtn" (click)="nextPrev(1)" style="float: right;margin-bottom:5% !important;"> Next</ion-button>
+                        </div>
+                    </div>
+                    <!-- Circles which indicates the steps of the form: -->
+
+                </ion-card-content>
+            </ion-card>
+            <div style="text-align:center;" id="Steps2">
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>

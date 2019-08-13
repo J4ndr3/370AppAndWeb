@@ -2,7 +2,6 @@
     MODIFY GATE</h1>
 <hr class="hrow" />
 <br>
-<button (click)="edt()"></button>
 <div class="inner">
     <div class="back">
         <button class="btn btn-default btn-sm" id="backBTN" routerLink="/gate">
@@ -36,7 +35,7 @@
             <br>
             <div class="col-sm-10">
                 <select formControlName="Reserve" [(value)]="Selection" class="form-control" id="Select1" onchange="selectColor()" required>
-                  <option selected disabled hidden value="Reserve...">Reserve...</option>
+                  <option selected disabled hidden value="Gender...">Reserve...</option>
                   <option *ngFor="let opt of ReserveOptions" [(value)]="opt.ID">{{opt.Name}}</option>
                 </select>
             </div>

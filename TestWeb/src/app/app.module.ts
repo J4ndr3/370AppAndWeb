@@ -66,11 +66,15 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { EventTypeComponent } from './event-type/event-type.component';
 import { ERPService } from './erp.service';
+<<<<<<< HEAD
 import { ProductTypeModifyComponent } from './product-type-modify/product-type-modify.component';
 import { EventTypeModifyComponent } from './event-type-modify/event-type-modify.component';
 import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
 import { DownloadStatusComponent } from './download-status/download-status.component';
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
+=======
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
 
 @NgModule({
   declarations: [
@@ -153,9 +157,58 @@ import { DownloadIncedentComponent } from './download-incedent/download-incedent
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule,
     FullCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
+<<<<<<< HEAD
   providers: [ModifyRangerComponent,GateModComponent,ERPService, EventTypeModifyComponent, ProductTypeModifyComponent, RewardModifyComponent, RewardEventModifyComponent],
+=======
+  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentComponent,
+    HomeComponent,
+    RangerComponent,
+    ProfileComponent,
+    NotificationsComponent,
+    IncidentLevelComponent,
+    IncidentLevelModifyComponent,
+    IncidentTypeComponent,
+    IncidentTypeModifyComponent,
+    PatrolLogComponent,
+    RegisteruserComponent,
+    VehicleComponent,
+    PerformanceComponent,
+    IncidentReportComponent,
+    VehiclesReportComponent,
+    AssetsReportComponent,
+    RewardsReportComponent,
+    StatusReportComponent,
+    RangersReportComponent,
+    MarkersReportComponent,
+    LoginComponent,
+    UserroleComponent,
+    UserroleModifyComponent,
+    AccessLevelModComponent,
+    MarkerComponent,
+    MarkerModComponent,
+    MarkerTypeComponent,
+    MarkerTypeModComponent,
+    ReserveModComponent,
+    SecurityModComponent,
+    GateComponent,
+    RewardAddComponent,
+    RewardModifyComponent,
+    RewardEventModifyComponent,
+    ResetPassworComponent,
+    ViewRangerComponent,
+    ModVehicleComponent,
+    SupplierComponent,
+    ModifySupplierComponent,
+    OrderComponent,
+    ModifyOrderComponent,
+    AssetComponent,
+    ModifyAssetComponent,
+    ProductTypeComponent,
+    EventTypeComponent],
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
   bootstrap: [AppComponent]
 })
 export class AppModule { }

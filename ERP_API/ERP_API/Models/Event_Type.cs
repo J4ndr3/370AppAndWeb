@@ -18,6 +18,9 @@ namespace ERP_API.Models
         public Event_Type()
         {
             this.Event_Reward = new HashSet<Event_Reward>();
+            this.Event_Reward1 = new HashSet<Event_Reward>();
+            this.Event_Reward2 = new HashSet<Event_Reward>();
+            this.Event_Reward3 = new HashSet<Event_Reward>();
         }
     
         public int Type_ID { get; set; }
@@ -25,5 +28,11 @@ namespace ERP_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event_Reward> Event_Reward { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event_Reward> Event_Reward1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event_Reward> Event_Reward2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event_Reward> Event_Reward3 { get; set; }
     }
 }

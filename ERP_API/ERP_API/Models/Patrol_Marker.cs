@@ -22,9 +22,24 @@ namespace ERP_API.Models
         public Nullable<System.DateTime> Date_Time_Passed { get; set; }
     
         public virtual Marker_Type Marker_Type { get; set; }
+        public virtual Marker_Type Marker_Type1 { get; set; }
+        public virtual Marker_Type Marker_Type2 { get; set; }
+        public virtual Marker_Type Marker_Type3 { get; set; }
         public virtual Patrol_Booking Patrol_Booking { get; set; }
+        public virtual Patrol_Booking Patrol_Booking1 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking2 { get; set; }
+        public virtual Patrol_Booking Patrol_Booking3 { get; set; }
         public virtual Patrol_Log Patrol_Log { get; set; }
+        public virtual Patrol_Log Patrol_Log1 { get; set; }
+        public virtual Patrol_Log Patrol_Log2 { get; set; }
+        public virtual Patrol_Log Patrol_Log3 { get; set; }
         public virtual Ranger Ranger { get; set; }
+        public virtual Ranger Ranger1 { get; set; }
+        public virtual Ranger Ranger2 { get; set; }
+        public virtual Ranger Ranger3 { get; set; }
         public virtual Reserve Reserve { get; set; }
+        public virtual Reserve Reserve1 { get; set; }
+        public virtual Reserve Reserve2 { get; set; }
+        public virtual Reserve Reserve3 { get; set; }
     }
 }

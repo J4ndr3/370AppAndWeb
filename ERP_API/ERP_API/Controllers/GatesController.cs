@@ -59,7 +59,7 @@ namespace ERP_API.Controllers
             Gate gate = db.Gates.Find(id);
             if (gate == null)
             {
-                return NotFound();
+                return Ok(1);
             }
 
             return Ok(gate);
@@ -70,35 +70,43 @@ namespace ERP_API.Controllers
         public IHttpActionResult PutGate(int id, Gate gate)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != gate.Gate_ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(gate).State = EntityState.Modified;
-
             try
             {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GateExists(id))
+                if (!ModelState.IsValid)
                 {
-                    return NotFound();
+                    return BadRequest(ModelState);
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return StatusCode(HttpStatusCode.NoContent);
+                if (id != gate.Gate_ID)
+                {
+                    return BadRequest();
+                }
+
+                db.Entry(gate).State = EntityState.Modified;
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!GateExists(id))
+                    {
+                        return Ok(1);
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            catch
+            {
+                return Ok(2);
+            }
+            
         }
 
         // POST: api/Gates
@@ -106,32 +114,55 @@ namespace ERP_API.Controllers
         public IHttpActionResult PostGate(Gate gate)
         {
             db.Configuration.ProxyCreationEnabled = false;
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (db.Gates.Contains(gate))
+                {
+                    return Ok(1);
+                }
+                else
+                {
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+                    db.Gates.Add(gate);
+                    db.SaveChanges();
+                    return CreatedAtRoute("DefaultApi", new { id = gate.Gate_ID }, gate);
+                }
             }
-
-            db.Gates.Add(gate);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = gate.Gate_ID }, gate);
+            catch
+            {
+                return Ok(2);
+            }
+            
+            
+            
         }
 
         // DELETE: api/Gates/5
         [ResponseType(typeof(Gate))]
         public IHttpActionResult DeleteGate(int id)
         {
-            db.Configuration.ProxyCreationEnabled = false;
-            Gate gate = db.Gates.Find(id);
-            if (gate == null)
+            try
             {
-                return NotFound();
+                db.Configuration.ProxyCreationEnabled = false;
+                Gate gate = db.Gates.Find(id);
+                if (gate == null)
+                {
+                    return Ok(1);
+                }
+
+                db.Gates.Remove(gate);
+                db.SaveChanges();
+
+                return Ok(gate);
             }
-
-            db.Gates.Remove(gate);
-            db.SaveChanges();
-
-            return Ok(gate);
+            catch
+            {
+                return Ok(2);
+            }
+            
         }
 
         protected override void Dispose(bool disposing)

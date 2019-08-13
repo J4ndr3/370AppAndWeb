@@ -21,8 +21,20 @@ namespace ERP_API.Models
         public Nullable<int> Asset_Type_ID { get; set; }
     
         public virtual Asset Asset { get; set; }
+        public virtual Asset Asset1 { get; set; }
+        public virtual Asset Asset2 { get; set; }
+        public virtual Asset Asset3 { get; set; }
         public virtual Asset_Type Asset_Type { get; set; }
+        public virtual Asset_Type Asset_Type1 { get; set; }
+        public virtual Asset_Type Asset_Type2 { get; set; }
+        public virtual Asset_Type Asset_Type3 { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Order Order1 { get; set; }
+        public virtual Order Order2 { get; set; }
+        public virtual Order Order3 { get; set; }
         public virtual Supplier Supplier { get; set; }
+        public virtual Supplier Supplier1 { get; set; }
+        public virtual Supplier Supplier2 { get; set; }
+        public virtual Supplier Supplier3 { get; set; }
     }
 }

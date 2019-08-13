@@ -23,6 +23,7 @@ namespace ERP_API.Controllers
         public List<dynamic> GetRangers()
         {
             db.Configuration.ProxyCreationEnabled = false;
+<<<<<<< HEAD
             List<Ranger> Level = db.Rangers.ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Ranger Item in Level)
@@ -40,6 +41,10 @@ namespace ERP_API.Controllers
             return toReturn;
         
     }
+=======
+            return db.Rangers;
+        }
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
 
     // GET: api/Rangers/5
     [ResponseType(typeof(Ranger))]
