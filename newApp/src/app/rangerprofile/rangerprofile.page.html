@@ -20,7 +20,7 @@
     <div class="inputForm">
 
         <br />
-        <div class="inputForm">
+        <div class="inputForm" [formGroup]="EditForm">
 
             <div id="accordion">
                 <div class="card">
@@ -34,25 +34,14 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
 
-                            <ion-input type="text" id="fname" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..." required="true"></ion-input>
-                            <ion-input type="text" id="lname" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..." required="true"></ion-input>
-                            <ion-input type="text" id="username" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..." required="true"></ion-input>
-                            <ion-input type="text" id="Password" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..." required="true" type="password"></ion-input>
-                            <ion-input type="text" id="Passwordcopy" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..." required="true" type="password"></ion-input>
+                            <ion-input type="text" id="fname" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..." required="true" hidden formControlName ="fname"</ion-input>
+                            <ion-input type="text" id="lname" hidden formControlName ="lname" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..." required="true"></ion-input>
+                            <ion-input type="text" id="username" hidden formControlName ="username"class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..." required="true"></ion-input>
+                            <ion-input type="text" id="Password" hidden formControlName ="Password"class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..." required="true" type="password"></ion-input>
+                            <ion-input type="text" id="Passwordcopy" hidden formControlName ="Passwordcopy" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..." required="true" type="password"></ion-input>
                         </div>
                     </div>
                 </div>
-
-
-
-                <!-- <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..." required="true" type="password"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..." required="true" type="password"></ion-input>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="card">
                     <div class="card-header" id="headingTwo">
@@ -64,17 +53,17 @@
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                         <div class="card-body">
-                            <ion-input type="text" id="IDnumber" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Identification Number..." required="true"></ion-input>
-                            <ion-input type="Email" id="Email" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Email..." required="true"></ion-input>
-                            <ion-input type="text" id="Phone" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Phone..." required="true"></ion-input>
+                            <ion-input type="text" id="IDnumber"hidden formControlName ="IDnumber" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Identification Number..." required="true"></ion-input>
+                            <ion-input type="Email" id="Email" hidden formControlName ="Email" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Email..." required="true"></ion-input>
+                            <ion-input type="text" id="Phone" hidden formControlName ="Phone" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Phone..." required="true"></ion-input>
 
-                            <ion-select id="Gender" placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select id="Gender" hidden formControlName ="Gender" placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
                                 <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
                                 <ion-select-option>Male</ion-select-option>
                                 <ion-select-option>Female</ion-select-option>
                                 <ion-select-option>Other</ion-select-option>
                             </ion-select>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Select Organisation..." required="true"></ion-input>
+                            <ion-input id = "SelectOrganisation" hidden formControlName ="SelectOrganisation" type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Select Organisation..." required="true"></ion-input>
                         </div>
                     </div>
                 </div>
@@ -93,12 +82,12 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Name..." required="true"></ion-input>
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Number..." required="true"></ion-input>
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Medical Aid..." required="true"></ion-input>
+                <ion-input type="text" id ="EmergencyContactName" hidden formControlName ="EmergencyContactName" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Name..." required="true"></ion-input>
+                <ion-input type="text" id ="EmergencyContactNumber" hidden formControlName ="EmergencyContactNumber" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Number..." required="true"></ion-input>
+                <ion-input type="text" id ="MedicalAid" hidden formControlName ="MedicalAid"class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Medical Aid..." required="true"></ion-input>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <ion-select placeholder="Select Bloodtype..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                        <ion-select id ="Bloodtype" hidden formControlName ="Bloodtype" placeholder="Select Bloodtype..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
                             <ion-select-option>A+</ion-select-option>
                             <ion-select-option>B+</ion-select-option>
                             <ion-select-option>AB+</ion-select-option>
@@ -117,7 +106,7 @@
     <br />
 
     <div style="float: right;">
-        <ion-button style="margin-bottom:10%;" (click)="containsmodifications()" (click)="edit(your.ID)">Save Changes</ion-button>
+        <ion-button style="margin-bottom:10%;" (click)="containsmodifications()" (click)="edit(your.ID)" (ngSubmit)="update()">Save Changes</ion-button>
     </div>
     </div>
 </ion-content>
