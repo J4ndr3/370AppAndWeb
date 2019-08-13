@@ -42,7 +42,12 @@ rcv: object;
     this.data.GetGate(this.data.nID).subscribe(res=>{
       this.Gate = res;
       console.log(res);
-      this.EditForm.setValue({ID:this.Gate.Gate_ID,Name:this.Gate.Name,Descriprion:this.Gate.Descriprion,Lattitude:this.Gate.Lattitude,Longitude:this.Gate.Longitude,Reserve:this.Gate.Reserve_ID})    
+      this.EditForm.setValue({ID:this.Gate.Gate_ID,
+        Name:this.Gate.Name,
+        Descriprion:this.Gate.Descriprion,
+        Lattitude:this.Gate.Lattitude,
+        Longitude:this.Gate.Longitude,
+        Reserve:this.Gate.Reserve_ID})    
     })
   }
   update(){

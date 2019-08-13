@@ -460,3 +460,6 @@ C:\Users\Erard\Desktop\Del 5 V3\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.
 C:\Users\Erard\Desktop\Del 5 V3\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Erard\Desktop\Del 5 V3\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Erard\Desktop\Del 5 V3\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Cors.dll
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.dll
+C:\Users\Rijnhardt Groenewald\Desktop\Derde jaar up\INF370\Del 3 And 4\screens code\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Cors.xml

@@ -10,16 +10,31 @@ export class ERPService {
 nID:any;
   constructor(private http: HttpClient) { }
   GetRanger() {
-    return this.http.get('http://localhost:30264/api/Caus')
+    return this.http.get('http://localhost:51389/api/Rangers')
+  }
+  GetPerformance() {
+    return this.http.get('http://localhost:51389/api/Patrol_Marker')
+  }
+  GetIncedent_Patrole() {
+    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+  }
+  GetMarker() {
+    return this.http.get('http://localhost:51389/api/Markers')
+  }
+  GetRangerVehicle() {
+    return this.http.get('http://localhost:51389/api/Ranger_Vehicle')
+  }
+  GetAssets() {
+    return this.http.get('http://localhost:51389/api/Assets')
   }
   PostRanger(obj) {
-    return this.http.post('http://localhost:30264/api/Caus', obj)
+    return this.http.post('http://localhost:51389/api/Rangers', obj)
   }
   DeleteRaner(id) {
-    return this.http.delete('http://localhost:30264/api/Caus/' + id)
+    return this.http.delete('http://localhost:51389/api/Rangers/' + id)
   }
   PutRanger(id, obj) {
-    return this.http.put('http://localhost:30264/api/Caus/' + id, obj)
+    return this.http.put('http://localhost:51389/api/Rangers/' + id, obj)
   }
 
   GetUserRole() {
@@ -149,13 +164,31 @@ nID:any;
   GetRewardAdd(){
     return this.http.get('http://localhost:51389/api/Product_Reward')
   }
-  GetRewardAdd1(){
+  PutRewardAdd(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Product_Reward/'+ID,obj)
+  }
+  PutEventRewardAdd(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Event_Reward/'+ID,obj)
+  }
+  GetRewardAdds(id) {
+    return this.http.get('http://localhost:51389/api/Product_Reward/'+id)
+  }
+  GetEventRewardAdds(id) {
+    return this.http.get('http://localhost:51389/api/Event_Reward/'+id)
+  }
+  DeleteRewardAdd(id) {
+    return this.http.delete('http://localhost:51389/api/Product_Reward/' + id)
+  }
+  DeleteEventRewardAdd(id) {
+    return this.http.delete('http://localhost:51389/api/Event_Reward/' + id)
+  }
+  GetEventRewardAdd(){
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
   PostRewardAdd(obj){
     return this.http.post('http://localhost:51389/api/Product_Reward', obj)
   }
-  PostRewardAdd1(obj){
+  PostEventRewardAdd(obj){
     return this.http.post('http://localhost:51389/api/Event_Reward', obj)
   }
   GetEventType(){
@@ -164,11 +197,29 @@ nID:any;
   PostEventType(obj){
     return this.http.post('http://localhost:51389/api/Event_Type', obj)
   }
+  PutEventType(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Event_Type/'+ID,obj)
+  }
+  GetEventTypes(id) {
+    return this.http.get('http://localhost:51389/api/Event_Type/'+id)
+  }
   GetProductType(){
     return this.http.get('http://localhost:51389/api/Product_Type')
   }
+  DeleteEventType(id) {
+    return this.http.delete('http://localhost:51389/api/Event_Type/' + id)
+  }
   PostProductType(obj){
     return this.http.post('http://localhost:51389/api/Product_Type', obj)
+  }
+  PutProductType(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Product_Type/'+ID,obj)
+  }
+  GetProductTypes(id) {
+    return this.http.get('http://localhost:51389/api/Product_Type/'+id)
+  }
+  DeleteProductType(id) {
+    return this.http.delete('http://localhost:51389/api/Product_Type/' + id)
   }
   GetAsset(){
     return this.http.get('http://localhost:51389/api/Asset')
@@ -179,6 +230,7 @@ nID:any;
   PostSupplier(obj) {
     return this.http.post('http://localhost:51389/api/Supplier', obj)
   }
+  
   // sendNotif(title,message) {
   //   const httpOptions = {
   //     headers: new HttpHeaders({

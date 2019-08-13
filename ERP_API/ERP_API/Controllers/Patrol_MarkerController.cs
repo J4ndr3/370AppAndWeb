@@ -9,17 +9,36 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Patrol_MarkerController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Patrol_Marker
-        public IQueryable<Patrol_Marker> GetPatrol_Marker()
+        public List<dynamic> GetPatrol_Marker()
         {
-            return db.Patrol_Marker;
+            List<Patrol_Marker> Level = db.Patrol_Marker.Include(zz => zz.Patrol_Log).Include(zz => zz.Ranger).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Patrol_Marker Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+
+                m.Name = Item.Ranger.Name;
+                m.Surname = Item.Ranger.Surname;
+                m.Cell = Item.Ranger.Cell;
+                m.Points = Item.Ranger.Points;
+                m.Checkin = Item.Patrol_Log.Checkin;
+                m.Checkout = Item.Patrol_Log.Checkout;
+                m.Passed = Item.Date_Time_Passed;
+
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Patrol_Marker/5

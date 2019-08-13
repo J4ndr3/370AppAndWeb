@@ -39,6 +39,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Event_Type))]
         public IHttpActionResult GetEvent_Type(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Event_Type event_Type = db.Event_Type.Find(id);
             if (event_Type == null)
             {

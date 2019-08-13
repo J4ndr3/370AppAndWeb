@@ -9,23 +9,41 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AssetsController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Assets
-        public IQueryable<Asset> GetAssets()
+        public List<dynamic> GetAssets()
         {
-            return db.Assets;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Asset> Level = db.Assets.Include(zz => zz.Asset_Status).Include(zz=>zz.Asset_Type).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Asset Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.Type = Item.Asset_Type.Description;
+                m.Status = Item.Asset_Status.Description;
+                m.Description = Item.Description;
+               
+               
+
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Assets/5
         [ResponseType(typeof(Asset))]
         public IHttpActionResult GetAsset(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Asset asset = db.Assets.Find(id);
             if (asset == null)
             {
@@ -39,6 +57,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAsset(int id, Asset asset)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +93,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Asset))]
         public IHttpActionResult PostAsset(Asset asset)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +109,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Asset))]
         public IHttpActionResult DeleteAsset(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Asset asset = db.Assets.Find(id);
             if (asset == null)
             {

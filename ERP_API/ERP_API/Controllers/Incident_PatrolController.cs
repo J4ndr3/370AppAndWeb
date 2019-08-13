@@ -9,17 +9,43 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Incident_PatrolController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Patrol
-        public IQueryable<Incident_Patrol> GetIncident_Patrol()
+        public List<dynamic> GetIncident_Patrol()
         {
-            return db.Incident_Patrol;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Incident_Patrol Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.Lat = Item.Lat;
+                m.Long = Item.Lng;
+                m.Title = Item.Incident_Type.Description;
+                m.Name = Item.Ranger.Name;
+                m.Surname = Item.Ranger.Surname;
+                m.Cell = Item.Ranger.Cell;
+                m.Date = Item.Date.ToShortDateString();
+                m.Time = Item.Time;
+                m.Level = Item.Incident_Level.Description;
+
+
+
+
+
+
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Incident_Patrol/5

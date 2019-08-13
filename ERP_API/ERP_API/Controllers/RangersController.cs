@@ -9,24 +9,44 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RangersController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Rangers
-        public IQueryable<Ranger> GetRangers()
+        public List<dynamic> GetRangers()
         {
-            return db.Rangers;
-        }
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Ranger> Level = db.Rangers.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Ranger Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.Name = Item.Name;
+                m.Surname = Item.Surname;
+                m.Cell = Item.Cell;
+                m.Points = Item.Points;
+                m.Status = Item.Status;
+                m.Email = Item.Email;
 
-        // GET: api/Rangers/5
-        [ResponseType(typeof(Ranger))]
+                toReturn.Add(m);
+            }
+            return toReturn;
+        
+    }
+
+    // GET: api/Rangers/5
+    [ResponseType(typeof(Ranger))]
         public IHttpActionResult GetRanger(int id)
         {
-            Ranger ranger = db.Rangers.Find(id);
+        db.Configuration.ProxyCreationEnabled = false;
+        Ranger ranger = db.Rangers.Find(id);
             if (ranger == null)
             {
                 return NotFound();
@@ -39,6 +59,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRanger(int id, Ranger ranger)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +95,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult PostRanger(Ranger ranger)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +111,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult DeleteRanger(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Ranger ranger = db.Rangers.Find(id);
             if (ranger == null)
             {
