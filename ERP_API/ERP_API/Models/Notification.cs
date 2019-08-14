@@ -15,13 +15,11 @@ namespace ERP_API.Models
     public partial class Notification
     {
         public int Notification_ID { get; set; }
+        public string Title { get; set; }
         public string Meassage { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public System.DateTime Date { get; set; }
         public int Ranger_ID { get; set; }
     
         public virtual Ranger Ranger { get; set; }
-        public virtual Ranger Ranger1 { get; set; }
-        public virtual Ranger Ranger2 { get; set; }
-        public virtual Ranger Ranger3 { get; set; }
     }
 }

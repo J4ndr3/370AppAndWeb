@@ -24,52 +24,53 @@ namespace ERP_API.Controllers
         public List<dynamic> GetIncident_Patrol()
         {
 
-            db.Configuration.ProxyCreationEnabled = false;
-            List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
-            List<dynamic> toReturn = new List<dynamic>();
-            foreach (Incident_Patrol Item in Level)
-            {
-                dynamic m = new ExpandoObject();
-                m.Lat = Item.Lat;
-                m.Long = Item.Lng;
-                m.Title = Item.Incident_Type.Description;
-                m.Name = Item.Ranger.Name;
-                m.Surname = Item.Ranger.Surname;
-                m.Cell = Item.Ranger.Cell;
-                m.Date = Item.Date.ToShortDateString();
-                m.Time = Item.Time;
-                m.Level = Item.Incident_Level.Description;
+           // db.Configuration.ProxyCreationEnabled = false;
+            //List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
+//            List<dynamic> toReturn = new List<dynamic>();
+//            foreach (Incident_Patrol Item in Level)
+//            {
+//                dynamic m = new ExpandoObject();
+//                m.Lat = Item.Lat;
+//                m.Long = Item.Lng;
+//                m.Title = Item.Incident_Type.Description;
+//                m.Name = Item.Ranger.Name;
+//                m.Surname = Item.Ranger.Surname;
+//                m.Cell = Item.Ranger.Cell;
+//                m.Date = Item.Date.ToShortDateString();
+//                m.Time = Item.Time;
+//                m.Level = Item.Incident_Level.Description;
 
 
 
 
 
 
-                toReturn.Add(m);
-            }
-            return toReturn;
-=======
+//                toReturn.Add(m);
+//            }
+//            return toReturn;
+//=======
             List<dynamic> toReturn = new List<dynamic>();
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 List<Incident_Patrol> incidents = db.Incident_Patrol
-                    .Include(zz => zz.Incident_Type).
-                    Include(zz => zz.Incident_Status).
-                    Include(zz => zz.Incident_Level).
-                    Include(zz => zz.Ranger).
-                    Include(zz => zz.Incident).
-                    Where(x => x.Incident_Status.Incident_Status_ID == 2).ToList();
+                   // .Include(zz => zz.Incident_Type)
+                   //.Include(zz => zz.Incident_Status)
+                   // .Include(zz => zz.Incident_Level)
+                   // .Include(zz => zz.Ranger)
+                    .Include(zz => zz.Incident)
+                    //.Where(x => x.Incident_Status.Incident_Status_ID == 2)
+                    .ToList();
                 
                 foreach (Incident_Patrol Item in incidents)
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.Incident_ID;
                     m.Description = Item.Incident.Description;
-                    m.Type = Item.Incident_Type.Description;
-                    m.Level = Item.Incident_Level.Description;
-                    m.Date = Item.Incident_Status.Description;
-                    m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
+                    //m.Type = Item.Incident_Type.Description;
+                    //m.Level = Item.Incident_Level.Description;
+                    //m.Date = Item.Incident_Status.Description;
+                    //m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
                     m.Date = Item.Date.ToShortDateString() + " " + Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
@@ -83,8 +84,6 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
             
-            
->>>>>>> ce772546966c63f835f046bf973460b2d80988d4
         }
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]

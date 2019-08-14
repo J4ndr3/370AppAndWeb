@@ -18,13 +18,6 @@ namespace ERP_API.Models
         public Incident_Status()
         {
             this.Incidents = new HashSet<Incident>();
-            this.Incidents1 = new HashSet<Incident>();
-            this.Incidents2 = new HashSet<Incident>();
-            this.Incidents3 = new HashSet<Incident>();
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol1 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol2 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol3 = new HashSet<Incident_Patrol>();
         }
     
         public int Incident_Status_ID { get; set; }
@@ -32,19 +25,5 @@ namespace ERP_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident> Incidents { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident> Incidents1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident> Incidents2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident> Incidents3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol3 { get; set; }
     }
 }

@@ -24,7 +24,10 @@ namespace ERP_API.Controllers
         {
 
             db.Configuration.ProxyCreationEnabled = false;
-            List<Ranger_Vehicle> Level = db.Ranger_Vehicle.Include(zz => zz.Ranger).Include(zz=>zz.Vehicle).Include(zz=>zz.Model).Include(zz=>zz.Make).ToList();
+            List<Ranger_Vehicle> Level = db.Ranger_Vehicle.Include(zz => zz.Ranger).Include(zz=>zz.Vehicle)
+                .Include(zz=>zz.Vehicle.Model)
+                .Include(zz=>zz.Vehicle.Model.Make)
+                .ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Ranger_Vehicle Item in Level)
             {
@@ -32,8 +35,8 @@ namespace ERP_API.Controllers
                 m.Name = Item.Ranger.Name;
                 m.Surname = Item.Ranger.Surname;
                 m.Cell = Item.Ranger. Cell;
-                m.Make = Item.Make.Name;
-                m.Model = Item.Model.Model1;
+                m.Make = Item.Vehicle.Model.Make.Name;
+                m.Model = Item.Vehicle.Model.Model1;
                 m.Colour = Item.Vehicle.Colour;
                 m.Redgistration = Item.Vehicle.Registration;
                 m.Status = Item.Vehicle.Status;

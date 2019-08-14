@@ -25,7 +25,9 @@ namespace ERP_API.Controllers
         {
 
             db.Configuration.ProxyCreationEnabled = false;
-            List<Incident> incidents = db.Incidents.Include(zz=>zz.Incident_Type).Include(zz=>zz.Incident_Status).Include(zz=>zz.Incident_Level).ToList();
+            List<Incident> incidents = db.Incidents.Include(zz=>zz.Incident_Type).Include(zz=>zz.Incident_Status)
+              //  .Include(zz=>zz.Incident_Level)
+                .ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Incident Item in incidents)
             {
@@ -33,7 +35,7 @@ namespace ERP_API.Controllers
                 m.ID = Item.Incident_ID;
                 m.Description = Item.Description;
                 m.Type = Item.Incident_Type.Description;
-                m.Level = Item.Incident_Level.Description;
+               // m.Level = Item.Incident_Level.Description;
                 m.Date = Item.Incident_Status.Description;
                 toReturn.Add(m);
             }

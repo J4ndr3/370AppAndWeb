@@ -14,15 +14,6 @@ namespace ERP_API.Models
     
     public partial class Security_Company
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Security_Company()
-        {
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol1 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol2 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol3 = new HashSet<Incident_Patrol>();
-        }
-    
         public int Security_ID { get; set; }
         public int Reserve_ID { get; set; }
         public string Name { get; set; }
@@ -30,16 +21,5 @@ namespace ERP_API.Models
         public string Email { get; set; }
     
         public virtual Reserve Reserve { get; set; }
-        public virtual Reserve Reserve1 { get; set; }
-        public virtual Reserve Reserve2 { get; set; }
-        public virtual Reserve Reserve3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol3 { get; set; }
     }
 }

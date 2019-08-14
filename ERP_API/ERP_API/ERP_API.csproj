@@ -302,6 +302,9 @@
     <Compile Include="Models\Asset_Status.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Asset_Supplier.cs">
+      <DependentUpon>ERP_Rangers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asset_Type.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
@@ -489,6 +492,7 @@
     </EntityDeploy>
     <Content Include="Models\ERP_Rangers.edmx.diagram">
       <DependentUpon>ERP_Rangers.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
