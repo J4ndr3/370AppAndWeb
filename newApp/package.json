@@ -37,11 +37,9 @@
     "cordova": "^9.0.0",
     "cordova-android": "8.0.0",
     "cordova-ios": "^5.0.1",
-    "cordova-plugin-androidx": "^1.0.2",
+    "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.0",
-    "cordova-plugin-cocoapod-supportx": "^1.7.2",
-    "cordova-plugin-firebasex": "^3.0.6",
-    "cordova-plugin-qrscanner": "^3.0.1",
+    "cordova-plugin-firebase": "^2.0.5",
     "core-js": "^2.5.4",
     "date-fns": "^1.30.1",
     "firebase": "^6.2.4",
@@ -86,7 +84,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~8.1.0",
     "tslint": "~5.16.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "xcode": "^2.0.0"
   },
   "description": "An Ionic project",
   "cordova": {
@@ -99,19 +98,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-firebasex": {
-        "ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION": "17.0.0",
-        "ANDROID_FIREBASE_CORE_VERSION": "17.0.0",
-        "ANDROID_FIREBASE_MESSAGING_VERSION": "19.0.0",
-        "ANDROID_FIREBASE_CONFIG_VERSION": "18.0.0",
-        "ANDROID_FIREBASE_PERF_VERSION": "18.0.0",
-        "ANDROID_FIREBASE_AUTH_VERSION": "18.0.0",
-        "ANDROID_CRASHLYTICS_VERSION": "2.10.1",
-        "ANDROID_CRASHLYTICS_NDK_VERSION": "2.1.0",
-        "ANDROID_SHORTCUTBADGER_VERSION": "1.1.22"
-      },
       "cordova-plugin-androidx-adapter": {},
-      "cordova-plugin-qrscanner": {}
+      "cordova-plugin-firebase": {}
     },
     "platforms": [
       "android",

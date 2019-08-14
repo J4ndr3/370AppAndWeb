@@ -34,24 +34,29 @@
         <br>
         <form class="form-horizontal" id="modifyForm" action="/action_page.php">
 
-            <div class="form-group">
+            <div class="form-group border-lable-flt">
                 <h2 class="Header">Add User Role</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="User role Description..." name="Level" required>
+                    <input type="text" class="form-control" id="desc" placeholder="  " name="Level" required>
+                    <label for="desc">User role Description...</label>
                 </div>
                 <br>
-                <div class="form-group">
+            </div>
+                
                     <div class="col-sm-10">
+                            <label class="form-group border-lable-flt">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
                           <option selected disabled hidden value="Gender...">Access Level...</option>
                           <option>1</option>
                           <option>2</option>
                           <option>3</option>
                         </select>
+                        <span>Access Level...</span>
+  </label>
                     </div>
-                </div>
-            </div>
+               
+            
 
             <!--Moenie die save button verander nie-->
             <div class="form-group">

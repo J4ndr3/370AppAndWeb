@@ -82,13 +82,13 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  // private async presentToast(message) {
-  //   const toast = await this.toastController.create({
-  //     message,
-  //     duration: 3000
-  //   });
-  //   toast.present();
-  // }
+  private async presentToast(message) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000
+    });
+    toast.present();
+  }
 
   private notificationSetup() {
     this.fcm.getToken();

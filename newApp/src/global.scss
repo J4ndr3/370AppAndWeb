@@ -275,3 +275,9 @@
             padding-top: 8px;
             color: rgb(3, 70, 76);
         }
+        ion-label[floating] + ion-input {
+            input:not(:focus)::-webkit-input-placeholder { color:transparent; }
+            input:not(:focus):-moz-placeholder { color:transparent; }
+            input:not(:focus)::-moz-placeholder { color:transparent; }
+            input:not(:focus):-ms-input-placeholder { color:transparent; }
+          }
