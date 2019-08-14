@@ -38,4 +38,8 @@ export class ERPService {
   PostRoute(obj){
     return this.http.post('http://localhost:51389/api/Trackings/',obj)
   }
+  PutRanger(ID,obj){
+    return this.http.put('http://localhost:51389/api/rangers/'+ID,obj)
+  }
+  
 }
