@@ -44,17 +44,6 @@
                     </div>
                 </div>
 
-
-
-                <!-- <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="First Name..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Last Name..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Username..." required="true"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Password..." required="true" type="password"></ion-input>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Confirm Password..." required="true" type="password"></ion-input>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
@@ -69,13 +58,13 @@
                             <ion-input type="Email" id="Email" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="Email" placeholder="Email..." required="true"></ion-input>
                             <ion-input type="text" id="Phone" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="Phone" placeholder="Phone..." required="true"></ion-input>
 
-                            <ion-select id="Gender" placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select id="Gender" hidden formControlName="Gender" placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
                                 <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
                                 <ion-select-option>Male</ion-select-option>
                                 <ion-select-option>Female</ion-select-option>
                                 <ion-select-option>Other</ion-select-option>
                             </ion-select>
-                            <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Select Organisation..." required="true"></ion-input>
+                            <ion-input id="SelectOrganisation" hidden formControlName="SelectOrganisation" type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Select Organisation..." required="true"></ion-input>
                         </div>
                     </div>
                 </div>

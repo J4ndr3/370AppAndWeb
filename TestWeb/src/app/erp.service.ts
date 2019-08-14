@@ -13,16 +13,35 @@ export class ERPService {
   nID: any;
   constructor(private http: HttpClient, private nav: NavComponent) { }
   GetRanger() {
+<<<<<<< HEAD
+    return this.http.get('http://localhost:51389/api/Rangers')
+  }
+  GetPerformance() {
+    return this.http.get('http://localhost:51389/api/Patrol_Marker')
+  }
+  GetIncedent_Patrole() {
+    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+  }
+  GetMarker() {
+    return this.http.get('http://localhost:51389/api/Markers')
+  }
+  GetRangerVehicle() {
+    return this.http.get('http://localhost:51389/api/Ranger_Vehicle')
+  }
+  GetAssets() {
+    return this.http.get('http://localhost:51389/api/Assets')
+=======
     return this.http.get('http://localhost:30264/api/Rangers')
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
   }
   PostRanger(obj) {
-    return this.http.post('http://localhost:30264/api/Caus', obj)
+    return this.http.post('http://localhost:51389/api/Rangers', obj)
   }
   DeleteRaner(id) {
-    return this.http.delete('http://localhost:30264/api/Caus/' + id)
+    return this.http.delete('http://localhost:51389/api/Rangers/' + id)
   }
   PutRanger(id, obj) {
-    return this.http.put('http://localhost:30264/api/Caus/' + id, obj)
+    return this.http.put('http://localhost:51389/api/Rangers/' + id, obj)
   }
 
   GetUserRole() {
@@ -157,13 +176,39 @@ export class ERPService {
   GetRewardAdd() {
     return this.http.get('http://localhost:51389/api/Product_Reward')
   }
+<<<<<<< HEAD
+  PutRewardAdd(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Product_Reward/'+ID,obj)
+  }
+  PutEventRewardAdd(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Event_Reward/'+ID,obj)
+  }
+  GetRewardAdds(id) {
+    return this.http.get('http://localhost:51389/api/Product_Reward/'+id)
+  }
+  GetEventRewardAdds(id) {
+    return this.http.get('http://localhost:51389/api/Event_Reward/'+id)
+  }
+  DeleteRewardAdd(id) {
+    return this.http.delete('http://localhost:51389/api/Product_Reward/' + id)
+  }
+  DeleteEventRewardAdd(id) {
+    return this.http.delete('http://localhost:51389/api/Event_Reward/' + id)
+  }
+  GetEventRewardAdd(){
+=======
   GetRewardAdd1() {
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
   PostRewardAdd(obj) {
     return this.http.post('http://localhost:51389/api/Product_Reward', obj)
   }
+<<<<<<< HEAD
+  PostEventRewardAdd(obj){
+=======
   PostRewardAdd1(obj) {
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
     return this.http.post('http://localhost:51389/api/Event_Reward', obj)
   }
   GetEventType() {
@@ -172,6 +217,33 @@ export class ERPService {
   PostEventType(obj) {
     return this.http.post('http://localhost:51389/api/Event_Type', obj)
   }
+<<<<<<< HEAD
+  PutEventType(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Event_Type/'+ID,obj)
+  }
+  GetEventTypes(id) {
+    return this.http.get('http://localhost:51389/api/Event_Type/'+id)
+  }
+  GetProductType(){
+    return this.http.get('http://localhost:51389/api/Product_Type')
+  }
+  DeleteEventType(id) {
+    return this.http.delete('http://localhost:51389/api/Event_Type/' + id)
+  }
+  PostProductType(obj){
+    return this.http.post('http://localhost:51389/api/Product_Type', obj)
+  }
+  PutProductType(ID,obj) {
+    return this.http.put('http://localhost:51389/api/Product_Type/'+ID,obj)
+  }
+  GetProductTypes(id) {
+    return this.http.get('http://localhost:51389/api/Product_Type/'+id)
+  }
+  DeleteProductType(id) {
+    return this.http.delete('http://localhost:51389/api/Product_Type/' + id)
+  }
+  GetAsset(){
+=======
   GetProductType() {
     return this.http.get('http://localhost:51389/api/Product_Type')
   }
@@ -179,6 +251,7 @@ export class ERPService {
     return this.http.post('http://localhost:51389/api/Product_Type', obj)
   }
   GetAsset() {
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
     return this.http.get('http://localhost:51389/api/Asset')
   }
   GetSupplier() {
@@ -187,6 +260,29 @@ export class ERPService {
   PostSupplier(obj) {
     return this.http.post('http://localhost:51389/api/Supplier', obj)
   }
+<<<<<<< HEAD
+  
+  // sendNotif(title,message) {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Postman-Token': '7946b969-a677-4a17-8fc0-23e6a5f1081d',
+  //       'cache-control': 'no-cache',
+  //       'Content-Type': 'application/json',
+  //       Authorization: 'key=AAAAqtm61OY:APA91bFuJ-nIBwEtNOviWzhO7lJCyeaIS84Ay2XP9CjY-hHe4O6GR7XVHAL7TVzjd5pLwRZ6wQgwFbKYMKrdIFMthWtpLFMRCjOUyONqXvoTkgxqAqfZ-0dyuet0p2s-DhvujLydLfZT'
+  //     })
+  //   };
+  //   var url: 'https://fcm.googleapis.com/fcm/send';
+  //   var body:"{to: '/topics/ERP',notification:{body: message,  content_available: true,priority: 'high',title: title},data:{body: message,content_available: true,priority: 'high',title: title}}";
+  //   console.log("1");
+  //   // request(options, function (error, response, body) {
+  //   //   if (error) throw new Error(error);
+
+  //   //   console.log(body);
+  //   // });
+  //   return this.http.post(url,body,httpOptions)
+    
+=======
+>>>>>>> ce772546966c63f835f046bf973460b2d80988d4
   GetGates() {
     return this.http.get('http://localhost:51389/api/Gates')
   }

@@ -19,54 +19,35 @@
                 <thead>
                     <tr id="header">
 
-                        <th>Asset Name</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Description</th>
+
+                        <th style="text-align: left;">Type </th>
+                        <th style="text-align: left;">Status</th>
+                        <th style="text-align: left;">Description</th>
 
 
                         <!--<th>Actions</th>-->
                     </tr>
                 </thead>
                 <tbody id="mytable">
-                    <tr>
-                        <td>Night core</td>
-                        <td>Flash light</td>
-                        <td>Active</td>
-                        <td>1000 lumens</td>
+                    <tr *ngFor="let Asset of Assets">
+                        <td style="text-align: left;">{{Asset.Type}}</td>
+                        <td style="text-align: left;">{{Asset.Status}}</td>
+                        <td style="text-align: left;">{{Asset.Description}}</td>
 
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
-            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-            src="/assets/ios-trash.svg" class="edit" /></button> -->
-                    </tr>
-                    <tr>
-                        <td>Surefire</td>
-                        <td>Spot light</td>
-                        <td>Inactive</td>
-                        <td>10000 Lumens</td>
 
-                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-            src="/assets/ios-trash.svg" class="edit" /></button> -->
-                    </tr>
-                    <tr>
-                        <td>Fenix</td>
-                        <td>Flash light</td>
-                        <td>Active</td>
-                        <td>1200 Lumens</td>
-                        <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-            class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-            src="/assets/ios-trash.svg" class="edit" /></button>-->
                     </tr>
                 </tbody>
-                <tfoot style="background-color:rgba(205, 21, 67);">
+                <script>
+                </script>
+                <tfoot style="background-color:rgba(205, 21, 67);" *ngFor="let Asset of Assets">
 
-                    <td></td>
-                    <td>Total Active Assets</td>
-                    <td>:</td>
-                    <td>2</td>
+
+                    <td style="text-align: left;">Total Active Assets</td>
+                    <td style="text-align: left;"> :</td>
+                    <td style="text-align:right;">{{count}}</td>
                 </tfoot>
             </table>
         </div>
+        <div id="chrt2" align="center"></div>
     </div>

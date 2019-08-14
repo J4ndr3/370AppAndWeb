@@ -5,6 +5,8 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { rgb } from '@amcharts/amcharts4/.internal/core/utils/Colors';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { dateToLocalArray } from '@fullcalendar/core/datelib/marker';
+import { ERPService } from '../erp.service';
 
 am4core.useTheme(am4themes_animated);
 @Component({
@@ -14,6 +16,10 @@ am4core.useTheme(am4themes_animated);
 })
 export class PerformanceComponent {
   private chart: am4charts.XYChart;
+  myDate= new Date().toLocaleDateString();
+  performances:object;
+
+  
   @ViewChild('content', { static: false }) content: ElementRef;
 
   public Download() {
@@ -21,8 +27,9 @@ export class PerformanceComponent {
 
     this.chart.exporting.getImage("png").then((data) => {
       img = data;
-      document.getElementById('chrt').innerHTML = '<br><h1 style="margin:auto">RANGER PERFORMANCE REPORT</h1><hr class="hrow" /><img src="' + img + '"></div><br> <br><hr class="hrow" />';
-
+      
+      document.getElementById('chrt').innerHTML = '<br><br><br> <p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f> <h1 style="margin:auto">RANGER PERFORMANCE REPORT</h1><br><br> <img src="' + img + '"></div><br><br> <br>';
+      document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
       var data1 = document.getElementById('contentToConvert');
       var data2 = document.getElementById('contentToConvert1');
       html2canvas(data1, data2).then(canvas => {
@@ -36,21 +43,29 @@ export class PerformanceComponent {
         let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
         var position = 0;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-        pdf.save('MYPdf.pdf'); // Generated PDF  
+        pdf.save('RANGER PERFORMANCE REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt').innerHTML="";
+        document.getElementById('chrt2').innerHTML="";
       });
     });
 
 
 
   }
+  ngOnInit() {
+    this.data.GetPerformance().subscribe(res=>{
+      console.log(res);
+      this.performances = res;
+
+
+    });
+  }
 
 
 
 
-
-  constructor(private zone: NgZone) { }
+  constructor(private zone: NgZone, private data: ERPService) { }
   ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
       let chart = am4core.create("chartdiv", am4charts.XYChart);
@@ -116,5 +131,7 @@ export class PerformanceComponent {
         this.chart.dispose();
       }
     });
-  }
+    
+     
+}
 }

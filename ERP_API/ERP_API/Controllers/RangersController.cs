@@ -20,14 +20,29 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Rangers
-        public IQueryable<Ranger> GetRangers()
+        public List<dynamic> GetRangers()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            return db.Rangers;
-        }
+            List<Ranger> Level = db.Rangers.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Ranger Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.Name = Item.Name;
+                m.Surname = Item.Surname;
+                m.Cell = Item.Cell;
+                m.Points = Item.Points;
+                m.Status = Item.Status;
+                m.Email = Item.Email;
 
-        // GET: api/Rangers/5
-        [ResponseType(typeof(Ranger))]
+                toReturn.Add(m);
+            }
+            return toReturn;
+        
+    }
+
+    // GET: api/Rangers/5
+    [ResponseType(typeof(Ranger))]
         public IHttpActionResult GetRanger(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;

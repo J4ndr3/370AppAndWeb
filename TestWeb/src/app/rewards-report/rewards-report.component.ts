@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'; 
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; 
+import { ERPService } from '../erp.service';
 
 @Component({
   selector: 'app-rewards-report',
@@ -10,14 +11,20 @@ import html2canvas from 'html2canvas';
 })
 export class RewardsReportComponent implements OnInit {
   @ViewChild('content', { static: false }) content: ElementRef;
-  
+  Products:object;
+  Count=0;
+  ProductCount:Array<object>;
+
+  Events:object;
+  EventCount=0;
+  EventsCount:Array<object>;
 
   public Download() {
   
     
     
     
-    document.getElementById('chrt1').innerHTML = '<br><h1 style="margin:auto">REWARDS REPORT</h1><hr class="hrow" /></div>';
+    
     const data1 = document.getElementById('contentToConvert');
     
     html2canvas(data1).then(canvas => {
@@ -43,9 +50,29 @@ export class RewardsReportComponent implements OnInit {
 
 
     
-  constructor(private toastrService: ToastrService) { }
+  constructor(private toastrService: ToastrService, private data: ERPService) { }
 
   ngOnInit() {
+    this.data.GetRewardAdd().subscribe(res=>{
+      this.ProductCount = JSON.parse(JSON.stringify(res));
+      console.log(res);
+      this.ProductCount.forEach(marker => {
+          this.Count++;
+          console.log(this.ProductCount)
+          this.Products = res;
+      
+    });
+  });
+  this.data.GetEventRewardAdd().subscribe(res=>{
+    this.EventsCount = JSON.parse(JSON.stringify(res));
+    console.log(res);
+    this.EventsCount.forEach(marker => {
+        this.EventCount++;
+        console.log(this.EventCount)
+        this.Events = res;
+    
+  });
+});
   }
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
