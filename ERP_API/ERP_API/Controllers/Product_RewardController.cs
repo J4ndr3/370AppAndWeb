@@ -28,6 +28,7 @@ namespace ERP_API.Controllers
             foreach (Product_Reward Item in Level)
             {
                 dynamic m = new ExpandoObject();
+                m.PID = Item.Product_Reward_ID;
                 m.PName = Item.Name;
                 m.PQuantity = Item.Quantity;
                 m.PPoints = Item.Points;

@@ -18,24 +18,24 @@
         <ion-button (click)="today()">Today</ion-button>
       </ion-buttons>
     <!-- Card for adding a new event -->
-    <ion-card>
+    <ion-card [formGroup]="AddForm" (ngSubmit)="addShiftbookingsPage()">
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
         <ion-card-title align="center" style="font-size: 25px">Book Shift <ion-icon name="add-circle" size="medium"></ion-icon></ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
-          <ion-select placeholder="Select Reserve..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+          <ion-select formControlName="UserRole"  placeholder="Select Reserve..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
               <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
               <ion-select-option>Rietvlei</ion-select-option>
               <ion-select-option>Dinokeng</ion-select-option>
               <ion-select-option>Other</ion-select-option>
             </ion-select>
-       <ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+       <ion-select formControlName="UserRole" placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
               <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
               <ion-select-option>I'm patrolling alone</ion-select-option>
               <ion-select-option>Rijnhardt</ion-select-option>
               <ion-select-option>Lize</ion-select-option>
             </ion-select>
-            <ion-select placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+            <ion-select formControlName="UserRole" placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
                 <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
                 <ion-select-option>ERP Bakkie</ion-select-option>
                 <ion-select-option>Honda CRV</ion-select-option>
@@ -43,16 +43,16 @@
               </ion-select>
         <ion-item>
           <ion-label>Start</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+          <ion-datetime formControlName="UserRole" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>End</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+          <ion-datetime formControlName="UserRole" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
         </ion-item>
-        <ion-item style="margin-bottom: 10%">
+        <!-- <ion-item style="margin-bottom: 10%">
           <ion-label>All Day?</ion-label>
           <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
-        </ion-item>
+        </ion-item> -->
         <ion-button fill="outline" expand="block" (click)="addEvent()" (click)="successToast()">Add Shift Booking</ion-button>
    
       </ion-card-content>

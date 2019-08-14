@@ -9,17 +9,39 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MarkersController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Markers
-        public IQueryable<Marker> GetMarkers()
+        public List<dynamic> GetMarkers()
         {
-            return db.Markers;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Marker> Level = db.Markers.Include(zz=>zz.Marker_Type).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Marker Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.Lat = Item.Lattitude;
+                m.Long = Item.Longitude;
+                m.Num = Item.Marker_ID;
+                m.Status = Item.Status;
+                m.Date = Item.Modified.ToShortDateString();
+                m.Points = Item.Marker_Type.Points_Worth;
+
+                
+
+
+
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Markers/5

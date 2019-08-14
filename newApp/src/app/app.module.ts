@@ -20,6 +20,7 @@ import { from } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
+import { RangerprofilePageModule } from './rangerprofile/rangerprofile.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPkIMLCVqfgX48Vyx9xl6HpPvs4UfiOnQ",
@@ -47,6 +48,7 @@ const firebaseConfig = {
     HttpClientModule
   ],
   providers: [
+    RangerprofilePageModule,
     StatusBar,
     SplashScreen,
     Firebase,

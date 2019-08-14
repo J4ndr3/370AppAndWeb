@@ -23,6 +23,32 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol
         public List<dynamic> GetIncident_Patrol()
         {
+
+           // db.Configuration.ProxyCreationEnabled = false;
+            //List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
+//            List<dynamic> toReturn = new List<dynamic>();
+//            foreach (Incident_Patrol Item in Level)
+//            {
+//                dynamic m = new ExpandoObject();
+//                m.Lat = Item.Lat;
+//                m.Long = Item.Lng;
+//                m.Title = Item.Incident_Type.Description;
+//                m.Name = Item.Ranger.Name;
+//                m.Surname = Item.Ranger.Surname;
+//                m.Cell = Item.Ranger.Cell;
+//                m.Date = Item.Date.ToShortDateString();
+//                m.Time = Item.Time;
+//                m.Level = Item.Incident_Level.Description;
+
+
+
+
+
+
+//                toReturn.Add(m);
+//            }
+//            return toReturn;
+//=======
             List<dynamic> toReturn = new List<dynamic>();
             try
             {
@@ -59,7 +85,6 @@ namespace ERP_API.Controllers
                 toReturn.Add("Not readable");
                 return toReturn;
             }
-            
             
         }
         // GET: api/Incident_Patrol/5

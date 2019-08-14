@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'; 
 import {ERPService} from '..//erp.service';          
-import { FormBuilder,FormGroup } from '@angular/forms';          
+import { FormBuilder,FormGroup } from '@angular/forms';  
+import { RewardModifyComponent } from '../reward-modify/reward-modify.component';
+import { RewardEventModifyComponent } from '../reward-event-modify/reward-event-modify.component';
+
 
 @Component({
   selector: 'app-reward-add',
@@ -15,34 +18,100 @@ export class RewardAddComponent implements OnInit {
   RewardAddSelection:number =0;
   RewardAddOptions:Array<object>; 
 
-  RewardAdds1: object;
+  EventRewardAdds: object;
   AddForm1: FormGroup;
-  NewRewardAdd1:object;
-  RewardAddSelection1:number =0;
-  RewardAddOptions1:Array<object>; 
+  NewEventRewardAdd:object;
+  EventRewardAddSelection:number =0;
+  EventRewardAddOptions:Array<object>; 
   
-  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod: RewardModifyComponent,private mod1: RewardEventModifyComponent) { }
 
   ngOnInit() {
     this.data.GetRewardAdd().subscribe(res=>{
       this.RewardAdds = res;
     });
-    this.data.GetRewardAdd1().subscribe(res=>{
-      this.RewardAdds1 = res;
+    this.data.GetEventRewardAdd().subscribe(res=>{
+      this.EventRewardAdds = res;
     });
     this.AddForm = this.formBuilder.group({
-      PName: [""], // Names for your input
-      PQuantity: [""], // Names for your input 
-      PPoints: [""],
-      PDescription: [""]
+      PName: [], // Names for your input
+      PQuantity: [], // Names for your input 
+      PPoints: [],
+      PDescription: []
     });
-    this.data.GetRewardAdd().subscribe((res) => {
+    this.data.GetProductType().subscribe((res) => {
       this.RewardAddOptions = JSON.parse(JSON.stringify(res));
     }); 
+    this.AddForm1 = this.formBuilder.group({
+      EName: [], // Names for your input
+      EPoints: [], // Names for your input 
+      EDate: [],
+      ELocation: [],
+      EDescription: []
+    });
+    this.data.GetEventType().subscribe((res) => {
+      this.EventRewardAddSelection=0;
+      this.EventRewardAddOptions = JSON.parse(JSON.stringify(res));
+    }); 
+    }
+    delete(ID){
+      this.data.nID = ID;
+      document.getElementById('del').click();
+    }
+      delete1(ID){
+        this.data.nID = ID;
+        document.getElementById('del1').click();
+    }
+    del(){
+      this.data.DeleteRewardAdd(this.data.nID).subscribe(res=>{
+        if (res!=null)
+        {
+          this.delSuccessToast();
+          this.ngOnInit();
+        }
+        else if (res==2)
+        {
+          alert("You are not allowed to delete this record");
+        }
+        else
+        {
+          this.delToast()
+        }
+      })
+    }
 
-  }
+    del1(){
+      this.data.DeleteEventRewardAdd(this.data.nID).subscribe(res=>{
+        if (res!=null)
+        {
+          this.delSuccessToast();
+          this.ngOnInit();
+        }
+        else if (res==2)
+        {
+          alert("You are not allowed to delete this record");
+        }
+        else
+        {
+          this.delToast()
+        }
+      })
+    }
+    edit(ID){
+      this.mod.edit(ID);
+    }
+    edit1(ID){
+      this.mod1.edit(ID);
+    }
+  
   showToast(){
     this.toastrService.show("Reward could not be modified", "Error");
+  }
+  delToast(){
+    this.toastrService.show("Record could not be removed.", "Error!");
+  }
+  delSuccessToast(){
+    this.toastrService.show("Record removed.", "Success!");
   }
 
   Event(){
@@ -60,18 +129,50 @@ export class RewardAddComponent implements OnInit {
       }
       else {
         this.NewRewardAdd = {
-          "PName": PName, // Names for your input
-          "PQuantity": PQuantity, // Names for your input
-          "PPoints": PPoints,
-          "PDescription":PDescription,
+          "Name": PName, // Names for your input
+          "Quantity": PQuantity, // Names for your input
+          "Points": PPoints,
+          "Prod_ID":PDescription,
           
         };
+        console.log(this.NewRewardAdd)
         this.data.PostRewardAdd(this.NewRewardAdd).subscribe(res => {
           this.ngOnInit();
-          this.showToast();
+          this.Event();
         });
       }
+    }
+    addEventAdd() {
+      var EName = this.AddForm1.get('EName').value;
+      var EPoints = this.AddForm1.get('EPoints').value; // Names for your input
+      var EDate = this.AddForm1.get('EDate').value; // Names for your input
+      var ELocation = this.AddForm1.get('ELocation').value;
+      var EDescription = this.AddForm1.get('EDescription').value;
+  console.log(EDescription);
+      if ((EName||EPoints||EDate||ELocation||EDescription)=="") {
+        //Modal popup
+      }
+      else {
+        this.NewEventRewardAdd = {
+          "Name": EName, // Names for your input
+          "Points": EPoints, // Names for your input
+          "Date": EDate,
+          "Location":ELocation,
+          "Type_ID": EDescription,
+          
+        };
+        console.log(this.NewEventRewardAdd)
+        this.data.PostEventRewardAdd(this.NewEventRewardAdd).subscribe(res => {
+          this.Event();
+          this.AddForm1.reset();
+          this.EventRewardAddSelection=undefined;
+          this.ngOnInit();
+        });
+        
       }
     }
+      
+    }
+  
   
   
