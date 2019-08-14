@@ -30,6 +30,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult GetRanger(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Ranger ranger = db.Rangers.Find(id);
             if (ranger == null)
             {
@@ -43,6 +44,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRanger(int id, Ranger ranger)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -78,6 +80,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult PostRanger(Ranger ranger)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -93,6 +96,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult DeleteRanger(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Ranger ranger = db.Rangers.Find(id);
             if (ranger == null)
             {

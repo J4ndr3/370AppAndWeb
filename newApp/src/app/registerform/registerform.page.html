@@ -35,12 +35,12 @@
                             <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Identification Number..." name="rangerId" formControlName="rangerId" type="Identification" required></ion-input>
                             <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="E-mail..." name="email" formControlName="email" required></ion-input>
                             <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Cellphone..." name="phone" formControlName="phone" required></ion-input>
-                            <ion-select placeholder="Select Gender..." class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
-                                <ion-select-option>Male</ion-select-option>
-                                <ion-select-option>Female</ion-select-option>
-                                <ion-select-option>Other</ion-select-option>
+                            <ion-select placeholder="Select Gender..." formControlName="selectgender" [(value)]="GenderSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</ion-select-option>
                             </ion-select>
-                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Select Organization..." name="Organizationtitle" formControlName="Organizationtitle"></ion-input>
+                            <ion-select placeholder="Select Organisation..." formControlName="Organizationtitle" [(value)]="OrganisationSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</ion-select-option>
+                            </ion-select>
 
                         </div>
                     </div>
@@ -50,7 +50,9 @@
                             <h6 style="color: black; margin-bottom:5% !important" align="center">3.Medical information:</h6>
                             <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Emergency contact Name..." name="emergencycontactName" formControlName="emergencycontactName" required></ion-input>
                             <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Emergency contact Number..." name="EmergencycontactNumber" formControlName="EmergencycontactNumber" required></ion-input>
-                            <ion-input class="form-control ion-padding-start" style="margin-bottom:2% !important;" placeholder="Medical Aid" name="MedicalAid" formControlName="MedicalAid" required></ion-input>
+                            <ion-select placeholder="Select Medical Aid..." formControlName="MedicalAid" [(value)]="MedicalSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option *ngFor="let med of MedicalOptions" [(value)]="med.ID">{{med.Descriprion}}</ion-select-option>
+                            </ion-select>
                             <ion-select class="form-control" name="selectbloodtype" style="margin-bottom:10% !important;" placeholder="Bloodype..." id="Select1" onchange="selectColor()" formControlName="selectbloodtype" required>
                                 <ion-select-option>A+</ion-select-option>
                                 <ion-select-option>B+</ion-select-option>

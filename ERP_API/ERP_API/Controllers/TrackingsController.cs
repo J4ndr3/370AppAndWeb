@@ -9,9 +9,12 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TrackingsController : ApiController
     {
         private INF370Entities db = new INF370Entities();
@@ -72,17 +75,21 @@ namespace ERP_API.Controllers
 
         // POST: api/Trackings
         [ResponseType(typeof(Tracking))]
-        public IHttpActionResult PostTracking(Tracking tracking)
+        public IHttpActionResult PostTracking(List<Tracking> track)
         {
-            if (!ModelState.IsValid)
+            foreach (var tracking in track)
             {
-                return BadRequest(ModelState);
+                db.Configuration.ProxyCreationEnabled = false;
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                db.Trackings.Add(tracking);
+                db.SaveChanges();
             }
 
-            db.Trackings.Add(tracking);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = tracking.Tracking_ID }, tracking);
+            return CreatedAtRoute("DefaultApi", new { id = track.Last().Tracking_ID }, track.Last());
         }
 
         // DELETE: api/Trackings/5

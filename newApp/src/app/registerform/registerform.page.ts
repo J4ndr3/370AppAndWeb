@@ -14,34 +14,47 @@ export class RegisterformPage implements OnInit {
   RegisterformPages:object;
   AddForm: FormGroup;
   NewRegisterformPage:object;
-  RegisterformPageSelection:number=0;
-  RegisterformPageOptions:Array<object>;
-  RegisterformPageOptionS:Array<object>;
+  GenderSelection: number = 0; //if you have a select list
+  GenderOptions: Array<object>; //if you have a select list
+  OrganisationSelection: number = 0; //if you have a select list
+  OrganisationOptions: Array<object>; //if you have a select list
+  MedicalSelection: number = 0; //if you have a select list
+  MedicalOptions: Array<object>; //if you have a select list
 
   constructor(private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
   
 
   ngOnInit() {
+      this.data.GetGenders().subscribe(res=>{
+          this.GenderOptions = JSON.parse(JSON.stringify(res));
+      })
+      this.data.GetMedical().subscribe(res=>{
+        this.MedicalOptions = JSON.parse(JSON.stringify(res));
+        console.log(this.MedicalOptions);
+    })
+    this.data.GetOrganisations().subscribe(res=>{
+        this.OrganisationOptions = JSON.parse(JSON.stringify(res));
+    })
     this.AddForm = this.formBuilder.group({
-        fname: [""], // Names for your input
-          lname: [""], // Names for your input 
-          rangerId: [""],
-          email: [""],
-          phone:[""],
-          emergencycontactName:[""],
-          EmergencycontactNumber:[""],
-          MedicalAid:[""],
-          Organizationtitle:[""],
-          username:[""],
-          password:[""],
-          confirmpassword:[""],
-          selectgender:[""],
-          selectbloodtype:[""]
+        fname: ["Jandre"], // Names for your input
+          lname: ["Labuschagne"], // Names for your input 
+          rangerId: ["9802065030082"],
+          email: ["jandrelab1@gmail.com"],
+          phone:["0713307791"],
+          emergencycontactName:["Janica"],
+          EmergencycontactNumber:["0713307784"],
+          MedicalAid:[],
+          Organizationtitle:[],
+          username:["J4ndr3"],
+          password:["Jandre#1"],
+          confirmpassword:["Jandre#1"],
+          selectgender:[],
+          selectbloodtype:[]
         });
-    this.data.GetRegisterFormPage().subscribe(res=>{
-      this.RegisterformPages = res;
-    });
+    // this.data.GetRegisterFormPage().subscribe(res=>{
+    //   this.RegisterformPages = res;
+    // });
   }
 
   ngAfterViewInit()
@@ -136,14 +149,14 @@ validateForm() {
            
         
             /* if there is a select/ dropdown use the following method to populate data for it */
-    this.data.GetRegisterFormPage().subscribe((res) => {
-        this.RegisterformPageOptions = JSON.parse(JSON.stringify(res));
-      }); 
+    // this.data.GetRegisterFormPage().subscribe((res) => {
+    //     this.RegisterformPageOptions = JSON.parse(JSON.stringify(res));
+    //   }); 
     
-     /* if there is a select/ dropdown use the following method to populate data for it */
-     this.data.GetRegisterFormPage().subscribe((res) => {
-        this.RegisterformPageOptionS = JSON.parse(JSON.stringify(res));
-      }); 
+    //  /* if there is a select/ dropdown use the following method to populate data for it */
+    //  this.data.GetRegisterFormPage().subscribe((res) => {
+    //     this.RegisterformPageOptionS = JSON.parse(JSON.stringify(res));
+    //   }); 
     }
   
 
@@ -152,6 +165,7 @@ validateForm() {
         var lname = this.AddForm.get('lname').value; // Names for your input
         var rangerId = this.AddForm.get('rangerId').value;
         var email = this.AddForm.get('email').value; // Names for your input
+        var phone = this.AddForm.get('phone').value;
         var emergencycontactName = this.AddForm.get('emergencycontactName').value; // Names for your input
         var EmergencycontactNumber = this.AddForm.get('EmergencycontactNumber').value;
         var MedicalAid = this.AddForm.get('MedicalAid').value;
@@ -167,24 +181,30 @@ validateForm() {
         }
         else {
           this.NewRegisterformPage = {
+            "ID_Number": rangerId,
             "Name": fname, // Names for your input
             "Surname": lname, // Names for your input
-            "RangerID": rangerId,
             "Email": email,
-            "EmergencyContactName": emergencycontactName,
-            "EmergencyContactNumber": EmergencycontactNumber,
-            "MedicalAid": MedicalAid,
+            "Cell":phone,
+            "genderID": selectgender,
+            "Emerg_Name": emergencycontactName,
+            "Emerg_Contact": EmergencycontactNumber,
+            "Status":1,
+            "User_Role_ID":5,
+            "Medical_Aid_ID": MedicalAid,
+            "Points":0,
+            "Blood_Type": selectbloodtype, 
             "Username": username,
             "Password": password,
-            "ConfirmPassword": confirmpassword,
-            "SelectGender": selectgender,
-            "SelectBloodtype": selectbloodtype,  
-            "Organizationtitle":Organizationtitle,
+            "Organisation_ID":Organizationtitle,
+            "Smartphone":1,
+            "Access_ID":6
           };
           console.log(this.NewRegisterformPage)
-          // this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-          //   this.ngOnInit()
-          // });
+          this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+              console.log(res)
+            this.ngOnInit()
+          });
         }}
     
         

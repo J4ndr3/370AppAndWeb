@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RangerprofilePage } from './rangerprofile.page';
+import { MapTestPage } from './map-test.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RangerprofilePage
+    component: MapTestPage
   }
 ];
 
@@ -19,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RangerprofilePage]
+  declarations: [MapTestPage]
 })
-export class RangerprofilePageModule {}
+export class MapTestPageModule {}

@@ -137,44 +137,45 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
   }
 
   addShiftbookingsPageBtn() {
-/* if there is a select/ dropdown use the following method to populate data for it */
-    this.data.GetUserRole().subscribe((res) => {
-      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-    }); 
-    /* if there is a select/ dropdown use the following method to populate data for it */
-    this.data.GetUserRole().subscribe((res) => {
-      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-    }); 
-    /* if there is a select/ dropdown use the following method to populate data for it */
-    this.data.GetUserRole().subscribe((res) => {
-      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-    }); 
-    /* if there is a select/ dropdown use the following method to populate data for it */
-    this.data.GetUserRole().subscribe((res) => {
-      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-    }); 
+// /* if there is a select/ dropdown use the following method to populate data for it */
+//     this.data.GetUserRole().subscribe((res) => {
+//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+//     }); 
+//     /* if there is a select/ dropdown use the following method to populate data for it */
+//     this.data.GetUserRole().subscribe((res) => {
+//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+//     }); 
+//     /* if there is a select/ dropdown use the following method to populate data for it */
+//     this.data.GetUserRole().subscribe((res) => {
+//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+//     }); 
+//     /* if there is a select/ dropdown use the following method to populate data for it */
+//     this.data.GetUserRole().subscribe((res) => {
+//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+//     }); 
   }
 
   addShiftbookingsPage() {
-    var UserRole = this.AddForm.get('UserRole').value;
-    var UserRole = this.AddForm.get('UserRole').value;
-    var UserRole = this.AddForm.get('UserRole').value;
-    var UserRole = this.AddForm.get('UserRole').value;
+    // var UserRole = this.AddForm.get('UserRole').value;
+    // var UserRole = this.AddForm.get('UserRole').value;
+    // var UserRole = this.AddForm.get('UserRole').value;
+    // var UserRole = this.AddForm.get('UserRole').value;
 
-    if ((UserRole||UserRole||UserRole||UserRole)=="") {
-      //Modal popup
-    }
-    else {
-      this.NewShiftbookingsPage = {
-        "UserRole": UserRole,
-        "UserRole": UserRole,
-        "UserRole": UserRole,
-        "UserRole": UserRole,
+    // if ((UserRole||UserRole||UserRole||UserRole)=="") {
+    //   //Modal popup
+    // }
+    // else {
+    //   this.NewShiftbookingsPage = {
+    //     "UserRole": UserRole,
+    //     "UserRole": UserRole,
+    //     "UserRole": UserRole,
+    //     "UserRole": UserRole,
         
-      };
-      this.data.PostRanger(this.NewShiftbookingsPage).subscribe(res => {
-        this.ngOnInit()
-      });}}
+    //   };
+    //   this.data.PostRanger(this.NewShiftbookingsPage).subscribe(res => {
+    //     this.ngOnInit()
+    //   });}
+  }
 
 
 }
