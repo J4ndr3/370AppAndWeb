@@ -14,16 +14,11 @@ namespace ERP_API.Models
     
     public partial class Ranger_Reserve
     {
+        public int Ranger_Reserve_ID { get; set; }
         public int Ranger_ID { get; set; }
         public int Reserve_ID { get; set; }
     
         public virtual Ranger Ranger { get; set; }
-        public virtual Ranger Ranger1 { get; set; }
-        public virtual Ranger Ranger2 { get; set; }
-        public virtual Ranger Ranger3 { get; set; }
         public virtual Reserve Reserve { get; set; }
-        public virtual Reserve Reserve1 { get; set; }
-        public virtual Reserve Reserve2 { get; set; }
-        public virtual Reserve Reserve3 { get; set; }
     }
 }

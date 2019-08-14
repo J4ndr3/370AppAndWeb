@@ -28,6 +28,7 @@ namespace ERP_API.Models
         public virtual DbSet<Access_Level> Access_Level { get; set; }
         public virtual DbSet<Asset> Assets { get; set; }
         public virtual DbSet<Asset_Status> Asset_Status { get; set; }
+        public virtual DbSet<Asset_Supplier> Asset_Supplier { get; set; }
         public virtual DbSet<Asset_Type> Asset_Type { get; set; }
         public virtual DbSet<Cellphone> Cellphones { get; set; }
         public virtual DbSet<Event_Reward> Event_Reward { get; set; }
@@ -36,7 +37,9 @@ namespace ERP_API.Models
         public virtual DbSet<Gate> Gates { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Incident> Incidents { get; set; }
+        public virtual DbSet<Incident_Image> Incident_Image { get; set; }
         public virtual DbSet<Incident_Level> Incident_Level { get; set; }
+        public virtual DbSet<Incident_Patrol> Incident_Patrol { get; set; }
         public virtual DbSet<Incident_Status> Incident_Status { get; set; }
         public virtual DbSet<Incident_Type> Incident_Type { get; set; }
         public virtual DbSet<Make> Makes { get; set; }
@@ -48,11 +51,15 @@ namespace ERP_API.Models
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Order_Line> Order_Line { get; set; }
         public virtual DbSet<Organisation> Organisations { get; set; }
+        public virtual DbSet<Patrol_Asset> Patrol_Asset { get; set; }
         public virtual DbSet<Patrol_Booking> Patrol_Booking { get; set; }
         public virtual DbSet<Patrol_Log> Patrol_Log { get; set; }
+        public virtual DbSet<Patrol_Marker> Patrol_Marker { get; set; }
         public virtual DbSet<Product_Reward> Product_Reward { get; set; }
         public virtual DbSet<Product_Type> Product_Type { get; set; }
         public virtual DbSet<Ranger> Rangers { get; set; }
+        public virtual DbSet<Ranger_Reserve> Ranger_Reserve { get; set; }
+        public virtual DbSet<Ranger_Vehicle> Ranger_Vehicle { get; set; }
         public virtual DbSet<Redeem_Reward> Redeem_Reward { get; set; }
         public virtual DbSet<Reserve> Reserves { get; set; }
         public virtual DbSet<Security_Company> Security_Company { get; set; }
@@ -61,11 +68,5 @@ namespace ERP_API.Models
         public virtual DbSet<User_Role> User_Role { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<Vehicle_Type> Vehicle_Type { get; set; }
-        public virtual DbSet<Incident_Image> Incident_Image { get; set; }
-        public virtual DbSet<Incident_Patrol> Incident_Patrol { get; set; }
-        public virtual DbSet<Patrol_Asset> Patrol_Asset { get; set; }
-        public virtual DbSet<Patrol_Marker> Patrol_Marker { get; set; }
-        public virtual DbSet<Ranger_Reserve> Ranger_Reserve { get; set; }
-        public virtual DbSet<Ranger_Vehicle> Ranger_Vehicle { get; set; }
     }
 }

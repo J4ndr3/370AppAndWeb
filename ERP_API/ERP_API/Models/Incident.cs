@@ -17,49 +17,20 @@ namespace ERP_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Incident()
         {
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
             this.Incident_Image = new HashSet<Incident_Image>();
-            this.Incident_Patrol1 = new HashSet<Incident_Patrol>();
-            this.Incident_Image1 = new HashSet<Incident_Image>();
-            this.Incident_Patrol2 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol3 = new HashSet<Incident_Patrol>();
-            this.Incident_Image2 = new HashSet<Incident_Image>();
-            this.Incident_Image3 = new HashSet<Incident_Image>();
+            this.Incident_Patrol = new HashSet<Incident_Patrol>();
         }
     
         public int Incident_ID { get; set; }
         public int Incident_Type_ID { get; set; }
-        public int Incident_Level_ID { get; set; }
         public int Incident_Status_ID { get; set; }
         public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incident_Image> Incident_Image { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image3 { get; set; }
+        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
         public virtual Incident_Type Incident_Type { get; set; }
-        public virtual Incident_Level Incident_Level { get; set; }
         public virtual Incident_Status Incident_Status { get; set; }
-        public virtual Incident_Type Incident_Type1 { get; set; }
-        public virtual Incident_Level Incident_Level1 { get; set; }
-        public virtual Incident_Status Incident_Status1 { get; set; }
-        public virtual Incident_Type Incident_Type2 { get; set; }
-        public virtual Incident_Level Incident_Level2 { get; set; }
-        public virtual Incident_Status Incident_Status2 { get; set; }
-        public virtual Incident_Type Incident_Type3 { get; set; }
-        public virtual Incident_Level Incident_Level3 { get; set; }
-        public virtual Incident_Status Incident_Status3 { get; set; }
     }
 }

@@ -27,24 +27,27 @@ namespace ERP_API.Controllers
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Incident_Patrol> incidents = db.Incident_Patrol
-                    .Include(zz => zz.Incident_Type).
-                    Include(zz => zz.Incident_Status).
-                    Include(zz => zz.Incident_Level).
-                    Include(zz => zz.Ranger).
-                    Include(zz => zz.Incident).
-                    Where(x => x.Incident_Status.Incident_Status_ID == 2).ToList();
+                List<Incident_Patrol> incidents = db.Incident_Patrol.
+                    Include(zz=> zz.Patrol_Log.Ranger).
+                    Include(zz=>zz.Incident.Incident_Type).
+                    Include(zz=>zz.Incident.Incident_Type.Incident_Level).
+                    Include(zz=>zz.Incident.Incident_Status)
+                    .Where(zz => zz.Incident.Incident_Status_ID == 2).
+                   ToList();
                 
                 foreach (Incident_Patrol Item in incidents)
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.Incident_ID;
                     m.Description = Item.Incident.Description;
-                    m.Type = Item.Incident_Type.Description;
-                    m.Level = Item.Incident_Level.Description;
-                    m.Date = Item.Incident_Status.Description;
-                    m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
-                    m.Date = Item.Date.ToShortDateString() + " " + Item.Time;
+                    m.Type = Item.Incident.Incident_Type.Description;
+                    m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+                    m.Status = Item.Incident.Incident_Status.Description;
+                    m.StatID = Item.Incident.Incident_Status_ID;
+                    m.Name = Item.Patrol_Log.Ranger.Name;
+                    m.Surname= Item.Patrol_Log.Ranger.Surname;
+                    m.Date = Item.Date.ToShortDateString();
+                    m.Time =Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
                     toReturn.Add(m);
@@ -63,6 +66,8 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult GetIncident_Patrol(int id)
         {
+
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Patrol incident_Patrol = db.Incident_Patrol.Find(id);
             if (incident_Patrol == null)
             {
@@ -76,6 +81,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutIncident_Patrol(int id, Incident_Patrol incident_Patrol)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

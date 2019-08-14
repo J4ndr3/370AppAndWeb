@@ -30,6 +30,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Asset_Supplier">
+      <EntityTypeMapping TypeName="INF370Model.Asset_Supplier">
+        <MappingFragment StoreEntitySet="Asset_Supplier">
+          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+          <ScalarProperty Name="Asset_Supplier_ID" ColumnName="Asset_Supplier_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Asset_Type">
       <EntityTypeMapping TypeName="INF370Model.Asset_Type">
         <MappingFragment StoreEntitySet="Asset_Type">
@@ -71,8 +80,6 @@
     <EntitySetMapping Name="Feedbacks">
       <EntityTypeMapping TypeName="INF370Model.Feedback">
         <MappingFragment StoreEntitySet="Feedback">
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Description" ColumnName="Description" />
@@ -105,9 +112,18 @@
         <MappingFragment StoreEntitySet="Incident">
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
           <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
           <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incident_Image">
+      <EntityTypeMapping TypeName="INF370Model.Incident_Image">
+        <MappingFragment StoreEntitySet="Incident_Image">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Incident_Image_ID" ColumnName="Incident_Image_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -116,6 +132,19 @@
         <MappingFragment StoreEntitySet="Incident_Level">
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incident_Patrol">
+      <EntityTypeMapping TypeName="INF370Model.Incident_Patrol">
+        <MappingFragment StoreEntitySet="Incident_Patrol">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+          <ScalarProperty Name="Incident_Patrol_ID" ColumnName="Incident_Patrol_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -181,7 +210,6 @@
           <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Model1" ColumnName="Model" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -192,6 +220,7 @@
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
           <ScalarProperty Name="Date" ColumnName="Date" />
           <ScalarProperty Name="Meassage" ColumnName="Meassage" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Notification_ID" ColumnName="Notification_ID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -209,9 +238,7 @@
     <EntitySetMapping Name="Order_Line">
       <EntityTypeMapping TypeName="INF370Model.Order_Line">
         <MappingFragment StoreEntitySet="Order_Line">
-          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
           <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-          <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
           <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
           <ScalarProperty Name="Line_ID" ColumnName="Line_ID" />
         </MappingFragment>
@@ -222,6 +249,15 @@
         <MappingFragment StoreEntitySet="Organisation">
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patrol_Asset">
+      <EntityTypeMapping TypeName="INF370Model.Patrol_Asset">
+        <MappingFragment StoreEntitySet="Patrol_Asset">
+          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Patrol_Asset_ID" ColumnName="Patrol_Asset_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -248,6 +284,16 @@
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
           <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patrol_Marker">
+      <EntityTypeMapping TypeName="INF370Model.Patrol_Marker">
+        <MappingFragment StoreEntitySet="Patrol_Marker">
+          <ScalarProperty Name="Date_Time_Passed" ColumnName="Date_Time_Passed" />
+          <ScalarProperty Name="Marker_ID" ColumnName="Marker_ID" />
+          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+          <ScalarProperty Name="Patrol_Marker_ID" ColumnName="Patrol_Marker_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -295,6 +341,24 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
           <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ranger_Reserve">
+      <EntityTypeMapping TypeName="INF370Model.Ranger_Reserve">
+        <MappingFragment StoreEntitySet="Ranger_Reserve">
+          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Ranger_Reserve_ID" ColumnName="Ranger_Reserve_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ranger_Vehicle">
+      <EntityTypeMapping TypeName="INF370Model.Ranger_Vehicle">
+        <MappingFragment StoreEntitySet="Ranger_Vehicle">
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+          <ScalarProperty Name="Ranger_Vehicle_ID" ColumnName="Ranger_Vehicle_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -346,8 +410,6 @@
     <EntitySetMapping Name="Trackings">
       <EntityTypeMapping TypeName="INF370Model.Tracking">
         <MappingFragment StoreEntitySet="Tracking">
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
           <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
           <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
@@ -381,81 +443,6 @@
         <MappingFragment StoreEntitySet="Vehicle_Type">
           <ScalarProperty Name="Type_Description" ColumnName="Type_Description" />
           <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Incident_Image">
-      <EntityTypeMapping TypeName="INF370Model.Incident_Image">
-        <MappingFragment StoreEntitySet="Incident_Image">
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Incident_Patrol">
-      <EntityTypeMapping TypeName="INF370Model.Incident_Patrol">
-        <MappingFragment StoreEntitySet="Incident_Patrol">
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Lng" ColumnName="Lng" />
-          <ScalarProperty Name="Lat" ColumnName="Lat" />
-          <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-          <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
-          <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
-          <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
-          <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Patrol_Asset">
-      <EntityTypeMapping TypeName="INF370Model.Patrol_Asset">
-        <MappingFragment StoreEntitySet="Patrol_Asset">
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
-          <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Patrol_Marker">
-      <EntityTypeMapping TypeName="INF370Model.Patrol_Marker">
-        <MappingFragment StoreEntitySet="Patrol_Marker">
-          <ScalarProperty Name="Date_Time_Passed" ColumnName="Date_Time_Passed" />
-          <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
-          <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ranger_Reserve">
-      <EntityTypeMapping TypeName="INF370Model.Ranger_Reserve">
-        <MappingFragment StoreEntitySet="Ranger_Reserve">
-          <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Ranger_Vehicle">
-      <EntityTypeMapping TypeName="INF370Model.Ranger_Vehicle">
-        <MappingFragment StoreEntitySet="Ranger_Vehicle">
-          <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
-          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
-          <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
-          <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
-          <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

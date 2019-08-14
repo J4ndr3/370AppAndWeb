@@ -16,12 +16,9 @@ namespace ERP_API.Models
     {
         public int IMEI { get; set; }
         public int Ranger_ID { get; set; }
-        public Nullable<bool> Type { get; set; }
+        public bool Type { get; set; }
         public string OS { get; set; }
     
         public virtual Ranger Ranger { get; set; }
-        public virtual Ranger Ranger1 { get; set; }
-        public virtual Ranger Ranger2 { get; set; }
-        public virtual Ranger Ranger3 { get; set; }
     }
 }

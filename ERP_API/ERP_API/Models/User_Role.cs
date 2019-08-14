@@ -18,9 +18,6 @@ namespace ERP_API.Models
         public User_Role()
         {
             this.Rangers = new HashSet<Ranger>();
-            this.Rangers1 = new HashSet<Ranger>();
-            this.Rangers2 = new HashSet<Ranger>();
-            this.Rangers3 = new HashSet<Ranger>();
         }
     
         public int User_Role_ID { get; set; }
@@ -28,16 +25,7 @@ namespace ERP_API.Models
         public string Description { get; set; }
     
         public virtual Access_Level Access_Level { get; set; }
-        public virtual Access_Level Access_Level1 { get; set; }
-        public virtual Access_Level Access_Level2 { get; set; }
-        public virtual Access_Level Access_Level3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ranger> Rangers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ranger> Rangers1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ranger> Rangers2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ranger> Rangers3 { get; set; }
     }
 }

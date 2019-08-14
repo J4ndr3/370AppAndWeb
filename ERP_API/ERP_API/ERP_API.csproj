@@ -302,6 +302,9 @@
     <Compile Include="Models\Asset_Status.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Asset_Supplier.cs">
+      <DependentUpon>ERP_Rangers.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Asset_Type.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>

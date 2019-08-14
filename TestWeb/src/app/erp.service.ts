@@ -122,8 +122,12 @@ export class ERPService {
   GetIncidents(){
     return this.http.get('http://localhost:51389/api/Incident_Patrol')
   }
-
-
+  GetIncident(id){
+    return this.http.get('http://localhost:51389/api/Incidents/'+id)
+  }
+  PutIncident(id, obj) {
+    return this.http.put('http://localhost:51389/api/Incidents/' + id, obj)
+  }
 
   sendNotif(title, message) {
     var notificationData = {
@@ -241,7 +245,58 @@ export class ERPService {
   }
 
 
-
-
-
+  GetAccess_Levels() {
+    return this.http.get('http://localhost:51389/api/Access_Level')
+  }
+  DeleteAccess_Level(id) {
+    return this.http.delete('http://localhost:51389/api/Access_Level/' + id)
+  }
+  PostAccess_Level(obj) {
+    return this.http.post('http://localhost:51389/api/Access_Level', obj)
+  }
+  GetAccess_Level(id) {
+    return this.http.get('http://localhost:51389/api/Access_Level/'+id)
+  }
+  PutAccess_Level(id, obj) {
+    return this.http.put('http://localhost:51389/api/Access_Level/' + id, obj)
+  }
+  GetMarker_Types() {
+    return this.http.get('http://localhost:51389/api/Marker_Type')
+  }
+  PutMarker_Type(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Marker_Type/' + ID, obj)
+  }
+  GetMarker_Type(id) {
+    return this.http.get('http://localhost:51389/api/Marker_Type/' + id)
+  }
+  PostMarker_Type(obj){
+    return this.http.post('http://localhost:51389/api/Marker_Type', obj)
+  }
+  DeleteMarker_Type(id) {
+    return this.http.delete('http://localhost:51389/api/Marker_Type/' + id)
+  }
+  GetVehicles() {
+    return this.http.get('http://localhost:51389/api/Vehicles')
+  }
+  PutVehicle(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Vehicles/' + ID, obj)
+  }
+  GetVehicle(id) {
+    return this.http.get('http://localhost:51389/api/Vehicles/' + id)
+  }
+  PostVehicle(obj){
+    return this.http.post('http://localhost:51389/api/Vehicles', obj)
+  }
+  DeleteVehicle(id) {
+    return this.http.delete('http://localhost:51389/api/Vehicles/' + id)
+  }
+  GetVehicle_types() {
+    return this.http.get('http://localhost:51389/api/Vehicle_Types')
+  }
+  GetModels() {
+    return this.http.get('http://localhost:51389/api/Models')
+  }
+  GetMakes() {
+    return this.http.get('http://localhost:51389/api/Makes')
+  }
 }

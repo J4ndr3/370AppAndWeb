@@ -18,9 +18,6 @@ namespace ERP_API.Models
         public Product_Type()
         {
             this.Product_Reward = new HashSet<Product_Reward>();
-            this.Product_Reward1 = new HashSet<Product_Reward>();
-            this.Product_Reward2 = new HashSet<Product_Reward>();
-            this.Product_Reward3 = new HashSet<Product_Reward>();
         }
     
         public int Prod_ID { get; set; }
@@ -28,11 +25,5 @@ namespace ERP_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product_Reward> Product_Reward { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_Reward> Product_Reward1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_Reward> Product_Reward2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product_Reward> Product_Reward3 { get; set; }
     }
 }

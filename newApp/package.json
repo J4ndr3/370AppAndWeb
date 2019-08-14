@@ -124,7 +124,6 @@
             "cordova-plugin-geolocation": {
                 "GEOLOCATION_USAGE_DESCRIPTION": "To track yourpatrol"
             },
-            "phonegap-plugin-barcodescanner": {},
             "cordova-plugin-camera": {
                 "ANDROID_SUPPORT_V4_VERSION": "27.+"
             },

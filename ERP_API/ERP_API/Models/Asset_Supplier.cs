@@ -12,13 +12,13 @@ namespace ERP_API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Patrol_Asset
+    public partial class Asset_Supplier
     {
-        public int Patrol_Asset_ID { get; set; }
-        public int Patrol_Log_ID { get; set; }
+        public int Asset_Supplier_ID { get; set; }
         public int Asset_ID { get; set; }
+        public int Supplier_ID { get; set; }
     
         public virtual Asset Asset { get; set; }
-        public virtual Patrol_Log Patrol_Log { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

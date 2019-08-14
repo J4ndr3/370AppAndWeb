@@ -219,44 +219,25 @@
     <table class="table table-striped">
         <thead>
             <tr id="header">
-                <th style="text-align: left;">ID</th>
-                <th style="text-align: left;">Web</th>
-                <th style="text-align: left;">Report</th>
-                <th style="text-align: left;">Write</th>
-                <th style="text-align: left;">App</th>
+                <th style="text-align: center;">ID</th>
+                <th style="text-align: center;">Web</th>
+                <th style="text-align: center;">Report</th>
+                <th style="text-align: center;">Write</th>
+                <th style="text-align: center;">App</th>
                 <th style="text-align: center;">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td style="text-align: left;">1</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">True</td>
+            <tr *ngFor="let item of Level">
+                <td>{{item.ID}}</td>
+                <td>{{item.Web}}</td>
+                <td>{{item.Report}}</td>
+                <td>{{item.Write}}</td>
+                <td>{{item.App}}</td>
+                
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/AccessMod'><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td style="text-align: left;">2</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">False</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">True</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td style="text-align: left;">3</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">True</td>
-                <td style="text-align: left;">False</td>
-                <td style="text-align: left;">True</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
         </tbody>

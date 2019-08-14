@@ -22,8 +22,5 @@ namespace ERP_API.Models
         public decimal Lattitude { get; set; }
     
         public virtual Reserve Reserve { get; set; }
-        public virtual Reserve Reserve1 { get; set; }
-        public virtual Reserve Reserve2 { get; set; }
-        public virtual Reserve Reserve3 { get; set; }
     }
 }
