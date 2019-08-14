@@ -16,6 +16,7 @@ export class IncidentLevelComponent implements OnInit {
   NewLevel:object;
   LevelSelection:number =0;
   del:object;
+  searchText;
   
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private router: Router , private mod: IncidentLevelModifyComponent) { }
 

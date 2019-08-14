@@ -25,9 +25,9 @@ namespace ERP_API.Controllers
         {
 
             db.Configuration.ProxyCreationEnabled = false;
-            List<Incident> incidents = db.Incidents.Include(zz=>zz.Incident_Type).Include(zz=>zz.Incident_Status)
-              //  .Include(zz=>zz.Incident_Level)
-                .ToList();
+            List<Incident> incidents = db.Incidents.Include(zz=>zz.Incident_Type).
+                Include(zz=>zz.Incident_Status).
+                Include(zz=>zz.Incident_Type.Incident_Level).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Incident Item in incidents)
             {
@@ -35,7 +35,8 @@ namespace ERP_API.Controllers
                 m.ID = Item.Incident_ID;
                 m.Description = Item.Description;
                 m.Type = Item.Incident_Type.Description;
-               // m.Level = Item.Incident_Level.Description;
+                m.Level = Item.Incident_Type.Incident_Level.Description;
+                m.StatID = Item.Incident_Status_ID;
                 m.Date = Item.Incident_Status.Description;
                 toReturn.Add(m);
             }
@@ -46,6 +47,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident))]
         public IHttpActionResult GetIncident(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Incident incident = db.Incidents.Find(id);
             if (incident == null)
             {
@@ -59,6 +61,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutIncident(int id, Incident incident)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -94,6 +97,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident))]
         public IHttpActionResult PostIncident(Incident incident)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

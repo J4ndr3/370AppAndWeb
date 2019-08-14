@@ -22,18 +22,17 @@ namespace ERP_API.Controllers
         // GET: api/Patrol_Marker
         public List<dynamic> GetPatrol_Marker()
         {
-            List<Patrol_Marker> Level = db.Patrol_Marker.Include(zz => zz.Patrol_Log)
-               // .Include(zz => zz.Ranger)
+            List<Patrol_Marker> Level = db.Patrol_Marker.Include(zz => zz.Patrol_Log).Include(zz => zz.Patrol_Log.Ranger)
                 .ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Patrol_Marker Item in Level)
             {
                 dynamic m = new ExpandoObject();
 
-                //m.Name = Item.Ranger.Name;
-                //m.Surname = Item.Ranger.Surname;
-                //m.Cell = Item.Ranger.Cell;
-                //m.Points = Item.Ranger.Points;
+                m.Name = Item.Patrol_Log.Ranger.Name;
+                m.Surname = Item.Patrol_Log.Ranger.Surname;
+                m.Cell = Item.Patrol_Log.Ranger.Cell;
+                m.Points = Item.Patrol_Log.Ranger.Points;
                 m.Checkin = Item.Patrol_Log.Checkin;
                 m.Checkout = Item.Patrol_Log.Checkout;
                 m.Passed = Item.Date_Time_Passed;

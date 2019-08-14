@@ -9,17 +9,40 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class MakesController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Makes
-        public IQueryable<Make> GetMakes()
+        public List<dynamic> GetMakes()
         {
-            return db.Makes;
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Make> cars = db.Makes.ToList();
+
+                foreach (Make Item in cars)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Make_ID = Item.Make_ID;
+                    m.Name = Item.Name;
+
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Makes/5

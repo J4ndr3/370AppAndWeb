@@ -9,23 +9,50 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Access_LevelController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
-        // GET: api/Access_Level
-        public IQueryable<Access_Level> GetAccess_Level()
-        {
-            return db.Access_Level;
-        }
 
+        // GET: api/Access_Level
+        public List<dynamic> GetAccess_Level()
+        {
+            List<dynamic> toReturn = new List<dynamic>();
+           
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Access_Level> Level = db.Access_Level.ToList();
+                foreach (Access_Level Item in Level)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Access_ID;
+                    m.App = Item.App;
+                    m.Web = Item.Web;
+                    m.Write = Item.Write;
+                    m.Report = Item.Report;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+ 
+        }
         // GET: api/Access_Level/5
         [ResponseType(typeof(Access_Level))]
         public IHttpActionResult GetAccess_Level(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Access_Level access_Level = db.Access_Level.Find(id);
             if (access_Level == null)
             {
@@ -39,6 +66,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAccess_Level(int id, Access_Level access_Level)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +102,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Access_Level))]
         public IHttpActionResult PostAccess_Level(Access_Level access_Level)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +118,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Access_Level))]
         public IHttpActionResult DeleteAccess_Level(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Access_Level access_Level = db.Access_Level.Find(id);
             if (access_Level == null)
             {

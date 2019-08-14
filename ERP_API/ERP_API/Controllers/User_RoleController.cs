@@ -9,23 +9,49 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class User_RoleController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/User_Role
-        public IQueryable<User_Role> GetUser_Role()
+        public List<dynamic> UserRole()
         {
-            return db.User_Role;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<User_Role> Role = db.User_Role.Include(zz => zz.Access_Level).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (User_Role Item in Role)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.User_Role_ID;
+                    m.Level = Item.Access_Level.Access_ID;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+
+
         }
+
 
         // GET: api/User_Role/5
         [ResponseType(typeof(User_Role))]
         public IHttpActionResult GetUser_Role(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             User_Role user_Role = db.User_Role.Find(id);
             if (user_Role == null)
             {

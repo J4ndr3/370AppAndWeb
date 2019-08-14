@@ -201,7 +201,8 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
     AssetComponent,
     ModifyAssetComponent,
     ProductTypeComponent,
-    EventTypeComponent],
+    EventTypeComponent,ProductTypeModifyComponent,
+    EventTypeModifyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
