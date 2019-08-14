@@ -29,7 +29,7 @@
         <div class="card">
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
-              <button class="btn " data-toggle="collapse" style="width: 100%" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <button class="btn " data-toggle="collapse" style="width: 100%" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                <b style="color: white !important;">Honda CRV</b> <ion-icon name="create" style="float: right;"></ion-icon>
               </button>
             </h5>
@@ -112,6 +112,6 @@
       </div>
    <br/>
    
-      <div style="float: right;"><ion-button style="margin-bottom:10%;">Save Changes</ion-button></div>
+      <div style="float: right;"><ion-button style="margin-bottom:10%;" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()">Save Changes</ion-button></div>
     </div></div>
   </ion-content>

@@ -33,7 +33,7 @@ import { StatusReportComponent } from './status-report/status-report.component';
 import { RangersReportComponent } from './rangers-report/rangers-report.component';
 import { MarkersReportComponent } from './markers-report/markers-report.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import { LoginComponent } from './login/login.component';
@@ -56,6 +56,22 @@ import { RewardEventModifyComponent } from './reward-event-modify/reward-event-m
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SupplierComponent } from './supplier/supplier.component';
+import { ModifySupplierComponent } from './modify-supplier/modify-supplier.component';
+import { OrderComponent } from './order/order.component';
+import { ModifyOrderComponent } from './modify-order/modify-order.component';
+import { AssetComponent } from './asset/asset.component';
+import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
+import { ProductTypeComponent } from './product-type/product-type.component';
+import { EventTypeComponent } from './event-type/event-type.component';
+import { ERPService } from './erp.service';
+import { ProductTypeModifyComponent } from './product-type-modify/product-type-modify.component';
+import { EventTypeModifyComponent } from './event-type-modify/event-type-modify.component';
+import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
+import { DownloadStatusComponent } from './download-status/download-status.component';
+import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
 
 @NgModule({
   declarations: [
@@ -105,10 +121,24 @@ import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
     ResetPassworComponent,
     ViewRangerComponent,
     ModVehicleComponent,
+    SupplierComponent,
+    ModifySupplierComponent,
+    OrderComponent,
+    ModifyOrderComponent,
+    AssetComponent,
+    ModifyAssetComponent,
+    ProductTypeComponent,
+    EventTypeComponent,
+    ProductTypeModifyComponent,
+    EventTypeModifyComponent,
+    DownloadRewardsComponent,
+    DownloadStatusComponent,
+    DownloadIncedentComponent,
    
   ],
   imports: [
     BrowserModule,
+    NgxQRCodeModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -124,8 +154,55 @@ import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule,
     FullCalendarModule,
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentComponent,
+    HomeComponent,
+    RangerComponent,
+    ProfileComponent,
+    NotificationsComponent,
+    IncidentLevelComponent,
+    IncidentLevelModifyComponent,
+    IncidentTypeComponent,
+    IncidentTypeModifyComponent,
+    PatrolLogComponent,
+    RegisteruserComponent,
+    VehicleComponent,
+    PerformanceComponent,
+    IncidentReportComponent,
+    VehiclesReportComponent,
+    AssetsReportComponent,
+    RewardsReportComponent,
+    StatusReportComponent,
+    RangersReportComponent,
+    MarkersReportComponent,
+    LoginComponent,
+    UserroleComponent,
+    UserroleModifyComponent,
+    AccessLevelModComponent,
+    MarkerComponent,
+    MarkerModComponent,
+    MarkerTypeComponent,
+    MarkerTypeModComponent,
+    ReserveModComponent,
+    SecurityModComponent,
+    GateComponent,
+    RewardAddComponent,
+    RewardModifyComponent,
+    RewardEventModifyComponent,
+    ResetPassworComponent,
+    ViewRangerComponent,
+    ModVehicleComponent,
+    SupplierComponent,
+    ModifySupplierComponent,
+    OrderComponent,
+    ModifyOrderComponent,
+    AssetComponent,
+    ModifyAssetComponent,
+    ProductTypeComponent,
+    EventTypeComponent,ProductTypeModifyComponent,
+    EventTypeModifyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

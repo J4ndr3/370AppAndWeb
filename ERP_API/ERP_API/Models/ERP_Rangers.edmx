@@ -1,0 +1,3080 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="INF370Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_ID" />
+          </Key>
+          <Property Name="Access_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Web" Type="bit" />
+          <Property Name="Report" Type="bit" />
+          <Property Name="Write" Type="bit" />
+          <Property Name="App" Type="bit" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Asset_ID" />
+          </Key>
+          <Property Name="Asset_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Asset_Status_ID" Type="int" Nullable="false" />
+          <Property Name="Asset_Type_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asset_Status">
+          <Key>
+            <PropertyRef Name="Asset_Status_ID" />
+          </Key>
+          <Property Name="Asset_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asset_Supplier">
+          <Key>
+            <PropertyRef Name="Asset_Supplier_ID" />
+          </Key>
+          <Property Name="Asset_Supplier_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Asset_ID" Type="int" Nullable="false" />
+          <Property Name="Supplier_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asset_Type">
+          <Key>
+            <PropertyRef Name="Asset_Type_ID" />
+          </Key>
+          <Property Name="Asset_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cellphone">
+          <Key>
+            <PropertyRef Name="IMEI" />
+          </Key>
+          <Property Name="IMEI" Type="int" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="bit" Nullable="false" />
+          <Property Name="OS" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event_Reward">
+          <Key>
+            <PropertyRef Name="Event_Reward_ID" />
+          </Key>
+          <Property Name="Event_Reward_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_ID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="60" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event_Type">
+          <Key>
+            <PropertyRef Name="Type_ID" />
+          </Key>
+          <Property Name="Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Feedback_ID" />
+          </Key>
+          <Property Name="Feedback_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gate">
+          <Key>
+            <PropertyRef Name="Gate_ID" />
+          </Key>
+          <Property Name="Gate_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reserve_ID" Type="int" Nullable="false" />
+          <Property Name="Descriprion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Longitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Lattitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incident">
+          <Key>
+            <PropertyRef Name="Incident_ID" />
+          </Key>
+          <Property Name="Incident_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Incident_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Incident_Status_ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Incident_Image">
+          <Key>
+            <PropertyRef Name="Incident_Image_ID" />
+          </Key>
+          <Property Name="Incident_Image_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+          <Property Name="Incident_ID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" />
+        </EntityType>
+        <EntityType Name="Incident_Level">
+          <Key>
+            <PropertyRef Name="Incident_Level_ID" />
+          </Key>
+          <Property Name="Incident_Level_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incident_Patrol">
+          <Key>
+            <PropertyRef Name="Incident_Patrol_ID" />
+          </Key>
+          <Property Name="Incident_Patrol_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Incident_ID" Type="int" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+          <Property Name="Lat" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Lng" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incident_Status">
+          <Key>
+            <PropertyRef Name="Incident_Status_ID" />
+          </Key>
+          <Property Name="Incident_Status_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incident_Type">
+          <Key>
+            <PropertyRef Name="Incident_Type_ID" />
+          </Key>
+          <Property Name="Incident_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Incident_Level_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="Make_ID" />
+          </Key>
+          <Property Name="Make_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marker">
+          <Key>
+            <PropertyRef Name="Marker_ID" />
+          </Key>
+          <Property Name="Marker_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Longitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Lattitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Reserve_ID" Type="int" Nullable="false" />
+          <Property Name="Marker_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Modified" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marker_Type">
+          <Key>
+            <PropertyRef Name="Marker_Type_ID" />
+          </Key>
+          <Property Name="Marker_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Points_Worth" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medical_Aid">
+          <Key>
+            <PropertyRef Name="Medical_Aid_ID" />
+          </Key>
+          <Property Name="Medical_Aid_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Model_ID" />
+          </Key>
+          <Property Name="Model_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="Make_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Notification_ID" />
+          </Key>
+          <Property Name="Notification_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Meassage" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supplier_ID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_Line">
+          <Key>
+            <PropertyRef Name="Line_ID" />
+          </Key>
+          <Property Name="Line_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Asset_ID" Type="int" />
+          <Property Name="Order_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Organisation">
+          <Key>
+            <PropertyRef Name="Organisation_ID" />
+          </Key>
+          <Property Name="Organisation_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patrol_Asset">
+          <Key>
+            <PropertyRef Name="Patrol_Asset_ID" />
+          </Key>
+          <Property Name="Patrol_Asset_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+          <Property Name="Asset_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patrol_Booking">
+          <Key>
+            <PropertyRef Name="Patrol_Booking_ID" />
+          </Key>
+          <Property Name="Patrol_Booking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Start_Time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="End_Time" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Passenger_ID" Type="int" />
+          <Property Name="Reserve_ID" Type="int" Nullable="false" />
+          <Property Name="Vehicle_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patrol_Log">
+          <Key>
+            <PropertyRef Name="Patrol_Log_ID" />
+          </Key>
+          <Property Name="Patrol_Log_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patrol_Booking_ID" Type="int" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Route" Type="varchar" MaxLength="20" />
+          <Property Name="Checkin" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Checkout" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Checked_in" Type="bit" />
+        </EntityType>
+        <EntityType Name="Patrol_Marker">
+          <Key>
+            <PropertyRef Name="Patrol_Marker_ID" />
+          </Key>
+          <Property Name="Patrol_Marker_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+          <Property Name="Marker_ID" Type="int" Nullable="false" />
+          <Property Name="Date_Time_Passed" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Product_Reward">
+          <Key>
+            <PropertyRef Name="Product_Reward_ID" />
+          </Key>
+          <Property Name="Product_Reward_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prod_ID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ranger">
+          <Key>
+            <PropertyRef Name="Ranger_ID" />
+          </Key>
+          <Property Name="Ranger_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Number" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cell" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="genderID" Type="int" Nullable="false" />
+          <Property Name="Emerg_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emerg_Contact" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="User_Role_ID" Type="int" Nullable="false" />
+          <Property Name="Medical_Aid_ID" Type="int" Nullable="false" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Blood_Type" Type="varchar" MaxLength="3" />
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Organisation_ID" Type="int" Nullable="false" />
+          <Property Name="OTP" Type="int" />
+          <Property Name="Smartphone" Type="bit" Nullable="false" />
+          <Property Name="Access_ID" Type="int" Nullable="false" />
+          <Property Name="GUID" Type="uniqueidentifier" />
+          <Property Name="GUID_Exp" Type="date" />
+        </EntityType>
+        <EntityType Name="Ranger_Reserve">
+          <Key>
+            <PropertyRef Name="Ranger_Reserve_ID" />
+          </Key>
+          <Property Name="Ranger_Reserve_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Reserve_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ranger_Vehicle">
+          <Key>
+            <PropertyRef Name="Ranger_Vehicle_ID" />
+          </Key>
+          <Property Name="Ranger_Vehicle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vehicle_ID" Type="int" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Redeem_Reward">
+          <Key>
+            <PropertyRef Name="Redeem_ID" />
+          </Key>
+          <Property Name="Redeem_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Voucher_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Product_Reward_ID" Type="int" />
+          <Property Name="Event_Reward_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="Reserve_ID" />
+          </Key>
+          <Property Name="Reserve_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lat" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Lng" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Security_Company">
+          <Key>
+            <PropertyRef Name="Security_ID" />
+          </Key>
+          <Property Name="Security_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reserve_ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cell" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="Tracking_ID" />
+          </Key>
+          <Property Name="Tracking_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Longitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Lattitude" Type="numeric" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Role">
+          <Key>
+            <PropertyRef Name="User_Role_ID" />
+          </Key>
+          <Property Name="User_Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Access_ID" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Vehicle_ID" />
+          </Key>
+          <Property Name="Vehicle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Registration" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Colour" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Model_ID" Type="int" Nullable="false" />
+          <Property Name="Vehicle_Type_ID" Type="int" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle_Type">
+          <Key>
+            <PropertyRef Name="Vehicle_Type_ID" />
+          </Key>
+          <Property Name="Vehicle_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Description" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Asset__Asset_Sta__60A75C0F">
+          <End Role="Asset_Status" Type="Self.Asset_Status" Multiplicity="1" />
+          <End Role="Asset" Type="Self.Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset_Status">
+              <PropertyRef Name="Asset_Status_ID" />
+            </Principal>
+            <Dependent Role="Asset">
+              <PropertyRef Name="Asset_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset__Asset_Typ__619B8048">
+          <End Role="Asset_Type" Type="Self.Asset_Type" Multiplicity="1" />
+          <End Role="Asset" Type="Self.Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset_Type">
+              <PropertyRef Name="Asset_Type_ID" />
+            </Principal>
+            <Dependent Role="Asset">
+              <PropertyRef Name="Asset_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset_Sup__Asset__628FA481">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="Asset_Supplier" Type="Self.Asset_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Asset_Supplier">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset_Sup__Suppl__6383C8BA">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Asset_Supplier" Type="Self.Asset_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="Asset_Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cellphone__Range__6477ECF3">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Cellphone" Type="Self.Cellphone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Cellphone">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event_Rew__Type___656C112C">
+          <End Role="Event_Type" Type="Self.Event_Type" Multiplicity="1" />
+          <End Role="Event_Reward" Type="Self.Event_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event_Type">
+              <PropertyRef Name="Type_ID" />
+            </Principal>
+            <Dependent Role="Event_Reward">
+              <PropertyRef Name="Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__Patrol__66603565">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gate__Reserve_ID__6754599E">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="1" />
+          <End Role="Gate" Type="Self.Gate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Gate">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6A30C649">
+          <End Role="Incident" Type="Self.Incident" Multiplicity="1" />
+          <End Role="Incident_Image" Type="Self.Incident_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident">
+              <PropertyRef Name="Incident_ID" />
+            </Principal>
+            <Dependent Role="Incident_Image">
+              <PropertyRef Name="Incident_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6C190EBB">
+          <End Role="Incident" Type="Self.Incident" Multiplicity="1" />
+          <End Role="Incident_Patrol" Type="Self.Incident_Patrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident">
+              <PropertyRef Name="Incident_ID" />
+            </Principal>
+            <Dependent Role="Incident_Patrol">
+              <PropertyRef Name="Incident_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6E01572D">
+          <End Role="Incident_Level" Type="Self.Incident_Level" Multiplicity="1" />
+          <End Role="Incident_Type" Type="Self.Incident_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Level">
+              <PropertyRef Name="Incident_Level_ID" />
+            </Principal>
+            <Dependent Role="Incident_Type">
+              <PropertyRef Name="Incident_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Patro__6B24EA82">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Incident_Image" Type="Self.Incident_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Incident_Image">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Patro__6D0D32F4">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Incident_Patrol" Type="Self.Incident_Patrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Incident_Patrol">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident__Incide__68487DD7">
+          <End Role="Incident_Type" Type="Self.Incident_Type" Multiplicity="1" />
+          <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Type">
+              <PropertyRef Name="Incident_Type_ID" />
+            </Principal>
+            <Dependent Role="Incident">
+              <PropertyRef Name="Incident_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident__Incide__693CA210">
+          <End Role="Incident_Status" Type="Self.Incident_Status" Multiplicity="1" />
+          <End Role="Incident" Type="Self.Incident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Status">
+              <PropertyRef Name="Incident_Status_ID" />
+            </Principal>
+            <Dependent Role="Incident">
+              <PropertyRef Name="Incident_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marker__Marker_T__6EF57B66">
+          <End Role="Marker_Type" Type="Self.Marker_Type" Multiplicity="1" />
+          <End Role="Marker" Type="Self.Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marker_Type">
+              <PropertyRef Name="Marker_Type_ID" />
+            </Principal>
+            <Dependent Role="Marker">
+              <PropertyRef Name="Marker_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marker__Reserve___6FE99F9F">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="1" />
+          <End Role="Marker" Type="Self.Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Marker">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Model__Make_ID__70DDC3D8">
+          <End Role="Make" Type="Self.Make" Multiplicity="1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="Make_ID" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Make_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Range__71D1E811">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Supplier___72C60C4A">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Lin__Asset__73BA3083">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="0..1" />
+          <End Role="Order_Line" Type="Self.Order_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Order_Line">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Lin__Order__74AE54BC">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="Order_Line" Type="Self.Order_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="Order_Line">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_As__Asset__75A278F5">
+          <End Role="Asset" Type="Self.Asset" Multiplicity="1" />
+          <End Role="Patrol_Asset" Type="Self.Patrol_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_As__Patro__76969D2E">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Patrol_Asset" Type="Self.Patrol_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Asset">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Passe__778AC167">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="0..1" />
+          <End Role="Patrol_Booking" Type="Self.Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Passenger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Range__787EE5A0">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Patrol_Booking" Type="Self.Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Reser__797309D9">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="1" />
+          <End Role="Patrol_Booking" Type="Self.Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Vehic__7A672E12">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Patrol_Booking" Type="Self.Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Vehicle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Lo__Patro__7B5B524B">
+          <End Role="Patrol_Booking" Type="Self.Patrol_Booking" Multiplicity="1" />
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Booking">
+              <PropertyRef Name="Patrol_Booking_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Lo__Range__7C4F7684">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Log">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Ma__Marke__7D439ABD">
+          <End Role="Marker" Type="Self.Marker" Multiplicity="1" />
+          <End Role="Patrol_Marker" Type="Self.Patrol_Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marker">
+              <PropertyRef Name="Marker_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Marker">
+              <PropertyRef Name="Marker_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Ma__Patro__7E37BEF6">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Patrol_Marker" Type="Self.Patrol_Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Marker">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_R__Prod___7F2BE32F">
+          <End Role="Product_Type" Type="Self.Product_Type" Multiplicity="1" />
+          <End Role="Product_Reward" Type="Self.Product_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Product_Reward">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__Access_I__00200768">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="1" />
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Access_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__genderID__01142BA1">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__Medical___02084FDA">
+          <End Role="Medical_Aid" Type="Self.Medical_Aid" Multiplicity="1" />
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Aid">
+              <PropertyRef Name="Medical_Aid_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Medical_Aid_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__Organisa__02FC7413">
+          <End Role="Organisation" Type="Self.Organisation" Multiplicity="1" />
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="Organisation_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Organisation_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__User_Rol__03F0984C">
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="1" />
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Role">
+              <PropertyRef Name="User_Role_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="User_Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Re__Range__04E4BC85">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Ranger_Reserve" Type="Self.Ranger_Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Reserve">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Re__Reser__05D8E0BE">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="1" />
+          <End Role="Ranger_Reserve" Type="Self.Ranger_Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Ve__Range__06CD04F7">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Ranger_Vehicle" Type="Self.Ranger_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Vehicle">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Ve__Vehic__07C12930">
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Ranger_Vehicle" Type="Self.Ranger_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Event__08B54D69">
+          <End Role="Event_Reward" Type="Self.Event_Reward" Multiplicity="0..1" />
+          <End Role="Redeem_Reward" Type="Self.Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event_Reward">
+              <PropertyRef Name="Event_Reward_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Event_Reward_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Produ__09A971A2">
+          <End Role="Product_Reward" Type="Self.Product_Reward" Multiplicity="0..1" />
+          <End Role="Redeem_Reward" Type="Self.Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Reward">
+              <PropertyRef Name="Product_Reward_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Product_Reward_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Range__0A9D95DB">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Redeem_Reward" Type="Self.Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Security___Reser__0B91BA14">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="1" />
+          <End Role="Security_Company" Type="Self.Security_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Security_Company">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Patrol__0C85DE4D">
+          <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
+          <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Role__Acces__0D7A0286">
+          <End Role="Access_Level" Type="Self.Access_Level" Multiplicity="0..1" />
+          <End Role="User_Role" Type="Self.User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_ID" />
+            </Principal>
+            <Dependent Role="User_Role">
+              <PropertyRef Name="Access_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Model_I__0E6E26BF">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Model_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Vehicle__0F624AF8">
+          <End Role="Vehicle_Type" Type="Self.Vehicle_Type" Multiplicity="1" />
+          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Type">
+              <PropertyRef Name="Vehicle_Type_ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Vehicle_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="INF370ModelStoreContainer">
+          <EntitySet Name="Access_Level" EntityType="Self.Access_Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset" EntityType="Self.Asset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_Status" EntityType="Self.Asset_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_Supplier" EntityType="Self.Asset_Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asset_Type" EntityType="Self.Asset_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cellphone" EntityType="Self.Cellphone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event_Reward" EntityType="Self.Event_Reward" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event_Type" EntityType="Self.Event_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gate" EntityType="Self.Gate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident" EntityType="Self.Incident" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident_Image" EntityType="Self.Incident_Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident_Level" EntityType="Self.Incident_Level" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident_Patrol" EntityType="Self.Incident_Patrol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident_Status" EntityType="Self.Incident_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incident_Type" EntityType="Self.Incident_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Make" EntityType="Self.Make" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marker" EntityType="Self.Marker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marker_Type" EntityType="Self.Marker_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medical_Aid" EntityType="Self.Medical_Aid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_Line" EntityType="Self.Order_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organisation" EntityType="Self.Organisation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrol_Asset" EntityType="Self.Patrol_Asset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrol_Booking" EntityType="Self.Patrol_Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrol_Log" EntityType="Self.Patrol_Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrol_Marker" EntityType="Self.Patrol_Marker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Reward" EntityType="Self.Product_Reward" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Type" EntityType="Self.Product_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ranger" EntityType="Self.Ranger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ranger_Reserve" EntityType="Self.Ranger_Reserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ranger_Vehicle" EntityType="Self.Ranger_Vehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Redeem_Reward" EntityType="Self.Redeem_Reward" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserve" EntityType="Self.Reserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Security_Company" EntityType="Self.Security_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tracking" EntityType="Self.Tracking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle" EntityType="Self.Vehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicle_Type" EntityType="Self.Vehicle_Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Asset__Asset_Sta__60A75C0F" Association="Self.FK__Asset__Asset_Sta__60A75C0F">
+            <End Role="Asset_Status" EntitySet="Asset_Status" />
+            <End Role="Asset" EntitySet="Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset__Asset_Typ__619B8048" Association="Self.FK__Asset__Asset_Typ__619B8048">
+            <End Role="Asset_Type" EntitySet="Asset_Type" />
+            <End Role="Asset" EntitySet="Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset_Sup__Asset__628FA481" Association="Self.FK__Asset_Sup__Asset__628FA481">
+            <End Role="Asset" EntitySet="Asset" />
+            <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset_Sup__Suppl__6383C8BA" Association="Self.FK__Asset_Sup__Suppl__6383C8BA">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cellphone__Range__6477ECF3" Association="Self.FK__Cellphone__Range__6477ECF3">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Cellphone" EntitySet="Cellphone" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event_Rew__Type___656C112C" Association="Self.FK__Event_Rew__Type___656C112C">
+            <End Role="Event_Type" EntitySet="Event_Type" />
+            <End Role="Event_Reward" EntitySet="Event_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__Patrol__66603565" Association="Self.FK__Feedback__Patrol__66603565">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gate__Reserve_ID__6754599E" Association="Self.FK__Gate__Reserve_ID__6754599E">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="Gate" EntitySet="Gate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6A30C649" Association="Self.FK__Incident___Incid__6A30C649">
+            <End Role="Incident" EntitySet="Incident" />
+            <End Role="Incident_Image" EntitySet="Incident_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6C190EBB" Association="Self.FK__Incident___Incid__6C190EBB">
+            <End Role="Incident" EntitySet="Incident" />
+            <End Role="Incident_Patrol" EntitySet="Incident_Patrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6E01572D" Association="Self.FK__Incident___Incid__6E01572D">
+            <End Role="Incident_Level" EntitySet="Incident_Level" />
+            <End Role="Incident_Type" EntitySet="Incident_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Patro__6B24EA82" Association="Self.FK__Incident___Patro__6B24EA82">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Incident_Image" EntitySet="Incident_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Patro__6D0D32F4" Association="Self.FK__Incident___Patro__6D0D32F4">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Incident_Patrol" EntitySet="Incident_Patrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident__Incide__68487DD7" Association="Self.FK__Incident__Incide__68487DD7">
+            <End Role="Incident_Type" EntitySet="Incident_Type" />
+            <End Role="Incident" EntitySet="Incident" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident__Incide__693CA210" Association="Self.FK__Incident__Incide__693CA210">
+            <End Role="Incident_Status" EntitySet="Incident_Status" />
+            <End Role="Incident" EntitySet="Incident" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marker__Marker_T__6EF57B66" Association="Self.FK__Marker__Marker_T__6EF57B66">
+            <End Role="Marker_Type" EntitySet="Marker_Type" />
+            <End Role="Marker" EntitySet="Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marker__Reserve___6FE99F9F" Association="Self.FK__Marker__Reserve___6FE99F9F">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="Marker" EntitySet="Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Model__Make_ID__70DDC3D8" Association="Self.FK__Model__Make_ID__70DDC3D8">
+            <End Role="Make" EntitySet="Make" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Range__71D1E811" Association="Self.FK__Notificat__Range__71D1E811">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Supplier___72C60C4A" Association="Self.FK__Order__Supplier___72C60C4A">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Lin__Asset__73BA3083" Association="Self.FK__Order_Lin__Asset__73BA3083">
+            <End Role="Asset" EntitySet="Asset" />
+            <End Role="Order_Line" EntitySet="Order_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Lin__Order__74AE54BC" Association="Self.FK__Order_Lin__Order__74AE54BC">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_Line" EntitySet="Order_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_As__Asset__75A278F5" Association="Self.FK__Patrol_As__Asset__75A278F5">
+            <End Role="Asset" EntitySet="Asset" />
+            <End Role="Patrol_Asset" EntitySet="Patrol_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_As__Patro__76969D2E" Association="Self.FK__Patrol_As__Patro__76969D2E">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Patrol_Asset" EntitySet="Patrol_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Passe__778AC167" Association="Self.FK__Patrol_Bo__Passe__778AC167">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Range__787EE5A0" Association="Self.FK__Patrol_Bo__Range__787EE5A0">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Reser__797309D9" Association="Self.FK__Patrol_Bo__Reser__797309D9">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Vehic__7A672E12" Association="Self.FK__Patrol_Bo__Vehic__7A672E12">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Lo__Patro__7B5B524B" Association="Self.FK__Patrol_Lo__Patro__7B5B524B">
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Lo__Range__7C4F7684" Association="Self.FK__Patrol_Lo__Range__7C4F7684">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Ma__Marke__7D439ABD" Association="Self.FK__Patrol_Ma__Marke__7D439ABD">
+            <End Role="Marker" EntitySet="Marker" />
+            <End Role="Patrol_Marker" EntitySet="Patrol_Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Ma__Patro__7E37BEF6" Association="Self.FK__Patrol_Ma__Patro__7E37BEF6">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Patrol_Marker" EntitySet="Patrol_Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_R__Prod___7F2BE32F" Association="Self.FK__Product_R__Prod___7F2BE32F">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Product_Reward" EntitySet="Product_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__Access_I__00200768" Association="Self.FK__Ranger__Access_I__00200768">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="Ranger" EntitySet="Ranger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__genderID__01142BA1" Association="Self.FK__Ranger__genderID__01142BA1">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Ranger" EntitySet="Ranger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__Medical___02084FDA" Association="Self.FK__Ranger__Medical___02084FDA">
+            <End Role="Medical_Aid" EntitySet="Medical_Aid" />
+            <End Role="Ranger" EntitySet="Ranger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__Organisa__02FC7413" Association="Self.FK__Ranger__Organisa__02FC7413">
+            <End Role="Organisation" EntitySet="Organisation" />
+            <End Role="Ranger" EntitySet="Ranger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__User_Rol__03F0984C" Association="Self.FK__Ranger__User_Rol__03F0984C">
+            <End Role="User_Role" EntitySet="User_Role" />
+            <End Role="Ranger" EntitySet="Ranger" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Re__Range__04E4BC85" Association="Self.FK__Ranger_Re__Range__04E4BC85">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Ranger_Reserve" EntitySet="Ranger_Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Re__Reser__05D8E0BE" Association="Self.FK__Ranger_Re__Reser__05D8E0BE">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="Ranger_Reserve" EntitySet="Ranger_Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Ve__Range__06CD04F7" Association="Self.FK__Ranger_Ve__Range__06CD04F7">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Ranger_Vehicle" EntitySet="Ranger_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Ve__Vehic__07C12930" Association="Self.FK__Ranger_Ve__Vehic__07C12930">
+            <End Role="Vehicle" EntitySet="Vehicle" />
+            <End Role="Ranger_Vehicle" EntitySet="Ranger_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Event__08B54D69" Association="Self.FK__Redeem_Re__Event__08B54D69">
+            <End Role="Event_Reward" EntitySet="Event_Reward" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Produ__09A971A2" Association="Self.FK__Redeem_Re__Produ__09A971A2">
+            <End Role="Product_Reward" EntitySet="Product_Reward" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Range__0A9D95DB" Association="Self.FK__Redeem_Re__Range__0A9D95DB">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Security___Reser__0B91BA14" Association="Self.FK__Security___Reser__0B91BA14">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="Security_Company" EntitySet="Security_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Patrol__0C85DE4D" Association="Self.FK__Tracking__Patrol__0C85DE4D">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Tracking" EntitySet="Tracking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Role__Acces__0D7A0286" Association="Self.FK__User_Role__Acces__0D7A0286">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="User_Role" EntitySet="User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Model_I__0E6E26BF" Association="Self.FK__Vehicle__Model_I__0E6E26BF">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Vehicle__0F624AF8" Association="Self.FK__Vehicle__Vehicle__0F624AF8">
+            <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+            <End Role="Vehicle" EntitySet="Vehicle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="INF370Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="INF370Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Access_Level" EntityType="INF370Model.Access_Level" />
+          <EntitySet Name="Assets" EntityType="INF370Model.Asset" />
+          <EntitySet Name="Asset_Status" EntityType="INF370Model.Asset_Status" />
+          <EntitySet Name="Asset_Supplier" EntityType="INF370Model.Asset_Supplier" />
+          <EntitySet Name="Asset_Type" EntityType="INF370Model.Asset_Type" />
+          <EntitySet Name="Cellphones" EntityType="INF370Model.Cellphone" />
+          <EntitySet Name="Event_Reward" EntityType="INF370Model.Event_Reward" />
+          <EntitySet Name="Event_Type" EntityType="INF370Model.Event_Type" />
+          <EntitySet Name="Feedbacks" EntityType="INF370Model.Feedback" />
+          <EntitySet Name="Gates" EntityType="INF370Model.Gate" />
+          <EntitySet Name="Genders" EntityType="INF370Model.Gender" />
+          <EntitySet Name="Incidents" EntityType="INF370Model.Incident" />
+          <EntitySet Name="Incident_Image" EntityType="INF370Model.Incident_Image" />
+          <EntitySet Name="Incident_Level" EntityType="INF370Model.Incident_Level" />
+          <EntitySet Name="Incident_Patrol" EntityType="INF370Model.Incident_Patrol" />
+          <EntitySet Name="Incident_Status" EntityType="INF370Model.Incident_Status" />
+          <EntitySet Name="Incident_Type" EntityType="INF370Model.Incident_Type" />
+          <EntitySet Name="Makes" EntityType="INF370Model.Make" />
+          <EntitySet Name="Markers" EntityType="INF370Model.Marker" />
+          <EntitySet Name="Marker_Type" EntityType="INF370Model.Marker_Type" />
+          <EntitySet Name="Medical_Aid" EntityType="INF370Model.Medical_Aid" />
+          <EntitySet Name="Models" EntityType="INF370Model.Model" />
+          <EntitySet Name="Notifications" EntityType="INF370Model.Notification" />
+          <EntitySet Name="Orders" EntityType="INF370Model.Order" />
+          <EntitySet Name="Order_Line" EntityType="INF370Model.Order_Line" />
+          <EntitySet Name="Organisations" EntityType="INF370Model.Organisation" />
+          <EntitySet Name="Patrol_Asset" EntityType="INF370Model.Patrol_Asset" />
+          <EntitySet Name="Patrol_Booking" EntityType="INF370Model.Patrol_Booking" />
+          <EntitySet Name="Patrol_Log" EntityType="INF370Model.Patrol_Log" />
+          <EntitySet Name="Patrol_Marker" EntityType="INF370Model.Patrol_Marker" />
+          <EntitySet Name="Product_Reward" EntityType="INF370Model.Product_Reward" />
+          <EntitySet Name="Product_Type" EntityType="INF370Model.Product_Type" />
+          <EntitySet Name="Rangers" EntityType="INF370Model.Ranger" />
+          <EntitySet Name="Ranger_Reserve" EntityType="INF370Model.Ranger_Reserve" />
+          <EntitySet Name="Ranger_Vehicle" EntityType="INF370Model.Ranger_Vehicle" />
+          <EntitySet Name="Redeem_Reward" EntityType="INF370Model.Redeem_Reward" />
+          <EntitySet Name="Reserves" EntityType="INF370Model.Reserve" />
+          <EntitySet Name="Security_Company" EntityType="INF370Model.Security_Company" />
+          <EntitySet Name="Suppliers" EntityType="INF370Model.Supplier" />
+          <EntitySet Name="Trackings" EntityType="INF370Model.Tracking" />
+          <EntitySet Name="User_Role" EntityType="INF370Model.User_Role" />
+          <EntitySet Name="Vehicles" EntityType="INF370Model.Vehicle" />
+          <EntitySet Name="Vehicle_Type" EntityType="INF370Model.Vehicle_Type" />
+          <AssociationSet Name="FK__Ranger__Access_I__00200768" Association="INF370Model.FK__Ranger__Access_I__00200768">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="Ranger" EntitySet="Rangers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User_Role__Acces__0D7A0286" Association="INF370Model.FK__User_Role__Acces__0D7A0286">
+            <End Role="Access_Level" EntitySet="Access_Level" />
+            <End Role="User_Role" EntitySet="User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset__Asset_Sta__60A75C0F" Association="INF370Model.FK__Asset__Asset_Sta__60A75C0F">
+            <End Role="Asset_Status" EntitySet="Asset_Status" />
+            <End Role="Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset__Asset_Typ__619B8048" Association="INF370Model.FK__Asset__Asset_Typ__619B8048">
+            <End Role="Asset_Type" EntitySet="Asset_Type" />
+            <End Role="Asset" EntitySet="Assets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset_Sup__Asset__628FA481" Association="INF370Model.FK__Asset_Sup__Asset__628FA481">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Lin__Asset__73BA3083" Association="INF370Model.FK__Order_Lin__Asset__73BA3083">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Order_Line" EntitySet="Order_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_As__Asset__75A278F5" Association="INF370Model.FK__Patrol_As__Asset__75A278F5">
+            <End Role="Asset" EntitySet="Assets" />
+            <End Role="Patrol_Asset" EntitySet="Patrol_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Asset_Sup__Suppl__6383C8BA" Association="INF370Model.FK__Asset_Sup__Suppl__6383C8BA">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cellphone__Range__6477ECF3" Association="INF370Model.FK__Cellphone__Range__6477ECF3">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Cellphone" EntitySet="Cellphones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Event_Rew__Type___656C112C" Association="INF370Model.FK__Event_Rew__Type___656C112C">
+            <End Role="Event_Type" EntitySet="Event_Type" />
+            <End Role="Event_Reward" EntitySet="Event_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Event__08B54D69" Association="INF370Model.FK__Redeem_Re__Event__08B54D69">
+            <End Role="Event_Reward" EntitySet="Event_Reward" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__Patrol__66603565" Association="INF370Model.FK__Feedback__Patrol__66603565">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gate__Reserve_ID__6754599E" Association="INF370Model.FK__Gate__Reserve_ID__6754599E">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="Gate" EntitySet="Gates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__genderID__01142BA1" Association="INF370Model.FK__Ranger__genderID__01142BA1">
+            <End Role="Gender" EntitySet="Genders" />
+            <End Role="Ranger" EntitySet="Rangers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6A30C649" Association="INF370Model.FK__Incident___Incid__6A30C649">
+            <End Role="Incident" EntitySet="Incidents" />
+            <End Role="Incident_Image" EntitySet="Incident_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6C190EBB" Association="INF370Model.FK__Incident___Incid__6C190EBB">
+            <End Role="Incident" EntitySet="Incidents" />
+            <End Role="Incident_Patrol" EntitySet="Incident_Patrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident__Incide__68487DD7" Association="INF370Model.FK__Incident__Incide__68487DD7">
+            <End Role="Incident_Type" EntitySet="Incident_Type" />
+            <End Role="Incident" EntitySet="Incidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident__Incide__693CA210" Association="INF370Model.FK__Incident__Incide__693CA210">
+            <End Role="Incident_Status" EntitySet="Incident_Status" />
+            <End Role="Incident" EntitySet="Incidents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Patro__6B24EA82" Association="INF370Model.FK__Incident___Patro__6B24EA82">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Incident_Image" EntitySet="Incident_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Incid__6E01572D" Association="INF370Model.FK__Incident___Incid__6E01572D">
+            <End Role="Incident_Level" EntitySet="Incident_Level" />
+            <End Role="Incident_Type" EntitySet="Incident_Type" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Incident___Patro__6D0D32F4" Association="INF370Model.FK__Incident___Patro__6D0D32F4">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Incident_Patrol" EntitySet="Incident_Patrol" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Model__Make_ID__70DDC3D8" Association="INF370Model.FK__Model__Make_ID__70DDC3D8">
+            <End Role="Make" EntitySet="Makes" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marker__Marker_T__6EF57B66" Association="INF370Model.FK__Marker__Marker_T__6EF57B66">
+            <End Role="Marker_Type" EntitySet="Marker_Type" />
+            <End Role="Marker" EntitySet="Markers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marker__Reserve___6FE99F9F" Association="INF370Model.FK__Marker__Reserve___6FE99F9F">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="Marker" EntitySet="Markers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Ma__Marke__7D439ABD" Association="INF370Model.FK__Patrol_Ma__Marke__7D439ABD">
+            <End Role="Marker" EntitySet="Markers" />
+            <End Role="Patrol_Marker" EntitySet="Patrol_Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__Medical___02084FDA" Association="INF370Model.FK__Ranger__Medical___02084FDA">
+            <End Role="Medical_Aid" EntitySet="Medical_Aid" />
+            <End Role="Ranger" EntitySet="Rangers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Model_I__0E6E26BF" Association="INF370Model.FK__Vehicle__Model_I__0E6E26BF">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Range__71D1E811" Association="INF370Model.FK__Notificat__Range__71D1E811">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__Supplier___72C60C4A" Association="INF370Model.FK__Order__Supplier___72C60C4A">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order_Lin__Order__74AE54BC" Association="INF370Model.FK__Order_Lin__Order__74AE54BC">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Order_Line" EntitySet="Order_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__Organisa__02FC7413" Association="INF370Model.FK__Ranger__Organisa__02FC7413">
+            <End Role="Organisation" EntitySet="Organisations" />
+            <End Role="Ranger" EntitySet="Rangers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_As__Patro__76969D2E" Association="INF370Model.FK__Patrol_As__Patro__76969D2E">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Patrol_Asset" EntitySet="Patrol_Asset" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Passe__778AC167" Association="INF370Model.FK__Patrol_Bo__Passe__778AC167">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Range__787EE5A0" Association="INF370Model.FK__Patrol_Bo__Range__787EE5A0">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Reser__797309D9" Association="INF370Model.FK__Patrol_Bo__Reser__797309D9">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Bo__Vehic__7A672E12" Association="INF370Model.FK__Patrol_Bo__Vehic__7A672E12">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Lo__Patro__7B5B524B" Association="INF370Model.FK__Patrol_Lo__Patro__7B5B524B">
+            <End Role="Patrol_Booking" EntitySet="Patrol_Booking" />
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Lo__Range__7C4F7684" Association="INF370Model.FK__Patrol_Lo__Range__7C4F7684">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Patrol_Ma__Patro__7E37BEF6" Association="INF370Model.FK__Patrol_Ma__Patro__7E37BEF6">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Patrol_Marker" EntitySet="Patrol_Marker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tracking__Patrol__0C85DE4D" Association="INF370Model.FK__Tracking__Patrol__0C85DE4D">
+            <End Role="Patrol_Log" EntitySet="Patrol_Log" />
+            <End Role="Tracking" EntitySet="Trackings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_R__Prod___7F2BE32F" Association="INF370Model.FK__Product_R__Prod___7F2BE32F">
+            <End Role="Product_Type" EntitySet="Product_Type" />
+            <End Role="Product_Reward" EntitySet="Product_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Produ__09A971A2" Association="INF370Model.FK__Redeem_Re__Produ__09A971A2">
+            <End Role="Product_Reward" EntitySet="Product_Reward" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger__User_Rol__03F0984C" Association="INF370Model.FK__Ranger__User_Rol__03F0984C">
+            <End Role="User_Role" EntitySet="User_Role" />
+            <End Role="Ranger" EntitySet="Rangers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Re__Range__04E4BC85" Association="INF370Model.FK__Ranger_Re__Range__04E4BC85">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Ranger_Reserve" EntitySet="Ranger_Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Ve__Range__06CD04F7" Association="INF370Model.FK__Ranger_Ve__Range__06CD04F7">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Ranger_Vehicle" EntitySet="Ranger_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Redeem_Re__Range__0A9D95DB" Association="INF370Model.FK__Redeem_Re__Range__0A9D95DB">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Re__Reser__05D8E0BE" Association="INF370Model.FK__Ranger_Re__Reser__05D8E0BE">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="Ranger_Reserve" EntitySet="Ranger_Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ranger_Ve__Vehic__07C12930" Association="INF370Model.FK__Ranger_Ve__Vehic__07C12930">
+            <End Role="Vehicle" EntitySet="Vehicles" />
+            <End Role="Ranger_Vehicle" EntitySet="Ranger_Vehicle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Security___Reser__0B91BA14" Association="INF370Model.FK__Security___Reser__0B91BA14">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="Security_Company" EntitySet="Security_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vehicle__Vehicle__0F624AF8" Association="INF370Model.FK__Vehicle__Vehicle__0F624AF8">
+            <End Role="Vehicle_Type" EntitySet="Vehicle_Type" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Access_Level">
+          <Key>
+            <PropertyRef Name="Access_ID" />
+          </Key>
+          <Property Name="Access_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Web" Type="Boolean" />
+          <Property Name="Report" Type="Boolean" />
+          <Property Name="Write" Type="Boolean" />
+          <Property Name="App" Type="Boolean" />
+          <NavigationProperty Name="Rangers" Relationship="INF370Model.FK__Ranger__Access_I__00200768" FromRole="Access_Level" ToRole="Ranger" />
+          <NavigationProperty Name="User_Role" Relationship="INF370Model.FK__User_Role__Acces__0D7A0286" FromRole="Access_Level" ToRole="User_Role" />
+        </EntityType>
+        <EntityType Name="Asset">
+          <Key>
+            <PropertyRef Name="Asset_ID" />
+          </Key>
+          <Property Name="Asset_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Asset_Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Asset_Type_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Asset_Status" Relationship="INF370Model.FK__Asset__Asset_Sta__60A75C0F" FromRole="Asset" ToRole="Asset_Status" />
+          <NavigationProperty Name="Asset_Type" Relationship="INF370Model.FK__Asset__Asset_Typ__619B8048" FromRole="Asset" ToRole="Asset_Type" />
+          <NavigationProperty Name="Asset_Supplier" Relationship="INF370Model.FK__Asset_Sup__Asset__628FA481" FromRole="Asset" ToRole="Asset_Supplier" />
+          <NavigationProperty Name="Order_Line" Relationship="INF370Model.FK__Order_Lin__Asset__73BA3083" FromRole="Asset" ToRole="Order_Line" />
+          <NavigationProperty Name="Patrol_Asset" Relationship="INF370Model.FK__Patrol_As__Asset__75A278F5" FromRole="Asset" ToRole="Patrol_Asset" />
+        </EntityType>
+        <EntityType Name="Asset_Status">
+          <Key>
+            <PropertyRef Name="Asset_Status_ID" />
+          </Key>
+          <Property Name="Asset_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Assets" Relationship="INF370Model.FK__Asset__Asset_Sta__60A75C0F" FromRole="Asset_Status" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="Asset_Supplier">
+          <Key>
+            <PropertyRef Name="Asset_Supplier_ID" />
+          </Key>
+          <Property Name="Asset_Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asset_ID" Type="Int32" Nullable="false" />
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Asset" Relationship="INF370Model.FK__Asset_Sup__Asset__628FA481" FromRole="Asset_Supplier" ToRole="Asset" />
+          <NavigationProperty Name="Supplier" Relationship="INF370Model.FK__Asset_Sup__Suppl__6383C8BA" FromRole="Asset_Supplier" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Asset_Type">
+          <Key>
+            <PropertyRef Name="Asset_Type_ID" />
+          </Key>
+          <Property Name="Asset_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Assets" Relationship="INF370Model.FK__Asset__Asset_Typ__619B8048" FromRole="Asset_Type" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="Cellphone">
+          <Key>
+            <PropertyRef Name="IMEI" />
+          </Key>
+          <Property Name="IMEI" Type="Int32" Nullable="false" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Boolean" Nullable="false" />
+          <Property Name="OS" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Cellphone__Range__6477ECF3" FromRole="Cellphone" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Event_Reward">
+          <Key>
+            <PropertyRef Name="Event_Reward_ID" />
+          </Key>
+          <Property Name="Event_Reward_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Location" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Event_Type" Relationship="INF370Model.FK__Event_Rew__Type___656C112C" FromRole="Event_Reward" ToRole="Event_Type" />
+          <NavigationProperty Name="Redeem_Reward" Relationship="INF370Model.FK__Redeem_Re__Event__08B54D69" FromRole="Event_Reward" ToRole="Redeem_Reward" />
+        </EntityType>
+        <EntityType Name="Event_Type">
+          <Key>
+            <PropertyRef Name="Type_ID" />
+          </Key>
+          <Property Name="Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Event_Reward" Relationship="INF370Model.FK__Event_Rew__Type___656C112C" FromRole="Event_Type" ToRole="Event_Reward" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="Feedback_ID" />
+          </Key>
+          <Property Name="Feedback_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Feedback__Patrol__66603565" FromRole="Feedback" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Gate">
+          <Key>
+            <PropertyRef Name="Gate_ID" />
+          </Key>
+          <Property Name="Gate_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" />
+          <Property Name="Descriprion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Lattitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Gate__Reserve_ID__6754599E" FromRole="Gate" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rangers" Relationship="INF370Model.FK__Ranger__genderID__01142BA1" FromRole="Gender" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Incident">
+          <Key>
+            <PropertyRef Name="Incident_ID" />
+          </Key>
+          <Property Name="Incident_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Incident_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Incident_Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Incident_Image" Relationship="INF370Model.FK__Incident___Incid__6A30C649" FromRole="Incident" ToRole="Incident_Image" />
+          <NavigationProperty Name="Incident_Patrol" Relationship="INF370Model.FK__Incident___Incid__6C190EBB" FromRole="Incident" ToRole="Incident_Patrol" />
+          <NavigationProperty Name="Incident_Type" Relationship="INF370Model.FK__Incident__Incide__68487DD7" FromRole="Incident" ToRole="Incident_Type" />
+          <NavigationProperty Name="Incident_Status" Relationship="INF370Model.FK__Incident__Incide__693CA210" FromRole="Incident" ToRole="Incident_Status" />
+        </EntityType>
+        <EntityType Name="Incident_Image">
+          <Key>
+            <PropertyRef Name="Incident_Image_ID" />
+          </Key>
+          <Property Name="Incident_Image_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <Property Name="Incident_ID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Incident" Relationship="INF370Model.FK__Incident___Incid__6A30C649" FromRole="Incident_Image" ToRole="Incident" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Incident___Patro__6B24EA82" FromRole="Incident_Image" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Incident_Level">
+          <Key>
+            <PropertyRef Name="Incident_Level_ID" />
+          </Key>
+          <Property Name="Incident_Level_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Incident_Type" Relationship="INF370Model.FK__Incident___Incid__6E01572D" FromRole="Incident_Level" ToRole="Incident_Type" />
+        </EntityType>
+        <EntityType Name="Incident_Patrol">
+          <Key>
+            <PropertyRef Name="Incident_Patrol_ID" />
+          </Key>
+          <Property Name="Incident_Patrol_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Incident_ID" Type="Int32" Nullable="false" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <Property Name="Lat" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Lng" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Incident" Relationship="INF370Model.FK__Incident___Incid__6C190EBB" FromRole="Incident_Patrol" ToRole="Incident" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Incident___Patro__6D0D32F4" FromRole="Incident_Patrol" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Incident_Status">
+          <Key>
+            <PropertyRef Name="Incident_Status_ID" />
+          </Key>
+          <Property Name="Incident_Status_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Incidents" Relationship="INF370Model.FK__Incident__Incide__693CA210" FromRole="Incident_Status" ToRole="Incident" />
+        </EntityType>
+        <EntityType Name="Incident_Type">
+          <Key>
+            <PropertyRef Name="Incident_Type_ID" />
+          </Key>
+          <Property Name="Incident_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Incident_Level_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Incidents" Relationship="INF370Model.FK__Incident__Incide__68487DD7" FromRole="Incident_Type" ToRole="Incident" />
+          <NavigationProperty Name="Incident_Level" Relationship="INF370Model.FK__Incident___Incid__6E01572D" FromRole="Incident_Type" ToRole="Incident_Level" />
+        </EntityType>
+        <EntityType Name="Make">
+          <Key>
+            <PropertyRef Name="Make_ID" />
+          </Key>
+          <Property Name="Make_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Models" Relationship="INF370Model.FK__Model__Make_ID__70DDC3D8" FromRole="Make" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="Marker">
+          <Key>
+            <PropertyRef Name="Marker_ID" />
+          </Key>
+          <Property Name="Marker_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Lattitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" />
+          <Property Name="Marker_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Marker_Type" Relationship="INF370Model.FK__Marker__Marker_T__6EF57B66" FromRole="Marker" ToRole="Marker_Type" />
+          <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Marker__Reserve___6FE99F9F" FromRole="Marker" ToRole="Reserve" />
+          <NavigationProperty Name="Patrol_Marker" Relationship="INF370Model.FK__Patrol_Ma__Marke__7D439ABD" FromRole="Marker" ToRole="Patrol_Marker" />
+        </EntityType>
+        <EntityType Name="Marker_Type">
+          <Key>
+            <PropertyRef Name="Marker_Type_ID" />
+          </Key>
+          <Property Name="Marker_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Points_Worth" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Markers" Relationship="INF370Model.FK__Marker__Marker_T__6EF57B66" FromRole="Marker_Type" ToRole="Marker" />
+        </EntityType>
+        <EntityType Name="Medical_Aid">
+          <Key>
+            <PropertyRef Name="Medical_Aid_ID" />
+          </Key>
+          <Property Name="Medical_Aid_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rangers" Relationship="INF370Model.FK__Ranger__Medical___02084FDA" FromRole="Medical_Aid" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Model_ID" />
+          </Key>
+          <Property Name="Model_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="Make_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Make" Relationship="INF370Model.FK__Model__Make_ID__70DDC3D8" FromRole="Model" ToRole="Make" />
+          <NavigationProperty Name="Vehicles" Relationship="INF370Model.FK__Vehicle__Model_I__0E6E26BF" FromRole="Model" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="Notification_ID" />
+          </Key>
+          <Property Name="Notification_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Meassage" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Notificat__Range__71D1E811" FromRole="Notification" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Supplier" Relationship="INF370Model.FK__Order__Supplier___72C60C4A" FromRole="Order" ToRole="Supplier" />
+          <NavigationProperty Name="Order_Line" Relationship="INF370Model.FK__Order_Lin__Order__74AE54BC" FromRole="Order" ToRole="Order_Line" />
+        </EntityType>
+        <EntityType Name="Order_Line">
+          <Key>
+            <PropertyRef Name="Line_ID" />
+          </Key>
+          <Property Name="Line_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asset_ID" Type="Int32" />
+          <Property Name="Order_ID" Type="Int32" />
+          <NavigationProperty Name="Asset" Relationship="INF370Model.FK__Order_Lin__Asset__73BA3083" FromRole="Order_Line" ToRole="Asset" />
+          <NavigationProperty Name="Order" Relationship="INF370Model.FK__Order_Lin__Order__74AE54BC" FromRole="Order_Line" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Organisation">
+          <Key>
+            <PropertyRef Name="Organisation_ID" />
+          </Key>
+          <Property Name="Organisation_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rangers" Relationship="INF370Model.FK__Ranger__Organisa__02FC7413" FromRole="Organisation" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Patrol_Asset">
+          <Key>
+            <PropertyRef Name="Patrol_Asset_ID" />
+          </Key>
+          <Property Name="Patrol_Asset_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <Property Name="Asset_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Asset" Relationship="INF370Model.FK__Patrol_As__Asset__75A278F5" FromRole="Patrol_Asset" ToRole="Asset" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Patrol_As__Patro__76969D2E" FromRole="Patrol_Asset" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Patrol_Booking">
+          <Key>
+            <PropertyRef Name="Patrol_Booking_ID" />
+          </Key>
+          <Property Name="Patrol_Booking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Start_Time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="End_Time" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Passenger_ID" Type="Int32" />
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vehicle_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Patrol_Bo__Passe__778AC167" FromRole="Patrol_Booking" ToRole="Ranger" />
+          <NavigationProperty Name="Ranger1" Relationship="INF370Model.FK__Patrol_Bo__Range__787EE5A0" FromRole="Patrol_Booking" ToRole="Ranger" />
+          <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Patrol_Bo__Reser__797309D9" FromRole="Patrol_Booking" ToRole="Reserve" />
+          <NavigationProperty Name="Vehicle" Relationship="INF370Model.FK__Patrol_Bo__Vehic__7A672E12" FromRole="Patrol_Booking" ToRole="Vehicle" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Patrol_Lo__Patro__7B5B524B" FromRole="Patrol_Booking" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Patrol_Log">
+          <Key>
+            <PropertyRef Name="Patrol_Log_ID" />
+          </Key>
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patrol_Booking_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Route" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Checkin" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Checkout" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Checked_in" Type="Boolean" />
+          <NavigationProperty Name="Feedbacks" Relationship="INF370Model.FK__Feedback__Patrol__66603565" FromRole="Patrol_Log" ToRole="Feedback" />
+          <NavigationProperty Name="Incident_Image" Relationship="INF370Model.FK__Incident___Patro__6B24EA82" FromRole="Patrol_Log" ToRole="Incident_Image" />
+          <NavigationProperty Name="Incident_Patrol" Relationship="INF370Model.FK__Incident___Patro__6D0D32F4" FromRole="Patrol_Log" ToRole="Incident_Patrol" />
+          <NavigationProperty Name="Patrol_Asset" Relationship="INF370Model.FK__Patrol_As__Patro__76969D2E" FromRole="Patrol_Log" ToRole="Patrol_Asset" />
+          <NavigationProperty Name="Patrol_Booking" Relationship="INF370Model.FK__Patrol_Lo__Patro__7B5B524B" FromRole="Patrol_Log" ToRole="Patrol_Booking" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Patrol_Lo__Range__7C4F7684" FromRole="Patrol_Log" ToRole="Ranger" />
+          <NavigationProperty Name="Patrol_Marker" Relationship="INF370Model.FK__Patrol_Ma__Patro__7E37BEF6" FromRole="Patrol_Log" ToRole="Patrol_Marker" />
+          <NavigationProperty Name="Trackings" Relationship="INF370Model.FK__Tracking__Patrol__0C85DE4D" FromRole="Patrol_Log" ToRole="Tracking" />
+        </EntityType>
+        <EntityType Name="Patrol_Marker">
+          <Key>
+            <PropertyRef Name="Patrol_Marker_ID" />
+          </Key>
+          <Property Name="Patrol_Marker_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <Property Name="Marker_ID" Type="Int32" Nullable="false" />
+          <Property Name="Date_Time_Passed" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Marker" Relationship="INF370Model.FK__Patrol_Ma__Marke__7D439ABD" FromRole="Patrol_Marker" ToRole="Marker" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Patrol_Ma__Patro__7E37BEF6" FromRole="Patrol_Marker" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="Product_Reward">
+          <Key>
+            <PropertyRef Name="Product_Reward_ID" />
+          </Key>
+          <Property Name="Product_Reward_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product_Type" Relationship="INF370Model.FK__Product_R__Prod___7F2BE32F" FromRole="Product_Reward" ToRole="Product_Type" />
+          <NavigationProperty Name="Redeem_Reward" Relationship="INF370Model.FK__Redeem_Re__Produ__09A971A2" FromRole="Product_Reward" ToRole="Redeem_Reward" />
+        </EntityType>
+        <EntityType Name="Product_Type">
+          <Key>
+            <PropertyRef Name="Prod_ID" />
+          </Key>
+          <Property Name="Prod_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product_Reward" Relationship="INF370Model.FK__Product_R__Prod___7F2BE32F" FromRole="Product_Type" ToRole="Product_Reward" />
+        </EntityType>
+        <EntityType Name="Ranger">
+          <Key>
+            <PropertyRef Name="Ranger_ID" />
+          </Key>
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Number" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cell" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="genderID" Type="Int32" Nullable="false" />
+          <Property Name="Emerg_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emerg_Contact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="User_Role_ID" Type="Int32" Nullable="false" />
+          <Property Name="Medical_Aid_ID" Type="Int32" Nullable="false" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Blood_Type" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Organisation_ID" Type="Int32" Nullable="false" />
+          <Property Name="OTP" Type="Int32" />
+          <Property Name="Smartphone" Type="Boolean" Nullable="false" />
+          <Property Name="Access_ID" Type="Int32" Nullable="false" />
+          <Property Name="GUID" Type="Guid" />
+          <Property Name="GUID_Exp" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Access_Level" Relationship="INF370Model.FK__Ranger__Access_I__00200768" FromRole="Ranger" ToRole="Access_Level" />
+          <NavigationProperty Name="Cellphones" Relationship="INF370Model.FK__Cellphone__Range__6477ECF3" FromRole="Ranger" ToRole="Cellphone" />
+          <NavigationProperty Name="Gender" Relationship="INF370Model.FK__Ranger__genderID__01142BA1" FromRole="Ranger" ToRole="Gender" />
+          <NavigationProperty Name="Medical_Aid" Relationship="INF370Model.FK__Ranger__Medical___02084FDA" FromRole="Ranger" ToRole="Medical_Aid" />
+          <NavigationProperty Name="Notifications" Relationship="INF370Model.FK__Notificat__Range__71D1E811" FromRole="Ranger" ToRole="Notification" />
+          <NavigationProperty Name="Organisation" Relationship="INF370Model.FK__Ranger__Organisa__02FC7413" FromRole="Ranger" ToRole="Organisation" />
+          <NavigationProperty Name="Patrol_Booking" Relationship="INF370Model.FK__Patrol_Bo__Passe__778AC167" FromRole="Ranger" ToRole="Patrol_Booking" />
+          <NavigationProperty Name="Patrol_Booking1" Relationship="INF370Model.FK__Patrol_Bo__Range__787EE5A0" FromRole="Ranger" ToRole="Patrol_Booking" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Patrol_Lo__Range__7C4F7684" FromRole="Ranger" ToRole="Patrol_Log" />
+          <NavigationProperty Name="User_Role" Relationship="INF370Model.FK__Ranger__User_Rol__03F0984C" FromRole="Ranger" ToRole="User_Role" />
+          <NavigationProperty Name="Ranger_Reserve" Relationship="INF370Model.FK__Ranger_Re__Range__04E4BC85" FromRole="Ranger" ToRole="Ranger_Reserve" />
+          <NavigationProperty Name="Ranger_Vehicle" Relationship="INF370Model.FK__Ranger_Ve__Range__06CD04F7" FromRole="Ranger" ToRole="Ranger_Vehicle" />
+          <NavigationProperty Name="Redeem_Reward" Relationship="INF370Model.FK__Redeem_Re__Range__0A9D95DB" FromRole="Ranger" ToRole="Redeem_Reward" />
+        </EntityType>
+        <EntityType Name="Ranger_Reserve">
+          <Key>
+            <PropertyRef Name="Ranger_Reserve_ID" />
+          </Key>
+          <Property Name="Ranger_Reserve_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Ranger_Re__Range__04E4BC85" FromRole="Ranger_Reserve" ToRole="Ranger" />
+          <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Ranger_Re__Reser__05D8E0BE" FromRole="Ranger_Reserve" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Ranger_Vehicle">
+          <Key>
+            <PropertyRef Name="Ranger_Vehicle_ID" />
+          </Key>
+          <Property Name="Ranger_Vehicle_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vehicle_ID" Type="Int32" Nullable="false" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Ranger_Ve__Range__06CD04F7" FromRole="Ranger_Vehicle" ToRole="Ranger" />
+          <NavigationProperty Name="Vehicle" Relationship="INF370Model.FK__Ranger_Ve__Vehic__07C12930" FromRole="Ranger_Vehicle" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Redeem_Reward">
+          <Key>
+            <PropertyRef Name="Redeem_ID" />
+          </Key>
+          <Property Name="Redeem_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Voucher_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Product_Reward_ID" Type="Int32" />
+          <Property Name="Event_Reward_ID" Type="Int32" />
+          <NavigationProperty Name="Event_Reward" Relationship="INF370Model.FK__Redeem_Re__Event__08B54D69" FromRole="Redeem_Reward" ToRole="Event_Reward" />
+          <NavigationProperty Name="Product_Reward" Relationship="INF370Model.FK__Redeem_Re__Produ__09A971A2" FromRole="Redeem_Reward" ToRole="Product_Reward" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Redeem_Re__Range__0A9D95DB" FromRole="Redeem_Reward" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="Reserve_ID" />
+          </Key>
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lat" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Lng" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <NavigationProperty Name="Gates" Relationship="INF370Model.FK__Gate__Reserve_ID__6754599E" FromRole="Reserve" ToRole="Gate" />
+          <NavigationProperty Name="Markers" Relationship="INF370Model.FK__Marker__Reserve___6FE99F9F" FromRole="Reserve" ToRole="Marker" />
+          <NavigationProperty Name="Patrol_Booking" Relationship="INF370Model.FK__Patrol_Bo__Reser__797309D9" FromRole="Reserve" ToRole="Patrol_Booking" />
+          <NavigationProperty Name="Ranger_Reserve" Relationship="INF370Model.FK__Ranger_Re__Reser__05D8E0BE" FromRole="Reserve" ToRole="Ranger_Reserve" />
+          <NavigationProperty Name="Security_Company" Relationship="INF370Model.FK__Security___Reser__0B91BA14" FromRole="Reserve" ToRole="Security_Company" />
+        </EntityType>
+        <EntityType Name="Security_Company">
+          <Key>
+            <PropertyRef Name="Security_ID" />
+          </Key>
+          <Property Name="Security_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reserve_ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cell" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Security___Reser__0B91BA14" FromRole="Security_Company" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Asset_Supplier" Relationship="INF370Model.FK__Asset_Sup__Suppl__6383C8BA" FromRole="Supplier" ToRole="Asset_Supplier" />
+          <NavigationProperty Name="Orders" Relationship="INF370Model.FK__Order__Supplier___72C60C4A" FromRole="Supplier" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Tracking">
+          <Key>
+            <PropertyRef Name="Tracking_ID" />
+          </Key>
+          <Property Name="Tracking_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Longitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Lattitude" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="Patrol_Log_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patrol_Log" Relationship="INF370Model.FK__Tracking__Patrol__0C85DE4D" FromRole="Tracking" ToRole="Patrol_Log" />
+        </EntityType>
+        <EntityType Name="User_Role">
+          <Key>
+            <PropertyRef Name="User_Role_ID" />
+          </Key>
+          <Property Name="User_Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Access_ID" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Access_Level" Relationship="INF370Model.FK__User_Role__Acces__0D7A0286" FromRole="User_Role" ToRole="Access_Level" />
+          <NavigationProperty Name="Rangers" Relationship="INF370Model.FK__Ranger__User_Rol__03F0984C" FromRole="User_Role" ToRole="Ranger" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Vehicle_ID" />
+          </Key>
+          <Property Name="Vehicle_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Registration" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Model_ID" Type="Int32" Nullable="false" />
+          <Property Name="Vehicle_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="INF370Model.FK__Vehicle__Model_I__0E6E26BF" FromRole="Vehicle" ToRole="Model" />
+          <NavigationProperty Name="Patrol_Booking" Relationship="INF370Model.FK__Patrol_Bo__Vehic__7A672E12" FromRole="Vehicle" ToRole="Patrol_Booking" />
+          <NavigationProperty Name="Ranger_Vehicle" Relationship="INF370Model.FK__Ranger_Ve__Vehic__07C12930" FromRole="Vehicle" ToRole="Ranger_Vehicle" />
+          <NavigationProperty Name="Vehicle_Type" Relationship="INF370Model.FK__Vehicle__Vehicle__0F624AF8" FromRole="Vehicle" ToRole="Vehicle_Type" />
+        </EntityType>
+        <EntityType Name="Vehicle_Type">
+          <Key>
+            <PropertyRef Name="Vehicle_Type_ID" />
+          </Key>
+          <Property Name="Vehicle_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Vehicles" Relationship="INF370Model.FK__Vehicle__Vehicle__0F624AF8" FromRole="Vehicle_Type" ToRole="Vehicle" />
+        </EntityType>
+        <Association Name="FK__Ranger__Access_I__00200768">
+          <End Type="INF370Model.Access_Level" Role="Access_Level" Multiplicity="1" />
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Access_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User_Role__Acces__0D7A0286">
+          <End Type="INF370Model.Access_Level" Role="Access_Level" Multiplicity="0..1" />
+          <End Type="INF370Model.User_Role" Role="User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Access_Level">
+              <PropertyRef Name="Access_ID" />
+            </Principal>
+            <Dependent Role="User_Role">
+              <PropertyRef Name="Access_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset__Asset_Sta__60A75C0F">
+          <End Type="INF370Model.Asset_Status" Role="Asset_Status" Multiplicity="1" />
+          <End Type="INF370Model.Asset" Role="Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset_Status">
+              <PropertyRef Name="Asset_Status_ID" />
+            </Principal>
+            <Dependent Role="Asset">
+              <PropertyRef Name="Asset_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset__Asset_Typ__619B8048">
+          <End Type="INF370Model.Asset_Type" Role="Asset_Type" Multiplicity="1" />
+          <End Type="INF370Model.Asset" Role="Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset_Type">
+              <PropertyRef Name="Asset_Type_ID" />
+            </Principal>
+            <Dependent Role="Asset">
+              <PropertyRef Name="Asset_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset_Sup__Asset__628FA481">
+          <End Type="INF370Model.Asset" Role="Asset" Multiplicity="1" />
+          <End Type="INF370Model.Asset_Supplier" Role="Asset_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Asset_Supplier">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Lin__Asset__73BA3083">
+          <End Type="INF370Model.Asset" Role="Asset" Multiplicity="0..1" />
+          <End Type="INF370Model.Order_Line" Role="Order_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Order_Line">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_As__Asset__75A278F5">
+          <End Type="INF370Model.Asset" Role="Asset" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Asset" Role="Patrol_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Asset">
+              <PropertyRef Name="Asset_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Asset_Sup__Suppl__6383C8BA">
+          <End Type="INF370Model.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="INF370Model.Asset_Supplier" Role="Asset_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="Asset_Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cellphone__Range__6477ECF3">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Cellphone" Role="Cellphone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Cellphone">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Event_Rew__Type___656C112C">
+          <End Type="INF370Model.Event_Type" Role="Event_Type" Multiplicity="1" />
+          <End Type="INF370Model.Event_Reward" Role="Event_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event_Type">
+              <PropertyRef Name="Type_ID" />
+            </Principal>
+            <Dependent Role="Event_Reward">
+              <PropertyRef Name="Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Event__08B54D69">
+          <End Type="INF370Model.Event_Reward" Role="Event_Reward" Multiplicity="0..1" />
+          <End Type="INF370Model.Redeem_Reward" Role="Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event_Reward">
+              <PropertyRef Name="Event_Reward_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Event_Reward_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__Patrol__66603565">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gate__Reserve_ID__6754599E">
+          <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
+          <End Type="INF370Model.Gate" Role="Gate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Gate">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__genderID__01142BA1">
+          <End Type="INF370Model.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="genderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6A30C649">
+          <End Type="INF370Model.Incident" Role="Incident" Multiplicity="1" />
+          <End Type="INF370Model.Incident_Image" Role="Incident_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident">
+              <PropertyRef Name="Incident_ID" />
+            </Principal>
+            <Dependent Role="Incident_Image">
+              <PropertyRef Name="Incident_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6C190EBB">
+          <End Type="INF370Model.Incident" Role="Incident" Multiplicity="1" />
+          <End Type="INF370Model.Incident_Patrol" Role="Incident_Patrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident">
+              <PropertyRef Name="Incident_ID" />
+            </Principal>
+            <Dependent Role="Incident_Patrol">
+              <PropertyRef Name="Incident_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident__Incide__68487DD7">
+          <End Type="INF370Model.Incident_Type" Role="Incident_Type" Multiplicity="1" />
+          <End Type="INF370Model.Incident" Role="Incident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Type">
+              <PropertyRef Name="Incident_Type_ID" />
+            </Principal>
+            <Dependent Role="Incident">
+              <PropertyRef Name="Incident_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident__Incide__693CA210">
+          <End Type="INF370Model.Incident_Status" Role="Incident_Status" Multiplicity="1" />
+          <End Type="INF370Model.Incident" Role="Incident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Status">
+              <PropertyRef Name="Incident_Status_ID" />
+            </Principal>
+            <Dependent Role="Incident">
+              <PropertyRef Name="Incident_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Patro__6B24EA82">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Incident_Image" Role="Incident_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Incident_Image">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Incid__6E01572D">
+          <End Type="INF370Model.Incident_Level" Role="Incident_Level" Multiplicity="1" />
+          <End Type="INF370Model.Incident_Type" Role="Incident_Type" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incident_Level">
+              <PropertyRef Name="Incident_Level_ID" />
+            </Principal>
+            <Dependent Role="Incident_Type">
+              <PropertyRef Name="Incident_Level_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Incident___Patro__6D0D32F4">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Incident_Patrol" Role="Incident_Patrol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Incident_Patrol">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Model__Make_ID__70DDC3D8">
+          <End Type="INF370Model.Make" Role="Make" Multiplicity="1" />
+          <End Type="INF370Model.Model" Role="Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Make">
+              <PropertyRef Name="Make_ID" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="Make_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marker__Marker_T__6EF57B66">
+          <End Type="INF370Model.Marker_Type" Role="Marker_Type" Multiplicity="1" />
+          <End Type="INF370Model.Marker" Role="Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marker_Type">
+              <PropertyRef Name="Marker_Type_ID" />
+            </Principal>
+            <Dependent Role="Marker">
+              <PropertyRef Name="Marker_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marker__Reserve___6FE99F9F">
+          <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
+          <End Type="INF370Model.Marker" Role="Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Marker">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Ma__Marke__7D439ABD">
+          <End Type="INF370Model.Marker" Role="Marker" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Marker" Role="Patrol_Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marker">
+              <PropertyRef Name="Marker_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Marker">
+              <PropertyRef Name="Marker_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__Medical___02084FDA">
+          <End Type="INF370Model.Medical_Aid" Role="Medical_Aid" Multiplicity="1" />
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medical_Aid">
+              <PropertyRef Name="Medical_Aid_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Medical_Aid_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Model_I__0E6E26BF">
+          <End Type="INF370Model.Model" Role="Model" Multiplicity="1" />
+          <End Type="INF370Model.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="Model_ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Model_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Range__71D1E811">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__Supplier___72C60C4A">
+          <End Type="INF370Model.Supplier" Role="Supplier" Multiplicity="1" />
+          <End Type="INF370Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order_Lin__Order__74AE54BC">
+          <End Type="INF370Model.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="INF370Model.Order_Line" Role="Order_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="Order_Line">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__Organisa__02FC7413">
+          <End Type="INF370Model.Organisation" Role="Organisation" Multiplicity="1" />
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organisation">
+              <PropertyRef Name="Organisation_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="Organisation_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_As__Patro__76969D2E">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Asset" Role="Patrol_Asset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Asset">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Passe__778AC167">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="0..1" />
+          <End Type="INF370Model.Patrol_Booking" Role="Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Passenger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Range__787EE5A0">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Booking" Role="Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Reser__797309D9">
+          <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Booking" Role="Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Bo__Vehic__7A672E12">
+          <End Type="INF370Model.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Booking" Role="Patrol_Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Booking">
+              <PropertyRef Name="Vehicle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Lo__Patro__7B5B524B">
+          <End Type="INF370Model.Patrol_Booking" Role="Patrol_Booking" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Booking">
+              <PropertyRef Name="Patrol_Booking_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Booking_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Lo__Range__7C4F7684">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Log">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Patrol_Ma__Patro__7E37BEF6">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Patrol_Marker" Role="Patrol_Marker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Patrol_Marker">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tracking__Patrol__0C85DE4D">
+          <End Type="INF370Model.Patrol_Log" Role="Patrol_Log" Multiplicity="1" />
+          <End Type="INF370Model.Tracking" Role="Tracking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrol_Log">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Principal>
+            <Dependent Role="Tracking">
+              <PropertyRef Name="Patrol_Log_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_R__Prod___7F2BE32F">
+          <End Type="INF370Model.Product_Type" Role="Product_Type" Multiplicity="1" />
+          <End Type="INF370Model.Product_Reward" Role="Product_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Type">
+              <PropertyRef Name="Prod_ID" />
+            </Principal>
+            <Dependent Role="Product_Reward">
+              <PropertyRef Name="Prod_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Produ__09A971A2">
+          <End Type="INF370Model.Product_Reward" Role="Product_Reward" Multiplicity="0..1" />
+          <End Type="INF370Model.Redeem_Reward" Role="Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Reward">
+              <PropertyRef Name="Product_Reward_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Product_Reward_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger__User_Rol__03F0984C">
+          <End Type="INF370Model.User_Role" Role="User_Role" Multiplicity="1" />
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_Role">
+              <PropertyRef Name="User_Role_ID" />
+            </Principal>
+            <Dependent Role="Ranger">
+              <PropertyRef Name="User_Role_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Re__Range__04E4BC85">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Ranger_Reserve" Role="Ranger_Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Reserve">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Ve__Range__06CD04F7">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Ranger_Vehicle" Role="Ranger_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Vehicle">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Redeem_Re__Range__0A9D95DB">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Redeem_Reward" Role="Redeem_Reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Redeem_Reward">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Re__Reser__05D8E0BE">
+          <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
+          <End Type="INF370Model.Ranger_Reserve" Role="Ranger_Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ranger_Ve__Vehic__07C12930">
+          <End Type="INF370Model.Vehicle" Role="Vehicle" Multiplicity="1" />
+          <End Type="INF370Model.Ranger_Vehicle" Role="Ranger_Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Principal>
+            <Dependent Role="Ranger_Vehicle">
+              <PropertyRef Name="Vehicle_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Security___Reser__0B91BA14">
+          <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
+          <End Type="INF370Model.Security_Company" Role="Security_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="Reserve_ID" />
+            </Principal>
+            <Dependent Role="Security_Company">
+              <PropertyRef Name="Reserve_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vehicle__Vehicle__0F624AF8">
+          <End Type="INF370Model.Vehicle_Type" Role="Vehicle_Type" Multiplicity="1" />
+          <End Type="INF370Model.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle_Type">
+              <PropertyRef Name="Vehicle_Type_ID" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="Vehicle_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="INF370ModelStoreContainer" CdmEntityContainer="INF370Entities">
+          <EntitySetMapping Name="Access_Level">
+            <EntityTypeMapping TypeName="INF370Model.Access_Level">
+              <MappingFragment StoreEntitySet="Access_Level">
+                <ScalarProperty Name="App" ColumnName="App" />
+                <ScalarProperty Name="Write" ColumnName="Write" />
+                <ScalarProperty Name="Report" ColumnName="Report" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assets">
+            <EntityTypeMapping TypeName="INF370Model.Asset">
+              <MappingFragment StoreEntitySet="Asset">
+                <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+                <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_Status">
+            <EntityTypeMapping TypeName="INF370Model.Asset_Status">
+              <MappingFragment StoreEntitySet="Asset_Status">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Asset_Status_ID" ColumnName="Asset_Status_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_Supplier">
+            <EntityTypeMapping TypeName="INF370Model.Asset_Supplier">
+              <MappingFragment StoreEntitySet="Asset_Supplier">
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+                <ScalarProperty Name="Asset_Supplier_ID" ColumnName="Asset_Supplier_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asset_Type">
+            <EntityTypeMapping TypeName="INF370Model.Asset_Type">
+              <MappingFragment StoreEntitySet="Asset_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cellphones">
+            <EntityTypeMapping TypeName="INF370Model.Cellphone">
+              <MappingFragment StoreEntitySet="Cellphone">
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event_Reward">
+            <EntityTypeMapping TypeName="INF370Model.Event_Reward">
+              <MappingFragment StoreEntitySet="Event_Reward">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+                <ScalarProperty Name="Event_Reward_ID" ColumnName="Event_Reward_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event_Type">
+            <EntityTypeMapping TypeName="INF370Model.Event_Type">
+              <MappingFragment StoreEntitySet="Event_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type_ID" ColumnName="Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="INF370Model.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Feedback_ID" ColumnName="Feedback_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gates">
+            <EntityTypeMapping TypeName="INF370Model.Gate">
+              <MappingFragment StoreEntitySet="Gate">
+                <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Descriprion" ColumnName="Descriprion" />
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+                <ScalarProperty Name="Gate_ID" ColumnName="Gate_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="INF370Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidents">
+            <EntityTypeMapping TypeName="INF370Model.Incident">
+              <MappingFragment StoreEntitySet="Incident">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
+                <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
+                <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incident_Image">
+            <EntityTypeMapping TypeName="INF370Model.Incident_Image">
+              <MappingFragment StoreEntitySet="Incident_Image">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Incident_Image_ID" ColumnName="Incident_Image_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incident_Level">
+            <EntityTypeMapping TypeName="INF370Model.Incident_Level">
+              <MappingFragment StoreEntitySet="Incident_Level">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incident_Patrol">
+            <EntityTypeMapping TypeName="INF370Model.Incident_Patrol">
+              <MappingFragment StoreEntitySet="Incident_Patrol">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Incident_ID" ColumnName="Incident_ID" />
+                <ScalarProperty Name="Incident_Patrol_ID" ColumnName="Incident_Patrol_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incident_Status">
+            <EntityTypeMapping TypeName="INF370Model.Incident_Status">
+              <MappingFragment StoreEntitySet="Incident_Status">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Incident_Status_ID" ColumnName="Incident_Status_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incident_Type">
+            <EntityTypeMapping TypeName="INF370Model.Incident_Type">
+              <MappingFragment StoreEntitySet="Incident_Type">
+                <ScalarProperty Name="Incident_Level_ID" ColumnName="Incident_Level_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Incident_Type_ID" ColumnName="Incident_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makes">
+            <EntityTypeMapping TypeName="INF370Model.Make">
+              <MappingFragment StoreEntitySet="Make">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markers">
+            <EntityTypeMapping TypeName="INF370Model.Marker">
+              <MappingFragment StoreEntitySet="Marker">
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Marker_ID" ColumnName="Marker_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marker_Type">
+            <EntityTypeMapping TypeName="INF370Model.Marker_Type">
+              <MappingFragment StoreEntitySet="Marker_Type">
+                <ScalarProperty Name="Points_Worth" ColumnName="Points_Worth" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Marker_Type_ID" ColumnName="Marker_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medical_Aid">
+            <EntityTypeMapping TypeName="INF370Model.Medical_Aid">
+              <MappingFragment StoreEntitySet="Medical_Aid">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="INF370Model.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="Make_ID" ColumnName="Make_ID" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Model1" ColumnName="Model" />
+                <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="INF370Model.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Meassage" ColumnName="Meassage" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Notification_ID" ColumnName="Notification_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="INF370Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Line">
+            <EntityTypeMapping TypeName="INF370Model.Order_Line">
+              <MappingFragment StoreEntitySet="Order_Line">
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
+                <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+                <ScalarProperty Name="Line_ID" ColumnName="Line_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organisations">
+            <EntityTypeMapping TypeName="INF370Model.Organisation">
+              <MappingFragment StoreEntitySet="Organisation">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrol_Asset">
+            <EntityTypeMapping TypeName="INF370Model.Patrol_Asset">
+              <MappingFragment StoreEntitySet="Patrol_Asset">
+                <ScalarProperty Name="Asset_ID" ColumnName="Asset_ID" />
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Patrol_Asset_ID" ColumnName="Patrol_Asset_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrol_Booking">
+            <EntityTypeMapping TypeName="INF370Model.Patrol_Booking">
+              <MappingFragment StoreEntitySet="Patrol_Booking">
+                <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+                <ScalarProperty Name="Passenger_ID" ColumnName="Passenger_ID" />
+                <ScalarProperty Name="End_Time" ColumnName="End_Time" />
+                <ScalarProperty Name="Start_Time" ColumnName="Start_Time" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrol_Log">
+            <EntityTypeMapping TypeName="INF370Model.Patrol_Log">
+              <MappingFragment StoreEntitySet="Patrol_Log">
+                <ScalarProperty Name="Checked_in" ColumnName="Checked_in" />
+                <ScalarProperty Name="Checkout" ColumnName="Checkout" />
+                <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Patrol_Booking_ID" ColumnName="Patrol_Booking_ID" />
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrol_Marker">
+            <EntityTypeMapping TypeName="INF370Model.Patrol_Marker">
+              <MappingFragment StoreEntitySet="Patrol_Marker">
+                <ScalarProperty Name="Date_Time_Passed" ColumnName="Date_Time_Passed" />
+                <ScalarProperty Name="Marker_ID" ColumnName="Marker_ID" />
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Patrol_Marker_ID" ColumnName="Patrol_Marker_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Reward">
+            <EntityTypeMapping TypeName="INF370Model.Product_Reward">
+              <MappingFragment StoreEntitySet="Product_Reward">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+                <ScalarProperty Name="Product_Reward_ID" ColumnName="Product_Reward_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Type">
+            <EntityTypeMapping TypeName="INF370Model.Product_Type">
+              <MappingFragment StoreEntitySet="Product_Type">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Prod_ID" ColumnName="Prod_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rangers">
+            <EntityTypeMapping TypeName="INF370Model.Ranger">
+              <MappingFragment StoreEntitySet="Ranger">
+                <ScalarProperty Name="GUID_Exp" ColumnName="GUID_Exp" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+                <ScalarProperty Name="Smartphone" ColumnName="Smartphone" />
+                <ScalarProperty Name="OTP" ColumnName="OTP" />
+                <ScalarProperty Name="Organisation_ID" ColumnName="Organisation_ID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Blood_Type" ColumnName="Blood_Type" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Medical_Aid_ID" ColumnName="Medical_Aid_ID" />
+                <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Emerg_Contact" ColumnName="Emerg_Contact" />
+                <ScalarProperty Name="Emerg_Name" ColumnName="Emerg_Name" />
+                <ScalarProperty Name="genderID" ColumnName="genderID" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ranger_Reserve">
+            <EntityTypeMapping TypeName="INF370Model.Ranger_Reserve">
+              <MappingFragment StoreEntitySet="Ranger_Reserve">
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Ranger_Reserve_ID" ColumnName="Ranger_Reserve_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ranger_Vehicle">
+            <EntityTypeMapping TypeName="INF370Model.Ranger_Vehicle">
+              <MappingFragment StoreEntitySet="Ranger_Vehicle">
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+                <ScalarProperty Name="Ranger_Vehicle_ID" ColumnName="Ranger_Vehicle_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Redeem_Reward">
+            <EntityTypeMapping TypeName="INF370Model.Redeem_Reward">
+              <MappingFragment StoreEntitySet="Redeem_Reward">
+                <ScalarProperty Name="Event_Reward_ID" ColumnName="Event_Reward_ID" />
+                <ScalarProperty Name="Product_Reward_ID" ColumnName="Product_Reward_ID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Voucher_code" ColumnName="Voucher_code" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Redeem_ID" ColumnName="Redeem_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserves">
+            <EntityTypeMapping TypeName="INF370Model.Reserve">
+              <MappingFragment StoreEntitySet="Reserve">
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Security_Company">
+            <EntityTypeMapping TypeName="INF370Model.Security_Company">
+              <MappingFragment StoreEntitySet="Security_Company">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
+                <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="INF370Model.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackings">
+            <EntityTypeMapping TypeName="INF370Model.Tracking">
+              <MappingFragment StoreEntitySet="Tracking">
+                <ScalarProperty Name="Patrol_Log_ID" ColumnName="Patrol_Log_ID" />
+                <ScalarProperty Name="Lattitude" ColumnName="Lattitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Tracking_ID" ColumnName="Tracking_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Role">
+            <EntityTypeMapping TypeName="INF370Model.User_Role">
+              <MappingFragment StoreEntitySet="User_Role">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Access_ID" ColumnName="Access_ID" />
+                <ScalarProperty Name="User_Role_ID" ColumnName="User_Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="INF370Model.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
+                <ScalarProperty Name="Model_ID" ColumnName="Model_ID" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Registration" ColumnName="Registration" />
+                <ScalarProperty Name="Vehicle_ID" ColumnName="Vehicle_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle_Type">
+            <EntityTypeMapping TypeName="INF370Model.Vehicle_Type">
+              <MappingFragment StoreEntitySet="Vehicle_Type">
+                <ScalarProperty Name="Type_Description" ColumnName="Type_Description" />
+                <ScalarProperty Name="Vehicle_Type_ID" ColumnName="Vehicle_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,75 +1,51 @@
-<h1>RANGER PERFORMANCE REPORT</h1>
+<h1>
+    RANGER PERFORMANCE REPORT</h1>
 <hr class="hrow" />
 <div id="chartdiv" style="width: 85%; height: 500px; margin: auto"></div>
 <br>
 <hr class="hrow" />
+
 <div class="outer">
     <div class="button">
-        <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Download PDF</button>
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo">Download PDF</button>
     </div>
     <!--Moenie buttons en search bar verander nie-->
 
 </div>
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt" align="center"></div>
+        <br>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Cellphone</th>
+                        <th>Hours Patrolled</th>
+                        <th>Points</th>
+                        <th>Distance traveled</th>
+                        <th>Markers passed</th>
+                        <th>Monthly points</th>
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Performance of performances">
+                        <td style="text-align: left;">{{Performance.Name}}</td>
+                        <td style="text-align: left;">{{Performance.Surname}}</td>
+                        <td style="text-align: left;">{{Performance.Cell}}</td>
+                        <td style="text-align: right;">{{Performance.Points}}</td>
 
-<br>
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr id="header">
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Cellphone</th>
-                <th>Hours Patrolled</th>
-                <th>Points</th>
-                <th>Distance traveled</th>
-                <th>Markers passed</th>
-                <th>Monthly points</th>
-                <!--<th>Actions</th>-->
-            </tr>
-        </thead>
-        <tbody id="mytable">
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>085748392</td>
-                <td>5 hours</td>
-                <td>16003</td>
-                <td>15 KM</td>
-                <td>21</td>
-                <td>120</td>
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
-                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-ranger'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-              src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>Tim</td>
-                <td>Sxheepers</td>
-                <td>0857760990</td>
-                <td>1 hours</td>
-                <td>6003</td>
-                <td>9 KM</td>
-                <td>9</td>
-                <td>90</td>
+                    </tr>
+                </tbody>
 
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button> -->
-            </tr>
-            <tr>
-                <td>Jane</td>
-                <td>Viljoen</td>
-                <td>0828865321</td>
-                <td>9 hours</td>
-                <td>26003</td>
-                <td>26 KM</td>
-                <td>30</td>
-                <td>160</td>
-                <!--<td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>-->
-            </tr>
-        </tbody>
-    </table>
+            </table>
+
+        </div>
+        <div id="chrt2" align="center"></div>
+    </div>
 </div>

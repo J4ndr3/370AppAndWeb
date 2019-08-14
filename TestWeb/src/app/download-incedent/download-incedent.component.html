@@ -1,0 +1,58 @@
+<div id="content" #content>
+    <div id="contentToConvert">
+        <div id="chrt1" align="center"></div>
+
+        <br>
+        <div id="mapDiv">
+            <div #map style="width:80%;height:100%; margin: auto;"></div>
+        </div>
+
+        <br>
+        <br>
+        <div class="table">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="header">
+                        <th style="text-align: left;">Title</th>
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cellphone</th>
+                        <th style="text-align: left;">Incident level</th>
+                        <th style="text-align: left;">Date</th>
+                        <th style="text-align: right;">Time</th>
+
+                        <!--<th>Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody id="mytable">
+                    <tr *ngFor="let Marker of Markers">
+                        <td style="text-align: left;">{{Marker.Title}}</td>
+                        <td style="text-align: left;">{{Marker.Name}}</td>
+                        <td style="text-align: left;">{{Marker.Surname}}</td>
+                        <td style="text-align: left;">{{Marker.Cell}}</td>
+                        <td style="text-align: left;">{{Marker.Level}}</td>
+                        <td style="text-align: left;">{{Marker.Date}}</td>
+                        <td style="text-align: right;">{{Marker.Time}}</td>
+
+
+                        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+
+                    </tr>
+                </tbody>
+                <tbody id="mytable">
+
+                    <tfoot style="background-color:rgba(205, 21, 67);">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: left;">Total incidents</td>
+                        <td style="text-align: left;">:</td>
+                        <td style="text-align: right;">{{IncedentCount}}</td>
+                    </tfoot>
+            </table>
+        </div>
+        <div id="chrt2" align="center"></div>
+
+    </div>
+</div>

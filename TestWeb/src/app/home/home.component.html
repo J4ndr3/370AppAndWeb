@@ -2,15 +2,11 @@
     RANGERS ON DUTY</h1>
 <hr class="hrow" />
 <br>
-<div id="mapDiv" >
-  
-    <img src="/assets/Map.PNG" id="Map"/>
+<div id="mapDiv">
+    <div #map style="width:70%;height:100%; margin: auto;"></div>
+    <!-- <img src="/assets/Map.PNG" id="Map"/> -->
 </div>
-<br>
 
-<div id="homearrow">
-    <button class="btn btn-default btn-sm" id="downbtn"><img src="/assets/ios-arrow-dropdown.svg"/></button>
-</div>
 <br>
 <div>
     <h1>BOOKINGS</h1>
@@ -21,7 +17,7 @@
   left: 'prev,next today',
   center: 'title',
   right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-}" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="[ {
+}" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="[{
     title:  'John Doe',
     start:  '2019-07-01T14:30:00',
     end:'2019-07-01T16:30:00',

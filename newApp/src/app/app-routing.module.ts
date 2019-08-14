@@ -51,6 +51,7 @@ const routes: Routes = [
   { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },  { path: 'resetpassword', loadChildren: './resetpassword/resetpassword.module#ResetpasswordPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'modifybooking', loadChildren: './modifybooking/modifybooking.module#ModifybookingPageModule' },
+  { path: 'map-test', loadChildren: './map-test/map-test.module#MapTestPageModule' },
 
   
 

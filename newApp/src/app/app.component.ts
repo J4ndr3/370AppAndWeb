@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { timer } from 'rxjs';
 import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
 
@@ -44,26 +44,26 @@ export class AppComponent {
       url: '/rewards',
       icon: 'star'
     },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
+    // {
+    //   title: 'List',
+    //   url: '/list',
+    //   icon: 'list'
+    // },
     {
       title: 'My Vehicles',
       url: '/vehicles',
       icon: 'logo-model-s'
     },
-    {
-      title: 'Settings',
-      url: '/modifybooking',
-      icon: 'build'
-    },
-    {
-      title: 'Help',
-      url: '/resetpassword',
-      icon: 'help'
-    },
+    // {
+    //   title: 'Settings',
+    //   url: '/modifybooking',
+    //   icon: 'build'
+    // },
+    // {
+    //   title: 'Help',
+    //   url: '/resetpassword',
+    //   icon: 'help'
+    // },
     {
       title: 'Logout',
       url: '/login',
@@ -71,6 +71,7 @@ export class AppComponent {
     },
     
   ];
+    Showsplash =true;
 
   constructor(
     private platform: Platform,
@@ -107,6 +108,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.notificationSetup();
+      timer(3000).subscribe(()=>this.Showsplash = false)
     });
   }
 }
