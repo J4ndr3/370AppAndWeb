@@ -64,7 +64,7 @@ export class NavComponent implements OnInit {
     snackbarref.afterDismissed().subscribe(()=>{
       if (close==1){
         console.log(Title);
-        //this.sendNotif(Title,Message);
+        this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
       }
@@ -74,7 +74,7 @@ export class NavComponent implements OnInit {
     openSnackBar1() {
       var Title =  this.AddForm2.get('Title').value;
         var Message =  this.AddForm2.get('Message').value;
-        //this.sendNotif(Title,Message);
+        this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
         this.AddForm2.get('Title').reset();
@@ -100,7 +100,8 @@ export class NavComponent implements OnInit {
           "body": message,
           "content_available": true,
           "priority": "high",
-          "title": title
+          "title": title,
+          "image": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
       $.ajax({
