@@ -58,13 +58,12 @@
                             <ion-input type="Email" id="Email" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="Email" placeholder="Email..." required="true"></ion-input>
                             <ion-input type="text" id="Phone" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="Phone" placeholder="Phone..." required="true"></ion-input>
 
-                            <ion-select id="Gender" hidden formControlName="Gender" placeholder="Select Gender..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
-                                <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
-                                <ion-select-option>Male</ion-select-option>
-                                <ion-select-option>Female</ion-select-option>
-                                <ion-select-option>Other</ion-select-option>
+                            <ion-select placeholder="Select Gender..." formControlName="Gender" [(value)]="GenderSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</ion-select-option>
                             </ion-select>
-                            <ion-input id="SelectOrganisation" hidden formControlName="SelectOrganisation" type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Select Organisation..." required="true"></ion-input>
+                            <ion-select placeholder="Select Organisation..." formControlName="Organizationtitle" [(value)]="OrganisationSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                <ion-select-option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</ion-select-option>
+                            </ion-select>
                         </div>
                     </div>
                 </div>
@@ -83,12 +82,14 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body">
-                    <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Name..." required="true"></ion-input>
-                    <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Emergency Contact Number..." required="true"></ion-input>
-                    <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Medical Aid..." required="true"></ion-input>
+                    <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="EmergencycontactName" placeholder="Emergency Contact Name..." required="true"></ion-input>
+                    <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="EmergencycontactNumber" placeholder="Emergency Contact Number..." required="true"></ion-input>
+                    <ion-select placeholder="Select Medical Aid..." formControlName="MedicalAid" [(value)]="MedicalSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                        <ion-select-option *ngFor="let med of MedicalOptions" [(value)]="med.ID">{{med.Descriprion}}</ion-select-option>
+                    </ion-select>
                     <div class="form-group">
                         <div class="col-sm-40">
-                            <ion-select placeholder="Select Bloodtype..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                            <ion-select placeholder="Select Bloodtype..." class="form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" formControlName="selectbloodtype" required>
                                 <ion-select-option>A+</ion-select-option>
                                 <ion-select-option>B+</ion-select-option>
                                 <ion-select-option>AB+</ion-select-option>
@@ -107,7 +108,7 @@
         <br />
 
         <div style="float: right;">
-            <ion-button style="margin-bottom:10%;" (click)="containsmodifications()" (click)="edit(your.ID)">Save Changes</ion-button>
+            <ion-button style="margin-bottom:10%;" (click)="containsmodifications()">Save Changes</ion-button>
         </div>
     </form>
     <!-- </div> -->

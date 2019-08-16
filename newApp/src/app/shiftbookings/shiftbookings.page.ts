@@ -49,6 +49,7 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
 
   ngOnInit() {
     this.resetEvent();
+    
   }
   resetEvent() {
     this.event = {
