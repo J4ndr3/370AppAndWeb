@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
 import { RangerprofilePageModule } from './rangerprofile/rangerprofile.module';
 import { ModifybookingPage } from './modifybooking/modifybooking.page';
+import { VehiclesPage } from './vehicles/vehicles.page';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPkIMLCVqfgX48Vyx9xl6HpPvs4UfiOnQ",
@@ -49,6 +50,7 @@ const firebaseConfig = {
     HttpClientModule
   ],
   providers: [
+    VehiclesPage ,
     ModifybookingPage,
     RangerprofilePageModule,
     StatusBar,
