@@ -50,7 +50,11 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ModifyOrderComponent } from './modify-order/modify-order.component';
 import { EventTypeComponent } from './event-type/event-type.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
-
+import { EventTypeModifyComponent } from './event-type-modify/event-type-modify.component';
+import { ProductTypeModifyComponent } from './product-type-modify/product-type-modify.component';
+import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
+import { DownloadStatusComponent } from './download-status/download-status.component';
+import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -103,6 +107,11 @@ const routes: Routes = [
   {path: 'modify-order', component: ModifyOrderComponent},
   {path: 'event-type', component: EventTypeComponent},
   {path: 'product-type', component: ProductTypeComponent},
+  {path: 'event-type-modify', component: EventTypeModifyComponent},
+  {path: 'product-type-modify', component: ProductTypeModifyComponent},
+  {path: 'download-rewards', component: DownloadRewardsComponent},
+  {path: 'download-status', component: DownloadStatusComponent},
+  {path: 'download-incedent', component: DownloadIncedentComponent},
 ];
 
 @NgModule({

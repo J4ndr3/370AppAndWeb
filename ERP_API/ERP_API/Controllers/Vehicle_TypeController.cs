@@ -9,17 +9,41 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Vehicle_TypeController : ApiController
     {
+        
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Vehicle_Type
-        public IQueryable<Vehicle_Type> GetVehicle_Type()
+        public List<dynamic> GetVehicle_Type()
         {
-            return db.Vehicle_Type;
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Vehicle_Type> cars = db.Vehicle_Type.ToList();
+
+                foreach (Vehicle_Type Item in cars)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Vehicle_Type_ID = Item.Vehicle_Type_ID;
+                    m.Type_Description = Item.Type_Description;
+                    
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Vehicle_Type/5

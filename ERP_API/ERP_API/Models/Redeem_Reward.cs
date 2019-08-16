@@ -22,16 +22,7 @@ namespace ERP_API.Models
         public Nullable<int> Event_Reward_ID { get; set; }
     
         public virtual Event_Reward Event_Reward { get; set; }
-        public virtual Event_Reward Event_Reward1 { get; set; }
-        public virtual Event_Reward Event_Reward2 { get; set; }
-        public virtual Event_Reward Event_Reward3 { get; set; }
         public virtual Product_Reward Product_Reward { get; set; }
-        public virtual Product_Reward Product_Reward1 { get; set; }
-        public virtual Product_Reward Product_Reward2 { get; set; }
-        public virtual Product_Reward Product_Reward3 { get; set; }
         public virtual Ranger Ranger { get; set; }
-        public virtual Ranger Ranger1 { get; set; }
-        public virtual Ranger Ranger2 { get; set; }
-        public virtual Ranger Ranger3 { get; set; }
     }
 }

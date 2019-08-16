@@ -9,18 +9,51 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class VehiclesController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Vehicles
-        public IQueryable<Vehicle> GetVehicles()
+        public List<dynamic> GetVehicle()
         {
-            return db.Vehicles;
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Vehicle> cars = db.Vehicles.Include(zz=>zz.Model).
+                    Include(zz=>zz.Model.Make).Include(zz=>zz.Vehicle_Type)
+                    .ToList();
+
+                foreach (Vehicle Item in cars)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Vehicle_ID = Item.Vehicle_ID;
+                    m.Registration = Item.Registration;
+                    m.Colour = Item.Colour;
+                    m.Model_ID = Item.Model.Model_ID;
+                    m.Model = Item.Model.Model1;
+                    m.MakeID = Item.Model.Make_ID;
+                    m.Make = Item.Model.Make.Name;
+                    m.TypeID = Item.Vehicle_Type.Vehicle_Type_ID;
+                    m.Status = Item.Status;
+
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
+
 
         // GET: api/Vehicles/5
         [ResponseType(typeof(Vehicle))]

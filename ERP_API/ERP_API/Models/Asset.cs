@@ -17,44 +17,23 @@ namespace ERP_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Asset()
         {
+            this.Asset_Supplier = new HashSet<Asset_Supplier>();
             this.Order_Line = new HashSet<Order_Line>();
-            this.Order_Line1 = new HashSet<Order_Line>();
-            this.Order_Line2 = new HashSet<Order_Line>();
-            this.Order_Line3 = new HashSet<Order_Line>();
             this.Patrol_Asset = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset1 = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset2 = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset3 = new HashSet<Patrol_Asset>();
         }
     
         public int Asset_ID { get; set; }
         public string Description { get; set; }
         public int Asset_Status_ID { get; set; }
-        public Nullable<int> Asset_Type_ID { get; set; }
+        public int Asset_Type_ID { get; set; }
     
         public virtual Asset_Status Asset_Status { get; set; }
-        public virtual Asset_Status Asset_Status1 { get; set; }
-        public virtual Asset_Status Asset_Status2 { get; set; }
-        public virtual Asset_Status Asset_Status3 { get; set; }
         public virtual Asset_Type Asset_Type { get; set; }
-        public virtual Asset_Type Asset_Type1 { get; set; }
-        public virtual Asset_Type Asset_Type2 { get; set; }
-        public virtual Asset_Type Asset_Type3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Asset_Supplier> Asset_Supplier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Line> Order_Line { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Line> Order_Line1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Line> Order_Line2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Line> Order_Line3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrol_Asset> Patrol_Asset { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset3 { get; set; }
     }
 }

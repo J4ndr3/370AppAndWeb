@@ -97,6 +97,16 @@ body {
     float: right;
 }
 
+.f {
+    float: Left;
+    margin: 0 0 0 50px;
+}
+
+.f1 {
+    float: Right;
+    margin: 0 50px 0 0;
+}
+
 .float-r {
     float: left;
 }
@@ -394,6 +404,7 @@ h2 {
     margin-left: 0%;
     width: 80%;
     margin: auto;
+    margin-bottom: 2%;
 }
 
 input,

@@ -17,34 +17,7 @@ namespace ERP_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Patrol_Booking()
         {
-            this.Feedbacks = new HashSet<Feedback>();
-            this.Feedbacks1 = new HashSet<Feedback>();
-            this.Feedbacks2 = new HashSet<Feedback>();
-            this.Feedbacks3 = new HashSet<Feedback>();
-            this.Incident_Patrol = new HashSet<Incident_Patrol>();
-            this.Incident_Image = new HashSet<Incident_Image>();
-            this.Incident_Patrol1 = new HashSet<Incident_Patrol>();
-            this.Incident_Image1 = new HashSet<Incident_Image>();
-            this.Incident_Patrol2 = new HashSet<Incident_Patrol>();
-            this.Incident_Patrol3 = new HashSet<Incident_Patrol>();
-            this.Incident_Image2 = new HashSet<Incident_Image>();
-            this.Incident_Image3 = new HashSet<Incident_Image>();
-            this.Patrol_Asset = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset1 = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset2 = new HashSet<Patrol_Asset>();
-            this.Patrol_Asset3 = new HashSet<Patrol_Asset>();
             this.Patrol_Log = new HashSet<Patrol_Log>();
-            this.Patrol_Log1 = new HashSet<Patrol_Log>();
-            this.Patrol_Log2 = new HashSet<Patrol_Log>();
-            this.Patrol_Log3 = new HashSet<Patrol_Log>();
-            this.Patrol_Marker = new HashSet<Patrol_Marker>();
-            this.Patrol_Marker1 = new HashSet<Patrol_Marker>();
-            this.Patrol_Marker2 = new HashSet<Patrol_Marker>();
-            this.Patrol_Marker3 = new HashSet<Patrol_Marker>();
-            this.Trackings = new HashSet<Tracking>();
-            this.Trackings1 = new HashSet<Tracking>();
-            this.Trackings2 = new HashSet<Tracking>();
-            this.Trackings3 = new HashSet<Tracking>();
         }
     
         public int Patrol_Booking_ID { get; set; }
@@ -55,77 +28,11 @@ namespace ERP_API.Models
         public int Reserve_ID { get; set; }
         public int Vehicle_ID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Feedback> Feedbacks3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Patrol> Incident_Patrol3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Incident_Image> Incident_Image3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Asset> Patrol_Asset3 { get; set; }
         public virtual Ranger Ranger { get; set; }
         public virtual Ranger Ranger1 { get; set; }
-        public virtual Ranger Ranger2 { get; set; }
-        public virtual Ranger Ranger3 { get; set; }
-        public virtual Ranger Ranger4 { get; set; }
-        public virtual Ranger Ranger5 { get; set; }
-        public virtual Ranger Ranger6 { get; set; }
-        public virtual Ranger Ranger7 { get; set; }
         public virtual Reserve Reserve { get; set; }
-        public virtual Reserve Reserve1 { get; set; }
-        public virtual Reserve Reserve2 { get; set; }
-        public virtual Reserve Reserve3 { get; set; }
         public virtual Vehicle Vehicle { get; set; }
-        public virtual Vehicle Vehicle1 { get; set; }
-        public virtual Vehicle Vehicle2 { get; set; }
-        public virtual Vehicle Vehicle3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrol_Log> Patrol_Log { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Log> Patrol_Log1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Log> Patrol_Log2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Log> Patrol_Log3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Marker> Patrol_Marker { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Marker> Patrol_Marker1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Marker> Patrol_Marker2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrol_Marker> Patrol_Marker3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tracking> Trackings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tracking> Trackings1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tracking> Trackings2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tracking> Trackings3 { get; set; }
     }
 }

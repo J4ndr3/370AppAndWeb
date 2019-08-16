@@ -18,9 +18,6 @@ namespace ERP_API.Models
         public Asset_Status()
         {
             this.Assets = new HashSet<Asset>();
-            this.Assets1 = new HashSet<Asset>();
-            this.Assets2 = new HashSet<Asset>();
-            this.Assets3 = new HashSet<Asset>();
         }
     
         public int Asset_Status_ID { get; set; }
@@ -28,11 +25,5 @@ namespace ERP_API.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Asset> Assets { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asset> Assets1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asset> Assets2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asset> Assets3 { get; set; }
     }
 }

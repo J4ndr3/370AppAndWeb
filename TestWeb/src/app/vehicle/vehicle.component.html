@@ -2,7 +2,7 @@
 
 <h1>VEHICLES</h1>
 <hr class="hrow" />
-<br />
+
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
     <div class="button">
@@ -11,27 +11,23 @@
     </div>
 
     <div class="search">
-        <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg"
+                <input type="text" [(ngModel)]="searchText" autocomplete="off" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg"
             class="SearchbtnIMG" /></button>
             </div>
-        </form>
+       
     </div>
 </div>
 <br>
 <br>
-<br>
 
-<!--Moenie die button verander nie-->
+
 <div class="inner collapse" id="demo">
     <div class="close">
         <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
       <img src="/assets/ios-close.svg" class="closePic" /></button>
     </div>
 
-    <!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
-    <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
     <div class="inputForm">
         <br>
         <form class="form-horizontal" id="modifyForm" action="/action_page.php">
@@ -88,8 +84,8 @@
     <br>
     <br>
 </div>
+<br/>
 <!--TABLE-->
-<br>
 
 <div class="table">
     <table class="table table-striped">
@@ -103,32 +99,14 @@
             </tr>
         </thead>
         <tbody id="mytable">
-            <tr>
-                <td>Hundai</td>
-                <td>i20</td>
-                <td>Red</td>
-                <td>YSF 354 GP</td>
+                <tr *ngFor="let Item of Vehicle |filter:searchText">
+                        <td>{{Item.Make}}</td>
+                        <td>{{Item.Model}}</td>
+                        <td>{{Item.Colour}}</td>
+                        <td>{{Item.Registration}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/mod-vehicle'><img
               src="/assets/ios-create.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td>Hundai</td>
-                <td>i10</td>
-                <td>Blue</td>
-                <td>HD 987 GP</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td>Rav</td>
-                <td>4</td>
-                <td>Orange</td>
-                <td>UGLY01 GP</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
         </tbody>
     </table>

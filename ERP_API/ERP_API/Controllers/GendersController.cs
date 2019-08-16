@@ -9,23 +9,46 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GendersController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Genders
-        public IQueryable<Gender> GetGenders()
+        public List<dynamic> GetGenders()
         {
-            return db.Genders;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Gender> Gender = db.Genders.ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Gender Item in Gender)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Gender_ID;
+                    m.Descriprion = Item.Description;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Genders/5
         [ResponseType(typeof(Gender))]
         public IHttpActionResult GetGender(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Gender gender = db.Genders.Find(id);
             if (gender == null)
             {
@@ -39,6 +62,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGender(int id, Gender gender)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +98,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Gender))]
         public IHttpActionResult PostGender(Gender gender)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +114,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Gender))]
         public IHttpActionResult DeleteGender(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Gender gender = db.Genders.Find(id);
             if (gender == null)
             {

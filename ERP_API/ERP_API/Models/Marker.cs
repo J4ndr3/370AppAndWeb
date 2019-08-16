@@ -14,6 +14,12 @@ namespace ERP_API.Models
     
     public partial class Marker
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Marker()
+        {
+            this.Patrol_Marker = new HashSet<Patrol_Marker>();
+        }
+    
         public int Marker_ID { get; set; }
         public decimal Longitude { get; set; }
         public decimal Lattitude { get; set; }
@@ -24,12 +30,8 @@ namespace ERP_API.Models
         public System.DateTime Modified { get; set; }
     
         public virtual Marker_Type Marker_Type { get; set; }
-        public virtual Marker_Type Marker_Type1 { get; set; }
-        public virtual Marker_Type Marker_Type2 { get; set; }
-        public virtual Marker_Type Marker_Type3 { get; set; }
         public virtual Reserve Reserve { get; set; }
-        public virtual Reserve Reserve1 { get; set; }
-        public virtual Reserve Reserve2 { get; set; }
-        public virtual Reserve Reserve3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Patrol_Marker> Patrol_Marker { get; set; }
     }
 }

@@ -23,28 +23,57 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol
         public List<dynamic> GetIncident_Patrol()
         {
+
+           // db.Configuration.ProxyCreationEnabled = false;
+            //List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
+//            List<dynamic> toReturn = new List<dynamic>();
+//            foreach (Incident_Patrol Item in Level)
+//            {
+//                dynamic m = new ExpandoObject();
+//                m.Lat = Item.Lat;
+//                m.Long = Item.Lng;
+//                m.Title = Item.Incident_Type.Description;
+//                m.Name = Item.Ranger.Name;
+//                m.Surname = Item.Ranger.Surname;
+//                m.Cell = Item.Ranger.Cell;
+//                m.Date = Item.Date.ToShortDateString();
+//                m.Time = Item.Time;
+//                m.Level = Item.Incident_Level.Description;
+
+
+
+
+
+
+//                toReturn.Add(m);
+//            }
+//            return toReturn;
+//=======
             List<dynamic> toReturn = new List<dynamic>();
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Incident_Patrol> incidents = db.Incident_Patrol
-                    .Include(zz => zz.Incident_Type).
-                    Include(zz => zz.Incident_Status).
-                    Include(zz => zz.Incident_Level).
-                    Include(zz => zz.Ranger).
-                    Include(zz => zz.Incident).
-                    Where(x => x.Incident_Status.Incident_Status_ID == 2).ToList();
+                List<Incident_Patrol> incidents = db.Incident_Patrol.
+                    Include(zz=> zz.Patrol_Log.Ranger).
+                    Include(zz=>zz.Incident.Incident_Type).
+                    Include(zz=>zz.Incident.Incident_Type.Incident_Level).
+                    Include(zz=>zz.Incident.Incident_Status)
+                    .Where(zz => zz.Incident.Incident_Status_ID == 2).
+                   ToList();
                 
                 foreach (Incident_Patrol Item in incidents)
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.Incident_ID;
                     m.Description = Item.Incident.Description;
-                    m.Type = Item.Incident_Type.Description;
-                    m.Level = Item.Incident_Level.Description;
-                    m.Date = Item.Incident_Status.Description;
-                    m.Name = Item.Ranger.Name + " "+ Item.Ranger.Surname;
-                    m.Date = Item.Date.ToShortDateString() + " " + Item.Time;
+                    m.Type = Item.Incident.Incident_Type.Description;
+                    m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+                    m.Status = Item.Incident.Incident_Status.Description;
+                    m.StatID = Item.Incident.Incident_Status_ID;
+                    m.Name = Item.Patrol_Log.Ranger.Name;
+                    m.Surname= Item.Patrol_Log.Ranger.Surname;
+                    m.Date = Item.Date.ToShortDateString();
+                    m.Time =Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
                     toReturn.Add(m);
@@ -57,12 +86,13 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
             
-            
         }
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult GetIncident_Patrol(int id)
         {
+
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Patrol incident_Patrol = db.Incident_Patrol.Find(id);
             if (incident_Patrol == null)
             {
@@ -76,6 +106,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutIncident_Patrol(int id, Incident_Patrol incident_Patrol)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

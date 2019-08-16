@@ -66,6 +66,11 @@ import { ModifyAssetComponent } from './modify-asset/modify-asset.component';
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { EventTypeComponent } from './event-type/event-type.component';
 import { ERPService } from './erp.service';
+import { ProductTypeModifyComponent } from './product-type-modify/product-type-modify.component';
+import { EventTypeModifyComponent } from './event-type-modify/event-type-modify.component';
+import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
+import { DownloadStatusComponent } from './download-status/download-status.component';
+import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
 import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
 
 @NgModule({
@@ -124,6 +129,11 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
     ModifyAssetComponent,
     ProductTypeComponent,
     EventTypeComponent,
+    ProductTypeModifyComponent,
+    EventTypeModifyComponent,
+    DownloadRewardsComponent,
+    DownloadStatusComponent,
+    DownloadIncedentComponent,
    
   ],
   imports: [
@@ -191,7 +201,8 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
     AssetComponent,
     ModifyAssetComponent,
     ProductTypeComponent,
-    EventTypeComponent],
+    EventTypeComponent,ProductTypeModifyComponent,
+    EventTypeModifyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

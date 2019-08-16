@@ -9,23 +9,46 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrganisationsController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Organisations
-        public IQueryable<Organisation> GetOrganisations()
+        public List<dynamic> GetOrganisations()
         {
-            return db.Organisations;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Organisation> Org = db.Organisations.ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Organisation Item in Org)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.ID = Item.Organisation_ID;
+                    m.Descriprion = Item.Description;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Organisations/5
         [ResponseType(typeof(Organisation))]
         public IHttpActionResult GetOrganisation(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Organisation organisation = db.Organisations.Find(id);
             if (organisation == null)
             {
@@ -39,6 +62,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrganisation(int id, Organisation organisation)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +98,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Organisation))]
         public IHttpActionResult PostOrganisation(Organisation organisation)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +114,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Organisation))]
         public IHttpActionResult DeleteOrganisation(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Organisation organisation = db.Organisations.Find(id);
             if (organisation == null)
             {

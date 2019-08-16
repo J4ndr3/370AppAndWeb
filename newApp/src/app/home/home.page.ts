@@ -53,7 +53,7 @@ export class HomePage {
 private async hallo(){
   const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
       toast.present();
-  
+  this.fcm.getNot();
   
 }
 }

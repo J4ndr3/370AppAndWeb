@@ -12,6 +12,10 @@ import { FormBuilder,FormGroup } from '@angular/forms';
 })
 export class IncidentComponent implements OnInit {
   Incident: object;
+  IndivIncident:object;
+  empty:boolean=false;
+
+
   
   constructor(private toastrService: ToastrService, private data:ERPService) { }
 
@@ -23,8 +27,30 @@ export class IncidentComponent implements OnInit {
         this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Incident = null ;
       }
+      else if (res == 0)
+      {
+        this.empty = true;
+      }
       console.log(this.Incident);
     });
+
+    
+  }
+
+  Resolve(ID){
+   this.data.GetIncident(ID).subscribe(res=>{
+     this.IndivIncident= res;
+     this.IndivIncident["Incident_Status_ID"]= 1;
+     console.log(this.IndivIncident);
+     this.data.PutIncident(ID,this.IndivIncident).subscribe(res=>{
+      console.log(this.IndivIncident);
+      this.ngOnInit();
+      this.Toast();
+    });
+   });
+
+   
+    
   }
  Toast(){
     this.toastrService.show("Incident resolved.", "Success!");

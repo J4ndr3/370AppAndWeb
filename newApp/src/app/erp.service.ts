@@ -8,10 +8,19 @@ import { HttpClient } from '@angular/common/http';
 export class ERPService {
 
   constructor(private http: HttpClient) { }
-  GetRegisterFormPage(){
-    return this.http.get('http://localhost:51389/api/rangers/')
+  GetRanger(ID){
+    return this.http.get('http://localhost:51389/api/rangers/'+ID)
   }
 
+  GetGenders(){
+    return this.http.get('http://localhost:51389/api/Genders/')
+  }
+  GetOrganisations(){
+    return this.http.get('http://localhost:51389/api/Organisations/')
+  }
+  GetMedical(){
+    return this.http.get('http://localhost:51389/api/Medical_Aid/')
+  }
   GetAddvehiclePage(){
     return this.http.get('http://localhost:51389/api/rangers/')
   }
@@ -24,6 +33,13 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/rangers/')
   }
   PostRanger(obj){
-    return this.http.get('http://localhost:51389/api/rangers/',obj)
+    return this.http.post('http://localhost:51389/api/Rangers/',obj)
   }
+  PostRoute(obj){
+    return this.http.post('http://localhost:51389/api/Trackings/',obj)
+  }
+  PutRanger(ID,obj){
+    return this.http.put('http://localhost:51389/api/rangers/'+ID,obj)
+  }
+  
 }

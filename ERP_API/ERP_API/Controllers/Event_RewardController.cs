@@ -9,23 +9,43 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
+
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Event_RewardController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Event_Reward
-        public IQueryable<Event_Reward> GetEvent_Reward()
+        public List<dynamic> GetEvent_Reward()
         {
-            return db.Event_Reward;
+         
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Event_Reward> Level = db.Event_Reward.Include(zz => zz.Event_Type).ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Event_Reward Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.EID = Item.Event_Reward_ID;
+                m.EName = Item.Name;
+                m.EPoints = Item.Points;
+                m.EDate = Item.Date.ToShortDateString();
+                m.ELocation = Item.Location;
+                m.EDescription = Item.Event_Type.Description;
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Event_Reward/5
         [ResponseType(typeof(Event_Reward))]
         public IHttpActionResult GetEvent_Reward(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Event_Reward event_Reward = db.Event_Reward.Find(id);
             if (event_Reward == null)
             {
@@ -39,6 +59,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEvent_Reward(int id, Event_Reward event_Reward)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -74,6 +95,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Event_Reward))]
         public IHttpActionResult PostEvent_Reward(Event_Reward event_Reward)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +111,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Event_Reward))]
         public IHttpActionResult DeleteEvent_Reward(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Event_Reward event_Reward = db.Event_Reward.Find(id);
             if (event_Reward == null)
             {
