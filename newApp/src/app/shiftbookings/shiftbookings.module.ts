@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { IonicModule } from '@ionic/angular';
-
+import {ReactiveFormsModule  } from '@angular/forms';
 import { ShiftbookingsPage } from './shiftbookings.page';
 
 const routes: Routes = [
@@ -20,7 +20,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     NgCalendarModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ReactiveFormsModule
   ],
   declarations: [ShiftbookingsPage]
 })

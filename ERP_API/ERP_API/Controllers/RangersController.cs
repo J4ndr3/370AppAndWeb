@@ -28,6 +28,7 @@ namespace ERP_API.Controllers
             foreach (Ranger Item in Level)
             {
                 dynamic m = new ExpandoObject();
+                m.ID = Item.Ranger_ID;
                 m.Name = Item.Name;
                 m.Surname = Item.Surname;
                 m.Cell = Item.Cell;

@@ -9,23 +9,50 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Patrol_BookingController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Patrol_Booking
-        public IQueryable<Patrol_Booking> GetPatrol_Booking()
+        public List<dynamic> GetPatrol_Booking()
         {
-            return db.Patrol_Booking;
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Patrol_Booking> bookings = db.Patrol_Booking.Include(zz=>zz.Ranger).Include(xx=>xx.Reserve).Include(cc=>cc.Vehicle).ToList();
+                foreach (Patrol_Booking Item in bookings)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Patrol_Booking_ID = Item.Patrol_Booking_ID;
+                    m.Vehicle_ID = Item.Vehicle_ID;
+                    m.Registration = Item.Vehicle.Registration;
+                    m.Ranger_ID = Item.Ranger_ID;
+                    m.Passenger = db.Rangers.Where(zz=>zz.Ranger_ID == Item.Passenger_ID).Select(x=>x.Name).FirstOrDefault();
+                    m.Reserve = Item.Reserve.Name;
+                    m.Start_Time = Item.Start_Time;
+                    m.End_Time = Item.End_Time;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
-
         // GET: api/Patrol_Booking/5
         [ResponseType(typeof(Patrol_Booking))]
         public IHttpActionResult GetPatrol_Booking(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Booking patrol_Booking = db.Patrol_Booking.Find(id);
             if (patrol_Booking == null)
             {

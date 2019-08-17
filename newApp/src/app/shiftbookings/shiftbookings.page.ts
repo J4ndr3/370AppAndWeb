@@ -7,6 +7,9 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';          
+import { element } from '@angular/core/src/render3';
+import { range } from 'rxjs';
+import { ModifybookingPage } from '../modifybooking/modifybooking.page';
 
 
 @Component({
@@ -15,21 +18,21 @@ import { FormBuilder,FormGroup } from '@angular/forms';
   styleUrls: ['./shiftbookings.page.scss'],
 })
 export class ShiftbookingsPage implements OnInit {
-  ShiftbookingsPages: object;
+  events: Array<object>;
 AddForm: FormGroup;
 NewShiftbookingsPage:object;
-YourShiftbookingsPage:number =0;
-ShiftbookingsPageOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
-ShiftbookingsPageOption1s:Array<object>; // as jy meer as een dropdown het doen dit vir almal
-ShiftbookingsPageOptionstartdates:Array<object>; // as jy meer as een dropdown het doen dit vir almal
-ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het doen dit vir almal
-
+ReserveSelection:number =0;
+RangerSelection:number =0;
+VehicleSelection:number =0;
+VehicleOptions:Array<object>; 
+PassengerOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
+ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
   event = {
+    ID :'',
     title: '',
     desc: '',
     startTime: '',
     endTime: '',
-    allDay: false
   };
  
   minDate = new Date().toISOString();
@@ -44,41 +47,96 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
  
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
-  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,public toastController: ToastController,private router: Router,
+  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,private mod:ModifybookingPage,public toastController: ToastController,private router: Router,
   private data: ERPService, private formBuilder: FormBuilder) { }
-
   ngOnInit() {
-    this.resetEvent();
+    this.data.GetPatrol_Bookings().subscribe(res=>{
+      this.events = JSON.parse(JSON.stringify(res));
+      console.log(this.events)
+      this.events.forEach(element => {
+        if (element["Ranger_ID"]==3)
+        {
+          var localOffsetS = new Date(element["Start_Time"]).getTimezoneOffset() * 60000;
+          var localOffsetE = new Date(element["End_Time"]).getTimezoneOffset() * 60000;
+          let eventCopy = {
+            ID: element["Patrol_Booking_ID"],
+            title:"Patrol in "+ element["Reserve"] + " with "+element["Passenger"],
+            startTime:  new Date(element["Start_Time"]),
+            endTime: new Date(element["End_Time"]),
+            desc: "Patrol vehicle : "+ element["Registration"] +". Together with : "+element["Passenger"]
+          }
+          console.log(eventCopy)
+          this.eventSource.push(eventCopy);
+        }
+      });
+      this.myCal.loadEvents();
+    })
+    this.data.GetRangers().subscribe(res=>{
+      this.PassengerOptions = JSON.parse(JSON.stringify(res));
+      console.log(this.PassengerOptions)
+    });
     
+    this.data.GetReserves().subscribe(res=>{
+      this.ReserveOptions = JSON.parse(JSON.stringify(res));
+    });
+    this.data.GetVehicles().subscribe(res=>{
+      this.VehicleOptions = JSON.parse(JSON.stringify(res));
+    });
+    this.AddForm = this.formBuilder.group({
+      Passenger:[], // your attributes
+      Vehicle: [], // your attributes
+      Reserve: [], // your attributes
+      Start:[],
+      End:[],
+      });
+    this.resetEvent();
   }
+  
   resetEvent() {
     this.event = {
+      ID:'',
       title: '',
       desc: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
-      allDay: false
     };
   }
  
   // Create the right event format and reload source
-  addEvent() {
+  addEvent(ID) {
+   var passenger;
+   var reserve;
+   var vehicle;
+   this.PassengerOptions.forEach(element=>{
+     if (element["ID"]==this.AddForm.get('Passenger').value)
+     {
+       passenger = element["Name"]
+     }
+     else if (this.AddForm.get('Passenger').value == null)
+     {
+       passenger = "No one"
+     }
+   })
+   this.ReserveOptions.forEach(element=>{
+    if (element["ID"]==this.AddForm.get('Reserve').value)
+    {
+      reserve = element["Name"]
+    }
+  })
+  this.VehicleOptions.forEach(element=>{
+    if (element["ID"]==this.AddForm.get('Vehicle').value)
+    {
+      vehicle = element["Name"]
+    }
+  })
     let eventCopy = {
-      title: this.event.title,
+      ID: ID,
+      title:"Patrol in "+ reserve + " with "+passenger,
       startTime:  new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
-      allDay: this.event.allDay,
-      desc: this.event.desc
+      desc: "Patrol vehicle : "+ vehicle +". Together with : "+passenger
     }
- 
-    if (eventCopy.allDay) {
-      let start = eventCopy.startTime;
-      let end = eventCopy.endTime;
- 
-      eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-      eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
-    }
- 
+    console.log(this.event.startTime)
     this.eventSource.push(eventCopy);
     this.myCal.loadEvents();
     this.resetEvent();
@@ -111,6 +169,7 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
   // Calendar event was clicked
   async onEventSelected(event) {
     // Use Angular date pipe for conversion
+    let ID = event.ID;
     let start = formatDate(event.startTime, 'medium', this.locale);
     let end = formatDate(event.endTime, 'medium', this.locale);
    
@@ -118,7 +177,7 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
       header: "Booking Details",
       message: 'From: ' + start + '<br><br>To: ' + end,
       buttons: [{text:'Modify',handler: () => {
-        this.router.navigateByUrl('/modifybooking');
+        this.mod.edit(ID);
       }},'OK']
     });
     alert.present();
@@ -137,46 +196,39 @@ ShiftbookingsPageOptionenddates:Array<object>; // as jy meer as een dropdown het
     toast.present();
   }
 
-  addShiftbookingsPageBtn() {
-// /* if there is a select/ dropdown use the following method to populate data for it */
-//     this.data.GetUserRole().subscribe((res) => {
-//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-//     }); 
-//     /* if there is a select/ dropdown use the following method to populate data for it */
-//     this.data.GetUserRole().subscribe((res) => {
-//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-//     }); 
-//     /* if there is a select/ dropdown use the following method to populate data for it */
-//     this.data.GetUserRole().subscribe((res) => {
-//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-//     }); 
-//     /* if there is a select/ dropdown use the following method to populate data for it */
-//     this.data.GetUserRole().subscribe((res) => {
-//       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-//     }); 
-  }
-
   addShiftbookingsPage() {
-    // var UserRole = this.AddForm.get('UserRole').value;
-    // var UserRole = this.AddForm.get('UserRole').value;
-    // var UserRole = this.AddForm.get('UserRole').value;
-    // var UserRole = this.AddForm.get('UserRole').value;
-
-    // if ((UserRole||UserRole||UserRole||UserRole)=="") {
-    //   //Modal popup
-    // }
-    // else {
-    //   this.NewShiftbookingsPage = {
-    //     "UserRole": UserRole,
-    //     "UserRole": UserRole,
-    //     "UserRole": UserRole,
-    //     "UserRole": UserRole,
-        
-    //   };
-    //   this.data.PostRanger(this.NewShiftbookingsPage).subscribe(res => {
-    //     this.ngOnInit()
-    //   });}
+    alert("hit")
+   var passenger = this.AddForm.get('Passenger').value;
+   var reserve = this.AddForm.get('Reserve').value;
+   var vehicle = this.AddForm.get('Vehicle').value;
+   if ( reserve == null || vehicle == null || vehicle == null)
+   {
+    this.err();
+   }
+    else {
+      this.NewShiftbookingsPage = {
+        "Ranger_ID": 3,
+        "Passenger_ID": passenger,
+        "Reserve_ID": reserve,
+        "Vehicle_ID": vehicle,
+        "Start_Time":new Date(this.event.startTime),
+        "End_Time":new Date(this.event.endTime)
+      };
+      console.log(this.NewShiftbookingsPage)
+      this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
+        this.successToast();
+        console.log(res["Patrol_Booking_ID"])
+        this.addEvent(res["Patrol_Booking_ID"]);
+      });
+    }
   }
-
+private async err() {
+    const alert = await this.alertCtrl.create({
+      header: "Error",
+      message: 'The input provided is incorrect. Please try again.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
 }
