@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
@@ -17,10 +19,23 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Orders
-        public IQueryable<Order> GetOrders()
-        {
-            return db.Orders;
-        }
+       // public IQueryable<Order> GetOrders()
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    List<Order> Level = db.Orders.ToList();
+        //    List<dynamic> toReturn = new List<dynamic>();
+        //    foreach (Order Item in Level)
+        //    {
+        //        dynamic m = new ExpandoObject();
+        //        m.ID = Item.Order_ID;
+        //        m.Date = Item.Date;
+        //        //m.Asset = ;
+        //        //m.Type = ;
+        //        m.Supplier = Item.Supplier;
+        //        toReturn.Add(m);
+        //    }
+        //    return(toReturn);
+        //}
 
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]

@@ -237,12 +237,38 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/Asset')
   }
   GetSupplier() {
-    return this.http.get('http://localhost:51389/api/Supplier')
+    return this.http.get('http://localhost:51389/api/Suppliers')
   }
   PostSupplier(obj) {
-    return this.http.post('http://localhost:51389/api/Supplier', obj)
+    return this.http.post('http://localhost:51389/api/Suppliers', obj)
   }
   
+  PutSupplier(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Suppliers/' + ID, obj)
+  }
+
+  DeleteSupplier(id) {
+    return this.http.delete('http://localhost:51389/api/Suppliers/' + id)
+  }
+
+  GetOrder() {
+    return this.http.get('http://localhost:51389/api/Orders')
+  }
+  PostOrder(obj) {
+    return this.http.post('http://localhost:51389/api/Orders', obj)
+  }
+  
+  PutOrder(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Orders/' + ID, obj)
+  }
+
+  DeleteOrder(id) {
+    return this.http.delete('http://localhost:51389/api/Orders/' + id)
+  }
+
+  GetTypes() {
+    return this.http.get('http://localhost:51389/api/Types')
+  }
   // sendNotif(title,message) {
   //   const httpOptions = {
   //     headers: new HttpHeaders({
@@ -369,5 +395,18 @@ export class ERPService {
   }
   GetMakes() {
     return this.http.get('http://localhost:51389/api/Makes')
+  }
+
+  PutAsset(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Assets/' + ID, obj)
+  }
+  GetOneAsset(id) {
+    return this.http.get('http://localhost:51389/api/Assets/' + id)
+  }
+  PostAsset(obj) {
+    return this.http.post('http://localhost:51389/api/Assets', obj)
+  }
+  DeleteAsset(id) {
+    return this.http.delete('http://localhost:51389/api/Assets/' + id)
   }
 }
