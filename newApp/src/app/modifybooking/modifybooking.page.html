@@ -13,16 +13,16 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card>
+    <ion-card [formGroup]="EditForm">
 <ion-card-content>
     
-<ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+<ion-select formcontrolname="SelectPassenger"placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
   <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
   <ion-select-option>I'm patrolling alone</ion-select-option>
   <ion-select-option>Rijnhardt</ion-select-option>
   <ion-select-option>Lize</ion-select-option>
 </ion-select>
-<ion-select placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+<ion-select formcontrolname="SelectVehicle"placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
     <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
     <ion-select-option>ERP Bakkie</ion-select-option>
     <ion-select-option>Honda CRV</ion-select-option>
@@ -30,17 +30,17 @@
   </ion-select>
 <ion-item>
 <ion-label>Start</ion-label>
-<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+<ion-datetime  formcontrolname="startTime" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
 </ion-item>
 <ion-item>
 <ion-label>End</ion-label>
-<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+<ion-datetime formcontrolname="endTime"displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
 </ion-item>
  <!--<ion-item style="margin-bottom: 10%">
 <ion-label>All Day?</ion-label>
 <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
 </ion-item> -->
-<ion-button fill="outline" expand="block" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()" >Modify Shift Booking</ion-button>
+<ion-button fill="outline" expand="block"  (ngSubmit)="update()"(click)="edit(your.ID)" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()" >Modify Shift Booking</ion-button>
 </ion-card-content>
 </ion-card>
 </ion-content>
