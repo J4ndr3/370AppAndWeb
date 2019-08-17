@@ -23,7 +23,7 @@
   <div class="col-sm-10">
     
       <br/>
-      <div class="inputForm">
+      <div class="inputForm" [formGroup]="EditForm">
           
     <div id="accordion" >
         <div class="card">
@@ -36,10 +36,10 @@
           </div>
           <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body">
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
+                 <ion-input type="text" formControlName="CarRegistration" id ="CarRegistration" name ="CarRegistration" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
+                 <ion-input type="text" formControlName="Make" id ="Make" name ="Make" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
+                 <ion-input type="text" formControlName="Model" id ="Model" name ="Model" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
+                 <ion-input type="text" formControlName="TypeDescription" id ="TypeDescription" name ="TypeDescription" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
                  <div class="form-group">
                     <div class="col-sm-40">
                       <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
@@ -64,10 +64,10 @@
           </div>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
             <div class="card-body">
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
+                <ion-input type="text" formControlName="CarRegistration" id ="CarRegistration" name ="CarRegistration" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
+                <ion-input type="text" formControlName="Make" id ="Make" name ="Make" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
+                <ion-input type="text" formControlName="Model" id ="Model" name ="Model" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
+                <ion-input type="text" formControlName="TypeDescription" id ="TypeDescription" name ="TypeDescription" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
                 <div class="form-group">
                    <div class="col-sm-40">
                      <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
@@ -92,10 +92,10 @@
           </div>
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-                <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
-                 <ion-input type="text" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
+                <ion-input type="text" formControlName="CarRegistration" id ="CarRegistration" name ="CarRegistration" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..."  required="true"></ion-input>                
+                 <ion-input type="text" formControlName="Make" id ="Make" name ="Make" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..."  required="true"></ion-input>
+                 <ion-input type="text" formControlName="Model" id ="Model" name ="Model" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..."  required="true"></ion-input>
+                 <ion-input type="text" formControlName="TypeDescription" id ="TypeDescription" name ="TypeDescription" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..."  required="true"></ion-input>
                  <div class="form-group">
                     <div class="col-sm-40">
                       <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
@@ -112,6 +112,6 @@
       </div>
    <br/>
    
-      <div style="float: right;"><ion-button style="margin-bottom:10%;" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()">Save Changes</ion-button></div>
+      <div style="float: right;"><ion-button (ngSubmit)="update()" (click)="edit(your.ID)" style="margin-bottom:10%;" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()">Save Changes</ion-button></div>
     </div></div>
   </ion-content>

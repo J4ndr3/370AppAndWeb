@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { ERPService } from '..//erp.service';
 import { NavController, Platform } from '@ionic/angular';
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf';
 
 declare var google;
 @Component({
@@ -91,13 +93,13 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.plt.ready().then(() => {
       var self = this;
-      self.previousTracks=[];
+      self.previousTracks = [];
       var onSuccess = function (position) {
         let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         self.map.setCenter(latLng);
         self.map.setZoom(16);
-     
+
       };
 
       // onError Callback receives a PositionError object
@@ -176,11 +178,12 @@ export class ListPage implements OnInit {
   }
 
   redrawPath(path) {
+    console.log(path);
     var self = this;
     if (self.currentMapTrack) {
       self.currentMapTrack.setMap(null);
     }
-
+    // map should be your map class
     if (path.length > 1) {
       self.currentMapTrack = new google.maps.Polyline({
         path: path,
@@ -189,7 +192,34 @@ export class ListPage implements OnInit {
         strokeOpacity: 1.0,
         strokeWeight: 3
       });
+      var bounds = new google.maps.LatLngBounds();
+      for (var i in path) // your marker list here
+      {
+        console.log(path[i])
+        bounds.extend(path[i])
+      }
+      // your marker position, must be a LatLng instance
+
+      self.map.fitBounds(bounds);
       self.currentMapTrack.setMap(self.map);
+      var data = document.getElementById('contentToConvert');
+      html2canvas(data).then(canvas => {
+      //Few necessary setting options
+      var imgWidth = 50;
+      var pageHeight = 295;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      var heightLeft = imgHeight;
+       
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+      var position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+
+      
+      pdf.save('QR.pdf'); // Generated PDF
+      
+      });
+
     }
   }
   stopTracking() {

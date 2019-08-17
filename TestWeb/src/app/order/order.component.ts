@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
     this.toastrService.show("Record Removed", "Success!");
   }
 
-  add(){
+  addOrder(){
     var ID = this.AddForm.get('ID').value;
     var Date = this.AddForm.get('Date').value;
     var Asset = this.AddForm.get('Asset').value;
@@ -72,7 +72,7 @@ export class OrderComponent implements OnInit {
         "Reserve_ID": Supplier
       };
       console.log(this.nOrder);
-      this.data.PostGate(this.nOrder).subscribe(res => {
+      this.data.PostOrder(this.nOrder).subscribe(res => {
         if (res != null)
         {
           this.ngOnInit();
@@ -86,7 +86,33 @@ export class OrderComponent implements OnInit {
       });
     }
   }
-
+  del(){
+    this.data.DeleteOrder(this.data.nID).subscribe(res=>{
+      if (res!=null)
+      {
+        this.delSuccessToast();
+        this.ngOnInit();
+      }
+      else if (res==2)
+      {
+        alert("You are not allowed to delete this record");
+      }
+      else
+      {
+        this.delToast()
+      }
+    })
+  }
+  delToast(){
+    this.toastrService.show("Record could not be removed.", "Error!");
+  }
+  delSuccessToast(){
+    this.toastrService.show("Record removed.", "Success!");
+  }
+  delete(ID){
+    this.data.nID = ID;
+    document.getElementById('del').click();
+}
   // edit(ID){
   //   this.mod.edit(ID);
   // }
