@@ -94,14 +94,15 @@ export class NavComponent implements OnInit {
           "body": message,
           "content_available": true,
           "priority": "high",
-          "title": title
+          "title": title,
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         },
         "data": {
           "body": message,
           "content_available": true,
           "priority": "high",
           "title": title,
-          "image": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
       $.ajax({
