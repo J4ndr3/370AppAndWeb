@@ -33,8 +33,9 @@ namespace ERP_API.Controllers
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.Notification_ID;
-                    m.Date = Item.Date;
+                    m.Date = Item.Date.ToShortDateString() + " "+ Item.Date.ToShortTimeString();
                     m.Message = Item.Meassage;
+                    m.Title = Item.Title;
                     m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
                     toReturn.Add(m);
                 }

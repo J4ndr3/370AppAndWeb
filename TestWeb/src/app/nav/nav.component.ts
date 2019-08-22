@@ -64,7 +64,7 @@ export class NavComponent implements OnInit {
     snackbarref.afterDismissed().subscribe(()=>{
       if (close==1){
         console.log(Title);
-        //this.sendNotif(Title,Message);
+        this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
       }
@@ -74,7 +74,7 @@ export class NavComponent implements OnInit {
     openSnackBar1() {
       var Title =  this.AddForm2.get('Title').value;
         var Message =  this.AddForm2.get('Message').value;
-        //this.sendNotif(Title,Message);
+        this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
         this.AddForm2.get('Title').reset();
@@ -90,15 +90,19 @@ export class NavComponent implements OnInit {
     sendNotif(title, message) {
       var notificationData = {
         to: '/topics/ERP',
+        "mutable_content":true,
+        "content_available": true,
         "notification": {
           "body": message,
-          "content_available": true,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
           "title": title
         },
         "data": {
           "body": message,
-          "content_available": true,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
           "title": title
         }

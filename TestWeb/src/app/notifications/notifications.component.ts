@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ERPService} from '..//erp.service';          
 
 @Component({
   selector: 'app-notifications',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notifications.component.sass']
 })
 export class NotificationsComponent implements OnInit {
-
-  constructor() { }
-
+  Notification:object;
+constructor(private data:ERPService) { }
   ngOnInit() {
+    this.data.GetNotifications().subscribe(res=>{
+      this.Notification = res;
+    })
   }
 
 }
