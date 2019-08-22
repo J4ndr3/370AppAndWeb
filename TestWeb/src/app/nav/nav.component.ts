@@ -97,14 +97,16 @@ export class NavComponent implements OnInit {
           "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
-          "title": title
+          "title": title,
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         },
         "data": {
           "body": message,
           "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
-          "title": title
+          "title": title,
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
       $.ajax({

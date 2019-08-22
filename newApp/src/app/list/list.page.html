@@ -86,8 +86,9 @@
         Stop Tracking
     </button>
 
-    <div #map id="map" style="width: 100%; height: 300px;"></div>
-
+    <div id=contentToConvert>
+        <div #map id="map" style="width: 100%; height: 300px;"></div>
+    </div>
     <ion-list>
         <ion-list-header>Previous Tracks</ion-list-header>
         <ion-item *ngFor="let route of previousTracks">
@@ -95,4 +96,5 @@
             <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
         </ion-item>
     </ion-list>
+    <img [src]="base64img">
 </ion-content>

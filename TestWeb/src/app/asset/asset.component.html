@@ -115,10 +115,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let Asset of Assets">
-                <td>{{Your.Atribute1}}</td>
-                <td>{{Your.Attribute2}}</td>
-                <td>{{Your.Attribute3}}</td>
-                <td>{{Your.Attribute3}}</td>
+                <td>{{Asset.Description}}</td>
+                <td>{{Asset.Supplier}}</td>
+                <td>{{Asset.Type}}</td>
+                <td>{{Asset.Status}}</td>
                 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
@@ -134,7 +134,7 @@
                                     
 
      
-                    <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "value" ></ngx-qrcode>
+                    <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "Asset.ID" ></ngx-qrcode>
                 </div>
             </div>
                 </td>
@@ -144,48 +144,10 @@
               src="/assets/ios-trash.svg" class="edit" /></button>
               
             </tr>
-            <tr>
-                <td>Rechargeable 1040 Lum Spotlight</td>
-                <td>Spar</td>
-                <td>Spotlight</td>
-                <td>Inactive</td>
-
-                <td>  <button type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                  class="edit" /></button></td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-
-             
-            </tr>
+        
             
-            <tr>
-                <td>Patrol Magnet</td>
-                <td>Builders Warehouse</td>
-                <td>Magnet</td>
-                <td>Broken</td>
-                <td>  <button type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                  class="edit" /></button></td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-
-            
-            </tr>
-            <tr>
-                <td>Acebeam X80 Flashlight & Charger</td>
-                <td>Game</td>
-                <td>Flashlight</td>
-                <td>In Repair</td>
-
-                <td>  <button type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                  class="edit" /></button></td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
-                class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-                src="/assets/ios-trash.svg" class="edit" /></button>
-
-                
-            </tr>
+           
+          
         </tbody>
     </table>
 

@@ -1,6 +1,9 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
+import { FormBuilder,FormGroup } from '@angular/forms';
+import { ERPService } from '../erp.service';
+
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -8,12 +11,56 @@ import {Router} from "@angular/router";
 })
 export class RegisteruserComponent implements OnInit {
   @ViewChild("regform",{static:false}) containerEltRef: ElementRef;
-  constructor(private router: Router,private toastrService: ToastrService) { }
+  constructor(private router: Router,private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
+  RegisterformPages:object;
+  AddForm: FormGroup;
+  NewRegisterformPage:object;
+  GenderSelection: number = 0; //if you have a select list
+  UserRoleOptions: Array<object>; //if you have a select list
+  UserRoleSelection: number = 0; //if you have a select list
+  GenderOptions: Array<object>; //if you have a select list
+  OrganisationSelection: number = 0; //if you have a select list
+  OrganisationOptions: Array<object>; //if you have a select list
+  MedicalSelection: number = 0; //if you have a select list
+  MedicalOptions: Array<object>; //if you have a select list
   ngOnInit() {
-   
+    this.data.GetGender().subscribe(res=>{
+        this.GenderOptions = JSON.parse(JSON.stringify(res));
+    })
+    this.data.GetMedicalAid().subscribe(res=>{
+      this.MedicalOptions = JSON.parse(JSON.stringify(res));
+      console.log(this.MedicalOptions);
+  })
+  this.data.GetOrganisation().subscribe(res=>{
+      this.OrganisationOptions = JSON.parse(JSON.stringify(res));
+  })
+  this.data.GetUserRole().subscribe(res=>{
+      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+      console.log(this.UserRoleOptions);
+  })
+  this.AddForm = this.formBuilder.group({
+      fname: ["Jandre"], // Names for your input
+        lname: ["Labuschagne"], // Names for your input 
+        rangerId: ["9802065030082"],
+        email: ["jandrelab1@gmail.com"],
+        phone:["0713307791"],
+        emergencycontactName:["Janica"],
+        EmergencycontactNumber:["0713307784"],
+        MedicalAid:["Medical Aid..."],
+        Organizationtitle:["Organisation..."],
+        username:["J4ndr3"],
+        password:["Jandre#1"],
+        confirmpassword:["Jandre#1"],
+        selectgender:["Gender..."],
+        selectbloodtype:["Blood Type..."],
+        UserRole:["User role..."],
+        Status:["Status..."],
+        
+      });
   }
   goUsers() {
+      
     this.router.navigate(['rangers']);
   }
   showToast(){

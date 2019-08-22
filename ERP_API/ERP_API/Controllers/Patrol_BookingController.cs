@@ -48,7 +48,6 @@ namespace ERP_API.Controllers
                     toReturn.Add(m);
                 }
                 return toReturn;
-
             }
             catch (Exception err)
             {
@@ -58,11 +57,11 @@ namespace ERP_API.Controllers
 
 
         }
-
         // GET: api/Patrol_Booking/5
         [ResponseType(typeof(Patrol_Booking))]
         public IHttpActionResult GetPatrol_Booking(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Booking patrol_Booking = db.Patrol_Booking.Find(id);
             if (patrol_Booking == null)
             {
