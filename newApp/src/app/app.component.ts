@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { timer } from 'rxjs';
 import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -71,9 +72,11 @@ export class AppComponent {
     },
     
   ];
+    Showsplash =true;
 
   constructor(
     private platform: Platform,
+    private alertCtrl: AlertController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FcmService,
@@ -82,22 +85,23 @@ export class AppComponent {
     this.initializeApp();
   }
 
-  // private async presentToast(message) {
-  //   const toast = await this.toastController.create({
-  //     message,
-  //     duration: 3000
-  //   });
-  //   toast.present();
-  // }
+  private async presentToast(message) {
+    const alert = await this.alertCtrl.create({
+      header: "Incident Aert",
+      message: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
   private notificationSetup() {
     this.fcm.getToken();
     this.fcm.onNotifications().subscribe(
       (msg) => {
         if (this.platform.is('ios')) {
-          // this.presentToast(msg.aps.alert);
+          this.presentToast(msg.aps.alert);
         } else {
-          // this.presentToast(msg.body);
+          this.presentToast(msg.body);
         }
       });
   }
@@ -107,6 +111,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.notificationSetup();
+      timer(3000).subscribe(()=>this.Showsplash = false)
     });
   }
 }

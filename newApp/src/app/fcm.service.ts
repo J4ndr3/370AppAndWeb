@@ -38,6 +38,7 @@ export class FcmService {
   
       return devicesRef.doc(token).set(data);
     }
+    
   
     onNotifications() {
       return this.firebase.onNotificationOpen();

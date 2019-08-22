@@ -17,6 +17,8 @@ import {
   EventSourceErrorResponseHandler,
   EventSourceSuccessResponseHandler
 } from '@fullcalendar/core/structs/event-source';
+import {ERPService} from '..//erp.service';          
+
 
 
 @Component({
@@ -26,9 +28,11 @@ import {
 })
 
 export class HomeComponent implements OnInit {
-  
+  bookings:Array<object>;
+  Eventsource:Array<object>;
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
+
   @ViewChild('calendar',{static: false}) calendarComponent: FullCalendarComponent; // the #calendar in the template
 
   calendarVisible = true;
@@ -36,8 +40,6 @@ map: google.maps.Map;
   calendarWeekends = true;
   calendarEvents: EventInput[] = [
     { title: 'Now', start: new Date() },
-      { title: 'event 1', start: '11:00', date: '2019-06-25', allDay:false },
-    
   ];
 
   gotoPast() {
@@ -54,10 +56,27 @@ map: google.maps.Map;
       })
     }
   }
-  constructor() { }
+  constructor(private data:ERPService) { }
   
 
   ngOnInit() {
+    this.Eventsource=[];
+    this.data.GetBookings().subscribe(res=>{
+      this.bookings = JSON.parse(JSON.stringify(res));
+      console.log(this.bookings);
+      this.bookings.forEach(element => {
+        let eventcopy = {
+          //ID: element["Patrol_Booking_ID"],
+          title: element["Name"],
+          start:element["Start_Time"],
+          end: element["End_Time"],
+          allDay: false,
+        }
+        console.log(eventcopy);
+        this.Eventsource.push(eventcopy);
+      });
+      this.calendarEvents = this.Eventsource;
+    })
     const mapProperties = {
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,

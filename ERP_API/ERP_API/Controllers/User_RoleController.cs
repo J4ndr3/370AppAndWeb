@@ -20,7 +20,7 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/User_Role
-        public List<dynamic> UserRole()
+        public List<dynamic> GetUser_Role()
         {
             try
             {
@@ -31,6 +31,7 @@ namespace ERP_API.Controllers
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.User_Role_ID;
+                    m.Description = Item.Description;
                     m.Level = Item.Access_Level.Access_ID;
                     toReturn.Add(m);
                 }

@@ -23,14 +23,18 @@ namespace ERP_API.Controllers
         public List<dynamic> GetAssets()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<Asset> Level = db.Assets.Include(zz => zz.Asset_Status).Include(zz=>zz.Asset_Type).ToList();
+            List<Asset> Level = db.Assets.Include(zz => zz.Asset_Status).Include(zz=>zz.Asset_Type).Include(zz=>zz.Asset_Supplier).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Asset Item in Level)
             {
                 dynamic m = new ExpandoObject();
+                m.ID = Item.Asset_ID.ToString();
                 m.Type = Item.Asset_Type.Description;
                 m.Status = Item.Asset_Status.Description;
                 m.Description = Item.Description;
+                var sup = Item.Asset_Supplier.Where(xx => xx.Asset_ID == Item.Asset_ID).Select(zz => zz.Supplier_ID).FirstOrDefault();
+                m.Supplier = db.Suppliers.Where(zz => zz.Supplier_ID == sup).Select(xx => xx.Name).FirstOrDefault(); 
+
                
                
 
