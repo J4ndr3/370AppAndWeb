@@ -86,6 +86,9 @@ export class DownloadRewardsComponent implements OnInit {
       this.timeLeft--;
     } else if (this.timeLeft == 0) {
       
+     
+      
+
       document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><h1 style="margin:auto">REWARDS REPORT</h1></div><br><br>';
       const data1 = document.getElementById('contentToConvert');
       

@@ -71,6 +71,7 @@ map: google.maps.Map;
 
     // list of hardcoded positions markers 
      var myLatLngList = {
+       
          myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
          };
 

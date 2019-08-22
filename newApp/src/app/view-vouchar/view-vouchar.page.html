@@ -13,8 +13,19 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div style="padding-top: 7px">
-        <ion-img src="/assets/RANGER VOUCHERHOED.jpg" style="margin: auto; width: 95%; color:rgb(102,173,177)"></ion-img>
+    <div style=" padding-top:5px; height: 87%; width: 100%">
+        <!-- <ion-content id="QRbackground-image" style="background-color: red !important"> -->
+        <div style="--background: none; background-image: url('/assets/QRimage.jpg') !important; background-size: 100%; height: 99%; width: 95%;margin:auto;">
+
+            <div style="padding-top: 7px">
+                <!-- <ion-img src="/assets/RANGER VOUCHERHOED.jpg" style="margin: auto; width: 95%; color:rgb(102,173,177)"></ion-img> -->
+
+                <div style="padding-top: 25%; padding-left: 10%">
+                    <qr-code [value]="qrv" [size]="170" style="background-color: red !important; "></qr-code>
+                </div>
+            </div>
+            <h6 style="width: 68%; padding-left: 10%">PLEASE PRESENT VOUCHER AT HEAD OFFICE TO CLAIM YOUR REWARD</h6>
+        </div>
     </div>
     <h6 style="color: rgb(102,116,143)">Date generated: 2019/07/18</h6>
     <div style="padding-top: 5px; padding-bottom: 7px">

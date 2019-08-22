@@ -32,6 +32,9 @@ import {ERPService} from '..//erp.service';
 `]
 })
 export class IncidentReportComponent {
+  r:Array<object>;
+ CoordList:Array<object>;
+ myLatLngList:any;
   hoveredDate: NgbDate;
   Markers:object;
   Incedents:Array<object>;
@@ -39,7 +42,7 @@ export class IncidentReportComponent {
   toDate: NgbDate;
   myDate= new Date().toLocaleDateString();
   IncedentCount = 0;
-
+ 
   @ViewChild('content', { static: false }) content: ElementRef;
   @ViewChild('map',{static: false}) mapElement: any;
   map: google.maps.Map;
@@ -90,32 +93,67 @@ export class IncidentReportComponent {
       
     });
     });
+
     const mapProperties = {
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
  };
  this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
- this.createMarker();
+ 
+ this.data.GetIncidents().subscribe(res => {
+  this.r = [];
+  this.CoordList = JSON.parse(JSON.stringify(res));
+  this.CoordList.forEach(element =>{
+     this.r.push(element);
+   });
+
+  console.log(this.r);
+
+  this.r.forEach(element =>{
+   
+      this.myLatLngList = {
+     
+        myLatLng : [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"])}] 
+        };
+   
+     for(const data of this.myLatLngList.myLatLng){
+       var marker = new google.maps.Marker({
+           position: data,
+           map: this.map,
+           title: 'Hallo This is a marker'
+       });
+       
+    }
+  })
+
+})
+//     const mapProperties = {
+//       center: new google.maps.LatLng(-25.8825, 28.2639),
+//       zoom: 14,
+//       mapTypeId: google.maps.MapTypeId.ROADMAP
+//  };
+//  this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
+//  this.createMarker();
+//   }
+
+//   createMarker() {
+
+//     // list of hardcoded positions markers 
+//      var myLatLngList = {
+//          myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
+//          };
+
+//         //iterate latLng and add markers 
+//        for(const data of myLatLngList.myLatLng){
+//          var marker = new google.maps.Marker({
+//              position: data,
+//              map: this.map,
+//              title: 'Hallo This is a marker'
+//          });
+//       }
+//  };
   }
-
-  createMarker() {
-
-    // list of hardcoded positions markers 
-     var myLatLngList = {
-         myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
-         };
-
-        //iterate latLng and add markers 
-       for(const data of myLatLngList.myLatLng){
-         var marker = new google.maps.Marker({
-             position: data,
-             map: this.map,
-             title: 'Hallo This is a marker'
-         });
-      }
- };
-
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
