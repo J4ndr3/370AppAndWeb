@@ -16,6 +16,7 @@ export class HomePage {
   openNote() {
     this.navController.navigateRoot('/registerform')
   }
+ 
   private async presentToast() {
     const toast = await this.toastController.create({ message: "Check-in successful", duration: 3000 });
     toast.present();

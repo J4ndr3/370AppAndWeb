@@ -91,14 +91,21 @@ export class NavComponent implements OnInit {
       var notificationData = {
         to: '/topics/ERP',
         "mutable_content":true,
-        "content_available":true,
+        "content_available": true,
         "notification": {
           "body": message,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
           "title": title,
         },
         "data": {
-          "mediaUrl": "https://timesofsandiego.com/wp-content/uploads/2019/08/EdYard_002_LG-640x360.jpg"
+          "body": message,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "priority": "high",
+          "title": title,
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
       console.log(notificationData)

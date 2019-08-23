@@ -17,6 +17,8 @@ import {
   EventSourceErrorResponseHandler,
   EventSourceSuccessResponseHandler
 } from '@fullcalendar/core/structs/event-source';
+import {ERPService} from '..//erp.service';          
+
 
 
 @Component({
@@ -26,7 +28,8 @@ import {
 })
 
 export class HomeComponent implements OnInit {
-  
+  bookings:Array<object>;
+  Eventsource:Array<object>;
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
 myMap:google.maps.event;
@@ -37,8 +40,6 @@ myMap:google.maps.event;
   calendarWeekends = true;
   calendarEvents: EventInput[] = [
     { title: 'Now', start: new Date() },
-      { title: 'event 1', start: '11:00', date: '2019-06-25', allDay:false },
-    
   ];
 
   gotoPast() {
@@ -55,12 +56,28 @@ myMap:google.maps.event;
       })
     }
   }
-  constructor() { }
+  constructor(private data:ERPService) { }
+  
 
-
-  ngOnInit() 
-  {
+  ngOnInit() {
     var self = this;
+    this.Eventsource=[];
+    this.data.GetBookings().subscribe(res=>{
+      this.bookings = JSON.parse(JSON.stringify(res));
+      console.log(this.bookings);
+      this.bookings.forEach(element => {
+        let eventcopy = {
+          //ID: element["Patrol_Booking_ID"],
+          title: element["Name"],
+          start:element["Start_Time"],
+          end: element["End_Time"],
+          allDay: false,
+        }
+        console.log(eventcopy);
+        this.Eventsource.push(eventcopy);
+      });
+      this.calendarEvents = this.Eventsource;
+    })
     const mapProperties = {
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,
@@ -90,6 +107,7 @@ myMap:google.maps.event;
 
     // list of hardcoded positions markers 
      var myLatLngList = {
+       
          myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
          };
 

@@ -211,7 +211,7 @@
             background-color: rgb(102, 116, 143) !important;
         }
         
-        #collapseOne {
+        .collapseOne {
             background-color: rgba(102, 116, 143, 0.7) !important;
             color: white !important;
         }
@@ -351,4 +351,9 @@
         
         ion-app.cameraView ion-content ion-card-content ion-card {
             --background: transparent none !important;
+        }
+        
+        #QRbackground-image {
+            // background-image: url("assets/QRimage.jpg") !important;
+            background-color: red !important;
         }

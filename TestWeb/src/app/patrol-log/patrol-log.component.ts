@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ERPService } from '../erp.service';
 
 @Component({
   selector: 'app-patrol-log',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patrol-log.component.sass']
 })
 export class PatrolLogComponent implements OnInit {
+  Patrol: object;
+  searchText;
 
-  constructor() { }
+  constructor(private data:ERPService) {
+   }
+
 
   ngOnInit() {
+    this.data.getFeedbacks().subscribe(res=>{
+      this.Patrol = res;
+      console.log(res);
+    })
   }
 
 }

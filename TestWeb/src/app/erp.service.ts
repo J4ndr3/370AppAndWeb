@@ -391,7 +391,7 @@ export class ERPService {
     return this.http.delete('http://localhost:51389/api/Vehicles/' + id)
   }
   GetVehicle_types() {
-    return this.http.get('http://localhost:51389/api/Vehicle_Types')
+    return this.http.get('http://localhost:51389/api/Vehicle_Type')
   }
   GetModels() {
     return this.http.get('http://localhost:51389/api/Models')
@@ -399,7 +399,15 @@ export class ERPService {
   GetMakes() {
     return this.http.get('http://localhost:51389/api/Makes')
   }
-
+  getFeedbacks(){
+    return this.http.get('http://localhost:51389/api/Feedbacks')
+  }
+  GetNotifications() {
+    return this.http.get('http://localhost:51389/api/Notifications')
+  }
+  GetBookings() {
+    return this.http.get('http://localhost:51389/api/Patrol_Booking')
+  }
   PutAsset(ID, obj) {
     return this.http.put('http://localhost:51389/api/Assets/' + ID, obj)
   }

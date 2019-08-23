@@ -2,15 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
 import { Router } from '@angular/router';
 
-
-// import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// @IonicPage()
 @Component({
-  selector: 'app-confirm-reward',
-  templateUrl: './confirm-reward.page.html',
-  styleUrls: ['./confirm-reward.page.scss'],
+  selector: 'app-event-confirm',
+  templateUrl: './event-confirm.page.html',
+  styleUrls: ['./event-confirm.page.scss'],
 })
-export class ConfirmRewardPage implements OnInit {
+export class EventConfirmPage implements OnInit {
   Products:object;
   Events:object;
   searchText;
@@ -21,10 +18,7 @@ export class ConfirmRewardPage implements OnInit {
  confirmID:any;
  RandomNumber;
  RedeemVoucher: object;
- redeemID:any;
-
  myDate= new Date().toLocaleDateString();
- Time= new Date().toTimeString();
   constructor(private data: ERPService, private router:Router) { 
     // this.ID = navParams.get('data');
   }
@@ -44,17 +38,8 @@ export class ConfirmRewardPage implements OnInit {
     });
   }
   update(ID){
-    console.log(this.confirmID)
     this.data.GetProduct_RewardID(ID).subscribe(res=>{
       console.log(res);
-      if (res["Quantity"] == 0 )
-      {
-         alert('Sorry this item is out of stock for now!'+'\n'+'Please select another reward.');
-         this.router.navigateByUrl("/rewardtype");
-      }
-
-        else{
-      var PoductID = res["Product_Reward_ID"];
     var PQuantity = res["Quantity"] - 1;
     this.nReward = {
       "Product_Reward_ID":res["Product_Reward_ID"],
@@ -64,11 +49,25 @@ export class ConfirmRewardPage implements OnInit {
       "Prod_ID": res["Prod_ID"]
     }
     console.log(this.nReward);
-      this.data.PutRewardAdd(ID,this.nReward).subscribe(res1 => {
- 
-
-        
-        
+      this.data.PutRewardAdd(ID,this.nReward).subscribe(res => {
+        this.rcv = res
+        console.log(this.rcv);
+      });
+  }) 
+      
+    }
+    Validate1(ID){
+      this.data.GetEvent_RewardID(ID).subscribe(res=>{
+        if( res["Event_Reward_ID"] == ID )
+        {
+          this.data.GetEvent_RewardID(ID).subscribe(res=>{
+            console.log(res);
+            var EventID = res["Event_Reward_ID"];
+          var PQuantity = res["Quantity"] - 1;
+          this.nReward = {
+            "Event_Reward_ID":res["Event_Reward_ID"],
+            
+          }
           this.RandomNumber = Math.floor(Math.random() * 9999999999999999999);
           console.log(this.RandomNumber);
           
@@ -77,19 +76,22 @@ export class ConfirmRewardPage implements OnInit {
             "Ranger_ID" : 3, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
-            "Product_Reward_ID":PoductID,
+            "Event_Reward_ID":EventID,
           };
           this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
-            this.data.nvalidate = res2["Redeem_ID"];
+            console.log(res2)
+            this.data.nvalidate1 = res2["Redeem_ID"];
             this.router.navigateByUrl("/voucher");
           });
-      });
-    }
-  }) 
-  
-
-  
-    }
-   
+        })
+          
+        }
+        else{
+          
+          this.router.navigateByUrl( "/error-not-enough-points");
+        }
+      })
+     
     
+}
 }
