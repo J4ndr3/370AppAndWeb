@@ -90,21 +90,18 @@ export class NavComponent implements OnInit {
     sendNotif(title, message) {
       var notificationData = {
         to: '/topics/ERP',
+        "mutable_content":true,
+        "content_available":true,
         "notification": {
           "body": message,
-          "content_available": true,
           "priority": "high",
           "title": title,
-          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         },
         "data": {
-          "body": message,
-          "content_available": true,
-          "priority": "high",
-          "title": title,
-          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
+          "mediaUrl": "https://timesofsandiego.com/wp-content/uploads/2019/08/EdYard_002_LG-640x360.jpg"
         }
       }
+      console.log(notificationData)
       $.ajax({
         type: 'POST',
         url: 'https://fcm.googleapis.com/fcm/send',

@@ -13,7 +13,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchtext" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -21,130 +21,7 @@
 <br>
 <br>
 
-<!--Moenie die button verander nie-->
-<!-- <div class="inner collapse" id="demo">
-    <div class="close">
-        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
-      <img src="/assets/ios-close.svg" class="closePic" /></button>
-    </div> -->
 
-<!--Verander opskrif en input vir elke page. placeholder formaat moet dieselfe wees. -->
-<!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
-<!-- <div class="inputForm">
-        <br>
-        <form class="form-horizontal" id="modifyForm" action="/action_page.php">
-
-            <div class="form-group">
-                <h2 class="Header">Register Ranger</h2>
-                <br>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="checkbox col-sm-10">
-                    <label class="form-control checkboxes"><input type="checkbox"  value="">Ranger Roles</label>
-                </div>
-                <div class="checkbox col-sm-10">
-                    <label class="form-control checkboxes"><input type="checkbox"  value="">All Admin Roles</label>
-                </div>
-                <div class="checkbox disabled col-sm-10">
-                    <label class="form-control checkboxes"><input type="checkbox"  value="" disabled>Reports only</label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Email" placeholder="Email..." name="Email" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="EmergencyName" placeholder="Emergency Name..." name="Emergency Name" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="EmergencyNumber" placeholder="Emergency Number..." name="Emergency Number" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="MedicalAid" placeholder="Medical Aid..." name="Medical Aid" required>
-                </div>
-            </div>
-            <div class="form-group">
-
-                <div class="col-sm-10">
-                    <select class="form-control" id="Select1" onchange="selectColor()" required>
-              <option selected disabled hidden value="Gender...">Bloodtype...</option>
-              <option>A+</option>
-              <option>B+</option>
-              <option>O+</option>
-              <option>AB+</option>
-              <option>A-</option>
-              <option>B-</option>
-              <option>AB-</option>
-              <option>O-</option>
-            </select>
-                </div>
-            </div> -->
-<!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
-
-<!-- <div class="form-group">
-                <div class="col-sm-10">
-                    <select class="form-control" id="Select1" onchange="selectColor()" required>
-            <option selected disabled hidden value="Gender...">Gender...</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="JobTitle" placeholder="Job Title..." name="Job Title" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <select class="form-control" id="Select2" onchange="selectColor1()" required>
-            <option selected disabled hidden value="Status...">Status...</option>
-            <option>Active</option>
-            <option>Inactive</option>
-            <option>Other</option>
-          </select>
-                </div>
-            </div> -->
-
-<!--Moenie die save button verander nie-->
-<!-- <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <br>
-    <br>
-</div> -->
 <!--TABLE-->
 <br>
 
@@ -157,76 +34,25 @@
                 <th>Email</th>
                 <th>Cellphone</th>
                 <th>ID</th>
-                <!-- <th>Emergency Name</th>
-                <th>Emergency Number</th>
-                <th>Medical Aid</th>
-                <th>Blood type</th>
-                <th>Gender</th>
-                <th>Job title</th> -->
                 <th>Status</th>
                 <th>Points</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John Doe</td>
-                <td>Ranger</td>
-                <td>jondoe@gmail.com</td>
-                <td>085748392</td>
-                <td>9712080065099</td>
-                <!-- <td>Esther</td> -->
-
-                <!-- <td>0837789039</td>
-                <td>Liberty</td>
-                <td>O+</td>
-                <td>Male</td>
-                <td>Project Manager</td> -->
-                <td>Active</td>
-                <td>200</td>
+            <tr *ngFor="let Ranger of Rangers |filter:searchtext">
+                <td>{{Ranger.Name}} {{Ranger.Surname}}</td>
+                <td>{{Ranger.User_Role}}</td>
+                <td>{{Ranger.Email}}</td>
+                <td>{{Ranger.Cell}}</td>
+                <td>{{Ranger.RID}}</td>
+                <td>{{Ranger.Status}}</td>
+                <td>{{Ranger.Points}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(40)"><img src="/assets/ios-create.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Ranger.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" routerLink='/view-ranger'/></button></td>
-            </tr>
-            <tr>
-                <td>Tim Scheepers</td>
-                <td>Admin</td>
-                <td>tim0097@gmail.com</td>
-                <td>0857760990</td>
-                <td>89776653859</td>
-                <!-- <td>Wian</td>
-                <td>0126887594</td>
-                <td>Discovery</td>
-                <td>A+</td>
-                <td>Other</td> -->
-
-                <td>Inactive</td>
-                <td>1000</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)"/></button>
-            </tr>
-            <tr>
-                <td>Jane Viljoen</td>
-                <td>Ranger, Reports</td>
-                <td>Jan@gmail.com</td>
-                <td>0828865321</td>
-                <td>8612140088096</td>
-                <!-- <td>Ronel</td>
-                <td>0126007554</td>
-                <td>Discovery</td>
-                <td>A-</td>
-                <td>Female</td>
-                <td>Software Developer</td> -->
-                <td>Active</td>
-                <td>12000</td>
-                <td> <button class="btn btn-default btn-sm" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" /></button>
+                src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" (click)="view(Ranger.ID)"/></button></td>
             </tr>
         </tbody>
     </table>
@@ -265,46 +91,3 @@
         </div>
     </div>
 </div>
-
-<button (click)="sendNote()">Hallo</button>
-<!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
-            style="width:40px; margin-top:0px;" />Error</h4>
-        <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>The input provided is incorrect. Please try again.</p>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
-          id="modalClose">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <script>
-    function selectColor() {
-    var x = document.getElementById("Select1").value;
-    if(x != "Gender..."){
-      document.getElementById("Select1").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-    function selectColor1() {
-    var x = document.getElementById("Select2").value;
-    if(x != "Status..."){
-      document.getElementById("Select2").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select2").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-  </script> -->

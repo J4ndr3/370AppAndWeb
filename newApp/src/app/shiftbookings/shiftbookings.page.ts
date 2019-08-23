@@ -201,6 +201,10 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
    var passenger = this.AddForm.get('Passenger').value;
    var reserve = this.AddForm.get('Reserve').value;
    var vehicle = this.AddForm.get('Vehicle').value;
+   var localOffsetS = new Date(this.event.startTime);
+          localOffsetS.setHours(localOffsetS.getHours()+2);
+          var localOffsetE = new Date(this.event.endTime);
+          localOffsetE.setHours(localOffsetE.getHours()+2);
    if ( reserve == null || vehicle == null || vehicle == null)
    {
     this.err();
@@ -211,8 +215,8 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
         "Passenger_ID": passenger,
         "Reserve_ID": reserve,
         "Vehicle_ID": vehicle,
-        "Start_Time":new Date(this.event.startTime),
-        "End_Time":new Date(this.event.endTime)
+        "Start_Time":localOffsetS,
+        "End_Time":localOffsetE
       };
       console.log(this.NewShiftbookingsPage)
       this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
