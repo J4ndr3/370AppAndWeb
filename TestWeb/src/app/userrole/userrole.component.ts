@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';          
 import { networkInterfaces } from 'os';
-
+import { AccessLevelModComponent }  from '../access-level-mod/access-level-mod.component' 
 
 @Component({
   selector: 'app-userrole',
@@ -18,7 +18,7 @@ NewLevel:object;
 LevelSelection:number =0;
 
 
-  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder,private mod: AccessLevelModComponent) { }
 
   ngOnInit() {
     this.AddFormA =  this.formBuilder.group({
@@ -85,5 +85,8 @@ else if (this.AddFormA.get('App').value == "False")
     this.data.PostAccess_Level(this.NewLevel).subscribe(res=>{
       this.ngOnInit()
     })
+  }
+  edt(ID){
+    this.mod.edit(ID);
   }
 }

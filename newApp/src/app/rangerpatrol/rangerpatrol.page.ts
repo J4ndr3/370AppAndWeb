@@ -40,11 +40,12 @@ export class RangerpatrolPage implements OnInit {
     currentTab = 0;
     previousTracks: Array<object>;
     ngOnInit() {
-
-       
-
-       
-        
+        this.AddForm = this.formBuilder.group({
+            BookingReference:[], // your attributes
+            EnterQRCode: [], // your attributes
+            EnterQRCodeO: [], // your attributes
+            Feedback:[],
+            });
         this.qrScanner.prepare()
   .then((status: QRScannerStatus) => {
      if (status.authorized) {

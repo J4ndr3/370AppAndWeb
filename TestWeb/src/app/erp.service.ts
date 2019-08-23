@@ -420,4 +420,16 @@ export class ERPService {
   DeleteAsset(id) {
     return this.http.delete('http://localhost:51389/api/Assets/' + id)
   }
+  PostMarker(obj) {
+    return this.http.post('http://localhost:51389/api/Markers', obj)
+  }
+  DeleteMarker(id) {
+    return this.http.delete('http://localhost:51389/api/Markers/' + id)
+  }
+  GetMarkers(id) {
+    return this.http.get('http://localhost:51389/api/Markers/'+id)
+  }
+  PutMarker(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Markers/' + ID, obj)
+  }
 }
