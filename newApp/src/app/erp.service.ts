@@ -11,6 +11,7 @@ export class ERPService {
   nvalidate1:any;
   viewvalidate:any;
   viewvalidate1:any;
+  Claimed:any;
 
 nID:any;
   constructor(private http: HttpClient) { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { ViewVoucharPage } from '../view-vouchar/view-vouchar.page'
 @Component({
   selector: 'app-generagevoucher',
   templateUrl: './generagevoucher.page.html',
@@ -9,7 +10,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class GeneragevoucherPage implements OnInit {
   Redeems: Array<object>;
-  r:Array<object>;
+  r: Array<object>;
   Events: object;
   searchText;
   searchText1;
@@ -31,16 +32,16 @@ export class GeneragevoucherPage implements OnInit {
   VoucherCode: any;
   ProductID: string;
   QRname: string;
-  rewardsqrv:Array<object>;
+  rewardsqrv: Array<object>;
   qrv: string;
   Details: string;
   Details1: string;
-  ViewID:any;
+  ViewID: any;
 
-  constructor(private data: ERPService, private router: Router) { }
+  constructor(private data: ERPService, private router: Router, private view: ViewVoucharPage) { }
 
   ngOnInit() {
-    this.rewardsqrv=[];
+    this.rewardsqrv = [];
     // this.confirmID = this.data.nvalidate;
     // this.confirmID1 = this.data.nvalidate1;
 
@@ -54,18 +55,16 @@ export class GeneragevoucherPage implements OnInit {
       this.r = [];
       this.Redeems = JSON.parse(JSON.stringify(res));
       this.Redeems.forEach(element => {
-        if (element["Ranger_ID"]==3)
-        {
+        if (element["Ranger_ID"] == 3) {
           this.r.push(element);
         }
       });
       console.log(this.r)
       this.r.forEach(element => {
-        if (element["Product_Reward_ID"]!= null)
-        {
+        if (element["Product_Reward_ID"] != null) {
           this.QRGenerate(element["Redeem_ID"])
         }
-        else if (element["Event_Reward_ID"]!= null){
+        else if (element["Event_Reward_ID"] != null) {
           this.GetProductName(element["Redeem_ID"])
         }
         // else if (element == )
@@ -73,7 +72,7 @@ export class GeneragevoucherPage implements OnInit {
         //   alert('Their is no claimed rewards available'+'\n'+'Please claim a reward!');
         //   this.router.navigateByUrl("/rewardtype");
         // }
-        
+
       });
       console.log(this.rewardsqrv)
     })
@@ -103,8 +102,6 @@ export class GeneragevoucherPage implements OnInit {
         "Voucher_code": res1["Voucher_code"],
         "DateTime": res1["DateTime"],
         "Product_Reward_ID": res1["Product_Reward_ID"],
-
-
       }
 
 
@@ -116,7 +113,6 @@ export class GeneragevoucherPage implements OnInit {
           "Surname": res2["Surname"]
         }
         this.data.GetProduct_RewardID(this.ProductID).subscribe(res2 => {
-
           this.QRname = res2["Name"];
           this.nName = {
             "Product_Reward_ID": res2["Product_Reward_ID"],
@@ -126,27 +122,25 @@ export class GeneragevoucherPage implements OnInit {
             "Prod_ID": res2["Prod_ID"]
           }
           console.log(this.QRname)
-          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Product Name: " + this.QRname +" "+ "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "V-code: " + "\n" + this.VoucherCode + "\n" + "Reward type ID: " + this.ProductID;
-          this.Details="Reward Name: "+this.QRname;
-          this.Details1="Date: "+this.DateGenerated;
-          
-          this.data.viewvalidate = res1["Redeem_ID"];
+          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Product Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "V-code: " + "\n" + this.VoucherCode + "\n" + "Reward type ID: " + this.ProductID;
+          this.Details = "Reward Name: " + this.QRname;
+          this.Details1 = "Date: " + this.DateGenerated;
+          this.data.Claimed = res1["Redeem_ID"];
           this.nName1 = {
-            "qrv":this.qrv,
+            "qrv": this.qrv,
             "Details": this.Details,
             "Details1": this.Details1,
-            "viewvalidate":this.data.viewvalidate,
-            
+            "viewvalidate": this.data.Claimed,
           }
           this.rewardsqrv.push(this.nName1)
 
         })
-        
+
         // this.qrv="Voucher code: "+res1["Voucher_code"] +"\n"+ "Reward type ID: "+res1["Product_Reward_ID"];
 
 
       })
-      
+
     })
 
     //  else if (this.confirmID1 != null){
@@ -205,30 +199,31 @@ export class GeneragevoucherPage implements OnInit {
             "Event_Reward_ID": res2["Event_Reward_ID"],
             "Name": res2["Name"],
           }
-          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + " " + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "Reward type ID: " + this.EventID;
+          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "Reward type ID: " + this.EventID;
           //this.rewardsqrv.push(this.qrv)
-          this.Details="Reward Name: "+this.QRname;
-          this.Details1="Date: "+this.DateGenerated;
-          this.data.viewvalidate1 = res["Redeem_ID"];
+          this.Details = "Reward Name: " + this.QRname;
+          this.Details1 = "Date: " + this.DateGenerated;
+          this.data.Claimed = res["Redeem_ID"];
           this.nName1 = {
-            "qrv":this.qrv,
+            "qrv": this.qrv,
             "Details": this.Details,
             "Details1": this.Details1,
-            "viewvalidate1": this.data.viewvalidate1,
+            "viewvalidate": this.data.Claimed,
           }
           this.rewardsqrv.push(this.nName1)
         })
         // console.log("Hallooooooooo"+this.confirmID1)
         // this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Event Name"+"\n"+ "V-code: "+"\n"+this.VoucherCode+"\n"+ "Reward type ID: "+this.EventID;
       })
-      
+
     })
   }
 
 
 
-  nameA(ID) {
-
+  ViewMe(ID) {
+    this.data.Claimed = ID;
+    this.view.Generate(ID);
 
   }
   Generate() {

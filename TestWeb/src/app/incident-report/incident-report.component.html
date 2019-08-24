@@ -2,7 +2,7 @@
 <h1>INCIDENT REPORT</h1>
 <hr class="hrow" />
 <br>
-<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary">Date Picker</button></div>
+<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary" (click)="clear()">Date Picker</button></div>
 
 <br>
 <div class="collapse" id="demo" align="center" style="width:474.8px; background-color:rgba(62, 105, 112, 0.3); margin: auto;">
@@ -15,17 +15,21 @@
         </span>
     </ng-template>
 
+    <pre hidden>From: {{ fromDate | json }} </pre>
+    <pre hidden>To: {{ toDate | json }} </pre>
 
 </div>
 <br>
-<div id="mapDiv">
-    <div #map style="width:80%;height:100%; margin: auto;"></div>
+<div id="my-node">
+    <div id="mapDiv">
+        <div id="my-node" #map style="width:80%;height:100%; margin: auto;"></div>
+    </div>
 </div>
 <br>
 <hr class="hrow" />
 <div class="outer">
     <div class="button">
-        <button type="submit" class="btn btn-default" id="Save" routerLink="/download-incedent" data-toggle="collapse" data-target="#demo">Download PDF</button>
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()">Download PDF</button>
     </div>
     <!--Moenie buttons en search bar verander nie-->
 
@@ -34,6 +38,9 @@
 <div id="content" #content>
     <div id="contentToConvert">
         <div id="chrt1" align="center"></div>
+
+        <div id="image123" #img style="width:100%;" align="center"></div>
+        <div id="chrt3"></div>
         <div class="table">
             <table class="table table-striped">
                 <thead>

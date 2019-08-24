@@ -52,7 +52,7 @@ rcv: object;
 }
 Validate(ID){
   this.data.GetProduct_RewardID(ID).subscribe(res=>{
-  if(res["Points"] > 100)
+  if(res["Points"] > 1000)
   {
     this.router.navigateByUrl("/error-not-enough-points");
   }
@@ -68,7 +68,7 @@ Validate(ID){
 }
 Validate1(ID){
   this.data.GetEvent_RewardID(ID).subscribe(res=>{
-    if(res["Points"] > 100)
+    if(res["Points"] > 1000)
     {
       this.router.navigateByUrl("/error-not-enough-points");
     }

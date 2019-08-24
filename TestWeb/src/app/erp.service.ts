@@ -19,7 +19,7 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/Patrol_Marker')
   }
   GetIncedent_Patrole() {
-    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+    return this.http.get('http://localhost:51389/api/Incident_Patrol/GetIncident_Patrol1')
   }
   GetMarker() {
     return this.http.get('http://localhost:51389/api/Markers')

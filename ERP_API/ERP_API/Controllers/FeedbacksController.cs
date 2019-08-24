@@ -44,6 +44,7 @@ namespace ERP_API.Controllers
                     m.Feedback = Item.Description;
                     m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
                     m.Points = db.Patrol_Marker.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+                   
                     toReturn.Add(m);
                 }
                 return toReturn;

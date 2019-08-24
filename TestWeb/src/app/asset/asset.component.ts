@@ -86,7 +86,8 @@ qrcodename : string;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-
+      pdf.addPage("width, height");
+      pdf.setPage(1);
       
       pdf.save('QR.pdf'); // Generated PDF
       

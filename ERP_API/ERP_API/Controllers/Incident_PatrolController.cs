@@ -23,32 +23,6 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol
         public List<dynamic> GetIncident_Patrol()
         {
-
-           // db.Configuration.ProxyCreationEnabled = false;
-            //List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz=>zz.Incident).Include(zz=>zz.Incident_Level).Include(zz=>zz.Incident_Type).Include(zz=>zz.Ranger).ToList();
-//            List<dynamic> toReturn = new List<dynamic>();
-//            foreach (Incident_Patrol Item in Level)
-//            {
-//                dynamic m = new ExpandoObject();
-//                m.Lat = Item.Lat;
-//                m.Long = Item.Lng;
-//                m.Title = Item.Incident_Type.Description;
-//                m.Name = Item.Ranger.Name;
-//                m.Surname = Item.Ranger.Surname;
-//                m.Cell = Item.Ranger.Cell;
-//                m.Date = Item.Date.ToShortDateString();
-//                m.Time = Item.Time;
-//                m.Level = Item.Incident_Level.Description;
-
-
-
-
-
-
-//                toReturn.Add(m);
-//            }
-//            return toReturn;
-//=======
             List<dynamic> toReturn = new List<dynamic>();
             try
             {
@@ -86,6 +60,35 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
             
+        }
+        // GET: api/Incident_Patrol1
+        [System.Web.Http.Route("api/Incident_Patrol/GetIncident_Patrol1")]
+        public List<dynamic> GetIncident_Patrol1()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            //List<Incident_Patrol> Level = db.Incident_Patrol.Include(zz => zz.Incident).Include(zz => zz.Incident_Level).Include(zz => zz.Incident_Type).Include(zz => zz.Ranger).ToList();
+            List<Incident_Patrol> incidents = db.Incident_Patrol.
+                    Include(zz => zz.Patrol_Log.Ranger).
+                    Include(zz => zz.Incident.Incident_Type).
+                    Include(zz => zz.Incident.Incident_Type.Incident_Level).
+                    Include(zz => zz.Incident.Incident_Status).
+                   ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Incident_Patrol Item in incidents)
+            {
+                dynamic m = new ExpandoObject();
+                m.Lat = Item.Lat;
+                m.Long = Item.Lng;
+                m.Title = Item.Incident.Incident_Type.Description;
+                m.Name = Item.Patrol_Log.Ranger.Name;
+                m.Surname = Item.Patrol_Log.Ranger.Surname;
+                m.Cell = Item.Patrol_Log.Ranger.Cell;
+                m.Date = Item.Date.ToShortDateString();
+                m.Time = Item.Time;
+                m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]

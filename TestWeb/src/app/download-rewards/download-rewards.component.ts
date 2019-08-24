@@ -23,7 +23,7 @@ export class DownloadRewardsComponent implements OnInit {
   EventCount=0;
   EventsCount:Array<object>;
 
-  timeLeft: number = 1;
+  timeLeft: number = 3;
   interval;
 
   public Download() {
@@ -113,7 +113,7 @@ export class DownloadRewardsComponent implements OnInit {
     }
     
     else{
-      this.timeLeft = 1;
+      this.timeLeft = 3;
     }
   },1000)
 }

@@ -30,32 +30,38 @@ Surname:any;
  ProductID:string;
  QRname:string;
  qrv:string;
+ Claimed:string;
   constructor(private data: ERPService, private router:Router) { }
 
   ngOnInit() {
     this.confirmID = this.data.viewvalidate;
     this.confirmID1 = this.data.viewvalidate1;
-    
+    this.Claimed = this.data.Claimed;
     console.log(this.confirmID)
     console.log(this.confirmID1)
     this.data.GetRedeem_Reward().subscribe(res=>{
       console.log(res);
       this.Redeems = res;
     });
-    if (this.confirmID1== null){this.QRGenerate(this.confirmID);}
-     else if(this.confirmID1 != null){this.GetProductName(this.confirmID1);} 
+    if (this.Claimed != null)
+    {
+      this.Generate(this.Claimed);
+    }else{
+      if (this.confirmID!= null){this.QRGenerate(this.confirmID);}
+      else if(this.confirmID1 != null){this.GetProductName(this.confirmID1);} 
+    }
     
-     if(this.Redeems != null){this.nameA(1)}
-     else if (this.Redeems == null){
+    
+    //  if(this.Redeems != null){this.nameA(1)}
+    //  else if (this.Redeems == null){
 
-     }
+    //  }
     
       
     
   }
   
   QRGenerate(ID){
-    
     this.data.GetRedeem_RewardID(ID).subscribe(res1=>{
       this.ProductID=res1["Product_Reward_ID"]
       this.VoucherCode=res1["Voucher_code" ];
@@ -89,7 +95,7 @@ Surname:any;
     "Points": res2["Points"],
      "Prod_ID": res2["Prod_ID"]
       }
-      this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Product Name: "+this.QRname+" "+"Ranger Name: "+this.RangerName+" "+this.Surname+"\n"+ "V-code: "+"\n"+this.VoucherCode+"\n"+ "Reward type ID: "+this.ProductID;
+      this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Product Name: "+this.QRname+"\n"+"Ranger Name: "+this.RangerName+" "+this.Surname+"\n"+ "V-code: "+"\n"+this.VoucherCode+"\n"+ "Reward type ID: "+this.ProductID;
    })
       console.log(this.QRname)
       // this.qrv="Voucher code: "+res1["Voucher_code"] +"\n"+ "Reward type ID: "+res1["Product_Reward_ID"];
@@ -155,7 +161,7 @@ Surname:any;
      "Event_Reward_ID": res2["Event_Reward_ID"],
      "Name": res2["Name"],
       }
-      this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Event Name: "+this.QRname+" "+"Ranger Name: "+this.RangerName+" "+this.Surname+"\n"+ "Reward type ID: "+this.EventID;
+      this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Event Name: "+this.QRname+"\n"+"Ranger Name: "+this.RangerName+" "+this.Surname+"\n"+ "Reward type ID: "+this.EventID;
    })
       // console.log("Hallooooooooo"+this.confirmID1)
       // this.qrv= "Date Generated: "+this.DateGenerated+"\n"+"Event Name"+"\n"+ "V-code: "+"\n"+this.VoucherCode+"\n"+ "Reward type ID: "+this.EventID;
@@ -169,7 +175,17 @@ nameA(ID){
 
   
 }
-  Generate(){
-    
+  Generate(Redeem_ID){
+    this.data.GetRedeem_RewardID(Redeem_ID).subscribe(res=>{
+      if (res["Product_Reward_ID"] != null)
+      {
+        this.QRGenerate(Redeem_ID)
+      }
+      else
+      {
+        this.GetProductName(Redeem_ID)
+      }
+      this.router.navigateByUrl("/view-vouchar")
+    })
   }
 }
