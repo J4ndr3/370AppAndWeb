@@ -125,6 +125,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Booking))]
         public IHttpActionResult DeletePatrol_Booking(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Booking patrol_Booking = db.Patrol_Booking.Find(id);
             if (patrol_Booking == null)
             {

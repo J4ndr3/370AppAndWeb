@@ -43,43 +43,43 @@ nID:any;
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Trackings/',obj)
   }
   GetProduct_Reward(){
-    return this.http.get('http://localhost:51389/api/Product_Reward')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Product_Reward')
   }
   GetEvent_Reward(){
-    return this.http.get('http://localhost:51389/api/Event_Reward')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Event_Reward')
   }
   GetEvent_RewardID(ID){
-    return this.http.get('http://localhost:51389/api/Event_Reward/'+ID)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Event_Reward/'+ID)
   }
   GetProduct_RewardID(ID){
-    return this.http.get('http://localhost:51389/api/Product_Reward/'+ID)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Product_Reward/'+ID)
   }
   PutRewardAdd(ID,obj) {
-    return this.http.put('http://localhost:51389/api/Product_Reward/'+ID,obj)
+    return this.http.put('https://2019group4inf370.azurewebsites.net/api/Product_Reward/'+ID,obj)
   }
   GetRedeem_Reward(){
-    return this.http.get('http://localhost:51389/api/Redeem_Reward')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward')
   }
   GetRedeem_RewardID(ID){
-    return this.http.get('http://localhost:51389/api/Redeem_Reward/'+ID)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward/'+ID)
   }
   PutRedeem_Reward(ID,obj) {
-    return this.http.put('http://localhost:51389/api/Redeem_Reward/'+ID,obj)
+    return this.http.put('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward/'+ID,obj)
   }
   PostRedeem_Reward(obj){
-    return this.http.post('http://localhost:51389/api/Redeem_Reward', obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward', obj)
   }
   GetRangerID(id){
-    return this.http.get('http://localhost:51389/api/Rangers/'+id)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Rangers/'+id)
   }
   GetIncident_Types() {
-    return this.http.get('http://localhost:51389/api/Incident_Type')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Type')
   }
   PostIncident(obj){
-    return this.http.post('http://localhost:51389/api/Incidents/', obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Incidents/', obj)
   }
   GetNotifications() {
-    return this.http.get('http://localhost:51389/api/Notifications')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Notifications')
   }
   sendNotif(title, message) {
     var notificationData = {
@@ -139,9 +139,13 @@ nID:any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Booking/')
   }
   PostIncident_Image(obj){
-    return this.http.post('http://localhost:51389/api/Incident_Image/',obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Incident_Image/',obj)
   }
   PostIncident_Patrol(obj){
-    return this.http.post('http://localhost:51389/api/Incident_Patrol/',obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol/',obj)
+  }
+
+  DeletePatrolBooking(id){
+    return this.http.delete('https://2019group4inf370.azurewebsites.net/api/Patrol_Booking/' + id)
   }
 }
