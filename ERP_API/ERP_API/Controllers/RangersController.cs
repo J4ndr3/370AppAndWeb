@@ -23,11 +23,12 @@ namespace ERP_API.Controllers
         public List<dynamic> GetRangers()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<Ranger> Level = db.Rangers.ToList();
+            List<Ranger> Level = db.Rangers.Include(zz=>zz.User_Role).Include(zz=>zz.Medical_Aid).Include(zz=>zz.Organisation).Include(zz=>zz.Gender).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Ranger Item in Level)
             {
                 dynamic m = new ExpandoObject();
+                m.RID = Item.ID_Number;
                 m.ID = Item.Ranger_ID;
                 m.Name = Item.Name;
                 m.Surname = Item.Surname;
@@ -35,7 +36,11 @@ namespace ERP_API.Controllers
                 m.Points = Item.Points;
                 m.Status = Item.Status;
                 m.Email = Item.Email;
-
+                m.User_Role = Item.User_Role.Description;
+                m.Gender = Item.Gender.Description;
+                m.Organisation = Item.Organisation.Description;
+                m.Blood = Item.Blood_Type;
+                
                 toReturn.Add(m);
             }
             return toReturn;

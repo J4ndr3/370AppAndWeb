@@ -14,7 +14,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content *ngIf="!hideEverything">
 
     <div #ref>
 
@@ -30,22 +30,23 @@
 
                                 <ion-label align="center" style="margin-bottom:5% !important">Select shift booking reference for current patrol:</ion-label>
                                 <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()" formControlName="BookingReference" name="BookingReference" required>
-                                    <ion-select-option>12 May 14:00</ion-select-option>
-                                    <ion-select-option>17 May 16:30</ion-select-option>
-                                    <ion-select-option>No booking...</ion-select-option>
+                                    <ion-select-option *ngFor="let res of RangerpatrolPageOptions" [(value)]="res.Patrol">{{res.Event}}</ion-select-option>
+                                    <!-- <ion-select-option>17 May 16:30</ion-select-option>
+                                    <ion-select-option>No booking...</ion-select-option> -->
                                 </ion-select>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab" style="color:black;">
+                    <div class="tab" style="background-color: transparent;">
                         <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
+                        <div #qr_scanner style="margin :auto;background-color: transparent; width:700px; height: 500px"></div>
 
-                        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
+                        <!-- <img src="./assets/th (2).jpg" alt="Camera"  class="center" > -->
                         <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
                             Enter Code Here</ion-button>
                         <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-                            <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
+                            <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
                             <ion-button style="float:right; margin-bottom:10% !important;">
                                 <ion-icon name="add" size="medium"></ion-icon>
                             </ion-button>
@@ -107,7 +108,7 @@
                         <ion-button data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
 
                         <div class="collapse" id="demo2">
-                            <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
+                            <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCodeO" style="margin-bottom:5% !important;"></ion-input>
                             <ion-button style="float:right; margin-bottom:10% !important;">
                                 <ion-icon name="add" size="Medium"></ion-icon>
                             </ion-button>

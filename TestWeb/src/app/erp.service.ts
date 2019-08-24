@@ -15,6 +15,9 @@ export class ERPService {
   GetRanger() {
     return this.http.get('http://localhost:51389/api/Rangers')
   }
+  GetRangers(id) {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/rangers/'+id)
+  }
   GetPerformance() {
     return this.http.get('http://localhost:51389/api/Patrol_Marker')
   }
@@ -31,7 +34,7 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/Assets')
   }
   PostRanger(obj) {
-    return this.http.post('http://localhost:51389/api/Rangers', obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/rangers/', obj)
   }
   DeleteRaner(id) {
     return this.http.delete('http://localhost:51389/api/Rangers/' + id)
@@ -47,10 +50,10 @@ export class ERPService {
     return this.http.post('http://localhost:51389/api/User_Role', obj)
   }
   DeleteUserRole(id) {
-    return this.http.delete('http://localhost:51389/api/User_Role' + id)
+    return this.http.delete('http://localhost:51389/api/User_Role/' + id)
   }
   PutUserRole(id, obj) {
-    return this.http.put('http://localhost:51389/api/User_Role' + id, obj)
+    return this.http.put('http://localhost:51389/api/User_Role/' + id, obj)
   }
 
   GetGender() {
@@ -301,7 +304,7 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/Reserves')
   }
   PostGate(obj) {
-    return this.http.post('http://localhost:51389/api/Gates', obj)
+    return this.http.post('http://localhost:51389/api/Gates/', obj)
   }
   DeleteGate(id) {
     return this.http.delete('http://localhost:51389/api/Gates/' + id)
@@ -416,5 +419,21 @@ export class ERPService {
   }
   DeleteAsset(id) {
     return this.http.delete('http://localhost:51389/api/Assets/' + id)
+  }
+
+  GetUserRole1(id) {
+    return this.http.get('http://localhost:51389/api/User_Role/' + id)
+  }
+  PostMarker(obj) {
+    return this.http.post('http://localhost:51389/api/Markers', obj)
+  }
+  DeleteMarker(id) {
+    return this.http.delete('http://localhost:51389/api/Markers/' + id)
+  }
+  GetMarkers(id) {
+    return this.http.get('http://localhost:51389/api/Markers/'+id)
+  }
+  PutMarker(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Markers/' + ID, obj)
   }
 }

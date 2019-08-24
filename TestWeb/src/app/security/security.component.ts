@@ -16,6 +16,7 @@ export class SecurityComponent implements OnInit {
   ReserveSelection:number =0;
   ReserveOptions:Array<object>; 
   nSecurity:object;
+  Search
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder,private mod:SecurityModComponent) { }
 
   ngOnInit() {
