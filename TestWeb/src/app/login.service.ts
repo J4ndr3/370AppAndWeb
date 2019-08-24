@@ -21,12 +21,18 @@ export class LoginService {
     this.LogedIn(user,pass).subscribe(data => {
       if (data[0].Logedin == false || data.toString() == "Access not allowed")
       {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
         bool= false;
       }
     else{
       bool= true;
     }})
     return bool;
+  }
+  resetOTP(email){
+    return this.http.get('http://localhost:51389/api/Login/ResetOTP/?Email='+email)
+  }
+  ResetPass(email, OTP,Password){
+    return this.http.get('http://localhost:51389/api/Login/Password/?Email='+email+'&Password='+Password+'&OTP='+OTP)
   }
 }

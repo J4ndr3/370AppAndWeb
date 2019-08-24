@@ -91,7 +91,7 @@ export class NavComponent implements OnInit {
           "Date": new Date(),
           "Meassage": Message,
           "Title": Title,
-          "Ranger_ID": 3,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
         };
         console.log(this.NewNotification);
 
@@ -113,7 +113,7 @@ export class NavComponent implements OnInit {
           "Date": new Date(),
           "Meassage": Message,
           "Title": Title,
-          "Ranger_ID": 3,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
         };
         console.log(this.NewNotification);
 
@@ -186,6 +186,10 @@ export class NavComponent implements OnInit {
           
         });
       });
+      }
+      Logout(){
+        sessionStorage.clear();
+        this.router.navigateByUrl("/login")
       }
     }
 
