@@ -176,11 +176,20 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
     const alert = await this.alertCtrl.create({
       header: "Booking Details",
       message: 'From: ' + start + '<br><br>To: ' + end,
-      buttons: [{text:'Modify',handler: () => {
+      buttons: [{text:'Delete',handler: () => {
+        this.delete(ID);
+      }},{text:'Modify',handler: () => {
         this.mod.edit(ID);
       }},'OK']
     });
     alert.present();
+  }
+
+  delete(ID){
+    this.data.DeletePatrolBooking(ID).subscribe(res=> {
+      console.log(res);
+      this.ngOnInit();
+    })
   }
    
   // Time slot was clicked
