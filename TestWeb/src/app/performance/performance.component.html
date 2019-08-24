@@ -20,14 +20,13 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="header">
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Cellphone</th>
-                        <th>Hours Patrolled</th>
-                        <th>Points</th>
-                        <th>Distance traveled</th>
-                        <th>Markers passed</th>
-                        <th>Monthly points</th>
+                        <th style="text-align: left;">Name</th>
+                        <th style="text-align: left;">Surname</th>
+                        <th style="text-align: left;">Cellphone</th>
+                        <th style="text-align: right;">Hours Patrolled</th>
+                        <th style="text-align: right;">Points</th>
+                        <th style="text-align: right;">Markers passed</th>
+                        <th style="text-align: right;">Monthly points</th>
                         <!--<th>Actions</th>-->
                     </tr>
                 </thead>
@@ -36,8 +35,10 @@
                         <td style="text-align: left;">{{Performance.Name}}</td>
                         <td style="text-align: left;">{{Performance.Surname}}</td>
                         <td style="text-align: left;">{{Performance.Cell}}</td>
+                        <td style="text-align: right;">{{Performance.time}} Hours</td>
                         <td style="text-align: right;">{{Performance.Points}}</td>
-
+                        <td style="text-align: right;">{{Performance.MarkerPast}}</td>
+                        <td style="text-align: right;">{{Performance.MonthPoints}}</td>
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                     </tr>

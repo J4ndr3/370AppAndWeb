@@ -1,7 +1,6 @@
 <h1>
     RESERVE</h1>
 <hr class="hrow" />
-<br/>
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
     <div class="button">
@@ -10,11 +9,9 @@
     </div>
 
     <div class="search">
-        <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
-        </form>
     </div>
 </div>
 <br>
@@ -41,15 +38,15 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Name" placeholder="Name..." name="Level" required>
                 </div>
-                <br>
+                
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Description" placeholder="Reserve Description..." name="Level" required>
                 </div>
-                <br>
+                
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" required>
                 </div>
-                <br>
+              
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Longitude" placeholder="Longitude..." name="Level" required>
                 </div>
@@ -67,7 +64,6 @@
     <br>
 </div>
 <!--TABLE-->
-<br>
 
 <div class="table">
     <table class="table table-striped">
@@ -81,7 +77,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Reserve of Reserves">
+            <tr *ngFor="let Reserve of Reserves | filter:Search">
                 <td style="text-align: left;">{{Reserve.Name}}</td>
                 <td style="text-align: left;">{{Reserve.Description}}</td>
                 <td style="text-align: left;">{{Reserve.Lat}}</td>

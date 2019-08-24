@@ -20,7 +20,7 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/User_Role
-        public List<dynamic> UserRole()
+        public List<dynamic> GetUser_Role()
         {
             try
             {
@@ -31,6 +31,7 @@ namespace ERP_API.Controllers
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.User_Role_ID;
+                    m.Description = Item.Description;
                     m.Level = Item.Access_Level.Access_ID;
                     toReturn.Add(m);
                 }
@@ -65,6 +66,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser_Role(int id, User_Role user_Role)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -100,6 +102,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(User_Role))]
         public IHttpActionResult PostUser_Role(User_Role user_Role)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -115,6 +118,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(User_Role))]
         public IHttpActionResult DeleteUser_Role(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             User_Role user_Role = db.User_Role.Find(id);
             if (user_Role == null)
             {

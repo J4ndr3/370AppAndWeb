@@ -34,24 +34,23 @@
             <div class="form-group">
                 <h2 class="Header">Add Supplier</h2>
                 <br>
-              
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Supplier Name..." name="desc" formControlName="Name"   required>
+                    <input type="text" class="form-control" id="desc" placeholder="Supplier Name..." name="desc" formControlName="Name"   required>
                     
                 </div>
-                <br>
+        
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Cellphone Number..." name="desc" formControlName="Contact"   required>
+                    <input type="text" class="form-control" id="desc" placeholder="Cellphone Number..." name="desc" formControlName="Contact"   required>
                     
                 </div>
-                <br>
+               
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Email Address..." name="desc" formControlName="Email"   required>
+                    <input type="text" class="form-control" id="desc" placeholder="Email Address..." name="desc" formControlName="Email"   required>
                     
                 </div>
-                <br>
+               
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Address..." name="desc" formControlName="Address"   required>
+                    <input type="text" class="form-control" id="desc" placeholder="Address..." name="desc" formControlName="Address"   required>
                     
                 </div>
             </div>
@@ -93,7 +92,7 @@
                 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-supplier'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
+              class="edit" /></button><button (click)="del()"class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button></td>  
             </tr>
         </tbody>

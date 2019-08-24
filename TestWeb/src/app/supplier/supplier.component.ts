@@ -13,12 +13,21 @@ export class SupplierComponent implements OnInit {
   AddForm: FormGroup;
   NewSupplier:object;
   SupplierSelection:number =0;
-  
+  nSupplier:object;
+  searchtext;
+
   constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.data.GetSupplier().subscribe(res=>{
-      this.Suppliers = res;
+    
+      this.AddForm = this.formBuilder.group({
+        Name: [], // Names for your input
+        Contact: [], // Names for your input 
+        Email: [],
+        Address: []
+      });
+      this.data.GetSupplier().subscribe(res=>{
+        this.Suppliers = res;
     });
   }
 
@@ -29,14 +38,7 @@ export class SupplierComponent implements OnInit {
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
   }
-  addYourBtn() {
-    this.AddForm = this.formBuilder.group({
-      Name: [""], // Names for your input
-      Contact: [""], // Names for your input 
-      Email: [""],
-      Address: [""]
-    });
-  }
+  
   addSupplier() {
     var Name = this.AddForm.get('Name').value; // Names for your input
     var Contact = this.AddForm.get('Contact').value; // Names for your input
@@ -48,16 +50,57 @@ export class SupplierComponent implements OnInit {
       //Modal popup
     }
     else {
-      this.NewSupplier = {
-        "Name": Name, // Names for your input
-        "Contact": Contact, // Names for your input
+      this.nSupplier = {
+        "Name": Name,
+        "Contact": Contact,
         "Email": Email,
-        "Address":Address,
-        
+        "Address": Address
       };
-      this.data.PostSupplier(this.NewSupplier).subscribe(res => {
-        this.ngOnInit()
-      });}}
+      console.log(this.nSupplier);
+      this.data.PostSupplier(this.nSupplier).subscribe(res => {
+        if (res != null)
+        {
+          this.ngOnInit();
+          this.showToast();
+        }
+        else
+        {
+          document.getElementById("inputErr").click();
+        }
+        
+      });
+    }
+  }
 
+      del(){
+        this.data.DeleteSupplier(this.data.nID).subscribe(res=>{
+          if (res!=null)
+          {
+            this.delSuccessToast();
+            this.ngOnInit();
+          }
+          else if (res==2)
+          {
+            alert("You are not allowed to delete this record");
+          }
+          else
+          {
+            this.delToast()
+          }
+        })
+      }
+      delToast(){
+        this.toastrService.show("Record could not be removed.", "Error!");
+      }
+      delSuccessToast(){
+        this.toastrService.show("Record removed.", "Success!");
+      }
+      delete(ID){
+        this.data.nID = ID;
+        document.getElementById('del').click();
+    }
+    // edit(ID){
+  //   this.mod.edit(ID);
+  // }
 
 }

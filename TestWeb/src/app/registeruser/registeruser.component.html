@@ -3,58 +3,59 @@
 <hr class="hrow" />
 <div>
     <div #ref>
-        <form #regform id="regForm" (ngSubmit)="onSubmit()">
+        <form #regform id="regForm" [formGroup]="AddForm" (ngSubmit)="add()">
             <h1>Register:</h1>
             <!-- One "tab" for each step in the form: -->
             <div class="tab col-sm-10">Step 1 -Ranger Name & Surname
-                <p><input class="form-control" placeholder="First Name..." name="fname" value="Jandre"></p>
-                <p><input class="form-control" placeholder="Last Name..." name="lname" value="Labuschagne"></p>
+                <p><input class="form-control" formControlName="fname" placeholder="First Name..." name="fname"></p>
+                <p><input class="form-control" formControlName="lname" placeholder="Last Name..." name="lname"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="User role...">User role...</option>
-                    <option>Admin</option>
-                    <option>Ranger</option>
-                    <option>Report Ranger</option>
-                  </select>
+                        <select formControlName="UserRole" class="form-control" id="Select1" onchange="selectColor()" required>
+                                <option selected disabled hidden value="User role...">User role...</option>
+                                    <option *ngFor="let opt of UserRoleOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                                  </select>
                     </div>
                 </div>
 
             </div>
             <div class="tab col-sm-10">Step 2 - Personal information:
-                <p><input class="form-control" placeholder="Identification Number..." name="rangerId" value="9802065030082"></p>
-                <p><input class="form-control" placeholder="E-mail..." name="email" value="jandrelab1@gmail.com"></p>
-                <p><input class="form-control" placeholder="Cellphone..." name="phone" value="0713307791"></p>
+                <p><input class="form-control" formControlName="rangerId" placeholder="Identification Number..." name="rangerId"></p>
+                <p><input class="form-control" formControlName="email" placeholder="E-mail..." name="email"></p>
+                <p><input class="form-control" formControlName="phone" placeholder="Cellphone..." name="phone"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Gender...">Gender...</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                  </select>
+                        <select placeholder="Select Gender..." formControlName="selectgender" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                                    <option selected disabled hidden value="Gender...">Gender...</option>
+                                    <option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</option>
+                                </select>
                     </div>
                 </div>
-                <p><input class="form-control" placeholder="Jobtitle..." name="jobtitle" value="Developer"></p>
+                <select placeholder="Select Organisation..." formControlName="Organizationtitle" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                        <option selected disabled hidden value="Organisation...">Organisation...</option>
+                    <option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                    </select>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select2" onchange="selectColor1()" required>
+                        <select class="form-control" formControlName="Status" id="Select2" onchange="selectColor1()" required>
                     <option selected disabled hidden value="Status...">Status...</option>
                     <option>Active</option>
                     <option>Inactive</option>
-                    <option>Other</option>
                   </select>
                     </div>
                 </div>
             </div>
             <div class="tab col-sm-10">Step 3 - Medical information:
-                <p><input class="form-control" placeholder="Emergency contact's Name" name="emergencycontactName" value="Marinda"></p>
-                <p><input class="form-control" placeholder="Emergency contact Number" name="EmergencycontactNumber" value="0722988445"></p>
-                <p><input class="form-control" placeholder="Medical Aid" name="MedicalAid" value="Discovery"></p>
+                <p><input class="form-control" formControlName="emergencycontactName" placeholder="Emergency contact's Name" name="emergencycontactName"></p>
+                <p><input class="form-control" formControlName="EmergencycontactNumber" placeholder="Emergency contact Number" name="EmergencycontactNumber"></p>
+                <select placeholder="Select Medical Aid..." formControlName="MedicalAid" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                        <option selected disabled hidden value="Medical Aid...">Medical Aid...</option>
+                    <option *ngFor="let org of MedicalOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                    </select>
                 <div class="form-group">
                     <div class="col-sm-40">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
+                        <select class="form-control" formControlName="selectbloodtype" id="Select1" onchange="selectColor()" required>
+                                <option selected disabled hidden value="Blood Type...">Blood Type...</option>
                     <option>A+</option>
                     <option>B+</option>
                     <option>AB+</option>
@@ -68,9 +69,9 @@
                 </div>
             </div>
             <div class="tab col-sm-10">Step 4 - Login Info:
-                <p><input class="form-control" placeholder="Ranger Username..." name="username" value="J4ndr3"></p>
-                <p><input type="password" class="form-control" placeholder="Password..." name="password" value="Jandre"></p>
-                <p><input type="password" class="form-control" placeholder="Confirm Password..." name="confirmpassword" value="Jandre"></p>
+                <p><input class="form-control" formControlName="username" placeholder="Ranger Username..." name="username"></p>
+                <p><input type="password" class="form-control" formControlName="password" placeholder="Password..." name="password"></p>
+                <p><input type="password" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password..." name="confirmpassword"></p>
             </div>
             <div style="overflow:auto;" class="col-sm-10">
                 <div style="float:left;">

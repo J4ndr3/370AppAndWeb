@@ -1,46 +1,43 @@
-<ion-header >
-  <ion-toolbar>
-      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-    <ion-buttons slot="end">
-      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
-    </ion-buttons>
-      <ion-buttons slot="end" >
-      <ion-menu-button style="color: white !important"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Modify Booking
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar>
+        <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+        <ion-buttons slot="end">
+            <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button style="color: white !important"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Modify Booking
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card>
-<ion-card-content>
-    
-<ion-select placeholder="Select Passenger..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
-  <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
-  <ion-select-option>I'm patrolling alone</ion-select-option>
-  <ion-select-option>Rijnhardt</ion-select-option>
-  <ion-select-option>Lize</ion-select-option>
-</ion-select>
-<ion-select placeholder="Select Vehicle..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
-    <!-- <ion-select-option selected disabled hidden value="Gender..." aria-placeholder="Gender...">G</ion-select-option> -->
-    <ion-select-option>ERP Bakkie</ion-select-option>
-    <ion-select-option>Honda CRV</ion-select-option>
-    <ion-select-option>Hundai i20</ion-select-option>
-  </ion-select>
-<ion-item>
-<ion-label>Start</ion-label>
-<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
-</ion-item>
-<ion-item>
-<ion-label>End</ion-label>
-<ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
-</ion-item>
- <!--<ion-item style="margin-bottom: 10%">
+    <ion-card [formGroup]="EditForm">
+        <ion-card-content>
+            <ion-input type="text" ID="CarRegistration" hidden required="true"></ion-input>
+            <ion-select placeholder="Select Reserve..." formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="Reserve" required>
+                <ion-select-option *ngFor="let res of ReserveOptions" [(value)]="res.ID">{{res.Name}}</ion-select-option>
+            </ion-select>
+            <ion-select placeholder="Select Passenger..." formControlName="Passenger" [(value)]="PassengerSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="Passenger" required>
+                <ion-select-option *ngFor="let pas of PassengerOptions" [(value)]="pas.ID">{{pas.Name}}</ion-select-option>
+            </ion-select>
+            <ion-select formControlName="Vehicle" placeholder="Select Vehicle..." [(value)]="VehicleSelection" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="Vehicle" required>
+                <ion-select-option *ngFor="let veh of VehicleOptions" [(value)]="veh.Vehicle_ID">{{veh.Registration}}</ion-select-option>
+            </ion-select>
+            <ion-item>
+                <ion-label>Start</ion-label>
+                <ion-datetime formcontrolname="startTime" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [ngModelOptions]="{standalone: true}" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>End</ion-label>
+                <ion-datetime formcontrolname="endTime" displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [ngModelOptions]="{standalone: true}" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+            </ion-item>
+            <!--<ion-item style="margin-bottom: 10%">
 <ion-label>All Day?</ion-label>
 <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
 </ion-item> -->
-<ion-button fill="outline" expand="block" (click)="successToast()" (click)="failedToast()"(click)="modifyyesorno()" >Modify Shift Booking</ion-button>
-</ion-card-content>
-</ion-card>
+            <ion-button fill="outline" expand="block" (click)="modifyyesorno()">Modify Shift Booking</ion-button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

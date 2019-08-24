@@ -55,6 +55,7 @@ import { ProductTypeModifyComponent } from './product-type-modify/product-type-m
 import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
 import { DownloadStatusComponent } from './download-status/download-status.component';
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -112,6 +113,7 @@ const routes: Routes = [
   {path: 'download-rewards', component: DownloadRewardsComponent},
   {path: 'download-status', component: DownloadStatusComponent},
   {path: 'download-incedent', component: DownloadIncedentComponent},
+  {path: 'load', component: LoadingScreenComponent}
 ];
 
 @NgModule({

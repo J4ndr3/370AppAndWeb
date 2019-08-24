@@ -31,6 +31,7 @@ export class SecurityModComponent implements OnInit {
       this.edt();
   }
   edit(ID){
+    console.log(ID)
     this.data.GetSecurity(ID).subscribe(res=>{
       if (res==1)
       {
@@ -39,19 +40,18 @@ export class SecurityModComponent implements OnInit {
       }
       else{
         this.router.navigateByUrl("/securitymod");
-        this.ngOnInit();
         this.data.nID = ID;
       }})
     
   }
   edt(){
+    console.log(this.data.nID)
     this.data.GetSecurity(this.data.nID).subscribe(res=>{     
       this.Security = res;
       this.EditForm.setValue({ID:this.Security.Security_ID,
         Name:this.Security.Name,
-        Descriprion:this.Security.Descriprion,
-        Lattitude:this.Security.Lattitude,
-        Longitude:this.Security.Longitude,
+        Email:this.Security.Email,
+        Cell:this.Security.Cell,
         Reserve:this.Security.Reserve_ID})    
     })
   }
@@ -80,6 +80,7 @@ export class SecurityModComponent implements OnInit {
         if (this.rcv == null)
         {
           this.showToast();
+          this.router.navigateByUrl("/security");
         }
         else
         {

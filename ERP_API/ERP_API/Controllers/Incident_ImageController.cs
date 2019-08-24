@@ -9,23 +9,48 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Web.Http.Cors;
+using System.Dynamic;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Incident_ImageController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Image
-        public IQueryable<Incident_Image> GetIncident_Image()
+        public List<dynamic> GetIncident_Image()
         {
-            return db.Incident_Image;
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Incident_Image> IMG = db.Incident_Image.Include(zz=>zz.Incident).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Incident_Image Item in IMG)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Incident_Image_ID = Item.Incident_Image_ID;
+                    m.Incident_ID = Item.Incident.Incident_ID;
+                    m.Patrol_Log_ID = Item.Patrol_Log_ID;
+                    m.Image = Item.Image;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult GetIncident_Image(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Image incident_Image = db.Incident_Image.Find(id);
             if (incident_Image == null)
             {
@@ -39,6 +64,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutIncident_Image(int id, Incident_Image incident_Image)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -72,38 +98,43 @@ namespace ERP_API.Controllers
 
         // POST: api/Incident_Image
         [ResponseType(typeof(Incident_Image))]
-        public IHttpActionResult PostIncident_Image(Incident_Image incident_Image)
+        public IHttpActionResult PostIncident_Image(List<Incident_Image> incident_Image)
         {
-            if (!ModelState.IsValid)
+            foreach (var tracking in incident_Image)
             {
-                return BadRequest(ModelState);
-            }
+                db.Configuration.ProxyCreationEnabled = false;
 
-            db.Incident_Image.Add(incident_Image);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (Incident_ImageExists(incident_Image.Patrol_Log_ID))
+                if (!ModelState.IsValid)
                 {
-                    return Conflict();
+                    return BadRequest(ModelState);
                 }
-                else
+
+                db.Incident_Image.Add(tracking);
+
+                try
                 {
-                    throw;
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    if (Incident_ImageExists(tracking.Patrol_Log_ID))
+                    {
+                        return Conflict();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Patrol_Log_ID }, incident_Image);
+            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Last().Patrol_Log_ID }, incident_Image);
         }
 
         // DELETE: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult DeleteIncident_Image(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Image incident_Image = db.Incident_Image.Find(id);
             if (incident_Image == null)
             {

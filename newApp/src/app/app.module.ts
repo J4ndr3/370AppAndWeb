@@ -6,7 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import * as $ from 'jquery';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
@@ -21,6 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
 import { RangerprofilePageModule } from './rangerprofile/rangerprofile.module';
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+
+import { ModifybookingPage } from './modifybooking/modifybooking.page';
+import { VehiclesPage } from './vehicles/vehicles.page';
+import { ViewVoucharPage } from './view-vouchar/view-vouchar.page';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPkIMLCVqfgX48Vyx9xl6HpPvs4UfiOnQ",
@@ -45,9 +50,13 @@ const firebaseConfig = {
     NgCalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [
+    VehiclesPage ,
+    ViewVoucharPage,
+    ModifybookingPage,
     RangerprofilePageModule,
     StatusBar,
     SplashScreen,

@@ -9,18 +9,54 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FeedbacksController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Feedbacks
-        public IQueryable<Feedback> GetFeedbacks()
+        public List<dynamic> GetFeedbacks()
         {
-            return db.Feedbacks;
+           
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+               
+                List<Feedback> feedbacks = db.Feedbacks.Include(zz => zz.Patrol_Log).
+                    Include(zz => zz.Patrol_Log.Ranger).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Feedback Item in feedbacks)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Feedback_ID = Item.Feedback_ID;
+                    m.Name = Item.Patrol_Log.Ranger.Name;
+                    m.Surname = Item.Patrol_Log.Ranger.Surname;
+                    m.Date = Item.Patrol_Log.Checkin.ToShortDateString();
+                    m.Checkin = Item.Patrol_Log.Checkin.ToShortTimeString();
+                    m.Checkout = Item.Patrol_Log.Checkout.ToShortTimeString();
+                    m.time = Math.Round(Item.Patrol_Log.Checkout.Subtract(Item.Patrol_Log.Checkin).TotalHours,2);
+                    m.Route = Item.Patrol_Log.Route;
+                    m.Feedback = Item.Description;
+                    m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
+                    m.Points = db.Patrol_Marker.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+                   
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
+
 
         // GET: api/Feedbacks/5
         [ResponseType(typeof(Feedback))]

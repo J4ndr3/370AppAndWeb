@@ -3,8 +3,12 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';      
+declare var google;
+
 
 import { FcmService } from '../fcm.service';
+import { ERPService } from '../erp.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -12,10 +16,14 @@ import { FcmService } from '../fcm.service';
 })
 export class HomePage {
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
+  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) { }
+  NewIncident:object;
+  newPatrol:object;
+
   openNote() {
     this.navController.navigateRoot('/registerform')
   }
+ 
   private async presentToast() {
     const toast = await this.toastController.create({ message: "Check-in successful", duration: 3000 });
     toast.present();
@@ -53,7 +61,113 @@ export class HomePage {
 private async hallo(){
   const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
       toast.present();
-  
+  this.fcm.getNot();
   
 }
+
+PoachingIncident(){
+  let latLng;
+      var onSuccess = function (position) {
+         latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    
+      };
+      
+      function onError(error) {
+        alert('code: ' + error.code + '\n' +
+          'message: ' + error.message + '\n');
+      }
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+        enableHighAccuracy: true
+        , timeout: 5000
+      });
+      this.geolocation.getCurrentPosition().then(pos => {
+        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+      }).catch((error) => {
+        alert('Error getting location ' + error);
+      });
+
+  let self = this;
+  this.NewIncident = {
+    "Incident_Type_ID": '1', // Names for your input
+    "Incident_Status_ID": '2',
+    "Description":"Poaching"
+    
+  };
+  this.data.sendNotif("Poaching","There has been a poaching");
+  this.data.PostIncident(this.NewIncident).subscribe(res => {
+    console.log();
+    this.newPatrol = {
+      "Incident_ID": res["Incident_ID"],
+      "Patrol_Log_ID": 1,
+      "Lat": latLng.lat(),
+      "Lng": latLng.lng(),
+      "Time": new Date().toLocaleTimeString(),
+      "Date": new Date().toDateString()
+    }
+
+    this.data.PostIncident_Patrol(this.newPatrol).subscribe(res=>{
+      console.log(res);
+    });
+    this.router.navigateByUrl("/home");
+    this.IncidentToast();
+    });
 }
+
+IntruderIncident(){
+  let latLng;
+      var onSuccess = function (position) {
+         latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    
+      };
+      
+      function onError(error) {
+        alert('code: ' + error.code + '\n' +
+          'message: ' + error.message + '\n');
+      }
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+        enableHighAccuracy: true
+        , timeout: 5000
+      });
+      this.geolocation.getCurrentPosition().then(pos => {
+        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+      }).catch((error) => {
+        alert('Error getting location ' + error);
+      });
+
+  let self = this;
+  this.NewIncident = {
+    "Incident_Type_ID": '3', // Names for your input
+    "Incident_Status_ID": '2',
+    "Description":"Intruder"
+    
+  };
+  this.data.sendNotif("Poaching","There is an intruder in the reserve");
+  this.data.PostIncident(this.NewIncident).subscribe(res => {
+    console.log();
+    this.newPatrol = {
+      "Incident_ID": res["Incident_ID"],
+      "Patrol_Log_ID": 1,
+      "Lat": latLng.lat(),
+      "Lng": latLng.lng(),
+      "Time": new Date().toLocaleTimeString(),
+      "Date": new Date().toDateString()
+    }
+
+    this.data.PostIncident_Patrol(this.newPatrol).subscribe(res=>{
+      console.log(res);
+    });
+    this.router.navigateByUrl("/home");
+    this.IncidentToast();
+    });
+}
+
+
+private async IncidentToast() {
+  const toast = await this.toastController.create({message:"Incident successfully reported.",duration:3000});
+  toast.present();
+}
+
+}
+

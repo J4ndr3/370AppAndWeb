@@ -9,123 +9,110 @@
           <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
     </div>
     <br>
-    <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+    <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm" (ngSubmit)="update()">
 
         <div class="form-group">
             <h2 class="Header">Ranger Information:</h2>
             <br>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="ID" placeholder="ID..." name="ID" required maxlength="13">
+                <input type="text" hidden class="form-control" formControlName="ID" id="ID" placeholder="ID..." name="ID" required>
+                <input type="text" hidden class="form-control" formControlName="password" id="ID" placeholder="ID..." name="ID" required>
+                <input type="text" class="form-control" formControlName="rangerId" id="ID" placeholder="ID..." name="ID" required maxlength="13">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Name" placeholder="Name..." name="Name" required>
+                <input type="text" class="form-control" formControlName="fname" id="Name" placeholder="Name..." name="Name" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Surname" placeholder="Surname..." name="Surname" required>
+                <input type="text" class="form-control" id="Surname" formControlName="lname" placeholder="Surname..." name="Surname" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Cell" placeholder="Cellphone Number..." name="Cell" required>
+                <input type="text" class="form-control" id="Cell" formControlName="phone" placeholder="Cellphone Number..." name="Cell" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" placeholder="Email..." name="Email" required>
+                <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email..." name="Email" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="emergName" placeholder="Emergency contact's Name..." name="Email" required>
+                <input type="text" class="form-control" id="emergName" formControlName="emergencycontactName" placeholder="Emergency contact's Name..." name="Email" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="emergContact" placeholder="Emergency contact's Cell..." name="Email" required>
+                <input type="text" class="form-control" id="emergContact" formControlName="EmergencycontactNumber" placeholder="Emergency contact's Cell..." name="Email" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="user" placeholder="Username..." name="Username" required>
+                <input type="text" class="form-control" id="user" formControlName="username" placeholder="Username..." name="Username" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="pass" placeholder="Password..." name="Password" required>
+                <select placeholder="Select Organisation..." formControlName="Organizationtitle" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                    <option selected disabled hidden value="Organisation...">Organisation...</option>
+                <option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select2" onchange="selectColor1()" required>
-      <option selected disabled hidden value="Organisation...">Organisation...</option>
-      <option>ERP</option>
-      <option>EPI USE</option>
-      <option>Other</option>
-    </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Medical aid...">Medical Aid...</option>
-        <option>Discovery</option>
-        <option>Gems</option>
-        <option>Other</option>
-      </select>
+                <select placeholder="Select Medical Aid..." formControlName="MedicalAid" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                    <option selected disabled hidden value="Medical Aid...">Medical Aid...</option>
+                <option *ngFor="let org of MedicalOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
+                </select>
             </div>
         </div>
         <!--Let op die JavaScript function: maak seker die function is gemaak vir elke dropdown. Die disabled option wys blou en as n ander value select is dan raak dit wit-->
 
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-          <option selected disabled hidden value="Gender...">Gender...</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
+                <select placeholder="Select Gender..." formControlName="selectgender" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
+                    <option selected disabled hidden value="Gender...">Gender...</option>
+                    <option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</option>
+                </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-      <option selected disabled hidden value="User role...">User role...</option>
-      <option>Admin</option>
-      <option>Ranger</option>
-      <option>Report Ranger</option>
-    </select>
+                <select formControlName="UserRole" class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="User role...">User role...</option>
+                        <option *ngFor="let opt of UserRoleOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                      </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select2" onchange="selectColor1()" required>
-          <option selected disabled hidden value="Status...">Status...</option>
-          <option>Active</option>
-          <option>Inactive</option>
-          <option>Other</option>
-        </select>
+                <select class="form-control" formControlName="Status" id="Select2" onchange="selectColor1()" required>
+                    <option selected disabled hidden value="Status...">Status...</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    </select>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
+                <select class="form-control" formControlName="selectbloodtype" id="Select1" onchange="selectColor()" required>
           <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
           <option>A+</option>
           <option>B+</option>
@@ -142,7 +129,7 @@
         <!--Moenie die save button verander nie-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                <button type="submit" class="btn btn-default" id="Save" (click)="Toast()" routerLink="/rangers">Save</button>
+                <button type="submit" class="btn btn-default" id="Save">Save</button>
             </div>
             <br>
             <br>

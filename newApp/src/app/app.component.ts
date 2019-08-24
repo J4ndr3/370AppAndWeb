@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { timer } from 'rxjs';
 import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -75,6 +76,7 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
+    private alertCtrl: AlertController,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FcmService,
@@ -84,11 +86,12 @@ export class AppComponent {
   }
 
   private async presentToast(message) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 3000
+    const alert = await this.alertCtrl.create({
+      header: "Incident Aert",
+      message: message,
+      buttons: ['OK']
     });
-    toast.present();
+    alert.present();
   }
 
   private notificationSetup() {
@@ -96,9 +99,9 @@ export class AppComponent {
     this.fcm.onNotifications().subscribe(
       (msg) => {
         if (this.platform.is('ios')) {
-          // this.presentToast(msg.aps.alert);
+          this.presentToast(msg.aps.alert);
         } else {
-          // this.presentToast(msg.body);
+          this.presentToast(msg.body);
         }
       });
   }

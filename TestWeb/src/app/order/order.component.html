@@ -37,20 +37,12 @@
                 <br>
               
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Order ID..." name="desc" required>
-                    
+                    <input type="text" class="form-control" id="desc" placeholder="Order ID..." name="desc" required>
                 </div>
-                
-                
-                <br>
-                
                   <div class="col-sm-offset-2 col-sm-10" id="savediv">
                       <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
-                  
                 </div>
-                
-                <br>
-                
+        
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -119,56 +111,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>0023</td>
-                <td>2019/07/03</td>
-                <td>Acebeam X80 Flashlight & Charger</td>
-                <td>Flashlight</td>
-                <td><input type="checkbox" name="Received" value="Received"> Received</td>
-                
-                
+            <tr *ngFor="let Order of Orders |filter:searchtext">
+                <td style="text-align: left;">{{Order.ID}}</td>
+                <td style="text-align: left;">{{Order.Date}}</td>
+                <td style="text-align: left;">{{Order.Asset}}</td>
+                <td style="text-align: left;">{{Order.Type}}</td>
+                <td style="text-align: left;">{{Order.Supploier}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-order'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-
-              
-              
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Order.ID)"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Order.ID)" id="editbtn"><img
+              src="/assets/ios-trash.svg " class="edit " /></button>
             </tr>
-            <tr>
-                <td>0025</td>
-                <td>2019/07/04</td>
-                <td>Patrol Magnet</td>
-                <td>Magnet</td>
-                <td><input type="checkbox" name="Received" value="Received"> Received</td>
 
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-order'><img src="/assets/ios-create.svg"
-                  class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            
-            <tr>
-                <td>0026</td>
-                <td>2019/07/04</td>
-                <td>Acebeam X80 Flashlight & Charger</td>
-                <td>Flashlight</td>
-                <td><input type="checkbox" name="Received" value="Received"> Received</td>
-
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-order'><img src="/assets/ios-create.svg"
-                  class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-              src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
-            <tr>
-                <td>0029</td>
-                <td>2019/07/05</td>
-                <td>Patrol Magnet</td>
-                <td>Magnet</td>
-                <td><input type="checkbox" name="Received" value="Received"> Received</td>
-
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-order'><img src="/assets/ios-create.svg"
-                  class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
-                src="/assets/ios-trash.svg" class="edit" /></button>
-            </tr>
         </tbody>
     </table>
 
