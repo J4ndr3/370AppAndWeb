@@ -12,7 +12,7 @@ import html2canvas from 'html2canvas';
 export class DownloadStatusComponent implements OnInit {
   myDate= new Date().toLocaleDateString();
 
-  timeLeft: number = 1;
+  timeLeft: number = 3;
   interval;
 
   Assets:object;
@@ -87,7 +87,7 @@ this.interval = setInterval(() => {
 clearInterval(this.interval);
   }
   else{
-    this.timeLeft = 1;
+    this.timeLeft = 3;
   }
 },1000)
   }

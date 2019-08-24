@@ -23,7 +23,7 @@ export class DownloadRewardsComponent implements OnInit {
   EventCount=0;
   EventsCount:Array<object>;
 
-  timeLeft: number = 1;
+  timeLeft: number = 3;
   interval;
 
   public Download() {
@@ -86,6 +86,9 @@ export class DownloadRewardsComponent implements OnInit {
       this.timeLeft--;
     } else if (this.timeLeft == 0) {
       
+     
+      
+
       document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><h1 style="margin:auto">REWARDS REPORT</h1></div><br><br>';
       const data1 = document.getElementById('contentToConvert');
       
@@ -110,7 +113,7 @@ export class DownloadRewardsComponent implements OnInit {
     }
     
     else{
-      this.timeLeft = 1;
+      this.timeLeft = 3;
     }
   },1000)
 }

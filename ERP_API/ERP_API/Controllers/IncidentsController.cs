@@ -35,9 +35,9 @@ namespace ERP_API.Controllers
                 m.ID = Item.Incident_ID;
                 m.Description = Item.Description;
                 m.Type = Item.Incident_Type.Description;
+                m.Type_ID = Item.Incident_Type_ID;
                 m.Level = Item.Incident_Type.Incident_Level.Description;
                 m.StatID = Item.Incident_Status_ID;
-                m.Date = Item.Incident_Status.Description;
                 toReturn.Add(m);
             }
             return toReturn;

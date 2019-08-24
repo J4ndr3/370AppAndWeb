@@ -66,6 +66,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser_Role(int id, User_Role user_Role)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -101,6 +102,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(User_Role))]
         public IHttpActionResult PostUser_Role(User_Role user_Role)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -116,6 +118,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(User_Role))]
         public IHttpActionResult DeleteUser_Role(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             User_Role user_Role = db.User_Role.Find(id);
             if (user_Role == null)
             {

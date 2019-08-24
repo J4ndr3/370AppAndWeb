@@ -23,6 +23,8 @@ export class RewardAddComponent implements OnInit {
   NewEventRewardAdd:object;
   EventRewardAddSelection:number =0;
   EventRewardAddOptions:Array<object>; 
+  searchText;
+  searchText1;
   
   constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod: RewardModifyComponent,private mod1: RewardEventModifyComponent) { }
 

@@ -36,7 +36,10 @@ namespace ERP_API.Controllers
                 m.Checkin = Item.Patrol_Log.Checkin;
                 m.Checkout = Item.Patrol_Log.Checkout;
                 m.Passed = Item.Date_Time_Passed;
-
+                m.time = Math.Round(Item.Patrol_Log.Checkout.Subtract(Item.Patrol_Log.Checkin).TotalHours, 2);
+                m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
+                m.MonthPoints = db.Patrol_Marker.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+                    //Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
                 toReturn.Add(m);
             }
             return toReturn;

@@ -62,9 +62,11 @@ export class ModifybookingPage implements OnInit {
         Passenger:this.Shift.Passenger_ID,
         Vehicle :this.Shift.Vehicle_ID,
         Reserve :this.Shift.Reserve_ID,
-        startTime:new Date(this.Shift.Start_Time),
-        endTime:new Date(this.Shift.End_Time)
-        })    
+        startTime:new Date(this.Shift.Start_Time).toISOString(),
+        endTime:new Date(this.Shift.End_Time).toISOString()
+        })   
+        this.event.startTime = new Date(this.Shift.Start_Time).toISOString()
+        this.event.endTime =  new Date(this.Shift.End_Time).toISOString()
     })
   }
   update(){

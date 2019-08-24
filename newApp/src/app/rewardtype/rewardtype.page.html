@@ -24,16 +24,13 @@
 
         <br>
         <div class="outer">
-                <ion-item>
-                        <ion-label floating>Job </ion-label>
-                        <ion-input type="text" placeholder="Write here"></ion-input>
-                     </ion-item>
+
             <!--Moenie buttons en search bar verander nie-->
             <div class="search">
                 <form action="/action_page.php" id="searchform">
                     <div class="input-group" style="background-color: rgb(207, 209, 211)">
-                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" style="border-radius: 5px !important"> <button style="background-color: rgb(102,116,143); border-radius: 5px !important;" class="btn btn-default"
-                            type="submit" id="Search"><img src="/assets/ios-search.svg" style="filter: invert(2)" width="25px" height="22px" /></button>
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" [(ngModel)]="searchText1" style="border-radius: 5px !important"> <button style="background-color: rgb(102,116,143); border-radius: 5px !important;"
+                            class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" style="filter: invert(2)" width="25px" height="22px" /></button>
                     </div>
                 </form>
             </div>
@@ -48,23 +45,23 @@
             <div class="inputForm">
 
                 <div id="accordion">
-                    <div class="card">
+                    <div class="card" *ngFor="let Product of Products|filter: searchText1">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn " data-toggle="collapse" data-target="#collapseOne" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
-                       <b style="color:white">Ranger Cap</b>
+                                <button class="btn " data-toggle="collapse" [attr.data-target]="'#collapseOne-' + Product.PID" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
+                       <b style="color:white" >{{Product.PName}}</b>
                       </button>
                             </h5>
                         </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div [attr.id]="'collapseOne-' + Product.PID" style="background-color: rgba(102,116,143,0.7);" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 
-                            <p class="divA1"> Points Required: 600 </p>
+                            <p class="divA1">Points Required: {{Product.PPoints}} </p>
 
-                            <p class="divA1"> Available quantity: 12 </p>
+                            <p class="divA1"> Available quantity: {{Product.PQuantity}} </p>
 
-                            <p class="divA1"> A sports cap with ERP Logo </p>
+                            <p class="divA1"> {{Product.PDescription}} </p>
                             <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important ">
+                                <button class="buttonA1" (click)="Validate(Product.PID)" style="border-radius: 5px !important ">
                                     <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
                                                 <p style="margin: auto;  font-size:16px">
                                                         <b style="color:white">Claim</b>
@@ -73,57 +70,6 @@
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <b style="color:white">Key Chain</b> 
-                      </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-
-
-                                <p class="divA1"> Points Required: 250 </p>
-
-                                <p class="divA1"> Available quantity: 50 </p>
-
-                                <p class="divA1"> Stainless steel with a rhino </p>
-                                <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                    <button type="button" class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important;">
-                                        <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
-                                                    <p style="margin: auto;  font-size:16px">
-                                                            <b style="color:white">Claim</b>
-                                                    </p>
-                                                </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                       <b style="color:white">Walking Stick</b> 
-                      </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <p class="divA1"> Points Required: 900 </p>
-
-                                <p class="divA1"> Available quantity: 5 </p>
-
-                                <p class="divA1"> Wood crafted walking stick </p>
-                                <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                    <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
-                                        <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
-                                                    <p style="margin: auto;  font-size:16px">
-                                                            <b style="color:white">Claim</b>
-                                                    </p>
-                                                </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <br/>
@@ -142,8 +88,8 @@
             <div class="search">
                 <form action="/action_page.php" id="searchform">
                     <div class="input-group" style="background-color: rgb(207, 209, 211)">
-                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" style="border-radius: 5px !important"><button style="background-color: rgb(102,116,143); border-radius: 5px " class="btn btn-default"
-                            type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" style="filter: invert(2)"  width="25px" height="22px"  /></button>
+                        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN" [(ngModel)]="searchText" style="border-radius: 5px !important"><button style="background-color: rgb(102,116,143); border-radius: 5px "
+                            class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" style="filter: invert(2)"  width="25px" height="22px"  /></button>
                     </div>
                 </form>
             </div>
@@ -156,86 +102,34 @@
             <div class="inputForm">
 
                 <div id="accordion">
-                    <div class="card">
+                    <div class="card" *ngFor="let Event of Events|filter: searchText">
                         <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
-                                <button class="btn " data-toggle="collapse" data-target="#collapseOne" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
-                       <b style="color:white">Sun City</b>
+                                <button class="btn " data-toggle="collapse" [attr.data-target]="'#collapseOne-' + Event.EID" style="width:100%" aria-expanded="true" aria-controls="collapseOne">
+                       <b style="color:white">{{Event.EName}}</b>
                       </button>
                             </h5>
                         </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div [attr.id]="'collapseOne-' + Event.EID" class="collapse" style="background-color: rgba(102,116,143,0.7);" aria-labelledby="headingOne" data-parent="#accordion">
 
-                            <p class="divA1"> Date: 2019/04/16 </p>
+                            <p class="divA1"> Date: {{Event.EDate}} </p>
 
-                            <p class="divA1"> Required Points: 18000 </p>
+                            <p class="divA1"> Required Points: {{Event.EPoints}} </p>
 
-                            <p class="divA1">2 day vacation in a 3 bed bungalo </p>
+                            <p class="divA1">{{Event.EDescription}} </p>
                             <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
-                                    <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
-                                                <p style="margin: auto;  font-size:16px">
-                                                        <b style="color:white">Claim</b>
+                                <button class="buttonA1" (click)="Validate1(Event.EID)" style=" border-radius: 5px !important ">
+                                    <ion-img src="/assets/ios-cart.svg " style="margin: auto; width: 12%; color:rgb(102,173,177) "></ion-img>
+                                                <p style="margin: auto; font-size:16px ">
+                                                        <b style="color:white ">Claim</b>
                                                 </p>
                                             </button>
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <b style="color:white">San Lameer</b> 
-                      </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 
 
 
-
-                                <p class="divA1"> Date: 2019/06/17 </p>
-
-                                <p class="divA1"> Required Points: 26000 </p>
-
-                                <p class="divA1">4 days in a 4 bedroom bungalo </p>
-                                <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                    <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
-                                        <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
-                                                    <p style="margin: auto;  font-size:16px">
-                                                            <b style="color:white">Claim</b>
-                                                    </p>
-                                                </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn collapsed" data-toggle="collapse" style="width:100%" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                       <b style="color:white">Carnival City</b> 
-                      </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-
-
-                                <p class="divA1"> Date: 2019/09/23 </p>
-
-                                <p class="divA1"> Required Points: 20000 </p>
-
-                                <p class="divA1">4 tickets for a trevor Noah show </p>
-                                <div style="width:100%; padding:5px; background-color:rgba(0, 24, 26, 0.23)">
-                                    <button class="buttonA1" routerLink="/confirm-reward" style="border-radius: 5px !important">
-                                        <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 12%; color:rgb(102,173,177)"></ion-img>
-                                                    <p style="margin: auto;  font-size:16px">
-                                                            <b style="color:white">Claim</b>
-                                                    </p>
-                                                </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <br/>
@@ -245,7 +139,7 @@
         </div>
     </div>
     <!--hierdie moet nie in finale program kom ni-->
-    <ion-img src="/assets/md-star.svg" style="margin: auto; width: 70%; color:rgb(102,173,177)" routerLink="/error-not-enough-points"></ion-img>
+    <ion-img src="/assets/md-star.svg " style="margin: auto; width: 70%; color:rgb(102,173,177) "></ion-img>
     <br>
 
 

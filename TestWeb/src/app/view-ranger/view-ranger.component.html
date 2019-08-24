@@ -1,14 +1,14 @@
-<h1>John Doe</h1>
+<h1>{{Ranger.Name}} {{Ranger.Surname}}</h1>
 <div style="margin:auto; width: 45%;">
     <table style="border: none !important;">
         <tr style="border: none !important;">
             <td style="border: none !important;">
-                <h5 align="left " style="color: black "> <img src="./assets/ios-call.svg " width="10% "><b>: 085748392</b></h5>
+                <h5 align="left " style="color: black "> <img src="./assets/ios-call.svg " width="10% "><b>: {{Ranger.Cell}}</b></h5>
             </td>
 
 
             <td style="border: none !important;">
-                <h5 align="right " style="color: black "><img src="./assets/ios-mail.svg " width="10% "><b>: jondoe@gmail.com</b></h5>
+                <h5 align="right " style="color: black "><img src="./assets/ios-mail.svg " width="10% "><b>: {{Ranger.Email}}</b></h5>
             </td>
         </tr>
     </table>
@@ -20,47 +20,47 @@
     <table style="text-align: left !important;">
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Roles</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Ranger</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.User_Role_ID}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">ID</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">9712080065099</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.ID_Number}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Emergency Name</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Esther</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Emerg_Name}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Emergency Number</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">0837789039</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Emerg_Contact}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Medical Aid</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Liberty</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Medical_Aid_ID}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Blood type</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">O+</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Blood_Type}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Gender</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Male</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.genderID}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Organisation</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">ERP</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Organisation_ID}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">Status</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Active</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Status}}</td>
         </tr>
         <tr>
             <th style="border: 1px solid;text-align: left !important;">User Name</th>
-            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">Jandre</td>
+            <td style="color:black !important;background-color: rgba(207, 209, 211, 0.75) !important; border: 1px solid black !important;text-align: left !important;">{{Ranger.Username}}</td>
         </tr>
     </table>
 </div>
 <br>
 <div style="width:40% !important; margin: auto" id="savediv">
-    <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Done</button>
+    <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="close()" data-toggle="collapse" data-target="#demo">Done</button>
 </div>

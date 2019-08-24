@@ -1,16 +1,86 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { ERPService } from '../erp.service';
+import { Router } from '@angular/router';
+// import { NavController } from 'ionic-angular';
+import {ConfirmRewardPage} from './../confirm-reward/confirm-reward.page'
+import { element } from '@angular/core/src/render3';
 @Component({
   selector: 'app-rewardtype',
   templateUrl: './rewardtype.page.html',
   styleUrls: ['./rewardtype.page.scss'],
 })
 export class RewardtypePage implements OnInit {
-
-  constructor() { }
-
+Products:object;
+Events1:Array<object>;
+Events:Array<object>;
+searchText;
+searchText1;
+nReward:object;
+redeemed:Array<object>;
+rcv: object;
+  constructor(private data: ERPService, private router:Router) { }
+  // ,public navCtrl: NavController
   ngOnInit() {
-  }
- 
+  
+    this.data.GetProduct_Reward().subscribe(res=>{
+      console.log(res);
+      this.Products = res;
+    });
+    
+
+    this.data.GetEvent_Reward().subscribe(res=>{
+      this.redeemed = [];
+      this.data.GetRedeem_Reward().subscribe(res1=>{
+        this.redeemed = JSON.parse(JSON.stringify(res1));
+        this.Events = [];
+        this.Events1 = [];
+        console.log(res);
+        this.Events1 = JSON.parse(JSON.stringify(res));
+        this.Events1.forEach(element=> {
+          if (this.redeemed["Event_Reward_ID"] == element["Event_Reward_ID"])
+          {
+            console.log(element);
+            this.Events.push(element);
+          }     
+        })
+      })
+     
+    });
+    
+     
+    
 }
+Validate(ID){
+  this.data.GetProduct_RewardID(ID).subscribe(res=>{
+  if(res["Points"] > 1000)
+  {
+    this.router.navigateByUrl("/error-not-enough-points");
+  }
+  else{
+    this.data.nvalidate = ID;
+    this.router.navigateByUrl("/confirm-reward");
+  }
+  // this.navCtrl.push(ConfirmRewardPage, { 
+  //   data: this.nReward = {"Product_Reward_ID":res["Product_Reward_ID"]}
+  //   });
+})
+
+}
+Validate1(ID){
+  this.data.GetEvent_RewardID(ID).subscribe(res=>{
+    if(res["Points"] > 1000)
+    {
+      this.router.navigateByUrl("/error-not-enough-points");
+    }
+    else{
+      this.data.nvalidate = ID;
+      this.router.navigateByUrl( "/event-confirm");
+    }
+  })
+  
+}
+
+
+
+}
+

@@ -23,7 +23,7 @@ namespace ERP_API.Controllers
         public List<dynamic> GetMarkers()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<Marker> Level = db.Markers.Include(zz=>zz.Marker_Type).ToList();
+            List<Marker> Level = db.Markers.Include(zz=>zz.Marker_Type).Include(zz=>zz.Reserve).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Marker Item in Level)
             {
@@ -34,11 +34,9 @@ namespace ERP_API.Controllers
                 m.Status = Item.Status;
                 m.Date = Item.Modified.ToShortDateString();
                 m.Points = Item.Marker_Type.Points_Worth;
-
-                
-
-
-
+                m.Reserve = Item.Reserve.Name;
+                m.Type = Item.Marker_Type.Type;
+                m.Description = Item.Description;
                 toReturn.Add(m);
             }
             return toReturn;
@@ -48,6 +46,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Marker))]
         public IHttpActionResult GetMarker(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Marker marker = db.Markers.Find(id);
             if (marker == null)
             {
@@ -61,6 +60,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutMarker(int id, Marker marker)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -96,6 +96,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Marker))]
         public IHttpActionResult PostMarker(Marker marker)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -111,6 +112,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Marker))]
         public IHttpActionResult DeleteMarker(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Marker marker = db.Markers.Find(id);
             if (marker == null)
             {

@@ -60,8 +60,60 @@ export class RegisteruserComponent implements OnInit {
       });
   }
   goUsers() {
-      
-    this.router.navigate(['rangers']);
+    var fname = this.AddForm.get('fname').value; // Names for your input
+    var lname = this.AddForm.get('lname').value; // Names for your input
+    var rangerId = this.AddForm.get('rangerId').value;
+    var email = this.AddForm.get('email').value; // Names for your input
+    var phone = this.AddForm.get('phone').value;
+    var emergencycontactName = this.AddForm.get('emergencycontactName').value; // Names for your input
+    var EmergencycontactNumber = this.AddForm.get('EmergencycontactNumber').value;
+    var MedicalAid = this.AddForm.get('MedicalAid').value;
+    var username = this.AddForm.get('username').value;
+    var password = this.AddForm.get('password').value;
+    var confirmpassword = this.AddForm.get('confirmpassword').value;
+    var selectgender = this.AddForm.get('selectgender').value;
+    var selectbloodtype = this.AddForm.get('selectbloodtype').value;
+    var Organizationtitle = this.AddForm.get('Organizationtitle').value;
+    var UserRole = this.AddForm.get('UserRole').value;
+    if (this.AddForm.get('Status').value == "Active"){
+        var Status = 1;
+    }
+    else if (this.AddForm.get('Status').value == "Inactive")
+    {
+        var Status = 0;
+    }
+    
+    if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="") {
+        //Modal popup
+      }
+      else {
+        this.NewRegisterformPage = {
+          "ID_Number": rangerId,
+          "Name": fname, // Names for your input
+          "Surname": lname, // Names for your input
+          "Email": email,
+          "Cell":phone,
+          "genderID": selectgender,
+          "Emerg_Name": emergencycontactName,
+          "Emerg_Contact": EmergencycontactNumber,
+          "Status":Status,
+          "User_Role_ID":UserRole,
+          "Medical_Aid_ID": MedicalAid,
+          "Points":0,
+          "Blood_Type": selectbloodtype, 
+          "Username": username,
+          "Password": password,
+          "Organisation_ID":Organizationtitle,
+          "Smartphone":1,
+          "Access_ID":6
+        };
+        console.log(this.NewRegisterformPage)
+        this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+            console.log(res)
+            this.router.navigate(['rangers']);
+        });
+      }
+    
   }
   showToast(){
     this.toastrService.show("Record added successfully", "Success!");

@@ -33,9 +33,11 @@ namespace ERP_API.Controllers
                 {
                     dynamic m = new ExpandoObject();
                     m.ID = Item.Notification_ID;
-                    m.Date = Item.Date;
+                    m.Date = Item.Date.ToShortDateString() + " "+ Item.Date.ToShortTimeString();
                     m.Message = Item.Meassage;
+                    m.Title = Item.Title;
                     m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
+                    m.Ranger_ID = Item.Ranger_ID;
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -100,6 +102,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Notification))]
         public IHttpActionResult PostNotification(Notification notification)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

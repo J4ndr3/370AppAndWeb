@@ -13,17 +13,30 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div style="padding-top: 7px">
-        <ion-img src="/assets/RANGER VOUCHERHOED.jpg" style="margin: auto; width: 95%; color:rgb(102,173,177)"></ion-img>
+    <div style=" padding-top:5px; height: 87%; width: 100%">
+        <!-- <ion-content id="QRbackground-image" style="background-color: red !important"> -->
+        <div style="--background:transparent; background-image: url('/assets/QRimage.jpg') !important; background-size: 100%; height: 99%; width: 95%;margin:auto;">
 
-        <div style="padding-top: 5px; padding-bottom: 7px">
-            <ion-buttons routerLink="/" style="background-color: rgb(102,116,143); width: 95%;margin: auto;padding-bottom:5px; padding-top:10px; border-radius: 5px !important">
-                <b style="color: rgb(102,116,143)">.........</b>
-                <ion-img src="/assets/ios-save.svg" style=" width: 12%;height: 98.5%; color:rgb(102,116,143)"></ion-img>
-                <p style="margin: auto; text-align: left; color:white; font-size:18px">
-                    <b style="color: white">SAVE VOUCHER</b><b style="color: rgb(102,116,143)">.......</b>
-                </p>
-            </ion-buttons>
+            <div style="padding-top: 7px">
+                <!-- <ion-img src="/assets/RANGER VOUCHERHOED.jpg" style="margin: auto; width: 95%; color:rgb(102,173,177)"></ion-img> -->
+
+                <div style="padding-top: 25%; padding-left: 10%">
+                    <qr-code [value]="qrv" [size]="170" style="background-color: red !important; "></qr-code>
+                </div>
+            </div>
+            <h6 style="width: 68%; padding-left: 10%">PLEASE PRESENT VOUCHER AT HEAD OFFICE TO CLAIM YOUR REWARD</h6>
         </div>
     </div>
+    <ion-footer style="padding-bottom:7px; padding-top:5px ">
+
+        <ion-buttons routerLink="/" style="background-color: rgb(102,116,143); width: 95%;margin: auto;padding-bottom:5px; padding-top:5px ; border-radius: 5px !important ">
+            <b style="color: rgb(102,116,143) ">.........</b>
+            <ion-img src="/assets/ios-save.svg " style=" width: 12%;height: 98.5%; color:rgb(102,116,143) "></ion-img>
+            <p style="margin: auto; text-align: left; color:white; font-size:18px ">
+                <b style="color: white ">SAVE VOUCHER</b><b style="color: rgb(102,116,143) ">.......</b>
+            </p>
+        </ion-buttons>
+
+    </ion-footer>
+
 </ion-content>
