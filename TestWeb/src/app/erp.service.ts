@@ -433,6 +433,9 @@ export class ERPService {
   GetMarkers(id) {
     return this.http.get('http://localhost:51389/api/Markers/'+id)
   }
+  GetPatrol_log() {
+    return this.http.get('http://localhost:51389/api/Patrol_Log')
+  }
   PutMarker(ID, obj) {
     return this.http.put('http://localhost:51389/api/Markers/' + ID, obj)
   }

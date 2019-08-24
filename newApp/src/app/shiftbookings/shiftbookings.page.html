@@ -49,7 +49,7 @@
     </ion-card>
     <br>
     <ion-row>
-
+       
         <ion-col size="3">
             <ion-button expand="block" id="today" (click)="today()">Today</ion-button>
         </ion-col>
@@ -63,22 +63,26 @@
             <ion-button expand="block" [ngClass]="calendar.mode == 'day' ? 'Selected' : 'NotSelected'" (click)="changeMode('day')">Day</ion-button>
         </ion-col>
 
+        
         <!-- Move back one screen of the slides -->
-        <ion-col size="6" text-left>
-            <ion-button fill="clear" (click)="back()">
+        <ion-col size="3" text-left>
+            <ion-button fill="clear" (click)="back()" size=small>
                 <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
             </ion-button>
         </ion-col>
-
+        <ion-col size="6"  text-center >
+            <ion-label align="center">{{viewTitle}}</ion-label>
+        </ion-col>
+        
         <!-- Move forward one screen of the slides -->
-        <ion-col size="6" text-right>
-            <ion-button fill="clear" (click)="next()">
+        <ion-col size="3" text-right>
+            <ion-button fill="clear" (click)="next()" size=small>
                 <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
             </ion-button>
         </ion-col>
     </ion-row>
 
-    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" startHour="0"
+    <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" [dateFormatter]="calendar.dateFormatter" startHour="0"
         endHour="24" step="60" startingDayWeek="1" style="width: fit-content; ">
     </calendar>
 

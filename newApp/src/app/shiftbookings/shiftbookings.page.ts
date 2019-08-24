@@ -43,6 +43,9 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   calendar = {
     mode: 'month',
     currentDate: new Date(),
+    dateFormatter: {
+    
+  }
   };
  
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
@@ -50,6 +53,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,private mod:ModifybookingPage,public toastController: ToastController,private router: Router,
   private data: ERPService, private formBuilder: FormBuilder) { }
   ngOnInit() {
+    this.eventSource=[];
     this.data.GetPatrol_Bookings().subscribe(res=>{
       this.events = JSON.parse(JSON.stringify(res));
       console.log(this.events)
