@@ -25,6 +25,7 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { ModifybookingPage } from './modifybooking/modifybooking.page';
 import { VehiclesPage } from './vehicles/vehicles.page';
+import { ViewVoucharPage } from './view-vouchar/view-vouchar.page';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPkIMLCVqfgX48Vyx9xl6HpPvs4UfiOnQ",
@@ -54,6 +55,7 @@ const firebaseConfig = {
   ],
   providers: [
     VehiclesPage ,
+    ViewVoucharPage,
     ModifybookingPage,
     RangerprofilePageModule,
     StatusBar,

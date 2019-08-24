@@ -18,6 +18,8 @@ export class PerformanceComponent {
   private chart: am4charts.XYChart;
   myDate= new Date().toLocaleDateString();
   performances:object;
+  hours:Array<object>;
+
 
   
   @ViewChild('content', { static: false }) content: ElementRef;
@@ -57,8 +59,7 @@ export class PerformanceComponent {
     this.data.GetPerformance().subscribe(res=>{
       console.log(res);
       this.performances = res;
-
-
+      this.hours = JSON.parse(JSON.stringify(res));
     });
   }
 
@@ -75,9 +76,17 @@ export class PerformanceComponent {
 
       let data = [];
       let visits = 10;
-      for (let i = 1; i < 31; i++) {
+      // this.hours.forEach(element => {
+      //   data.push({ date: new Date(2019, 0, i), name: "name" + i, value: visits });
+      // });
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var day = date.getDay();
+      console.log("Halloooo"+date,year,month,day)
+      for (let i = 1; i <= 31; i++) {
         visits = Math.round((Math.random() < 0.5 ? 1 : 0) * Math.random() * 10);
-        data.push({ date: new Date(2019, 0, i), name: "name" + i, value: visits });
+        data.push({ date: new Date(year, month, i), name: "name" + i, value: visits });
       }
 
       chart.data = data;

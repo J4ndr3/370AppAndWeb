@@ -20,6 +20,11 @@ export class DownloadIncedentComponent implements OnInit {
   timeLeft1: number = 2;
   interval1;
   IncedentCount = 0;
+  myLatLngList: any;
+  Latitude: Array<number>;
+  Longitude: Array<number>;
+  CoordList: Array<object>;
+  r: Array<object>;
 MAP1:any;
 
   @ViewChild('content', { static: false }) content: ElementRef;
@@ -58,7 +63,8 @@ else{
 },1000)
 
     document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><h1 style="margin:auto">INCEDENT REPORT</h1></div><br><br>';
-
+    document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
+    document.getElementById('chrt3').innerHTML = '<br><br>';
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Incedents = JSON.parse(JSON.stringify(res));
       console.log(res);
@@ -102,42 +108,44 @@ else{
       }
     },1000)
 
+   
     const mapProperties = {
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,
-      disableDefaultUI: true,
-      useCORS: true,
-      image: true,
-      download: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
  };
  this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
- this.createMarker();
+ 
+ this.data.GetIncedent_Patrole().subscribe(res => {
+  this.r = [];
+  this.CoordList = JSON.parse(JSON.stringify(res));
+  this.CoordList.forEach(element =>{
+     this.r.push(element);
+   });
 
+  console.log(this.r);
 
-
-  }
-
-  createMarker() {
-
-    // list of hardcoded positions markers 
-     var myLatLngList = {
-         myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
-         };
-
-        //iterate latLng and add markers 
-       for(const data of myLatLngList.myLatLng){
-         var marker = new google.maps.Marker({
-             position: data,
-             map: this.map,
-             title: 'Hallo This is a marker'
-         });
-      }
+  this.r.forEach(element =>{
+   
+      this.myLatLngList = {
      
- };
+        myLatLng : [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["Long"])}] 
+        };
+   
+     for(const data of this.myLatLngList.myLatLng){
+       var marker = new google.maps.Marker({
+           position: data,
+           map: this.map,
+           title: 'Hallo This is a marker'
+       });
+       
+    }
+  })
+
+})
       }
     
-    
+}
     
     
     
