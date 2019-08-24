@@ -14,6 +14,7 @@ export class ReserveComponent implements OnInit {
   AddForm: FormGroup;
   NewReserve:object;
   nReserve:object;
+  Search;
   constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder,private mod:ReserveModComponent) { }
 
   ngOnInit() {

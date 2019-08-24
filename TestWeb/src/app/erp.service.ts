@@ -47,10 +47,10 @@ export class ERPService {
     return this.http.post('http://localhost:51389/api/User_Role', obj)
   }
   DeleteUserRole(id) {
-    return this.http.delete('http://localhost:51389/api/User_Role' + id)
+    return this.http.delete('http://localhost:51389/api/User_Role/' + id)
   }
   PutUserRole(id, obj) {
-    return this.http.put('http://localhost:51389/api/User_Role' + id, obj)
+    return this.http.put('http://localhost:51389/api/User_Role/' + id, obj)
   }
 
   GetGender() {
@@ -416,5 +416,9 @@ export class ERPService {
   }
   DeleteAsset(id) {
     return this.http.delete('http://localhost:51389/api/Assets/' + id)
+  }
+
+  GetUserRole1(id) {
+    return this.http.get('http://localhost:51389/api/User_Role/' + id)
   }
 }

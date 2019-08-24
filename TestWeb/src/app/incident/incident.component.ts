@@ -3,6 +3,8 @@ import { ButtonsModule, WavesModule, CardsFreeModule } from 'angular-bootstrap-m
 import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms'; 
+import { Navigation, Router } from '@angular/router';
+import { NavComponent } from '../nav/nav.component';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class IncidentComponent implements OnInit {
 
 
   
-  constructor(private toastrService: ToastrService, private data:ERPService) { }
+  constructor(private toastrService: ToastrService, private data:ERPService, private nav: NavComponent, private router: Router) { }
 
   ngOnInit() {
     this.data.GetIncidents().subscribe(res=>{
@@ -44,8 +46,13 @@ export class IncidentComponent implements OnInit {
      console.log(this.IndivIncident);
      this.data.PutIncident(ID,this.IndivIncident).subscribe(res=>{
       console.log(this.IndivIncident);
+      //this.nav.ngOnInit();
+      this.nav.count--;
+      this.router.navigateByUrl("/incident");
       this.ngOnInit();
       this.Toast();
+      
+
     });
    });
 

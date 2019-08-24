@@ -37,6 +37,7 @@ namespace ERP_API.Controllers
                     m.Message = Item.Meassage;
                     m.Title = Item.Title;
                     m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
+                    m.Ranger_ID = Item.Ranger_ID;
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -101,6 +102,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Notification))]
         public IHttpActionResult PostNotification(Notification notification)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

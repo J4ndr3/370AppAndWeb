@@ -1,7 +1,6 @@
 <h1>
     SECURITY COMPANY</h1>
 <hr class="hrow" />
-<br/>
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
     <div class="button">
@@ -10,11 +9,9 @@
     </div>
 
     <div class="search">
-        <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
-        </form>
     </div>
 </div>
 <br>
@@ -41,15 +38,15 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Name" placeholder="Name..." name="Level" required>
                 </div>
-                <br>
+               
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Email" placeholder="Email..." name="Level" required>
                 </div>
-                <br>
+               
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Cell" placeholder="Cell..." name="Level" required>
                 </div>
-                <br>
+                
                 <div class="col-sm-10">
                     <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                         <option hidden [value]=""  selected>Reserve...</option>
@@ -70,8 +67,6 @@
     <br>
 </div>
 <!--TABLE-->
-<br>
-
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -84,7 +79,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Security of Securities">
+            <tr *ngFor="let Security of Securities | filter:Search ">
                 <td style="text-align: left;">{{Security.Name}}</td>
                 <td style="text-align: left;">{{Security.Reserve}}</td>
                 <td style="text-align: left;">{{Security.Email}}</td>

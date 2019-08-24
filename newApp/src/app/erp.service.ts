@@ -72,6 +72,8 @@ nID:any;
         console.log(response);
       },
     });}
+
+   
   PutRanger(ID,obj){
     return this.http.put('http://localhost:51389/api/rangers/'+ID,obj)
   }
@@ -98,5 +100,11 @@ nID:any;
   }
   GetPatrol_Bookings(){
     return this.http.get('http://localhost:51389/api/Patrol_Booking/')
+  }
+  PostIncident_Image(obj){
+    return this.http.post('http://localhost:51389/api/Incident_Image/',obj)
+  }
+  PostIncident_Patrol(obj){
+    return this.http.post('http://localhost:51389/api/Incident_Patrol/',obj)
   }
 }
