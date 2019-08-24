@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
 import { RangerprofilePageModule } from './rangerprofile/rangerprofile.module';
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+
 import { ModifybookingPage } from './modifybooking/modifybooking.page';
 import { VehiclesPage } from './vehicles/vehicles.page';
 
@@ -47,7 +49,8 @@ const firebaseConfig = {
     NgCalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     VehiclesPage ,

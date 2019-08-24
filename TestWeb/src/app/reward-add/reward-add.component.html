@@ -25,7 +25,7 @@
         <div class="search">
             <form action="/action_page.php" id="searchform">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                    <input type="text" class="form-control" placeholder="Search..." name="search" [(ngModel)]="searchText" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
                 </div>
             </form>
         </div>
@@ -40,7 +40,7 @@
         <div>
             <div class="inner collapse" id="demo3">
                 <div class="close">
-                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
+                    <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo3">
                       <img src="/assets/ios-close.svg" class="closePic" /></button>
                 </div>
 
@@ -108,7 +108,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let RewardAdd of RewardAdds">
+                        <tr *ngFor="let RewardAdd of RewardAdds|filter: searchText">
                             <td>{{RewardAdd.PName}}</td>
                             <td>{{RewardAdd.PQuantity}}</td>
                             <td>{{RewardAdd.PPoints}}</td>
@@ -136,7 +136,7 @@
         <div class="search">
             <form action="/action_page.php" id="searchform">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                    <input type="text" class="form-control" placeholder="Search..." name="search" [(ngModel)]="searchText1" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
                 </div>
             </form>
         </div>
@@ -217,7 +217,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let EventRewardAdd of EventRewardAdds">
+                        <tr *ngFor="let EventRewardAdd of EventRewardAdds |filter: searchText1">
                             <td style="text-align: left; ">{{EventRewardAdd.EName}}</td>
                             <td>{{EventRewardAdd.EPoints}}</td>
                             <td>{{EventRewardAdd.EDescription}}</td>
@@ -258,7 +258,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
@@ -275,7 +275,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>

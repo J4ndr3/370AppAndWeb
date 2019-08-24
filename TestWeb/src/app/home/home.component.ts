@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   Eventsource:Array<object>;
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
-
+myMap:google.maps.event;
   @ViewChild('calendar',{static: false}) calendarComponent: FullCalendarComponent; // the #calendar in the template
 
   calendarVisible = true;
@@ -60,6 +60,7 @@ map: google.maps.Map;
   
 
   ngOnInit() {
+    var self = this;
     this.Eventsource=[];
     this.data.GetBookings().subscribe(res=>{
       this.bookings = JSON.parse(JSON.stringify(res));
@@ -83,13 +84,30 @@ map: google.maps.Map;
       mapTypeId: google.maps.MapTypeId.ROADMAP
  };
  this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
+ google.maps.event.addListener(this.map, 'click', function(event) {
+  var myLatLngList = {
+    myLatLng : [{ lat: event.latLng.lat() , lng: event.latLng.lng() }]    
+    };
+   
+   
+    for(const data of myLatLngList.myLatLng){
+      var marker = new google.maps.Marker({
+          position: data,
+          map: self.map,
+          title: 'Hallo This is a marker'
+      });
+   }
+//console.log(mark)
+  alert(event.latLng);  // in event.latLng  you have the coordinates of click
+});
  this.createMarker();
   }
-
+  
   createMarker() {
 
     // list of hardcoded positions markers 
      var myLatLngList = {
+       
          myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
          };
 
