@@ -1,64 +1,70 @@
-<ion-header >
+<ion-header>
     <ion-toolbar>
         <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-      <ion-buttons slot="end" (click)="openNote()">
-        <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
-      </ion-buttons>
-        <ion-buttons slot="end" >
-        <ion-menu-button style="color: white !important"></ion-menu-button>
-      </ion-buttons>
-      <ion-title>
-        Report Incident
-      </ion-title>
+        <ion-buttons slot="end" (click)="openNote()">
+            <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button style="color: white !important"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Report Incident
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
 
 <ion-content>
-  <ion-card>
+    <ion-card>
 
-    <ion-card-header>
-        
-      <ion-title class="incident_title"  style="color: black !important" >
-        Incident Information:
-      </ion-title>
-    
-    </ion-card-header>
-    
-    <ion-card-content>
-  <div class="inputForm">
-      <form class="form-horizontal"  id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addIncident()"> 
-    <div class="form-group">  
-        <div class="col-sm-10">
-          <ion-select formControlName="Type_ID"  id="Select1" placeholder="Incident type..." class="form-control" style="margin-bottom:2% !important;" >
-              <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.ID">{{item.Description}}</ion-select-option>
-            </ion-select>
-        <ion-textarea formControlName="Description" placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
-        <ion-input formControlName="Incident_Status_ID" value="2" hidden></ion-input>
-        <div style="float:left;"><ion-button style="margin-bottom:10%;" (click)= "OpenCamera()"><ion-icon name="camera" size="medium"></ion-icon></ion-button></div>      
-        <div style="float:right;"><ion-button type="submit" style="margin-bottom:10%; --background: rgb(205, 21, 67) !important"> Report</ion-button></div>
-     </div> 
-    </div>
-</form>
-</div>
-</ion-card-content>
-</ion-card>
+        <ion-card-header>
 
-<ion-card>
-  <ion-card-content>
-    <div>
-        <ion-grid>
-            <ion-row>
-              <ion-col *ngFor="let item of images">
-                <div>
-                    <ion-thumbnail>
-                      <img [src]="item"/>
-                      </ion-thumbnail>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-    </div>
-  </ion-card-content>
-</ion-card>
+            <ion-title class="incident_title" style="color: black !important">
+                Incident Information:
+            </ion-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <div class="inputForm">
+                <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <ion-select formControlName="Type_ID" id="Select1" placeholder="Incident type..." class="form-control" style="margin-bottom:2% !important;">
+                                <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.ID">{{item.Description}}</ion-select-option>
+                            </ion-select>
+                            <ion-textarea formControlName="Description" placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
+                            <ion-input formControlName="Incident_Status_ID" value="2" hidden></ion-input>
+                            <div style="float:left;">
+                                <ion-button style="margin-bottom:10%;" (click)="OpenCamera()">
+                                    <ion-icon name="camera" size="medium"></ion-icon>
+                                </ion-button>
+                            </div>
+                            <div style="float:right;">
+                                <ion-button (click)="addIncident()" style="margin-bottom:10%; --background: rgb(205, 21, 67) !important"> Report</ion-button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <div>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col *ngFor="let item of images">
+                            <div>
+                                <ion-thumbnail>
+                                    <img [src]="item" />
+                                </ion-thumbnail>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </ion-card-content>
+    </ion-card>
 
 </ion-content>

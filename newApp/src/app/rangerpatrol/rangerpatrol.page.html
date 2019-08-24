@@ -13,8 +13,8 @@
     </ion-toolbar>
 </ion-header>
 
-
-<ion-content *ngIf="!hideEverything">
+<div *ngIf="hideEverything" style="width:75%; height: 50%"></div>
+<ion-content>
 
     <div #ref>
 
@@ -40,7 +40,6 @@
 
                     <div class="tab" style="background-color: transparent;">
                         <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
-                        <div #qr_scanner style="margin :auto;background-color: transparent; width:700px; height: 500px"></div>
 
                         <!-- <img src="./assets/th (2).jpg" alt="Camera"  class="center" > -->
                         <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">

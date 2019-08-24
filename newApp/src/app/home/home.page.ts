@@ -3,17 +3,21 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-
+import { Storage } from '@ionic/storage';
 import { FcmService } from '../fcm.service';
+import { LoginService } from '../login.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+Email=this.storage.get("user");
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
+  constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
   openNote() {
+    
     this.navController.navigateRoot('/registerform')
   }
  
@@ -52,7 +56,10 @@ export class HomePage {
   toast.present();
 }
 private async hallo(){
-  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+  this.storage.clear();
+  this.login.user = null;
+  this.login.pass = null;
+  const toast = await this.toastController.create({ message:  this.Email["__zone_symbol__value"], duration: 3000 });
       toast.present();
   this.fcm.getNot();
   
