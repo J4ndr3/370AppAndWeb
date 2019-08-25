@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("pass", Pass);
       sessionStorage.setItem("user", User);
       this.data.LogIn(User, Pass).subscribe(data => {
+        console.log(data)
         sessionStorage.setItem("Ranger",data[0].Ranger);
         if (data[0].Correct == true) {
           console.log(data[0])

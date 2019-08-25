@@ -23,6 +23,10 @@ export class OrderComponent implements OnInit {
   SupplierOptions:Array<object>;  
   nOrder:object;
   searchText;
+  EventRewardAddSelection:number =0;
+  EventRewardAddOptions:Array<object>; 
+  
+
 
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyOrderComponent) { }
 
@@ -37,6 +41,10 @@ export class OrderComponent implements OnInit {
     this.AddForm = this.formBuilder.group({
       ID: [],
       Date: [],
+      Supplier: [],
+      Status: [],
+      Type: [],
+      Asset: [],
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
@@ -75,26 +83,21 @@ export class OrderComponent implements OnInit {
       this.nOrder = {
        
         "Date": Date,
-        "Asset": Asset,
-        "Status" : Status,
-        "Type": Type,
-        "Supplier": Supplier,
+        "Asset_ID": Asset,
+        "Asset_Status_ID" : Status,
+        "Asset_Type_ID": Type,
+        "Supplier_ID": Supplier,
     
       };
       console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
-        if (res != null)
-        {
-          this.ngOnInit();
-          this.showToast();
-        }
-        else
-        {
-          document.getElementById("inputErr").click();
-        }
-        
+        this.ngOnInit();
+        this.Event();
       });
     }
+  }
+  Event(){
+    this.toastrService.show("This record was added successfully", "Success!");
   }
   del(){
     this.data.DeleteOrder(this.data.nID).subscribe(res=>{
