@@ -409,4 +409,19 @@ export class ERPService {
   DeleteAsset(id) {
     return this.http.delete('http://localhost:51389/api/Assets/' + id)
   }
+  GetSuppliers(id) {
+    return this.http.get('http://localhost:51389/api/Suppliers/'+ id)
+  }
+  GetAssetDropdown() {
+    return this.http.get('http://localhost:51389/api/Assets')
+}
+GetTypeDropdown() {
+  return this.http.get('http://localhost:51389/api/Types')
+}
+GetSupplierDropdown() {
+  return this.http.get('http://localhost:51389/api/Suppliers')
+}
+GetStatusDropdown() {
+  return this.http.get('http://localhost:51389/api/Status')
+}
 }

@@ -14,33 +14,39 @@ using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrdersController : ApiController
     {
+       
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Orders
-       // public IQueryable<Order> GetOrders()
-        //{
-        //    db.Configuration.ProxyCreationEnabled = false;
-        //    List<Order> Level = db.Orders.ToList();
-        //    List<dynamic> toReturn = new List<dynamic>();
-        //    foreach (Order Item in Level)
-        //    {
-        //        dynamic m = new ExpandoObject();
-        //        m.ID = Item.Order_ID;
-        //        m.Date = Item.Date;
-        //        //m.Asset = ;
-        //        //m.Type = ;
-        //        m.Supplier = Item.Supplier;
-        //        toReturn.Add(m);
-        //    }
-        //    return(toReturn);
-        //}
+        public List<dynamic> GetOrders()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Order> Level = db.Orders.Include(zz => zz.Supplier).Include(zz => zz.Supplier.Asset_Supplier).Include(zz=>zz.Order_Line)
+                .ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Order Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                m.ID = Item.Order_ID;
+                m.Date = Item.Date;
+                var Asset_ID = Item.Order_Line.Where(zz => zz.Order_ID == Item.Order_ID).Select(zz => zz.Asset_ID).FirstOrDefault();
+                m.Asset = db.Assets.Where(zz=>zz.Asset_ID == Asset_ID).Select(zz=>zz.Description).FirstOrDefault();
+                m.Type = db.Assets.Include(zz=>zz.Asset_Type).Where(zz=>zz.Asset_ID == Asset_ID).Select(zz=>zz.Asset_Type.Description).FirstOrDefault();
+                m.Supplier = Item.Supplier.Name;
+                m.Status = Item.Status;
+                toReturn.Add(m);
+            }
+            return (toReturn);
+        }
 
-        // GET: api/Orders/5
+                // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Order order = db.Orders.Find(id);
             if (order == null)
             {
@@ -54,6 +60,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -89,6 +96,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -104,6 +112,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Order order = db.Orders.Find(id);
             if (order == null)
             {

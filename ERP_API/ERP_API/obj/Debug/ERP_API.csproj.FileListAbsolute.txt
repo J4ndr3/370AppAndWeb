@@ -184,6 +184,7 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Sy
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
+C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\ApplicationInsights.config
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\roslyn\csc.exe
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -274,6 +275,5 @@ C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
-C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
