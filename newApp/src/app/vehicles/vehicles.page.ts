@@ -22,11 +22,7 @@ export class VehiclesPage implements OnInit {
   constructor(private alertCtrl: AlertController,public toastController: ToastController,
    private router:Router,private data: ERPService, 
     private formBuilder: FormBuilder ) { 
-      
     }
-    
-  
-
   ngOnInit() {
     this.data.GetVehicles().subscribe(res=>
       {

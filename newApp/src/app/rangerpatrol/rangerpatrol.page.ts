@@ -32,7 +32,7 @@ export class RangerpatrolPage implements OnInit {
     watchID;
     isTracking = false;
     trackedRoute: Array<object>;
-
+    loggedIn:any;
     myroute = [];
     positionSubscription: Subscription;
     @ViewChild('patrolform') containerEltRef: ElementRef;
@@ -46,83 +46,59 @@ export class RangerpatrolPage implements OnInit {
             EnterQRCodeO: [], // your attributes
             Feedback:[],
             });
-        this.qrScanner.prepare()
-  .then((status: QRScannerStatus) => {
-     if (status.authorized) {
-        // (window.document.querySelector('')as HTMLElement).classList.add('cameraView');
-        // window.document.body.style.backgroundColor= 'transparent';
-
-       // camera permission was granted
-       this.hideEverything= true;
-       this.qrScanner.show();
-
-       // start scanning
-       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-         alert('Scanned something'+ text);
-
-         this.qrScanner.hide(); // hide camera preview
-         scanSub.unsubscribe(); // stop scanning
-        //  (window.document.querySelector('')as HTMLElement).classList.remove('cameraView');
-        //  window.document.body.style.backgroundColor= 'rgb(207, 209, 211)';
-       });
-
-     } else if (status.denied) {
-       // camera permission was permanently denied
-       // you must use QRScanner.openSettings() method to guide the user to the settings page
-       // then they can grant the permission from there
-     } else {
-       // permission was denied, but not permanently. You can ask for permission again at a later time.
-     }
-  })
-  .catch((e: any) => console.log('Error is', e));
-        this.RangerpatrolPageOptions = [];
-        this.data.GetPatrol_Bookings().subscribe(res => {
-            this.RangerpatrolPage = JSON.parse(JSON.stringify(res));
-            this.RangerpatrolPage.forEach(element => {
-                if (element["Ranger_ID"] == 3) {
-                    var list={Patrol:element["Patrol_Booking_ID"],Event:formatDate(new Date(element["Start_Time"]), 'short', this.locale)}
-                    this.RangerpatrolPageOptions.push(list);
+        this.storage.get("Ranger").then(res=>{
+            this.loggedIn = res;
+            this.RangerpatrolPageOptions = [];
+            this.data.GetPatrol_Bookings().subscribe(res => {
+                this.RangerpatrolPage = JSON.parse(JSON.stringify(res));
+                this.RangerpatrolPage.forEach(element => {
+                    if (element["Ranger_ID"] == this.loggedIn) {
+                        var list={Patrol:element["Patrol_Booking_ID"],Event:formatDate(new Date(element["Start_Time"]), 'short', this.locale)}
+                        this.RangerpatrolPageOptions.push(list);
+                    }
+                });
+    
+            })
+            this.plt.ready().then(() => {
+                var self = this;
+                var onSuccess = function (position) {
+                    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    self.map.setCenter(latLng);
+                    self.map.setZoom(16);
+    
+                };
+    
+                // onError Callback receives a PositionError object
+                //
+                function onError(error) {
+                    alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
                 }
-            });
-
-        })
-        this.plt.ready().then(() => {
-            var self = this;
-            var onSuccess = function (position) {
-                let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                self.map.setCenter(latLng);
-                self.map.setZoom(16);
-
-            };
-
-            // onError Callback receives a PositionError object
-            //
-            function onError(error) {
-                alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
-            }
-
-
-            let mapOptions = {
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: false,
-                streetViewControl: false,
-                fullscreenControl: false
-            }
-            self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
-            navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-                enableHighAccuracy: true
-                , timeout: 5000
-            });
-            self.geolocation.getCurrentPosition().then(pos => {
-                let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                self.map.setCenter(latLng);
-                self.map.setZoom(16);
-            }).catch((error) => {
-                alert('Error getting location ' + error);
+    
+    
+                let mapOptions = {
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    fullscreenControl: false
+                }
+                self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
+                navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+                    enableHighAccuracy: true
+                    , timeout: 5000
+                });
+                self.geolocation.getCurrentPosition().then(pos => {
+                    let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                    self.map.setCenter(latLng);
+                    self.map.setZoom(16);
+                }).catch((error) => {
+                    alert('Error getting location ' + error);
+                });
             });
         });
+        
+       
     }
 
     ngAfterViewInit() {
@@ -156,6 +132,36 @@ export class RangerpatrolPage implements OnInit {
         if (n == 1) {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
+            this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+               if (status.authorized) {
+                  // (window.document.querySelector('')as HTMLElement).classList.add('cameraView');
+                  // window.document.body.style.backgroundColor= 'transparent';
+          
+                 // camera permission was granted
+                 this.hideEverything= true;
+                 this.qrScanner.show();
+               
+                 // start scanning
+                 let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                   alert('Scanned something'+ text);
+                   this.hideEverything= false;
+                   this.qrScanner.hide(); // hide camera preview
+                   scanSub.unsubscribe(); // stop scanning
+                   this.qrScanner.destroy();
+                  //  (window.document.querySelector('')as HTMLElement).classList.remove('cameraView');
+                  //  window.document.body.style.backgroundColor= 'rgb(207, 209, 211)';
+                 });
+          
+               } else if (status.denied) {
+                 // camera permission was permanently denied
+                 // you must use QRScanner.openSettings() method to guide the user to the settings page
+                 // then they can grant the permission from there
+               } else {
+                 // permission was denied, but not permanently. You can ask for permission again at a later time.
+               }
+            })
+            .catch((e: any) => console.log('Error is', e));
         }
         if (n == 2) {
             this.startTracking()

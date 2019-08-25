@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';          
+import { Router } from '@angular/router';
+import { ModifySupplierComponent }  from '../modify-supplier/modify-supplier.component';
 
 @Component({
   selector: 'app-supplier',
@@ -9,14 +11,16 @@ import { FormBuilder,FormGroup } from '@angular/forms';
   styleUrls: ['./supplier.component.sass']
 })
 export class SupplierComponent implements OnInit {
+  
+
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder,private mod:ModifySupplierComponent) { }
   Suppliers: object;
   AddForm: FormGroup;
   NewSupplier:object;
   SupplierSelection:number =0;
   nSupplier:object;
-  searchtext;
+  searchText;
 
-  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     
@@ -24,12 +28,18 @@ export class SupplierComponent implements OnInit {
         Name: [], // Names for your input
         Contact: [], // Names for your input 
         Email: [],
-        Address: []
+        Address: [],
+       
+        
       });
+      // this.edt();
       this.data.GetSupplier().subscribe(res=>{
         this.Suppliers = res;
     });
+
   }
+ 
+
 
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
@@ -99,8 +109,11 @@ export class SupplierComponent implements OnInit {
         this.data.nID = ID;
         document.getElementById('del').click();
     }
-    // edit(ID){
-  //   this.mod.edit(ID);
-  // }
+    edit(ID){
+      this.data.nID = ID;
+      this.mod.edit(ID);
+      console.log(ID);
+     }
+
 
 }

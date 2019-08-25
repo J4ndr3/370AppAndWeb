@@ -30,6 +30,22 @@ import {ERPService} from '..//erp.service';
 export class HomeComponent implements OnInit {
   bookings:Array<object>;
   Eventsource:Array<object>;
+  Incidents: Array<object>;
+  Rangers: Array<object>;
+  rangermarker:Array<object>;
+  myLatLngList: any;
+  r: Array<object>;
+  CoordList: Array<object>;
+  Markers: Array<object>;
+  lat: Array<number>;
+  long: Array<number>;
+  myLatLngList1: any;
+  r1: Array<object>;
+  CoordList1: Array<object>;
+  Markers1: Array<object>;
+  lat1: Array<number>;
+  long1: Array<number>;
+
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
 myMap:google.maps.event;
@@ -62,6 +78,11 @@ myMap:google.maps.event;
   ngOnInit() {
     var self = this;
     this.Eventsource=[];
+    this.Incidents=[];
+    this.Rangers=[];
+    this.rangermarker=[];
+    this.myLatLngList=[];
+
     this.data.GetBookings().subscribe(res=>{
       this.bookings = JSON.parse(JSON.stringify(res));
       console.log(this.bookings);
@@ -82,43 +103,61 @@ myMap:google.maps.event;
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
- };
- this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
- google.maps.event.addListener(this.map, 'click', function(event) {
-  var myLatLngList = {
-    myLatLng : [{ lat: event.latLng.lat() , lng: event.latLng.lng() }]    
     };
-   
-   
-    for(const data of myLatLngList.myLatLng){
-      var marker = new google.maps.Marker({
-          position: data,
-          map: self.map,
-          title: 'Hallo This is a marker'
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+
+    this.data.GetIncidents().subscribe(res=>{
+      this.r = [];
+      this.CoordList = JSON.parse(JSON.stringify(res));
+      this.CoordList.forEach(element => {
+        this.r.push(element);
       });
-   }
-//console.log(mark)
-  alert(event.latLng);  // in event.latLng  you have the coordinates of click
-});
- this.createMarker();
-  }
+
+      console.log(this.CoordList);
+
+      this.r.forEach(element => {
+        
+          this.myLatLngList = {
+
+            myLatLng: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+          
+        }
+        for (const data of this.myLatLngList.myLatLng) {
+          var marker = new google.maps.Marker({
+            position: data,
+            map: this.map,
+            title: 'Incident reported by ' + element['Name'] +' ' + element['Surname'] + " at " + element['Time']
+          });
   
-  createMarker() {
+        }
+      })
 
-    // list of hardcoded positions markers 
-     var myLatLngList = {
-       
-         myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
-         };
 
-        //iterate latLng and add markers 
-       for(const data of myLatLngList.myLatLng){
-         var marker = new google.maps.Marker({
-             position: data,
-             map: this.map,
-             title: 'Hallo This is a marker'
-         });
-      }
- };
-
-}
+      this.data.GetPatrol_log().subscribe(res=>{
+        this.r1 = [];
+        this.CoordList1 = JSON.parse(JSON.stringify(res));
+        this.CoordList1.forEach(element => {
+          this.r.push(element);
+        });
+  
+        console.log(this.CoordList1);
+  
+        this.r.forEach(element => {
+          
+            this.myLatLngList1 = {
+  
+              myLatLng1: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+            
+          }
+          if(element["CheckedIn"]== true)
+          {
+            for (const data of this.myLatLngList1.myLatLng1) {
+              var marker = new google.maps.Marker({
+                position: data,
+                map: this.map,
+                title:  element['Name'] +' ' + element['Surname'] + " on patrol"
+              });
+          }
+         
+          }
+        })})})}}

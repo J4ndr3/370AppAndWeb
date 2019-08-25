@@ -75,6 +75,7 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -141,6 +142,7 @@ import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
    
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NgxQRCodeModule,
     ReactiveFormsModule,
