@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { modifyVehiclePage } from '../modifyvehicle/modifyvehicle.page';
 
 @Component({
   selector: 'app-vehicles',
@@ -20,85 +21,66 @@ export class VehiclesPage implements OnInit {
   rcv: object;
   
   constructor(private alertCtrl: AlertController,public toastController: ToastController,
-   private router:Router,private data: ERPService, 
+   private router:Router,private data: ERPService,private mod:modifyVehiclePage, 
     private formBuilder: FormBuilder ) { 
     }
   ngOnInit() {
     this.data.GetVehicles().subscribe(res=>
       {
         this.vehicles = res;
+        if (this.vehicles[0]=="Not readable")
+      {
+        this.loadFail();
+        //this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
+        this.vehicles = null ;
+      }
+      console.log(this.vehicles);
+        
       })
-    // this.data.GetVehiclesPageDropdown().subscribe(res=>{
-    //   this.VehiclesPageOptions = JSON.parse(JSON.stringify(res));
-    // })
-    this.EditForm = this.formBuilder.group({
-      CarRegistration:[], // your attributes
-      Make: [], // your attributes
-      Model: [] ,// your attributes
-      TypeDescription: []
-      }); 
-     // this.edt();
-
   }
   edit(ID){
-    this.data.GetVehicle(ID).subscribe(res=>{
-      if (res==1)
-      {
-        alert("Not found");
-        this.router.navigateByUrl("/Vehicles");
-      }
-      else{
-        this.router.navigateByUrl("/Vehicles");
-        this.ngOnInit();
-        this.data.nID = ID;
-      }})   
+    this.mod.edit(ID);
   }
-  // edt(){
-  //   this.data.GetVehiclesPage(this.data.nID).subscribe(res=>{     
-  //     this.VehiclesPage = res;
-  //     this.EditForm.setValue({ID:this.VehiclesPage.VehiclesPage_ID,
-  //       CarRegistration:this.VehiclesPage.CarRegistration,
-  //       Make:this.VehiclesPage.Make,
-  //       Model: this.VehiclesPage.Model,
-  //       TypeDescription: this.VehiclesPage.TypeDescription
-  //       })    
-  //   })
-  // }
-  update(ID){
-    var CarRegistration = this.EditForm.get('NaCarRegistrationme').value; //the name in red the same as on you html
-    var Make = this.EditForm.get('Make').value; //the name in red the same as on you html
-    var TypeDescription = this.EditForm.get('TypeDescription').value;
-    var Model = this.EditForm.get('Model').value;
 
-    if (CarRegistration==""||TypeDescription==""||Model==""||Make=="") {
-      document.getElementById("inputErr").click(); //Hy mag dalk nie nou werk nie sal hom in nav gaan declare
-    }
-    else {
-      this.nVehiclesPage = {
-        "CarRegistration":CarRegistration, //selfde as die databasis 
-        "Make": Make, //selfde as die databasis
-        "Model":Model,
-        "TypeDescription":TypeDescription
-      };
-      console.log(this.nVehiclesPage);
-      this.data.PutVehicle(ID,this.nVehiclesPage).subscribe(res => {
-        this.rcv = res
-        console.log(this.rcv);
-        if (this.rcv == null)
-        {
-          this.successToast();
-        }
-        else
-        {
-          document.getElementById("inputErr").click();
-        }
-      });
-    }
-  }
+  // update(ID){
+  //   var CarRegistration = this.EditForm.get('NaCarRegistrationme').value; //the name in red the same as on you html
+  //   var Make = this.EditForm.get('Make').value; //the name in red the same as on you html
+  //   var TypeDescription = this.EditForm.get('TypeDescription').value;
+  //   var Model = this.EditForm.get('Model').value;
+
+  //   if (CarRegistration==""||TypeDescription==""||Model==""||Make=="") {
+  //     document.getElementById("inputErr").click(); //Hy mag dalk nie nou werk nie sal hom in nav gaan declare
+  //   }
+  //   else {
+  //     this.nVehiclesPage = {
+  //       "CarRegistration":CarRegistration, //selfde as die databasis 
+  //       "Make": Make, //selfde as die databasis
+  //       "Model":Model,
+  //       "TypeDescription":TypeDescription
+  //     };
+  //     console.log(this.nVehiclesPage);
+  //     this.data.PutVehicle(ID,this.nVehiclesPage).subscribe(res => {
+  //       this.rcv = res
+  //       console.log(this.rcv);
+  //       if (this.rcv == null)
+  //       {
+  //         this.successToast();
+  //       }
+  //       else
+  //       {
+  //         document.getElementById("inputErr").click();
+  //       }
+  //     });
+  //   }
+  // }
   
 
   private async successToast() {
     const toast = await this.toastController.create({ message: "Vehicle modified successfully.", duration: 3000 });
+    toast.present();
+  }
+  private async loadFail() {
+    const toast = await this.toastController.create({ message: "Vehicle could not be loaded please try again later", duration: 3000 });
     toast.present();
   }
   private async failedToast() {

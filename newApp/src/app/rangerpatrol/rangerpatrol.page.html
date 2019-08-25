@@ -12,11 +12,7 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
-<<<<<<< HEAD
-=======
-
-<div *ngIf="hideEverything" style="width:75%; height: 50%"></div>
->>>>>>> d8f2c598e831f441dad51e93ae4297a5997ad8ec
+<div *ngIf="hideEverything" style="width: 75%;height: 45%"></div>
 <ion-content>
     <div #ref>
         <form #patrolform id="regForm" action="" style="height:78%; width:100%;" [formGroup]="AddForm" (ngSubmit)="addrangerpatrolpage()">
@@ -42,7 +38,7 @@
                         <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
 
                         <!-- <img src="./assets/th (2).jpg" alt="Camera"  class="center" > -->
-                        <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
+                        <ion-button (click)="scanMore()" data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
                             Enter Code Here</ion-button>
                         <div class="collapse" id="demo" style="margin-bottom:5% !important;">
                             <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
@@ -50,36 +46,26 @@
                                 <ion-icon name="add" size="medium"></ion-icon>
                             </ion-button>
                         </div>
-                        <!-- 
-                        <div class="tab" style="color:black;">
-                            <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
-                            <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
-                            <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
-                                Enter Code Here</ion-button>
-                            <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-                                <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode1" formControlName="EnterQRCode1" style="margin-bottom:5% !important;"></ion-input>
-                                <ion-button style="float:right; margin-bottom:10% !important;">
-                                    <ion-icon name="add" size="medium"></ion-icon>
-                                </ion-button>
-                            </div> -->
+
                         <div style="width: 100% " class="col-md-10 ">
-<!-- Multi-line sliding item with icon options on both sides -->
-  <ion-item-sliding id="item100">
-    <ion-item href="#">
-      <ion-label>
-        <p>Car Magnet asset</p>
-      </ion-label>
-      <ion-note slot="end">
-        <h3><ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
-      </ion-note>
-    </ion-item>
-    <ion-item-options side="end">
-      <ion-item-option color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-                      </div>
+                            <!-- Multi-line sliding item with icon options on both sides -->
+                            <ion-item-sliding id="item100" *ngFor="let item of items">
+                                <ion-item href="#">
+                                    <ion-label>
+                                        <p>{{item.Description}}</p>
+                                    </ion-label>
+                                    <ion-note slot="end">
+                                        <h3>
+                                            <ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
+                                    </ion-note>
+                                </ion-item>
+                                <ion-item-options side="end">
+                                    <ion-item-option color="danger" (click)="remove(item.ID)">
+                                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+                            </ion-item-sliding>
+                        </div>
                     </div>
                     <div class="tab" style="color:black;">
                         <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
@@ -101,24 +87,25 @@
                         </div>
                         <div style="width: 100% " class="col-md-10 ">
                             <!-- Multi-line sliding item with icon options on both sides -->
-                              <ion-item-sliding id="item100">
+                            <ion-item-sliding id="item100">
                                 <ion-item href="#">
-                                  <ion-label>
-                                    <p>Car Magnet asset</p>
-                                  </ion-label>
-                                  <ion-note slot="end">
-                                    <h3><ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
-                                  </ion-note>
+                                    <ion-label>
+                                        <p>Car Magnet asset</p>
+                                    </ion-label>
+                                    <ion-note slot="end">
+                                        <h3>
+                                            <ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
+                                    </ion-note>
                                 </ion-item>
                                 <ion-item-options side="end">
-                                  <ion-item-option color="danger">
-                                    <ion-icon slot="icon-only" name="trash"></ion-icon>
-                                  </ion-item-option>
+                                    <ion-item-option color="danger">
+                                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                    </ion-item-option>
                                 </ion-item-options>
-                              </ion-item-sliding>                                             
-                     </div>
-                      <br>
-                        <div class="col-md-10 user-container">             
+                            </ion-item-sliding>
+                        </div>
+                        <br>
+                        <div class="col-md-10 user-container">
                             <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
                         </div>
                     </div>

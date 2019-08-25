@@ -8,7 +8,7 @@ import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { LoginService } from './login.service';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -83,7 +83,8 @@ export class AppComponent {
     private fcm: FcmService,
     public toastController: ToastController,
     private router: Router, private data: LoginService,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public storage:Storage
   ) {
     this.initializeApp();
     this.router.events.subscribe((event: Event) => {
@@ -162,5 +163,9 @@ export class AppComponent {
       this.notificationSetup();
       timer(3000).subscribe(()=>this.Showsplash = false)
     });
+  }
+  Logout(){
+    this.storage.clear();
+    this.router.navigateByUrl("/login")
   }
 }

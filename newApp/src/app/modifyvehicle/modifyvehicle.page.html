@@ -1,63 +1,95 @@
-<ion-header >
-  <ion-toolbar>
-      <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-    <ion-buttons slot="end" (click)="openNote()">
-      <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
-    </ion-buttons>
-      <ion-buttons slot="end" >
-      <ion-menu-button style="color: white !important"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Modify Vehicle
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar>
+        <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
+        <ion-buttons slot="end" (click)="openNote()">
+            <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-menu-button style="color: white !important"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Modify Vehicle
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card>
+    <ion-card>
 
-  <ion-card-header>
-      
-    <ion-title class="incident_title"  style="color: black !important" >
-      Vehicle  Information:
-    </ion-title>
-  
-  </ion-card-header>
-  
-  <ion-card-content>
-<div class="inputForm">
-    <form class="form-horizontal"  id="modifyForm" action="/action_page.php"> 
-  <div class="form-group">  
-      <div class="col-sm-10">
+        <ion-card-header>
 
-      <ion-input type="text" formControlName="CarRegistration" id="CarRegistration" name="CarRegistration" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..." required="true"></ion-input>
+            <ion-title class="incident_title" style="color: black !important">
+                Vehicle Information:
+            </ion-title>
 
-      <ion-input type="text" formControlName="Make" id="Make" name="Make" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Make..." required="true"></ion-input>
+        </ion-card-header>
 
-      <ion-input type="text" formControlName="Model" id="Model" name="Model" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Model..." required="true"></ion-input>
+        <ion-card-content>
+            <div class="inputForm">
+                <form class="form-horizontal" id="modifyForm" [formGroup]="EditForm">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <ion-input type="text" formControlName="ID" id="CarRegistration" hidden name="ID" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..." required="true"></ion-input>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-input type="text" formControlName="CarRegistration" id="CarRegistration" name="CarRegistration" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..." required="true"></ion-input>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Model..." class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Model...</ion-select-option> -->
+                                        <ion-select-option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
 
-      <ion-input type="text" formControlName="TypeDescription" id="TypeDescription" name="TypeDescription" hidden class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Type Description..." required="true"></ion-input>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Type..." class="form-control" formControlName="TypeDescription" id="Select1" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Type...</ion-select-option> -->
+                                        <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">{{item.Type_Description}}</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
 
-      <div class="form-group">
-        <div class="col-sm-40">
-            <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
-                <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
-                <ion-select-option>Red</ion-select-option>
-                <ion-select-option>Yellow</ion-select-option>
-                <ion-select-option>Orange</ion-select-option>
-            </ion-select>
-        </div>
-    </div>
-      <div style="float:left;"><ion-button style="margin-bottom:10%;" routerLink="/vehicles" >Cancel</ion-button>
-</div>   
-        <div style="float:right;"><ion-button (ngSubmit)="update()" (click)="edit(your.ID)" style="margin-bottom:10%;" (click)="successToast()" (click)="failedToast()" routerLink="/vehicles"(click)="modifyyesorno()">Save Changes</ion-button> 
-    </div>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
+                                        <ion-select-option>Red</ion-select-option>
+                                        <ion-select-option>White</ion-select-option>
+                                        <ion-select-option>Black</ion-select-option>
+                                        <ion-select-option>Green</ion-select-option>
+                                        <ion-select-option>Blue</ion-select-option>
+                                        <ion-select-option>Silver</ion-select-option>
+                                        <ion-select-option>Pink</ion-select-option>
+                                        <ion-select-option>Purple</ion-select-option>
+                                        <ion-select-option>Yellow</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Status..." class="form-control" id="Select1" formControlName="Status" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Status...</ion-select-option> -->
+                                        <ion-select-option value="true">Active</ion-select-option>
+                                        <ion-select-option value="false">Inactive</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+                            <div style="float:left;">
+                                <ion-button style="margin-bottom:10%;" routerLink="/vehicles">Cancel</ion-button>
+                            </div>
+                            <div style="float:right;">
+                                <ion-button (click)="update()" style="margin-bottom:10%;">Save Changes</ion-button>
+                            </div>
 
-   </div> 
-  </div>
-</form>
-</div>
-</ion-card-content>
-</ion-card>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </ion-card-content>
+    </ion-card>
 
 </ion-content>
