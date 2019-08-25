@@ -18,11 +18,11 @@ import {Geolocation} from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
 import { from } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-
+import { Geofence } from '@ionic-native/geofence/ngx';
 import {BarcodeScanner} from '@ionic-native/barcode-scanner'; // QR scanning attempt
 import { RangerprofilePageModule } from './rangerprofile/rangerprofile.module';
 import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import {modifyVehiclePage} from './modifyvehicle/modifyvehicle.page'
 import { ModifybookingPage } from './modifybooking/modifybooking.page';
 import { VehiclesPage } from './vehicles/vehicles.page';
 import { ViewVoucharPage } from './view-vouchar/view-vouchar.page';
@@ -54,8 +54,10 @@ const firebaseConfig = {
     Ng2SearchPipeModule
   ],
   providers: [
+    Geofence,
     VehiclesPage ,
     ViewVoucharPage,
+    modifyVehiclePage,
     ModifybookingPage,
     RangerprofilePageModule,
     StatusBar,
