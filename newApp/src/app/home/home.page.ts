@@ -1,26 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { FcmService } from '../fcm.service';
+import { LoginService } from '../login.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';      
 declare var google;
-
-
-import { FcmService } from '../fcm.service';
 import { ERPService } from '../erp.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) { }
-  NewIncident:object;
-  newPatrol:object;
+
+export class HomePage implements OnInit{
+Email;
+NewIncident:object;
+newPatrol:object;
+loggedIn:any;
+Ranger:any;
+
+  constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
+    this.loggedIn = this.login.ranger;
+   }
+
+  
+
+ // constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
+    
+   //}
+   ionViewWillEnter(){
+     
+   }
+
+   ngOnInit() {
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      if (this.loggedIn == null)
+      {
+        this.router.navigateByUrl('/login');
+      }
+      else{
+        this.data.GetRanger(this.loggedIn).subscribe(res=>{
+          this.Ranger=res;
+          document.getElementById('RangerName').innerHTML = res["Name"] +" "+ res["Surname"];
+          document.getElementById('RangerPoints').innerHTML = "Reward Status: <b>"+res["Points"]+" Points</b>";
+        }) 
+      }
+   })
+  }
+
 
   openNote() {
+    
     this.navController.navigateRoot('/registerform')
   }
  
@@ -59,7 +95,13 @@ export class HomePage {
   toast.present();
 }
 private async hallo(){
-  const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
+  //this.storage.clear();
+  //this.login.user = null;
+  //this.login.pass = null;
+   this.storage.get("Ranger").then(res=>{
+    this.Email = res;
+   })
+  const toast = await this.toastController.create({ message:  this.Email, duration: 3000 });
       toast.present();
   this.fcm.getNot();
   

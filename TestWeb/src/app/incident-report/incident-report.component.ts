@@ -3,6 +3,7 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import {} from 'googlemaps';
+import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';  
 import { Router } from '@angular/router';
 import htmlToImage from 'html-to-image';
@@ -103,7 +104,7 @@ public Download() {
       this.timeLeft1--;
     } else if (this.timeLeft1 == 0) {
 
-      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-left:10%">INCEDENT REPORT</h1><br><br></div>';
+      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-left:10%">INCIDENT REPORT</h1><br><br></div>';
       document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
       document.getElementById('chrt3').innerHTML = '<br><br>';
 
@@ -149,7 +150,7 @@ public Download() {
   }, 1000)
 }
 
-  constructor(calendar: NgbCalendar, private data: ERPService, private router: Router) {
+  constructor(calendar: NgbCalendar, private data: ERPService, private router: Router,private toastrService: ToastrService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -183,7 +184,7 @@ public Download() {
           this.IncedentCount++;
           this.Markers.push(marker);
         }
-      
+        
       
     });
     });
@@ -280,8 +281,28 @@ public Download() {
 //          });
 //       }
 //  };
+this.ReportAccess(10);
   }
- 
+  ReportAccess(ID){
+    this.data.GetRangers(ID).subscribe(res=>{
+      console.log(res);
+    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      
+      
+  }
+    
+    else {
+      
+      this.showToast1();
+      
+    }
+    
+  })
+  }
+  showToast1() {
+    this.toastrService.show("Sorry you do not have access to reports");
+    this.router.navigateByUrl("/home");
+  }
 }
 
   

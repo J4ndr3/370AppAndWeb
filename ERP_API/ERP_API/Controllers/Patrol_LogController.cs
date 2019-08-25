@@ -36,6 +36,7 @@ namespace ERP_API.Controllers
                     m.Date = Item.Checkin.ToShortDateString();
                     m.Checkin = Item.Checkin.ToShortTimeString();
                     m.Checkout = Item.Checkout.ToShortTimeString();
+                    m.CheckedIn = Item.Checked_in;
                     m.Route = Item.Route;
                     toReturn.Add(m);
                 }

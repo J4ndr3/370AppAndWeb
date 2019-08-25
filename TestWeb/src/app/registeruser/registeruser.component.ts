@@ -58,6 +58,7 @@ export class RegisteruserComponent implements OnInit {
         Status:["Status..."],
         
       });
+      this.Access(4);
   }
   goUsers() {
     var fname = this.AddForm.get('fname').value; // Names for your input
@@ -199,4 +200,30 @@ validateForm() {
             //... and adds the "active" class on the current step:
             x[n].className += " active";
         }
-}
+        Access(ID){
+            this.data.GetRangers(ID).subscribe(res=>{
+              console.log(res);
+            if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 6 ||res['Access_ID'] == 7){
+              
+              
+          }
+          else if(res['Access_ID'] == null){
+            this.showToast1();
+          }
+            
+          else {
+                
+            this.showToast1();
+            
+          }
+          
+          })
+          }
+          showToast1() {
+          this.toastrService.show("Sorry you do not have write access");
+          this.router.navigateByUrl("/home");
+          }
+            
+          
+          
+  }

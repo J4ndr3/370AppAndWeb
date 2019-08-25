@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { timer } from 'rxjs';
 import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-
+import { LoginService } from './login.service';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -80,11 +81,60 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FcmService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router: Router, private data: LoginService,
+    public loadingController: LoadingController,
+    public storage:Storage
   ) {
     this.initializeApp();
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.presentLoading();
+        if (event.url != "/login") {
+            if (event.url != "/reset") {
+                // console.log(event)
+                this.data.testlogin();
+            }
+        }
+          
+      }
+
+      if (event instanceof NavigationEnd) {
+          // Hide loading indicator
+      }
+
+      if (event instanceof NavigationError) {
+          // Hide loading indicator
+
+          // Present error to user
+          console.log(event.error);
+      }
+  });
+
+
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
   }
 
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
   private async presentToast(message) {
     const alert = await this.alertCtrl.create({
       header: "Incident Aert",
@@ -113,5 +163,9 @@ export class AppComponent {
       this.notificationSetup();
       timer(3000).subscribe(()=>this.Showsplash = false)
     });
+  }
+  Logout(){
+    this.storage.clear();
+    this.router.navigateByUrl("/login")
   }
 }

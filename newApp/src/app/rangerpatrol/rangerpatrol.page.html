@@ -12,15 +12,11 @@
         </ion-title>
     </ion-toolbar>
 </ion-header>
-
-
-<ion-content *ngIf="!hideEverything">
-
+<div *ngIf="hideEverything" style="width: 75%;height: 45%"></div>
+<ion-content>
     <div #ref>
-
         <form #patrolform id="regForm" action="" style="height:78%; width:100%;" [formGroup]="AddForm" (ngSubmit)="addrangerpatrolpage()">
             <ion-card style=" width:100% !important;">
-
                 <ion-card-content>
 
                     <!-- One "tab" for each step in the form: -->
@@ -40,10 +36,9 @@
 
                     <div class="tab" style="background-color: transparent;">
                         <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
-                        <div #qr_scanner style="margin :auto;background-color: transparent; width:700px; height: 500px"></div>
 
                         <!-- <img src="./assets/th (2).jpg" alt="Camera"  class="center" > -->
-                        <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
+                        <ion-button (click)="scanMore()" data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
                             Enter Code Here</ion-button>
                         <div class="collapse" id="demo" style="margin-bottom:5% !important;">
                             <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
@@ -51,49 +46,27 @@
                                 <ion-icon name="add" size="medium"></ion-icon>
                             </ion-button>
                         </div>
-                        <!-- 
-                        <div class="tab" style="color:black;">
-                            <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
-                            <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
-                            <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
-                                Enter Code Here</ion-button>
-                            <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-                                <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode1" formControlName="EnterQRCode1" style="margin-bottom:5% !important;"></ion-input>
-                                <ion-button style="float:right; margin-bottom:10% !important;">
-                                    <ion-icon name="add" size="medium"></ion-icon>
-                                </ion-button>
-                            </div> -->
 
                         <div style="width: 100% " class="col-md-10 ">
-
-                            <table class="table table-striped" style="width: 100% !important;">
-                                <thead>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: black">Car Magnet</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: black">Flashlight</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: black">Gate 13 Key</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!-- Multi-line sliding item with icon options on both sides -->
+                            <ion-item-sliding id="item100" *ngFor="let item of items">
+                                <ion-item href="#">
+                                    <ion-label>
+                                        <p>{{item.Description}}</p>
+                                    </ion-label>
+                                    <ion-note slot="end">
+                                        <h3>
+                                            <ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
+                                    </ion-note>
+                                </ion-item>
+                                <ion-item-options side="end">
+                                    <ion-item-option color="danger" (click)="remove(item.ID)">
+                                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+                            </ion-item-sliding>
                         </div>
                     </div>
-
-
                     <div class="tab" style="color:black;">
                         <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
                         <div #map id="map" style="width: 100%;  height: 500px !important;"></div>
@@ -101,7 +74,6 @@
                         <ion-button style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
                             Report Incident</ion-button>
                     </div>
-
                     <div class="tab" style="color:black">
                         <ion-label align="center" style="margin-bottom:5% !important">Check in assets:</ion-label>
                         <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
@@ -113,46 +85,37 @@
                                 <ion-icon name="add" size="Medium"></ion-icon>
                             </ion-button>
                         </div>
-
+                        <div style="width: 100% " class="col-md-10 ">
+                            <!-- Multi-line sliding item with icon options on both sides -->
+                            <ion-item-sliding id="item100">
+                                <ion-item href="#">
+                                    <ion-label>
+                                        <p>Car Magnet asset</p>
+                                    </ion-label>
+                                    <ion-note slot="end">
+                                        <h3>
+                                            <ion-icon name="arrow-back"></ion-icon>(Delete)</h3>
+                                    </ion-note>
+                                </ion-item>
+                                <ion-item-options side="end">
+                                    <ion-item-option color="danger">
+                                        <ion-icon slot="icon-only" name="trash"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+                            </ion-item-sliding>
+                        </div>
+                        <br>
                         <div class="col-md-10 user-container">
-                            <table class="table table-striped" style="width: 100% !important; padding-bottom:2% !important">
-                                <thead>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="color: black">Car Magnet</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: black">Flashlight</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="color: black">Gate 13 Key</td>
-                                        <td style="color: black">
-                                            <ion-icon name="close"></ion-icon>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
                             <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
                         </div>
                     </div>
-
-
                     <div style="overflow:auto;width: 100%;"></div>
                     <ion-item lines="none" width="100%">
                         <ion-button size="Medium" id="prevBtn" (click)="nextPrev(-1)">Back</ion-button>
                         <ion-button size="Medium" id="nextBtn" (click)="nextPrev(1)">Next</ion-button>
-
                     </ion-item>
                 </ion-card-content>
             </ion-card>
-
             <!-- Circles which indicates the steps of the form: -->
             <div id="Steps" align="center">
                 <span class="step"></span>
@@ -160,9 +123,5 @@
                 <span class="step"></span>
             </div>
         </form>
-
-
     </div>
-
-
 </ion-content>

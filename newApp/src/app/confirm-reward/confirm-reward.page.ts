@@ -22,6 +22,8 @@ export class ConfirmRewardPage implements OnInit {
  RandomNumber;
  RedeemVoucher: object;
  redeemID:any;
+ ProductPoints: object;
+ RangerPoints:object;
 
  myDate= new Date().toLocaleDateString();
  Time= new Date().toTimeString();
@@ -33,6 +35,7 @@ export class ConfirmRewardPage implements OnInit {
     console.log('ionViewDidLoad ConfirmRewardPage');
   }
   ngOnInit() {
+  
     this.confirmID = this.data.nvalidate;
     this.data.GetProduct_Reward().subscribe(res=>{
       console.log(res);
@@ -44,8 +47,11 @@ export class ConfirmRewardPage implements OnInit {
     });
   }
   update(ID){
+    
     console.log(this.confirmID)
     this.data.GetProduct_RewardID(ID).subscribe(res=>{
+      this.ProductPoints = res['Points']
+      this.updateRanger(3,this.ProductPoints);
       console.log(res);
       if (res["Quantity"] == 0 )
       {
@@ -54,6 +60,7 @@ export class ConfirmRewardPage implements OnInit {
       }
 
         else{
+          
       var PoductID = res["Product_Reward_ID"];
     var PQuantity = res["Quantity"] - 1;
     this.nReward = {
@@ -89,6 +96,11 @@ export class ConfirmRewardPage implements OnInit {
   
 
   
+    }
+    updateRanger(ID,points){
+      this.data.UpdatePoints(ID,points).subscribe(res=>{
+       console.log(res)
+      });
     }
    
     

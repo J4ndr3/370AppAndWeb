@@ -54,6 +54,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'modifybooking', loadChildren: './modifybooking/modifybooking.module#ModifybookingPageModule' },
   { path: 'map-test', loadChildren: './map-test/map-test.module#MapTestPageModule' },
+  { path: 'modifyvehicle', loadChildren: './modifyvehicle/modifyvehicle.module#ModifyvehiclePageModule' },
   { path: 'event-confirm', loadChildren: './event-confirm/event-confirm.module#EventConfirmPageModule' },
   
 

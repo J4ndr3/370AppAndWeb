@@ -3,6 +3,8 @@ import { ToastrService } from 'ngx-toastr';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms'; 
+import { Router } from '@angular/router';
+import { ModifyOrderComponent }  from '../modify-order/modify-order.component';
 
 @Component({
   selector: 'app-order',
@@ -20,13 +22,20 @@ export class OrderComponent implements OnInit {
   SupplierSelection:number =0;
   SupplierOptions:Array<object>;  
   nOrder:object;
-  searchtext;
+  searchText;
 
-  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyOrderComponent) { }
 
   ngOnInit(){ 
+    this.data.GetOrder().subscribe(res1=>{
+      // console.log("halllloooooo"+res1)
+      this.Orders = res1;
+      
+    });
+
+    
     this.AddForm = this.formBuilder.group({
-      OrderID: [],
+      ID: [],
       Date: [],
       });
     this.data.GetAssets().subscribe(res=>{
@@ -38,9 +47,7 @@ export class OrderComponent implements OnInit {
         this.data.GetSupplier().subscribe(res=>{
           this.SupplierOptions = JSON.parse(JSON.stringify(res));
     })
-    this.data.GetOrder().subscribe(res=>{
-      this.Orders = res;
-    });
+   
 
   
   }
@@ -53,23 +60,26 @@ export class OrderComponent implements OnInit {
   }
 
   addOrder(){
-    var ID = this.AddForm.get('ID').value;
+  // var ID = this.AddForm.get('ID').value;
     var Date = this.AddForm.get('Date').value;
     var Asset = this.AddForm.get('Asset').value;
+    var Status = this.AddForm.get('Status').value;
     var Type = this.AddForm.get('Type').value;
     var Supplier = this.AddForm.get('Supplier').value;
     
 
-    if ( ID ==""||Date==""||Asset==""||Type==""||Supplier=="") {
+    if (Date==""||Asset==""||Type==""||Status=="" || Supplier=="") {
       document.getElementById("inputErr").click();
     }
     else {
       this.nOrder = {
-        "ID": ID,
+       
         "Date": Date,
-        "Lattitude": Asset,
-        "Longitude": Type,
-        "Reserve_ID": Supplier
+        "Asset": Asset,
+        "Status" : Status,
+        "Type": Type,
+        "Supplier": Supplier,
+    
       };
       console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
@@ -113,7 +123,7 @@ export class OrderComponent implements OnInit {
     this.data.nID = ID;
     document.getElementById('del').click();
 }
-  // edit(ID){
-  //   this.mod.edit(ID);
-  // }
+  edit(ID){
+    this.mod.edit(ID);
+   }
 }

@@ -18,6 +18,8 @@ import { timer} from 'rxjs';
   styleUrls: ['./nav.component.sass'],
 })
 export class NavComponent implements OnInit {
+  showme=false;
+  rangerName="";
   display='none';
   action: boolean = true;
   setAutoHide: boolean = true;
@@ -34,12 +36,16 @@ export class NavComponent implements OnInit {
   count;
   NewNotification:object;
   timer:any;
+  Performances:object
+  toggle:any;
+  IDPerformance:object;
 
   constructor(private http: HttpClient,public snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder ) {}
   AddForm: FormGroup;
   AddForm2: FormGroup;
   
   ngOnInit() {
+    
     const source = timer(0,60000);
     const subscribe = source.subscribe(val=>{
       this.count =0
@@ -50,6 +56,19 @@ export class NavComponent implements OnInit {
           
         });
       });
+      if (sessionStorage.getItem('Ranger')!=null)
+      {
+        this.showme = true;
+        this.GetRangers(sessionStorage.getItem('Ranger')).subscribe(res=>{
+          this.rangerName = res["Name"]
+        })
+      }
+      else
+      {
+        this.showme = false;
+        this.rangerName = "Login"
+      }
+      
       
     })
 
@@ -66,6 +85,7 @@ export class NavComponent implements OnInit {
           this.incidentnumber = this.incidents.count();
           console.log(this.incidentnumber);
         })
+       
   }
   
     openSnackBar() {
@@ -91,7 +111,7 @@ export class NavComponent implements OnInit {
           "Date": new Date(),
           "Meassage": Message,
           "Title": Title,
-          "Ranger_ID": 3,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
         };
         console.log(this.NewNotification);
 
@@ -113,7 +133,7 @@ export class NavComponent implements OnInit {
           "Date": new Date(),
           "Meassage": Message,
           "Title": Title,
-          "Ranger_ID": 3,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
         };
         console.log(this.NewNotification);
 
@@ -169,7 +189,10 @@ export class NavComponent implements OnInit {
         },
       });
     }
-    
+    GetRangers(id) {
+      return this.http.get('https://2019group4inf370.azurewebsites.net/api/rangers/'+id)
+    }
+
     GetIncidents(){
       return this.http.get('http://localhost:51389/api/Incident_Patrol')
     };
@@ -186,6 +209,11 @@ export class NavComponent implements OnInit {
           
         });
       });
+      }
+      Logout(){
+        sessionStorage.clear();
+        this.router.navigateByUrl("/login");
+        this.showme = false;
       }
     }
 

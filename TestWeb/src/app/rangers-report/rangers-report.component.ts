@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import {ERPService} from '..//erp.service';  
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-rangers-report',
   templateUrl: './rangers-report.component.html',
@@ -38,7 +40,7 @@ export class RangersReportComponent implements OnInit {
     });
   
 }
-  constructor( private data: ERPService) { }
+  constructor( private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.data.GetRanger().subscribe(res=>{
@@ -46,6 +48,28 @@ export class RangersReportComponent implements OnInit {
 
 
     });
+    this.ReportAccess(10);
   }
+  ReportAccess(ID){
+    this.data.GetRangers(ID).subscribe(res=>{
+      console.log(res);
+    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      
+      
+  }
+    
+    else {
+      
+      this.showToast1();
+      
+    }
+    
+  })
+  }
+  showToast1() {
+    this.toastrService.show("Sorry you do not have access to reports");
+    this.router.navigateByUrl("/home");
+  }
+
 
 }
