@@ -54,12 +54,16 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'modifybooking', loadChildren: './modifybooking/modifybooking.module#ModifybookingPageModule' },
   { path: 'map-test', loadChildren: './map-test/map-test.module#MapTestPageModule' },
+<<<<<<< HEAD
+  { path: 'modifyvehicle', loadChildren: './modifyvehicle/modifyvehicle.module#ModifyvehiclePageModule' },
+=======
   { path: 'event-confirm', loadChildren: './event-confirm/event-confirm.module#EventConfirmPageModule' },
   
 
 
 
 ];
+>>>>>>> d8f2c598e831f441dad51e93ae4297a5997ad8ec
 
 @NgModule({
   imports: [
