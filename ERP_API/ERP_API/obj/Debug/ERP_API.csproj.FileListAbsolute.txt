@@ -274,6 +274,6 @@ C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\b
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
+C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
-C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache

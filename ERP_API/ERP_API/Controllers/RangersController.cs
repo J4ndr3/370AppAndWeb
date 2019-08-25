@@ -23,7 +23,7 @@ namespace ERP_API.Controllers
         public List<dynamic> GetRangers()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<Ranger> Level = db.Rangers.Include(zz=>zz.User_Role).Include(zz=>zz.Medical_Aid).Include(zz=>zz.Organisation).Include(zz=>zz.Gender).ToList();
+            List<Ranger> Level = db.Rangers.Include(zz=>zz.User_Role).Include(zz=>zz.Medical_Aid).Include(zz=>zz.Organisation).Include(zz=>zz.Gender).Include(zz=>zz.Access_Level).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Ranger Item in Level)
             {
@@ -40,7 +40,10 @@ namespace ERP_API.Controllers
                 m.Gender = Item.Gender.Description;
                 m.Organisation = Item.Organisation.Description;
                 m.Blood = Item.Blood_Type;
-                
+                m.Report = Item.Access_Level.Report;
+                m.Web = Item.Access_Level.Web;
+                m.Write = Item.Access_Level.Write;
+                m.App = Item.Access_Level.App;
                 toReturn.Add(m);
             }
             return toReturn;
@@ -142,6 +145,49 @@ namespace ERP_API.Controllers
         private bool RangerExists(int id)
         {
             return db.Rangers.Count(e => e.Ranger_ID == id) > 0;
+        }
+        [System.Web.Http.Route("api/Rangers/UpdatePoints")]
+        public HttpResponseMessage UpdatePoints([FromUri] Ranger userDet)
+        {
+            var points = userDet.Points;
+            db.Configuration.ProxyCreationEnabled = false;
+            bool UseInDb = false;
+            if (db.Rangers.Where(zz => zz.Ranger_ID == userDet.Ranger_ID ).Count() == 1)
+            {
+                UseInDb = true;
+            }
+            if (UseInDb)
+            {
+                userDet = db.Rangers.Where(zz => zz.Ranger_ID == userDet.Ranger_ID).FirstOrDefault();
+                RefreshGUID(userDet, points);
+                userDet = db.Rangers.Where(zz => zz.Ranger_ID == userDet.Ranger_ID).FirstOrDefault();
+                List<dynamic> uselit = new List<dynamic>();
+                dynamic user1 = new ExpandoObject();
+                user1.GUID = userDet.GUID;
+                user1.Correct = true;
+                uselit.Add(user1);
+                var response1 = Request.CreateResponse(HttpStatusCode.OK, uselit);
+                response1.Headers.Add("Access-Control-Allow-Origin", "*");
+                return response1;
+
+            }
+            else
+            {
+                var response = Request.CreateResponse(HttpStatusCode.OK, "Access not allowed");
+                response.Headers.Add("Access-Control-Allow-Origin", "*");
+                return response;
+            }
+
+        }
+        public void RefreshGUID(Ranger use,int points)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            use.Points = use.Points - points;
+            
+                var u = db.Rangers.Where(zz => zz.Ranger_ID == use.Ranger_ID).FirstOrDefault();
+                db.Entry(u).CurrentValues.SetValues(use);
+                db.SaveChanges();
+            
         }
     }
 }

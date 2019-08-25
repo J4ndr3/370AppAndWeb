@@ -1,18 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
 import { FcmService } from '../fcm.service';
+import { ERPService } from '../erp.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  Name:object;
+  Points:Object;
+  nName:Object;
+  Surname:Object;
+  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService,private data: ERPService) { }
 
-  constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService) { }
+
+  ngOnInit() {
+    
+    this.RangerDetails(3);
+    }
+    RangerDetails(ID){
+     
+      this.data.GetRangerID(ID).subscribe(res2 => {
+        this.Name= res2['Name'];
+        this.Points= res2['Points'];
+        this.Surname= res2['Surname'];
+        this.nName = {
+          "Name": res2['Name']
+        };
+    })
+    }
+
+
   openNote() {
     this.navController.navigateRoot('/registerform')
   }

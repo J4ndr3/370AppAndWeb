@@ -34,12 +34,16 @@ export class NavComponent implements OnInit {
   count;
   NewNotification:object;
   timer:any;
+  Performances:object
+  toggle:any;
+  IDPerformance:object;
 
   constructor(private http: HttpClient,public snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder ) {}
   AddForm: FormGroup;
   AddForm2: FormGroup;
   
   ngOnInit() {
+    
     const source = timer(0,60000);
     const subscribe = source.subscribe(val=>{
       this.count =0
@@ -66,6 +70,7 @@ export class NavComponent implements OnInit {
           this.incidentnumber = this.incidents.count();
           console.log(this.incidentnumber);
         })
+       
   }
   
     openSnackBar() {
@@ -187,5 +192,5 @@ export class NavComponent implements OnInit {
         });
       });
       }
-    }
-
+    
+  }

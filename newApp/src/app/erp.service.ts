@@ -144,4 +144,7 @@ nID:any;
   PostIncident_Patrol(obj){
     return this.http.post('http://localhost:51389/api/Incident_Patrol/',obj)
   }
+  UpdatePoints(id,points){
+    return this.http.get('http://localhost:51389/api/Rangers/UpdatePoints/?Ranger_ID='+id+'&Points='+points)
+  }
 }
