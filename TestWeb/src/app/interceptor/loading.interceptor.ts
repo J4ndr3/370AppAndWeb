@@ -67,6 +67,11 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
     
   };
   hideAll(): void {
+    var back = document.querySelectorAll(".modal-backdrop");
+    if(back) {
+      $('.modal-backdrop').remove();
+    }
+
 		//try to hide all active modals
 		var openModals = document.querySelectorAll(".modal.in");
 		if(openModals) {
@@ -78,7 +83,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
 					var closeButton : any = modalHeader[0].getElementsByTagName("BUTTON");
 					if(closeButton && closeButton.length > 0) {
 						//simulate click on close button
-						closeButton[0].click();
+            closeButton[0].click();
 					}
 				}
 			}

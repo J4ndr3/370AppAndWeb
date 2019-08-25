@@ -32,7 +32,7 @@ export class AppComponent {
             if (event instanceof NavigationError) {
                 // Hide loading indicator
                 router.navigateByUrl('/home');
-                alert("The page url you provided was not found and you will be redirected to th home page.")
+                alert("The page URL you provided was not found and you will be redirected to the home page.")
                 document.getElementById('generalMod').click();
                 // Present error to user
                 console.log(event.error);

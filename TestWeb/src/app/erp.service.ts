@@ -70,16 +70,16 @@ export class ERPService {
   }
 
   GetStatus() {
-    return this.http.get('http://localhost:51389/api/Caus')
+    return this.http.get('http://localhost:51389/api/Asset_Status')
   }
   PostStatus(obj) {
-    return this.http.post('http://localhost:51389/api/Caus', obj)
+    return this.http.post('http://localhost:51389/api/Asset_Status', obj)
   }
   DeleteStatus(id) {
-    return this.http.delete('http://localhost:51389/api/Caus/' + id)
+    return this.http.delete('http://localhost:51389/api/Asset_Status/' + id)
   }
   PutStatus(id, obj) {
-    return this.http.put('http://localhost:51389/api/Caus/' + id, obj)
+    return this.http.put('http://localhost:51389/api/Asset_Status/' + id, obj)
   }
 
   GetMedicalAid() {
@@ -237,7 +237,7 @@ export class ERPService {
     return this.http.delete('http://localhost:51389/api/Product_Type/' + id)
   }
   GetAsset(ID) {
-    return this.http.get('http://localhost:51389/api/Asset/'+ID)
+    return this.http.get('http://localhost:51389/api/Assets/'+ID)
   }
   GetSupplier() {
     return this.http.get('http://localhost:51389/api/Suppliers')
@@ -459,5 +459,8 @@ GetStatusDropdown() {
   }
   GetPerformances(id) {
     return this.http.get('http://localhost:51389/api/Patrol_Marker/' + id)
+  }
+  PostAsset_Supplier(obj) {
+    return this.http.post('http://localhost:51389/api/Assets/AS', obj)
   }
 }

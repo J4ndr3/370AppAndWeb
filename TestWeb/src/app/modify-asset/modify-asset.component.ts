@@ -26,20 +26,22 @@ export class ModifyAssetComponent implements OnInit {
   constructor(private toastrService: ToastrService, private router:Router,private data: ERPService, private formBuilder: FormBuilder  ) { }
 
   ngOnInit() {
-    this.data.GetSupplierDropdown().subscribe(res=>{
+    this.EditForm = this.formBuilder.group({
+      ID:[],// your attributes
+      Description: [] ,
+      Type:[],
+      Status:[]
+      });
+    this.data.GetSupplier().subscribe(res=>{
       this.SupplierOptions = JSON.parse(JSON.stringify(res));
     })
-    this.data.GetTypeDropdown().subscribe(res=>{
+    this.data.GetTypes().subscribe(res=>{
       this.TypeOptions = JSON.parse(JSON.stringify(res));
     })
-    this.data.GetStatusDropdown().subscribe(res=>{
+    this.data.GetStatus().subscribe(res=>{
       this.StatusOptions = JSON.parse(JSON.stringify(res));
     })
-    this.EditForm = this.formBuilder.group({
     
-      Descriprion: [] ,
-      ID:[]// your attributes
-      });
       this.edt();
   }
   edit(ID){
@@ -50,40 +52,41 @@ export class ModifyAssetComponent implements OnInit {
         this.router.navigateByUrl("/asset");
       }
       else{
-        this.router.navigateByUrl("/Modify-asset");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/modify-asset");
+        //this.ngOnInit();
+        
       }})
     
   }
   edt(){
     this.data.GetAsset(this.data.nID).subscribe(res=>{     
       this.Asset = res;
+      console.log(this.Asset)
       this.EditForm.setValue({ID:this.Asset.Asset_ID,
-        Descriprion:this.Asset.Descriprion,
-        Supplier:this.Asset.Supplier,
-        Type:this.Asset.Type,
-        Status:this.Asset.Status
+        Description:this.Asset.Description,
+        Type:this.Asset.Asset_Type_ID,
+        Status:this.Asset.Asset_Status_ID
         })    
     })
   }
   update(){
     var Status = this.EditForm.get('Status').value; //the name in red the same as on you html
-    var Descriprion = this.EditForm.get('Descriprion').value; //the name in red the same as on you html
-    var Supplier = this.EditForm.get('Supplier').value;
+    var Descriprion = this.EditForm.get('Description').value; //the name in red the same as on you html
+    //var Supplier = this.EditForm.get('Supplier').value;
     var Type = this.EditForm.get('Type').value;
     var ID = this.EditForm.get('ID').value;
 
-    if (Status==""||Supplier==""||Descriprion==""||Type=="" ) {
+    if (Status==""||Descriprion==""||Type=="" ) {
       document.getElementById("inputErr").click(); //Hy mag dalk nie nou werk nie sal hom in nav gaan declare
     }
     else {
       this.nAsset = {
-      
-        "Descriprion": Descriprion, //selfde as die databasis
-        "Type": Type,
-        "Status" : status,
-        "Supplier" : Supplier,
+      "Asset_ID":ID,
+        "Description": Descriprion, //selfde as die databasis
+        "Asset_Type_ID": Type,
+        "Asset_Status_ID" : Status,
+       // "Supplier" : Supplier,
         
       };
       console.log(this.nAsset);
