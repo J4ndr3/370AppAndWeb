@@ -18,6 +18,7 @@ import { timer} from 'rxjs';
   styleUrls: ['./nav.component.sass'],
 })
 export class NavComponent implements OnInit {
+  showme=false;
   rangerName="";
   display='none';
   action: boolean = true;
@@ -53,12 +54,14 @@ export class NavComponent implements OnInit {
       });
       if (sessionStorage.getItem('Ranger')!=null)
       {
+        this.showme = true;
         this.GetRangers(sessionStorage.getItem('Ranger')).subscribe(res=>{
           this.rangerName = res["Name"]
         })
       }
       else
       {
+        this.showme = false;
         this.rangerName = "Login"
       }
       
@@ -204,7 +207,8 @@ export class NavComponent implements OnInit {
       }
       Logout(){
         sessionStorage.clear();
-        this.router.navigateByUrl("/login")
+        this.router.navigateByUrl("/login");
+        this.showme = false;
       }
     }
 

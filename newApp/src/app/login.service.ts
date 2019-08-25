@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 export class LoginService {
 user; 
 pass; 
+ranger;
   constructor(private http: HttpClient,private router:Router,private storage: Storage) { }
   LogIn(user,pass){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Login/Login/?Email='+user+'&Password='+pass)

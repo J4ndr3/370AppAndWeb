@@ -45,7 +45,7 @@ export class ModifyOrderComponent implements OnInit {
      
   }
   edit(ID){
-    this.data.GetOrder(ID).subscribe(res=>{ //iets fout met ID
+    this.data.GetOrders(ID).subscribe(res=>{ //iets fout met ID
       if (res==1)
       {
         alert("Not found");
@@ -59,7 +59,7 @@ export class ModifyOrderComponent implements OnInit {
     
   }
   edt(){
-     this.data.GetOrder(this.data.nID).subscribe(res=>{     
+     this.data.GetOrders(this.data.nID).subscribe(res=>{     
       this.Order= res;
       this.EditForm.setValue({ID:this.Order.Order_ID,
         Date:this.Order.Date,

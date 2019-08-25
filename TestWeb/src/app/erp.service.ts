@@ -236,8 +236,8 @@ export class ERPService {
   DeleteProductType(id) {
     return this.http.delete('http://localhost:51389/api/Product_Type/' + id)
   }
-  GetAsset() {
-    return this.http.get('http://localhost:51389/api/Asset')
+  GetAsset(ID) {
+    return this.http.get('http://localhost:51389/api/Asset/'+ID)
   }
   GetSupplier() {
     return this.http.get('http://localhost:51389/api/Suppliers')
@@ -256,6 +256,9 @@ export class ERPService {
 
   GetOrder() {
     return this.http.get('http://localhost:51389/api/Orders')
+  }
+  GetOrders(ID) {
+    return this.http.get('http://localhost:51389/api/Orders/'+ID)
   }
   PostOrder(obj) {
     return this.http.post('http://localhost:51389/api/Orders', obj)
@@ -420,7 +423,6 @@ export class ERPService {
   DeleteAsset(id) {
     return this.http.delete('http://localhost:51389/api/Assets/' + id)
   }
-<<<<<<< HEAD
   GetSuppliers(id) {
     return this.http.get('http://localhost:51389/api/Suppliers/'+ id)
   }
@@ -436,7 +438,6 @@ GetSupplierDropdown() {
 GetStatusDropdown() {
   return this.http.get('http://localhost:51389/api/Status')
 }
-=======
 
   GetUserRole1(id) {
     return this.http.get('http://localhost:51389/api/User_Role/' + id)
@@ -456,5 +457,4 @@ GetStatusDropdown() {
   PutMarker(ID, obj) {
     return this.http.put('http://localhost:51389/api/Markers/' + ID, obj)
   }
->>>>>>> 00edf585b382f172bfc82d3b60669c5c829e96bd
 }

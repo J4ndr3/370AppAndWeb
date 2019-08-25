@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-import { Platform } from '@ionic/angular';
+import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { timer } from 'rxjs';
@@ -82,16 +82,19 @@ export class AppComponent {
     private statusBar: StatusBar,
     private fcm: FcmService,
     public toastController: ToastController,
-    private router: Router, private data: LoginService
+    private router: Router, private data: LoginService,
+    public loadingController: LoadingController
   ) {
     this.initializeApp();
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-          if (event.url !="/reset")
-          {
-              console.log(event)
-              this.data.testlogin();
-          }
+        this.presentLoading();
+        if (event.url != "/login") {
+            if (event.url != "/reset") {
+                // console.log(event)
+                this.data.testlogin();
+            }
+        }
           
       }
 
@@ -109,7 +112,28 @@ export class AppComponent {
 
 
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Loading...',
+      duration: 2000
+    });
+    await loading.present();
 
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
+  }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
   private async presentToast(message) {
     const alert = await this.alertCtrl.create({
       header: "Incident Aert",
