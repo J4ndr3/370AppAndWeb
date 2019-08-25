@@ -273,7 +273,7 @@ export class ERPService {
   }
 
   GetTypes() {
-    return this.http.get('http://localhost:51389/api/Types')
+    return this.http.get('http://localhost:51389/api/Asset_Type')
   }
   // sendNotif(title,message) {
   //   const httpOptions = {

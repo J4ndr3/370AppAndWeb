@@ -44,6 +44,10 @@ export class SupplierComponent implements OnInit {
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
   }
+  showToastSuccess(){
+    this.toastrService.show("Record added Successfully", "Success!");
+   
+}
 
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
@@ -71,7 +75,7 @@ export class SupplierComponent implements OnInit {
         if (res != null)
         {
           this.ngOnInit();
-          this.showToast();
+          this.showToastSuccess();
         }
         else
         {
@@ -109,6 +113,7 @@ export class SupplierComponent implements OnInit {
         this.data.nID = ID;
         document.getElementById('del').click();
     }
+   
     edit(ID){
       this.data.nID = ID;
       this.mod.edit(ID);

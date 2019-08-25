@@ -2,7 +2,7 @@
 <hr class="hrow" />
 
 <div class="outer">
-  
+
     <div class="button">
         <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
       <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
@@ -11,7 +11,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" [(ngModel)] = "searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -32,12 +32,12 @@
         <form class="form-horizontal" id="modifyForm" action="/action_page.php">
 
             <div class="form-group">
-                
+
                 <h2 class="Header">Add Asset</h2>
                 <br>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Asset Description..." name="desc" required >
-                </div> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desc" placeholder="Asset Description..." name="desc" required>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -48,7 +48,7 @@
                 <option>Game</option>
                 <option routerLink="/supplier"class="dropdown-item"> Supplier</option>
                         </select>
-                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -60,9 +60,9 @@
                 <option>Spotlight</option>
                 <option>Add new...</option>
                         </select>
-                        </div>
+                    </div>
                 </div>
-                
+
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -72,10 +72,10 @@
                 <option>Broken</option>
                 <option>In Repair</option>
                         </select>
-                        </div>
+                    </div>
                 </div>
             </div>
-            
+
 
             <!--Moenie die save button verander nie-->
             <div class="form-group">
@@ -102,9 +102,9 @@
                 <th>Generate QR Code</th>
                 <th></th>
                 <th>Actions</th>
-                
-                
-                
+
+
+
             </tr>
         </thead>
         <tbody>
@@ -113,35 +113,35 @@
                 <td>{{Asset.Supplier}}</td>
                 <td>{{Asset.Type}}</td>
                 <td>{{Asset.Status}}</td>
-                
+
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
                     <button (click)="generateQRCode()" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                    class="edit"  /></button> 
+                    class="edit"  /></button>
                     <!-- <a [href]="href" *ngIf="display" (click)="downloadImage()" download> -->
                 </td>
-                 
-                <td> 
-                        <div id = "content" #content>
-                                <div id="contentToConvert">
-                                    <div id="QR" align="centre"></div>
-                                    
 
-     
-                    <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "Asset.ID" ></ngx-qrcode>
-                </div>
-            </div>
+                <td>
+                    <div id="content" #content>
+                        <div id="contentToConvert">
+                            <div id="QR" align="centre"></div>
+
+
+
+                            <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID"></ngx-qrcode>
+                        </div>
+                    </div>
                 </td>
-                
-                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
+
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Asset.ID)" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
-              
+
             </tr>
-        
-            
-           
-          
+
+
+
+
         </tbody>
     </table>
 
