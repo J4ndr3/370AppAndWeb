@@ -16,19 +16,29 @@
 <ion-content>
     <br>
     <ion-img src="/assets/SVGS-01.svg" style="margin: auto; width: 25%" (click)="hallo()"></ion-img>
-    <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 20px">John Doe</ion-card-title>
-    <p style="margin: auto; text-align: center;color:rgb(102,116,143);font-size:12px">Reward Status: <b>100 Points</b></p>
+    <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 20px">{{Ranger.Name}} {{Ranger.Surname}}</ion-card-title>
+    <p style="margin: auto; text-align: center;color:rgb(102,116,143);font-size:12px">Reward Status: <b>{{Ranger.Poins}} Points</b></p>
     <hr style="height:0pt; visibility:hidden;" />
+<div id="buttons">
+    <ion-buttons routerLink="/list" style="background-color: rgb(102,116,143); width:70%;margin: auto;padding-bottom:7px; padding-top:8px; margin-bottom:6%;border-radius: 5px !important">
+        <ion-img src="/assets/_ionicons_svg_md-checkbox-outline.svg" style="margin:auto; width: 12%"></ion-img>
+        <p style="margin: auto; text-align: left; color:white; font-size:16px">CHECK IN </p><b style="color: rgb(102,116,143);">....</b>
+    </ion-buttons>
 
-    <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important" routerLink="/list"></ion-img>
-    <!-- <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important" (click)="err2()"></ion-img>
-    <ion-img src="/assets/SVGS-05.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 50% !important" (click)="err2()"></ion-img> -->
-    <ion-img src="/assets/SVGS-06.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 5px !important" routerLink="/shiftbookings"></ion-img>
+    <ion-buttons routerLink="/shiftbookings" style="background-color: rgb(102,116,143); width:70%;margin: auto;padding-bottom:7px; padding-top:8px; margin-bottom:6%;border-radius: 5px !important">
+        <ion-img src="/assets/_ionicons_svg_md-apps.svg" style="margin:auto; width: 12%"></ion-img>
+        <p style="margin: auto; text-align: left; color:white; font-size:16px">MY SHIFTS </p><b style="color: rgb(102,116,143);">..</b>
+    </ion-buttons>
 
-    <ion-img src="/assets/SVGS-07.svg" style="margin: auto; width: 65%;padding-bottom:5%; border-radius: 5px !important" routerLink="/rewards"></ion-img>
+    <ion-buttons routerLink="/rewards" style="background-color: rgb(102,116,143); width:70%;margin: auto;padding-bottom:7px; padding-top:8px; margin-bottom:6%;border-radius: 5px !important">
+        <ion-img src="/assets/_ionicons_svg_md-star(1).svg" style="margin:auto; width: 12%"></ion-img>
+        <p style="margin: auto; text-align: left; color:white; font-size:16px">MY REWARDS </p><b style="color: rgb(102,116,143);">..</b>
+    </ion-buttons>
 
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-        <ion-fab-button mini color="light" class="fabIncident">
+</div >
+
+    <ion-fab align="center" horizontal="center" slot="fixed"  vertical="bottom">
+        <ion-fab-button large color="light" class="fabIncident">
             <ion-img src="/assets/SVGS-04.svg" style="margin: auto; width: 100% !important; --background:rgb(205, 21, 67) !important"></ion-img>
         </ion-fab-button>
         <ion-fab-list side="top">
@@ -47,4 +57,5 @@
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
+  
 </ion-content>

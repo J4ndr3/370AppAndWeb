@@ -9,17 +9,33 @@ import { LoginService } from '../login.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';      
 declare var google;
 import { ERPService } from '../erp.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage {
 Email;
 
-  constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) { }
+  constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
+    this.data.GetRanger(this.ID).subscribe(res=>{
+      this.Ranger=res;
+      console.log(res);
+    })
+   }
+
   NewIncident:object;
   newPatrol:object;
+  ID=3;
+  Ranger:any;
+
+ // constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
+    
+   //}
+  
 
   openNote() {
     
