@@ -13,140 +13,142 @@
     </ion-toolbar>
 </ion-header>
 
-
+<div *ngIf="hideEverything" style="width:75%; height: 50%"></div>
 <ion-content>
 
     <div #ref>
 
         <form #patrolform id="regForm" action="" style="height:78%; width:100%;" [formGroup]="AddForm" (ngSubmit)="addrangerpatrolpage()">
             <ion-card style=" width:100% !important;">
+
                 <ion-card-content>
+
                     <!-- One "tab" for each step in the form: -->
                     <div class="tab" style="color:black; text-align:left; padding:0% !important">
                         <div class="form-group">
                             <div class="col-sm-10">
+
                                 <ion-label align="center" style="margin-bottom:5% !important">Select shift booking reference for current patrol:</ion-label>
-                                <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()"  formControlName="BookingReference" name="BookingReference" required>
-                                    <ion-select-option>12 May 14:00</ion-select-option>
-                                    <ion-select-option>17 May 16:30</ion-select-option>
-                                    <ion-select-option>No booking...</ion-select-option>
+                                <ion-select placeholder="Booking Reference" class="form-control" id="Select1" onchange="selectColor()" formControlName="BookingReference" name="BookingReference" required>
+                                    <ion-select-option *ngFor="let res of RangerpatrolPageOptions" [(value)]="res.Patrol">{{res.Event}}</ion-select-option>
+                                    <!-- <ion-select-option>17 May 16:30</ion-select-option>
+                                    <ion-select-option>No booking...</ion-select-option> -->
                                 </ion-select>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab" style="color:black;">
+                    <div class="tab" style="background-color: transparent;">
                         <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
 
-                        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
+                        <!-- <img src="./assets/th (2).jpg" alt="Camera"  class="center" > -->
                         <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
                             Enter Code Here</ion-button>
                         <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-                            <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
+                            <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
                             <ion-button style="float:right; margin-bottom:10% !important;">
                                 <ion-icon name="add" size="medium"></ion-icon>
                             </ion-button>
                         </div>
-
+                        <!-- 
                         <div class="tab" style="color:black;">
                             <ion-label align="center" style="margin-bottom:5% !important">Scan assets to Checkout:</ion-label>
                             <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" class="center" style="margin-bottom:5% !important;">
                             <ion-button data-toggle="collapse" data-target="#demo" style="margin-bottom:5% !important; width:100%;">
                                 Enter Code Here</ion-button>
                             <div class="collapse" id="demo" style="margin-bottom:5% !important;">
-                                <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode1" formControlName="EnterQRCode1"  style="margin-bottom:5% !important;"></ion-input>
+                                <ion-input class="ion-padding-start form-control" required="false" placeholder="QR-Code..." name="EnterQRCode1" formControlName="EnterQRCode1" style="margin-bottom:5% !important;"></ion-input>
                                 <ion-button style="float:right; margin-bottom:10% !important;">
                                     <ion-icon name="add" size="medium"></ion-icon>
                                 </ion-button>
-                            </div>
+                            </div> -->
 
-                            <div style="width: 100% " class="col-md-10 ">
+                        <div style="width: 100% " class="col-md-10 ">
 
-                                <table class="table table-striped" style="width: 100% !important;">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="color: black">Car Magnet</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color: black">Flashlight</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color: black">Gate 13 Key</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <table class="table table-striped" style="width: 100% !important;">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: black">Car Magnet</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: black">Flashlight</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: black">Gate 13 Key</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div class="tab" style="color:black;">
+                        <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
+                        <div #map id="map" style="width: 100%;  height: 500px !important;"></div>
+
+                        <ion-button style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
+                            Report Incident</ion-button>
+                    </div>
+
+                    <div class="tab" style="color:black">
+                        <ion-label align="center" style="margin-bottom:5% !important">Check in assets:</ion-label>
+                        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
+                        <ion-button data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
+
+                        <div class="collapse" id="demo2">
+                            <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCodeO" style="margin-bottom:5% !important;"></ion-input>
+                            <ion-button style="float:right; margin-bottom:10% !important;">
+                                <ion-icon name="add" size="Medium"></ion-icon>
+                            </ion-button>
                         </div>
 
-
-                        <div class="tab" style="color:black;">
-                            <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
-                            <div #map></div>
-                            <!-- <img src="./assets/mapsfoto.jpeg" alt="Where am I?" width="100%" height="auto"
-              style="margin-bottom:10% !important; padding:0% !important"> -->
-                            <ion-button style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
-                                Report Incident</ion-button>
+                        <div class="col-md-10 user-container">
+                            <table class="table table-striped" style="width: 100% !important; padding-bottom:2% !important">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: black">Car Magnet</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: black">Flashlight</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: black">Gate 13 Key</td>
+                                        <td style="color: black">
+                                            <ion-icon name="close"></ion-icon>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
                         </div>
-
-                        <div class="tab" style="color:black">
-                            <ion-label align="center" style="margin-bottom:5% !important">Check in assets:</ion-label>
-                            <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
-                            <ion-button data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
-
-                            <div class="collapse" id="demo2">
-                                <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCode" style="margin-bottom:5% !important;"></ion-input>
-                                <ion-button style="float:right; margin-bottom:10% !important;">
-                                    <ion-icon name="add" size="Medium"></ion-icon>
-                                </ion-button>
-                            </div>
-
-                            <div class="col-md-10 user-container">
-                                <table class="table table-striped" style="width: 100% !important; padding-bottom:2% !important">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="color: black">Car Magnet</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color: black">Flashlight</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color: black">Gate 13 Key</td>
-                                            <td style="color: black">
-                                                <ion-icon name="close"></ion-icon>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
-                            </div>
-                        </div>
+                    </div>
 
 
-                        <div style="overflow:auto;width: 100%;"></div>
-                        <ion-item lines="none" width="100%">
-                            <ion-button size="Medium" id="prevBtn" (click)="nextPrev(-1)">Back</ion-button>
-                            <ion-button size="Medium" id="nextBtn" (click)="nextPrev(1)">Next</ion-button>
+                    <div style="overflow:auto;width: 100%;"></div>
+                    <ion-item lines="none" width="100%">
+                        <ion-button size="Medium" id="prevBtn" (click)="nextPrev(-1)">Back</ion-button>
+                        <ion-button size="Medium" id="nextBtn" (click)="nextPrev(1)">Next</ion-button>
 
-                        </ion-item>
+                    </ion-item>
                 </ion-card-content>
             </ion-card>
 
@@ -159,7 +161,7 @@
         </form>
 
 
-        </div>
+    </div>
 
 
 </ion-content>

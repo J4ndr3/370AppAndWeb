@@ -32,22 +32,25 @@
         "@ionic-native/qr-scanner": "^5.11.0",
         "@ionic-native/splash-screen": "^5.8.0",
         "@ionic-native/status-bar": "^5.8.0",
-        "@ionic/angular": "^4.6.0",
+        "@ionic/angular": "^4.7.4",
         "@ionic/storage": "^2.2.0",
         "@types/date-fns": "^2.6.0",
+        "@types/jquery": "^2.0.47",
         "angular-calendar": "^0.27.12",
         "angular-calendar-week-hours-view": "^1.0.2",
+        "angular2-qrcode": "^2.0.3",
         "angularfire2": "^5.2.1",
         "bootstrap": "^4.3.1",
         "cordova": "^9.0.0",
         "cordova-android": "^8.0.0",
         "cordova-android-support-gradle-release": "^3.0.1",
         "cordova-ios": "^5.0.1",
+        "cordova-plugin-add-swift-support": "^2.0.2",
         "cordova-plugin-androidx": "^1.0.2",
         "cordova-plugin-androidx-adapter": "^1.1.0",
         "cordova-plugin-background-mode": "^0.7.3",
         "cordova-plugin-camera": "^4.1.0",
-        "cordova-plugin-cocoapod-supportx": "^1.7.2",
+        "cordova-plugin-cocoapod-supportx": "^1.7.3",
         "cordova-plugin-firebasex": "^3.0.6",
         "cordova-plugin-geolocation": "^4.0.2",
         "cordova-plugin-nativegeocoder": "^3.2.2",
@@ -59,9 +62,12 @@
         "html2canvas": "^1.0.0-rc.3",
         "intl": "^1.2.5",
         "ionic": "^5.2.1",
+        "ionic-angular": "^3.9.8",
         "ionic2-calendar": "^0.5.2",
+        "jquery": "^3.4.1",
         "jspdf": "^1.5.3",
         "moment": "^2.24.0",
+        "ng2-search-filter": "^0.5.1",
         "ngx-qrcode2": "0.0.9",
         "phonegap-plugin-push": "^2.2.3",
         "rxjs": "^6.5.2",
@@ -122,7 +128,16 @@
                 "ANDROID_FIREBASE_AUTH_VERSION": "18.0.0",
                 "ANDROID_CRASHLYTICS_VERSION": "2.10.1",
                 "ANDROID_CRASHLYTICS_NDK_VERSION": "2.1.0",
-                "ANDROID_SHORTCUTBADGER_VERSION": "1.1.22"
+                "ANDROID_SHORTCUTBADGER_VERSION": "1.1.22",
+                "IOS_MIN_VERSION": "9.0",
+                "IOS_STRIP_DEBUG": "false",
+                "IOS_FIREBASE_CORE_VERSION": "6.3.0",
+                "IOS_FIREBASE_AUTH_VERSION": "6.3.0",
+                "IOS_FIREBASE_MESSAGING_VERSION": "6.3.0",
+                "IOS_FIREBASE_PERFORMANCE_VERSION": "6.3.0",
+                "IOS_FIREBASE_REMOTECONFIG_VERSION": "6.3.0",
+                "IOS_FABRIC_VERSION": "1.9.0",
+                "IOS_CRASHLYTICS_VERSION": "3.12.0"
             },
             "cordova-plugin-androidx-adapter": {},
             "cordova-plugin-qrscanner": {},
@@ -136,11 +151,12 @@
             "cordova-android-support-gradle-release": {
                 "ANDROID_SUPPORT_VERSION": "27.+"
             },
-            "cordova-plugin-nativegeocoder": {},
+            "cordova-plugin-nativegeocoder": {
+                "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service"
+            },
             "cordova-plugin-background-mode": {}
         },
         "platforms": [
-            "ios",
             "android"
         ]
     }

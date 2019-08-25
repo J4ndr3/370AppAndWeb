@@ -56,7 +56,7 @@ import { RewardEventModifyComponent } from './reward-event-modify/reward-event-m
 import { ResetPassworComponent } from './reset-passwor/reset-passwor.component';
 import { ViewRangerComponent } from './view-ranger/view-ranger.component';
 import { ModVehicleComponent } from './mod-vehicle/mod-vehicle.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SupplierComponent } from './supplier/supplier.component';
 import { ModifySupplierComponent } from './modify-supplier/modify-supplier.component';
 import { OrderComponent } from './order/order.component';
@@ -71,7 +71,11 @@ import { EventTypeModifyComponent } from './event-type-modify/event-type-modify.
 import { DownloadRewardsComponent } from './download-rewards/download-rewards.component';
 import { DownloadStatusComponent } from './download-status/download-status.component';
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
-import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
+import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+
+import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -134,9 +138,11 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
     DownloadRewardsComponent,
     DownloadStatusComponent,
     DownloadIncedentComponent,
+    LoadingScreenComponent,
    
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NgxQRCodeModule,
     ReactiveFormsModule,
@@ -157,7 +163,11 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter'
     HttpClientModule,
     Ng2SearchPipeModule
   ],
-  providers: [ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentComponent,
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingScreenInterceptor,
+    multi: true
+  },ModifyRangerComponent,GateModComponent,ERPService,NavComponent,IncidentComponent,
     HomeComponent,
     RangerComponent,
     ProfileComponent,

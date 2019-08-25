@@ -20,6 +20,8 @@
     <div class="inputForm"> -->
 
     <br />
+    
+    <div class="col-sm-10">
     <form [formGroup]="EditForm" (ngSubmit)="update()">
         <div class="inputForm">
 
@@ -32,7 +34,7 @@
               </button>
                         </h5>
                     </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="background-color: rgba(102,116,143,0.7);">
                         <div class="card-body">
 
                             <ion-input type="text" id="fname" class="ion-padding-start form-control" style="margin-bottom:2% !important;" formControlName="fname" placeholder="First Name..." required="true"></ion-input>
@@ -111,5 +113,6 @@
             <ion-button style="margin-bottom:10%;" (click)="containsmodifications()">Save Changes</ion-button>
         </div>
     </form>
+    </div>
     <!-- </div> -->
 </ion-content>

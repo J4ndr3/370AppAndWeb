@@ -9,36 +9,37 @@
           <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
     </div>
     <br>
-    <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+    <form class="form-horizontal" [formGroup]="EditForm" id="modifyForm" (ngSubmit)="update()">
 
         <div class="form-group">
             <h2 class="Header">Security Information:</h2>
             <br>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Name..." name="Level" required>
+                <input type="text" class="form-control" formControlName="ID" id="Level" name="Level" required hidden>
             </div>
-            <br>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Email..." name="Level" required>
+                <input type="text" class="form-control" formControlName="Name" id="Level" placeholder="Name..." name="Level" required>
             </div>
-            <br>
+            
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="Cell..." name="Level" required>
+                <input type="text" class="form-control" formControlName="Email" id="Level" placeholder="Email..." name="Level" required>
             </div>
-            <br>
+          
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-                  <option selected disabled hidden value="Reserve...">Reserve...</option>
-                  <option>Rietvallei</option>
-                  <option>Dinokeng</option>
-                  <option>3</option>
-                </select>
+                <input type="text" class="form-control" id="Level" formControlName="Cell" placeholder="Cell..." name="Level" required>
+            </div>
+           
+            <div class="col-sm-10">
+                <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option hidden [value]=""  selected>Reserve...</option>
+                    <option *ngFor="let opt of ReserveOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                  </select>
             </div>
         </div>
         <!--Moenie die save button verander nie-->
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" routerLink="/security">Save</button>
+                <button type="submit" class="btn btn-default" id="Save">Save</button>
             </div>
             <br>
             <br>

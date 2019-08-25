@@ -4,11 +4,9 @@
 <div class="outer">
   <!--Moenie buttons en search bar verander nie-->
   <div class="search">
-    <form action="/action_page.php" id="searchform">
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
       </div>
-    </form>
   </div>
 </div>
 <br>
@@ -21,6 +19,7 @@
         <th>Date</th>
         <th>Check-in Time</th>
         <th>Check-out Time</th>
+        <th>Total time</th>
         <th>Feedback</th>
         <th>Route</th>
         <th>Markers passed</th>
@@ -28,41 +27,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John Doe</td>
-        <td>24/02/2016</td>
-        <td>7:30</td>
-        <td>9:30</td>
-        <td>Roads are not accessible to hatchback/sedans, need 4x4 or SUV to navigate near the dam.</td>
+      <tr *ngFor="let patrol of Patrol | filter:searchText">
+        <td>{{patrol.Name}} {{patrol.Surname}}</td>
+        <td>{{patrol.Date}}</td>
+        <td>{{patrol.Checkin}}</td>
+        <td>{{patrol.Checkout}}</td>
+        <td>{{patrol.time}}</td>
+        <td>{{patrol.Feedback}}</td>
         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
         <td><img src="https://i.stack.imgur.com/jlgnb.png" style="height:150px;"></td>
-        <td>5</td>
-        <td>20</td>
+        <td>{{patrol.MarkerPast}}</td>
+        <td>{{patrol.Points}}</td>
       </tr>
-      <tr>
-          <td>John Doe</td>
-        <td>24/02/2016</td>
-        <td>7:30</td>
-        <td>9:30</td>
-        <td>Roads are not accessible to hatchback/sedans, need 4x4 or SUV to navigate near the dam.</td>
-        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-        <td><img src="https://i.stack.imgur.com/jlgnb.png" style="height:150px;"></td>
-        <td>5</td>
-        <td>20</td>
-      </tr>
-      <tr>
-          <td>John Doe</td>
-        <td>24/02/2016</td>
-        <td>7:30</td>
-        <td>9:30</td>
-        <td>Roads are not accessible to hatchback/sedans, need 4x4 or SUV to navigate near the dam.</td>
-        <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-        <td><img src="https://i.stack.imgur.com/jlgnb.png" style="height:150px;"></td>
-        <td>5</td>
-        <td>20</td>
-      </tr>
-    </tbody>
-  </table>
+      </tbody>
+      </table>
 
 
 </div>

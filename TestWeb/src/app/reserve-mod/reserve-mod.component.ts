@@ -85,5 +85,6 @@ export class ReserveModComponent implements OnInit {
   }
   showToast(){
     this.toastrService.show("Record modified successfully.", "Success!");
+    this.router.navigateByUrl('/reserve')
   }
 }

@@ -59,6 +59,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Vehicle))]
         public IHttpActionResult GetVehicle(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Vehicle vehicle = db.Vehicles.Find(id);
             if (vehicle == null)
             {
@@ -72,6 +73,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutVehicle(int id, Vehicle vehicle)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -107,6 +109,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Vehicle))]
         public IHttpActionResult PostVehicle(Vehicle vehicle)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
