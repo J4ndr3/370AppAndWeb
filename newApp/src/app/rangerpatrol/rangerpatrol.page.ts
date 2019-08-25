@@ -58,36 +58,6 @@ export class RangerpatrolPage implements OnInit {
         this.data.GetAssets().subscribe(res => {
             this.assets = JSON.parse(JSON.stringify(res));
         });
-        this.data.GetMarkers().subscribe(res => {
-            this.Markers = JSON.parse(JSON.stringify(res));
-            this.geofence.removeAll()
-                .then(function () {
-                    console.log('All geofences successfully removed.');
-                }
-                    , function (error) {
-                        console.log('Removing geofences failed', error);
-                    });
-            this.Markers.forEach(element => {
-                let fence = {
-                    id: element["Num"], //any unique ID
-                    latitude: element["Lat"], //center of geofence radius
-                    longitude: element["Long"],
-                    radius: 10, //radius to edge of geofence in meters
-                    transitionType: 3 //see 'Transition Types' below
-                }
-                var circle = new google.maps.Circle({
-                    map: this.map,
-                    center: new google.maps.LatLng(element["Lat"], element["Long"]),
-                    radius: 10,
-                    strokeColor: "green",
-                    fillColor: "green"
-                });
-                this.geofence.addOrUpdate(fence).then(
-                    () => console.log('Geofence added'),
-                    (err) => console.log('Geofence failed to add')
-                );
-            });
-        });
         this.storage.get("Ranger").then(res => {
             this.loggedIn = res;
             this.RangerpatrolPageOptions = [];
@@ -136,6 +106,31 @@ export class RangerpatrolPage implements OnInit {
                     self.map.setZoom(16);
                 }).catch((error) => {
                     alert('Error getting location ' + error);
+                });
+                this.data.GetMarkers().subscribe(res => {
+                    this.Markers = JSON.parse(JSON.stringify(res));
+                    this.geofence.removeAll()
+                        .then(function () {
+                            console.log('All geofences successfully removed.');
+                        }
+                            , function (error) {
+                                console.log('Removing geofences failed', error);
+                            });
+                    this.Markers.forEach(element => {
+                        let fence = {
+                            id: element["Num"], //any unique ID
+                            latitude: element["Lat"], //center of geofence radius
+                            longitude: element["Long"],
+                            radius: 10, //radius to edge of geofence in meters
+                            transitionType: 3 //see 'Transition Types' below
+                        }
+                        
+                        this.geofence.addOrUpdate(fence).then(
+                            () => console.log('Geofence added'),
+                            (err) => console.log('Geofence failed to add')
+                        );
+                        
+                    });
                 });
             });
         });
@@ -313,14 +308,16 @@ export class RangerpatrolPage implements OnInit {
         this.geofence.onTransitionReceived().subscribe(res => {
 
             res.forEach(function (geo) {
+                alert(geo["id"]);
                 var count = -1;
                 this.Markers.forEach(element => {
                     count++;
                     if (element["ID"] == geo["id"]) {
+                        alert("Marker was added to patroll log")
                         this.Markers.splice(count, 1)
                     }
                 });
-                alert(geo["id"]);
+                
 
             });
 
@@ -331,6 +328,7 @@ export class RangerpatrolPage implements OnInit {
 
     }
     redrawPath(path) {
+        var circle
         console.log(path);
         var self = this;
         if (self.currentMapTrack) {
@@ -338,8 +336,9 @@ export class RangerpatrolPage implements OnInit {
         }
         // map should be your map class
         if (path.length > 1) {
+            circle.setMap(null)
             this.Markers.forEach(element => {
-               var circle   = new google.maps.Circle({
+                circle   = new google.maps.Circle({
                     map: this.map,
                     center: new google.maps.LatLng(element["Lat"], element["Long"]),
                     radius: 10,
