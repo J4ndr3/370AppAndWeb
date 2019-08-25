@@ -457,4 +457,7 @@ GetStatusDropdown() {
   PutMarker(ID, obj) {
     return this.http.put('http://localhost:51389/api/Markers/' + ID, obj)
   }
+  GetPerformances(id) {
+    return this.http.get('http://localhost:51389/api/Patrol_Marker/' + id)
+  }
 }

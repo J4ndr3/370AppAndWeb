@@ -33,6 +33,7 @@ namespace ERP_API.Controllers
                 m.Surname = Item.Patrol_Log.Ranger.Surname;
                 m.Cell = Item.Patrol_Log.Ranger.Cell;
                 m.Points = Item.Patrol_Log.Ranger.Points;
+                m.Checkin1 = Item.Patrol_Log.Checkin.ToShortDateString();
                 m.Checkin = Item.Patrol_Log.Checkin;
                 m.Checkout = Item.Patrol_Log.Checkout;
                 m.Passed = Item.Date_Time_Passed;

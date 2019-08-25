@@ -18,6 +18,7 @@ searchText1;
 nReward:object;
 redeemed:Array<object>;
 rcv: object;
+RangerPoints:object;
   constructor(private data: ERPService, private router:Router) { }
   // ,public navCtrl: NavController
   ngOnInit() {
@@ -26,6 +27,8 @@ rcv: object;
       console.log(res);
       this.Products = res;
     });
+   
+    this.ValidateRanger(3);
     
 
     this.data.GetEvent_Reward().subscribe(res=>{
@@ -50,9 +53,18 @@ rcv: object;
      
     
 }
+ValidateRanger(ID){
+  this.data.GetRanger(ID).subscribe(res=>{
+    this.RangerPoints= ['Points']
+    console.log(res);
+    this.Products = res;
+
+  });
+}
+
 Validate(ID){
   this.data.GetProduct_RewardID(ID).subscribe(res=>{
-  if(res["Points"] > 1000)
+  if(res["Points"] > this.RangerPoints)
   {
     this.router.navigateByUrl("/error-not-enough-points");
   }
@@ -68,7 +80,7 @@ Validate(ID){
 }
 Validate1(ID){
   this.data.GetEvent_RewardID(ID).subscribe(res=>{
-    if(res["Points"] > 1000)
+    if(res["Points"] > this.RangerPoints)
     {
       this.router.navigateByUrl("/error-not-enough-points");
     }

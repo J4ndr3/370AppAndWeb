@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-status-report',
@@ -18,7 +20,7 @@ export class StatusReportComponent implements OnInit {
   Vehicles:object;
   Count2=0;
   VehicleCount:Array<object>;
-  constructor(private data: ERPService) { }
+  constructor(private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.data.GetAssets().subscribe(res=>{
@@ -51,6 +53,28 @@ this.data.GetRangerVehicle().subscribe(res=>{
   
 });
 });
+this.ReportAccess(10);
   }
+  ReportAccess(ID){
+    this.data.GetRangers(ID).subscribe(res=>{
+      console.log(res);
+    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      
+      
+  }
+    
+    else {
+      
+      this.showToast1();
+      
+    }
+    
+  })
+  }
+  showToast1() {
+    this.toastrService.show("Sorry you do not have access to reports");
+    this.router.navigateByUrl("/home");
+  }
+
 
 }
