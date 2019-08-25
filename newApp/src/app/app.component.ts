@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -7,6 +7,7 @@ import { timer } from 'rxjs';
 import { FcmService } from './fcm.service';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-root',
@@ -80,9 +81,33 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FcmService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router: Router, private data: LoginService
   ) {
     this.initializeApp();
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+          if (event.url !="/reset")
+          {
+              console.log(event)
+              this.data.testlogin();
+          }
+          
+      }
+
+      if (event instanceof NavigationEnd) {
+          // Hide loading indicator
+      }
+
+      if (event instanceof NavigationError) {
+          // Hide loading indicator
+
+          // Present error to user
+          console.log(event.error);
+      }
+  });
+
+
   }
 
   private async presentToast(message) {

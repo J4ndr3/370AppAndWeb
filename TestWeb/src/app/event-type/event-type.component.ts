@@ -14,6 +14,7 @@ export class EventTypeComponent implements OnInit {
   NewEventType:object;
   EventTypeSelection:number =0;
   EventTypeOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
+  searchText;
 
   constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod: EventTypeModifyComponent) { }
 

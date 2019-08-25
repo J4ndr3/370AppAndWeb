@@ -3,9 +3,13 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 import { BlockScrollStrategy } from '@angular/cdk/overlay';
 import { RouterLink, Router } from '@angular/router';
 import { ERPService } from '../erp.service';
-
+import { HttpClient } from '@angular/common/http';
+import { url } from 'inspector';
+import { HttpHeaders } from '@angular/common/http';
 import { FormBuilder,FormGroup } from '@angular/forms';   
 import { dataLoader, List } from '@amcharts/amcharts4/core';
+import { Observable } from 'rxjs';
+import { timer} from 'rxjs';
 
 
 @Component({
@@ -14,6 +18,7 @@ import { dataLoader, List } from '@amcharts/amcharts4/core';
   styleUrls: ['./nav.component.sass'],
 })
 export class NavComponent implements OnInit {
+  rangerName="";
   display='none';
   action: boolean = true;
   setAutoHide: boolean = true;
@@ -26,10 +31,41 @@ export class NavComponent implements OnInit {
   data: ERPService;
   incidentnumber;
   incidents;
-  constructor(public snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder ) {}
+  banner:Array<object>;
+  count;
+  NewNotification:object;
+  timer:any;
+
+  constructor(private http: HttpClient,public snackBar: MatSnackBar, private router: Router, private formBuilder: FormBuilder ) {}
   AddForm: FormGroup;
   AddForm2: FormGroup;
+  
   ngOnInit() {
+    const source = timer(0,60000);
+    const subscribe = source.subscribe(val=>{
+      this.count =0
+      this.GetIncidents().subscribe(res=>{
+        this.banner=JSON.parse(JSON.stringify(res));
+        this.banner.forEach(element => {
+          this.count++;
+          
+        });
+      });
+      if (sessionStorage.getItem('Ranger')!=null)
+      {
+        this.GetRangers(sessionStorage.getItem('Ranger')).subscribe(res=>{
+          this.rangerName = res["Name"]
+        })
+      }
+      else
+      {
+        this.rangerName = "Login"
+      }
+      
+      
+    })
+
+ 
     this.AddForm = this.formBuilder.group({
       Title: [],
       Message: []});
@@ -44,7 +80,6 @@ export class NavComponent implements OnInit {
         })
   }
   
-
     openSnackBar() {
       var Title =  this.AddForm.get('Title').value;
         var Message =  this.AddForm.get('Message').value;
@@ -64,6 +99,18 @@ export class NavComponent implements OnInit {
     snackbarref.afterDismissed().subscribe(()=>{
       if (close==1){
         console.log(Title);
+        this.NewNotification={
+          "Date": new Date(),
+          "Meassage": Message,
+          "Title": Title,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
+        };
+        console.log(this.NewNotification);
+
+        this.PostNotification(this.NewNotification).subscribe(res=>{
+          console.log(res);
+        });
+
         this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
@@ -74,6 +121,18 @@ export class NavComponent implements OnInit {
     openSnackBar1() {
       var Title =  this.AddForm2.get('Title').value;
         var Message =  this.AddForm2.get('Message').value;
+        this.NewNotification={
+          "Date": new Date(),
+          "Meassage": Message,
+          "Title": Title,
+          "Ranger_ID": sessionStorage.getItem("Ranger"),
+        };
+        console.log(this.NewNotification);
+
+        this.PostNotification(this.NewNotification).subscribe(res=>{
+          console.log(res);
+        });
+
         this.sendNotif(Title,Message);
         this.AddForm.get('Title').reset();
         this.AddForm.get('Message').reset();
@@ -90,20 +149,25 @@ export class NavComponent implements OnInit {
     sendNotif(title, message) {
       var notificationData = {
         to: '/topics/ERP',
+        "mutable_content":true,
+        "content_available": true,
         "notification": {
           "body": message,
-          "content_available": true,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
-          "title": title
+          "title": title,
         },
         "data": {
           "body": message,
-          "content_available": true,
+          "contents": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
+          "mediaUrl": "https://iadsb.tmgrup.com.tr/d777cf/645/400/0/28/1000/648?u=https://idsb.tmgrup.com.tr/2019/08/16/1565902869009.jpg",
           "priority": "high",
           "title": title,
-          "image": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
+          "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
+      console.log(notificationData)
       $.ajax({
         type: 'POST',
         url: 'https://fcm.googleapis.com/fcm/send',
@@ -117,6 +181,30 @@ export class NavComponent implements OnInit {
         },
       });
     }
-    
-}
+    GetRangers(id) {
+      return this.http.get('https://2019group4inf370.azurewebsites.net/api/rangers/'+id)
+    }
+
+    GetIncidents(){
+      return this.http.get('http://localhost:51389/api/Incident_Patrol')
+    };
+
+    PostNotification(obj){
+        return this.http.post('http://localhost:51389/api/Notifications', obj)
+      }
+      refresh(){
+        this.count =0;
+      this.GetIncidents().subscribe(res=>{
+        this.banner=JSON.parse(JSON.stringify(res));
+        this.banner.forEach(element => {
+          this.count++;
+          
+        });
+      });
+      }
+      Logout(){
+        sessionStorage.clear();
+        this.router.navigateByUrl("/login")
+      }
+    }
 

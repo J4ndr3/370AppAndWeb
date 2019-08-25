@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { getLocaleDateTimeFormat } from '@angular/common';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-modifybooking',
   templateUrl: './modifybooking.page.html',
   styleUrls: ['./modifybooking.page.scss'],
 })
 export class ModifybookingPage implements OnInit {
+  loggedIn:any;
   Shift: any;
   EditForm : FormGroup;
   VehicleOptions:Array<object>; 
@@ -32,18 +33,21 @@ export class ModifybookingPage implements OnInit {
   };
   
   constructor(private alertCtrl: AlertController,public toastController: ToastController,
-    private router:Router,private data: ERPService, private formBuilder: FormBuilder ) { }
+    private router:Router,private data: ERPService, private formBuilder: FormBuilder, private storage: Storage) { }
 
   ngOnInit() {
-    this.data.GetRangers().subscribe(res=>{
-      this.PassengerOptions = JSON.parse(JSON.stringify(res));
-    });
-    this.data.GetReserves().subscribe(res=>{
-      this.ReserveOptions = JSON.parse(JSON.stringify(res));
-    });
-    this.data.GetVehicles().subscribe(res=>{
-      this.VehicleOptions = JSON.parse(JSON.stringify(res));
-    });
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      this.data.GetRangers().subscribe(res=>{
+        this.PassengerOptions = JSON.parse(JSON.stringify(res));
+      });
+      this.data.GetReserves().subscribe(res=>{
+        this.ReserveOptions = JSON.parse(JSON.stringify(res));
+      });
+      this.data.GetVehicles().subscribe(res=>{
+        this.VehicleOptions = JSON.parse(JSON.stringify(res));
+      });})
+    
   this.EditForm = this.formBuilder.group({
     ID:[],
     Passenger:[], // your attributes
@@ -62,9 +66,11 @@ export class ModifybookingPage implements OnInit {
         Passenger:this.Shift.Passenger_ID,
         Vehicle :this.Shift.Vehicle_ID,
         Reserve :this.Shift.Reserve_ID,
-        startTime:new Date(this.Shift.Start_Time),
-        endTime:new Date(this.Shift.End_Time)
-        })    
+        startTime:new Date(this.Shift.Start_Time).toISOString(),
+        endTime:new Date(this.Shift.End_Time).toISOString()
+        })   
+        this.event.startTime = new Date(this.Shift.Start_Time).toISOString()
+        this.event.endTime =  new Date(this.Shift.End_Time).toISOString()
     })
   }
   update(){
@@ -80,7 +86,7 @@ console.log(Starttime)
     else {
       this.nModifybookingPage = {
         "Patrol_Booking_ID":this.data.nID,
-        "Ranger_ID": 3,
+        "Ranger_ID": this.loggedIn,
         "Passenger_ID": Passenger,
         "Reserve_ID": Reserve,
         "Vehicle_ID": Vehicle,

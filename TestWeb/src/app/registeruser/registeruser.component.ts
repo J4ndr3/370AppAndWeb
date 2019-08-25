@@ -1,6 +1,9 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
+import { FormBuilder,FormGroup } from '@angular/forms';
+import { ERPService } from '../erp.service';
+
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -8,13 +11,109 @@ import {Router} from "@angular/router";
 })
 export class RegisteruserComponent implements OnInit {
   @ViewChild("regform",{static:false}) containerEltRef: ElementRef;
-  constructor(private router: Router,private toastrService: ToastrService) { }
+  constructor(private router: Router,private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
+  RegisterformPages:object;
+  AddForm: FormGroup;
+  NewRegisterformPage:object;
+  GenderSelection: number = 0; //if you have a select list
+  UserRoleOptions: Array<object>; //if you have a select list
+  UserRoleSelection: number = 0; //if you have a select list
+  GenderOptions: Array<object>; //if you have a select list
+  OrganisationSelection: number = 0; //if you have a select list
+  OrganisationOptions: Array<object>; //if you have a select list
+  MedicalSelection: number = 0; //if you have a select list
+  MedicalOptions: Array<object>; //if you have a select list
   ngOnInit() {
-   
+    this.data.GetGender().subscribe(res=>{
+        this.GenderOptions = JSON.parse(JSON.stringify(res));
+    })
+    this.data.GetMedicalAid().subscribe(res=>{
+      this.MedicalOptions = JSON.parse(JSON.stringify(res));
+      console.log(this.MedicalOptions);
+  })
+  this.data.GetOrganisation().subscribe(res=>{
+      this.OrganisationOptions = JSON.parse(JSON.stringify(res));
+  })
+  this.data.GetUserRole().subscribe(res=>{
+      this.UserRoleOptions = JSON.parse(JSON.stringify(res));
+      console.log(this.UserRoleOptions);
+  })
+  this.AddForm = this.formBuilder.group({
+      fname: ["Jandre"], // Names for your input
+        lname: ["Labuschagne"], // Names for your input 
+        rangerId: ["9802065030082"],
+        email: ["jandrelab1@gmail.com"],
+        phone:["0713307791"],
+        emergencycontactName:["Janica"],
+        EmergencycontactNumber:["0713307784"],
+        MedicalAid:["Medical Aid..."],
+        Organizationtitle:["Organisation..."],
+        username:["J4ndr3"],
+        password:["Jandre#1"],
+        confirmpassword:["Jandre#1"],
+        selectgender:["Gender..."],
+        selectbloodtype:["Blood Type..."],
+        UserRole:["User role..."],
+        Status:["Status..."],
+        
+      });
   }
   goUsers() {
-    this.router.navigate(['rangers']);
+    var fname = this.AddForm.get('fname').value; // Names for your input
+    var lname = this.AddForm.get('lname').value; // Names for your input
+    var rangerId = this.AddForm.get('rangerId').value;
+    var email = this.AddForm.get('email').value; // Names for your input
+    var phone = this.AddForm.get('phone').value;
+    var emergencycontactName = this.AddForm.get('emergencycontactName').value; // Names for your input
+    var EmergencycontactNumber = this.AddForm.get('EmergencycontactNumber').value;
+    var MedicalAid = this.AddForm.get('MedicalAid').value;
+    var username = this.AddForm.get('username').value;
+    var password = this.AddForm.get('password').value;
+    var confirmpassword = this.AddForm.get('confirmpassword').value;
+    var selectgender = this.AddForm.get('selectgender').value;
+    var selectbloodtype = this.AddForm.get('selectbloodtype').value;
+    var Organizationtitle = this.AddForm.get('Organizationtitle').value;
+    var UserRole = this.AddForm.get('UserRole').value;
+    if (this.AddForm.get('Status').value == "Active"){
+        var Status = 1;
+    }
+    else if (this.AddForm.get('Status').value == "Inactive")
+    {
+        var Status = 0;
+    }
+    
+    if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="") {
+        //Modal popup
+      }
+      else {
+        this.NewRegisterformPage = {
+          "ID_Number": rangerId,
+          "Name": fname, // Names for your input
+          "Surname": lname, // Names for your input
+          "Email": email,
+          "Cell":phone,
+          "genderID": selectgender,
+          "Emerg_Name": emergencycontactName,
+          "Emerg_Contact": EmergencycontactNumber,
+          "Status":Status,
+          "User_Role_ID":UserRole,
+          "Medical_Aid_ID": MedicalAid,
+          "Points":0,
+          "Blood_Type": selectbloodtype, 
+          "Username": username,
+          "Password": password,
+          "Organisation_ID":Organizationtitle,
+          "Smartphone":1,
+          "Access_ID":6
+        };
+        console.log(this.NewRegisterformPage)
+        this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+            console.log(res)
+            this.router.navigate(['rangers']);
+        });
+      }
+    
   }
   showToast(){
     this.toastrService.show("Record added successfully", "Success!");

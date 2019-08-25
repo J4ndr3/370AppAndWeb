@@ -12,7 +12,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text"  [(ngModel)] = "searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -36,58 +36,65 @@
                 <h2 class="Header">Add Order</h2>
                 <br>
               
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Order ID..." name="desc" required>
-                    
-                </div>
+<<<<<<< HEAD
+              
                 
                 
                 <br>
                 
+=======
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desc" placeholder="Order ID..." name="desc" required>
+                </div>
+>>>>>>> 00edf585b382f172bfc82d3b60669c5c829e96bd
                   <div class="col-sm-offset-2 col-sm-10" id="savediv">
                       <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
-                  
                 </div>
+<<<<<<< HEAD
                 
                 <br>
-                
+=======
+        
+>>>>>>> 00edf585b382f172bfc82d3b60669c5c829e96bd
                 <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Asset...</option>
-                <option>CAMPMASTER 700L Flashlight</option>
-                <option>Rechargeable 1040 Lum Spotlight</option>
-                <option>Patrol Magnet</option>
-                <option>Acebeam X80 Flashlight & Charger</option>
-                <option>Add new...</option>
-                        </select>
-                        </div>
-                </div>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Gender...">Asset...</option>
+                    <option>CAMPMASTER 700L Flashlight</option>
+                    <option>Rechargeable 1040 Lum Spotlight</option>
+                    <option>Patrol Magnet</option>
+                    <option>Acebeam X80 Flashlight & Charger</option>
+                    <option>Add new...</option>
+                            </select>
+                            </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <select class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Gender...">Type...</option>
+                    <option>Flashlight</option>
+                    <option>Magnet</option>
+                    <option>Spotlight</option>
+                    <option>Add new...</option>
+                            </select>
+                            </div>
+                    </div> 
+                    
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <select class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Gender...">Supplier...</option>
+                    <option>Makro</option>
+                    <option>Spar</option>
+                    <option>Builders Warehouse</option>
+                    <option>Game</option>
+                    <option>Add new...</option>
+                            </select>
+                            </div>
+                    </div>
                 
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Type...</option>
-                <option>Flashlight</option>
-                <option>Magnet</option>
-                <option>Spotlight</option>
-                <option>Add new...</option>
-                        </select>
-                        </div>
-                </div> 
-                
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Supplier...</option>
-                <option>Makro</option>
-                <option>Spar</option>
-                <option>Builders Warehouse</option>
-                <option>Game</option>
-                <option>Add new...</option>
-                        </select>
-                        </div>
-                </div>
+         
                 
               
             </div>
@@ -110,21 +117,23 @@
     <table class="table table-striped">
         <thead>
             <tr id="header">
-                <th>Order ID</th>
+                
                 <th>Date</th>
                 <th>Asset</th>
                 <th>Type</th>
                 <th>Status</th>
+                <th>Supplier</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Order of Orders |filter:searchtext">
-                <td style="text-align: left;">{{Order.ID}}</td>
-                <td style="text-align: left;">{{Order.Date}}</td>
-                <td style="text-align: left;">{{Order.Asset}}</td>
-                <td style="text-align: left;">{{Order.Type}}</td>
-                <td style="text-align: left;">{{Order.Supploier}}</td>
+            <tr *ngFor="let Order of Orders |filter:searchText">
+                
+                <td>{{Order.Date}}</td>
+                <td >{{Order.Asset}}</td>
+                <td >{{Order.Type}}</td>
+                <td >{{Order.Status}}</td>
+                <td >{{Order.Supplier}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Order.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Order.ID)" id="editbtn"><img
@@ -137,20 +146,23 @@
 
 </div>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
+<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
 <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Delete()">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->

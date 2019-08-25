@@ -17,6 +17,8 @@ import {
   EventSourceErrorResponseHandler,
   EventSourceSuccessResponseHandler
 } from '@fullcalendar/core/structs/event-source';
+import {ERPService} from '..//erp.service';          
+
 
 
 @Component({
@@ -26,9 +28,27 @@ import {
 })
 
 export class HomeComponent implements OnInit {
-  
+  bookings:Array<object>;
+  Eventsource:Array<object>;
+  Incidents: Array<object>;
+  Rangers: Array<object>;
+  rangermarker:Array<object>;
+  myLatLngList: any;
+  r: Array<object>;
+  CoordList: Array<object>;
+  Markers: Array<object>;
+  lat: Array<number>;
+  long: Array<number>;
+  myLatLngList1: any;
+  r1: Array<object>;
+  CoordList1: Array<object>;
+  Markers1: Array<object>;
+  lat1: Array<number>;
+  long1: Array<number>;
+
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
+myMap:google.maps.event;
   @ViewChild('calendar',{static: false}) calendarComponent: FullCalendarComponent; // the #calendar in the template
 
   calendarVisible = true;
@@ -36,8 +56,6 @@ map: google.maps.Map;
   calendarWeekends = true;
   calendarEvents: EventInput[] = [
     { title: 'Now', start: new Date() },
-      { title: 'event 1', start: '11:00', date: '2019-06-25', allDay:false },
-    
   ];
 
   gotoPast() {
@@ -54,34 +72,92 @@ map: google.maps.Map;
       })
     }
   }
-  constructor() { }
+  constructor(private data:ERPService) { }
   
 
   ngOnInit() {
+    var self = this;
+    this.Eventsource=[];
+    this.Incidents=[];
+    this.Rangers=[];
+    this.rangermarker=[];
+    this.myLatLngList=[];
+
+    this.data.GetBookings().subscribe(res=>{
+      this.bookings = JSON.parse(JSON.stringify(res));
+      console.log(this.bookings);
+      this.bookings.forEach(element => {
+        let eventcopy = {
+          //ID: element["Patrol_Booking_ID"],
+          title: element["Name"],
+          start:element["Start_Time"],
+          end: element["End_Time"],
+          allDay: false,
+        }
+        console.log(eventcopy);
+        this.Eventsource.push(eventcopy);
+      });
+      this.calendarEvents = this.Eventsource;
+    })
     const mapProperties = {
       center: new google.maps.LatLng(-25.8825, 28.2639),
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
- };
- this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
- this.createMarker();
-  }
+    };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
 
-  createMarker() {
+    this.data.GetIncidents().subscribe(res=>{
+      this.r = [];
+      this.CoordList = JSON.parse(JSON.stringify(res));
+      this.CoordList.forEach(element => {
+        this.r.push(element);
+      });
 
-    // list of hardcoded positions markers 
-     var myLatLngList = {
-         myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
-         };
+      console.log(this.CoordList);
 
-        //iterate latLng and add markers 
-       for(const data of myLatLngList.myLatLng){
-         var marker = new google.maps.Marker({
-             position: data,
-             map: this.map,
-             title: 'Hallo This is a marker'
-         });
-      }
- };
+      this.r.forEach(element => {
+        
+          this.myLatLngList = {
 
-}
+            myLatLng: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+          
+        }
+        for (const data of this.myLatLngList.myLatLng) {
+          var marker = new google.maps.Marker({
+            position: data,
+            map: this.map,
+            title: 'Incident reported by ' + element['Name'] +' ' + element['Surname'] + " at " + element['Time']
+          });
+  
+        }
+      })
+
+
+      this.data.GetPatrol_log().subscribe(res=>{
+        this.r1 = [];
+        this.CoordList1 = JSON.parse(JSON.stringify(res));
+        this.CoordList1.forEach(element => {
+          this.r.push(element);
+        });
+  
+        console.log(this.CoordList1);
+  
+        this.r.forEach(element => {
+          
+            this.myLatLngList1 = {
+  
+              myLatLng1: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+            
+          }
+          if(element["CheckedIn"]== true)
+          {
+            for (const data of this.myLatLngList1.myLatLng1) {
+              var marker = new google.maps.Marker({
+                position: data,
+                map: this.map,
+                title:  element['Name'] +' ' + element['Surname'] + " on patrol"
+              });
+          }
+         
+          }
+        })})})}}

@@ -11,7 +11,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)] = "searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -34,14 +34,9 @@
             <div class="form-group">
                 
                 <h2 class="Header">Add Asset</h2>
-                
                 <br>
-              
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Type Asset Description..." name="desc" required >
-                    
-                    
-                    <br>
+                    <input type="text" class="form-control" id="desc" placeholder="Asset Description..." name="desc" required >
                 </div> 
                 <div class="form-group">
                     <div class="col-sm-10">
@@ -56,7 +51,6 @@
                         </div>
                 </div>
 
-                
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" id="Select1" onchange="selectColor()" required>
@@ -114,7 +108,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Asset of Assets">
+            <tr *ngFor="let Asset of Assets |filter: searchText">
                 <td>{{Asset.Description}}</td>
                 <td>{{Asset.Supplier}}</td>
                 <td>{{Asset.Type}}</td>
@@ -139,8 +133,8 @@
             </div>
                 </td>
                 
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Asset.ID)" data-toggle="modal" data-target="#Delmodal"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
               
             </tr>
@@ -153,21 +147,24 @@
 
 
 </div>
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
 <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Delete()">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
 <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->

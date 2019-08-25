@@ -9,23 +9,42 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Redeem_RewardController : ApiController
     {
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Redeem_Reward
-        public IQueryable<Redeem_Reward> GetRedeem_Reward()
+        public List<dynamic> GetRedeem_Reward()
         {
-            return db.Redeem_Reward;
+            db.Configuration.ProxyCreationEnabled = false;
+            List<Redeem_Reward> Level = db.Redeem_Reward.ToList();
+            List<dynamic> toReturn = new List<dynamic>();
+            foreach (Redeem_Reward Item in Level)
+            {
+                dynamic m = new ExpandoObject();
+                //m.ID = Item.Event_Reward_ID;
+                m.Redeem_ID = Item.Redeem_ID;
+                m.Ranger_ID = Item.Ranger_ID;
+                m.Voucher_Code = Item.Voucher_code;
+                m.Product_Reward_ID = Item.Product_Reward_ID;
+                m.Event_Reward_ID = Item.Event_Reward_ID;
+                m.Date = Item.DateTime.ToShortDateString();
+                toReturn.Add(m);
+            }
+            return toReturn;
         }
 
         // GET: api/Redeem_Reward/5
         [ResponseType(typeof(Redeem_Reward))]
         public IHttpActionResult GetRedeem_Reward(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Redeem_Reward redeem_Reward = db.Redeem_Reward.Find(id);
             if (redeem_Reward == null)
             {
@@ -39,6 +58,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutRedeem_Reward(int id, Redeem_Reward redeem_Reward)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

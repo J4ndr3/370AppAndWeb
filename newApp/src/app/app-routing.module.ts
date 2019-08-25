@@ -43,23 +43,27 @@ const routes: Routes = [
   { path: 'incidents', loadChildren: './incidents/incidents.module#IncidentsPageModule' },
   { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
   
+  
   { path: 'generagevoucher', loadChildren: './generagevoucher/generagevoucher.module#GeneragevoucherPageModule' },
   { path: 'confirm-reward', loadChildren: './confirm-reward/confirm-reward.module#ConfirmRewardPageModule' },
   { path: 'voucher', loadChildren: './voucher/voucher.module#VoucherPageModule' },
   { path: 'generated-vouchers', loadChildren: './generated-vouchers/generated-vouchers.module#GeneratedVouchersPageModule' },
   { path: 'view-vouchar', loadChildren: './view-vouchar/view-vouchar.module#ViewVoucharPageModule' },
-  { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },  { path: 'resetpassword', loadChildren: './resetpassword/resetpassword.module#ResetpasswordPageModule' },
+  { path: 'error-not-enough-points', loadChildren: './error-not-enough-points/error-not-enough-points.module#ErrorNotEnoughPointsPageModule' },
+  { path: 'resetpassword', loadChildren: './resetpassword/resetpassword.module#ResetpasswordPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'modifybooking', loadChildren: './modifybooking/modifybooking.module#ModifybookingPageModule' },
   { path: 'map-test', loadChildren: './map-test/map-test.module#MapTestPageModule' },
+<<<<<<< HEAD
   { path: 'modifyvehicle', loadChildren: './modifyvehicle/modifyvehicle.module#ModifyvehiclePageModule' },
-
+=======
+  { path: 'event-confirm', loadChildren: './event-confirm/event-confirm.module#EventConfirmPageModule' },
   
 
 
 
- 
 ];
+>>>>>>> d8f2c598e831f441dad51e93ae4297a5997ad8ec
 
 @NgModule({
   imports: [

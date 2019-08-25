@@ -1,13 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Inject, LOCALE_ID } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NavController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { filter } from 'rxjs/operators';
 import { pipe } from 'rxjs';
+import { formatDate } from '@angular/common';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 declare var google;
 import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { QRScanner, QRScannerStatus  } from '@ionic-native/qr-scanner/ngx';
 
 
 @Component({
@@ -16,63 +18,87 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./rangerpatrol.page.scss'],
 })
 export class RangerpatrolPage implements OnInit {
-    RangerpatrolPage: object;
+    RangerpatrolPage: Array<object>;
+    hideEverything= false;
     AddForm: FormGroup;
     NewRangerpatrolPage: object;
     RangerpatrolPageSelection: number = 0;
     RangerpatrolPageOptions: Array<object>; // as jy meer as een dropdown het doen dit vir almal
 
     @ViewChild('map') mapElement: ElementRef;
+    @ViewChild("qr_scanner") qrElement: ElementRef;
     map: any;
     currentMapTrack = null;
     watchID;
     isTracking = false;
     trackedRoute: Array<object>;
-
+    loggedIn:any;
     myroute = [];
     positionSubscription: Subscription;
     @ViewChild('patrolform') containerEltRef: ElementRef;
-    constructor(private renderer: Renderer2, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) { }
+    constructor(private renderer: Renderer2,private qrScanner: QRScanner,@Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) { }
     currentTab = 0;
     previousTracks: Array<object>;
     ngOnInit() {
-        this.plt.ready().then(() => {
-            var self = this;
-            var onSuccess = function (position) {
-                let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                self.map.setCenter(latLng);
-                self.map.setZoom(16);
-
-            };
-
-            // onError Callback receives a PositionError object
-            //
-            function onError(error) {
-                alert('code: ' + error.code + '\n' +
-                    'message: ' + error.message + '\n');
-            }
-
-
-            let mapOptions = {
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                mapTypeControl: false,
-                streetViewControl: false,
-                fullscreenControl: false
-            }
-            self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
-            navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-                enableHighAccuracy: true
-                , timeout: 5000
+        this.AddForm = this.formBuilder.group({
+            BookingReference:[], // your attributes
+            EnterQRCode: [], // your attributes
+            EnterQRCodeO: [], // your attributes
+            Feedback:[],
             });
-            self.geolocation.getCurrentPosition().then(pos => {
-                let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                self.map.setCenter(latLng);
-                self.map.setZoom(16);
-            }).catch((error) => {
-                alert('Error getting location ' + error);
+        this.storage.get("Ranger").then(res=>{
+            this.loggedIn = res;
+            this.RangerpatrolPageOptions = [];
+            this.data.GetPatrol_Bookings().subscribe(res => {
+                this.RangerpatrolPage = JSON.parse(JSON.stringify(res));
+                this.RangerpatrolPage.forEach(element => {
+                    if (element["Ranger_ID"] == this.loggedIn) {
+                        var list={Patrol:element["Patrol_Booking_ID"],Event:formatDate(new Date(element["Start_Time"]), 'short', this.locale)}
+                        this.RangerpatrolPageOptions.push(list);
+                    }
+                });
+    
+            })
+            this.plt.ready().then(() => {
+                var self = this;
+                var onSuccess = function (position) {
+                    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    self.map.setCenter(latLng);
+                    self.map.setZoom(16);
+    
+                };
+    
+                // onError Callback receives a PositionError object
+                //
+                function onError(error) {
+                    alert('code: ' + error.code + '\n' +
+                        'message: ' + error.message + '\n');
+                }
+    
+    
+                let mapOptions = {
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    mapTypeControl: false,
+                    streetViewControl: false,
+                    fullscreenControl: false
+                }
+                self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
+                navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+                    enableHighAccuracy: true
+                    , timeout: 5000
+                });
+                self.geolocation.getCurrentPosition().then(pos => {
+                    let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                    self.map.setCenter(latLng);
+                    self.map.setZoom(16);
+                }).catch((error) => {
+                    alert('Error getting location ' + error);
+                });
             });
         });
+        
+       
     }
 
     ngAfterViewInit() {
@@ -106,6 +132,36 @@ export class RangerpatrolPage implements OnInit {
         if (n == 1) {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
+            this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+               if (status.authorized) {
+                  // (window.document.querySelector('')as HTMLElement).classList.add('cameraView');
+                  // window.document.body.style.backgroundColor= 'transparent';
+          
+                 // camera permission was granted
+                 this.hideEverything= true;
+                 this.qrScanner.show();
+               
+                 // start scanning
+                 let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                   alert('Scanned something'+ text);
+                   this.hideEverything= false;
+                   this.qrScanner.hide(); // hide camera preview
+                   scanSub.unsubscribe(); // stop scanning
+                   this.qrScanner.destroy();
+                  //  (window.document.querySelector('')as HTMLElement).classList.remove('cameraView');
+                  //  window.document.body.style.backgroundColor= 'rgb(207, 209, 211)';
+                 });
+          
+               } else if (status.denied) {
+                 // camera permission was permanently denied
+                 // you must use QRScanner.openSettings() method to guide the user to the settings page
+                 // then they can grant the permission from there
+               } else {
+                 // permission was denied, but not permanently. You can ask for permission again at a later time.
+               }
+            })
+            .catch((e: any) => console.log('Error is', e));
         }
         if (n == 2) {
             this.startTracking()
@@ -216,49 +272,49 @@ export class RangerpatrolPage implements OnInit {
         //   the current GPS coordinates
         //
         function onSuccess(position) {
-          var locations = { lat: position.coords.latitude, lng: position.coords.longitude };
-          var locationJ = JSON.parse(JSON.stringify(locations))
-          self.trackedRoute.push(locationJ);
-          self.redrawPath(self.trackedRoute);
+            var locations = { lat: position.coords.latitude, lng: position.coords.longitude };
+            var locationJ = JSON.parse(JSON.stringify(locations))
+            self.trackedRoute.push(locationJ);
+            self.redrawPath(self.trackedRoute);
         }
-    
+
         // onError Callback receives a PositionError object
         //
         function onError(error) {
-          alert('code: ' + error.code + '\n' +
-            'message: ' + error.message + '\n');
+            alert('code: ' + error.code + '\n' +
+                'message: ' + error.message + '\n');
         }
         // Options: throw an error if no update is received every 30 seconds.
         //
         this.watchID = navigator.geolocation.watchPosition(onSuccess, onError, {
-          enableHighAccuracy: true
-          , timeout: 50000
+            enableHighAccuracy: true
+            , timeout: 50000
         });
-      }
-      redrawPath(path) {
+    }
+    redrawPath(path) {
         console.log(path);
         var self = this;
         if (self.currentMapTrack) {
-          self.currentMapTrack.setMap(null);
+            self.currentMapTrack.setMap(null);
         }
         // map should be your map class
         if (path.length > 1) {
-          self.currentMapTrack = new google.maps.Polyline({
-            path: path,
-            geodesic: true,
-            strokeColor: 'green',
-            strokeOpacity: 1.0,
-            strokeWeight: 3
-          });
-          var bounds = new google.maps.LatLngBounds();
-          for (var i in path) // your marker list here
-          {
-            console.log(path[i])
-            bounds.extend(path[i])
-          }
-          self.map.fitBounds(bounds);
-          self.currentMapTrack.setMap(self.map);
-      }
+            self.currentMapTrack = new google.maps.Polyline({
+                path: path,
+                geodesic: true,
+                strokeColor: 'green',
+                strokeOpacity: 1.0,
+                strokeWeight: 3
+            });
+            var bounds = new google.maps.LatLngBounds();
+            for (var i in path) // your marker list here
+            {
+                console.log(path[i])
+                bounds.extend(path[i])
+            }
+            self.map.fitBounds(bounds);
+            self.currentMapTrack.setMap(self.map);
+        }
     }
     stopTracking() {
         var self = this;
@@ -268,11 +324,11 @@ export class RangerpatrolPage implements OnInit {
         self.storage.set('routes', this.previousTracks);
         self.myroute = [];
         myroute.forEach(element => {
-          self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: 1 })
+            self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: 1 })
         });
         this.data.PostRoute(self.myroute).subscribe();
         self.isTracking = false;
         navigator.geolocation.clearWatch(this.watchID);
         self.currentMapTrack.setMap(null);
-      }
+    }
 }

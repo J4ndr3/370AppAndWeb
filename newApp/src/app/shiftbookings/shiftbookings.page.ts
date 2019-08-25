@@ -10,7 +10,7 @@ import { FormBuilder,FormGroup } from '@angular/forms';
 import { element } from '@angular/core/src/render3';
 import { range } from 'rxjs';
 import { ModifybookingPage } from '../modifybooking/modifybooking.page';
-
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-shiftbookings',
@@ -43,45 +43,17 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   calendar = {
     mode: 'month',
     currentDate: new Date(),
+    dateFormatter: {
+    
+  }
   };
  
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
-
-  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,private mod:ModifybookingPage,public toastController: ToastController,private router: Router,
+  loggedIn:any;
+  constructor(private alertCtrl: AlertController,private storage:Storage, @Inject(LOCALE_ID) private locale: string,private mod:ModifybookingPage,public toastController: ToastController,private router: Router,
   private data: ERPService, private formBuilder: FormBuilder) { }
   ngOnInit() {
-    this.data.GetPatrol_Bookings().subscribe(res=>{
-      this.events = JSON.parse(JSON.stringify(res));
-      console.log(this.events)
-      this.events.forEach(element => {
-        if (element["Ranger_ID"]==3)
-        {
-          var localOffsetS = new Date(element["Start_Time"]).getTimezoneOffset() * 60000;
-          var localOffsetE = new Date(element["End_Time"]).getTimezoneOffset() * 60000;
-          let eventCopy = {
-            ID: element["Patrol_Booking_ID"],
-            title:"Patrol in "+ element["Reserve"] + " with "+element["Passenger"],
-            startTime:  new Date(element["Start_Time"]),
-            endTime: new Date(element["End_Time"]),
-            desc: "Patrol vehicle : "+ element["Registration"] +". Together with : "+element["Passenger"]
-          }
-          console.log(eventCopy)
-          this.eventSource.push(eventCopy);
-        }
-      });
-      this.myCal.loadEvents();
-    })
-    this.data.GetRangers().subscribe(res=>{
-      this.PassengerOptions = JSON.parse(JSON.stringify(res));
-      console.log(this.PassengerOptions)
-    });
-    
-    this.data.GetReserves().subscribe(res=>{
-      this.ReserveOptions = JSON.parse(JSON.stringify(res));
-    });
-    this.data.GetVehicles().subscribe(res=>{
-      this.VehicleOptions = JSON.parse(JSON.stringify(res));
-    });
+    this.eventSource=[];
     this.AddForm = this.formBuilder.group({
       Passenger:[], // your attributes
       Vehicle: [], // your attributes
@@ -89,7 +61,44 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
       Start:[],
       End:[],
       });
-    this.resetEvent();
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      this.data.GetPatrol_Bookings().subscribe(res=>{
+        this.events = JSON.parse(JSON.stringify(res));
+        console.log(this.events)
+        this.events.forEach(element => {
+          if (element["Ranger_ID"]==this.loggedIn)
+          {
+            var localOffsetS = new Date(element["Start_Time"]).getTimezoneOffset() * 60000;
+            var localOffsetE = new Date(element["End_Time"]).getTimezoneOffset() * 60000;
+            let eventCopy = {
+              ID: element["Patrol_Booking_ID"],
+              title:"Patrol in "+ element["Reserve"] + " with "+element["Passenger"],
+              startTime:  new Date(element["Start_Time"]),
+              endTime: new Date(element["End_Time"]),
+              desc: "Patrol vehicle : "+ element["Registration"] +". Together with : "+element["Passenger"]
+            }
+            console.log(eventCopy)
+            this.eventSource.push(eventCopy);
+          }
+        });
+        this.myCal.loadEvents();
+      })
+      this.data.GetRangers().subscribe(res=>{
+        this.PassengerOptions = JSON.parse(JSON.stringify(res));
+        console.log(this.PassengerOptions)
+      });
+      
+      this.data.GetReserves().subscribe(res=>{
+        this.ReserveOptions = JSON.parse(JSON.stringify(res));
+      });
+      this.data.GetVehicles().subscribe(res=>{
+        this.VehicleOptions = JSON.parse(JSON.stringify(res));
+      });
+     
+      this.resetEvent();
+    });
+    
   }
   
   resetEvent() {
@@ -176,11 +185,20 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
     const alert = await this.alertCtrl.create({
       header: "Booking Details",
       message: 'From: ' + start + '<br><br>To: ' + end,
-      buttons: [{text:'Modify',handler: () => {
+      buttons: [{text:'Delete',handler: () => {
+        this.delete(ID);
+      }},{text:'Modify',handler: () => {
         this.mod.edit(ID);
       }},'OK']
     });
     alert.present();
+  }
+
+  delete(ID){
+    this.data.DeletePatrolBooking(ID).subscribe(res=> {
+      console.log(res);
+      this.ngOnInit();
+    })
   }
    
   // Time slot was clicked
@@ -201,24 +219,29 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
    var passenger = this.AddForm.get('Passenger').value;
    var reserve = this.AddForm.get('Reserve').value;
    var vehicle = this.AddForm.get('Vehicle').value;
+   var localOffsetS = new Date(this.event.startTime);
+          localOffsetS.setHours(localOffsetS.getHours()+2);
+          var localOffsetE = new Date(this.event.endTime);
+          localOffsetE.setHours(localOffsetE.getHours()+2);
    if ( reserve == null || vehicle == null || vehicle == null)
    {
     this.err();
    }
     else {
       this.NewShiftbookingsPage = {
-        "Ranger_ID": 3,
+        "Ranger_ID": this.loggedIn,
         "Passenger_ID": passenger,
         "Reserve_ID": reserve,
         "Vehicle_ID": vehicle,
-        "Start_Time":new Date(this.event.startTime),
-        "End_Time":new Date(this.event.endTime)
+        "Start_Time":localOffsetS,
+        "End_Time":localOffsetE
       };
       console.log(this.NewShiftbookingsPage)
       this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
         this.successToast();
         console.log(res["Patrol_Booking_ID"])
         this.addEvent(res["Patrol_Booking_ID"]);
+       // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
       });
     }
   }

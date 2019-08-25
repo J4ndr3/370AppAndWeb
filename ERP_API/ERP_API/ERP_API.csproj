@@ -262,6 +262,7 @@
     <Compile Include="Controllers\Incident_PatrolController.cs" />
     <Compile Include="Controllers\Incident_StatusController.cs" />
     <Compile Include="Controllers\Incident_TypeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MakesController.cs" />
     <Compile Include="Controllers\MarkersController.cs" />
     <Compile Include="Controllers\Marker_TypeController.cs" />

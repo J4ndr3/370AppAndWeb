@@ -9,8 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
-using System.Dynamic;
 using System.Web.Http.Cors;
+using System.Dynamic;
 
 namespace ERP_API.Controllers
 {
@@ -26,7 +26,7 @@ namespace ERP_API.Controllers
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Patrol_Booking> bookings = db.Patrol_Booking.Include(zz=>zz.Ranger).Include(xx=>xx.Reserve).Include(cc=>cc.Vehicle).ToList();
+                List<Patrol_Booking> bookings = db.Patrol_Booking.Include(zz => zz.Ranger).Include(xx => xx.Reserve).Include(cc => cc.Vehicle).ToList();
                 foreach (Patrol_Booking Item in bookings)
                 {
                     dynamic m = new ExpandoObject();
@@ -34,7 +34,14 @@ namespace ERP_API.Controllers
                     m.Vehicle_ID = Item.Vehicle_ID;
                     m.Registration = Item.Vehicle.Registration;
                     m.Ranger_ID = Item.Ranger_ID;
-                    m.Passenger = db.Rangers.Where(zz=>zz.Ranger_ID == Item.Passenger_ID).Select(x=>x.Name).FirstOrDefault();
+                    m.Name = db.Rangers.Where(zz=>zz.Ranger_ID == Item.Ranger_ID).Select(zz=>zz.Name).FirstOrDefault() + " " + db.Rangers.Where(zz => zz.Ranger_ID == Item.Ranger_ID).Select(zz => zz.Surname).FirstOrDefault();
+                    if (Item.Passenger_ID != null) {
+                        m.Passenger = db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Name).FirstOrDefault();
+                    }
+                    else
+                    {
+                        m.Passenger = "None";
+                    }
                     m.Reserve = Item.Reserve.Name;
                     m.Start_Time = Item.Start_Time;
                     m.End_Time = Item.End_Time;
@@ -47,6 +54,8 @@ namespace ERP_API.Controllers
                 toReturn.Add("Not readable");
                 return toReturn;
             }
+
+
         }
         // GET: api/Patrol_Booking/5
         [ResponseType(typeof(Patrol_Booking))]
@@ -116,6 +125,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Booking))]
         public IHttpActionResult DeletePatrol_Booking(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Booking patrol_Booking = db.Patrol_Booking.Find(id);
             if (patrol_Booking == null)
             {

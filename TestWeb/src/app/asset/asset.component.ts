@@ -7,7 +7,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import htmlToImage from 'html-to-image';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';          
-
+import { ModifyAssetComponent }  from '../modify-asset/modify-asset.component';
 
 @Component({
   selector: 'app-asset',
@@ -26,6 +26,7 @@ TypeOptions:Array<object>;
  SupplierSelection:number =0;
  SupplierOptions:Array<object>;
 nAsset: object;
+searchText;
 
  
 
@@ -35,7 +36,7 @@ qrcodename : string;
   value: string;
   display = false;
   
-  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod:ModifyAssetComponent) { }
 
   ngOnInit() {
     // this.qrcodename = '0123'
@@ -86,7 +87,8 @@ qrcodename : string;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-
+      pdf.addPage("width, height");
+      pdf.setPage(1);
       
       pdf.save('QR.pdf'); // Generated PDF
       
@@ -113,7 +115,7 @@ qrcodename : string;
           
         };
         console.log(this.nAsset);
-        this.data.PostGate(this.nAsset).subscribe(res => {
+        this.data.PostAsset(this.nAsset).subscribe(res => {
           if (res != null)
           {
             this.ngOnInit();
@@ -155,9 +157,9 @@ qrcodename : string;
         document.getElementById('del').click();
     }
   
-  // edit(ID){
-  //   this.mod.edit(ID);
-  // }
+  edit(ID){
+   this.mod.edit(ID);
+   }
     
   /* if there is a select/ dropdown use the following method to populate data for it */
    

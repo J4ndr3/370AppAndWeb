@@ -93,7 +93,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink='/incident'>INCIDENTS
-         <span class="badge badge-light">{{incidentnumber}}</span>
+         <span class="badge badge-light">{{count}}</span>
         </a>
                 </li>
                 <br>
@@ -102,7 +102,7 @@
         <div id="right">
             <div class="dropdown Logout" id="logoutbutton">
                 <a class="nav-link dropdown-toggle" href="#" id="logoutbutton" data-toggle="dropdown">
-        John Doe
+                    {{rangerName}}
       </a>
                 <div class="dropdown-menu">
                     <!-- <a class="dropdown-item" routerLink="/profile">- Profile</a>
@@ -113,7 +113,7 @@
         </div>
     </div>
 </nav>
-<br><br>
+
 
 <div class="modal fade" id="messagepopup" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
@@ -148,7 +148,7 @@
             <div class="modal-body">
                 <p>Are you sure you want to Logout?</p>
                 <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left !important;" id="modalClose">Cancel</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Confirm</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Logout()">Confirm</button>
             </div>
         </div>
     </div>
@@ -212,7 +212,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 <a hidden data-toggle="modal" data-target="#inErr" id="inputErr"></a>
 <div class="modal fade" id="inErr" data-backdrop="static" role="dialog">

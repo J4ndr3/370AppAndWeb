@@ -15,7 +15,8 @@ export class ProductTypeComponent implements OnInit {
   NewProductType:object;
   ProductTypeSelection:number =0;
   ProductTypeOptions:Array<object>; 
-
+  searchText;
+  
   constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod: ProductTypeModifyComponent) { }
 
   ngOnInit() {

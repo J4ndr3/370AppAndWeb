@@ -16,6 +16,7 @@ export class EventTypeModifyComponent implements OnInit {
   nEventType:object;
   rcv: object;
   
+  
   constructor(private router:Router,private data: ERPService, private formBuilder: FormBuilder, private toastrService: ToastrService ) { }
 
   ngOnInit() {

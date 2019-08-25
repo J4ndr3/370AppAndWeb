@@ -9,66 +9,68 @@
           <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
       </div>
   <br>
-  <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+  <form class="form-horizontal" id="modifyForm" action="/action_page.php" [formGroup]="EditForm" (ngSubmit)="update()">
 
     <div class="form-group">
         <h2 class="Header">Modify Order:</h2>
         <br>
-              
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="desc" placeholder="Type Order ID..." name="desc" required>
-            
-        </div>
-        
-        
-        <br>
+<<<<<<< HEAD
+                
         
           <div class="col-sm-offset-2 col-sm-10" id="savediv">
-              <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+              <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" formcontrolname ="Date" required >
           
+=======
+              
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="desc" placeholder="Order ID..." name="desc" required>
         </div>
-        
-        <br>
+          <div class="col-sm-offset-2 col-sm-10" id="savediv">
+              <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+>>>>>>> 00edf585b382f172bfc82d3b60669c5c829e96bd
+        </div>
         
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Gender...">Asset...</option>
-        <option>CAMPMASTER 700L Flashlight</option>
+                <select class="form-control" formControlName="Asset" [(value)]="Selection" id="Select1" onchange="selectColor()" required>
+        <option selected disabled hidden value="Asset...">Asset...</option>
+        <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Asset}}</option>
+        <!-- <option>CAMPMASTER 700L Flashlight</option>
         <option>Rechargeable 1040 Lum Spotlight</option>
         <option>Patrol Magnet</option>
         <option>Acebeam X80 Flashlight & Charger</option>
-        <option>Add new...</option>
+        <option>Add new...</option> -->
                 </select>
                 </div>
         </div>
         
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Gender...">Type...</option>
-        <option>Flashlight</option>
+                <select class="form-control" formControlName="Type" [(value)]="Selection" id="Select1" onchange="selectColor()" required>
+        <option selected disabled hidden value="Type...">Type...</option>
+        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Type}}</option>
+        <!-- <option>Flashlight</option>
         <option>Magnet</option>
         <option>Spotlight</option>
-        <option>Add new...</option>
+        <option>Add new...</option> -->
                 </select>
                 </div>
         </div> 
         
         <div class="form-group">
             <div class="col-sm-10">
-                <select class="form-control" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Gender...">Supplier...</option>
-        <option>Makro</option>
+                <select class="form-control" formControlName="Supplier" [(value)]="Selection"id="Select1" onchange="selectColor()" required>
+        <option selected disabled hidden value="Supplier...">Supplier...</option>
+        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Supplier}}</option>
+        <!-- <option>Makro</option>
         <option>Spar</option>
         <option>Builders Warehouse</option>
         <option>Game</option>
-        <option>Add new...</option>
+        <option>Add new...</option> -->
                 </select>
                 </div>
         </div>
-        
-      
+     
     </div>
 
     <!--Moenie die save button verander nie-->

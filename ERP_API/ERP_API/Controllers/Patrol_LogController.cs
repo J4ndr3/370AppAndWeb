@@ -9,17 +9,45 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Patrol_LogController : ApiController
     {
         private INF370Entities db = new INF370Entities();
-
-        // GET: api/Patrol_Log
-        public IQueryable<Patrol_Log> GetPatrol_Log()
+        public List<dynamic> GetPatrol_Log()
         {
-            return db.Patrol_Log;
+            // GET: api/Patrol_Log
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Patrol_Log> patrols = db.Patrol_Log.Include(zz => zz.Patrol_Booking).
+                    Include(zz=>zz.Ranger).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Patrol_Log Item in patrols)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Patrol_Log_ID = Item.Patrol_Log_ID;
+                    m.Name = Item.Ranger.Name;
+                    m.Surname = Item.Ranger.Surname;
+                    m.Date = Item.Checkin.ToShortDateString();
+                    m.Checkin = Item.Checkin.ToShortTimeString();
+                    m.Checkout = Item.Checkout.ToShortTimeString();
+                    m.CheckedIn = Item.Checked_in;
+                    m.Route = Item.Route;
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Patrol_Log/5

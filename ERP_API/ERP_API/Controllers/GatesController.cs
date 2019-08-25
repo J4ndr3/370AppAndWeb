@@ -116,12 +116,12 @@ namespace ERP_API.Controllers
             db.Configuration.ProxyCreationEnabled = false;
             try
             {
-                if (db.Gates.Contains(gate))
-                {
-                    return Ok(1);
-                }
-                else
-                {
+                //if (db.Gates.)
+                //{
+                //    return Ok(1);
+                //}
+                //else
+                //{
                     if (!ModelState.IsValid)
                     {
                         return BadRequest(ModelState);
@@ -129,7 +129,7 @@ namespace ERP_API.Controllers
                     db.Gates.Add(gate);
                     db.SaveChanges();
                     return CreatedAtRoute("DefaultApi", new { id = gate.Gate_ID }, gate);
-                }
+                //}
             }
             catch
             {
