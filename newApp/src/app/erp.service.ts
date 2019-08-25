@@ -163,4 +163,7 @@ nID:any;
   GetMarkers() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Markers')
   }
+  UpdatePoints(id,points){
+    return this.http.get('http://localhost:51389/api/Rangers/UpdatePoints/?Ranger_ID='+id+'&Points='+points)
+  }
 }
