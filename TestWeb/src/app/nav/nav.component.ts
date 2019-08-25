@@ -18,6 +18,7 @@ import { timer} from 'rxjs';
   styleUrls: ['./nav.component.sass'],
 })
 export class NavComponent implements OnInit {
+  rangerName="";
   display='none';
   action: boolean = true;
   setAutoHide: boolean = true;
@@ -50,6 +51,17 @@ export class NavComponent implements OnInit {
           
         });
       });
+      if (sessionStorage.getItem('Ranger')!=null)
+      {
+        this.GetRangers(sessionStorage.getItem('Ranger')).subscribe(res=>{
+          this.rangerName = res["Name"]
+        })
+      }
+      else
+      {
+        this.rangerName = "Login"
+      }
+      
       
     })
 
@@ -169,7 +181,10 @@ export class NavComponent implements OnInit {
         },
       });
     }
-    
+    GetRangers(id) {
+      return this.http.get('https://2019group4inf370.azurewebsites.net/api/rangers/'+id)
+    }
+
     GetIncidents(){
       return this.http.get('http://localhost:51389/api/Incident_Patrol')
     };

@@ -15,7 +15,7 @@ import { ERPService } from '../erp.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-Email=this.storage.get("user");
+Email;
 
   constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) { }
   NewIncident:object;
@@ -61,10 +61,13 @@ Email=this.storage.get("user");
   toast.present();
 }
 private async hallo(){
-  this.storage.clear();
-  this.login.user = null;
-  this.login.pass = null;
-  const toast = await this.toastController.create({ message:  this.Email["__zone_symbol__value"], duration: 3000 });
+  //this.storage.clear();
+  //this.login.user = null;
+  //this.login.pass = null;
+   this.storage.get("Ranger").then(res=>{
+    this.Email = res;
+   })
+  const toast = await this.toastController.create({ message:  this.Email, duration: 3000 });
       toast.present();
   this.fcm.getNot();
   

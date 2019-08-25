@@ -29,6 +29,7 @@
         "@ionic-native/firebase": "^5.8.0",
         "@ionic-native/geolocation": "^5.11.0",
         "@ionic-native/native-geocoder": "^5.12.0",
+        "@ionic-native/native-storage": "^5.12.0",
         "@ionic-native/qr-scanner": "^5.11.0",
         "@ionic-native/splash-screen": "^5.8.0",
         "@ionic-native/status-bar": "^5.8.0",
@@ -54,6 +55,7 @@
         "cordova-plugin-firebasex": "^3.0.6",
         "cordova-plugin-geolocation": "^4.0.2",
         "cordova-plugin-nativegeocoder": "^3.2.2",
+        "cordova-plugin-nativestorage": "^2.3.2",
         "cordova-plugin-qrscanner": "^3.0.1",
         "cordova-sqlite-storage": "^3.2.1",
         "core-js": "^2.5.4",
@@ -154,7 +156,8 @@
             "cordova-plugin-nativegeocoder": {
                 "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service"
             },
-            "cordova-plugin-background-mode": {}
+            "cordova-plugin-background-mode": {},
+            "cordova-plugin-nativestorage": {}
         },
         "platforms": [
             "android"

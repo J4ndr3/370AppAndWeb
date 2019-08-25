@@ -28,11 +28,11 @@ export class LoginPage implements OnInit {
       alert("Pleas fill in all the values")
     }
     else {
-      this.storage.set('pass', Pass);
-      this.storage.set('user', User);
       this.data.LogIn(User, Pass).subscribe(data => {
         this.storage.set("Ranger",data[0].Ranger);
         if (data[0].Correct == true) {
+          this.storage.set('pass', Pass);
+          this.storage.set('user', User);
           console.log(data[0])
           this.router.navigateByUrl('/');
         }

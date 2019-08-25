@@ -63,7 +63,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
         , timeout: 5000
       });
       this.geolocation.getCurrentPosition().then(pos => {
-        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+        latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
       }).catch((error) => {
         alert('Error getting location ' + error);
@@ -100,6 +100,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
           }
 
           this.data.PostIncident_Patrol(this.newPatrol).subscribe(res=>{
+            alert(res)
             var self=this;
             self.imgarray=[];
             if(this.images.length==null){
