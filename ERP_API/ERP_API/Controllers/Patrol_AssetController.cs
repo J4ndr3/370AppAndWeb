@@ -9,16 +9,21 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ERP_API.Models;
+using System.Dynamic;
+using System.Web.Http.Cors;
 
 namespace ERP_API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class Patrol_AssetController : ApiController
     {
+        
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Patrol_Asset
         public IQueryable<Patrol_Asset> GetPatrol_Asset()
         {
+            db.Configuration.ProxyCreationEnabled = false;
             return db.Patrol_Asset;
         }
 
@@ -26,6 +31,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Asset))]
         public IHttpActionResult GetPatrol_Asset(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Asset patrol_Asset = db.Patrol_Asset.Find(id);
             if (patrol_Asset == null)
             {
@@ -39,6 +45,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPatrol_Asset(int id, Patrol_Asset patrol_Asset)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -72,38 +79,43 @@ namespace ERP_API.Controllers
 
         // POST: api/Patrol_Asset
         [ResponseType(typeof(Patrol_Asset))]
-        public IHttpActionResult PostPatrol_Asset(Patrol_Asset patrol_Asset)
+        public IHttpActionResult PostPatrol_Asset(List<Patrol_Asset> patrol_Asset)
         {
-            if (!ModelState.IsValid)
+            db.Configuration.ProxyCreationEnabled = false;
+            foreach (var PA in patrol_Asset)
             {
-                return BadRequest(ModelState);
-            }
-
-            db.Patrol_Asset.Add(patrol_Asset);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (Patrol_AssetExists(patrol_Asset.Patrol_Log_ID))
+                if (!ModelState.IsValid)
                 {
-                    return Conflict();
+                    return BadRequest(ModelState);
                 }
-                else
+
+                db.Patrol_Asset.Add(PA);
+
+                try
                 {
-                    throw;
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException)
+                {
+                    if (Patrol_AssetExists(PA.Patrol_Log_ID))
+                    {
+                        return Conflict();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = patrol_Asset.Patrol_Log_ID }, patrol_Asset);
+            return CreatedAtRoute("DefaultApi", new { id = patrol_Asset.Last().Patrol_Log_ID }, patrol_Asset.Last());
         }
 
         // DELETE: api/Patrol_Asset/5
         [ResponseType(typeof(Patrol_Asset))]
         public IHttpActionResult DeletePatrol_Asset(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Asset patrol_Asset = db.Patrol_Asset.Find(id);
             if (patrol_Asset == null)
             {
