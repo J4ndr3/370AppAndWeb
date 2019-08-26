@@ -20,6 +20,7 @@ export class StatusReportComponent implements OnInit {
   Vehicles:object;
   Count2=0;
   VehicleCount:Array<object>;
+  loggedIn:any;
   constructor(private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
@@ -53,7 +54,8 @@ this.data.GetRangerVehicle().subscribe(res=>{
   
 });
 });
-this.ReportAccess(10);
+this.loggedIn = sessionStorage.getItem("Ranger");
+     this.ReportAccess(this.loggedIn);
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{

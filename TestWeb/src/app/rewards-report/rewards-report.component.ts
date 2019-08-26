@@ -19,7 +19,7 @@ export class RewardsReportComponent implements OnInit {
   Events:object;
   EventCount=0;
   EventsCount:Array<object>;
-
+  loggedIn:any;
   public Download() {
   
     
@@ -74,7 +74,8 @@ export class RewardsReportComponent implements OnInit {
     
   });
 });
-this.ReportAccess(10);
+this.loggedIn = sessionStorage.getItem("Ranger");
+     this.ReportAccess(this.loggedIn);
   }
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");

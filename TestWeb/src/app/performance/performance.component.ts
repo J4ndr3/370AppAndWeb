@@ -32,6 +32,9 @@ export class PerformanceComponent {
   toggle:any;
   IDPerformance:object;
   hide:any;
+  chData : Array<object> ;
+  loggedIn:any;
+
   constructor(private zone: NgZone, private data: ERPService, private router: Router,private toastrService: ToastrService) { }
   @ViewChild('content', { static: false }) content: ElementRef;
   @ViewChild('chartElement', { static: false }) chartElement: ElementRef<HTMLElement>;
@@ -56,6 +59,8 @@ export class PerformanceComponent {
         let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
         var position = 0;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
         pdf.save('RANGER PERFORMANCE REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt').innerHTML="";
@@ -67,8 +72,8 @@ export class PerformanceComponent {
 
   }
   ngOnInit() {
-    
-     this.ReportAccess(10);
+    this.loggedIn = sessionStorage.getItem("Ranger");
+     this.ReportAccess(this.loggedIn);
   }
 // GetHours(ID){
 //   this.data.GetPerformances(ID).subscribe(res=>{
@@ -110,7 +115,7 @@ export class PerformanceComponent {
            
             var dateconvert = year+"/"+month+'/'+i;
             console.log("Ooblic" + element["Checkin1"])
-            console.log("Ooblic" +dateconvert)
+            console.log("Ooblic1" +dateconvert)
             
 
             // if (element["Checkin1"] != dateconvert) {
@@ -137,29 +142,38 @@ export class PerformanceComponent {
      
       });
     });
+  
     this.zone.runOutsideAngular(() => {
-      let chart = am4core.create(this.chartElement.nativeElement, am4charts.XYChart);
-      am4core.useTheme(this.am4themes_myTheme);
-      chart.paddingRight = 40;
-
-      let data = [];
-      let visits = 10;
-      // this.hours.forEach(element => {
-      //   data.push({ date: new Date(2019, 0, i), name: "name" + i, value: visits });
-      // });
+     
+    
+      this.data.GetHours().subscribe(res=>{
+        console.log(res)
+        this.chData = JSON.parse(JSON.stringify(res));
+        let chart = am4core.create(this.chartElement.nativeElement, am4charts.XYChart);
+        am4core.useTheme(this.am4themes_myTheme);
+        chart.paddingRight = 40;
+  
+        let data = [];
+        let visits = 10;
+        // this.hours.forEach(element => {
+        //   data.push({ date: new Date(2019, 0, i), name: "name" + i, value: visits });
+        // });
+        
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        var day = date.getDay();
+        this.chData.forEach(element => {
+          data.push({ date: new Date(element["Date"]), value: element["Hours"] })
+        });
+        // for (let i = 1; i <= 31; i++) {
+        //   visits = Math.round(Math.random() * 10);
+        //   data.push({ date: new Date(year, month, i), value: visits });
+        // }
+  
+        chart.data = data;
+        console.log("Halloooo"+date,year,month,day)
       
-      var date = new Date();
-      var year = date.getFullYear();
-      var month = date.getMonth();
-      var day = date.getDay();
-      
-      console.log("Halloooo"+date,year,month,day)
-      for (let i = 1; i <= 31; i++) {
-        visits = Math.round(Math.random() * 10);
-        data.push({ date: new Date(year, month, i), name: "name" + i, value: visits });
-      }
-
-      chart.data = data;
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
@@ -184,6 +198,8 @@ export class PerformanceComponent {
       scrollbarX.series.push(series);
       chart.scrollbarX = scrollbarX;
       this.chart = chart;
+      })
+      
 
     });
   

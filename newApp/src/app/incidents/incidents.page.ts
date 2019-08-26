@@ -14,7 +14,7 @@ declare var google;
 })
 
 export class IncidentsPage implements OnInit {
-images:Array<string>;
+images:Array<object>;
 base64Image:string;
 AddForm: FormGroup;
 NewIncident:object;
@@ -158,7 +158,8 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
        // If it's base64 (DATA_URL):
        this.base64Image=(<any>window).Ionic.WebView.convertFileSrc(imageData);
        //self.base64Image = 'data:image/jpeg;base64,' + imageData;
-       self.images.push(self.base64Image);
+       var blob = new Blob([this.base64Image],{type:'image/png'});
+       self.images.push(blob);
         
       }, (err) => {
        // Handle error

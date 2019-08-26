@@ -81,6 +81,8 @@ this.interval = setInterval(() => {
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
       var position = 5;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
       pdf.save('STATUS REPORT.pdf'); // Generated PDF  
       this.router.navigateByUrl("/status-report");
     });

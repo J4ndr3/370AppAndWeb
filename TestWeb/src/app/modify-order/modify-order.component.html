@@ -9,65 +9,42 @@
           <img src="/assets/ios-arrow-round-back.svg" class="BackBTN" /></button>
     </div>
     <br>
-    <form class="form-horizontal" id="modifyForm" action="/action_page.php" [formGroup]="EditForm" (ngSubmit)="update()">
+    <form class="form-horizontal" id="modifyForm" action="/action_page.php" [formGroup]="EditForm">
 
         <div class="form-group">
             <h2 class="Header">Modify Order:</h2>
             <br>
 
 
-            <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" formcontrolname="Date" required>
-
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <select class="form-control" formControlName="Asset" [(value)]="Selection" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Asset...">Asset...</option>
-        <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Asset}}</option>
-        <!-- <option>CAMPMASTER 700L Flashlight</option>
-        <option>Rechargeable 1040 Lum Spotlight</option>
-        <option>Patrol Magnet</option>
-        <option>Acebeam X80 Flashlight & Charger</option>
-        <option>Add new...</option> -->
+            <input type="date" class="form-control" id="Level" placeholder="Date..." name="Level" formControlName="Date" required>
+            <br>
+            <!-- <select formControlName="Asset" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Asset...">Asset...</option>
+                        <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                    </select>
+            <br>
+            <select formControlName="Type" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Type...">Type...</option>
+                        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                    </select>
+            <br> -->
+            <select formControlName="Status" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected disabled hidden value="Status...">Status...</option>
+                    <option >true</option>
+                    <option >false</option>
                 </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <select class="form-control" formControlName="Type" [(value)]="Selection" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Type...">Type...</option>
-        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Type}}</option>
-        <!-- <option>Flashlight</option>
-        <option>Magnet</option>
-        <option>Spotlight</option>
-        <option>Add new...</option> -->
-                </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <select class="form-control" formControlName="Supplier" [(value)]="Selection" id="Select1" onchange="selectColor()" required>
-        <option selected disabled hidden value="Supplier...">Supplier...</option>
-        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Supplier}}</option>
-        <!-- <option>Makro</option>
-        <option>Spar</option>
-        <option>Builders Warehouse</option>
-        <option>Game</option>
-        <option>Add new...</option> -->
-                </select>
-                </div>
-            </div>
+            <br>
+            <select formControlName="Supplier" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden value="Supplier...">Supplier...</option>
+                        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                    </select>
 
         </div>
 
-        <!--Moenie die save button verander nie-->
+
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                <button type="submit" class="btn btn-default" id="Save" (click)="Toast()" routerLink="/order">Save</button>
+                <button type="submit" class="btn btn-default" id="Save" (click)="update()">Save</button>
             </div>
             <br>
             <br>

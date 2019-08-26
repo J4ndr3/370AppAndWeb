@@ -40,22 +40,23 @@
                 <br>
                 <select formControlName="Asset" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                         <option selected disabled hidden value="Asset...">Asset...</option>
-                        <option *ngFor="let opt of EventRewardAddOptions" [(value)]="opt.ID">{{opt.Asset}}</option>
+                        <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                     </select>
                 <br>
                 <select formControlName="Type" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                         <option selected disabled hidden value="Type...">Type...</option>
-                        <option *ngFor="let opt of EventRewardAddOptions" [(value)]="opt.ID">{{opt.Type}}</option>
+                        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                     </select>
                 <br>
                 <select formControlName="Status" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                     <option selected disabled hidden value="Status...">Status...</option>
-                    <option *ngFor="let opt of EventRewardAddOptions" [(value)]="opt.ID">{{opt.Status}}</option>
+                    <option >True</option>
+                    <option >False</option>
                 </select>
                 <br>
                 <select formControlName="Supplier" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                         <option selected disabled hidden value="Supplier...">Supplier...</option>
-                        <option *ngFor="let opt of EventRewardAddOptions" [(value)]="opt.ID">{{opt.Supplier}}</option>
+                        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
                     </select>
 
 
@@ -117,7 +118,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>

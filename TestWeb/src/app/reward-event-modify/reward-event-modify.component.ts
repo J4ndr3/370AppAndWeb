@@ -42,9 +42,9 @@ export class RewardEventModifyComponent implements OnInit {
             this.router.navigateByUrl("/reward-add");
           }
           else{
-            this.router.navigateByUrl("/reward-event-modify");
-            this.ngOnInit();
             this.data.nID = ID;
+            this.router.navigateByUrl("/reward-event-modify");
+            
           }})
         
       }

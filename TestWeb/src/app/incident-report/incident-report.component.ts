@@ -47,6 +47,8 @@ export class IncidentReportComponent {
   searchText;
   timeLeft1: number = 3;
   interval1;
+  loggedIn:any;
+  
   @ViewChild('content', { static: false }) content: ElementRef;
   @ViewChild('map',{static: false}) mapElement: any;
   map: google.maps.Map;
@@ -122,6 +124,8 @@ public Download() {
         
         var position = 5;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
         pdf.save('INCIDENT REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt1').innerHTML = "";
@@ -281,7 +285,8 @@ public Download() {
 //          });
 //       }
 //  };
-this.ReportAccess(10);
+this.loggedIn = sessionStorage.getItem("Ranger");
+this.ReportAccess(this.loggedIn);
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{

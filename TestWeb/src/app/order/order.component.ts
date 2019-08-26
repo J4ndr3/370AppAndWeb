@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
   searchText;
   EventRewardAddSelection:number =0;
   EventRewardAddOptions:Array<object>; 
-  
+  StatusOptions:Array<object>; 
 
 
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyOrderComponent) { }
@@ -48,17 +48,24 @@ export class OrderComponent implements OnInit {
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
+      console.log(res)
     })
       this.data.GetTypes().subscribe(res=>{
         this.TypeOptions = JSON.parse(JSON.stringify(res));
+        console.log(res)
       })
         this.data.GetSupplier().subscribe(res=>{
           this.SupplierOptions = JSON.parse(JSON.stringify(res));
+          console.log(res)
     })
-   
+    this.data.GetOrder().subscribe(res=>{
+      this.StatusOptions = JSON.parse(JSON.stringify(res));
+      console.log(res)
+})
 
   
   }
+  
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
   }
@@ -84,13 +91,20 @@ export class OrderComponent implements OnInit {
        
         "Date": Date,
         "Asset_ID": Asset,
-        "Asset_Status_ID" : Status,
+        "Status" : Status,
         "Asset_Type_ID": Type,
         "Supplier_ID": Supplier,
     
       };
       console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
+        var OL = {
+          "Asset_ID":Asset,
+          "Order_ID":res["Order_ID"]
+        }
+        this.data.PostOrderLine(OL).subscribe(res=>{
+          console.log(res)
+        })
         this.ngOnInit();
         this.Event();
       });

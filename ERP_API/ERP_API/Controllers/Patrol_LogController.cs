@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using ERP_API.Models;
 using System.Dynamic;
 using System.Web.Http.Cors;
+using System.Data.Entity.Core.Objects;
 
 namespace ERP_API.Controllers
 {
@@ -49,7 +50,43 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
         }
-
+        [System.Web.Http.Route("api/Patrol_Log/GetPatrol_LogT")]
+        [HttpGet]
+        public List<dynamic> GetPatrol_LogT()
+        {
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Patrol_Log> patrols = db.Patrol_Log.ToList();
+                List<DateTime> myList = new List<DateTime>();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Patrol_Log Item in patrols)
+                {
+                    
+                    if (!myList.Contains(Item.Checkin.Date))
+                    {
+                        ;
+                        myList.Add(Item.Checkin.Date);
+                    }
+                    
+                }
+                foreach (var day in myList)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Date = day;
+                    var date = day;
+                    m.Hours = db.Patrol_Log.Where(zz => DbFunctions.TruncateTime(zz.Checkin) == day.Date).Sum(zz => DbFunctions.DiffHours(zz.Checkin, zz.Checkout));
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+        }
         // GET: api/Patrol_Log/5
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult GetPatrol_Log(int id)

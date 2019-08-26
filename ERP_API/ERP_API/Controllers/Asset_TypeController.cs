@@ -39,6 +39,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Asset_Type))]
         public IHttpActionResult GetAsset_Type(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Asset_Type asset_Type = db.Asset_Type.Find(id);
             if (asset_Type == null)
             {
@@ -52,6 +53,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAsset_Type(int id, Asset_Type asset_Type)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -87,6 +89,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Asset_Type))]
         public IHttpActionResult PostAsset_Type(Asset_Type asset_Type)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -102,6 +105,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Asset_Type))]
         public IHttpActionResult DeleteAsset_Type(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Asset_Type asset_Type = db.Asset_Type.Find(id);
             if (asset_Type == null)
             {
