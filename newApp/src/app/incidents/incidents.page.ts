@@ -185,8 +185,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
       this.camera.getPicture(options).then((imageData) => {
        // imageData is either a base64 encoded string or a file URI
        // If it's base64 (DATA_URL):
-       this.base64Image= "/assets/QRImage.png"
-       //(<any>window).Ionic.WebView.convertFileSrc(imageData);
+       this.base64Image= (<any>window).Ionic.WebView.convertFileSrc(imageData);
        var blob = new Blob([this.base64Image],{type:'image/png'});
        self.images.push(blob); 
        //alert(blob);
