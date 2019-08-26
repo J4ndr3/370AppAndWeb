@@ -46,6 +46,7 @@ namespace ERP_API.Controllers
             }
         }
 
+   
         // GET: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult GetIncident_Image(int id)
