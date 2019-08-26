@@ -75,48 +75,49 @@ export class RangerpatrolPage implements OnInit {
             })
             this.plt.ready().then(() => {
                 var self = this;
-                var onSuccess = function (position) {
-                    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    self.map.setCenter(latLng);
-                    self.map.setZoom(16);
-
-                };
-
-                // onError Callback receives a PositionError object
-                //
-                function onError(error) {
-                    alert('code: ' + error.code + '\n' +
-                        'message: ' + error.message + '\n');
-                }
-
-
-                let mapOptions = {
-                    zoom: 13,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    mapTypeControl: false,
-                    streetViewControl: false,
-                    fullscreenControl: false
-                }
-                self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
-                navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-                    enableHighAccuracy: true
-                    , timeout: 5000
-                });
-                self.geolocation.getCurrentPosition().then(pos => {
-                    let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                    self.map.setCenter(latLng);
-                    self.map.setZoom(16);
-                }).catch((error) => {
-                    alert('Error getting location ' + error);
-                });
+                
                 this.data.GetMarkers().subscribe(res => {
                     this.Markers = JSON.parse(JSON.stringify(res));
                     this.geofence.removeAll()
                         .then(function () {
-                            console.log('All geofences successfully removed.');
+                            alert('All geofences successfully removed.');
                         }
                             , function (error) {
                                 console.log('Removing geofences failed', error);
+                            });
+                            var onSuccess = function (position) {
+                                let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                                self.map.setCenter(latLng);
+                                self.map.setZoom(16);
+            
+                            };
+            
+                            // onError Callback receives a PositionError object
+                            //
+                            function onError(error) {
+                                alert('code: ' + error.code + '\n' +
+                                    'message: ' + error.message + '\n');
+                            }
+            
+            
+                            let mapOptions = {
+                                zoom: 13,
+                                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                mapTypeControl: false,
+                                streetViewControl: false,
+                                fullscreenControl: false
+                            }
+                            self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
+                            navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+                                enableHighAccuracy: true
+                                , timeout: 5000
+                            });
+                            self.geolocation.getCurrentPosition().then(pos => {
+                                let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                                self.map.setCenter(latLng);
+                                self.map.setZoom(16);
+                            }).catch((error) => {
+                                alert('Error getting location ' + error);
                             });
                     this.Markers.forEach(element => {
                         let fence = {
@@ -128,8 +129,8 @@ export class RangerpatrolPage implements OnInit {
                         }
                         
                         this.geofence.addOrUpdate(fence).then(
-                            () => console.log('Geofence added'),
-                            (err) => console.log('Geofence failed to add')
+                            () => alert('Geofence added'),
+                            (err) => alert('Geofence failed to add')
                         );
                         
                     });

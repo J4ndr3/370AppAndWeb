@@ -24,12 +24,33 @@ NewImg:object;
 Patrol:Array<object>;
 TypeSelection:number =0;
 TypeOptions:Array<object>;
+latLng;
 count=0; // as jy meer as een dropdown het doen dit vir almal
 
   constructor(private navctr: NavController ,public toastController: ToastController,private router:Router, private camera: Camera,private data: ERPService, private formBuilder: FormBuilder,private geolocation: Geolocation) { }
   
 
   ngOnInit() {
+    var onSuccess = function (position) {
+       this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  
+    };
+    
+    function onError(error) {
+      alert('code: ' + error.code + '\n' +
+        'message: ' + error.message + '\n');
+    }
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+      enableHighAccuracy: true
+      , timeout: 5000
+    });
+    this.geolocation.getCurrentPosition().then(pos => {
+      this.latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+    }).catch((error) => {
+      alert('Error getting location ' + error);
+    });
+
     this.images=[];
     var self = this;
     this.AddForm = this.formBuilder.group({
@@ -48,27 +69,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
       var Description = this.AddForm.get('Description').value; // Names for your input
       var Incident_Status_ID = this.AddForm.get('Incident_Status_ID').value; // Names for your input
       var title="";
-      let latLng;
-      var onSuccess = function (position) {
-         latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
-      };
-      
-      function onError(error) {
-        alert('code: ' + error.code + '\n' +
-          'message: ' + error.message + '\n');
-      }
-      navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-        enableHighAccuracy: true
-        , timeout: 5000
-      });
-      this.geolocation.getCurrentPosition().then(pos => {
-        latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-
-      }).catch((error) => {
-        alert('Error getting location ' + error);
-      });
-
+     
 
       this.TypeOptions.forEach(element=>{
         if (element["ID"]==Type_ID)
@@ -89,12 +90,12 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
         };
         this.data.sendNotif(title,Description);
         this.data.PostIncident(this.NewIncident).subscribe(res => {
-          console.log(latLng);
+          console.log(this.latLng);
           this.newPatrol = {
             "Incident_ID": res["Incident_ID"],
             "Patrol_Log_ID": 1,
-            "Lat": latLng.lat(),
-            "Lng": latLng.lng(),
+            "Lat": this.latLng.lat(),
+            "Lng": this.latLng.lng(),
             "Time": new Date().toLocaleTimeString(),
             "Date": new Date().toDateString()
           }
