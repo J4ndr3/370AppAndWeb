@@ -99,35 +99,32 @@ namespace ERP_API.Controllers
 
         // POST: api/Incident_Image
         [ResponseType(typeof(Incident_Image))]
-        public IHttpActionResult PostIncident_Image(List<Incident_Image> incident_Image)
+        public IHttpActionResult PostIncident_Image(Incident_Image incident_Image)
         {
-            foreach (var tracking in incident_Image)
+            if (!ModelState.IsValid)
             {
-                db.Configuration.ProxyCreationEnabled = false;
+                return BadRequest(ModelState);
+            }
 
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest(ModelState);
-                }
+            db.Incident_Image.Add(incident_Image);
 
-                db.Incident_Image.Add(tracking);
-                try
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (Incident_ImageExists(incident_Image.Incident_Image_ID))
                 {
-                    db.SaveChanges();
+                    return Conflict();
                 }
-                catch (DbUpdateException)
+                else
                 {
-                    if (Incident_ImageExists(tracking.Incident_Image_ID))
-                    {
-                        return Conflict();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
-            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Last().Incident_Image_ID }, incident_Image);
+
+            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Incident_Image_ID }, incident_Image);
         }
 
         // DELETE: api/Incident_Image/5

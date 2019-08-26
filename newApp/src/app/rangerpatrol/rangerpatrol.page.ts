@@ -39,7 +39,7 @@ export class RangerpatrolPage implements OnInit {
     myroute = [];
     positionSubscription: Subscription;
     @ViewChild('patrolform') containerEltRef: ElementRef;
-    constructor(private geofence: Geofence,private navcnt:NavController, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
+    constructor(private geofence: Geofence, private navcnt: NavController, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
         geofence.initialize().then(
             // resolved promise does not return a value
             () => console.log('Geofence Plugin Ready'),
@@ -75,7 +75,7 @@ export class RangerpatrolPage implements OnInit {
             })
             this.plt.ready().then(() => {
                 var self = this;
-                
+
                 this.data.GetMarkers().subscribe(res => {
                     this.Markers = JSON.parse(JSON.stringify(res));
                     this.geofence.removeAll()
@@ -85,40 +85,40 @@ export class RangerpatrolPage implements OnInit {
                             , function (error) {
                                 console.log('Removing geofences failed', error);
                             });
-                            var onSuccess = function (position) {
-                                let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                                self.map.setCenter(latLng);
-                                self.map.setZoom(16);
-            
-                            };
-            
-                            // onError Callback receives a PositionError object
-                            //
-                            function onError(error) {
-                                alert('code: ' + error.code + '\n' +
-                                    'message: ' + error.message + '\n');
-                            }
-            
-            
-                            let mapOptions = {
-                                zoom: 13,
-                                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                                mapTypeControl: false,
-                                streetViewControl: false,
-                                fullscreenControl: false
-                            }
-                            self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
-                            navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-                                enableHighAccuracy: true
-                                , timeout: 5000
-                            });
-                            self.geolocation.getCurrentPosition().then(pos => {
-                                let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                                self.map.setCenter(latLng);
-                                self.map.setZoom(16);
-                            }).catch((error) => {
-                                alert('Error getting location ' + error);
-                            });
+                    var onSuccess = function (position) {
+                        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        self.map.setCenter(latLng);
+                        self.map.setZoom(16);
+
+                    };
+
+                    // onError Callback receives a PositionError object
+                    //
+                    function onError(error) {
+                        alert('code: ' + error.code + '\n' +
+                            'message: ' + error.message + '\n');
+                    }
+
+
+                    let mapOptions = {
+                        zoom: 13,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        mapTypeControl: false,
+                        streetViewControl: false,
+                        fullscreenControl: false
+                    }
+                    self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+                        enableHighAccuracy: true
+                        , timeout: 5000
+                    });
+                    self.geolocation.getCurrentPosition().then(pos => {
+                        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                        self.map.setCenter(latLng);
+                        self.map.setZoom(16);
+                    }).catch((error) => {
+                        alert('Error getting location ' + error);
+                    });
                     this.Markers.forEach(element => {
                         let fence = {
                             id: element["Num"], //any unique ID
@@ -127,12 +127,12 @@ export class RangerpatrolPage implements OnInit {
                             radius: 10, //radius to edge of geofence in meters
                             transitionType: 1 //see 'Transition Types' below
                         }
-                        
+
                         this.geofence.addOrUpdate(fence).then(
                             () => alert('Geofence added'),
                             (err) => alert('Geofence failed to add')
                         );
-                        
+
                     });
                 });
             });
@@ -164,24 +164,24 @@ export class RangerpatrolPage implements OnInit {
             document.getElementById("nextBtn").hidden;
             document.getElementById("nextBtn1").innerHTML = "Done";
             document.getElementById("Steps").style.marginTop = "10%";
-           
+
         }
         if (n == 1) {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
             var booking = this.AddForm.get("BookingReference").value;
             alert(booking);
-            var PatrolLog={
-                "Ranger_ID":this.loggedIn,
-                "Patrol_Booking_ID":booking,
-                "Checkin":new Date(),
-                "Checkout":new Date(),
-                "Checked_in":true
+            var PatrolLog = {
+                "Ranger_ID": this.loggedIn,
+                "Patrol_Booking_ID": booking,
+                "Checkin": new Date(),
+                "Checkout": new Date(),
+                "Checked_in": true
             }
-            this.data.PostPatrol_Log(PatrolLog).subscribe(res=>{
+            this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
                 this.patrolID = res["Patrol_Log_ID"];
             })
-            
+
             this.scanMore();
         }
         if (n == 2) {
@@ -194,11 +194,10 @@ export class RangerpatrolPage implements OnInit {
             document.getElementById("Steps").style.display = "none";
             var Patrol_assets = []
             this.items.forEach(element => {
-                Patrol_assets.push({"Patrol_Log_ID":this.patrolID,"Asset_ID":element["ID"]})
+                Patrol_assets.push({ "Patrol_Log_ID": this.patrolID, "Asset_ID": element["ID"] })
             });
-            if (Patrol_assets!=[])
-            {
-                this.data.PostPatrol_Assets(Patrol_assets).subscribe(res=>{
+            if (Patrol_assets != []) {
+                this.data.PostPatrol_Assets(Patrol_assets).subscribe(res => {
                     console.log(res)
                 })
             }
@@ -338,7 +337,7 @@ export class RangerpatrolPage implements OnInit {
                         this.Markers.splice(count, 1)
                     }
                 });
-                
+
 
             });
 
@@ -357,9 +356,9 @@ export class RangerpatrolPage implements OnInit {
         }
         // map should be your map class
         if (path.length > 1) {
-           // circle.setMap(null)
+            // circle.setMap(null)
             this.Markers.forEach(element => {
-                circle   = new google.maps.Circle({
+                circle = new google.maps.Circle({
                     map: this.map,
                     center: new google.maps.LatLng(element["Lat"], element["Long"]),
                     radius: 10,
@@ -483,25 +482,25 @@ export class RangerpatrolPage implements OnInit {
             })
             .catch((e: any) => console.log('Error is', e));
     }
-    report(){
+    report() {
         this.navcnt.navigateForward("/incidents")
     }
-    exit(){
-        this.data.GetPatrol_LOg(this.patrolID).subscribe(res=>{
-            var patrol={
-                "Patrol_Log_ID":this.patrolID,
-                "Ranger_ID":res["Ranger_ID"],
-                "Patrol_Booking_ID":res["Patrol_Booking_ID"],
-                "Checkin":res["Checkin"],
-                "Checkout":new Date(),
-                "Checked_in":false
+    exit() {
+        this.data.GetPatrol_LOg(this.patrolID).subscribe(res => {
+            var patrol = {
+                "Patrol_Log_ID": this.patrolID,
+                "Ranger_ID": res["Ranger_ID"],
+                "Patrol_Booking_ID": res["Patrol_Booking_ID"],
+                "Checkin": res["Checkin"],
+                "Checkout": new Date(),
+                "Checked_in": false
             }
-            console.log(res["Checkin"],new Date())
-            this.data.PutPatrol(this.patrolID,patrol).subscribe(res1=>{
+            console.log(res["Checkin"], new Date())
+            this.data.PutPatrol(this.patrolID, patrol).subscribe(res1 => {
                 console.log(res1)
                 this.navcnt.navigateForward("/home");
             })
         })
-        
+
     }
 }

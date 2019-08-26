@@ -31,25 +31,25 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
   
 
   ngOnInit() {
-    var onSuccess = function (position) {
-       this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    // var onSuccess = function (position) {
+    //    this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   
-    };
+    // };
     
-    function onError(error) {
-      alert('code: ' + error.code + '\n' +
-        'message: ' + error.message + '\n');
-    }
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-      enableHighAccuracy: true
-      , timeout: 5000
-    });
-    this.geolocation.getCurrentPosition().then(pos => {
-      this.latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+    // function onError(error) {
+    //   alert('code: ' + error.code + '\n' +
+    //     'message: ' + error.message + '\n');
+    // }
+    // navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+    //   enableHighAccuracy: true
+    //   , timeout: 5000
+    // });
+    // this.geolocation.getCurrentPosition().then(pos => {
+    //   this.latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
-    }).catch((error) => {
-      alert('Error getting location ' + error);
-    });
+    // }).catch((error) => {
+    //   alert('Error getting location ' + error);
+    // });
 
     this.images=[];
     var self = this;
@@ -112,12 +112,12 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
         };
         this.data.sendNotif(title,Description);
         this.data.PostIncident(this.NewIncident).subscribe(res => {
-          // console.log(this.latLng);
+          // console.log(latLng);
           this.newPatrol = {
             "Incident_ID": res["Incident_ID"],
             "Patrol_Log_ID": 1,
-            "Lat": this.latLng.lat(),
-            "Lng": this.latLng.lng(),
+            "Lat": latLng.lat(),
+            "Lng": latLng.lng(),
             "Time": new Date().toLocaleTimeString(),
             "Date": new Date().toDateString()
           }
