@@ -147,6 +147,7 @@ namespace ERP_API.Controllers
             return db.Rangers.Count(e => e.Ranger_ID == id) > 0;
         }
         [System.Web.Http.Route("api/Rangers/UpdatePoints")]
+        [HttpGet]
         public HttpResponseMessage UpdatePoints([FromUri] Ranger userDet)
         {
             var points = userDet.Points;

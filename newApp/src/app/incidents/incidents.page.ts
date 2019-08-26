@@ -14,7 +14,7 @@ declare var google;
 })
 
 export class IncidentsPage implements OnInit {
-images:Array<any>;
+images:Array<object>;
 base64Image:string;
 AddForm: FormGroup;
 NewIncident:object;

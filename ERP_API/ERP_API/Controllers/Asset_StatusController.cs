@@ -20,7 +20,7 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Asset_Status
-       public List<dynamic> GetAsset_Status()
+        public List<dynamic> GetAsset_Status()
         {
             db.Configuration.ProxyCreationEnabled = false;
             List<Asset_Status> Level = db.Asset_Status.ToList();

@@ -27,6 +27,8 @@ export class MarkersReportComponent implements OnInit {
   Longitude: Array<number>;
   timeLeft1: number = 6;
   interval1;
+  loggedIn:any;
+
   @ViewChild('content', { static: false }) content: ElementRef;
   @ViewChild('map', { static: false }) mapElement: any;
   markerCount = 0;
@@ -34,7 +36,7 @@ export class MarkersReportComponent implements OnInit {
   map: google.maps.Map;
   myDate = new Date().toLocaleDateString();
   public Download() {
-    this.timeLeft1 = 2;
+    this.timeLeft1 = 6;
     let img;
 
 
@@ -63,9 +65,10 @@ export class MarkersReportComponent implements OnInit {
         this.timeLeft1--;
       } else if (this.timeLeft1 == 0) {
 
-        document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-left:10%">MARKER REPORT</h1><br><br><h3 margin:auto>Active Markers</h3></div><br> <br><br>';
+        document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-right: 5%">MARKER REPORT</h1><br><br><h3 margin:auto>Active Markers</h3></div><br> <br><br>';
         document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
         document.getElementById('chrt3').innerHTML = '<br><br>';
+        
 
         var data1 = document.getElementById('contentToConvert');
         var data2 = document.getElementById('contentToConvert1');
@@ -85,7 +88,8 @@ export class MarkersReportComponent implements OnInit {
           var position = 5;
           
           pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-         
+          pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
           pdf.save('MARKER REPORT.pdf'); // Generated PDF  
           
           
@@ -109,8 +113,8 @@ export class MarkersReportComponent implements OnInit {
       }
 
       else {
-        this.timeLeft1 = 2;
-        this.router.navigateByUrl("/markers-report");
+        this.timeLeft1 = 6;
+
       }
     }, 1000)
   }
@@ -171,7 +175,8 @@ export class MarkersReportComponent implements OnInit {
       });
     });
 
-    this.ReportAccess(10);
+    this.loggedIn = sessionStorage.getItem("Ranger");
+     this.ReportAccess(this.loggedIn);
   }
 
   createMarker() {

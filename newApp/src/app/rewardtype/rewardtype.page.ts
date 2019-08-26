@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 // import { NavController } from 'ionic-angular';
 import {ConfirmRewardPage} from './../confirm-reward/confirm-reward.page'
 import { element } from '@angular/core/src/render3';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-rewardtype',
   templateUrl: './rewardtype.page.html',
@@ -19,16 +20,23 @@ nReward:object;
 redeemed:Array<object>;
 rcv: object;
 RangerPoints:object;
-  constructor(private data: ERPService, private router:Router) { }
+loggedIn:any;
+Ranger:any;
+RangerID:any;
+  constructor(private data: ERPService, private router:Router,private storage:Storage) { }
   // ,public navCtrl: NavController
   ngOnInit() {
-  
+    this.storage.get("Ranger").then(res=>{
+
+      this.loggedIn = res;
+      this.ValidateRanger(this.loggedIn);
+    });
     this.data.GetProduct_Reward().subscribe(res=>{
       console.log(res);
       this.Products = res;
     });
    
-    this.ValidateRanger(3);
+    
     
 
     this.data.GetEvent_Reward().subscribe(res=>{
@@ -55,9 +63,9 @@ RangerPoints:object;
 }
 ValidateRanger(ID){
   this.data.GetRanger(ID).subscribe(res=>{
-    this.RangerPoints= ['Points']
-    console.log(res);
-    this.Products = res;
+    this.RangerPoints= res["Points"]
+    console.log(this.RangerPoints);
+    //this.Products = res;
 
   });
 }
