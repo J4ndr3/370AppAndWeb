@@ -46,6 +46,7 @@ namespace ERP_API.Controllers
             }
         }
 
+   
         // GET: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult GetIncident_Image(int id)
@@ -110,14 +111,13 @@ namespace ERP_API.Controllers
                 }
 
                 db.Incident_Image.Add(tracking);
-
                 try
                 {
                     db.SaveChanges();
                 }
                 catch (DbUpdateException)
                 {
-                    if (Incident_ImageExists(tracking.Patrol_Log_ID))
+                    if (Incident_ImageExists(tracking.Incident_Image_ID))
                     {
                         return Conflict();
                     }
@@ -127,7 +127,7 @@ namespace ERP_API.Controllers
                     }
                 }
             }
-            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Last().Patrol_Log_ID }, incident_Image);
+            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Last().Incident_Image_ID }, incident_Image);
         }
 
         // DELETE: api/Incident_Image/5

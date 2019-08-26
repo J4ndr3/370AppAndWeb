@@ -91,6 +91,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult GetPatrol_Log(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Log patrol_Log = db.Patrol_Log.Find(id);
             if (patrol_Log == null)
             {
@@ -104,6 +105,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPatrol_Log(int id, Patrol_Log patrol_Log)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -139,6 +141,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult PostPatrol_Log(Patrol_Log patrol_Log)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -154,6 +157,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult DeletePatrol_Log(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Log patrol_Log = db.Patrol_Log.Find(id);
             if (patrol_Log == null)
             {

@@ -164,6 +164,19 @@ nID:any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Markers')
   }
   UpdatePoints(id,points){
-    return this.http.get('http://localhost:51389/api/Rangers/UpdatePoints/?Ranger_ID='+id+'&Points='+points)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Rangers/UpdatePoints/?Ranger_ID='+id+'&Points='+points)
+  }
+
+  PostPatrol_Log(obj){
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/',obj)
+  }
+  PostPatrol_Assets(obj){
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Asset/',obj)
+  }
+  PutPatrol(ID,obj){
+    return this.http.put('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID,obj)
+  }
+  GetPatrol_LOg(ID){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID)
   }
 }

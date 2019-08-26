@@ -12,7 +12,6 @@ using ERP_API.Models;
 using System.Dynamic;
 using System.Web.Http.Cors;
 
-
 namespace ERP_API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
