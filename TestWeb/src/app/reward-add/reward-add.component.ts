@@ -138,7 +138,7 @@ export class RewardAddComponent implements OnInit {
           "Prod_ID":PDescription,
           
         };
-        console.log(this.NewRewardAdd)
+        // console.log(this.NewRewardAdd)
         this.data.PostRewardAdd(this.NewRewardAdd).subscribe(res => {
           this.ngOnInit();
           this.Event();
@@ -151,7 +151,7 @@ export class RewardAddComponent implements OnInit {
       var EDate = this.AddForm1.get('EDate').value; // Names for your input
       var ELocation = this.AddForm1.get('ELocation').value;
       var EDescription = this.AddForm1.get('EDescription').value;
-  console.log(EDescription);
+  // console.log(EDescription);
       if ((EName||EPoints||EDate||ELocation||EDescription)=="") {
         //Modal popup
       }
@@ -164,7 +164,7 @@ export class RewardAddComponent implements OnInit {
           "Type_ID": EDescription,
           
         };
-        console.log(this.NewEventRewardAdd)
+        // console.log(this.NewEventRewardAdd)
         this.data.PostEventRewardAdd(this.NewEventRewardAdd).subscribe(res => {
           this.Event();
           this.AddForm1.reset();

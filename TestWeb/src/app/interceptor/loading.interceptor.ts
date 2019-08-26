@@ -48,7 +48,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
               reason: error && error.error.reason ? error.error.reason : '',
               status: error.status
           };
-          console.log(data);
+          // console.log(data);
           if (data["status"] == 0){
             this.hideAll();
             document.getElementById('generalMod').click();

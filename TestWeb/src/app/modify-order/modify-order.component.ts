@@ -39,15 +39,15 @@ export class ModifyOrderComponent implements OnInit {
         });
       this.data.GetAssets().subscribe(res=>{
         this.AssetOptions = JSON.parse(JSON.stringify(res));
-        console.log(res)
+        // console.log(res)
       })
         this.data.GetTypes().subscribe(res=>{
           this.TypeOptions = JSON.parse(JSON.stringify(res));
-          console.log(res)
+          // console.log(res)
         })
           this.data.GetSupplier().subscribe(res=>{
             this.SupplierOptions = JSON.parse(JSON.stringify(res));
-            console.log(res)
+            // console.log(res)
       })
     
     
@@ -87,7 +87,7 @@ export class ModifyOrderComponent implements OnInit {
               var day = date.getDay().toString();
             }
          
-      console.log(res)
+      // console.log(res)
       var Date1 =year+"-"+month+"-"+day;
       this.EditForm.setValue({ID:this.Order.Order_ID,
         Date:Date1,
@@ -112,10 +112,10 @@ export class ModifyOrderComponent implements OnInit {
         "Status" : Status,
         "Supplier_ID" : Supplier
       };
-      console.log(this.nOrder);
+      // console.log(this.nOrder);
       this.data.PutOrder(ID,this.nOrder).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

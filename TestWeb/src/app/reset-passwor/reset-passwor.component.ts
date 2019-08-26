@@ -41,7 +41,7 @@ export class ResetPassworComponent implements OnInit {
         this.OTPF=true;
         this.EmailF=false;
         this.OTP = res[0]["OTP"]
-        console.log(this.OTP)
+        // console.log(this.OTP)
       }
       
     })
@@ -61,13 +61,13 @@ export class ResetPassworComponent implements OnInit {
     var email = this.AddForm.get('Email').value;
     var OTP = this.OTPForm.get('OTP').value;
     var Password = this.PasswordForm.get('Password').value;
-    console.log(email,OTP,Password);
+    // console.log(email,OTP,Password);
     this.login.ResetPass(email,OTP,Password).subscribe(res=>{
       if (res[0]["Correct"]){
         this.showToast();
         this.router.navigateByUrl("/login")
       }
-      console.log(res)
+      // console.log(res)
     })
   }
   showToast() {

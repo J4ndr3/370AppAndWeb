@@ -104,18 +104,18 @@ export class PerformanceComponent {
           
           var date = new Date();
           var toets = date.toLocaleDateString()
-          console.log(toets);
+          // console.log(toets);
           var year = date.getFullYear();
           var month = date.getMonth();
-          console.log(year+"hallo moto")
+          // console.log(year+"hallo moto")
           
           for (let i = 1; i <= 31; i++) {
             // visits = Math.round((Math.random() < 0.5 ? 1 : 0) * Math.random() * 10);
             // data.push({ date: new Date(year, month, i), name: "name" + i, value: visits });
            
             var dateconvert = year+"/"+month+'/'+i;
-            console.log("Ooblic" + element["Checkin1"])
-            console.log("Ooblic1" +dateconvert)
+            // console.log("Ooblic" + element["Checkin1"])
+            // console.log("Ooblic1" +dateconvert)
             
 
             // if (element["Checkin1"] != dateconvert) {
@@ -147,7 +147,7 @@ export class PerformanceComponent {
      
     
       this.data.GetHours().subscribe(res=>{
-        console.log(res)
+        // console.log(res)
         this.chData = JSON.parse(JSON.stringify(res));
         let chart = am4core.create(this.chartElement.nativeElement, am4charts.XYChart);
         am4core.useTheme(this.am4themes_myTheme);
@@ -172,7 +172,7 @@ export class PerformanceComponent {
         // }
   
         chart.data = data;
-        console.log("Halloooo"+date,year,month,day)
+        // console.log("Halloooo"+date,year,month,day)
       
 
       let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -237,7 +237,7 @@ export class PerformanceComponent {
 }
   ReportAccess(ID){
         this.data.GetRangers(ID).subscribe(res=>{
-          console.log(res);
+          // console.log(res);
         if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){        
       }
         else {

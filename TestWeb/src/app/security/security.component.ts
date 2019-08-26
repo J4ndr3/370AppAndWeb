@@ -50,7 +50,7 @@ export class SecurityComponent implements OnInit {
         "Email": Email,
         "Reserve_ID": Reserve
       };
-      console.log(this.NewSecurity);
+      // console.log(this.NewSecurity);
       this.data.PostSecurity(this.nSecurity).subscribe(res => {
         if (res != null)
         {

@@ -56,7 +56,7 @@ export class RangersReportComponent implements OnInit {
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
       
       

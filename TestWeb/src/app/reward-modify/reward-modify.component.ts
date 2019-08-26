@@ -50,7 +50,7 @@ export class RewardModifyComponent implements OnInit {
   edt(){
     this.data.GetRewardAdds(this.data.nID).subscribe(res=>{
       this.RewardModify = res;
-      console.log(res);
+      // console.log(res);
       this.EditForm.setValue({PID:this.RewardModify.Product_Reward_ID,
         PName:this.RewardModify.Name,
         PQuantity:this.RewardModify.Quantity,
@@ -77,10 +77,10 @@ export class RewardModifyComponent implements OnInit {
         "Prod_ID": PDescription
         
       };
-      console.log(this.nReward);
+      // console.log(this.nReward);
       this.data.PutRewardAdd(PID,this.nReward).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

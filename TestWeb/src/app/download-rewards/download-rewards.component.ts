@@ -62,20 +62,20 @@ export class DownloadRewardsComponent implements OnInit {
   ngOnInit() {
     this.data.GetRewardAdd().subscribe(res=>{
       this.ProductCount = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.ProductCount.forEach(marker => {
           this.Count++;
-          console.log(this.ProductCount)
+          // console.log(this.ProductCount)
           this.Products = res;
       
     });
   });
   this.data.GetEventRewardAdd().subscribe(res=>{
     this.EventsCount = JSON.parse(JSON.stringify(res));
-    console.log(res);
+    // console.log(res);
     this.EventsCount.forEach(marker => {
         this.EventCount++;
-        console.log(this.EventsCount)
+        // console.log(this.EventsCount)
         this.Events = res;
   });
 });

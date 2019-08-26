@@ -175,7 +175,7 @@ public Download() {
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Markers=[];
       this.Incedents = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.IncedentCount = 0;
       this.Incedents.forEach(marker => {
        
@@ -184,7 +184,7 @@ public Download() {
         var md = new Date(marker["Date"]);
         if (md>=f && md<=t)
         {
-          console.log(f, md)
+          // console.log(f, md)
           this.IncedentCount++;
           this.Markers.push(marker);
         }
@@ -218,7 +218,7 @@ public Download() {
 
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Incedents = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.Incedents.forEach(marker => {
         this.IncedentCount++;
       this.Markers = JSON.parse(JSON.stringify(res));
@@ -240,7 +240,7 @@ public Download() {
      this.r.push(element);
    });
 
-  console.log(this.r);
+  // console.log(this.r);
 
   this.r.forEach(element =>{
    
@@ -290,7 +290,7 @@ this.ReportAccess(this.loggedIn);
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
       
       

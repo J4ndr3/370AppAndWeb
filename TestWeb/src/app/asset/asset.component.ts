@@ -117,7 +117,7 @@ qrcodename : string;
           "Asset_Status_ID": Status,
           
         };
-        console.log(this.nAsset);
+        // console.log(this.nAsset);
         this.data.PostAsset(this.nAsset).subscribe(res => {
           if (res != null)
           {
@@ -128,9 +128,9 @@ qrcodename : string;
             }
             this.data.PostAsset_Supplier(this.AS).subscribe(res=>
               {
-                console.log(res)
+                // console.log(res)
               })
-            console.log(res)
+            // console.log(res)
             this.ngOnInit();
             this.showToast();
           }

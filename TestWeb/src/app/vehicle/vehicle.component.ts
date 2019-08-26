@@ -71,7 +71,7 @@ export class VehicleComponent implements OnInit {
         this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Vehicle = null ;
       }
-      console.log(this.Vehicle);
+      // console.log(this.Vehicle);
     });
   }
   addVehicle() {
@@ -81,7 +81,7 @@ export class VehicleComponent implements OnInit {
     var Type = this.AddForm.get('Type').value;
     var Status = this.AddForm.get('Status').value;
     var Colour = this.AddForm.get('Colour').value;
-    console.log(Make, Model,Registration,Type,Status,Colour)
+    // console.log(Make, Model,Registration,Type,Status,Colour)
 
     if (Registration=="") {
       document.getElementById("inputErr").click();
@@ -96,7 +96,7 @@ export class VehicleComponent implements OnInit {
         "Colour": Colour,
       };
       this.data.PostVehicle(this.NewVehicle).subscribe(res => {
-        console.log(this.NewVehicle);
+        // console.log(this.NewVehicle);
         this.ngOnInit()
       });
     }}

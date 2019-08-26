@@ -26,30 +26,30 @@ export class StatusReportComponent implements OnInit {
   ngOnInit() {
     this.data.GetAssets().subscribe(res=>{
       this.AssetCount = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.AssetCount.forEach(marker => {
           this.Count++;
-          console.log(this.AssetCount)
+          // console.log(this.AssetCount)
           this.Assets = res;
       
     });
   });
   this.data.GetRanger().subscribe(res=>{
     this.RangerCount = JSON.parse(JSON.stringify(res));
-    console.log(res);
+    // console.log(res);
     this.RangerCount.forEach(marker => {
         this.Count1++;
-        console.log(this.RangerCount)
+        // console.log(this.RangerCount)
         this.Rangers = res;
     
   });
 });
 this.data.GetRangerVehicle().subscribe(res=>{
   this.VehicleCount = JSON.parse(JSON.stringify(res));
-  console.log(res);
+  // console.log(res);
   this.VehicleCount.forEach(marker => {
       this.Count2++;
-      console.log(this.VehicleCount)
+      // console.log(this.VehicleCount)
       this.Vehicles = res;
   
 });
@@ -59,7 +59,7 @@ this.loggedIn = sessionStorage.getItem("Ranger");
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
       
       

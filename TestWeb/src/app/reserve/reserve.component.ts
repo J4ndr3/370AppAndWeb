@@ -43,7 +43,7 @@ export class ReserveComponent implements OnInit {
         "Lat": Lattitude,
         "Lng": Longitude
       };
-      console.log(this.nReserve);
+      // console.log(this.nReserve);
       this.data.PostReserve(this.nReserve).subscribe(res => {
         if (res != null)
         {

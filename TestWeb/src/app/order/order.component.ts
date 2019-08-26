@@ -48,19 +48,19 @@ export class OrderComponent implements OnInit {
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
-      console.log(res)
+      // console.log(res)
     })
       this.data.GetTypes().subscribe(res=>{
         this.TypeOptions = JSON.parse(JSON.stringify(res));
-        console.log(res)
+        // console.log(res)
       })
         this.data.GetSupplier().subscribe(res=>{
           this.SupplierOptions = JSON.parse(JSON.stringify(res));
-          console.log(res)
+          // console.log(res)
     })
     this.data.GetOrder().subscribe(res=>{
       this.StatusOptions = JSON.parse(JSON.stringify(res));
-      console.log(res)
+      // console.log(res)
 })
 
   
@@ -96,14 +96,14 @@ export class OrderComponent implements OnInit {
         "Supplier_ID": Supplier,
     
       };
-      console.log(this.nOrder);
+      // console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
         var OL = {
           "Asset_ID":Asset,
           "Order_ID":res["Order_ID"]
         }
         this.data.PostOrderLine(OL).subscribe(res=>{
-          console.log(res)
+          // console.log(res)
         })
         this.ngOnInit();
         this.Event();

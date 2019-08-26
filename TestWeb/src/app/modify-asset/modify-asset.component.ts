@@ -62,7 +62,7 @@ export class ModifyAssetComponent implements OnInit {
   edt(){
     this.data.GetAsset(this.data.nID).subscribe(res=>{     
       this.Asset = res;
-      console.log(this.Asset)
+      // console.log(this.Asset)
       this.EditForm.setValue({ID:this.Asset.Asset_ID,
         Description:this.Asset.Description,
         Type:this.Asset.Asset_Type_ID,
@@ -89,10 +89,10 @@ export class ModifyAssetComponent implements OnInit {
        // "Supplier" : Supplier,
         
       };
-      console.log(this.nAsset);
+      // console.log(this.nAsset);
       this.data.PutAsset(ID,this.nAsset).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

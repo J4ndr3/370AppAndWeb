@@ -19,7 +19,7 @@ sNav=false;
   testlogin(){
     var user = sessionStorage.getItem("user");
     var pass = sessionStorage.getItem("pass");
-    console.log(user)
+    // console.log(user)
     var bool = false;
     if (user == null || pass == null)
     {
@@ -47,7 +47,7 @@ sNav=false;
     return this.http.get('http://localhost:51389/api/Login/ResetOTP/?Email='+email)
   }
   ResetPass(email, OTP,Password){
-    alert(OTP)
+    // alert(OTP)
     return this.http.get('http://localhost:51389/api/Login/Password/?Email='+email+'&OTP='+OTP+'&Password='+Password)
   }
 }
