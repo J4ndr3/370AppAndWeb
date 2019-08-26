@@ -126,7 +126,7 @@ export class MarkersReportComponent implements OnInit {
     this.data.GetMarker().subscribe(res => {
 
       this.Markers = JSON.parse(JSON.stringify(res));
-      console.log(this.Markers);
+      // console.log(this.Markers);
       this.markerActiveCount = 0;
       this.Markers.forEach(marker => {
         this.markerCount++;
@@ -146,7 +146,7 @@ export class MarkersReportComponent implements OnInit {
               this.r.push(element);
             });
       
-            console.log(this.CoordList);
+            // console.log(this.CoordList);
       
             this.r.forEach(element => {
               if (element['Status'] == true) {
@@ -170,7 +170,7 @@ export class MarkersReportComponent implements OnInit {
       
           })
 
-          console.log(this.markerActiveCount)
+          // console.log(this.markerActiveCount)
         }
       });
     });
@@ -207,7 +207,7 @@ export class MarkersReportComponent implements OnInit {
   };
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
       
       

@@ -85,7 +85,7 @@ myMap:google.maps.event;
 
     this.data.GetBookings().subscribe(res=>{
       this.bookings = JSON.parse(JSON.stringify(res));
-      console.log(this.bookings);
+      // console.log(this.bookings);
       this.bookings.forEach(element => {
         let eventcopy = {
           //ID: element["Patrol_Booking_ID"],
@@ -94,7 +94,7 @@ myMap:google.maps.event;
           end: element["End_Time"],
           allDay: false,
         }
-        console.log(eventcopy);
+        // console.log(eventcopy);
         this.Eventsource.push(eventcopy);
       });
       this.calendarEvents = this.Eventsource;
@@ -113,7 +113,7 @@ myMap:google.maps.event;
         this.r.push(element);
       });
 
-      console.log(this.CoordList);
+      // console.log(this.CoordList);
 
       this.r.forEach(element => {
         
@@ -140,7 +140,7 @@ myMap:google.maps.event;
           this.r.push(element);
         });
   
-        console.log(this.CoordList1);
+        // console.log(this.CoordList1);
   
         this.r.forEach(element => {
           

@@ -17,7 +17,7 @@ export class PatrolLogComponent implements OnInit {
   ngOnInit() {
     this.data.getFeedbacks().subscribe(res=>{
       this.Patrol = res;
-      console.log(res);
+      // console.log(res);
     })
   }
 

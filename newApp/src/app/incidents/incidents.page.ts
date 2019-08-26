@@ -112,7 +112,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
         };
         this.data.sendNotif(title,Description);
         this.data.PostIncident(this.NewIncident).subscribe(res => {
-          console.log(this.latLng);
+          // console.log(this.latLng);
           this.newPatrol = {
             "Incident_ID": res["Incident_ID"],
             "Patrol_Log_ID": 1,
@@ -142,7 +142,7 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
                 "Patrol_Log_ID": 1,
                 "Image": img,
               }
-              alert(imga)
+               alert(imga)
               this.data.PostIncident_Image(imga).subscribe(res=>{
                 alert(res);
    

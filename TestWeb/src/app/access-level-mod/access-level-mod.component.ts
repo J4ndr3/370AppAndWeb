@@ -27,7 +27,7 @@ export class AccessLevelModComponent implements OnInit {
     this.edt();
   }
   edit(ID) {
-    alert(ID)
+    // alert(ID)
     this.data.GetAccess_Level(ID).subscribe(res => {
       if (res == 1) {
         alert("Not found");
@@ -36,7 +36,7 @@ export class AccessLevelModComponent implements OnInit {
       else {
         this.router.navigateByUrl("/AccessMod");
         this.data.nID = ID;
-        this.ngOnInit();
+        // this.ngOnInit();
 
       }
     })
@@ -45,8 +45,8 @@ export class AccessLevelModComponent implements OnInit {
   edt() {
     this.data.GetAccess_Level(this.data.nID).subscribe(res => {
       this.Access_Level = res;
-      console.log(res)
-      console.log(this.Access_Level.Web)
+      // console.log(res)
+      // console.log(this.Access_Level.Web)
       if (this.Access_Level.Web == true) {
         var Web = "True";
       }
@@ -106,9 +106,9 @@ export class AccessLevelModComponent implements OnInit {
       var App = 0;
     }
     var ID = this.EditForm.get('ID').value;
-    alert(ID)
+    // alert(ID)
     if (Web == null || Report == null || Write == null || App == null) {
-      console.log(Web, Report, Write, App)
+      // console.log(Web, Report, Write, App)
       document.getElementById("inputErr").click();
     }
     else {
@@ -120,10 +120,10 @@ export class AccessLevelModComponent implements OnInit {
         "App": App
       };
     }
-    console.log(this.nAccess);
+    // console.log(this.nAccess);
     this.data.PutAccess_Level(ID, this.nAccess).subscribe(res => {
       this.rcv = res
-      console.log(this.rcv);
+      // console.log(this.rcv);
       if (this.rcv == null) {
         this.showToast();
       }

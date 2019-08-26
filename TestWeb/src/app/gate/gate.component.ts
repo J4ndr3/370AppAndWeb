@@ -55,7 +55,7 @@ export class GateComponent implements OnInit {
         "Longitude": Longitude,
         "Reserve_ID": Reserve
       };
-      console.log(this.nGate);
+      // console.log(this.nGate);
       this.data.PostGate(this.nGate).subscribe(res => {
         if (res != null)
         {

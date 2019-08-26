@@ -36,7 +36,7 @@ export class MarkerTypeComponent implements OnInit {
         this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Type = null ;
       }
-      console.log(this.Type);
+      // console.log(this.Type);
     });
   }
 

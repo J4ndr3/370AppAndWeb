@@ -20,15 +20,15 @@
             <div class="col-sm-10">
                 <input type="text" class="form-control" formControlName="Name" id="Level" placeholder="Name..." name="Level" required>
             </div>
-            
+
             <div class="col-sm-10">
                 <input type="text" class="form-control" formControlName="Email" id="Level" placeholder="Email..." name="Level" required>
             </div>
-          
+
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="Level" formControlName="Cell" placeholder="Cell..." name="Level" required>
             </div>
-           
+
             <div class="col-sm-10">
                 <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                     <option hidden [value]=""  selected>Reserve...</option>
@@ -46,7 +46,9 @@
         </div>
     </form>
 </div>
-
+<br>
+<br>
+<br>
 
 <div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
     <div class="modal-dialog">

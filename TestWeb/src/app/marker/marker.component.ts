@@ -45,7 +45,7 @@ export class MarkerComponent implements OnInit {
       var myLatLngList = {
         myLatLng: [{ lat: event.latLng.lat(), lng: event.latLng.lng() }]
       };
-      alert(event.latLng); 
+      // alert(event.latLng); 
       self.AddForm = self.formBuilder.group({
         Discription: [],
         Reserve: [],
@@ -72,7 +72,7 @@ export class MarkerComponent implements OnInit {
         this.Markers = res;
         this.MarkerMap = JSON.parse(JSON.stringify(res));
         this.MarkerMap.forEach(element => {
-          console.log(element)
+          // console.log(element)
           var myLatLngList = {
             myLatLng: [{ lat: element["Lat"], lng: element["Long"] }]
           };
@@ -112,7 +112,7 @@ export class MarkerComponent implements OnInit {
         "Status": Status,
         "Modified": new Date().toDateString()
       };
-      console.log(this.nMarker);
+      // console.log(this.nMarker);
       this.data.PostMarker(this.nMarker).subscribe(res => {
         if (res != null) {
           this.ngOnInit();

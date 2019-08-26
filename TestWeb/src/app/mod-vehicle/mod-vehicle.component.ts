@@ -52,10 +52,11 @@ export class ModVehicleComponent implements OnInit {
         this.router.navigateByUrl("/vehicle");
       }
       else{
-        this.router.navigateByUrl("/mod-vehicle");
-        this.ngOnInit();
         this.data.nID = ID;
-        console.log(ID);
+        this.router.navigateByUrl("/mod-vehicle");
+        // this.ngOnInit();
+        
+        // console.log(ID);
       }})
   }
 
@@ -93,10 +94,10 @@ export class ModVehicleComponent implements OnInit {
         "Status": Status,
         "Vehicle_Type_ID":Type,
       };
-      console.log(this.nVehicle);
+      // console.log(this.nVehicle);
       this.data.PutVehicle(ID,this.nVehicle).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

@@ -67,7 +67,7 @@ else{
     document.getElementById('chrt3').innerHTML = '<br><br>';
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Incedents = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.Incedents.forEach(marker => {
         this.IncedentCount++;
       this.Markers = res;
@@ -123,7 +123,7 @@ else{
      this.r.push(element);
    });
 
-  console.log(this.r);
+  // console.log(this.r);
 
   this.r.forEach(element =>{
    

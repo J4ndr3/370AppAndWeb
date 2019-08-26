@@ -31,7 +31,7 @@ export class SecurityModComponent implements OnInit {
       this.edt();
   }
   edit(ID){
-    console.log(ID)
+    // console.log(ID)
     this.data.GetSecurity(ID).subscribe(res=>{
       if (res==1)
       {
@@ -39,13 +39,14 @@ export class SecurityModComponent implements OnInit {
         this.router.navigateByUrl("/security");
       }
       else{
-        this.router.navigateByUrl("/securitymod");
         this.data.nID = ID;
+        this.router.navigateByUrl("/securitymod");
+        
       }})
     
   }
   edt(){
-    console.log(this.data.nID)
+    // console.log(this.data.nID)
     this.data.GetSecurity(this.data.nID).subscribe(res=>{     
       this.Security = res;
       this.EditForm.setValue({ID:this.Security.Security_ID,
@@ -73,10 +74,10 @@ export class SecurityModComponent implements OnInit {
         "Cell": Cell,
         "Reserve_ID": Reserve
       };
-      console.log(this.nSecurity);
+      // console.log(this.nSecurity);
       this.data.PutSecurities(ID,this.nSecurity).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

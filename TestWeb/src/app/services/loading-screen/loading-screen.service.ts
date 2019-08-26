@@ -19,12 +19,12 @@ export class LoadingScreenService {
   }
 
   startLoading() {
-    console.log("Hit")
+    // console.log("Hit")
     this.loading = true;
   }
 
   stopLoading() {
-    console.log("Stop")
+    // console.log("Stop")
     this.loading = false;
   }
 }

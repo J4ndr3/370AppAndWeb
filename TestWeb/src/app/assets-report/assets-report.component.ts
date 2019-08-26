@@ -50,13 +50,13 @@ export class AssetsReportComponent implements OnInit {
   ngOnInit() {
     this.data.GetAssets().subscribe(res=>{
       this.Active = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.Active.forEach(marker => {
         
         if (marker['Status'] == "Active")
         {
           this.count++;
-          console.log("hallloooo"+this.Active)
+          // console.log("hallloooo"+this.Active)
         }
       this.Assets = res;
       
@@ -68,7 +68,7 @@ export class AssetsReportComponent implements OnInit {
 }
 ReportAccess(ID){
   this.data.GetRangers(ID).subscribe(res=>{
-    console.log(res);
+    // console.log(res);
   if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
     
     

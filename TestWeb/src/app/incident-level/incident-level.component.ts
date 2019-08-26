@@ -29,7 +29,7 @@ export class IncidentLevelComponent implements OnInit {
 
       this.data.GetIncident_Levels().subscribe(res=>{
         this.IncidentLevel = res;
-        console.log(res)
+        // console.log(res)
       });
     }
 

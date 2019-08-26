@@ -56,20 +56,20 @@ export class RewardsReportComponent implements OnInit {
   ngOnInit() {
     this.data.GetRewardAdd().subscribe(res=>{
       this.ProductCount = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.ProductCount.forEach(marker => {
           this.Count++;
-          console.log(this.ProductCount)
+          // console.log(this.ProductCount)
           this.Products = res;
       
     });
   });
   this.data.GetEventRewardAdd().subscribe(res=>{
     this.EventsCount = JSON.parse(JSON.stringify(res));
-    console.log(res);
+    // console.log(res);
     this.EventsCount.forEach(marker => {
         this.EventCount++;
-        console.log(this.EventCount)
+        // console.log(this.EventCount)
         this.Events = res;
     
   });
@@ -86,7 +86,7 @@ this.loggedIn = sessionStorage.getItem("Ranger");
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
+      // console.log(res);
     if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
       
       
