@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';      
 import { GateModComponent }  from '../gate-mod/gate-mod.component'  
+import { number } from '@amcharts/amcharts4/core';
 
 @Component({
   selector: 'app-gate',
@@ -25,7 +26,7 @@ export class GateComponent implements OnInit {
       Descriprion: [],
       Lattitude: [],
       Longitude: [],
-      Reserve: []});
+      Reserve: ["Reserve..."]});
     this.data.GetReserves().subscribe(res=>{
       this.ReserveOptions = JSON.parse(JSON.stringify(res));
     })
@@ -42,8 +43,9 @@ export class GateComponent implements OnInit {
     var Reserve = this.AddForm.get('Reserve').value;
     
 
-    if ( Name ==""||Descriprion==""||Lattitude==""||Longitude==""||Reserve=="") {
+    if ( Name ==""||Descriprion==""||Reserve=="") {
       document.getElementById("inputErr").click();
+      
     }
     else {
       this.nGate = {
@@ -57,6 +59,7 @@ export class GateComponent implements OnInit {
       this.data.PostGate(this.nGate).subscribe(res => {
         if (res != null)
         {
+          document.getElementById("closeBTN").click();
           this.ngOnInit();
           this.showToast();
         }

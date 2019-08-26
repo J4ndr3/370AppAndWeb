@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { modifyVehiclePage } from './modifyvehicle.page';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
 
-import { ResetpasswordPage } from './resetpassword.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ResetpasswordPage
+    component: modifyVehiclePage
   }
 ];
 
@@ -22,6 +21,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ResetpasswordPage]
+  declarations: [modifyVehiclePage]
 })
-export class ResetpasswordPageModule {}
+export class ModifyvehiclePageModule {}

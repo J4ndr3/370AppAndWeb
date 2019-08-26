@@ -57,7 +57,7 @@ export class ResetPassworComponent implements OnInit {
       this.showToastE();
     }
   }
-  reset() {
+  resetp() {
     var email = this.AddForm.get('Email').value;
     var OTP = this.OTPForm.get('OTP').value;
     var Password = this.PasswordForm.get('Password').value;

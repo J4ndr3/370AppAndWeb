@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import { ERPService } from '../erp.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rewards-report',
@@ -50,7 +51,7 @@ export class RewardsReportComponent implements OnInit {
 
 
     
-  constructor(private toastrService: ToastrService, private data: ERPService) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private router: Router) { }
 
   ngOnInit() {
     this.data.GetRewardAdd().subscribe(res=>{
@@ -73,6 +74,7 @@ export class RewardsReportComponent implements OnInit {
     
   });
 });
+this.ReportAccess(10);
   }
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
@@ -81,4 +83,25 @@ export class RewardsReportComponent implements OnInit {
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
   }
+  ReportAccess(ID){
+    this.data.GetRangers(ID).subscribe(res=>{
+      console.log(res);
+    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      
+      
+  }
+    
+    else {
+      
+      this.showToast1();
+      
+    }
+    
+  })
+  }
+  showToast1() {
+    this.toastrService.show("Sorry you do not have access to reports");
+    this.router.navigateByUrl("/home");
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
@@ -17,25 +17,43 @@ import { ERPService } from '../erp.service';
 })
 
 
-export class HomePage {
-Email=this.storage.get("user");
+export class HomePage implements OnInit{
+Email;
+NewIncident:object;
+newPatrol:object;
+loggedIn:any;
+Ranger:any;
 
   constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
-    this.data.GetRanger(this.ID).subscribe(res=>{
-      this.Ranger=res;
-      console.log(res);
-    })
+    this.loggedIn = this.login.ranger;
    }
 
-  NewIncident:object;
-  newPatrol:object;
-  ID=3;
-  Ranger:any;
+  
 
  // constructor(private alertCtrl: AlertController, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
     
    //}
-  
+   ionViewWillEnter(){
+     
+   }
+
+   ngOnInit() {
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      if (this.loggedIn == null)
+      {
+        this.router.navigateByUrl('/login');
+      }
+      else{
+        this.data.GetRanger(this.loggedIn).subscribe(res=>{
+          this.Ranger=res;
+          document.getElementById('RangerName').innerHTML = res["Name"] +" "+ res["Surname"];
+          document.getElementById('RangerPoints').innerHTML = "Reward Status: <b>"+res["Points"]+" Points</b>";
+        }) 
+      }
+   })
+  }
+
 
   openNote() {
     
@@ -77,10 +95,13 @@ Email=this.storage.get("user");
   toast.present();
 }
 private async hallo(){
-  this.storage.clear();
-  this.login.user = null;
-  this.login.pass = null;
-  const toast = await this.toastController.create({ message:  this.Email["__zone_symbol__value"], duration: 3000 });
+  //this.storage.clear();
+  //this.login.user = null;
+  //this.login.pass = null;
+   this.storage.get("Ranger").then(res=>{
+    this.Email = res;
+   })
+  const toast = await this.toastController.create({ message:  this.Email, duration: 3000 });
       toast.present();
   this.fcm.getNot();
   

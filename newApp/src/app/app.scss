@@ -5,7 +5,7 @@
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
 .splash{
-    position: absolute;
+    position: center; //was absolute
     height: 100%;
     width: 100%;
     z-index: 999;
@@ -47,7 +47,7 @@
     }
   }
   .lds-ripple {
-    position: relative;
+    position: center; //was absolute
   }
   .lds-ripple div {
     box-sizing: content-box;

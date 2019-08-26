@@ -7,6 +7,9 @@ import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { dateToLocalArray } from '@fullcalendar/core/datelib/marker';
 import { ERPService } from '../erp.service';
+import { collectExternalReferences } from '@angular/compiler';
+import { RouterLink, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 am4core.useTheme(am4themes_animated);
 @Component({
@@ -19,11 +22,19 @@ export class PerformanceComponent {
   myDate= new Date().toLocaleDateString();
   performances:object;
   hours:Array<object>;
-
-
-  
+  timeLeft1: number = 6;
+  interval1;
+  r: Array<object>;
+  HourList: Array<object>;
+  HourArray: any;
+  total:any;
+  Performances:object
+  toggle:any;
+  IDPerformance:object;
+  hide:any;
+  constructor(private zone: NgZone, private data: ERPService, private router: Router,private toastrService: ToastrService) { }
   @ViewChild('content', { static: false }) content: ElementRef;
-
+  @ViewChild('chartElement', { static: false }) chartElement: ElementRef<HTMLElement>;
   public Download() {
     let img;
 
@@ -56,36 +67,95 @@ export class PerformanceComponent {
 
   }
   ngOnInit() {
+    
+     this.ReportAccess(10);
+  }
+// GetHours(ID){
+//   this.data.GetPerformances(ID).subscribe(res=>{
+//     console.log(res);
+//     this.performances = res;
+//     this.hours = JSON.parse(JSON.stringify(res));
+//   });
+// }
+
+
+
+  
+  
+  ngAfterViewInit() {
     this.data.GetPerformance().subscribe(res=>{
-      console.log(res);
+    
+      this.r= [];
+      let Patrols = [];
+      Patrols = res['Patrol_Log_ID'];
+     
+      this.HourList = JSON.parse(JSON.stringify(res));
+      this.HourList.forEach(element => {
+        this.r.push(element);
+        
+        this.r.forEach(element => {
+          let data = [];
+          let visits = 10;
+          
+          var date = new Date();
+          var toets = date.toLocaleDateString()
+          console.log(toets);
+          var year = date.getFullYear();
+          var month = date.getMonth();
+          console.log(year+"hallo moto")
+          
+          for (let i = 1; i <= 31; i++) {
+            // visits = Math.round((Math.random() < 0.5 ? 1 : 0) * Math.random() * 10);
+            // data.push({ date: new Date(year, month, i), name: "name" + i, value: visits });
+           
+            var dateconvert = year+"/"+month+'/'+i;
+            console.log("Ooblic" + element["Checkin1"])
+            console.log("Ooblic" +dateconvert)
+            
+
+            // if (element["Checkin1"] != dateconvert) {
+
+            //   // for (let i = 1; i <= Patrols.length; i++) {
+
+            //   var time1 = element['time'];
+            //   var total= ++element['time'];
+            //   console.log("HAAARARTTARRATRRAT"+total);
+            // }
+           
+            
+
+          // }
+        }
+
+          
+        })
+        
+
+
       this.performances = res;
       this.hours = JSON.parse(JSON.stringify(res));
+     
+      });
     });
-  }
-
-
-
-
-  constructor(private zone: NgZone, private data: ERPService) { }
-  ngAfterViewInit() {
     this.zone.runOutsideAngular(() => {
-      let chart = am4core.create("chartdiv", am4charts.XYChart);
+      let chart = am4core.create(this.chartElement.nativeElement, am4charts.XYChart);
       am4core.useTheme(this.am4themes_myTheme);
       chart.paddingRight = 40;
-
 
       let data = [];
       let visits = 10;
       // this.hours.forEach(element => {
       //   data.push({ date: new Date(2019, 0, i), name: "name" + i, value: visits });
       // });
+      
       var date = new Date();
       var year = date.getFullYear();
       var month = date.getMonth();
       var day = date.getDay();
+      
       console.log("Halloooo"+date,year,month,day)
       for (let i = 1; i <= 31; i++) {
-        visits = Math.round((Math.random() < 0.5 ? 1 : 0) * Math.random() * 10);
+        visits = Math.round(Math.random() * 10);
         data.push({ date: new Date(year, month, i), name: "name" + i, value: visits });
       }
 
@@ -116,7 +186,12 @@ export class PerformanceComponent {
       this.chart = chart;
 
     });
+  
   }
+  
+
+
+  
   am4themes_myTheme(target) {
     if (target instanceof am4core.InterfaceColorSet) {
       target.setFor("secondaryButton", am4core.color("#00181a").lighten(0.5));
@@ -131,6 +206,7 @@ export class PerformanceComponent {
       target.stroke = am4core.color("#00181a");
     }
   }
+  
 
 
 
@@ -143,4 +219,20 @@ export class PerformanceComponent {
     
      
 }
+  ReportAccess(ID){
+        this.data.GetRangers(ID).subscribe(res=>{
+          console.log(res);
+        if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){        
+      }
+        else {
+          this.showToast1();
+         }
+        
+      })
+    }
+    showToast1() {
+      this.toastrService.show("Sorry you do not have access to reports");
+      this.router.navigateByUrl("/home");
+}
+
 }

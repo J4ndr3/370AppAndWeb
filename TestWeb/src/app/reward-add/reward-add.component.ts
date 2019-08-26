@@ -128,6 +128,7 @@ export class RewardAddComponent implements OnInit {
   
       if ((PName||PQuantity||PPoints||PDescription)=="") {
         //Modal popup
+        document.getElementById("inputErr").click();
       }
       else {
         this.NewRewardAdd = {

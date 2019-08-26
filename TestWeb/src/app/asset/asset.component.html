@@ -2,7 +2,7 @@
 <hr class="hrow" />
 
 <div class="outer">
-  
+
     <div class="button">
         <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
       <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
@@ -11,7 +11,7 @@
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -29,58 +29,50 @@
 
     <div class="inputForm">
         <br>
-        <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="add()">
 
             <div class="form-group">
-                
+
                 <h2 class="Header">Add Asset</h2>
                 <br>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Asset Description..." name="desc" required >
-                </div> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="desc" formControlName="Description" placeholder="Asset Description..." name="desc" required>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Supplier...</option>
-                <option>Makro</option>
-                <option>Spar</option>
-                <option>Builders Warehouse</option>
-                <option>Game</option>
-                <option routerLink="/supplier"class="dropdown-item"> Supplier</option>
-                        </select>
-                        </div>
+                        <select formControlName="Supplier" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                            <option hidden [value]=""  selected>Supplier...</option>
+                            <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                          </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-sm-10">
+                        <select formControlName="Type" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                                        <option hidden [value]=""  selected>Type...</option>
+                                        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                                      </select>
+                    </div>
+
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Type...</option>
-                <option>Flashlight</option>
-                <option>Magnet</option>
-                <option>Spotlight</option>
-                <option>Add new...</option>
-                        </select>
-                        </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                <option selected disabled hidden value="Gender...">Status...</option>
-                <option>Active</option>
-                <option>Inactivet</option>
-                <option>Broken</option>
-                <option>In Repair</option>
-                        </select>
-                        </div>
+                        <select formControlName="Status" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                                    <option hidden [value]=""  selected>Status...</option>
+                                    <option *ngFor="let opt of StatusOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                                  </select>
+                    </div>
                 </div>
             </div>
-            
+
 
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <button type="submit" class="btn btn-default" id="Save" (click)="showToast()" data-toggle="collapse" data-target="#demo">Save</button>
+                    <button type="submit" class="btn btn-default" id="Save" (click)="addAsset()" data-toggle="collapse" data-target="#demo">Save</button>
                 </div>
             </div>
         </form>
@@ -102,66 +94,69 @@
                 <th>Generate QR Code</th>
                 <th></th>
                 <th>Actions</th>
-                
-                
-                
+
+
+
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let Asset of Assets">
+            <tr *ngFor="let Asset of Assets |filter: searchText">
                 <td>{{Asset.Description}}</td>
                 <td>{{Asset.Supplier}}</td>
                 <td>{{Asset.Type}}</td>
                 <td>{{Asset.Status}}</td>
-                
+
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
                     <button (click)="generateQRCode()" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
-                    class="edit"  /></button> 
+                    class="edit"  /></button>
                     <!-- <a [href]="href" *ngIf="display" (click)="downloadImage()" download> -->
                 </td>
-                 
-                <td> 
-                        <div id = "content" #content>
-                                <div id="contentToConvert">
-                                    <div id="QR" align="centre"></div>
-                                    
 
-     
-                    <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value] = "Asset.ID" ></ngx-qrcode>
-                </div>
-            </div>
+                <td>
+                    <div id="content" #content>
+                        <div id="contentToConvert">
+                            <div id="QR" align="centre"></div>
+
+
+
+                            <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID"></ngx-qrcode>
+                        </div>
+                    </div>
                 </td>
-                
-                <td> <button class="btn btn-default btn-sm" id="editbtn" routerLink='/modify-asset'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="modal" data-target="#Delmodal"><img
+
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Asset.ID)"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
-              
+
             </tr>
-        
-            
-           
-          
+
+
+
+
         </tbody>
     </table>
 
 
 </div>
+<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
 <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="Delete()">Delete</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
             </div>
         </div>
     </div>
 </div>
+
+
 
 
 <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
@@ -179,3 +174,4 @@
         </div>
     </div>
 </div>
+<a id="link"></a>

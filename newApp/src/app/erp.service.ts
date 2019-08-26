@@ -40,7 +40,7 @@ nID:any;
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Rangers/',obj)
   }
   PostRoute(obj){
-    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Trackings/',obj)
+    return this.http.post('http://localhost:51389/api/Trackings/',obj)
   }
   GetProduct_Reward(){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Product_Reward')
@@ -147,5 +147,23 @@ nID:any;
 
   DeletePatrolBooking(id){
     return this.http.delete('https://2019group4inf370.azurewebsites.net/api/Patrol_Booking/' + id)
+  }
+  GetVehicle_types() {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Vehicle_Type')
+  }
+  GetModels() {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Models')
+  }
+  GetMakes() {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Makes')
+  }
+  GetAssets(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Assets')
+  }
+  GetMarkers() {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Markers')
+  }
+  UpdatePoints(id,points){
+    return this.http.get('http://localhost:51389/api/Rangers/UpdatePoints/?Ranger_ID='+id+'&Points='+points)
   }
 }

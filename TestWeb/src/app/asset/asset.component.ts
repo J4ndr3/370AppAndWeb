@@ -7,7 +7,7 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 import htmlToImage from 'html-to-image';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';          
-
+import { ModifyAssetComponent }  from '../modify-asset/modify-asset.component';
 
 @Component({
   selector: 'app-asset',
@@ -26,7 +26,8 @@ TypeOptions:Array<object>;
  SupplierSelection:number =0;
  SupplierOptions:Array<object>;
 nAsset: object;
-
+searchText;
+AS:object;
  
 
 qrcodename : string;
@@ -35,9 +36,15 @@ qrcodename : string;
   value: string;
   display = false;
   
-  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private toastrService: ToastrService, private data: ERPService, private formBuilder: FormBuilder, private mod:ModifyAssetComponent) { }
 
   ngOnInit() {
+    this.AddForm =  this.formBuilder.group({
+      Description:[],
+      Supplier:["Supplier..."],
+      Type:["Type..."],
+      Status:["Status..."]
+    })
     // this.qrcodename = '0123'
       this.display = false;
       this.value = this.qrcodename;
@@ -47,10 +54,6 @@ qrcodename : string;
         this.Assets = res;
 
       });
-
-      this.AddForm = this.formBuilder.group({
-        AssetDescription: [],
-        });
       this.data.GetTypes().subscribe(res=>{
         this.TypeOptions = JSON.parse(JSON.stringify(res));
       })
@@ -65,7 +68,7 @@ qrcodename : string;
   
   
   showToast(){
-    this.toastrService.show("Record could not be added", "Error!");
+    this.toastrService.show("Record added", "Success!");
   }
 
   Delete(){
@@ -82,7 +85,9 @@ qrcodename : string;
       var imgHeight = canvas.height * imgWidth / canvas.width;
       var heightLeft = imgHeight;
        
-      const contentDataURL = canvas.toDataURL('image/png')
+      const contentDataURL = canvas.toDataURL('image/png');
+      var image = contentDataURL.replace("image/png", "image/octet-stream");
+      window.location.href=image;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
@@ -94,29 +99,38 @@ qrcodename : string;
       });
     }
     addAsset(){
-      var AssetDescription = this.AddForm.get('AssetDescription').value;
+      var Description = this.AddForm.get('Description').value;
       var Supplier = this.AddForm.get('Supplier').value;
       var Type = this.AddForm.get('Type').value;
       var Status = this.AddForm.get('Status').value;
       
-      
   
       var Supplier = this.AddForm.get('Supplier').value;
-      if ( AssetDescription ==""||Supplier==""||Type==""||Status=="") {
+      if ( Description ==null||Supplier==null||Type==null||Status==null) {
         document.getElementById("inputErr").click();
       }
       else {
         this.nAsset = {
-          "AssetDescription": AssetDescription,
+          "Description": Description,
           "Supplier": Supplier,
-          "Type": Type,
-          "Status": Status,
+          "Asset_Type_ID": Type,
+          "Asset_Status_ID": Status,
           
         };
         console.log(this.nAsset);
-        this.data.PostGate(this.nAsset).subscribe(res => {
+        this.data.PostAsset(this.nAsset).subscribe(res => {
           if (res != null)
           {
+            var AI = res["Asset_ID"]
+            this.AS ={
+              "Asset_ID":AI,
+              "Supplier_ID":Supplier
+            }
+            this.data.PostAsset_Supplier(this.AS).subscribe(res=>
+              {
+                console.log(res)
+              })
+            console.log(res)
             this.ngOnInit();
             this.showToast();
           }
@@ -156,9 +170,9 @@ qrcodename : string;
         document.getElementById('del').click();
     }
   
-  // edit(ID){
-  //   this.mod.edit(ID);
-  // }
+  edit(ID){
+   this.mod.edit(ID);
+   }
     
   /* if there is a select/ dropdown use the following method to populate data for it */
    

@@ -10,6 +10,7 @@ import { element } from 'protractor';
 import { resetFakeAsyncZone } from '@angular/core/testing';
 import { timer } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-markers-report',
   templateUrl: './markers-report.component.html',
@@ -113,7 +114,7 @@ export class MarkersReportComponent implements OnInit {
       }
     }, 1000)
   }
-  constructor(private data: ERPService, private router: Router) { }
+  constructor(private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
 
@@ -170,7 +171,7 @@ export class MarkersReportComponent implements OnInit {
       });
     });
 
-   
+    this.ReportAccess(10);
   }
 
   createMarker() {
@@ -199,5 +200,25 @@ export class MarkersReportComponent implements OnInit {
     //iterate latLng and add markers 
 
   };
+  ReportAccess(ID){
+    this.data.GetRangers(ID).subscribe(res=>{
+      console.log(res);
+    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      
+      
+  }
+    
+    else {
+      
+      this.showToast1();
+      
+    }
+    
+  })
+  }
+  showToast1() {
+    this.toastrService.show("Sorry you do not have access to reports");
+    this.router.navigateByUrl("/home");
+  }
 
 }

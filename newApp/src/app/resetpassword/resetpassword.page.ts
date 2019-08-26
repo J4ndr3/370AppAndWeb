@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resetpassword',
@@ -8,17 +11,71 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./resetpassword.page.scss'],
 })
 export class ResetpasswordPage implements OnInit {
-
-  constructor(private alertCtrl: AlertController, public toastController: ToastController) { }
+  AddForm: FormGroup;
+  OTPForm: FormGroup;
+  PasswordForm: FormGroup;
+  EmailF = true;
+  OTPF = false;
+  PassF = false;
+  OTP: any;
+  constructor(private alertCtrl: AlertController, public toastController: ToastController, private formbuilder: FormBuilder, private login: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.AddForm = this.formbuilder.group({
+      Email: []
+    })
+    this.OTPForm = this.formbuilder.group({
+      OTP: []
+    })
+    this.PasswordForm = this.formbuilder.group({
+      Password: [],
+      Confirm: []
+    })
   }
+  resetOTP() {
+    var email = this.AddForm.get('Email').value;
+    this.login.resetOTP(email).subscribe(res => {
+      if (res[0]["Correct"]) {
+        this.OTPF = true;
+        this.EmailF = false;
+        this.OTP = res[0]["OTP"]
+        console.log(this.OTP)
+      }
+      else{
+        this.err();
+      }
 
+    })
+
+  }
+  Pass() {
+    var OTP = this.OTPForm.get('OTP').value;
+    if (this.OTP == OTP) {
+      this.OTPF = false;
+      this.PassF = true;
+    }
+    else {
+      this.err1();
+    }
+  }
+  resetp() {
+    var email = this.AddForm.get('Email').value;
+    var OTP = this.OTPForm.get('OTP').value;
+    var Password = this.PasswordForm.get('Password').value;
+    console.log(email, OTP, Password);
+    this.login.ResetPass(email, OTP, Password).subscribe(res => {
+      if (res[0]["Correct"]) {
+        this.showToast1();
+        this.router.navigateByUrl("/login")
+      }
+      console.log(res)
+    })
+  }
   private async err() {
     const alert = await this.alertCtrl.create({
       header: "Error",
       message: 'Email not found. Please try again.',
-      buttons: [{text:'OK'}] 
+      buttons: [{ text: 'OK' }]
     });
     alert.present();
   }
@@ -32,7 +89,7 @@ export class ResetpasswordPage implements OnInit {
     const alert = await this.alertCtrl.create({
       header: "Error",
       message: 'OTP does not match the sent OTP.',
-      buttons: [{text:'OK'}] 
+      buttons: [{ text: 'OK' }]
     });
     alert.present();
   }

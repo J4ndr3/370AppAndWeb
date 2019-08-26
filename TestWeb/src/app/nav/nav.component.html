@@ -1,5 +1,5 @@
 <!--NAVIGATION BAR - MOENIE verander nie-->
-<nav class="navbar navbar-expand-sm fixed-top">
+<nav class="navbar navbar-expand-sm fixed-top" *ngIf="showme">
     <!-- logo -->
     <div class="container-fluid">
         <a class="navbar-brand " routerLink="/">
@@ -32,7 +32,7 @@
                         <a routerLink="/markers-report" class="dropdown-item">- Markers</a>
                     </div>
                 </li>
-
+                <!--   -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         ASSETS
@@ -102,7 +102,7 @@
         <div id="right">
             <div class="dropdown Logout" id="logoutbutton">
                 <a class="nav-link dropdown-toggle" href="#" id="logoutbutton" data-toggle="dropdown">
-        John Doe
+                    {{rangerName}}
       </a>
                 <div class="dropdown-menu">
                     <!-- <a class="dropdown-item" routerLink="/profile">- Profile</a>

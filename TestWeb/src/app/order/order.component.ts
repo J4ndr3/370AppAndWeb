@@ -3,6 +3,8 @@ import { ToastrService } from 'ngx-toastr';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms'; 
+import { Router } from '@angular/router';
+import { ModifyOrderComponent }  from '../modify-order/modify-order.component';
 
 @Component({
   selector: 'app-order',
@@ -20,14 +22,29 @@ export class OrderComponent implements OnInit {
   SupplierSelection:number =0;
   SupplierOptions:Array<object>;  
   nOrder:object;
-  searchtext;
+  searchText;
+  EventRewardAddSelection:number =0;
+  EventRewardAddOptions:Array<object>; 
+  
 
-  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder) { }
+
+  constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyOrderComponent) { }
 
   ngOnInit(){ 
+    this.data.GetOrder().subscribe(res1=>{
+      // console.log("halllloooooo"+res1)
+      this.Orders = res1;
+      
+    });
+
+    
     this.AddForm = this.formBuilder.group({
-      OrderID: [],
+      ID: [],
       Date: [],
+      Supplier: [],
+      Status: [],
+      Type: [],
+      Asset: [],
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
@@ -38,9 +55,7 @@ export class OrderComponent implements OnInit {
         this.data.GetSupplier().subscribe(res=>{
           this.SupplierOptions = JSON.parse(JSON.stringify(res));
     })
-    this.data.GetOrder().subscribe(res=>{
-      this.Orders = res;
-    });
+   
 
   
   }
@@ -53,38 +68,36 @@ export class OrderComponent implements OnInit {
   }
 
   addOrder(){
-    var ID = this.AddForm.get('ID').value;
+  // var ID = this.AddForm.get('ID').value;
     var Date = this.AddForm.get('Date').value;
     var Asset = this.AddForm.get('Asset').value;
+    var Status = this.AddForm.get('Status').value;
     var Type = this.AddForm.get('Type').value;
     var Supplier = this.AddForm.get('Supplier').value;
     
 
-    if ( ID ==""||Date==""||Asset==""||Type==""||Supplier=="") {
+    if (Date==""||Asset==""||Type==""||Status=="" || Supplier=="") {
       document.getElementById("inputErr").click();
     }
     else {
       this.nOrder = {
-        "ID": ID,
+       
         "Date": Date,
-        "Lattitude": Asset,
-        "Longitude": Type,
-        "Reserve_ID": Supplier
+        "Asset_ID": Asset,
+        "Asset_Status_ID" : Status,
+        "Asset_Type_ID": Type,
+        "Supplier_ID": Supplier,
+    
       };
       console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
-        if (res != null)
-        {
-          this.ngOnInit();
-          this.showToast();
-        }
-        else
-        {
-          document.getElementById("inputErr").click();
-        }
-        
+        this.ngOnInit();
+        this.Event();
       });
     }
+  }
+  Event(){
+    this.toastrService.show("This record was added successfully", "Success!");
   }
   del(){
     this.data.DeleteOrder(this.data.nID).subscribe(res=>{
@@ -113,7 +126,7 @@ export class OrderComponent implements OnInit {
     this.data.nID = ID;
     document.getElementById('del').click();
 }
-  // edit(ID){
-  //   this.mod.edit(ID);
-  // }
+  edit(ID){
+    this.mod.edit(ID);
+   }
 }

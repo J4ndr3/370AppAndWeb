@@ -19,6 +19,14 @@
                             </ion-label>
                         </ion-item>
                     </ion-menu-toggle>
+                    <ion-menu-toggle>
+                        <ion-item (click)="Logout()">
+                            <ion-icon style="color:white !important" slot="start" [name]="log-out"></ion-icon>
+                            <ion-label style="color:white !important">
+                                Logout
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
                 </ion-list>
             </ion-content>
         </ion-menu>
