@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import {ERPService} from '..//erp.service';          
 import { FormBuilder,FormGroup } from '@angular/forms';
@@ -26,7 +26,7 @@ TypeSelection:number =0;
 TypeOptions:Array<object>;
 count=0; // as jy meer as een dropdown het doen dit vir almal
 
-  constructor(public toastController: ToastController,private router:Router, private camera: Camera,private data: ERPService, private formBuilder: FormBuilder,private geolocation: Geolocation) { }
+  constructor(private navctr: NavController ,public toastController: ToastController,private router:Router, private camera: Camera,private data: ERPService, private formBuilder: FormBuilder,private geolocation: Geolocation) { }
   
 
   ngOnInit() {
@@ -128,9 +128,10 @@ count=0; // as jy meer as een dropdown het doen dit vir almal
 
 
         
-          this.router.navigateByUrl("/home");
+          this.navctr.pop();
           this.presentToast();
         });
+        
       }}
   
   

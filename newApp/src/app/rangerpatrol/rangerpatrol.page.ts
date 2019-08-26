@@ -34,11 +34,12 @@ export class RangerpatrolPage implements OnInit {
     watchID;
     isTracking = false;
     trackedRoute: Array<object>;
+    patrolID;
     loggedIn: any;
     myroute = [];
     positionSubscription: Subscription;
     @ViewChild('patrolform') containerEltRef: ElementRef;
-    constructor(private geofence: Geofence, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
+    constructor(private geofence: Geofence,private navcnt:NavController, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
         geofence.initialize().then(
             // resolved promise does not return a value
             () => console.log('Geofence Plugin Ready'),
@@ -57,6 +58,7 @@ export class RangerpatrolPage implements OnInit {
         });
         this.data.GetAssets().subscribe(res => {
             this.assets = JSON.parse(JSON.stringify(res));
+            this.items = this.assets;
         });
         this.storage.get("Ranger").then(res => {
             this.loggedIn = res;
@@ -122,7 +124,7 @@ export class RangerpatrolPage implements OnInit {
                             latitude: element["Lat"], //center of geofence radius
                             longitude: element["Long"],
                             radius: 10, //radius to edge of geofence in meters
-                            transitionType: 3 //see 'Transition Types' below
+                            transitionType: 1 //see 'Transition Types' below
                         }
                         
                         this.geofence.addOrUpdate(fence).then(
@@ -139,12 +141,7 @@ export class RangerpatrolPage implements OnInit {
     }
 
     ngAfterViewInit() {
-        // let elt = this.containerEltRef.nativeElement.querySelector('.tab');
-        // this.renderer.addClass(elt, 'newClass'); //Adds new class to element
-        // Current tab is set to be the first tab (0)
         this.showTab(this.currentTab); // Display the current tab
-
-
     }
     showTab(n) {
 
@@ -163,13 +160,27 @@ export class RangerpatrolPage implements OnInit {
 
         if (n == 3) {
             this.stopTracking();
-            document.getElementById("nextBtn").innerHTML = "Done";
+            document.getElementById("nextBtn").hidden;
+            document.getElementById("nextBtn1").innerHTML = "Done";
             document.getElementById("Steps").style.marginTop = "10%";
-
+           
         }
         if (n == 1) {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
+            var booking = this.AddForm.get("BookingReference").value;
+            alert(booking);
+            var PatrolLog={
+                "Ranger_ID":this.loggedIn,
+                "Patrol_Booking_ID":booking,
+                "Checkin":new Date(),
+                "Checkout":new Date(),
+                "Checked_in":true
+            }
+            this.data.PostPatrol_Log(PatrolLog).subscribe(res=>{
+                this.patrolID = res["Patrol_Log_ID"];
+            })
+            
             this.scanMore();
         }
         if (n == 2) {
@@ -180,7 +191,16 @@ export class RangerpatrolPage implements OnInit {
             document.getElementById("nextBtn").style.width = "40%";
             //document.getElementById("Steps").style.marginTop = "10%";
             document.getElementById("Steps").style.display = "none";
-
+            var Patrol_assets = []
+            this.items.forEach(element => {
+                Patrol_assets.push({"Patrol_Log_ID":this.patrolID,"Asset_ID":element["ID"]})
+            });
+            if (Patrol_assets!=[])
+            {
+                this.data.PostPatrol_Assets(Patrol_assets).subscribe(res=>{
+                    console.log(res)
+                })
+            }
         }
         //... and run a function that will display the correct step indicator:
         this.fixStepIndicator(n)
@@ -336,7 +356,7 @@ export class RangerpatrolPage implements OnInit {
         }
         // map should be your map class
         if (path.length > 1) {
-            circle.setMap(null)
+           // circle.setMap(null)
             this.Markers.forEach(element => {
                 circle   = new google.maps.Circle({
                     map: this.map,
@@ -371,7 +391,7 @@ export class RangerpatrolPage implements OnInit {
         // self.storage.set('routes', this.previousTracks);
         self.myroute = [];
         myroute.forEach(element => {
-            self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: 1 })
+            self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: this.patrolID })
         });
         this.data.PostRoute(self.myroute).subscribe();
         self.isTracking = false;
@@ -461,5 +481,26 @@ export class RangerpatrolPage implements OnInit {
                 }
             })
             .catch((e: any) => console.log('Error is', e));
+    }
+    report(){
+        this.navcnt.navigateForward("/incidents")
+    }
+    exit(){
+        this.data.GetPatrol_LOg(this.patrolID).subscribe(res=>{
+            var patrol={
+                "Patrol_Log_ID":this.patrolID,
+                "Ranger_ID":res["Ranger_ID"],
+                "Patrol_Booking_ID":res["Patrol_Booking_ID"],
+                "Checkin":res["Checkin"],
+                "Checkout":new Date(),
+                "Checked_in":false
+            }
+            console.log(res["Checkin"],new Date())
+            this.data.PutPatrol(this.patrolID,patrol).subscribe(res1=>{
+                console.log(res1)
+                this.navcnt.navigateForward("/home");
+            })
+        })
+        
     }
 }
