@@ -40,7 +40,7 @@ nID:any;
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Rangers/',obj)
   }
   PostRoute(obj){
-    return this.http.post('http://localhost:51389/api/Trackings/',obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Trackings/',obj)
   }
   GetProduct_Reward(){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Product_Reward')
