@@ -466,7 +466,9 @@ GetStatusDropdown() {
   GetHours() {
     return this.http.get('http://localhost:51389/api/Patrol_Log/GetPatrol_LogT')
   }
-
+  GetRoute(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Trackings')
+  }
   PostAsset_Supplier(obj) {
     return this.http.post('http://localhost:51389/api/Assets/AS', obj)
   }
