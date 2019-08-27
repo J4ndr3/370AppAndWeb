@@ -40,7 +40,7 @@ export class PatrolLogComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
     this.previousTracks = [];
-    this.data.getFeedbacks().subscribe(res=>{
+    this.data.GetPatrol_log().subscribe(res=>{
       this.Patrol = res;
       console.log(res);
     })

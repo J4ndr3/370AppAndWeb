@@ -40,8 +40,17 @@ namespace ERP_API.Controllers
                     m.CheckedIn = Item.Checked_in;
                     m.Route = Item.Route;
                     m.time = Math.Round(Item.Checkout.Subtract(Item.Checkin).TotalHours, 2);
-                    m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
-                    m.Points = db.Patrol_Marker.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+                    if (db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID) > 1)
+                    {
+                        m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
+                        m.Points = db.Patrol_Marker.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+
+                    }
+                    else
+                    {
+                        m.MarkerPast = "None";
+                        m.Points = '0';
+                    };
                     m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).First();
                     toReturn.Add(m);
                 }
