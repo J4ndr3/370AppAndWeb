@@ -20,6 +20,7 @@ export class PatrolLogComponent implements OnInit {
   wholeRoute:Array<object>;
   myroute = [];
   positionSubscription: Subscription;
+  newLoc : object;
 
   @ViewChild('map',{static: false}) mapElement: any;
   map: google.maps.Map;
@@ -41,19 +42,26 @@ export class PatrolLogComponent implements OnInit {
     this.previousTracks = [];
     this.data.getFeedbacks().subscribe(res=>{
       this.Patrol = res;
-      // console.log(res);
+      console.log(res);
     })
   }
   DrawRoute(ID){
     this.data.GetRoute().subscribe(res=>{
-      if(res["Patrol_Log_ID"]==ID){
+     
       this.tracking=[],
       this.CoordList = JSON.parse(JSON.stringify(res));
       this.CoordList.forEach(element => {
-        this.tracking.push(element);
+        if(res["Patrol_Log_ID"]==ID){
+          console.log("hit");
+          this.newLoc = {
+            "lat": element["Lattitude"],
+          "lng": element["Longitude"]
+          }
+        this.tracking.push(this.newLoc);
+      }
     })
-      this.redrawPath(this.wholeRoute)
-  }
+      this.redrawPath(this.tracking)
+ 
  })
 }
 
@@ -78,9 +86,10 @@ export class PatrolLogComponent implements OnInit {
   //   });
   // }
   redrawPath(path){
+    console.log("hit");
     console.log(path);
     var self = this;
-    if (self.currentMapTrack) {
+    if (this.currentMapTrack) {
       self.currentMapTrack.setMap(null);
     }
     // map should be your map class
