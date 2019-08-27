@@ -24,6 +24,7 @@ export class RangerpatrolPage implements OnInit {
     hideEverything = false;
     AddForm: FormGroup;
     NewRangerpatrolPage: object;
+    newFeedback:object;
     RangerpatrolPageSelection: number = 0;
     RangerpatrolPageOptions: Array<object>; // as jy meer as een dropdown het doen dit vir almal
     Markers: Array<object>;
@@ -498,7 +499,17 @@ export class RangerpatrolPage implements OnInit {
             console.log(res["Checkin"], new Date())
             this.data.PutPatrol(this.patrolID, patrol).subscribe(res1 => {
                 console.log(res1)
-                this.navcnt.navigateForward("/home");
+                var Feedback = this.AddForm.get('Feedback').value;
+                    this.newFeedback = {
+                        "Patrol_Log_ID": this.patrolID, // Names for your input
+                        "Description": Feedback, // Names for your input
+                        "EnterQRCode1": new Date(),
+                    }
+                    this.data.PostFeedback(this.newFeedback).subscribe(res=>{
+                        this.navcnt.navigateForward("/home");
+                    })
+        
+                
             })
         })
 

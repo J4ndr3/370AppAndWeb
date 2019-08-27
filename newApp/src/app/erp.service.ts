@@ -173,6 +173,9 @@ nID:any;
   PostPatrol_Assets(obj){
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Asset/',obj)
   }
+  PostFeedback(obj){
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Feedbacks/',obj)
+  }
   PutPatrol(ID,obj){
     return this.http.put('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID,obj)
   }
