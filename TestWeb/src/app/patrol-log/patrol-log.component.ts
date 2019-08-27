@@ -15,8 +15,8 @@ export class PatrolLogComponent implements OnInit {
   currentMapTrack = null;
   watchID;
   isTracking = false;
-  trackedRoute: Array<object>;
-  tracking:object;
+  tracking: Array<object>;
+  CoordList: Array<object>;
   wholeRoute:Array<object>;
   myroute = [];
   positionSubscription: Subscription;
@@ -47,12 +47,16 @@ export class PatrolLogComponent implements OnInit {
   DrawRoute(ID){
     this.data.GetRoute().subscribe(res=>{
       if(res["Patrol_Log_ID"]==ID){
-        this.tracking =res;
-        this.wholeRoute.push(this.tracking);
-      }
-      this.redrawPath(this.wholeRoute);
-    });
-      }
+      this.tracking=[],
+      this.CoordList = JSON.parse(JSON.stringify(res));
+      this.CoordList.forEach(element => {
+        this.tracking.push(element);
+    })
+      this.redrawPath(this.wholeRoute)
+  }
+ })
+}
+
   
   // showHistoryRoute(route1) {
   //   //var r;
