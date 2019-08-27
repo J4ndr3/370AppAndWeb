@@ -189,18 +189,18 @@ export class IncidentsPage implements OnInit {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
-      //(<any>window).Ionic.WebView.convertFileSrc(imageData);
-      // let filePath: string = this.base64Image;
-      // this.base64.encodeFile(filePath).then((base64File: string) => {
-        
-      //   alert(base64File);
-      // }, (err) => {
-      //   console.log(err);
-      // });
+      
+      let filePath: string = imageData;
+      this.base64.encodeFile(filePath).then((base64File: string) => {
+        self.images.push(base64File)
+        alert(2+" " +base64File);
+      }, (err) => {
+        console.log(err);
+      });
       // = new Blob([this.base64Image], { type: 'image/png' });
-      var blob = this.base64Image;
+      var blob = (<any>window).Ionic.WebView.convertFileSrc(imageData);
         self.imgDisp.push(blob);
-        self.images.push(imageData)
+        
       alert(1+" "+imageData);
 
     }, (err) => {

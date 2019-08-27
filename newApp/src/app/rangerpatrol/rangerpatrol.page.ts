@@ -89,8 +89,8 @@ export class RangerpatrolPage implements OnInit {
                         }
                         
                         this.geofence.addOrUpdate(fence).then(
-                            () => alert('Geofence added'),
-                            (err) => alert('Geofence failed to add')
+                            () => console.log('Geofence added'),
+                            (err) => console.log('Geofence failed to add')
                         );
 
                     });
@@ -165,7 +165,7 @@ export class RangerpatrolPage implements OnInit {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
             var booking = this.AddForm.get("BookingReference").value;
-            alert(booking);
+            console.log(booking);
             var PatrolLog = {
                 "Ranger_ID": this.loggedIn,
                 "Patrol_Booking_ID": booking,
@@ -332,9 +332,9 @@ export class RangerpatrolPage implements OnInit {
         this.geofence.onTransitionReceived().subscribe(res => {
 
             res.forEach(function (geo) {
-                alert(geo["id"]);
+                console.log(geo["id"]);
                        //self.geofence.remove(geo["id"])
-                        alert("HIT")
+                       console.log("HIT")
                         var MarkPass ={
                             "Patrol_Log_ID":self.patrolID,
                             "Marker_ID":geo["ID"],
@@ -342,13 +342,14 @@ export class RangerpatrolPage implements OnInit {
                         }
                         self.data.PostPatrol_Markers(MarkPass).subscribe(res=>{
                             console.log(res)
+                            alert("Marker was added to patroll log")
                         })
-                        alert("Marker was added to patroll log")
+                        
             });
 
         },
-            (err) => alert(err),
-            () => alert("done !")
+            (err) => console.log(err),
+            () => console.log("done !")
         );
 
     }
@@ -396,7 +397,7 @@ export class RangerpatrolPage implements OnInit {
         //self.currentMapTrack.setMap(null);
         this.geofence.removeAll()
         .then(function () {
-            alert('All geofences successfully removed.');
+            console.log('All geofences successfully removed.');
          
         }
             , function (error) {
@@ -413,7 +414,7 @@ export class RangerpatrolPage implements OnInit {
         });
     }
     scanMore() {
-        alert("Scan")
+        // alert("Scan")
         let scanSub
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
@@ -449,7 +450,7 @@ export class RangerpatrolPage implements OnInit {
             .catch((e: any) => console.log('Error is', e));
     }
     scanout() {
-        alert("Scan")
+        // alert("Scan")
         let scanSub
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
@@ -463,7 +464,7 @@ export class RangerpatrolPage implements OnInit {
 
                     // start scanning
                     scanSub = this.qrScanner.scan().subscribe((text: string) => {
-                        alert('Scanned something' + text);
+                       // alert('Scanned something' + text);
                         var count = -1;
                         this.items.forEach(element => {
                             count++;

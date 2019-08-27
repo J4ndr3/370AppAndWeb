@@ -183,6 +183,9 @@ nID:any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID)
   }
   PostPatrol_Markers(obj){
-    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Marker/',obj)
+    return this.http.post('http://localhost:51389/api/Patrol_Marker/',obj)
+  }
+  PostVehicle(obj){
+    return this.http.post('http://localhost:51389/api/Vehicles/',obj)
   }
 }
