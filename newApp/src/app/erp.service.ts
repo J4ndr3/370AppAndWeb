@@ -179,4 +179,7 @@ nID:any;
   GetPatrol_LOg(ID){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID)
   }
+  PostPatrol_Markers(obj){
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Marker/',obj)
+  }
 }
