@@ -48,10 +48,10 @@ namespace ERP_API.Controllers
                     }
                     else
                     {
-                        m.MarkerPast = "None";
+                        m.MarkerPast = null;
                         m.Points = '0';
                     };
-                    m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).First();
+                    m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz=>zz.Description).FirstOrDefault();
                     toReturn.Add(m);
                 }
                 return toReturn;

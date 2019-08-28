@@ -42,21 +42,23 @@ export class PatrolLogComponent implements OnInit {
     this.previousTracks = [];
     this.data.GetPatrol_log().subscribe(res=>{
       this.Patrol = res;
-      console.log(res);
+      //console.log(res);
     })
   }
   DrawRoute(ID){
     this.data.GetRoute().subscribe(res=>{
-     
+     //console.log(ID)
       this.tracking=[],
       this.CoordList = JSON.parse(JSON.stringify(res));
       this.CoordList.forEach(element => {
-        if(res["Patrol_Log_ID"]==ID){
-          console.log("hit");
+        //console.log(element["Patrol_Log_ID"])
+        if(element["Patrol_Log_ID"]==ID){
+          //console.log(element["Lattitude"]);
           this.newLoc = {
             "lat": element["Lattitude"],
           "lng": element["Longitude"]
           }
+         // console.log(this.newLoc)
         this.tracking.push(this.newLoc);
       }
     })
@@ -86,8 +88,8 @@ export class PatrolLogComponent implements OnInit {
   //   });
   // }
   redrawPath(path){
-    console.log("hit");
-    console.log(path);
+    //console.log("hit");
+    //console.log(path);
     var self = this;
     if (this.currentMapTrack) {
       self.currentMapTrack.setMap(null);
@@ -104,7 +106,7 @@ export class PatrolLogComponent implements OnInit {
       var bounds = new google.maps.LatLngBounds();
       for (var i in path) // your marker list here
       {
-        console.log(path[i])
+       // console.log(path[i])
         bounds.extend(path[i])
       }
       // your marker position, must be a LatLng instance

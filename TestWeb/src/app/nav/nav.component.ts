@@ -46,7 +46,7 @@ export class NavComponent implements OnInit {
   
   ngOnInit() {
     
-    const source = timer(0,60000);
+    const source = timer(0,300000);
     const subscribe = source.subscribe(val=>{
       this.count =0
       this.GetIncidents().subscribe(res=>{
