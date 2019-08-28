@@ -13,8 +13,7 @@
 
     <div class="search">
         <div class="input-group">
-            <input type="text" [(ngModel)]="searchText" autocomplete="off" class="form-control" placeholder="Search..."
-                name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img
+            <input type="text" [(ngModel)]="searchText" autocomplete="off" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img
                     src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
         </div>
 
@@ -38,8 +37,7 @@
                 <h2 class="Header">Add Vehicle</h2>
                 <br>
                 <div class="col-sm-10">
-                    <select class="form-control" formControlName="Make" id="Select1" onchange="selectColor()"
-                        (change)="select3()" required>
+                    <select class="form-control" formControlName="Make" id="Select1" onchange="selectColor()" (change)="select3()" required>
                         <option selected disabled hidden value="Gender...">Make...</option>
                         <option *ngFor="let item of MakeOptions" [(value)]="item.Make_ID">{{item.Name}}</option>
                     </select>
@@ -68,8 +66,7 @@
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()"
-                        required>
+                    <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()" required>
                         <option selected disabled hidden value="Gender...">Color...</option>
                         <option>Red</option>
                         <option>White</option>
@@ -86,22 +83,19 @@
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Cell" formControlName="Registration"
-                        placeholder="Registration Number..." name="Cell" required>
+                    <input type="text" class="form-control" id="Cell" formControlName="Registration" placeholder="Registration Number..." name="Cell" maxlength="10" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Cell" formControlName="Status" value="1" hidden
-                        required>
+                    <input type="text" class="form-control" id="Cell" formControlName="Status" value="1" hidden required>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse"
-                        data-target="#demo">Save</button>
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo">Save</button>
                 </div>
             </div>
         </form>
@@ -130,9 +124,8 @@
                 <td>{{Item.Colour}}</td>
                 <td>{{Item.Registration}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.Vehicle_ID)" ><img
-                            src="/assets/ios-create.svg" class="edit" /></button><button class="btn btn-default btn-sm"
-                        id="editbtn" (click)="delete(Item.Vehicle_ID)" ><img src="/assets/ios-trash.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.Vehicle_ID)"><img
+                            src="/assets/ios-create.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Item.Vehicle_ID)"><img src="/assets/ios-trash.svg"
                             class="edit" /></button>
             </tr>
         </tbody>
@@ -142,45 +135,42 @@
 </div>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
 <<a hidden data-toggle="modal" data-target="#Delmodal" id="del"></a>
-<!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
-<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
-<div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
-                        style="width:40px; margin-top:0px;" />Error</h4>
-                <button type="button" class="close" data-dismiss="modal"
-                    style="float:right !important;">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>This record already exists. Please try again</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
-                    id="modalClose">Close</button>
+    <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
+    <div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
+                    <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This record will be permanently deleted. Are you sure you want to continue?</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del()">Delete</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+
+
+
+    <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
+    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Error</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This record already exists. Please try again</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -197,7 +187,7 @@
   </div>
 </div> -->
 
-<!-- <script>
+    <!-- <script>
     function selectColor() {
     var x = document.getElementById("Select1").value;
     if(x != "Gender..."){
