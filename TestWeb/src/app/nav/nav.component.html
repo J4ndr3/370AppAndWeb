@@ -126,11 +126,11 @@
                 <form [formGroup]="AddForm">
                     <label>Please complete the following fields:</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="TitleInput" formControlName="Title" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+                        <input type="text" class="form-control" id="TitleInput" formControlName="Title" maxlength="50" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
                     </div>
 
                     <div class="form-group">
-                        <textarea class="form-control" id="Message" formControlName="Message" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
+                        <textarea class="form-control" id="Message" formControlName="Message" maxlength="200" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-default" style="float: right !important;" (click)="openSnackBar()" mat-button data-dismiss="modal" id="modalClose">Send Message</button>
                 </form>
@@ -166,11 +166,11 @@
                 <form [formGroup]="AddForm2">
                     <label>Please complete the following fields:</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="TitleInput" formControlName="Title" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
+                        <input type="text" class="form-control" id="TitleInput" maxlength="50" formControlName="Title" placeholder="Title..." required style="background-color: rgba(62,105,112,0.7)!important; color:white;">
                     </div>
 
                     <div class="form-group">
-                        <textarea class="form-control" id="Message" formControlName="Message" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
+                        <textarea class="form-control" id="Message" formControlName="Message" maxlength="200" placeholder="Message..." style="background-color: rgba(62,105,112,0.7)!important;" required></textarea>
                     </div>
                     <button class="btn btn-default btn-sm" style="float:left !important"><img
                         src="/assets/ios-trash copy.svg" style="height:30px !important;" /></button>
