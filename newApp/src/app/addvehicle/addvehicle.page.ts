@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import {ERPService} from '..//erp.service';
-import { FormBuilder,FormGroup } from '@angular/forms';
+import { ERPService } from '..//erp.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -9,142 +11,74 @@ import { FormBuilder,FormGroup } from '@angular/forms';
   styleUrls: ['./addvehicle.page.scss'],
 })
 export class AddvehiclePage implements OnInit {
-    AddvehiclePages: object;
-AddForm: FormGroup;
-NewAddvehiclePage:object;
-AddvehiclePageSelection:number =0;
-AddvehiclePageOptions:Array<object>; // as jy meer as een dropdown het doen dit vir almal
+  AddForm: FormGroup;
+  Vehicle: any;
+  YourSelection: number = 0; //if you have a select list
+  ModelSelection: number = 0;
+  TypeSelection: number = 0;
+  ModelOptions: Array<object>;
+  MakeOptions: Array<object>;
+  Models: Array<object>;
+  TypeOptions: Array<object>; //if you have a select list
+  nVehicle: object;
+  rcv: object;
+  @ViewChild('regform') containerEltRef: ElementRef;
 
-  @ViewChild('regform')containerEltRef:ElementRef;
-
-  constructor(private renderer:Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
-  currentTab =0;
+  constructor(private toastcontroler:ToastController,private router:Router,private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
+  currentTab = 0;
   ngOnInit() {
-   
+
   }
-  ngAfterViewInit()
-  {
-    // let elt = this.containerEltRef.nativeElement.querySelector('.tab');
-    // this.renderer.addClass(elt, 'newClass'); //Adds new class to element
-     // Current tab is set to be the first tab (0)
-        this.showTab(this.currentTab); // Display the current tab
-
-       
+  ngAfterViewInit() {
+    this.AddForm = this.formBuilder.group({
+      CarRegistration: [""], // Names for your input
+      SelectColour: [""], // Names for your input 
+      Make: [""],
+      Model: [""],
+      TypeDescription: [""]
+    });
+    this.data.GetModels().subscribe((res) => {
+      this.ModelOptions = JSON.parse(JSON.stringify(res));
+    });
+    this.data.GetVehicle_types().subscribe((res) => {
+      this.TypeOptions = JSON.parse(JSON.stringify(res));
+  });
+  this.data.GetMakes().subscribe(res=>{
+    this.MakeOptions = JSON.parse(JSON.stringify(res));
+  })
   }
-   showTab(n) {
-            // This function will display the specified tab of the form...
-            var x = document.getElementsByClassName("tab");
-            console.log(x.length);
-            (x[n] as HTMLElement).style.display = "block";
-            //... and fix the Previous/Next buttons:
-            if (n == 0) {
-                document.getElementById("prevBtn").style.display = "none";
-                document.getElementById("nextBtn").innerHTML = "Next";
-                document.getElementById("Steps").style.marginTop = "75%";
-            } else {
-                document.getElementById("prevBtn").style.display = "inline";
-                document.getElementById("Steps").style.marginTop = "60%";
-            }
-            
-            if (n == 3) {
-                document.getElementById("nextBtn").innerHTML = "Done";
-            } 
-            if(n ==1){
-                document.getElementById("nextBtn").innerHTML = "Done";
-            }
-            if(n ==2){
-                document.getElementById("nextBtn").innerHTML = "Check Out";
-            }
-            //... and run a function that will display the correct step indicator:
-            this.fixStepIndicator(n)
-        }
+  addAddvehicleBtn() {
+    /* if there is a select/ dropdown use the following method to populate data for it */
+    
+  }
+  private async Input() {
+    const toast = await this.toastcontroler.create({ message: "Input provided is incorrrect", duration: 3000 });
+    toast.present();
+}
 
-nextPrev(n) {
-            // This function will figure out which tab to display
-            var x = document.getElementsByClassName("tab");
-            // Exit the function if any field in the current tab is invalid:
-            if (n == 1 && !this.validateForm()) return false;
-            // Hide the current tab:
-            (x[this.currentTab]as HTMLElement).style.display = "none";
-            // Increase or decrease the current tab by 1:
-            this.currentTab = this.currentTab + n;
-            // if you have reached the end of the form...
-            if (this.currentTab >= x.length) {
-                // ... the form gets submitted:
-                this.containerEltRef.nativeElement.Submit();
-                return false;
-            }
-            // Otherwise, display the correct tab:
-            this.showTab(this.currentTab);
-        }
+  addAddvehiclePage() {
+    var CarRegistration = this.AddForm.get('CarRegistration').value; // Names for your input
+    var SelectColour = this.AddForm.get('SelectColour').value; // Names for your input
+    var Make = this.AddForm.get('Make').value;
+    var Model = this.AddForm.get('Model').value;
+    var TypeDescription = this.AddForm.get('TypeDescription').value;
 
-validateForm() {
-            // This function deals with validation of the form fields
-            var x, y, i, valid = true;
-            x = document.getElementsByClassName("tab");
-            y = x[this.currentTab].getElementsByTagName("input");
-            // A loop that checks every input field in the current tab:
-            for (i = 0; i < y.length; i++) {
-                // If a field is empty...
-                if (y[i].value == "") {
-                    // add an "invalid" class to the field:
-                    y[i].className += " invalid";
-                    // and set the current valid status to false
-                    valid = false;
-                }
-            }
-            // If the valid status is true, mark the step as finished and valid:
-            if (valid) {
-                document.getElementsByClassName("step")[this.currentTab].className += " finish";
-            }
-            return valid; // return the valid status
-        }
+    if (CarRegistration !=""  || SelectColour!=""  || Make!=""  || Model!=""  || TypeDescription == "") {
+     this.Input();
+    }
+    else {
+      this.nVehicle = {
+                "Model_ID": Model,
+                "Registration": CarRegistration,
+                "Colour": SelectColour,
+                "Status": true,
+                "Vehicle_Type_ID": TypeDescription
+      };
+      this.data.PostVehicle(this.nVehicle).subscribe(res => {
+        this.router.navigateByUrl("/vehicles")
+      });
+    }
+  }
 
- fixStepIndicator(n) {
-            // This function removes the "active" class of all steps...
-            var i, x = document.getElementsByClassName("step");
-            for (i = 0; i < x.length; i++) {
-                x[i].className = x[i].className.replace(" active", "");
-            }
-            //... and adds the "active" class on the current step:
-            x[n].className += " active";
-        }
 
-        addAddvehicleBtn() {
-            this.AddForm = this.formBuilder.group({
-                CarRegistration: [""], // Names for your input
-                SelectColour: [""], // Names for your input 
-                Make: [""],
-                Model:[""],
-                TypeDescription:[""]
-            });
-        /* if there is a select/ dropdown use the following method to populate data for it */
-            this.data.GetAddvehiclePage().subscribe((res) => {
-              this.AddvehiclePageOptions = JSON.parse(JSON.stringify(res));
-            }); 
-          }
-
-          addAddvehiclePage() {
-            var CarRegistration = this.AddForm.get('CarRegistration').value; // Names for your input
-            var SelectColour = this.AddForm.get('SelectColour').value; // Names for your input
-            var Make = this.AddForm.get('Make').value;
-            var Model = this.AddForm.get('Model').value;
-            var TypeDescription = this.AddForm.get('TypeDescription').value;
-        
-            if ((CarRegistration||SelectColour||Make||Model||TypeDescription)=="") {
-              //Modal popup
-            }
-            else {
-              this.NewAddvehiclePage = {
-                "CarRegistration": CarRegistration, // Names for your input
-                "SelectColour": SelectColour, // Names for your input
-                "Make": Make,
-                "Model":Model,
-                "TypeDescription":TypeDescription
-              };
-              this.data.PostRanger(this.NewAddvehiclePage).subscribe(res => {
-                this.ngOnInit()
-              });}}
-        
-        
 }
