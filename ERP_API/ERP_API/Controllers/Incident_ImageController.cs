@@ -101,6 +101,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult PostIncident_Image(Incident_Image incident_Image)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

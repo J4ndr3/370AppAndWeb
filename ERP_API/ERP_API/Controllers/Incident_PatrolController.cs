@@ -170,6 +170,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult PostIncident_Patrol(Incident_Patrol incident_Patrol)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -200,6 +201,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult DeleteIncident_Patrol(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Patrol incident_Patrol = db.Incident_Patrol.Find(id);
             if (incident_Patrol == null)
             {

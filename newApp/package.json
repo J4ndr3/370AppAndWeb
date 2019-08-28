@@ -44,9 +44,11 @@
         "angular2-qrcode": "^2.0.3",
         "angularfire2": "^5.2.1",
         "bootstrap": "^4.3.1",
+        "com-badrit-base64": "^0.2.0",
         "cordova": "^9.0.0",
         "cordova-android": "^8.0.0",
         "cordova-android-support-gradle-release": "^3.0.1",
+        "cordova-browser": "^6.0.0",
         "cordova-ios": "^5.0.1",
         "cordova-plugin-add-swift-support": "^2.0.2",
         "cordova-plugin-androidx": "^1.0.2",
@@ -164,7 +166,8 @@
             "cordova-plugin-background-mode": {},
             "cordova-plugin-nativestorage": {},
             "cordova-plugin-geofence": {},
-            "cordova-plugin-add-swift-support": {}
+            "cordova-plugin-add-swift-support": {},
+            "com-badrit-base64": {}
         },
         "platforms": []
     }

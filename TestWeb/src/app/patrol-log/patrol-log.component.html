@@ -1,6 +1,11 @@
 <h1>PATROL LOG</h1>
 <hr class="hrow"/>
 
+<div id="mapDiv">
+  <div #map style="width:80%;height:100%; margin: auto;"></div>
+  <!-- <img src="/assets/Map.PNG" id="Map"/> -->
+</div>
+
 <div class="outer">
   <!--Moenie buttons en search bar verander nie-->
   <div class="search">
@@ -35,7 +40,7 @@
         <td>{{patrol.time}}</td>
         <td>{{patrol.Feedback}}</td>
         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-        <td><img src="https://i.stack.imgur.com/jlgnb.png" style="height:150px;"></td>
+        <td> <button class="btn btn-default" (click)="DrawRoute(patrol.ID)">Draw Route</button></td>
         <td>{{patrol.MarkerPast}}</td>
         <td>{{patrol.Points}}</td>
       </tr>

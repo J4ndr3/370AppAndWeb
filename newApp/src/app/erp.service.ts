@@ -40,7 +40,7 @@ nID:any;
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Rangers/',obj)
   }
   PostRoute(obj){
-    return this.http.post('http://localhost:51389/api/Trackings/',obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Trackings/',obj)
   }
   GetProduct_Reward(){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Product_Reward')
@@ -173,10 +173,19 @@ nID:any;
   PostPatrol_Assets(obj){
     return this.http.post('https://2019group4inf370.azurewebsites.net/api/Patrol_Asset/',obj)
   }
+  PostFeedback(obj){
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Feedbacks/',obj)
+  }
   PutPatrol(ID,obj){
     return this.http.put('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID,obj)
   }
   GetPatrol_LOg(ID){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Log/'+ID)
+  }
+  PostPatrol_Markers(obj){
+    return this.http.post('http://localhost:51389/api/Patrol_Marker/',obj)
+  }
+  PostVehicle(obj){
+    return this.http.post('http://localhost:51389/api/Vehicles/',obj)
   }
 }

@@ -76,8 +76,8 @@
                     </div>
                     <div class="tab" style="color:black">
                         <ion-label align="center" style="margin-bottom:5% !important">Check in assets:</ion-label>
-                        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
-                        <ion-button data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
+                        <!-- <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important"> -->
+                        <ion-button (click)="scanout()" data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
 
                         <div class="collapse" id="demo2">
                             <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCodeO" style="margin-bottom:5% !important;"></ion-input>
@@ -87,10 +87,10 @@
                         </div>
                         <div style="width: 100% " class="col-md-10 ">
                             <!-- Multi-line sliding item with icon options on both sides -->
-                            <ion-item-sliding id="item100">
+                            <ion-item-sliding id="item100" *ngFor="let item of items">
                                 <ion-item href="#">
                                     <ion-label>
-                                        <p>Car Magnet asset</p>
+                                        <p>{{item.Description}}</p>
                                     </ion-label>
                                     <ion-note slot="end">
                                         <h3>
@@ -98,7 +98,7 @@
                                     </ion-note>
                                 </ion-item>
                                 <ion-item-options side="end">
-                                    <ion-item-option color="danger">
+                                    <ion-item-option color="danger" (click)="remove(item.ID)">
                                         <ion-icon slot="icon-only" name="trash"></ion-icon>
                                     </ion-item-option>
                                 </ion-item-options>
