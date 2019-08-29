@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 declare var google;
 import { Base64 } from '@ionic-native/base64/ngx';
-
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-incidents',
   templateUrl: './incidents.page.html',
@@ -16,7 +16,7 @@ import { Base64 } from '@ionic-native/base64/ngx';
 
 export class IncidentsPage implements OnInit {
   imgDisp: Array<string>;
-  images: Array<string>;
+  images: Array<BinaryType>;
   base64Image: string;
   AddForm: FormGroup;
   NewIncident: object;
@@ -28,11 +28,20 @@ export class IncidentsPage implements OnInit {
   TypeOptions: Array<object>;
   latLng;
   count = 0; // as jy meer as een dropdown het doen dit vir almal
-
-  constructor(private base64: Base64, private navctr: NavController, public toastController: ToastController, private router: Router, private camera: Camera, private data: ERPService, private formBuilder: FormBuilder, private geolocation: Geolocation) { }
+  PL:any;
+  constructor(private storage: Storage,private base64: Base64, private navctr: NavController, public toastController: ToastController, private router: Router, private camera: Camera, private data: ERPService, private formBuilder: FormBuilder, private geolocation: Geolocation) { }
 
 
   ngOnInit() {
+    try{
+      this.storage.get("PL").then(res=>{
+        this.PL = res;
+      })
+    }
+    catch{
+      this.PL = 1;
+    }
+    
     // var onSuccess = function (position) {
     //    this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -117,7 +126,7 @@ export class IncidentsPage implements OnInit {
         // console.log(latLng);
         this.newPatrol = {
           "Incident_ID": res["Incident_ID"],
-          "Patrol_Log_ID": 1,
+          "Patrol_Log_ID": this.PL,
           "Lat": latLng.lat(),
           "Lng": latLng.lng(),
           "Time": new Date().toLocaleTimeString(),
@@ -132,21 +141,21 @@ export class IncidentsPage implements OnInit {
           if (this.images.length == null) {
             self.imgarray.push({
               "Incident_ID": res["Incident_ID"],
-              "Patrol_Log_ID": 1,
+              "Patrol_Log_ID": this.PL,
               "Image": "NULL",
             })
           }
           else {
             this.images.forEach(img => {
-              alert(3+""+ img)
+             // alert(3+""+ img)
               var imga = {
                 "Incident_ID": res["Incident_ID"],
-                "Patrol_Log_ID": 1,
+                "Patrol_Log_ID": this.PL,
                 "Image": img,
               }
-              alert(4+""+ imga)
+              //alert(4+""+ imga)
               this.data.PostIncident_Image(imga).subscribe(res => {
-                alert(5+" " +res);
+               // alert(5+" " +res);
 
               })
             })
@@ -191,10 +200,10 @@ export class IncidentsPage implements OnInit {
       this.base64Image = 'data:image/jpeg;base64,' + imageData;
       
       let filePath: string = imageData;
-      this.base64.encodeFile(filePath).then((base64File: string) => {
-        var base64result = base64File.split(',')[1];
+      this.base64.encodeFile(filePath).then((base64File: BinaryType) => {
+        var base64result = base64File;
         self.images.push(base64result)
-        alert(2+" " +base64result);
+       // alert(2+" " +base64result);
       }, (err) => {
         console.log(err);
       });
@@ -202,7 +211,7 @@ export class IncidentsPage implements OnInit {
       var blob = (<any>window).Ionic.WebView.convertFileSrc(imageData);
         self.imgDisp.push(blob);
         
-      alert(1+" "+imageData);
+     // alert(1+" "+imageData);
 
     }, (err) => {
       alert(err)

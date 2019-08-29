@@ -3,7 +3,7 @@
 <hr class="hrow" />
 <div>
     <div #ref>
-        <form #regform id="regForm" [formGroup]="AddForm" (ngSubmit)="add()">
+        <form #regform id="regForm" [formGroup]="AddForm">
             <h1>Register:</h1>
             <!-- One "tab" for each step in the form: -->
             <div class="tab col-sm-10">Step 1 -Ranger Name & Surname
@@ -97,7 +97,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-checkmark-circle.svg" style="width:40px; margin-top:0px;" />Success</h4>
-                <button type="button" (click)="openModal(false)" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
             </div>
             <div class="modal-body">
                 <p>The user has been added successfull</p>

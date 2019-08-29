@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" id="Level" placeholder="Points Required..." name="PPoints" formControlName="PPoints" required>
                 <br>
 
-                <select formControlName="PDescription" [(value)]="Selection" class="form-control" id="Select1" onchange="selectColor()" required>
+                <select formControlName="PDescription" [(value)]="RewardSelection" class="form-control" id="Select1" onchange="selectColor()" required>
                     <option selected disabled hidden value="Type Product...">Type Product...</option>
                     <option *ngFor="let opt of RewardOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                 </select>

@@ -197,6 +197,7 @@ export class RangerpatrolPage implements OnInit {
                 "Checked_in": true
             }
             this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
+                this.storage.set("PL",res["Patrol_Log_ID"]);
                 this.patrolID = res["Patrol_Log_ID"];
             })
 
