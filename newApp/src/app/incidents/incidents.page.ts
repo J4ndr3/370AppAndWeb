@@ -192,7 +192,7 @@ export class IncidentsPage implements OnInit {
       
       let filePath: string = imageData;
       this.base64.encodeFile(filePath).then((base64File: string) => {
-        var base64result = base64File.replace(/^data:image\/[a-z]+;base64,/, "");
+        var base64result = base64File.split(',')[1];
         self.images.push(base64result)
         alert(2+" " +base64result);
       }, (err) => {

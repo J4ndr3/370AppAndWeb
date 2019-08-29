@@ -215,7 +215,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   }
 
   addShiftbookingsPage() {
-    alert("hit")
+    // alert("hit")
    var passenger = this.AddForm.get('Passenger').value;
    var reserve = this.AddForm.get('Reserve').value;
    var vehicle = this.AddForm.get('Vehicle').value;

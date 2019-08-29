@@ -118,7 +118,7 @@ namespace ERP_API.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest("Photo could not be uploaded");
                 }
             }
 
