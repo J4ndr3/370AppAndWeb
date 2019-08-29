@@ -36,20 +36,17 @@
                 <h2 class="Header">Add User Role</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="" formControlName="Description" required>
-                    <label for="Desc">User role Description...</label>
+                    <input type="text" class="form-control" id="Level" placeholder="" formControlName="Description" maxlength="20" required>
                 </div>
 
             </div>
 
             <div class="col-sm-10">
-                <label class="form-group border-lable-flt">
                         <select class="form-control" id="Select1" onchange="selectColor()" required formControlName="Access">
                           <option selected disabled hidden value="Gender...">Access Level...</option>
                           <option *ngFor="let option of AccessOptions" [(value)]="option.ID">{{option.ID}}</option>
                         </select>
-                        <span>Access Level...</span>
-                    </label>
+                       
             </div>
 
             <!--Moenie die save button verander nie-->

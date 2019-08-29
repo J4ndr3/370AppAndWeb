@@ -9,9 +9,9 @@
     </div>
 
     <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
     </div>
 </div>
 <br>
@@ -36,19 +36,19 @@
                 <h2 class="Header">Add Reserve</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" formControlName="Name" placeholder="Name..." name="Level" required>
+                    <input type="text" class="form-control" id="Level" formControlName="Name" placeholder="Name..." name="Level" maxlength="20" required>
                 </div>
-                
+
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" formControlName="Description" placeholder="Reserve Description..." name="Level" required>
+                    <input type="text" class="form-control" id="Level" formControlName="Description" placeholder="Reserve Description..." name="Level" maxlength="50" required>
                 </div>
-                
+
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" required>
+                    <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" maxlength="18" required>
                 </div>
-              
+
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" formControlName="Longitude" placeholder="Longitude..." name="Level" required>
+                    <input type="text" class="form-control" id="Level" formControlName="Longitude" placeholder="Longitude..." name="Level" maxlength="18" required>
                 </div>
             </div>
 
