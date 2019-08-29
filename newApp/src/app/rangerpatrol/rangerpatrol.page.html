@@ -108,7 +108,11 @@
                         <div class="col-md-10 user-container">
                             <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
                         </div>
-                        <ion-button size="Medium" id="nextBtn1" (click)="exit()">Next</ion-button>
+                        <div style="overflow:auto;width: 100%;"></div>
+                        <ion-item lines="none" width="100%">
+                            <ion-button size="Medium" style="float: left" id="prevBtn1" (click)="nextPrev(-1)">Back</ion-button>
+                            <ion-button size="Medium" style="float: right" id="nextBtn1" (click)="exit()">Next</ion-button>
+                        </ion-item>
                     </div>
                     <div style="overflow:auto;width: 100%;"></div>
                     <ion-item lines="none" width="100%">

@@ -84,7 +84,7 @@ export class RangerpatrolPage implements OnInit {
                             id: element["Num"], //any unique ID
                             latitude: element["Lat"], //center of geofence radius
                             longitude: element["Long"],
-                            radius: 10, //radius to edge of geofence in meters
+                            radius: 20, //radius to edge of geofence in meters
                             transitionType: 1 //see 'Transition Types' below
                         }
                         
@@ -140,7 +140,7 @@ export class RangerpatrolPage implements OnInit {
         this.showTab(this.currentTab); // Display the current tab
     }
     showTab(n) {
-
+        var self = this;
         // This function will display the specified tab of the form...
         var x = document.getElementsByClassName("tab");
         console.log(x.length);
@@ -156,7 +156,30 @@ export class RangerpatrolPage implements OnInit {
 
         if (n == 3) {
             this.stopTracking();
-            document.getElementById("nextBtn").hidden;
+            document.getElementById("nextBtn").style.display = "None";
+            document.getElementById("prevBtn").style.display = "None";
+            // var MarkPass ={
+            //     "Patrol_Log_ID":self.patrolID,
+            //     "Marker_ID":17,
+            //     "Date_Time_Passed":new Date()
+            // }
+            // console.log("hit")
+            // self.data.PostPatrol_Markers(MarkPass).subscribe(res=>{
+            //     console.log(res)
+            //     alert("Marker was added to patroll log")
+                
+            //     self.Markers.forEach(element=>{
+            //         console.log(element["Num"],MarkPass["Marker_ID"] )
+            //         if (element["Num"] == MarkPass["Marker_ID"] )
+            //         {
+            //             var points =  "-"+element["Points"];
+            //             this.data.UpdatePoints(self.loggedIn,points).subscribe(res=>{
+            //                 console.log(res)
+            //             })
+            //         }
+            //     })
+               
+            // })
             document.getElementById("nextBtn1").innerHTML = "Done";
             document.getElementById("Steps").style.marginTop = "10%";
 
@@ -333,18 +356,31 @@ export class RangerpatrolPage implements OnInit {
 
             res.forEach(function (geo) {
                 console.log(geo["id"]);
+                var count = -1;
+                this.Markers.forEach(element => {
+                    count++;
+                    if (element["Num"] == geo["id"]) {
                        //self.geofence.remove(geo["id"])
-                       console.log("HIT")
+                       // alert("HIT")
                         var MarkPass ={
                             "Patrol_Log_ID":self.patrolID,
-                            "Marker_ID":geo["ID"],
+                            "Marker_ID":element["Num"],
                             "Date_Time_Passed":new Date()
                         }
+                        var points = "-"+element["Points"];
                         self.data.PostPatrol_Markers(MarkPass).subscribe(res=>{
                             console.log(res)
                             alert("Marker was added to patroll log")
+                            self.data.UpdatePoints(self.loggedIn,points).subscribe(res=>{
+                                console.log(res)
+                            })
                         })
-                        
+                        //alert("Marker was added to patroll log")
+                        this.Markers.splice(count, 1)
+                    }
+                });
+
+
             });
 
         },
