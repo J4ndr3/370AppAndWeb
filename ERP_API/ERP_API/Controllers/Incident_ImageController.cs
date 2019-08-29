@@ -20,33 +20,30 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Image
-        public List<dynamic> GetIncident_Image()
+        private List<dynamic> getIMG(int ID)
         {
+            List<dynamic> dynamicImages = new List<dynamic>();
             try
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                List<Incident_Image> IMG = db.Incident_Image.Include(zz=>zz.Incident).ToList();
-                List<dynamic> toReturn = new List<dynamic>();
-                foreach (Incident_Image Item in IMG)
+                List<Incident_Image> imageList = db.Incident_Image.Where(zz => zz.Patrol_Log_ID == ID).ToList();
+                foreach (Incident_Image img in imageList)
                 {
-                    dynamic m = new ExpandoObject();
-                    m.Incident_Image_ID = Item.Incident_Image_ID;
-                    m.Incident_ID = Item.Incident.Incident_ID;
-                    m.Patrol_Log_ID = Item.Patrol_Log_ID;
-                    m.Image = Item.Image;
-                    toReturn.Add(m);
+                    dynamic item = new ExpandoObject();
+                    item.ID = img.Incident_Image_ID;
+                    item.Image = img.Image;
+                    dynamicImages.Add(item);
                 }
-                return toReturn;
+                return dynamicImages;
             }
-            catch (Exception err)
+            catch
             {
-                List<dynamic> toReturn = new List<dynamic>();
-                toReturn.Add("Not readable");
-                return toReturn;
+                dynamicImages.Add("Not readable");
+                return dynamicImages;
             }
+
         }
 
-   
+
         // GET: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult GetIncident_Image(int id)

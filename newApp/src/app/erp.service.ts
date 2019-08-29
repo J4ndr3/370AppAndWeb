@@ -188,4 +188,10 @@ nID:any;
   PostVehicle(obj){
     return this.http.post('http://localhost:51389/api/Vehicles/',obj)
   }
+  GetIncident() {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol')
+  }
+  GetIncident_Image(ID) {
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Image/'+ID)
+  }
 }
