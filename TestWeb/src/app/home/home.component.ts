@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   Markers1: Array<object>;
   lat1: Array<number>;
   long1: Array<number>;
+  newRanger:object;
 
   @ViewChild('map',{static: false}) mapElement: any;
 map: google.maps.Map;
@@ -137,6 +138,11 @@ myMap:google.maps.event;
         this.r1 = [];
         this.CoordList1 = JSON.parse(JSON.stringify(res));
         this.CoordList1.forEach(element => {
+          this.newRanger={
+            "lat": element["Lat"],
+            "lng": element["lng"]
+          }
+
           this.r.push(element);
         });
   
@@ -161,3 +167,6 @@ myMap:google.maps.event;
          
           }
         })})})}}
+
+        
+        

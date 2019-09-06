@@ -215,8 +215,13 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   }
 
   addShiftbookingsPage() {
-    alert("hit")
+    // alert("hit")
+
    var passenger = this.AddForm.get('Passenger').value;
+   if (passenger == "I'm patrolling alone")
+   {
+     passenger = null;
+   }
    var reserve = this.AddForm.get('Reserve').value;
    var vehicle = this.AddForm.get('Vehicle').value;
    var localOffsetS = new Date(this.event.startTime);
@@ -241,6 +246,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
         this.successToast();
         console.log(res["Patrol_Booking_ID"])
         this.addEvent(res["Patrol_Booking_ID"]);
+        this.data.sendNotif("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
        // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
       });
     }

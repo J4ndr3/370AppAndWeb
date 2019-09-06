@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router} from '@angular/router';
 import { ɵangular_packages_platform_browser_platform_browser_d } from '@angular/platform-browser';
-
+import CryptoJS from 'crypto-js'
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +20,7 @@ sNav=false;
     var user = sessionStorage.getItem("user");
     var pass = sessionStorage.getItem("pass");
     // console.log(user)
+    pass = CryptoJS.SHA256(pass);
     var bool = false;
     if (user == null || pass == null)
     {

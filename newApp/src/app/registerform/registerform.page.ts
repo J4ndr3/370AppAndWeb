@@ -1,7 +1,7 @@
 import { Component, OnInit,Renderer2, ViewChild,ElementRef } from '@angular/core';
 import {ERPService} from '..//erp.service';
 import { FormBuilder,FormGroup } from '@angular/forms';
-
+import CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'app-registerform',
@@ -37,18 +37,18 @@ export class RegisterformPage implements OnInit {
         this.OrganisationOptions = JSON.parse(JSON.stringify(res));
     })
     this.AddForm = this.formBuilder.group({
-        fname: ["Jandre"], // Names for your input
-          lname: ["Labuschagne"], // Names for your input 
-          rangerId: ["9802065030082"],
-          email: ["jandrelab1@gmail.com"],
-          phone:["0713307791"],
-          emergencycontactName:["Janica"],
-          EmergencycontactNumber:["0713307784"],
+        fname: [""], // Names for your input
+          lname: [""], // Names for your input 
+          rangerId: [""],
+          email: [""],
+          phone:[""],
+          emergencycontactName:[""],
+          EmergencycontactNumber:[""],
           MedicalAid:[],
           Organizationtitle:[],
-          username:["J4ndr3"],
-          password:["Jandre#1"],
-          confirmpassword:["Jandre#1"],
+          username:[""],
+          password:[""],
+          confirmpassword:[""],
           selectgender:[],
           selectbloodtype:[]
         });
@@ -175,7 +175,7 @@ validateForm() {
         var selectgender = this.AddForm.get('selectgender').value;
         var selectbloodtype = this.AddForm.get('selectbloodtype').value;
         var Organizationtitle = this.AddForm.get('Organizationtitle').value;
-    
+        password = CryptoJS.SHA256(password);
         if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="") {
           //Modal popup
         }
