@@ -73,7 +73,7 @@ import { DownloadStatusComponent } from './download-status/download-status.compo
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
 import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-
+import { NgHighlightModule } from 'ngx-text-highlight';
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
 
@@ -161,7 +161,8 @@ import { CommonModule } from '@angular/common';
     NgbModule,
     FullCalendarModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgHighlightModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
