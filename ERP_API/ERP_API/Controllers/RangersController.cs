@@ -104,6 +104,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult PostRanger(Ranger ranger)
         {
+            ranger.Password = ranger.Password.Substring(0, 19);
             db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {

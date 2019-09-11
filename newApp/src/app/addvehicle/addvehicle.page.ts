@@ -27,16 +27,17 @@ export class AddvehiclePage implements OnInit {
   constructor(private toastcontroler:ToastController,private router:Router,private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
   ngOnInit() {
-
-  }
-  ngAfterViewInit() {
     this.AddForm = this.formBuilder.group({
       CarRegistration: [""], // Names for your input
       SelectColour: [""], // Names for your input 
       Make: [""],
       Model: [""],
-      TypeDescription: [""]
+      TypeDescription: [""],
+      Status:[]
     });
+  }
+  ngAfterViewInit() {
+    
     this.data.GetModels().subscribe((res) => {
       this.ModelOptions = JSON.parse(JSON.stringify(res));
     });
@@ -56,14 +57,14 @@ export class AddvehiclePage implements OnInit {
     toast.present();
 }
 
-  addAddvehiclePage() {
+  update() {
     var CarRegistration = this.AddForm.get('CarRegistration').value; // Names for your input
     var SelectColour = this.AddForm.get('SelectColour').value; // Names for your input
     var Make = this.AddForm.get('Make').value;
     var Model = this.AddForm.get('Model').value;
     var TypeDescription = this.AddForm.get('TypeDescription').value;
 
-    if (CarRegistration !=""  || SelectColour!=""  || Make!=""  || Model!=""  || TypeDescription == "") {
+    if (CarRegistration ==""  ) {
      this.Input();
     }
     else {

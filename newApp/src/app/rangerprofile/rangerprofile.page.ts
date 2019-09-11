@@ -48,7 +48,7 @@ export class RangerprofilePage implements OnInit {
     });
     this.storage.get("Ranger").then(res=>{
       this.loggedIn = res;
-      alert(this.loggedIn)
+      // alert(this.loggedIn)
       this.data.GetGenders().subscribe(res => {
         this.GenderOptions = JSON.parse(JSON.stringify(res));
       })

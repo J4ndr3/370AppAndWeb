@@ -23,7 +23,7 @@ NewIncident:object;
 newPatrol:object;
 loggedIn:any;
 Ranger:any;
-
+PL:any;
   constructor(private alertCtrl: AlertController,private login:LoginService,private storage:Storage, private navController: NavController, private router: Router, public toastController: ToastController, public fcm: FcmService, private geolocation: Geolocation, private data:ERPService) {
     this.loggedIn = this.login.ranger;
    }
@@ -52,6 +52,14 @@ Ranger:any;
         }) 
       }
    })
+   try{
+    this.storage.get("PL").then(res=>{
+      this.PL = res;
+    })
+  }
+  catch{
+    this.PL = 1;
+  }
   }
 
 
@@ -190,7 +198,7 @@ IntruderIncident(){
     console.log();
     this.newPatrol = {
       "Incident_ID": res["Incident_ID"],
-      "Patrol_Log_ID": 1,
+      "Patrol_Log_ID": this.PL,
       "Lat": latLng.lat(),
       "Lng": latLng.lng(),
       "Time": new Date().toLocaleTimeString(),

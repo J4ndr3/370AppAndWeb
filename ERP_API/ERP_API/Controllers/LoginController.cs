@@ -20,6 +20,7 @@ namespace ERP_API.Controllers
         public HttpResponseMessage Login([FromUri] Ranger userDet)
         {
             db.Configuration.ProxyCreationEnabled = false;
+            userDet.Password = userDet.Password.Substring(0, 19);
             bool UseInDb = false;
             if (db.Rangers.Where(zz => zz.Email == userDet.Email && zz.Password == userDet.Password).Count() == 1)
             {
@@ -201,6 +202,7 @@ namespace ERP_API.Controllers
         public void ResetPassNew(Ranger use,string pass)
         {
             db.Configuration.ProxyCreationEnabled = false;
+            pass = pass.Substring(0, 19);
             use.Password = pass;  
                 var u = db.Rangers.Where(zz => zz.Email == use.Email).FirstOrDefault();
                 db.Entry(u).CurrentValues.SetValues(use);

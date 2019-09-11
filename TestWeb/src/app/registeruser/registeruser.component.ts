@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { ERPService } from '../erp.service';
-
+import CryptoJS from 'crypto-js'
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -87,6 +87,7 @@ export class RegisteruserComponent implements OnInit {
         //Modal popup
       }
       else {
+        password = CryptoJS.SHA256(password);
         this.NewRegisterformPage = {
           "ID_Number": rangerId,
           "Name": fname, // Names for your input

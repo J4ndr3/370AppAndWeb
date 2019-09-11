@@ -21,6 +21,7 @@ AddForm: FormGroup;
 NewAsset:object;
 StatusSelection:number =0;
 StatusOptions:Array<object>; 
+selection:number=0;
 TypeSelection:number =0;
 TypeOptions:Array<object>; 
  SupplierSelection:number =0;

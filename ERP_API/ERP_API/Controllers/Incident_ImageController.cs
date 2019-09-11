@@ -20,16 +20,18 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Image
-        private List<dynamic> getIMG(int ID)
+        private List<dynamic> GetIncident_Image()
         {
             List<dynamic> dynamicImages = new List<dynamic>();
             try
             {
-                List<Incident_Image> imageList = db.Incident_Image.Where(zz => zz.Patrol_Log_ID == ID).ToList();
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Incident_Image> imageList = db.Incident_Image.ToList();
                 foreach (Incident_Image img in imageList)
                 {
                     dynamic item = new ExpandoObject();
-                    item.ID = img.Incident_Image_ID;
+                    item.Incident = img.Incident_ID;
+                    //item.ID = img.Incident_Image_ID;
                     item.Image = img.Image;
                     dynamicImages.Add(item);
                 }
@@ -118,7 +120,7 @@ namespace ERP_API.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest("Photo could not be uploaded");
                 }
             }
 
