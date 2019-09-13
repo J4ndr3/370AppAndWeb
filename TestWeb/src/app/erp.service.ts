@@ -34,10 +34,10 @@ export class ERPService {
     return this.http.get('http://localhost:51389/api/Assets')
   }
   PostRanger(obj) {
-    return this.http.post('https://2019group4inf370.azurewebsites.net/api/rangers/', obj)
+    return this.http.post('http://localhost:51389/api/rangers/', obj)
   }
   DeleteRaner(id) {
-    return this.http.delete('http://localhost:51389/api/Rangers/' + id)
+    return this.http.delete('https://2019group4inf370.azurewebsites.net/api/Rangers/' + id)
   }
   PutRanger(id, obj) {
     return this.http.put('http://localhost:51389/api/Rangers/' + id, obj)
@@ -470,6 +470,17 @@ GetStatusDropdown() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Trackings')
   }
   PostAsset_Supplier(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), Date.now(), "Create", "New Supplier added with name "+obj.Name)
     return this.http.post('http://localhost:51389/api/Assets/AS', obj)
+  }
+  WriteAudit(Ranger, dateTime, Type, Description){
+    var AD={
+      Ranger_ID: Ranger,
+      daterTime:dateTime,
+      Transaction_Type: Type,
+      Description:Description
+
+    }
+    return this.http.post('http://localhost:51389/api/Audit', AD)
   }
 }

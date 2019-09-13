@@ -30,6 +30,7 @@ namespace ERP_API.Models
         public virtual DbSet<Asset_Status> Asset_Status { get; set; }
         public virtual DbSet<Asset_Supplier> Asset_Supplier { get; set; }
         public virtual DbSet<Asset_Type> Asset_Type { get; set; }
+        public virtual DbSet<Audit> Audits { get; set; }
         public virtual DbSet<Cellphone> Cellphones { get; set; }
         public virtual DbSet<Event_Reward> Event_Reward { get; set; }
         public virtual DbSet<Event_Type> Event_Type { get; set; }
@@ -63,6 +64,7 @@ namespace ERP_API.Models
         public virtual DbSet<Redeem_Reward> Redeem_Reward { get; set; }
         public virtual DbSet<Reserve> Reserves { get; set; }
         public virtual DbSet<Security_Company> Security_Company { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Tracking> Trackings { get; set; }
         public virtual DbSet<User_Role> User_Role { get; set; }

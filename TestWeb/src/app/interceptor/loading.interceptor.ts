@@ -55,7 +55,13 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
             return throwError(error);
           }
           if (data["status"] == 400){
+            this.hideAll();
             document.getElementById('inputErr').click();      
+            return throwError(error);
+          }
+          if (data["status"] == 500){
+            this.hideAll();
+            document.getElementById('delErr').click();      
             return throwError(error);
           }
           
