@@ -472,4 +472,5 @@ GetStatusDropdown() {
   PostAsset_Supplier(obj) {
     return this.http.post('http://localhost:51389/api/Assets/AS', obj)
   }
+  
 }

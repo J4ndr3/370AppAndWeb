@@ -60,7 +60,7 @@ export class VehiclesReportComponent implements OnInit {
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
       // console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }

@@ -14,7 +14,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
    * URLs for which the loading screen should not be enabled
    */
   skippUrls = [
-    //'/authrefresh',
+    '/markers-report'
   ];
 
   constructor(private loadingScreenService: LoadingScreenService) {

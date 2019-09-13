@@ -96,30 +96,32 @@
                 <br>
             </div>
             <br>
-            <div class="table">
-                <table class="table table-striped ">
-                    <thead>
-                        <tr id="header ">
-                            <th style="text-align: left; ">Product Name</th>
-                            <th>Quantity</th>
-                            <th>Points required</th>
-                            <th>Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let RewardAdd of RewardAdds|filter: searchText">
-                            <td>{{RewardAdd.PName}}</td>
-                            <td>{{RewardAdd.PQuantity}}</td>
-                            <td>{{RewardAdd.PPoints}}</td>
-                            <td>{{RewardAdd.PDescription}}</td>
-                            <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                            <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(RewardAdd.PID)"><img src="/assets/ios-create.svg"
+            <div>
+                <div class="table">
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr id="header ">
+                                <th style="text-align: left; ">Product Name</th>
+                                <th>Quantity</th>
+                                <th>Points required</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let RewardAdd of RewardAdds|filter: searchText">
+                                <td>{{RewardAdd.PName}}</td>
+                                <td>{{RewardAdd.PQuantity}}</td>
+                                <td>{{RewardAdd.PPoints}}</td>
+                                <td>{{RewardAdd.PDescription}}</td>
+                                <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
+                                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(RewardAdd.PID)"><img src="/assets/ios-create.svg"
               class="edit"/></button><button class="btn btn-default btn-sm" (click)="delete(RewardAdd.PID)" id="editbtn"><img
               src="/assets/ios-trash.svg" class="edit" /></button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

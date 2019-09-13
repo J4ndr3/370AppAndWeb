@@ -78,11 +78,8 @@ export class IncidentReportComponent {
 // }
 public Download() {
   this.timeLeft1 = 3;
-  let img;
+  
 
-
-
-  let img1;
 
   var htmlToImage = require('html-to-image');
   var node = document.getElementById('my-node');
@@ -92,7 +89,7 @@ public Download() {
       var img = new Image();
       img.src = dataUrl;
       // img.style.width = "800px";
-      img1 = img;
+      
       document.getElementById('image123').appendChild(img);
 
     })
@@ -106,7 +103,7 @@ public Download() {
       this.timeLeft1--;
     } else if (this.timeLeft1 == 0) {
 
-      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-left:10%">INCIDENT REPORT</h1><br><br></div>';
+      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>INCIDENT REPORT</h1><br><br></div><br>';
       document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
       document.getElementById('chrt3').innerHTML = '<br><br>';
 
@@ -291,7 +288,7 @@ this.ReportAccess(this.loggedIn);
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
       // console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+    if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }
