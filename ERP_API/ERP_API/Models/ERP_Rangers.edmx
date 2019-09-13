@@ -46,6 +46,16 @@
           <Property Name="Asset_Type_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Audit_ID" />
+          </Key>
+          <Property Name="Audit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="dateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Transaction_Type" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Critical_data" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cellphone">
           <Key>
             <PropertyRef Name="IMEI" />
@@ -362,6 +372,14 @@
           <Property Name="Cell" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ranger_ID" Type="int" Nullable="false" />
+          <Property Name="Timer" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="Supplier_ID" />
@@ -452,6 +470,18 @@
             </Principal>
             <Dependent Role="Asset_Supplier">
               <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Audit__Ranger_ID__59C55456">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="Ranger_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -959,6 +989,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Settings__Ranger__55009F39">
+          <End Role="Ranger" Type="Self.Ranger" Multiplicity="1" />
+          <End Role="Settings" Type="Self.Settings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Settings">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Tracking__Patrol__0C85DE4D">
           <End Role="Patrol_Log" Type="Self.Patrol_Log" Multiplicity="1" />
           <End Role="Tracking" Type="Self.Tracking" Multiplicity="*" />
@@ -1013,6 +1055,7 @@
           <EntitySet Name="Asset_Status" EntityType="Self.Asset_Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Asset_Supplier" EntityType="Self.Asset_Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Asset_Type" EntityType="Self.Asset_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cellphone" EntityType="Self.Cellphone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event_Reward" EntityType="Self.Event_Reward" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event_Type" EntityType="Self.Event_Type" Schema="dbo" store:Type="Tables" />
@@ -1046,6 +1089,7 @@
           <EntitySet Name="Redeem_Reward" EntityType="Self.Redeem_Reward" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserve" EntityType="Self.Reserve" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Security_Company" EntityType="Self.Security_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tracking" EntityType="Self.Tracking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
@@ -1066,6 +1110,10 @@
           <AssociationSet Name="FK__Asset_Sup__Suppl__6383C8BA" Association="Self.FK__Asset_Sup__Suppl__6383C8BA">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Audit__Ranger_ID__59C55456" Association="Self.FK__Audit__Ranger_ID__59C55456">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Audit" EntitySet="Audit" />
           </AssociationSet>
           <AssociationSet Name="FK__Cellphone__Range__6477ECF3" Association="Self.FK__Cellphone__Range__6477ECF3">
             <End Role="Ranger" EntitySet="Ranger" />
@@ -1235,6 +1283,10 @@
             <End Role="Reserve" EntitySet="Reserve" />
             <End Role="Security_Company" EntitySet="Security_Company" />
           </AssociationSet>
+          <AssociationSet Name="FK__Settings__Ranger__55009F39" Association="Self.FK__Settings__Ranger__55009F39">
+            <End Role="Ranger" EntitySet="Ranger" />
+            <End Role="Settings" EntitySet="Settings" />
+          </AssociationSet>
           <AssociationSet Name="FK__Tracking__Patrol__0C85DE4D" Association="Self.FK__Tracking__Patrol__0C85DE4D">
             <End Role="Patrol_Log" EntitySet="Patrol_Log" />
             <End Role="Tracking" EntitySet="Tracking" />
@@ -1262,6 +1314,7 @@
           <EntitySet Name="Asset_Status" EntityType="INF370Model.Asset_Status" />
           <EntitySet Name="Asset_Supplier" EntityType="INF370Model.Asset_Supplier" />
           <EntitySet Name="Asset_Type" EntityType="INF370Model.Asset_Type" />
+          <EntitySet Name="Audits" EntityType="INF370Model.Audit" />
           <EntitySet Name="Cellphones" EntityType="INF370Model.Cellphone" />
           <EntitySet Name="Event_Reward" EntityType="INF370Model.Event_Reward" />
           <EntitySet Name="Event_Type" EntityType="INF370Model.Event_Type" />
@@ -1295,6 +1348,7 @@
           <EntitySet Name="Redeem_Reward" EntityType="INF370Model.Redeem_Reward" />
           <EntitySet Name="Reserves" EntityType="INF370Model.Reserve" />
           <EntitySet Name="Security_Company" EntityType="INF370Model.Security_Company" />
+          <EntitySet Name="Settings" EntityType="INF370Model.Setting" />
           <EntitySet Name="Suppliers" EntityType="INF370Model.Supplier" />
           <EntitySet Name="Trackings" EntityType="INF370Model.Tracking" />
           <EntitySet Name="User_Role" EntityType="INF370Model.User_Role" />
@@ -1331,6 +1385,10 @@
           <AssociationSet Name="FK__Asset_Sup__Suppl__6383C8BA" Association="INF370Model.FK__Asset_Sup__Suppl__6383C8BA">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Asset_Supplier" EntitySet="Asset_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Audit__Ranger_ID__59C55456" Association="INF370Model.FK__Audit__Ranger_ID__59C55456">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Audit" EntitySet="Audits" />
           </AssociationSet>
           <AssociationSet Name="FK__Cellphone__Range__6477ECF3" Association="INF370Model.FK__Cellphone__Range__6477ECF3">
             <End Role="Ranger" EntitySet="Rangers" />
@@ -1484,6 +1542,10 @@
             <End Role="Ranger" EntitySet="Rangers" />
             <End Role="Redeem_Reward" EntitySet="Redeem_Reward" />
           </AssociationSet>
+          <AssociationSet Name="FK__Settings__Ranger__55009F39" Association="INF370Model.FK__Settings__Ranger__55009F39">
+            <End Role="Ranger" EntitySet="Rangers" />
+            <End Role="Setting" EntitySet="Settings" />
+          </AssociationSet>
           <AssociationSet Name="FK__Ranger_Re__Reser__05D8E0BE" Association="INF370Model.FK__Ranger_Re__Reser__05D8E0BE">
             <End Role="Reserve" EntitySet="Reserves" />
             <End Role="Ranger_Reserve" EntitySet="Ranger_Reserve" />
@@ -1552,6 +1614,17 @@
           <Property Name="Asset_Type_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Assets" Relationship="INF370Model.FK__Asset__Asset_Typ__619B8048" FromRole="Asset_Type" ToRole="Asset" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Audit_ID" />
+          </Key>
+          <Property Name="Audit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="dateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Transaction_Type" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Critical_data" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Audit__Ranger_ID__59C55456" FromRole="Audit" ToRole="Ranger" />
         </EntityType>
         <EntityType Name="Cellphone">
           <Key>
@@ -1875,6 +1948,7 @@
           <Property Name="GUID" Type="Guid" />
           <Property Name="GUID_Exp" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Access_Level" Relationship="INF370Model.FK__Ranger__Access_I__00200768" FromRole="Ranger" ToRole="Access_Level" />
+          <NavigationProperty Name="Audits" Relationship="INF370Model.FK__Audit__Ranger_ID__59C55456" FromRole="Ranger" ToRole="Audit" />
           <NavigationProperty Name="Cellphones" Relationship="INF370Model.FK__Cellphone__Range__6477ECF3" FromRole="Ranger" ToRole="Cellphone" />
           <NavigationProperty Name="Gender" Relationship="INF370Model.FK__Ranger__genderID__01142BA1" FromRole="Ranger" ToRole="Gender" />
           <NavigationProperty Name="Medical_Aid" Relationship="INF370Model.FK__Ranger__Medical___02084FDA" FromRole="Ranger" ToRole="Medical_Aid" />
@@ -1887,6 +1961,7 @@
           <NavigationProperty Name="Ranger_Reserve" Relationship="INF370Model.FK__Ranger_Re__Range__04E4BC85" FromRole="Ranger" ToRole="Ranger_Reserve" />
           <NavigationProperty Name="Ranger_Vehicle" Relationship="INF370Model.FK__Ranger_Ve__Range__06CD04F7" FromRole="Ranger" ToRole="Ranger_Vehicle" />
           <NavigationProperty Name="Redeem_Reward" Relationship="INF370Model.FK__Redeem_Re__Range__0A9D95DB" FromRole="Ranger" ToRole="Redeem_Reward" />
+          <NavigationProperty Name="Settings" Relationship="INF370Model.FK__Settings__Ranger__55009F39" FromRole="Ranger" ToRole="Setting" />
         </EntityType>
         <EntityType Name="Ranger_Reserve">
           <Key>
@@ -1947,6 +2022,15 @@
           <Property Name="Cell" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Reserve" Relationship="INF370Model.FK__Security___Reser__0B91BA14" FromRole="Security_Company" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="SettingID" />
+          </Key>
+          <Property Name="SettingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ranger_ID" Type="Int32" Nullable="false" />
+          <Property Name="Timer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ranger" Relationship="INF370Model.FK__Settings__Ranger__55009F39" FromRole="Setting" ToRole="Ranger" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -2096,6 +2180,18 @@
             </Principal>
             <Dependent Role="Asset_Supplier">
               <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Audit__Ranger_ID__59C55456">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Audit" Role="Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="Ranger_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2555,6 +2651,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Settings__Ranger__55009F39">
+          <End Type="INF370Model.Ranger" Role="Ranger" Multiplicity="1" />
+          <End Type="INF370Model.Setting" Role="Setting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ranger">
+              <PropertyRef Name="Ranger_ID" />
+            </Principal>
+            <Dependent Role="Setting">
+              <PropertyRef Name="Ranger_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Ranger_Re__Reser__05D8E0BE">
           <End Type="INF370Model.Reserve" Role="Reserve" Multiplicity="1" />
           <End Type="INF370Model.Ranger_Reserve" Role="Ranger_Reserve" Multiplicity="*" />
@@ -2652,6 +2760,17 @@
               <MappingFragment StoreEntitySet="Asset_Type">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Asset_Type_ID" ColumnName="Asset_Type_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="INF370Model.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Critical_data" ColumnName="Critical_data" />
+                <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+                <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="Audit_ID" ColumnName="Audit_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3001,6 +3120,15 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
                 <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="INF370Model.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Timer" ColumnName="Timer" />
+                <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+                <ScalarProperty Name="SettingID" ColumnName="SettingID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

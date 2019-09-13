@@ -87,7 +87,9 @@ export class RegisteruserComponent implements OnInit {
         //Modal popup
       }
       else {
-        password = CryptoJS.SHA256(password);
+        
+        password = CryptoJS.SHA256(password).toString();
+        console.log(password.toString())
         this.NewRegisterformPage = {
           "ID_Number": rangerId,
           "Name": fname, // Names for your input

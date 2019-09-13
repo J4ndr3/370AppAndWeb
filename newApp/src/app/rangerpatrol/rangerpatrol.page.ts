@@ -85,12 +85,12 @@ export class RangerpatrolPage implements OnInit {
                             latitude: element["Lat"], //center of geofence radius
                             longitude: element["Long"],
                             radius: 20, //radius to edge of geofence in meters
-                            transitionType: 1 //see 'Transition Types' below
+                            transitionType: 3 //see 'Transition Types' below
                         }
                         
                         this.geofence.addOrUpdate(fence).then(
                             () => console.log('Geofence added'),
-                            (err) => console.log('Geofence failed to add')
+                            (err) => alert('Geofence failed to add')
                         );
 
                     });
