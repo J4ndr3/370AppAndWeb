@@ -14,7 +14,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
    * URLs for which the loading screen should not be enabled
    */
   skippUrls = [
-    //'/authrefresh',
+    '/markers-report'
   ];
 
   constructor(private loadingScreenService: LoadingScreenService) {
@@ -55,7 +55,13 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
             return throwError(error);
           }
           if (data["status"] == 400){
+            this.hideAll();
             document.getElementById('inputErr').click();      
+            return throwError(error);
+          }
+          if (data["status"] == 500){
+            this.hideAll();
+            document.getElementById('delErr').click();      
             return throwError(error);
           }
           
