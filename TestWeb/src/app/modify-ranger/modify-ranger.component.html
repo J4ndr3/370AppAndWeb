@@ -15,51 +15,51 @@
             <h2 class="Header">Ranger Information:</h2>
             <br>
             <div class="col-sm-10">
-                <input type="text" hidden class="form-control" formControlName="ID" id="ID" placeholder="ID..." name="ID" required>
-                <input type="text" hidden class="form-control" formControlName="password" id="ID" placeholder="ID..." name="ID" required>
+                <input type="text" hidden class="form-control" formControlName="ID" id="ID" placeholder="ID..." name="ID" maxlength="13" required>
+                <input type="text" hidden class="form-control" formControlName="password" id="ID" placeholder="ID..." name="ID" maxlength="20" required>
                 <input type="text" class="form-control" formControlName="rangerId" id="ID" placeholder="ID..." name="ID" required maxlength="13">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" formControlName="fname" id="Name" placeholder="Name..." name="Name" required>
+                <input type="text" class="form-control" formControlName="fname" id="Name" placeholder="Name..." name="Name" maxlength="50" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Surname" formControlName="lname" placeholder="Surname..." name="Surname" required>
+                <input type="text" class="form-control" id="Surname" formControlName="lname" placeholder="Surname..." name="Surname" maxlength="50" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Cell" formControlName="phone" placeholder="Cellphone Number..." name="Cell" required>
+                <input type="tel" class="form-control" id="Cell" formControlName="phone" placeholder="Cellphone Number..." name="Cell" maxlength="10" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email..." name="Email" required>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email..." name="Email" maxlength="50" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="emergName" formControlName="emergencycontactName" placeholder="Emergency contact's Name..." name="Email" required>
+                <input type="text" class="form-control" id="emergName" formControlName="emergencycontactName" placeholder="Emergency contact's Name..." name="Email" maxlength="50" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="emergContact" formControlName="EmergencycontactNumber" placeholder="Emergency contact's Cell..." name="Email" required>
+                <input type="tel" class="form-control" id="emergContact" formControlName="EmergencycontactNumber" placeholder="Emergency contact's Cell..." name="Email" maxlength="10" required>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="user" formControlName="username" placeholder="Username..." name="Username" required>
+                <input type="text" class="form-control" id="user" formControlName="username" placeholder="Username..." name="Username" maxlength="20" required>
             </div>
         </div>
 
@@ -152,3 +152,6 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>

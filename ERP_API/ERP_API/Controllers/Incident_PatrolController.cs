@@ -50,7 +50,7 @@ namespace ERP_API.Controllers
                     m.Time =Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
-                    m.images = getIMG(Item.Incident_Patrol_ID);
+                   // m.images = getIMG(Item.Incident_Patrol_ID);
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -63,28 +63,28 @@ namespace ERP_API.Controllers
 
         }
 
-        private List<dynamic> getIMG(int ID)
-        {
-            List<dynamic> dynamicImages = new List<dynamic>();
-            try
-            {
-                List<Incident_Image> imageList = db.Incident_Image.Where(zz => zz.Patrol_Log_ID == ID).ToList();
-                foreach (Incident_Image img in imageList)
-                {
-                    dynamic item = new ExpandoObject();
-                    item.ID =img.Incident_Image_ID;
-                    item.Image = img.Image;
-                    dynamicImages.Add(item);
-                }
-                return dynamicImages;
-            }
-            catch
-            {
-                dynamicImages.Add("Not readable");
-                return dynamicImages;
-            }
+        //private List<dynamic> getIMG(int ID)
+        //{
+        //    List<dynamic> dynamicImages = new List<dynamic>();
+        //    try
+        //    {
+        //        List<Incident_Image> imageList = db.Incident_Image.Where(zz => zz.Patrol_Log_ID == ID).ToList();
+        //        foreach (Incident_Image img in imageList)
+        //        {
+        //            dynamic item = new ExpandoObject();
+        //            item.ID =img.Incident_Image_ID;
+        //            item.Image = img.Image;
+        //            dynamicImages.Add(item);
+        //        }
+        //        return dynamicImages;
+        //    }
+        //    catch
+        //    {
+        //        dynamicImages.Add("Not readable");
+        //        return dynamicImages;
+        //    }
             
-        }
+        //}
 
         // GET: api/Incident_Patrol1
         [System.Web.Http.Route("api/Incident_Patrol/GetIncident_Patrol1")]
@@ -170,6 +170,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult PostIncident_Patrol(Incident_Patrol incident_Patrol)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -200,6 +201,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult DeleteIncident_Patrol(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Incident_Patrol incident_Patrol = db.Incident_Patrol.Find(id);
             if (incident_Patrol == null)
             {

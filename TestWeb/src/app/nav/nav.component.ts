@@ -46,7 +46,7 @@ export class NavComponent implements OnInit {
   
   ngOnInit() {
     
-    const source = timer(0,60000);
+    const source = timer(0,300000);
     const subscribe = source.subscribe(val=>{
       this.count =0
       this.GetIncidents().subscribe(res=>{
@@ -81,9 +81,9 @@ export class NavComponent implements OnInit {
         Message: []});
         this.data.GetIncidents().subscribe(res=>{
           this.incidents =res;
-          console.log(this.incidents)
+          // console.log(this.incidents)
           this.incidentnumber = this.incidents.count();
-          console.log(this.incidentnumber);
+          // console.log(this.incidentnumber);
         })
        
   }
@@ -91,40 +91,46 @@ export class NavComponent implements OnInit {
     openSnackBar() {
       var Title =  this.AddForm.get('Title').value;
         var Message =  this.AddForm.get('Message').value;
-      let  close =1;
-      let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'Edit Message' : undefined, config);
-    snackbarref.onAction().subscribe(()=>{
-      this.AddForm2.get('Title').setValue(Title);
-        this.AddForm2.get('Message').setValue(Message);
-      document.getElementById("mymodClick").click();
-      close=0;
-  });
+        if(Message == null || Title == null){
+          document.getElementById("inputErr").click();
+        }
+        else{
+          let  close =1;
+          let config = new MatSnackBarConfig();
+        config.verticalPosition = this.verticalPosition;
+        config.horizontalPosition = this.horizontalPosition;
+        config.duration = this.setAutoHide ? this.autoHide : 0;
+        let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'Edit Message' : undefined, config);
+        snackbarref.onAction().subscribe(()=>{
+          this.AddForm2.get('Title').setValue(Title);
+            this.AddForm2.get('Message').setValue(Message);
+          document.getElementById("mymodClick").click();
+          close=0;
+      });
+        
+        snackbarref.afterDismissed().subscribe(()=>{
+          if (close==1){
+            // console.log(Title);
+            this.NewNotification={
+              "Date": new Date(),
+              "Meassage": Message,
+              "Title": Title,
+              "Ranger_ID": sessionStorage.getItem("Ranger"),
+            };
+            // console.log(this.NewNotification);
     
-    snackbarref.afterDismissed().subscribe(()=>{
-      if (close==1){
-        console.log(Title);
-        this.NewNotification={
-          "Date": new Date(),
-          "Meassage": Message,
-          "Title": Title,
-          "Ranger_ID": sessionStorage.getItem("Ranger"),
-        };
-        console.log(this.NewNotification);
-
-        this.PostNotification(this.NewNotification).subscribe(res=>{
-          console.log(res);
-        });
-
-        this.sendNotif(Title,Message);
-        this.AddForm.get('Title').reset();
-        this.AddForm.get('Message').reset();
-      }
+            this.PostNotification(this.NewNotification).subscribe(res=>{
+              // console.log(res);
+            });
+    
+            this.sendNotif(Title,Message);
+            this.AddForm.get('Title').reset();
+            this.AddForm.get('Message').reset();
+          }
+          
+        })
+        }
       
-    })
     } 
     openSnackBar1() {
       var Title =  this.AddForm2.get('Title').value;
@@ -135,23 +141,29 @@ export class NavComponent implements OnInit {
           "Title": Title,
           "Ranger_ID": sessionStorage.getItem("Ranger"),
         };
-        console.log(this.NewNotification);
+        // console.log(this.NewNotification);
+if(Message == null || Title == null){
+  document.getElementById("inputErr").click();
+}
+else{
+  this.PostNotification(this.NewNotification).subscribe(res=>{
+    // console.log(res);
+  });
 
-        this.PostNotification(this.NewNotification).subscribe(res=>{
-          console.log(res);
-        });
+  this.sendNotif(Title,Message);
+  this.AddForm.get('Title').reset();
+  this.AddForm.get('Message').reset();
+  this.AddForm2.get('Title').reset();
+  this.AddForm2.get('Message').reset();
+let config = new MatSnackBarConfig();
+config.verticalPosition = this.verticalPosition;
+config.horizontalPosition = this.horizontalPosition;
+config.duration = this.setAutoHide ? this.autoHide : 0;
+let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'View Message' : undefined, config);
+snackbarref.onAction().subscribe(()=>{this.router.navigateByUrl('/notify')});
 
-        this.sendNotif(Title,Message);
-        this.AddForm.get('Title').reset();
-        this.AddForm.get('Message').reset();
-        this.AddForm2.get('Title').reset();
-        this.AddForm2.get('Message').reset();
-      let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = this.setAutoHide ? this.autoHide : 0;
-    let snackbarref=this.snackBar.open('Message Sent Successfully!', this.action ?  'View Message' : undefined, config);
-    snackbarref.onAction().subscribe(()=>{this.router.navigateByUrl('/notify')});
+}
+       
     } 
 
     sendNotif(title, message) {
@@ -175,7 +187,7 @@ export class NavComponent implements OnInit {
           "image-url": "http://www.nature-reserve.co.za/images/tswalu-kalahari-reserve-baby-rhino-590x390.jpg"
         }
       }
-      console.log(notificationData)
+      // console.log(notificationData)
       $.ajax({
         type: 'POST',
         url: 'https://fcm.googleapis.com/fcm/send',
@@ -185,7 +197,7 @@ export class NavComponent implements OnInit {
         },
         data: JSON.stringify(notificationData),
         success: function(response){
-          console.log(response);
+          // console.log(response);
         },
       });
     }

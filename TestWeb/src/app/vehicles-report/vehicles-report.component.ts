@@ -14,15 +14,16 @@ export class VehiclesReportComponent implements OnInit {
   myDate= new Date().toLocaleDateString();
   @ViewChild('content', { static: false }) content: ElementRef;
   Vehicles:Object;
-
+  loggedIn:any;
   constructor(private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.data.GetRangerVehicle().subscribe(res=>{
-      console.log(res);
+      // console.log(res);
       this.Vehicles = res;
     });
-    this.ReportAccess(10);
+    this.loggedIn = sessionStorage.getItem("Ranger");
+    this.ReportAccess(this.loggedIn);
   }
 
   public Download() {
@@ -48,6 +49,8 @@ export class VehiclesReportComponent implements OnInit {
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
       var position = 5;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+      pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
       pdf.save('REGISTERD VEHICLE REPORT.pdf'); // Generated PDF  
       document.getElementById('chrt1').innerHTML="";
       document.getElementById('chrt2').innerHTML="";
@@ -56,8 +59,8 @@ export class VehiclesReportComponent implements OnInit {
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      // console.log(res);
+      if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }

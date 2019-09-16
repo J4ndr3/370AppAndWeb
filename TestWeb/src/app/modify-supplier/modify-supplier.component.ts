@@ -48,7 +48,7 @@ export class ModifySupplierComponent implements OnInit {
   edt(){
     this.data.GetSuppliers(this.data.nID).subscribe(res=>{
       this.Supplier = res;
-      console.log(res);
+      // console.log(res);
       this.EditForm.setValue({
         ID:this.Supplier.Supplier_ID,
         Name:this.Supplier.Name,
@@ -56,7 +56,7 @@ export class ModifySupplierComponent implements OnInit {
         Email:this.Supplier.Email,
         Address:this.Supplier.Address})    
     })
-    console.log(this.Supplier)
+    // console.log(this.Supplier)
   }
   update(){
     var Name = this.EditForm.get('Name').value;
@@ -79,10 +79,10 @@ export class ModifySupplierComponent implements OnInit {
 
         
       };
-      console.log(this.nSupplier);
+      // console.log(this.nSupplier);
       this.data.PutSupplier(ID,this.nSupplier).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

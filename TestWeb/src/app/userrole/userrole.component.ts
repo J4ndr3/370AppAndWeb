@@ -37,7 +37,7 @@ search2;
         this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Role = null ;
       }
-      console.log(this.Level);
+      // console.log(this.Level);
   });
 
   this.AddForm1 = this.formBuilder.group({
@@ -61,7 +61,7 @@ search2;
         this.data.showModal("Error","An unexpected error has occured while retrieving data. Please try again at a later time")
         this.Level = null ;
       }
-      console.log(this.Level);
+      // console.log(this.Level);
     });
   }
   addRole(){
@@ -77,7 +77,7 @@ search2;
         "Description": Description, // Names for your input
         "Access_ID": Access, // Names for your input
       };
-      console.log(this.NewRole);
+      // console.log(this.NewRole);
       this.data.PostUserRole(this.NewRole).subscribe(res => {
         this.ngOnInit()
       });
@@ -151,7 +151,7 @@ else if (this.AddFormA.get('App').value == "False")
 }
     if (Web == null || Report == null || Write == null || App==null)
     {
-      console.log(Web,Report,Write,App)
+      // console.log(Web,Report,Write,App)
       document.getElementById("inputErr").click();
     }
     else{

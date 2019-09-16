@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { ERPService } from '../erp.service';
-
+import CryptoJS from 'crypto-js'
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -30,28 +30,28 @@ export class RegisteruserComponent implements OnInit {
     })
     this.data.GetMedicalAid().subscribe(res=>{
       this.MedicalOptions = JSON.parse(JSON.stringify(res));
-      console.log(this.MedicalOptions);
+    //   console.log(this.MedicalOptions);
   })
   this.data.GetOrganisation().subscribe(res=>{
       this.OrganisationOptions = JSON.parse(JSON.stringify(res));
   })
   this.data.GetUserRole().subscribe(res=>{
       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-      console.log(this.UserRoleOptions);
+    //   console.log(this.UserRoleOptions);
   })
   this.AddForm = this.formBuilder.group({
-      fname: ["Jandre"], // Names for your input
-        lname: ["Labuschagne"], // Names for your input 
-        rangerId: ["9802065030082"],
-        email: ["jandrelab1@gmail.com"],
-        phone:["0713307791"],
-        emergencycontactName:["Janica"],
-        EmergencycontactNumber:["0713307784"],
+      fname: [], // Names for your input
+        lname: [], // Names for your input 
+        rangerId: [],
+        email: [],
+        phone:[],
+        emergencycontactName:[],
+        EmergencycontactNumber:[],
         MedicalAid:["Medical Aid..."],
         Organizationtitle:["Organisation..."],
-        username:["J4ndr3"],
-        password:["Jandre#1"],
-        confirmpassword:["Jandre#1"],
+        username:[],
+        password:[],
+        confirmpassword:[],
         selectgender:["Gender..."],
         selectbloodtype:["Blood Type..."],
         UserRole:["User role..."],
@@ -87,6 +87,9 @@ export class RegisteruserComponent implements OnInit {
         //Modal popup
       }
       else {
+        
+        password = CryptoJS.SHA256(password).toString();
+        console.log(password.toString())
         this.NewRegisterformPage = {
           "ID_Number": rangerId,
           "Name": fname, // Names for your input
@@ -107,9 +110,9 @@ export class RegisteruserComponent implements OnInit {
           "Smartphone":1,
           "Access_ID":6
         };
-        console.log(this.NewRegisterformPage)
+        // console.log(this.NewRegisterformPage)
         this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-            console.log(res)
+            // console.log(res)
             this.router.navigate(['rangers']);
         });
       }
@@ -130,7 +133,7 @@ export class RegisteruserComponent implements OnInit {
    showTab(n) {
             // This function will display the specified tab of the form...
             var x = document.getElementsByClassName("tab");
-            console.log(x.length);
+            // console.log(x.length);
             (x[n] as HTMLElement).style.display = "block";
             //... and fix the Previous/Next buttons:
             if (n == 0) {
@@ -186,6 +189,9 @@ validateForm() {
             // If the valid status is true, mark the step as finished and valid:
             if (valid) {
                 document.getElementsByClassName("step")[this.currentTab].className += " finish";
+            }
+            else{
+                document.getElementById("inputErr").click();
             }
             return valid; // return the valid status
         }

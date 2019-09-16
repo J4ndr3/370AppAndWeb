@@ -70,7 +70,7 @@ export class SupplierComponent implements OnInit {
         "Email": Email,
         "Address": Address
       };
-      console.log(this.nSupplier);
+      // console.log(this.nSupplier);
       this.data.PostSupplier(this.nSupplier).subscribe(res => {
         if (res != null)
         {
@@ -117,7 +117,7 @@ export class SupplierComponent implements OnInit {
     edit(ID){
       this.data.nID = ID;
       this.mod.edit(ID);
-      console.log(ID);
+      // console.log(ID);
      }
 
 

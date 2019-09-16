@@ -36,9 +36,10 @@ export class ProductTypeModifyComponent implements OnInit {
         this.router.navigateByUrl("/product-type");
       }
       else{
-        this.router.navigateByUrl("/product-type-modify");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/product-type-modify");
+       
+        
       }})
     
   }
@@ -63,10 +64,10 @@ export class ProductTypeModifyComponent implements OnInit {
           "Prod_ID":ID, //selfde as die databasis 
           "Description": Description, //selfde as die databasis
         };
-        console.log(this.nProductType);
+        // console.log(this.nProductType);
         this.data.PutProductType(ID,this.nProductType).subscribe(res => {
           this.rcv = res
-          console.log(this.rcv);
+          // console.log(this.rcv);
           if (this.rcv == null)
           {
             this.showToast();

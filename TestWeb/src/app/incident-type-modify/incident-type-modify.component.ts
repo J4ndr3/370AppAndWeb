@@ -40,9 +40,10 @@ export class IncidentTypeModifyComponent implements OnInit {
         this.router.navigateByUrl("/incident-type");
       }
       else{
-        this.router.navigateByUrl("/incident-type-modify");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/incident-type-modify");
+        // this.ngOnInit();
+        
       }})
     
   }
@@ -70,10 +71,10 @@ export class IncidentTypeModifyComponent implements OnInit {
         "Description": Description, //selfde as die databasis
         "Incident_Level_ID":Level, //selfde as die databasis 
       };
-      console.log(this.nType);
+      // console.log(this.nType);
       this.data.PutIncident_Type(ID,this.nType).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.Toast();

@@ -29,14 +29,14 @@ nranger:any;
         this.GenderOptions = JSON.parse(JSON.stringify(res));
         this.data.GetMedicalAid().subscribe(res=>{
           this.MedicalOptions = JSON.parse(JSON.stringify(res));
-          console.log(this.MedicalOptions);
+          // console.log(this.MedicalOptions);
       })
       this.data.GetOrganisation().subscribe(res=>{
         this.OrganisationOptions = JSON.parse(JSON.stringify(res));
     })
     this.data.GetUserRole().subscribe(res=>{
       this.UserRoleOptions = JSON.parse(JSON.stringify(res));
-      console.log(this.UserRoleOptions);
+      // console.log(this.UserRoleOptions);
   })
     })
     //   this.Ranger = JSON.parse(JSON.stringify(res));
@@ -156,9 +156,9 @@ nranger:any;
           "Smartphone":1,
           "Access_ID":6
         };
-        console.log(this.nranger)
+        // console.log(this.nranger)
         this.data.PutRanger(ID,this.nranger).subscribe(res => {
-            console.log(res)
+            // console.log(res)
             this.router.navigate(['rangers']);
         });
       }

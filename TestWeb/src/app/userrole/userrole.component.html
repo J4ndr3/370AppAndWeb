@@ -10,9 +10,9 @@
     </div>
 
     <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" [(ngModel)]="search1" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="search1" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
     </div>
 </div>
 <br>
@@ -36,22 +36,19 @@
                 <h2 class="Header">Add User Role</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="" formControlName="Description" required>
-                    <label for="Desc">User role Description...</label>
+                    <input type="text" class="form-control" id="Level" placeholder="" formControlName="Description" maxlength="20" required>
                 </div>
-               
+
             </div>
-                
-                    <div class="col-sm-10">
-                            <label class="form-group border-lable-flt">
+
+            <div class="col-sm-10">
                         <select class="form-control" id="Select1" onchange="selectColor()" required formControlName="Access">
                           <option selected disabled hidden value="Gender...">Access Level...</option>
                           <option *ngFor="let option of AccessOptions" [(value)]="option.ID">{{option.ID}}</option>
                         </select>
-                        <span>Access Level...</span>
-                    </label>
-                    </div>
-        
+                       
+            </div>
+
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
@@ -79,7 +76,7 @@
                 <td style="text-align: left;">{{item.Description}}</td>
                 <td>{{item.Level}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit1(item.ID)" ><img src="/assets/ios-create.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit1(item.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete1(item.ID)"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
@@ -102,9 +99,9 @@
     </div>
 
     <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search2" name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search2" name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
     </div>
 </div>
 <br>

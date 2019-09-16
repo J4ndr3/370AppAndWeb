@@ -19,10 +19,32 @@ namespace ERP_API.Controllers
     {
         private INF370Entities db = new INF370Entities();
 
-        // GET: api/Trackings
-        public IQueryable<Tracking> GetTrackings()
+        public List<dynamic> GetTrackings()
         {
-            return db.Trackings;
+            // GET: api/Patrol_Log
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Tracking> tracking = db.Trackings.Include(zz => zz.Patrol_Log).ToList();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Tracking Item in tracking)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Patrol_Log_ID = Item.Patrol_Log_ID;
+                    m.Tracking_ID = Item.Tracking_ID;
+                    m.Lattitude = Item.Lattitude;
+                    m.Longitude = Item.Longitude;
+                    
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
         }
 
         // GET: api/Trackings/5

@@ -14,53 +14,81 @@
 </ion-header>
 
 <ion-content>
-    <div #ref>
-        <form #regform id="regForm" action="" [formGroup]="AddForm" (ngSubmit)="addAddvehiclePage()">
-            <ion-card>
-                <ion-card-content>
-                    <div class="tab">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <ion-label style="color: black; margin-bottom:2% !important;" align="center" >Registration Details</ion-label>
-                                <ion-input type="text" class="ion-padding-start form-control"  style="margin-bottom:2% !important;" placeholder="Car Registration..."   required="true" formControlName="CarRegistration" name="CarRegistration" ></ion-input>
-                                <ion-select placeholder="Select Colour..." class="form-control" id="Select1" style="margin-bottom:10% !important;" onchange="selectColor()" formControlName="SelectColour" name ="SelectColour"required>
-                                    <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
-                                    <ion-select-option>Red</ion-select-option>
-                                    <ion-select-option>Yellow</ion-select-option>
-                                    <ion-select-option>Orange</ion-select-option>
-                                </ion-select>
+    <ion-card>
+        <ion-card-content>
+            <div class="inputForm">
+                <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm">
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-input type="text" formControlName="CarRegistration" id="CarRegistration" name="CarRegistration" class="ion-padding-start form-control" style="margin-bottom:2% !important;" placeholder="Car Registration..." required="true"></ion-input>
+                                </div>
                             </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Make..." class="form-control" formControlName="Make" id="Select1" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Model...</ion-select-option> -->
+                                        <ion-select-option *ngFor="let item of MakeOptions" [(value)]="item.Make_ID">{{item.Name}} </ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Model..." class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Model...</ion-select-option> -->
+                                        <ion-select-option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Type..." class="form-control" formControlName="TypeDescription" id="Select1" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Type...</ion-select-option> -->
+                                        <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">{{item.Type_Description}}</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
+                                        <ion-select-option>Red</ion-select-option>
+                                        <ion-select-option>White</ion-select-option>
+                                        <ion-select-option>Black</ion-select-option>
+                                        <ion-select-option>Green</ion-select-option>
+                                        <ion-select-option>Blue</ion-select-option>
+                                        <ion-select-option>Silver</ion-select-option>
+                                        <ion-select-option>Pink</ion-select-option>
+                                        <ion-select-option>Purple</ion-select-option>
+                                        <ion-select-option>Yellow</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-40">
+                                    <ion-select placeholder="Select Status..." class="form-control" id="Select1" formControlName="Status" onchange="selectColor()" required>
+                                        <!-- <ion-select-option selected disabled hidden value="Gender...">Status...</ion-select-option> -->
+                                        <ion-select-option value="true">Active</ion-select-option>
+                                        <ion-select-option value="false">Inactive</ion-select-option>
+                                    </ion-select>
+                                </div>
+                            </div>
+                            <div style="float:left;">
+                                <ion-button style="margin-bottom:10%;" routerLink="/vehicles">Cancel</ion-button>
+                            </div>
+                            <div style="float:right;">
+                                <ion-button (click)="update()" style="margin-bottom:10%;">Save Changes</ion-button>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="tab">
-                            <div class="form-group">
-                                    <div class="col-sm-10">
-                        <ion-label style="color: black; margin-bottom:2% !important;" align="center" >Vehicle Specifications</ion-label>
-                        <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:2% !important;" placeholder="Make..." name ="Make" formControlName="Make" required="true"></ion-input>
-                        <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:2% !important;" placeholder="Model..." name ="Model" formControlName="Model" required="true"></ion-input>
-                        <ion-input type="text" class="ion-padding-start form-control"
-                            style="margin-bottom:10% !important;" placeholder="Type Description..." name ="TypeDescription" formControlName="TypeDescription" required="true">
-                        </ion-input>
-                            </div>  </div>        
-                    </div>
-                    
-                    <div class="col-sm-10" style="padding-bottom:5% !important;">
-                        <div style="padding-bottom:5% !important;">
-                            <ion-button id="prevBtn" (click)="nextPrev(-1)"  style="float: left"> Back</ion-button>
-                            <ion-button id="nextBtn" (click)="nextPrev(1)" style="float: right" > Next</ion-button>
-                        </div>        
-                    </div>
-                    <br>
-    
-    </ion-card-content>
+                </form>
+            </div>
+        </ion-card-content>
     </ion-card>
     <!-- Circles which indicates the steps of the form: -->
-    <div id="Steps" style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-    </div>
-    </form>
-    </div>
 </ion-content>

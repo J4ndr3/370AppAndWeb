@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using ERP_API.Models;
 using System.Dynamic;
 using System.Web.Http.Cors;
+using System.Data.Entity.Core.Objects;
 
 namespace ERP_API.Controllers
 {
@@ -37,7 +38,21 @@ namespace ERP_API.Controllers
                     m.Checkin = Item.Checkin.ToShortTimeString();
                     m.Checkout = Item.Checkout.ToShortTimeString();
                     m.CheckedIn = Item.Checked_in;
-                    m.Route = Item.Route;
+                   
+                    m.time = Math.Round(Item.Checkout.Subtract(Item.Checkin).TotalHours, 2);
+                    int markercount = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
+                    if (markercount > 0)
+                    {
+                        m.MarkerPast = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
+                        m.Points = db.Patrol_Marker.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Sum(zz => zz.Marker.Marker_Type.Points_Worth);
+
+                    }
+                    else
+                    {
+                        m.MarkerPast = null;
+                        m.Points = '0';
+                    };
+                    m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz=>zz.Description).FirstOrDefault();
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -49,11 +64,48 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
         }
-
+        [System.Web.Http.Route("api/Patrol_Log/GetPatrol_LogT")]
+        [HttpGet]
+        public List<dynamic> GetPatrol_LogT()
+        {
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Patrol_Log> patrols = db.Patrol_Log.ToList();
+                List<DateTime> myList = new List<DateTime>();
+                List<dynamic> toReturn = new List<dynamic>();
+                foreach (Patrol_Log Item in patrols)
+                {
+                    
+                    if (!myList.Contains(Item.Checkin.Date))
+                    {
+                        ;
+                        myList.Add(Item.Checkin.Date);
+                    }
+                    
+                }
+                foreach (var day in myList)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Date = day;
+                    var date = day;
+                    m.Hours = db.Patrol_Log.Where(zz => DbFunctions.TruncateTime(zz.Checkin) == day.Date).Sum(zz => DbFunctions.DiffHours(zz.Checkin, zz.Checkout));
+                    toReturn.Add(m);
+                }
+                return toReturn;
+            }
+            catch (Exception err)
+            {
+                List<dynamic> toReturn = new List<dynamic>();
+                toReturn.Add("Not readable");
+                return toReturn;
+            }
+        }
         // GET: api/Patrol_Log/5
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult GetPatrol_Log(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Log patrol_Log = db.Patrol_Log.Find(id);
             if (patrol_Log == null)
             {
@@ -67,6 +119,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPatrol_Log(int id, Patrol_Log patrol_Log)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -102,6 +155,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult PostPatrol_Log(Patrol_Log patrol_Log)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -117,6 +171,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult DeletePatrol_Log(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Patrol_Log patrol_Log = db.Patrol_Log.Find(id);
             if (patrol_Log == null)
             {

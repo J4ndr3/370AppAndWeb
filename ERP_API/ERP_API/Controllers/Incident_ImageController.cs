@@ -20,33 +20,32 @@ namespace ERP_API.Controllers
         private INF370Entities db = new INF370Entities();
 
         // GET: api/Incident_Image
-        public List<dynamic> GetIncident_Image()
+        private List<dynamic> GetIncident_Image()
         {
+            List<dynamic> dynamicImages = new List<dynamic>();
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Incident_Image> IMG = db.Incident_Image.Include(zz=>zz.Incident).ToList();
-                List<dynamic> toReturn = new List<dynamic>();
-                foreach (Incident_Image Item in IMG)
+                List<Incident_Image> imageList = db.Incident_Image.ToList();
+                foreach (Incident_Image img in imageList)
                 {
-                    dynamic m = new ExpandoObject();
-                    m.Incident_Image_ID = Item.Incident_Image_ID;
-                    m.Incident_ID = Item.Incident.Incident_ID;
-                    m.Patrol_Log_ID = Item.Patrol_Log_ID;
-                    m.Image = Item.Image;
-                    toReturn.Add(m);
+                    dynamic item = new ExpandoObject();
+                    item.Incident = img.Incident_ID;
+                    //item.ID = img.Incident_Image_ID;
+                    item.Image = img.Image;
+                    dynamicImages.Add(item);
                 }
-                return toReturn;
+                return dynamicImages;
             }
-            catch (Exception err)
+            catch
             {
-                List<dynamic> toReturn = new List<dynamic>();
-                toReturn.Add("Not readable");
-                return toReturn;
+                dynamicImages.Add("Not readable");
+                return dynamicImages;
             }
+
         }
 
-   
+
         // GET: api/Incident_Image/5
         [ResponseType(typeof(Incident_Image))]
         public IHttpActionResult GetIncident_Image(int id)
@@ -99,36 +98,33 @@ namespace ERP_API.Controllers
 
         // POST: api/Incident_Image
         [ResponseType(typeof(Incident_Image))]
-        public IHttpActionResult PostIncident_Image(List<Incident_Image> incident_Image)
+        public IHttpActionResult PostIncident_Image(Incident_Image incident_Image)
         {
-            foreach (var tracking in incident_Image)
+            db.Configuration.ProxyCreationEnabled = false;
+            if (!ModelState.IsValid)
             {
-                db.Configuration.ProxyCreationEnabled = false;
+                return BadRequest(ModelState);
+            }
 
-                if (!ModelState.IsValid)
+            db.Incident_Image.Add(incident_Image);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (Incident_ImageExists(incident_Image.Incident_Image_ID))
                 {
-                    return BadRequest(ModelState);
+                    return Conflict();
                 }
-
-                db.Incident_Image.Add(tracking);
-
-                try
+                else
                 {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateException)
-                {
-                    if (Incident_ImageExists(tracking.Patrol_Log_ID))
-                    {
-                        return Conflict();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return BadRequest("Photo could not be uploaded");
                 }
             }
-            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Last().Patrol_Log_ID }, incident_Image);
+
+            return CreatedAtRoute("DefaultApi", new { id = incident_Image.Incident_Image_ID }, incident_Image);
         }
 
         // DELETE: api/Incident_Image/5

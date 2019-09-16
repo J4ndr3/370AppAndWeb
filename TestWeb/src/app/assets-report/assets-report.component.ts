@@ -16,6 +16,7 @@ export class AssetsReportComponent implements OnInit {
   Ass:object;
   Active:Array<object>;
   count= 0;
+  loggedIn:any;
   @ViewChild('content', { static: false }) content: ElementRef;
 
   public Download() {
@@ -35,6 +36,8 @@ export class AssetsReportComponent implements OnInit {
         let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
         var position = 5;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
         pdf.save('ASSET REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt1').innerHTML="";
@@ -47,25 +50,26 @@ export class AssetsReportComponent implements OnInit {
   ngOnInit() {
     this.data.GetAssets().subscribe(res=>{
       this.Active = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.Active.forEach(marker => {
         
         if (marker['Status'] == "Active")
         {
           this.count++;
-          console.log("hallloooo"+this.Active)
+          // console.log("hallloooo"+this.Active)
         }
       this.Assets = res;
       
     });
   });
-this.ReportAccess(3);
+  this.loggedIn = sessionStorage.getItem("Ranger");
+  this.ReportAccess(this.loggedIn);
   
 }
 ReportAccess(ID){
   this.data.GetRangers(ID).subscribe(res=>{
-    console.log(res);
-  if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+    // console.log(res);
+  if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
     
     
 }

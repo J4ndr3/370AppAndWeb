@@ -4,7 +4,7 @@ import { AppComponent } from '../app.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
-
+import CryptoJS from 'crypto-js'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,11 +31,13 @@ export class LoginComponent implements OnInit {
     else {
       sessionStorage.setItem("pass", Pass);
       sessionStorage.setItem("user", User);
+      Pass = CryptoJS.SHA256(Pass);
+      console.log(Pass);
       this.data.LogIn(User, Pass).subscribe(data => {
-        console.log(data)
+        // console.log(data)
         sessionStorage.setItem("Ranger",data[0].Ranger);
         if (data[0].Correct == true) {
-          console.log(data[0])
+          // console.log(data[0])
           this.showToast()
           this.router.navigateByUrl('/');
         }

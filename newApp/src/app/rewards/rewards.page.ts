@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-rewards',
   templateUrl: './rewards.page.html',
@@ -10,11 +11,17 @@ Name:object;
 Points:Object;
 nName:Object;
 Surname:Object;
-  constructor(private data: ERPService) { }
+loggedIn:any;
+Ranger:any;
+RangerID:any;
+  constructor(private data: ERPService,private storage:Storage) { }
 
   ngOnInit() {
-    
-this.RangerDetails(3);
+    this.storage.get("Ranger").then(res=>{
+        this.loggedIn = res;
+        this.RangerDetails(this.loggedIn);
+      });
+
 }
 RangerDetails(ID){
  

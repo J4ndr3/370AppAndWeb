@@ -5,6 +5,7 @@ import { LoginService } from '../login.service';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import CryptoJS from 'crypto-js'
 @Component({
   selector: 'app-reset-passwor',
   templateUrl: './reset-passwor.component.html',
@@ -41,7 +42,7 @@ export class ResetPassworComponent implements OnInit {
         this.OTPF=true;
         this.EmailF=false;
         this.OTP = res[0]["OTP"]
-        console.log(this.OTP)
+        // console.log(this.OTP)
       }
       
     })
@@ -61,14 +62,19 @@ export class ResetPassworComponent implements OnInit {
     var email = this.AddForm.get('Email').value;
     var OTP = this.OTPForm.get('OTP').value;
     var Password = this.PasswordForm.get('Password').value;
-    console.log(email,OTP,Password);
-    this.login.ResetPass(email,OTP,Password).subscribe(res=>{
-      if (res[0]["Correct"]){
-        this.showToast();
-        this.router.navigateByUrl("/login")
-      }
-      console.log(res)
-    })
+    var confirm = this.PasswordForm.get('Confirm').value;
+    if (Password == confirm){
+      Password = CryptoJS.SHA256(Password);
+      this.login.ResetPass(email,OTP,Password).subscribe(res=>{
+        if (res[0]["Correct"]){
+          this.showToast();
+          this.router.navigateByUrl("/login")
+        }
+        // console.log(res)
+      })
+    }
+    // console.log(email,OTP,Password);
+    
   }
   showToast() {
     this.toastrService.show("Password has been updated.", "Success!");

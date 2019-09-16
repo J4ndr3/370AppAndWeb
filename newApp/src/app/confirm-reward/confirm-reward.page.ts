@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
 import { Router } from '@angular/router';
-
+import { Storage } from '@ionic/storage';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // @IonicPage()
@@ -24,10 +24,12 @@ export class ConfirmRewardPage implements OnInit {
  redeemID:any;
  ProductPoints: object;
  RangerPoints:object;
+ loggedIn:any;
+Ranger:any;
 
  myDate= new Date().toLocaleDateString();
  Time= new Date().toTimeString();
-  constructor(private data: ERPService, private router:Router) { 
+  constructor(private data: ERPService, private router:Router,private storage:Storage) { 
     // this.ID = navParams.get('data');
   }
   // , public navCtrl: NavController, public navParams: NavParams
@@ -35,6 +37,10 @@ export class ConfirmRewardPage implements OnInit {
     console.log('ionViewDidLoad ConfirmRewardPage');
   }
   ngOnInit() {
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      
+    });
   
     this.confirmID = this.data.nvalidate;
     this.data.GetProduct_Reward().subscribe(res=>{
@@ -51,7 +57,7 @@ export class ConfirmRewardPage implements OnInit {
     console.log(this.confirmID)
     this.data.GetProduct_RewardID(ID).subscribe(res=>{
       this.ProductPoints = res['Points']
-      this.updateRanger(3,this.ProductPoints);
+      this.updateRanger(this.loggedIn,this.ProductPoints);
       console.log(res);
       if (res["Quantity"] == 0 )
       {
@@ -81,7 +87,7 @@ export class ConfirmRewardPage implements OnInit {
           
           this.RedeemVoucher = {
             
-            "Ranger_ID" : 3, // Names for your input
+            "Ranger_ID" : this.loggedIn, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
             "Product_Reward_ID":PoductID,
@@ -102,6 +108,5 @@ export class ConfirmRewardPage implements OnInit {
        console.log(res)
       });
     }
-   
     
 }

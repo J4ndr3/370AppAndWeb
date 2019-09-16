@@ -47,6 +47,8 @@ export class IncidentReportComponent {
   searchText;
   timeLeft1: number = 3;
   interval1;
+  loggedIn:any;
+  
   @ViewChild('content', { static: false }) content: ElementRef;
   @ViewChild('map',{static: false}) mapElement: any;
   map: google.maps.Map;
@@ -76,11 +78,8 @@ export class IncidentReportComponent {
 // }
 public Download() {
   this.timeLeft1 = 3;
-  let img;
+  
 
-
-
-  let img1;
 
   var htmlToImage = require('html-to-image');
   var node = document.getElementById('my-node');
@@ -90,7 +89,7 @@ public Download() {
       var img = new Image();
       img.src = dataUrl;
       // img.style.width = "800px";
-      img1 = img;
+      
       document.getElementById('image123').appendChild(img);
 
     })
@@ -104,7 +103,7 @@ public Download() {
       this.timeLeft1--;
     } else if (this.timeLeft1 == 0) {
 
-      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-left:10%">INCIDENT REPORT</h1><br><br></div>';
+      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>INCIDENT REPORT</h1><br><br></div><br>';
       document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
       document.getElementById('chrt3').innerHTML = '<br><br>';
 
@@ -122,6 +121,8 @@ public Download() {
         
         var position = 5;
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        pdf.setFontSize(7);
+          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
         pdf.save('INCIDENT REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt1').innerHTML = "";
@@ -171,7 +172,7 @@ public Download() {
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Markers=[];
       this.Incedents = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.IncedentCount = 0;
       this.Incedents.forEach(marker => {
        
@@ -180,7 +181,7 @@ public Download() {
         var md = new Date(marker["Date"]);
         if (md>=f && md<=t)
         {
-          console.log(f, md)
+          // console.log(f, md)
           this.IncedentCount++;
           this.Markers.push(marker);
         }
@@ -214,7 +215,7 @@ public Download() {
 
     this.data.GetIncedent_Patrole().subscribe(res=>{
       this.Incedents = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.Incedents.forEach(marker => {
         this.IncedentCount++;
       this.Markers = JSON.parse(JSON.stringify(res));
@@ -236,7 +237,7 @@ public Download() {
      this.r.push(element);
    });
 
-  console.log(this.r);
+  // console.log(this.r);
 
   this.r.forEach(element =>{
    
@@ -281,12 +282,13 @@ public Download() {
 //          });
 //       }
 //  };
-this.ReportAccess(10);
+this.loggedIn = sessionStorage.getItem("Ranger");
+this.ReportAccess(this.loggedIn);
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      // console.log(res);
+    if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }
