@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas'; 
 import { } from 'googlemaps';
 import { ERPService } from '..//erp.service';
-import { object } from '@amcharts/amcharts4/core';
-import htmlToImage from 'html-to-image';
-import { JsonPipe } from '@angular/common';
-import { element } from 'protractor';
-import { resetFakeAsyncZone } from '@angular/core/testing';
-import { timer } from 'rxjs';
+// import { object } from '@amcharts/amcharts4/core';
+// import htmlToImage from 'html-to-image';
+// import { JsonPipe } from '@angular/common';
+// import { element } from 'protractor';
+// import { resetFakeAsyncZone } from '@angular/core/testing';
+// import { timer } from 'rxjs';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 @Component({
@@ -25,7 +25,7 @@ export class MarkersReportComponent implements OnInit {
   myLatLngList: any;
   Latitude: Array<number>;
   Longitude: Array<number>;
-  timeLeft1: number = 6;
+  timeLeft1: number = 3;
   interval1;
   loggedIn:any;
 
@@ -35,37 +35,34 @@ export class MarkersReportComponent implements OnInit {
   markerActiveCount = 0;
   map: google.maps.Map;
   myDate = new Date().toLocaleDateString();
+
+  
   public Download() {
-    this.timeLeft1 = 6;
-    let img;
-
-
-
-    let img1;
-
+    this.timeLeft1 = 3;
+    
     var htmlToImage = require('html-to-image');
-    var node = document.getElementById('my-node');
-    htmlToImage.toPng(node)
+    var node1 = document.getElementById('my-node');
+    htmlToImage.toPng(node1)
       .then(function (dataUrl) {
-
-        var img = new Image();
-        img.src = dataUrl;
-        // img.style.width = "800px";
-        img1 = img;
-        document.getElementById('image123').appendChild(img);
-
+  
+        var img2 = new Image();
+        img2.src = dataUrl;
+       
+        
+        
+        document.getElementById('image1234').appendChild(img2);
+  
       })
       .catch(function (error) {
         console.error('oops, something went wrong!', error);
       });
-
 
     this.interval1 = setInterval(() => {
       if (this.timeLeft1 > 0) {
         this.timeLeft1--;
       } else if (this.timeLeft1 == 0) {
 
-        document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1 style="padding-right: 5%">MARKER REPORT</h1><br><br><h3 margin:auto>Active Markers</h3></div><br> <br><br>';
+        document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>MARKER REPORT</h1><br><br></div><br>';
         document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
         document.getElementById('chrt3').innerHTML = '<br><br>';
         
@@ -95,7 +92,7 @@ export class MarkersReportComponent implements OnInit {
           
           document.getElementById('chrt1').innerHTML = "";
           document.getElementById('chrt2').innerHTML = "";
-          document.getElementById('image123').innerHTML = "";
+         document.getElementById('image1234').innerHTML = "";
 
           // var doc = new jsPDF();
           // var totalPagesExp = "{total_pages_count_string}";
@@ -109,12 +106,12 @@ export class MarkersReportComponent implements OnInit {
           // };
         });
         clearInterval(this.interval1);
-
+  
       }
-
+  
       else {
-        this.timeLeft1 = 6;
-
+        this.timeLeft1 = 3;
+        
       }
     }, 1000)
   }
@@ -122,93 +119,82 @@ export class MarkersReportComponent implements OnInit {
 
   ngOnInit() {
 
-
-    this.data.GetMarker().subscribe(res => {
-
+    this.data.GetMarker().subscribe(res=>{
       this.Markers = JSON.parse(JSON.stringify(res));
-      // console.log(this.Markers);
-      this.markerActiveCount = 0;
+      // console.log(res);
       this.Markers.forEach(marker => {
         this.markerCount++;
-        if (marker['Status'] == true) {
-          this.markerActiveCount++;
-          const mapProperties = {
-            center: new google.maps.LatLng(-25.8825, 28.2639),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+      this.Markers = JSON.parse(JSON.stringify(res));
       
-          this.data.GetMarker().subscribe(res => {
-            this.r = [];
-            this.CoordList = JSON.parse(JSON.stringify(res));
-            this.CoordList.forEach(element => {
-              this.r.push(element);
-            });
-      
-            // console.log(this.CoordList);
-      
-            this.r.forEach(element => {
-              if (element['Status'] == true) {
-                this.myLatLngList = {
-      
-                  myLatLng: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["Long"]) }]
-                };
-              }
-              else if (element["Lat"] == null && element["Long"] == null) {
-                alert('No Markers is available');
-              }
-              for (const data of this.myLatLngList.myLatLng) {
-                var marker = new google.maps.Marker({
-                  position: data,
-                  map: this.map,
-                  title: 'Hallo This is a marker'
-                });
-      
-              }
-            })
-      
-          })
-
-          // console.log(this.markerActiveCount)
-        }
-      });
+    });
     });
 
-    this.loggedIn = sessionStorage.getItem("Ranger");
-     this.ReportAccess(this.loggedIn);
+    const mapProperties = {
+      center: new google.maps.LatLng(-25.8825, 28.2639),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+ };
+ this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
+ 
+ this.data.GetMarker().subscribe(res => {
+  this.r = [];
+  this.CoordList = JSON.parse(JSON.stringify(res));
+  this.CoordList.forEach(element =>{
+     this.r.push(element);
+   });
+
+  // console.log(this.r);
+
+  this.r.forEach(element =>{
+   
+      this.myLatLngList = {
+     
+        myLatLng : [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["Long"])}] 
+        };
+   
+     for(const data of this.myLatLngList.myLatLng){
+       var marker = new google.maps.Marker({
+           position: data,
+           map: this.map,
+           title: 'Hallo This is a marker'
+       });
+       
+    }
+  })
+
+})
+//     const mapProperties = {
+//       center: new google.maps.LatLng(-25.8825, 28.2639),
+//       zoom: 14,
+//       mapTypeId: google.maps.MapTypeId.ROADMAP
+//  };
+//  this.map = new google.maps.Map(this.mapElement.nativeElement,    mapProperties);
+//  this.createMarker();
+//   }
+
+//   createMarker() {
+
+//     // list of hardcoded positions markers 
+//      var myLatLngList = {
+//          myLatLng : [{ lat: -25.8825 , lng: 28.2639 }, { lat: -25.8830, lng: 28.2640 }, { lat: -25.8850, lng: 28.2670 }]    
+//          };
+
+//         //iterate latLng and add markers 
+//        for(const data of myLatLngList.myLatLng){
+//          var marker = new google.maps.Marker({
+//              position: data,
+//              map: this.map,
+//              title: 'Hallo This is a marker'
+//          });
+//       }
+//  };
+this.loggedIn = sessionStorage.getItem("Ranger");
+this.ReportAccess(this.loggedIn);
   }
-
-  createMarker() {
-
-    // list of hardcoded positions markers 
-    //  this.data.GetMarker().subscribe(res => {
-    //    this.CoordList = JSON.parse(JSON.stringify(res));
-    //    console.log("aaaaaaaaaaaaaaaaaaa"+this.CoordList);
-    //    this.CoordList.forEach(coordinates =>{
-
-    //     this.myLatLngList = {
-    //       myLatLng : [{ lat: coordinates["Lattitude"] , lng: coordinates["Longitude"] }] 
-    //       };
-    //       for(const data of this.myLatLngList.myLatLng){
-    //         var marker = new google.maps.Marker({
-    //             position: data,
-    //             map: this.map,
-    //             title: 'Hallo This is a marker'
-    //         });
-    //      }
-    //    })
-
-    //  })
-
-
-    //iterate latLng and add markers 
-
-  };
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
       // console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+    if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }
@@ -225,5 +211,125 @@ export class MarkersReportComponent implements OnInit {
     this.toastrService.show("Sorry you do not have access to reports");
     this.router.navigateByUrl("/home");
   }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//     this.data.GetMarker().subscribe(res => {
+
+//       this.Markers = JSON.parse(JSON.stringify(res));
+//       // console.log(this.Markers);
+//       this.markerActiveCount = 0;
+//       this.Markers.forEach(marker => {
+//         this.markerCount++;
+//         if (marker['Status'] == true) {
+//           this.markerActiveCount++;
+//           const mapProperties = {
+//             center: new google.maps.LatLng(-25.8825, 28.2639),
+//             zoom: 14,
+//             mapTypeId: google.maps.MapTypeId.ROADMAP
+//           };
+//           this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+      
+//           this.data.GetMarker().subscribe(res => {
+//             this.r = [];
+//             this.CoordList = JSON.parse(JSON.stringify(res));
+//             this.CoordList.forEach(element => {
+//               this.r.push(element);
+//             });
+      
+//             // console.log(this.CoordList);
+      
+//             this.r.forEach(element => {
+//               if (element['Status'] == true) {
+//                 this.myLatLngList = {
+      
+//                   myLatLng: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["Long"]) }]
+//                 };
+//               }
+//               else if (element["Lat"] == null && element["Long"] == null) {
+//                 alert('No Markers is available');
+//               }
+//               for (const data of this.myLatLngList.myLatLng) {
+//                 var marker = new google.maps.Marker({
+//                   position: data,
+//                   map: this.map,
+//                   title: 'Hallo This is a marker'
+//                 });
+      
+//               }
+//             })
+      
+//           })
+
+//           // console.log(this.markerActiveCount)
+//         }
+//       });
+//     });
+
+//     this.loggedIn = sessionStorage.getItem("Ranger");
+//      this.ReportAccess(this.loggedIn);
+//   }
+
+//   createMarker() {
+
+//     // list of hardcoded positions markers 
+//     //  this.data.GetMarker().subscribe(res => {
+//     //    this.CoordList = JSON.parse(JSON.stringify(res));
+//     //    console.log("aaaaaaaaaaaaaaaaaaa"+this.CoordList);
+//     //    this.CoordList.forEach(coordinates =>{
+
+//     //     this.myLatLngList = {
+//     //       myLatLng : [{ lat: coordinates["Lattitude"] , lng: coordinates["Longitude"] }] 
+//     //       };
+//     //       for(const data of this.myLatLngList.myLatLng){
+//     //         var marker = new google.maps.Marker({
+//     //             position: data,
+//     //             map: this.map,
+//     //             title: 'Hallo This is a marker'
+//     //         });
+//     //      }
+//     //    })
+
+//     //  })
+
+
+//     //iterate latLng and add markers 
+
+//   };
+//   ReportAccess(ID){
+//     this.data.GetRangers(ID).subscribe(res=>{
+//       // console.log(res);
+//       if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
+      
+      
+//   }
+    
+//     else {
+      
+//       this.showToast1();
+      
+//     }
+    
+//   })
+//   }
+//   showToast1() {
+//     this.toastrService.show("Sorry you do not have access to reports");
+//     this.router.navigateByUrl("/home");
+//   }
+
+// }

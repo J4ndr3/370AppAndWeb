@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';          
-import { FormBuilder,FormGroup } from '@angular/forms';         
+import { FormBuilder,FormGroup, Validators, FormControl } from '@angular/forms';         
 import { IncidentTypeModifyComponent }  from '../incident-type-modify/incident-type-modify.component' 
 
 @Component({
@@ -27,7 +27,7 @@ export class IncidentTypeComponent implements OnInit {
 
     this.AddForm = this.formBuilder.group({
       Description: [""],
-      Level: [""], 
+      Level: [""],
     });
 
     this.data.GetIncident_Levels().subscribe((res) => {

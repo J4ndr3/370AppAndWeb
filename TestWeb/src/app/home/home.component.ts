@@ -132,42 +132,74 @@ export class HomeComponent implements OnInit {
 
         }
       })
-
-
-      this.data.GetPatrol_log().subscribe(res => {
-        this.r1 = [];
-        this.CoordList1 = JSON.parse(JSON.stringify(res));
-        this.CoordList1.forEach(element => {
-          this.newRanger = {
-            "lat": element["Lat"],
-            "lng": element["lng"]
-          }
-
-          this.r1.push(element);
-        });
-
-        // console.log(this.CoordList1);
-
-        this.r1.forEach(element => {
-
-          this.myLatLngList1 = {
-
-            myLatLng1: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
-          }
-          if (element["CheckedIn"] == true) {
-            console.log(element)
-            for (const data of this.myLatLngList1.myLatLng1) {
-              var marker = new google.maps.Marker({
-                position: data,
-                map: this.map,
-                title: element['Name'] + ' ' + element['Surname'] + " on patrol"
-              });
-            }
-
-          }
-        })
-      })
     })
+    // this.data.GetPatrol_log().subscribe(res => {
+    //   this.r1 = [];
+    //   this.CoordList1 = JSON.parse(JSON.stringify(res));
+    //   this.CoordList1.forEach(element => {
+    //     this.newRanger = {
+    //       "lat": element["Lat"],
+    //       "lng": element["lng"]
+    //     }
+
+    //     this.r1.push(element);
+    //   });
+
+    //   // console.log(this.CoordList1);
+
+    //   this.r1.forEach(element => {
+    //     this.myLatLngList1 = {
+    //       myLatLng1: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+    //     }
+    //     if (element["CheckedIn"] == true) {
+    //       console.log(element)
+    //       for (const data of this.myLatLngList1.myLatLng1) {
+    //         var marker = new google.maps.Marker({
+    //           position: data,
+    //           map: this.map,
+    //           title: element['Name'] + ' ' + element['Surname'] + " on patrol"
+    //         });
+    //       }
+    //     }
+    //   })
+    // })
+
+
+
+
+    this.data.GetPatrol_log().subscribe(res => {
+      this.r = [];
+      this.CoordList1 = JSON.parse(JSON.stringify(res));
+      this.CoordList1.forEach(element =>{
+         this.r.push(element);
+       });
+    
+       console.log(this.r);
+    
+      this.r.forEach(element =>{
+       if (element["CheckedIn"] == true){
+        this.myLatLngList = {
+         
+          myLatLng : [{ lat: parseFloat(element["Lattitude"]), lng: parseFloat(element["Longitude"])}] 
+          };
+     
+       for(const data of this.myLatLngList.myLatLng){
+         var marker = new google.maps.Marker({
+             position: data,
+             map: this.map,
+             title: 'Active patrole'
+         });
+         
+      }
+       }
+         
+      })
+    
+    })
+
+
+
+
   }
 }
 

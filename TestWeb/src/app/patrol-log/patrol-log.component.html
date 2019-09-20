@@ -29,6 +29,7 @@
                 <th>Route</th>
                 <th>Markers passed</th>
                 <th>Points scored</th>
+                <!-- <th>Information</th> -->
             </tr>
         </thead>
         <tbody>
@@ -40,9 +41,18 @@
                 <td>{{patrol.time}}</td>
                 <td>{{patrol.Feedback}}</td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
+                <td> <button class="btn btn-default" style="border:none" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
                 <td>{{patrol.MarkerPast}}</td>
                 <td>{{patrol.Points}}</td>
+                <!-- <td>
+                        <button class="btn btn-default" style="border:none" (click)="Information()">View All Information</button>
+                        <div *ngFor="count">
+                            <ul>
+                                <li *ngFor="let item of Incidents"> {{item.Status}}: {{item.Description}} reported at {{item.Time}}</li>
+                            </ul>
+                        </div>
+                
+                </td> -->
             </tr>
         </tbody>
     </table>

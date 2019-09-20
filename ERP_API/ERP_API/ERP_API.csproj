@@ -289,6 +289,7 @@
     <Compile Include="Controllers\Redeem_RewardController.cs" />
     <Compile Include="Controllers\ReservesController.cs" />
     <Compile Include="Controllers\Security_CompanyController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TrackingsController.cs" />
     <Compile Include="Controllers\User_RoleController.cs" />

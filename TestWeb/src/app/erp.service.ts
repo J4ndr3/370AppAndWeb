@@ -172,6 +172,7 @@ export class ERPService {
     this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved All Incidents")
     return this.http.get('http://localhost:51389/api/Incident_Patrol')
   }
+
   GetIncident(id){
     this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incident with ID: "+id)
     return this.http.get('http://localhost:51389/api/Incidents/'+id)
@@ -545,4 +546,15 @@ GetStatusDropdown() {
 {
   return this.http.get("http://localhost:51389/api/Login/Export",{responseType:'blob'});
 }
+  //   return this.http.post('http://localhost:51389/api/Audit', AD)
+  // }
+  GetTimer(id){
+    return this.http.get('http://localhost:51389/api/Settings/'+id)
+  }
+  PutTimer(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Settings/' + ID, obj)
+  }
+  GetTimers(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Settings')
+  }
 }

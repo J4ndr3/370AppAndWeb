@@ -11,6 +11,7 @@ import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Geofence } from '@ionic-native/geofence/ngx';
+import { timer } from 'rxjs';
 
 @Component({
     selector: 'app-rangerpatrol',
@@ -314,6 +315,8 @@ export class RangerpatrolPage implements OnInit {
         }
     }
     startTracking() {
+        const source = timer(0, 300000);
+       
         this.isTracking = true;
         this.trackedRoute = [];
         var self = this;
@@ -336,7 +339,17 @@ export class RangerpatrolPage implements OnInit {
             self.trackedRoute.push(locationJ);
             self.redrawPath(self.trackedRoute);
         }
-
+        const subscribe = source.subscribe(val => {
+            self.geolocation.getCurrentPosition().then(pos => {
+                var m = { Longitude: pos.coords.latitude, Lattitude: pos.coords.longitude, Patrol_Log_ID: this.patrolID }
+                //let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                this.data.PostRoute(m).subscribe();
+            }).catch((error) => {
+                alert('Error getting location ' + error);
+            });
+            
+        }
+        )
         // onError Callback receives a PositionError object
         //
         function onError(error) {

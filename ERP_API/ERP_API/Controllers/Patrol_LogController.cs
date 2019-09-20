@@ -25,7 +25,7 @@ namespace ERP_API.Controllers
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Patrol_Log> patrols = db.Patrol_Log.Include(zz => zz.Patrol_Booking).
+                List<Patrol_Log> patrols = db.Patrol_Log.Include(zz => zz.Trackings).Include(zz => zz.Patrol_Booking).
                     Include(zz=>zz.Ranger).ToList();
                 List<dynamic> toReturn = new List<dynamic>();
                 foreach (Patrol_Log Item in patrols)
@@ -34,11 +34,15 @@ namespace ERP_API.Controllers
                     m.Patrol_Log_ID = Item.Patrol_Log_ID;
                     m.Name = Item.Ranger.Name;
                     m.Surname = Item.Ranger.Surname;
+                    m.RangerID = Item.Ranger_ID;
                     m.Date = Item.Checkin.ToShortDateString();
                     m.Checkin = Item.Checkin.ToShortTimeString();
                     m.Checkout = Item.Checkout.ToShortTimeString();
                     m.CheckedIn = Item.Checked_in;
-                   
+                    m.Lattitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Lattitude).ToArray().LastOrDefault();
+                    m.Longitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Longitude).ToArray().LastOrDefault();
+
+
                     m.time = Math.Round(Item.Checkout.Subtract(Item.Checkin).TotalHours, 2);
                     int markercount = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
                     if (markercount > 0)
@@ -52,7 +56,7 @@ namespace ERP_API.Controllers
                         m.MarkerPast = null;
                         m.Points = '0';
                     };
-                    m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz=>zz.Description).FirstOrDefault();
+                    m.Feedback = db.Feedbacks.Where(xx => xx.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Description).FirstOrDefault();
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -76,13 +80,13 @@ namespace ERP_API.Controllers
                 List<dynamic> toReturn = new List<dynamic>();
                 foreach (Patrol_Log Item in patrols)
                 {
-                    
+
                     if (!myList.Contains(Item.Checkin.Date))
                     {
                         ;
                         myList.Add(Item.Checkin.Date);
                     }
-                    
+
                 }
                 foreach (var day in myList)
                 {
@@ -101,6 +105,43 @@ namespace ERP_API.Controllers
                 return toReturn;
             }
         }
+
+
+        private List<dynamic> GetIncidents(int ID)
+        {
+            List<dynamic> dynamicIncidents = new List<dynamic>();
+            try
+            {
+                List<Incident_Patrol> incident = db.Incident_Patrol.Where(zz => zz.Patrol_Log_ID == ID).Include(zz => zz.Incident.Incident_Status).Include(zz => zz.Incident.Incident_Type).Include(zz => zz.Incident.Incident_Type.Incident_Level).ToList();
+                if (incident != null)
+                {
+                    foreach (Incident_Patrol Item in incident)
+                    {
+                        dynamic m = new ExpandoObject();
+                        m.Description = Item.Incident.Description;
+                        m.Type = Item.Incident.Incident_Type.Description;
+                        m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+                        m.Status = Item.Incident.Incident_Status.Description;
+                        m.StatID = Item.Incident.Incident_Status_ID;
+                        m.Time = Item.Time;
+                        dynamicIncidents.Add(m);
+                    }
+                    return dynamicIncidents;
+                }
+                else
+                {
+                    dynamicIncidents = null;
+                    return dynamicIncidents;
+                }
+            }
+            catch
+            {
+                dynamicIncidents.Add("Not readable");
+                return dynamicIncidents;
+            }
+
+        }
+
         // GET: api/Patrol_Log/5
         [ResponseType(typeof(Patrol_Log))]
         public IHttpActionResult GetPatrol_Log(int id)

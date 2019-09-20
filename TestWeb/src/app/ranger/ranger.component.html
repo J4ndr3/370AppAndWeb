@@ -25,8 +25,8 @@
 <!--TABLE-->
 <br>
 
-<div class="table">
-    <table class="table table-striped">
+<div class="table" >
+    <table class="table table-striped"  >
         <thead>
             <tr id="header">
                 <th>Ranger</th>
@@ -39,9 +39,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let Ranger of Rangers |filter:searchtext">
-                <td>{{Ranger.Name}} {{Ranger.Surname}}</td>
+        <tbody  >
+            <tr *ngFor="let Ranger of Rangers |filter:searchtext"  >
+                <td >{{Ranger.Name}} {{Ranger.Surname}}</td>
                 <td>{{Ranger.User_Role}}</td>
                 <td>{{Ranger.Email}}</td>
                 <td>{{Ranger.Cell}}</td>
