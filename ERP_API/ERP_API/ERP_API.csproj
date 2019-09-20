@@ -249,6 +249,7 @@
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\Asset_StatusController.cs" />
     <Compile Include="Controllers\Asset_TypeController.cs" />
+    <Compile Include="Controllers\AuditsController.cs" />
     <Compile Include="Controllers\CellphonesController.cs" />
     <Compile Include="Controllers\Event_RewardController.cs" />
     <Compile Include="Controllers\Event_TypeController.cs" />
@@ -283,6 +284,7 @@
     <Compile Include="Controllers\Redeem_RewardController.cs" />
     <Compile Include="Controllers\ReservesController.cs" />
     <Compile Include="Controllers\Security_CompanyController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
     <Compile Include="Controllers\TrackingsController.cs" />
     <Compile Include="Controllers\User_RoleController.cs" />
@@ -307,6 +309,9 @@
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Asset_Type.cs">
+      <DependentUpon>ERP_Rangers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Audit.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cellphone.cs">
@@ -422,6 +427,9 @@
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Security_Company.cs">
+      <DependentUpon>ERP_Rangers.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Setting.cs">
       <DependentUpon>ERP_Rangers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Supplier.cs">

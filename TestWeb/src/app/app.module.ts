@@ -75,6 +75,10 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
+import { SettingsComponent } from './settings/settings.component';
+import { HighlightSearchPipe } from './highlight-search-.pipe';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,6 +138,8 @@ import { CommonModule } from '@angular/common';
     DownloadStatusComponent,
     DownloadIncedentComponent,
     LoadingScreenComponent,
+    SettingsComponent,
+    HighlightSearchPipe,
    
   ],
   imports: [
@@ -150,6 +156,7 @@ import { CommonModule } from '@angular/common';
      closeButton:true,
      positionClass:"toast-bottom-center",
      timeOut:5000,
+     
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  

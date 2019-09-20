@@ -17,6 +17,7 @@ namespace ERP_API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ranger()
         {
+            this.Audits = new HashSet<Audit>();
             this.Cellphones = new HashSet<Cellphone>();
             this.Notifications = new HashSet<Notification>();
             this.Patrol_Booking = new HashSet<Patrol_Booking>();
@@ -25,6 +26,7 @@ namespace ERP_API.Models
             this.Ranger_Reserve = new HashSet<Ranger_Reserve>();
             this.Ranger_Vehicle = new HashSet<Ranger_Vehicle>();
             this.Redeem_Reward = new HashSet<Redeem_Reward>();
+            this.Settings = new HashSet<Setting>();
         }
     
         public int Ranger_ID { get; set; }
@@ -52,6 +54,8 @@ namespace ERP_API.Models
     
         public virtual Access_Level Access_Level { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Audit> Audits { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cellphone> Cellphones { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual Medical_Aid Medical_Aid { get; set; }
@@ -71,5 +75,7 @@ namespace ERP_API.Models
         public virtual ICollection<Ranger_Vehicle> Ranger_Vehicle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Redeem_Reward> Redeem_Reward { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Setting> Settings { get; set; }
     }
 }

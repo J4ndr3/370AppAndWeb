@@ -1059,3 +1059,12 @@ th {
     color: #fff !important;
     font-weight: bold;
 }
+
+.ngx-text-highlight {
+    background: yellow;
+}
+
+mark {
+    // background: rgba(205, 21, 67, 0.4);
+    background: rgb(205, 21, 67);
+}

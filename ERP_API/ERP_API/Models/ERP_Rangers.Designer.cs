@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Erard\Desktop\Del3 v 4\370AppAndWeb\ERP_API\ERP_API\Models\ERP_Rangers.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\Models\ERP_Rangers.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

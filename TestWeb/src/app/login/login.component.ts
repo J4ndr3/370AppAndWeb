@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("pass", Pass);
       sessionStorage.setItem("user", User);
       Pass = CryptoJS.SHA256(Pass);
+      console.log(Pass);
       this.data.LogIn(User, Pass).subscribe(data => {
         // console.log(data)
         sessionStorage.setItem("Ranger",data[0].Ranger);
