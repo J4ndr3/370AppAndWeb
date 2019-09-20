@@ -140,6 +140,7 @@ export class ERPService {
   GetIncidents(){
     return this.http.get('http://localhost:51389/api/Incident_Patrol')
   }
+
   GetIncident(id){
     return this.http.get('http://localhost:51389/api/Incidents/'+id)
   }

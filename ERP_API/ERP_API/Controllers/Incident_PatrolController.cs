@@ -50,7 +50,7 @@ namespace ERP_API.Controllers
                     m.Time =Item.Time;
                     m.Lat = Item.Lat;
                     m.lng = Item.Lng;
-                   // m.images = getIMG(Item.Incident_Patrol_ID);
+                   m.Patrol_Log_ID =Item.Patrol_Log_ID;
                     toReturn.Add(m);
                 }
                 return toReturn;
@@ -62,6 +62,31 @@ namespace ERP_API.Controllers
             }
 
         }
+
+        //[System.Web.Http.Route("api/Incident_Patrol/GetIncident_Patrol2")]
+        //public List<dynamic> GetIncident_Patrol2(int id)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    List<Incident_Patrol> incidents = db.Incident_Patrol.
+        //            Include(zz => zz.Incident.Incident_Type).
+        //            Include(zz => zz.Incident.Incident_Type.Incident_Level).
+        //            Include(zz => zz.Incident.Incident_Status).Where(zz=>zz.Patrol_Log_ID==id).
+        //           ToList();
+        //    List<dynamic> toReturn = new List<dynamic>();
+        //    foreach (Incident_Patrol Item in incidents)
+        //    {
+        //        dynamic m = new ExpandoObject();
+        //        m.Description = Item.Incident.Description;
+        //        m.Type = Item.Incident.Incident_Type.Description;
+        //        m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+        //        m.Status = Item.Incident.Incident_Status.Description;
+        //        m.StatID = Item.Incident.Incident_Status_ID;
+        //        m.Time = Item.Time;
+        //        toReturn.Add(m);
+        //    }
+        //    return toReturn;
+        //}
+
 
         //private List<dynamic> getIMG(int ID)
         //{
@@ -83,7 +108,7 @@ namespace ERP_API.Controllers
         //        dynamicImages.Add("Not readable");
         //        return dynamicImages;
         //    }
-            
+
         //}
 
         // GET: api/Incident_Patrol1

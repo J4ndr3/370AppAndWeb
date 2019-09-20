@@ -64,3 +64,39 @@
 <div style="width:40% !important; margin: auto" id="savediv">
     <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="close()" data-toggle="collapse" data-target="#demo">Done</button>
 </div>
+
+<br>
+<h1>Patrols</h1>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr id="header">
+                <th>Date</th>
+                <th>Total time patrolled</th>
+                <th>Markers passed</th>
+                <th>Feedback</th>
+                <th>Incidents</th>
+                <!-- <th>Information</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of patrolsList">
+                <td>{{item.Date}}</td>
+                <td>{{item.time}} hours</td>
+                <td>{{item.MarkerPast}}</td>
+                <td>{{item.Feedback}}</td>
+                <td>
+                    <button style="float: right;" class="btn btn-default" (click)="Incidents(item.Patrol_Log_ID)" >View Incidents</button> 
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+<br>
+<div *ngIf="show">
+    <h2>Incident Information</h2>
+    <ul>
+        <li *ngFor="let inc of incidentsList">{{inc.Description}}</li>
+    </ul>
+</div>
