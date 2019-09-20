@@ -76,6 +76,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
+import { AuditComponent } from './audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -139,6 +140,7 @@ import { CommonModule } from '@angular/common';
     DownloadStatusComponent,
     DownloadIncedentComponent,
     LoadingScreenComponent,
+    AuditComponent,
    
   ],
   imports: [
