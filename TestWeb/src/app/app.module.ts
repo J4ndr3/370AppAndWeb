@@ -76,6 +76,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings/settings.component';
+import { HighlightSearchPipe } from './highlight-search-.pipe';
 
 
 @NgModule({
@@ -141,6 +142,7 @@ import { SettingsComponent } from './settings/settings.component';
     DownloadIncedentComponent,
     LoadingScreenComponent,
     SettingsComponent,
+    HighlightSearchPipe,
    
   ],
   imports: [

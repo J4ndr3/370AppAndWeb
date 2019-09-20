@@ -25,7 +25,7 @@ namespace ERP_API.Controllers
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Patrol_Log> patrols = db.Patrol_Log.Include(zz => zz.Patrol_Booking).
+                List<Patrol_Log> patrols = db.Patrol_Log.Include(zz => zz.Trackings).Include(zz => zz.Patrol_Booking).
                     Include(zz=>zz.Ranger).ToList();
                 List<dynamic> toReturn = new List<dynamic>();
                 foreach (Patrol_Log Item in patrols)
@@ -38,7 +38,10 @@ namespace ERP_API.Controllers
                     m.Checkin = Item.Checkin.ToShortTimeString();
                     m.Checkout = Item.Checkout.ToShortTimeString();
                     m.CheckedIn = Item.Checked_in;
-                   
+                    m.Lattitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Lattitude).ToArray().LastOrDefault();
+                    m.Longitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Longitude).ToArray().LastOrDefault();
+
+
                     m.time = Math.Round(Item.Checkout.Subtract(Item.Checkin).TotalHours, 2);
                     int markercount = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
                     if (markercount > 0)

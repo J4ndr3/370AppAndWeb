@@ -11,6 +11,11 @@ import { RewardEventModifyComponent } from '../reward-event-modify/reward-event-
   templateUrl: './reward-add.component.html',
   styleUrls: ['./reward-add.component.sass']
 })
+
+
+
+
+
 export class RewardAddComponent implements OnInit {
   RewardAdds: object;
   AddForm: FormGroup;
@@ -179,3 +184,4 @@ export class RewardAddComponent implements OnInit {
   
   
   
+    

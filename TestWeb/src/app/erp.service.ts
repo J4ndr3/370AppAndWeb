@@ -483,4 +483,13 @@ GetStatusDropdown() {
     }
     return this.http.post('http://localhost:51389/api/Audit', AD)
   }
+  GetTimer(id){
+    return this.http.get('http://localhost:51389/api/Settings/'+id)
+  }
+  PutTimer(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Settings/' + ID, obj)
+  }
+  GetTimers(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Settings')
+  }
 }

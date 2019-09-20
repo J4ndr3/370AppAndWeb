@@ -35,7 +35,7 @@
         <EntityTypeShape EntityType="INF370Model.Patrol_Asset" Width="1.5" PointX="15" PointY="27.125" />
         <EntityTypeShape EntityType="INF370Model.Patrol_Booking" Width="1.5" PointX="10.5" PointY="26.375" />
         <EntityTypeShape EntityType="INF370Model.Patrol_Log" Width="1.5" PointX="12.75" PointY="26.125" />
-        <EntityTypeShape EntityType="INF370Model.Patrol_Marker" Width="1.5" PointX="15" PointY="30" />
+        <EntityTypeShape EntityType="INF370Model.Patrol_Marker" Width="1.5" PointX="15.5" PointY="32.375" />
         <EntityTypeShape EntityType="INF370Model.Product_Reward" Width="1.5" PointX="8.25" PointY="20.25" />
         <EntityTypeShape EntityType="INF370Model.Product_Type" Width="1.5" PointX="6" PointY="20.625" />
         <EntityTypeShape EntityType="INF370Model.Ranger" Width="1.5" PointX="5.25" PointY="24" />
@@ -46,7 +46,7 @@
         <EntityTypeShape EntityType="INF370Model.Security_Company" Width="1.5" PointX="10.5" PointY="40.375" />
         <EntityTypeShape EntityType="INF370Model.Setting" Width="1.5" PointX="7.5" PointY="41.75" />
         <EntityTypeShape EntityType="INF370Model.Supplier" Width="1.5" PointX="0.75" PointY="2.375" />
-        <EntityTypeShape EntityType="INF370Model.Tracking" Width="1.5" PointX="15" PointY="40.5" />
+        <EntityTypeShape EntityType="INF370Model.Tracking" Width="1.5" PointX="17.375" PointY="30.375" />
         <EntityTypeShape EntityType="INF370Model.User_Role" Width="1.5" PointX="3" PointY="32.75" />
         <EntityTypeShape EntityType="INF370Model.Vehicle" Width="1.5" PointX="5.25" PointY="11.625" />
         <EntityTypeShape EntityType="INF370Model.Vehicle_Type" Width="1.5" PointX="3" PointY="10.75" />
