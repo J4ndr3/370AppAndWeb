@@ -24,7 +24,7 @@ export class SecurityComponent implements OnInit {
       Name: [],
       Email: [],
       Cell: [],
-      Reserve: []});
+      Reserve: ["Reserve..."]});
     this.data.GetReserves().subscribe(res=>{
       this.ReserveOptions = JSON.parse(JSON.stringify(res));
     })

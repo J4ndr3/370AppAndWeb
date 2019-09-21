@@ -22,8 +22,7 @@
     </div>
 </div>
 <br>
-<br>
-<br>
+
 
 <!--Moenie die button verander nie-->
 <div class="inner collapse" id="demo">
@@ -45,33 +44,29 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Discription" placeholder="Marker Description..." name="Level" required>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                                <option hidden value="Reserve..."  selected>Reserve...</option>
+                                <option hidden [value]=""  selected>Reserve...</option>
                                 <option *ngFor="let opt of ReserveOptions" [(value)]="opt.ID">{{opt.Name}}</option>
                               </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
-                          <<option hidden value="Marker Type..."  selected>Marker Type...</option>
+                          <option hidden [value]=""  selected>Marker Type...</option>
                           <option *ngFor="let opt of MarkerTypeOptions" [(value)]="opt.Marker_Type_ID">{{opt.Type}}</option>
                         </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Status" id="Select1" onchange="selectColor()" required>
-                              <option selected disabled hidden value="Gender...">Status...</option>
+                              <option selected  hidden [value]="">Status...</option>
                               <option>Active</option>
                               <option>Inactive</option>
                             </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" maxlength="10" required>
                 </div>
-                <br>
+    
                 <div class="col-sm-10">
                     <input type="text" class="form-control" formControlName="Longitude" id="Level" placeholder="Longitude..." name="Level" maxlength="9" required>
                 </div>

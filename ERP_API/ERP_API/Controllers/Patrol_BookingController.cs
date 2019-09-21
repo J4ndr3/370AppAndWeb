@@ -37,6 +37,7 @@ namespace ERP_API.Controllers
                     m.Name = db.Rangers.Where(zz=>zz.Ranger_ID == Item.Ranger_ID).Select(zz=>zz.Name).FirstOrDefault() + " " + db.Rangers.Where(zz => zz.Ranger_ID == Item.Ranger_ID).Select(zz => zz.Surname).FirstOrDefault();
                     if (Item.Passenger_ID != null) {
                         m.Passenger = db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Name).FirstOrDefault();
+                        m.PassSurname = db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Surname).FirstOrDefault(); ;
                     }
                     else
                     {

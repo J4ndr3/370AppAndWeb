@@ -27,7 +27,7 @@ export class IncidentTypeComponent implements OnInit {
 
     this.AddForm = this.formBuilder.group({
       Description: [""],
-      Level: [""],
+      Level: ["Severity Level..."],
     });
 
     this.data.GetIncident_Levels().subscribe((res) => {
