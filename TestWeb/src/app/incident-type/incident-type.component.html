@@ -39,8 +39,8 @@
                 <br>
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select class="form-control" [(value)]="TypeSelection" id="Select1" onchange="selectColor()" formControlName="Level" required>
-                <option selected disabled hidden value="Gender...">Severity Level...</option>
+                        <select class="form-control"  id="Select1" onchange="selectColor()" formControlName="Level" required>
+                <option hidden disabled selected [value]="">Severity Level...</option>
                 <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
               </select>
                     </div>

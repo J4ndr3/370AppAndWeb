@@ -29,6 +29,7 @@
                 <th>Route</th>
                 <th>Markers passed</th>
                 <th>Points scored</th>
+                <!-- <th>Information</th> -->
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,7 @@
                 <td innerHTML="{{patrol.time| highlight :searchText}}"></td>
                 <td innerHTML="{{patrol.Feedback| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
+                <td> <button class="btn btn-default" style="border:none" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
                 <td innerHTML="{{patrol.MarkerPast| highlight :searchText}}"></td>
                 <td innerHTML="{{patrol.Points| highlight :searchText}}"></td>
             </tr>

@@ -75,6 +75,7 @@ import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
+import { AuditComponent } from './audit/audit.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HighlightSearchPipe } from './highlight-search-.pipe';
 
@@ -104,9 +105,6 @@ import { HighlightSearchPipe } from './highlight-search-.pipe';
     StatusReportComponent,
     RangersReportComponent,
     MarkersReportComponent,
-    
-    
-  
     LoginComponent,
     UserroleComponent,
     UserroleModifyComponent,
@@ -141,6 +139,7 @@ import { HighlightSearchPipe } from './highlight-search-.pipe';
     DownloadStatusComponent,
     DownloadIncedentComponent,
     LoadingScreenComponent,
+    AuditComponent,
     SettingsComponent,
     HighlightSearchPipe,
    
@@ -166,7 +165,8 @@ import { HighlightSearchPipe } from './highlight-search-.pipe';
     NgbModule,
     FullCalendarModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

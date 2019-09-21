@@ -56,6 +56,7 @@ import { DownloadRewardsComponent } from './download-rewards/download-rewards.co
 import { DownloadStatusComponent } from './download-status/download-status.component';
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { AuditComponent } from './audit/audit.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -113,7 +114,8 @@ const routes: Routes = [
   {path: 'download-rewards', component: DownloadRewardsComponent},
   {path: 'download-status', component: DownloadStatusComponent},
   {path: 'download-incedent', component: DownloadIncedentComponent},
-  {path: 'load', component: LoadingScreenComponent}
+  {path: 'load', component: LoadingScreenComponent},
+  {path: 'audit', component: AuditComponent}
 ];
 
 @NgModule({
