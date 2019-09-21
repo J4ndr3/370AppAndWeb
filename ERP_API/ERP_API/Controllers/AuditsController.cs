@@ -25,12 +25,16 @@ namespace ERP_API.Controllers
             try
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                List<Audit> Level = db.Audits.ToList();
+                List<Audit> Level = db.Audits.Include(zz=>zz.Ranger).ToList();
                 foreach (Audit Item in Level)
                 {
                     dynamic m = new ExpandoObject();
                     m.Audit_ID = Item.Audit_ID;
-                  
+                    m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
+                    m.Date = Item.dateTime;
+                    m.Critical = Item.Critical_data;
+                    m.Type = Item.Transaction_Type;
+                    toReturn.Add(m);
                 }
                 return toReturn;
             }
@@ -45,6 +49,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Audit))]
         public IHttpActionResult GetAudit(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Audit audit = db.Audits.Find(id);
             if (audit == null)
             {
@@ -58,6 +63,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAudit(int id, Audit audit)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -93,6 +99,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Audit))]
         public IHttpActionResult PostAudit(Audit audit)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -108,6 +115,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Audit))]
         public IHttpActionResult DeleteAudit(int id)
         {
+            db.Configuration.ProxyCreationEnabled = false;
             Audit audit = db.Audits.Find(id);
             if (audit == null)
             {
