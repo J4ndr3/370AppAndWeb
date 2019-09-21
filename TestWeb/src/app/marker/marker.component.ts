@@ -28,9 +28,9 @@ export class MarkerComponent implements OnInit {
   ngOnInit() {
     this.AddForm = this.formBuilder.group({
       Discription: [],
-      Reserve: [],
-      Type: [],
-      Status: [],
+      Reserve: ["Reserve..."],
+      Type: ["Marker Type..."],
+      Status: ["Status..."],
       Lattitude: [],
       Longitude: []
     });

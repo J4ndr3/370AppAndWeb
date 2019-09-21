@@ -22,8 +22,7 @@
     </div>
 </div>
 <br>
-<br>
-<br>
+
 
 <!--Moenie die button verander nie-->
 <div class="inner collapse" id="demo">
@@ -45,33 +44,29 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Discription" placeholder="Marker Description..." name="Level" required>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select formControlName="Reserve" [(value)]="ReserveSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                                <option hidden value="Reserve..."  selected>Reserve...</option>
+                                <option hidden [value]=""  selected>Reserve...</option>
                                 <option *ngFor="let opt of ReserveOptions" [(value)]="opt.ID">{{opt.Name}}</option>
                               </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
-                          <<option hidden value="Marker Type..."  selected>Marker Type...</option>
+                          <option hidden [value]=""  selected>Marker Type...</option>
                           <option *ngFor="let opt of MarkerTypeOptions" [(value)]="opt.Marker_Type_ID">{{opt.Type}}</option>
                         </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Status" id="Select1" onchange="selectColor()" required>
-                              <option selected disabled hidden value="Gender...">Status...</option>
+                              <option selected  hidden [value]="">Status...</option>
                               <option>Active</option>
                               <option>Inactive</option>
                             </select>
                 </div>
-                <br>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="Level" formControlName="Lattitude" placeholder="Latitude ..." name="Level" maxlength="10" required>
                 </div>
-                <br>
+    
                 <div class="col-sm-10">
                     <input type="text" class="form-control" formControlName="Longitude" id="Level" placeholder="Longitude..." name="Level" maxlength="9" required>
                 </div>
@@ -107,13 +102,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let Marker of Markers |filter:searchtext">
-                <td style="text-align: left;">{{Marker.Description}}</td>
-                <td style="text-align: left;">{{Marker.Reserve}}</td>
-                <td style="text-align: left;">{{Marker.Type}}</td>
-                <td style="text-align: left;">{{Marker.Date}}</td>
-                <td style="text-align: left;">{{Marker.Status}}</td>
-                <td style="text-align: left;">{{Marker.Lat}}</td>
-                <td style="text-align: left;">{{Marker.Long}}</td>
+                <td style="text-align: left;" innerHTML="{{Marker.Description| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Reserve| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Type| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Date| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Status| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Lat| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Long| highlight :searchtext}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Marker.Num)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Marker.Num)"><img

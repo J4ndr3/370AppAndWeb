@@ -94,11 +94,11 @@
         <tbody>
             <tr *ngFor="let Order of Orders |filter:searchText">
 
-                <td>{{Order.Date}}</td>
-                <td>{{Order.Asset}}</td>
-                <td>{{Order.Type}}</td>
-                <td>{{Order.Status}}</td>
-                <td>{{Order.Supplier}}</td>
+                <td innerHTML="{{Order.Date | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Asset| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Type | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Status| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Supplier | highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Order.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Order.ID)" id="editbtn"><img

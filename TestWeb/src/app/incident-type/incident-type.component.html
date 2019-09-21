@@ -32,15 +32,15 @@
     <!--As ander tipe input gebruik word, maak seker hulle volg dieselfde formaat as die ander inputs(donker agtergrond, blou placeholder, wit skrif wat ingetik word (code in die style.scss file)-->
     <div class="inputForm">
         <br>
-        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addType()" >
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addType()">
 
             <div class="form-group">
                 <h2 class="Header">Add Incident Type</h2>
                 <br>
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select class="form-control" [(value)]="TypeSelection" id="Select1" onchange="selectColor()" formControlName="Level" required>
-                <option selected disabled hidden value="Gender...">Severity Level...</option>
+                        <select class="form-control"  id="Select1" onchange="selectColor()" formControlName="Level" required>
+                <option hidden disabled selected [value]="">Severity Level...</option>
                 <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
               </select>
                     </div>
@@ -50,7 +50,7 @@
                     <input type="text" formControlName="Description" class="form-control" id="desc" placeholder="Type Desciption..." maxlength="20" name="desc" required>
                 </div>
             </div>
-          
+
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
@@ -76,10 +76,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let Item of Type |filter:searchText">
-                <td>{{Item.Description}}</td>
-                <td>{{Item.Level}}</td>
+                <td innerHTML="{{Item.Description| highlight :searchText}}"></td>
+                <td innerHTML="{{Item.Level| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.ID)" ><img src="/assets/ios-create.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Item.ID)"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>

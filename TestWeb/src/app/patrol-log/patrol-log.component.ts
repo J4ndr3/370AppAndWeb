@@ -22,6 +22,8 @@ export class PatrolLogComponent implements OnInit {
   positionSubscription: Subscription;
   newLoc : object;
 
+
+
   @ViewChild('map',{static: false}) mapElement: any;
   map: google.maps.Map;
   myMap:google.maps.event;
@@ -42,6 +44,7 @@ export class PatrolLogComponent implements OnInit {
     this.previousTracks = [];
     this.data.GetPatrol_log().subscribe(res=>{
       this.Patrol = res;
+    
       //console.log(res);
     })
   }
@@ -67,7 +70,7 @@ export class PatrolLogComponent implements OnInit {
  })
 }
 
-  
+
   // showHistoryRoute(route1) {
   //   //var r;
   //   var self = this;

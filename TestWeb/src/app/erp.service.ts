@@ -13,50 +13,65 @@ export class ERPService {
   nID: any;
   constructor(private http: HttpClient, private nav: NavComponent) { }
   GetRanger() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Rangers retrieved");
     return this.http.get('http://localhost:51389/api/Rangers')
   }
   GetRangers(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Rangers "+id+" retrieved");
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/rangers/'+id)
   }
   GetPerformance() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved patrol markers for Performance report");
     return this.http.get('http://localhost:51389/api/Patrol_Marker')
   }
   GetIncedent_Patrole() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved patrol incidents for Incident report")
     return this.http.get('http://localhost:51389/api/Incident_Patrol/GetIncident_Patrol1')
   }
   GetMarker() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Markers")
     return this.http.get('http://localhost:51389/api/Markers')
   }
   GetRangerVehicle() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Ranger Vehicles")
     return this.http.get('http://localhost:51389/api/Ranger_Vehicle')
   }
   GetAssets() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Assets")
     return this.http.get('http://localhost:51389/api/Assets')
   }
   PostRanger(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Added a new Ranger: "+obj.Name +" "+obj.Surname)
     return this.http.post('http://localhost:51389/api/rangers/', obj)
   }
   DeleteRaner(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Removed ranger with ID: "+id)
     return this.http.delete('https://2019group4inf370.azurewebsites.net/api/Rangers/' + id)
   }
   PutRanger(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Changed Ranger details for: "+obj.Name +" "+obj.Surname)
     return this.http.put('http://localhost:51389/api/Rangers/' + id, obj)
   }
 
   GetUserRole() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved User roles")
     return this.http.get('http://localhost:51389/api/User_Role')
   }
   PostUserRole(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Added a new user role with name: " +obj.Description)
     return this.http.post('http://localhost:51389/api/User_Role', obj)
   }
   DeleteUserRole(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Removed User role with ID: "+id)
     return this.http.delete('http://localhost:51389/api/User_Role/' + id)
   }
   PutUserRole(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Changed User role details for: "+obj.Description )
     return this.http.put('http://localhost:51389/api/User_Role/' + id, obj)
   }
 
   GetGender() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Gender")
     return this.http.get('http://localhost:51389/api/Genders')
   }
   PostGender(obj) {
@@ -70,19 +85,24 @@ export class ERPService {
   }
 
   GetStatus() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Asset Status")
     return this.http.get('http://localhost:51389/api/Asset_Status')
   }
   PostStatus(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Created a new Asset Status")
     return this.http.post('http://localhost:51389/api/Asset_Status', obj)
   }
   DeleteStatus(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Remove Asset Status with ID: "+id)
     return this.http.delete('http://localhost:51389/api/Asset_Status/' + id)
   }
   PutStatus(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Updated Asset Status with ID: "+id)
     return this.http.put('http://localhost:51389/api/Asset_Status/' + id, obj)
   }
 
   GetMedicalAid() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Medical aids")
     return this.http.get('http://localhost:51389/api/Medical_Aid')
   }
   PostMedicalAid(obj) {
@@ -96,6 +116,7 @@ export class ERPService {
   }
 
   GetOrganisation() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Organisations")
     return this.http.get('http://localhost:51389/api/Organisations')
   }
   PostOrganisation(obj) {
@@ -108,42 +129,56 @@ export class ERPService {
     return this.http.put('http://localhost:51389/api/Organisations/' + id, obj)
   }
   GetIncident_Levels() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incident Levels")
     return this.http.get('http://localhost:51389/api/Incident_Level')
   }
   DeleteIncident_Level(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Removed Incident Level")
     return this.http.delete('http://localhost:51389/api/Incident_Level/' + id)
   }
   PostIncident_Level(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Create new Incident Level with name: "+obj.Description)
     return this.http.post('http://localhost:51389/api/Incident_Level', obj)
   }
   GetIncident_Level(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incicent Level with ID: "+id)
     return this.http.get('http://localhost:51389/api/Incident_Level/'+id)
   }
   PutIncident_Level(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Updated Incident Level with ID: "+id +" with description: "+obj.Description)
     return this.http.put('http://localhost:51389/api/Incident_Level/' + id, obj)
   }
   GetIncident_Types() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incident Type")
     return this.http.get('http://localhost:51389/api/Incident_Type')
   }
   DeleteIncident_Type(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Retrieved Incident Type with ID: "+id)
     return this.http.delete('http://localhost:51389/api/Incident_Type/' + id)
   }
   PostIncident_Type(obj){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Created new Incident Type")
     return this.http.post('http://localhost:51389/api/Incident_Type', obj)
   }
   GetIncident_Type(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incident Type by ID: "+id)
     return this.http.get('http://localhost:51389/api/Incident_Type/'+id)
   }
   PutIncident_Type(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Update Incident Type with ID: " +id)
     return this.http.put('http://localhost:51389/api/Incident_Type/' + id, obj)
   }
   GetIncidents(){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved All Incidents")
     return this.http.get('http://localhost:51389/api/Incident_Patrol')
   }
+
   GetIncident(id){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Incident with ID: "+id)
     return this.http.get('http://localhost:51389/api/Incidents/'+id)
   }
   PutIncident(id, obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Update Incident with ID: "+id )
     return this.http.put('http://localhost:51389/api/Incidents/' + id, obj)
   }
 
@@ -177,57 +212,75 @@ export class ERPService {
     });
   }
   GetRewardAdd() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Product rewards")
     return this.http.get('http://localhost:51389/api/Product_Reward')
   }
   PutRewardAdd(ID,obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Update Product Rewards with ID: "+ID)
     return this.http.put('http://localhost:51389/api/Product_Reward/'+ID,obj)
   }
   PutEventRewardAdd(ID,obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Update Event Rewards with ID: "+ID)
     return this.http.put('http://localhost:51389/api/Event_Reward/'+ID,obj)
   }
   GetRewardAdds(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Product reward with ID: "+id)
     return this.http.get('http://localhost:51389/api/Product_Reward/'+id)
   }
   GetEventRewardAdds(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Event reward with ID: "+id)
     return this.http.get('http://localhost:51389/api/Event_Reward/'+id)
   }
   DeleteRewardAdd(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Delete Product reward with ID: "+id)
     return this.http.delete('http://localhost:51389/api/Product_Reward/' + id)
   }
   DeleteEventRewardAdd(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Delete Event reward with ID: "+id)
     return this.http.delete('http://localhost:51389/api/Event_Reward/' + id)
   }
   GetEventRewardAdd(){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Event Rewards")
     return this.http.get('http://localhost:51389/api/Event_Reward')
   }
   PostRewardAdd(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Create new Product Reward")
     return this.http.post('http://localhost:51389/api/Product_Reward', obj)
   }
   PostEventRewardAdd(obj){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Create new Event Rewards")
     return this.http.post('http://localhost:51389/api/Event_Reward', obj)
   }
   GetEventType() {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Event Types")
     return this.http.get('http://localhost:51389/api/Event_Type')
   }
   PostEventType(obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Create new Event Type")
     return this.http.post('http://localhost:51389/api/Event_Type', obj)
   }
   PutEventType(ID,obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Updated Event Type")
     return this.http.put('http://localhost:51389/api/Event_Type/'+ID,obj)
   }
   GetEventTypes(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Event Type by ID: "+id)
     return this.http.get('http://localhost:51389/api/Event_Type/'+id)
   }
   GetProductType(){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Read", "Retrieved Product Types")
     return this.http.get('http://localhost:51389/api/Product_Type')
   }
   DeleteEventType(id) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Delete", "Delete Event Type by ID: "+id)
     return this.http.delete('http://localhost:51389/api/Event_Type/' + id)
   }
   PostProductType(obj){
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "Create new Product type")
     return this.http.post('http://localhost:51389/api/Product_Type', obj)
   }
   PutProductType(ID,obj) {
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Update", "Update product type with ID: " )
     return this.http.put('http://localhost:51389/api/Product_Type/'+ID,obj)
   }
   GetProductTypes(id) {
@@ -470,17 +523,38 @@ GetStatusDropdown() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Trackings')
   }
   PostAsset_Supplier(obj) {
-    this.WriteAudit(sessionStorage.getItem("Ranger"), Date.now(), "Create", "New Supplier added with name "+obj.Name)
+    this.WriteAudit(sessionStorage.getItem("Ranger"), "Create", "New Supplier added with name "+obj.Name)
     return this.http.post('http://localhost:51389/api/Assets/AS', obj)
   }
-  WriteAudit(Ranger, dateTime, Type, Description){
+  WriteAudit(Ranger, Type, Description){
     var AD={
       Ranger_ID: Ranger,
-      daterTime:dateTime,
+      dateTime:new Date(),
       Transaction_Type: Type,
-      Description:Description
-
+      Critical_data:Description
     }
-    return this.http.post('http://localhost:51389/api/Audit', AD)
+    console.log(AD)
+    return this.http.post('http://localhost:51389/api/Audits', AD).subscribe(res=>
+    {
+      console.log(res)
+    })
+  }
+  readAudit(){
+    return this.http.get('http://localhost:51389/api/Audits')
+  }
+  downloadReport()
+{
+  return this.http.get("http://localhost:51389/api/Login/Export",{responseType:'blob'});
+}
+  //   return this.http.post('http://localhost:51389/api/Audit', AD)
+  // }
+  GetTimer(id){
+    return this.http.get('http://localhost:51389/api/Settings/'+id)
+  }
+  PutTimer(ID, obj) {
+    return this.http.put('http://localhost:51389/api/Settings/' + ID, obj)
+  }
+  GetTimers(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Settings')
   }
 }
