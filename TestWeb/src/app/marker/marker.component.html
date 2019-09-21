@@ -107,13 +107,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let Marker of Markers |filter:searchtext">
-                <td style="text-align: left;">{{Marker.Description}}</td>
-                <td style="text-align: left;">{{Marker.Reserve}}</td>
-                <td style="text-align: left;">{{Marker.Type}}</td>
-                <td style="text-align: left;">{{Marker.Date}}</td>
-                <td style="text-align: left;">{{Marker.Status}}</td>
-                <td style="text-align: left;">{{Marker.Lat}}</td>
-                <td style="text-align: left;">{{Marker.Long}}</td>
+                <td style="text-align: left;" innerHTML="{{Marker.Description| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Reserve| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Type| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Date| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Status| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Lat| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Marker.Long| highlight :searchtext}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Marker.Num)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Marker.Num)"><img

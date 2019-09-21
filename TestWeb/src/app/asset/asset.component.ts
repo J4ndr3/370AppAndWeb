@@ -29,6 +29,7 @@ TypeOptions:Array<object>;
 nAsset: object;
 searchText;
 AS:object;
+AssetID:object;
  
 
 qrcodename : string;
@@ -52,7 +53,10 @@ qrcodename : string;
       this.display = true;
 
       this.data.GetAssets().subscribe(res=>{
+      
         this.Assets = res;
+        this.AssetID = res["ID"];
+      console.log( res)
 
       });
       this.data.GetTypes().subscribe(res=>{
@@ -75,9 +79,10 @@ qrcodename : string;
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
   }
-  generateQRCode(){
-    
-      
+  generateQRCode(ID){
+console.log(ID)
+   
+    document.getElementById('chrt2').innerHTML = '<p style="color: black">Asset ID: '+ID+'</p>';
       var data = document.getElementById('contentToConvert');
       html2canvas(data).then(canvas => {
       //Few necessary setting options
@@ -96,9 +101,10 @@ qrcodename : string;
       pdf.setPage(1);
       
       pdf.save('QR.pdf'); // Generated PDF
-      
+      document.getElementById('chrt2').innerHTML="";
       });
     }
+  
     addAsset(){
       var Description = this.AddForm.get('Description').value;
       var Supplier = this.AddForm.get('Supplier').value;

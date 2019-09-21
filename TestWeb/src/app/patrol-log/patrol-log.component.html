@@ -33,16 +33,16 @@
         </thead>
         <tbody>
             <tr *ngFor="let patrol of Patrol | filter:searchText">
-                <td>{{patrol.Name}} {{patrol.Surname}}</td>
-                <td>{{patrol.Date}}</td>
-                <td>{{patrol.Checkin}}</td>
-                <td>{{patrol.Checkout}}</td>
-                <td>{{patrol.time}}</td>
-                <td>{{patrol.Feedback}}</td>
+                <td innerHTML="{{patrol.Name| highlight :searchText}} {{patrol.Surname| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Date| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Checkin| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Checkout| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.time| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Feedback| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
-                <td>{{patrol.MarkerPast}}</td>
-                <td>{{patrol.Points}}</td>
+                <td innerHTML="{{patrol.MarkerPast| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Points| highlight :searchText}}"></td>
             </tr>
         </tbody>
     </table>

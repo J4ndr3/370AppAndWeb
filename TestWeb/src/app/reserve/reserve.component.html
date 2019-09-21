@@ -78,10 +78,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let Reserve of Reserves | filter:Search">
-                <td style="text-align: left;">{{Reserve.Name}}</td>
-                <td style="text-align: left;">{{Reserve.Description}}</td>
-                <td style="text-align: left;">{{Reserve.Lat}}</td>
-                <td style="text-align: left;">{{Reserve.Lng}}</td>
+                <td style="text-align: left;" innerHTML="{{Reserve.Name| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Reserve.Description| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Reserve.Lat| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Reserve.Lng| highlight :Search}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Reserve.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Reserve.ID)"><img

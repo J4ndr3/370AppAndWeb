@@ -89,11 +89,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let Gate of Gates |filter:searchtext">
-                <td style="text-align: left;">{{Gate.Name}}</td>
-                <td style="text-align: left;">{{Gate.Descriprion}}</td>
-                <td style="text-align: left;">{{Gate.Lattitude}}</td>
-                <td style="text-align: left;">{{Gate.Longitude}}</td>
-                <td style="text-align: left;">{{Gate.Reserve}}</td>
+                <td style="text-align: left;" innerHTML="{{Gate.Name| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Gate.Descriprion| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Gate.Lattitude| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Gate.Longitude| highlight :searchtext}}"></td>
+                <td style="text-align: left;" innerHTML="{{Gate.Reserve| highlight :searchtext}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Gate.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Gate.ID)" id="editbtn"><img
