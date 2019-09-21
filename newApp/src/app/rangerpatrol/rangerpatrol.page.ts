@@ -11,6 +11,7 @@ import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Geofence } from '@ionic-native/geofence/ngx';
+import { timer } from 'rxjs';
 
 @Component({
     selector: 'app-rangerpatrol',
@@ -22,6 +23,7 @@ export class RangerpatrolPage implements OnInit {
     items;
     RangerpatrolPage: Array<object>;
     hideEverything = false;
+    keepgoing = false;
     AddForm: FormGroup;
     NewRangerpatrolPage: object;
     newFeedback:object;
@@ -39,6 +41,7 @@ export class RangerpatrolPage implements OnInit {
     loggedIn: any;
     myroute = [];
     positionSubscription: Subscription;
+    starttime: any;
     @ViewChild('patrolform') containerEltRef: ElementRef;
     constructor(private geofence: Geofence, private navcnt: NavController, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
         geofence.initialize().then(
@@ -50,6 +53,7 @@ export class RangerpatrolPage implements OnInit {
     currentTab = 0;
     previousTracks: Array<object>;
     ngOnInit() {
+    
         this.items = [];
         this.AddForm = this.formBuilder.group({
             BookingReference: [], // your attributes
@@ -133,6 +137,7 @@ export class RangerpatrolPage implements OnInit {
             });
         });
 
+       
 
     }
 
@@ -156,6 +161,7 @@ export class RangerpatrolPage implements OnInit {
 
         if (n == 3) {
             this.stopTracking();
+            this.keepgoing = false;
             document.getElementById("nextBtn").style.display = "None";
             document.getElementById("prevBtn").style.display = "None";
             // var MarkPass ={
@@ -204,6 +210,8 @@ export class RangerpatrolPage implements OnInit {
             this.scanMore();
         }
         if (n == 2) {
+            this.keepgoing =true;
+            
             this.hideEverything = false;
             this.startTracking()
             document.getElementById("prevBtn").style.display = "none";
@@ -313,7 +321,18 @@ export class RangerpatrolPage implements OnInit {
             });
         }
     }
+    
     startTracking() {
+        if(this.keepgoing == true)
+        {
+            this.starttime = 30000;
+        }
+        else 
+        {
+             this.starttime = 1000000000000000000000000000000;
+        }
+        const source = timer(0, this.starttime);
+       
         this.isTracking = true;
         this.trackedRoute = [];
         var self = this;
@@ -336,7 +355,17 @@ export class RangerpatrolPage implements OnInit {
             self.trackedRoute.push(locationJ);
             self.redrawPath(self.trackedRoute);
         }
-
+        const subscribe = source.subscribe(val => {
+            alert("Hallo");
+            self.geolocation.getCurrentPosition().then(pos => {
+                var m = { Longitude: pos.coords.latitude, Lattitude: pos.coords.longitude, Patrol_Log_ID: this.patrolID }
+                //let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                this.data.PostRoute(m).subscribe();
+            }).catch((error) => {
+                alert('Error getting location ' + error);
+            });
+            
+        })
         // onError Callback receives a PositionError object
         //
         function onError(error) {

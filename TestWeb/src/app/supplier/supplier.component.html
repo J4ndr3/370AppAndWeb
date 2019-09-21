@@ -82,10 +82,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let Supplier of Suppliers |filter: searchText">
-                <td>{{Supplier.Name}}</td>
-                <td>{{Supplier.Contact}}</td>
-                <td>{{Supplier.Email}}</td>
-                <td>{{Supplier.Address}}</td>
+                <td innerHTML="{{Supplier.Name | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Contact | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Email | highlight :searchText}}"></td>
+                <td innerHTML="{{Supplier.Address | highlight :searchText}}"></td>
 
 
 

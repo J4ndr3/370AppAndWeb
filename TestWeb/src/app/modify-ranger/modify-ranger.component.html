@@ -66,7 +66,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select placeholder="Select Organisation..." formControlName="Organizationtitle" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
-                    <option selected disabled hidden value="Organisation...">Organisation...</option>
+                    <option disabled  [value]="" style="color:white">Organisation...</option>
                 <option *ngFor="let org of OrganisationOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
                 </select>
             </div>
@@ -75,7 +75,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select placeholder="Select Medical Aid..." formControlName="MedicalAid" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
-                    <option selected disabled hidden value="Medical Aid...">Medical Aid...</option>
+                    <option disabled  [value]="" style="color:white">Medical Aid...</option>
                 <option *ngFor="let org of MedicalOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
                 </select>
             </div>
@@ -85,7 +85,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select placeholder="Select Gender..." formControlName="selectgender" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
-                    <option selected disabled hidden value="Gender...">Gender...</option>
+                    <option disabled  [value]="" style="color:white">Gender...</option>
                     <option *ngFor="let gen of GenderOptions" [(value)]="gen.ID">{{gen.Descriprion}}</option>
                 </select>
             </div>
@@ -94,7 +94,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select formControlName="UserRole" class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="User role...">User role...</option>
+                    <option disabled  [value]="" style="color:white">User role...</option>
                         <option *ngFor="let opt of UserRoleOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                       </select>
             </div>
@@ -103,7 +103,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select class="form-control" formControlName="Status" id="Select2" onchange="selectColor1()" required>
-                    <option selected disabled hidden value="Status...">Status...</option>
+                    <option disabled  [value]="" style="color:white">Status...</option>
                     <option>Active</option>
                     <option>Inactive</option>
                     </select>
@@ -113,7 +113,7 @@
         <div class="form-group">
             <div class="col-sm-10">
                 <select class="form-control" formControlName="selectbloodtype" id="Select1" onchange="selectColor()" required>
-          <option selected disabled hidden value="Bloodtype...">Bloodtype...</option>
+          <option disabled  [value]="" style="color:white">Bloodtype...</option>
           <option>A+</option>
           <option>B+</option>
           <option>AB+</option>

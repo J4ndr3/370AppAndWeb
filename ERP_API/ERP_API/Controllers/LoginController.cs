@@ -8,6 +8,13 @@ using ERP_API.Models;
 using System.Web.Http.Cors;
 using System.Dynamic;
 using System.Net.Mail;
+using System.IO;
+using OfficeOpenXml;
+using System.Linq;
+using System.Data.Entity;
+using System.Net.Http.Headers;
+using System.Data;
+using Newtonsoft.Json;
 
 namespace ERP_API.Controllers
 {
@@ -209,7 +216,63 @@ namespace ERP_API.Controllers
                 db.SaveChanges();
             
         }
+        
+        [System.Web.Http.Route("api/Login/Export")]
+        [HttpGet]
+        public HttpResponseMessage Export()
+        {
+            List<dynamic> toReturn = new List<dynamic>();
+            try
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                List<Audit> Level = db.Audits.Include(zz => zz.Ranger).ToList();
+                foreach (Audit Item in Level)
+                {
+                    dynamic m = new ExpandoObject();
+                    m.Audit_ID = Item.Audit_ID;
+                    m.Ranger = Item.Ranger.Name + " " + Item.Ranger.Surname;
+                    m.Date = Item.dateTime;
+                    m.Critical = Item.Critical_data;
+                    m.Type = Item.Transaction_Type;
+                    toReturn.Add(m);
+                }
+                using (var p = new ExcelPackage())
+                {
 
-    }
+                    var ws = p.Workbook.Worksheets.Add("ERP_Audit_Log");
+                    var json = JsonConvert.SerializeObject(toReturn);
+                    DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
+                    ws.Cells.LoadFromDataTable(dt, true);
+                    var range = "A1:E" + Convert.ToString(toReturn.Count + 1);
+                    ws.Tables.Add(ws.Cells[range], "Audit_log").TableStyle = OfficeOpenXml.Table.TableStyles.None;
+                    ws.Cells[range].AutoFitColumns();
+                    HttpResponseMessage httpResponseMessage = new HttpResponseMessage();
+                    //Stream stream = p.Stream;
+                    
+                    //OR
+                    //Create a file on the fly and get file data as a byte array and send back to client
+                    httpResponseMessage.Content = new ByteArrayContent(p.GetAsByteArray());//Use your byte array
+                    httpResponseMessage.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                    httpResponseMessage.Content.Headers.ContentDisposition.FileName = "Audit.xlsx";//your file Name- text.xls
+                    httpResponseMessage.Content.Headers.ContentType = new MediaTypeHeaderValue("application/ms-excel");
+                    //response.Content.Headers.ContentType  = new MediaTypeHeaderValue("application/octet-stream");
+                   // httpResponseMessage.Content.Headers.ContentLength = p.Stream.Length;
+                    httpResponseMessage.StatusCode = System.Net.HttpStatusCode.OK;
+                    return httpResponseMessage;
+                }
+               
+                
+            }
+            catch(Exception err)
+            {
+                HttpResponseMessage httpResponseMessage = new HttpResponseMessage();
+                return httpResponseMessage;
+            }
+           
+        }
+        
+
+
+        }
 }
 

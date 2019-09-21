@@ -17,7 +17,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Model...</option>
+                        <option disabled  [value]="" style="color:white">Model...</option>
                         <option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}
                         </option>
                     </select>
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Type...</option>
+                        <option disabled  [value]="" style="color:white">Type...</option>
                         <option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">
                             {{item.Type_Description}}</option>
                     </select>
@@ -37,7 +37,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Colour...</option>
+                        <option disabled  [value]="" style="color:white">Colour...</option>
                         <option>Red</option>
                         <option>White</option>
                         <option>Black</option>
@@ -60,7 +60,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" id="Select1" formControlName="Status" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Status...</option>
+                        <option disabled  [value]="" style="color:white">Status...</option>
                         <option  value="true">Active</option>
                         <option  value="false">Inactive</option>
                         </select>

@@ -35,33 +35,35 @@
             <div class="form-group">
                 <h2 class="Header">Add Order</h2>
                 <br>
-                <br>
+                <div class="col-sm-10">
                 <input type="date" class="form-control" id="Level" placeholder="Date..." name="Level" formControlName="Date" required>
-                <br>
+                </div>
+
+                <div class="col-sm-10">
                 <select formControlName="Asset" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Asset...">Asset...</option>
+                        <option selected disabled hidden [value]="">Asset...</option>
                         <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                     </select>
-                <br>
+                </div>
+                <div class="col-sm-10">
                 <select formControlName="Type" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Type...">Type...</option>
+                        <option selected disabled hidden [value]="">Type...</option>
                         <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                     </select>
-                <br>
-                <select formControlName="Status" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Status...">Status...</option>
+                </div>
+                <div class="col-sm-10">
+                <select formControlName="Status"  class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected hidden [value]="">Status...</option>
                     <option >True</option>
                     <option >False</option>
                 </select>
-                <br>
+                </div>
+                <div class="col-sm-10">
                 <select formControlName="Supplier" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Supplier...">Supplier...</option>
+                        <option selected disabled hidden [value]="">Supplier...</option>
                         <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
                     </select>
-
-
-
-
+                </div>
             </div>
 
             <!--Moenie die save button verander nie-->
@@ -94,11 +96,11 @@
         <tbody>
             <tr *ngFor="let Order of Orders |filter:searchText">
 
-                <td>{{Order.Date}}</td>
-                <td>{{Order.Asset}}</td>
-                <td>{{Order.Type}}</td>
-                <td>{{Order.Status}}</td>
-                <td>{{Order.Supplier}}</td>
+                <td innerHTML="{{Order.Date | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Asset| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Type | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Status| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Supplier | highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Order.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Order.ID)" id="editbtn"><img

@@ -41,10 +41,10 @@ export class OrderComponent implements OnInit {
     this.AddForm = this.formBuilder.group({
       ID: [],
       Date: [],
-      Supplier: [],
-      Status: [],
-      Type: [],
-      Asset: [],
+      Supplier: ["Supplier..."],
+      Status: ["Status..."],
+      Type: ["Type..."],
+      Asset: ["Asset..."],
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
