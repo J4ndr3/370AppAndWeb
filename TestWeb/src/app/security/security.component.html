@@ -81,10 +81,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let Security of Securities | filter:Search ">
-                <td style="text-align: left;">{{Security.Name}}</td>
-                <td style="text-align: left;">{{Security.Reserve}}</td>
-                <td style="text-align: left;">{{Security.Email}}</td>
-                <td style="text-align: left;">{{Security.Cell}}</td>
+                <td style="text-align: left;" innerHTML="{{Security.Name| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Security.Reserve| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Security.Email| highlight :Search}}"></td>
+                <td style="text-align: left;" innerHTML="{{Security.Cell| highlight :Search}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Security.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Security.ID)"><img
