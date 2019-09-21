@@ -202,6 +202,7 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\ER
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Antlr3.Runtime.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\EntityFramework.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\EntityFramework.SqlServer.dll
+C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\EPPlus.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -239,6 +240,7 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Sy
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.WebPages.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.WebPages.Razor.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\WebGrease.dll
+C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\EPPlus.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.Web.xml
@@ -273,6 +275,6 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Mi
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
+C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
-C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
