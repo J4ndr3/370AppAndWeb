@@ -5,6 +5,7 @@ import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ERPService } from '../erp.service';
+import { FcmService } from '../fcm.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { ERPService } from '../erp.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private alertCtrl: AlertController,private storage: Storage, private formBuilder: FormBuilder,private erp:ERPService, private logindata: LoginService, private router: Router) { }
+  constructor(private alertCtrl: AlertController,public fcm: FcmService,private storage: Storage, private formBuilder: FormBuilder,private erp:ERPService, private logindata: LoginService, private router: Router) { }
   loginForm: FormGroup;
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -39,6 +40,7 @@ export class LoginPage implements OnInit {
           this.storage.set('pass', Pass);
           this.storage.set('user', User);
           console.log(data[0])
+          this.fcm.getNot();
           this.router.navigateByUrl('/');
         }
         else {

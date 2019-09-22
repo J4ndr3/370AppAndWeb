@@ -17,6 +17,7 @@ C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\ERP_API.pdb
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Antlr3.Runtime.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\EntityFramework.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\EntityFramework.SqlServer.dll
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\EPPlus.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -54,6 +55,7 @@ C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.WebPa
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.WebPages.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.WebPages.Razor.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\WebGrease.dll
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\EPPlus.xml
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.AI.Web.xml
@@ -88,8 +90,10 @@ C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.S
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
+C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\jandr\Desktop\Git\370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
+<<<<<<< HEAD
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\ApplicationInsights.config
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\roslyn\csc.exe
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -278,3 +282,5 @@ C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\b
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Rijnhardt Groenewald\Desktop\program 370\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
+=======
+>>>>>>> 44b1ea95d516918288c63941fd26c0e55849b978
