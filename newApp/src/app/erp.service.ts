@@ -133,7 +133,7 @@ nID:any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/vehicles/'+ID)
   }
   PutVehicle(ID,obj){
-    return this.http.get('https://2019group4inf370.azurewebsites.net/api/vehicles/'+ID,obj)
+    return this.http.put('http://localhost:51389/api/vehicles/'+ID,obj)
   }
   GetPatrol_Bookings(){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Booking/')
@@ -191,7 +191,7 @@ nID:any;
   GetIncident() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol')
   }
-  GetIncident_Image(ID) {
-    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Image/'+ID)
+  GetIncident_Image() {
+    return this.http.get('http://localhost:51389/api/Incident_Image/')
   }
 }
