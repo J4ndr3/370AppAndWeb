@@ -19,7 +19,7 @@ export class EventConfirmPage implements OnInit {
   confirmID:any;
   RandomNumber;
   RedeemVoucher: object;
-  myDate= new Date().toLocaleDateString();
+  myDate= new Date().toISOString();
   EventPoints:object;
   loggedIn:any;
   Ranger:any;

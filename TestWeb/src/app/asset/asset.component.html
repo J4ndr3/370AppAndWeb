@@ -115,13 +115,13 @@
 
                 <td>
                     <div id="content" #content>
-                        <div id="contentToConvert">
+                        <div [attr.id]="'contentToConvert'+Asset.ID">
                             <div id="QR" align="centre"></div>
 
 
 
                             <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID"></ngx-qrcode>
-                            <div id="chrt2" align="center"></div>
+                            <div [attr.id]="'chrt2'+Asset.ID" align="center"></div>
                         </div>
                     </div>
 

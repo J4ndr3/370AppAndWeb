@@ -221,4 +221,7 @@ nID:any;
   GetIncident_Image() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Image/')
   }
+  GetIncidents(){
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol')
+  }
 }
