@@ -101,14 +101,14 @@
         </thead>
         <tbody>
             <tr *ngFor="let Asset of Assets |filter: searchText">
-                <td>{{Asset.Description}}</td>
-                <td>{{Asset.Supplier}}</td>
-                <td>{{Asset.Type}}</td>
-                <td>{{Asset.Status}}</td>
+                <td innerHTML="{{Asset.Description| highlight :searchText}}"></td>
+                <td innerHTML="{{Asset.Supplier | highlight :searchText}}"></td>
+                <td innerHTML="{{Asset.Type | highlight :searchText}}"></td>
+                <td innerHTML="{{Asset.Status | highlight :searchText}}"></td>
 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
-                    <button (click)="generateQRCode()" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
+                    <button (click)="generateQRCode(Asset.ID)" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
                     class="edit"  /></button>
                     <!-- <a [href]="href" *ngIf="display" (click)="downloadImage()" download> -->
                 </td>
@@ -121,8 +121,10 @@
 
 
                             <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID"></ngx-qrcode>
+                            <div id="chrt2" align="center"></div>
                         </div>
                     </div>
+
                 </td>
 
                 <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn"><img src="/assets/ios-create.svg"

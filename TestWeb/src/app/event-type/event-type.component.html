@@ -67,7 +67,7 @@
         <tbody>
             <tr *ngFor="let EventType of EventTypes|filter: searchText">
                 <td></td>
-                <td style="text-align: left;">{{EventType.Description}}</td>
+                <td style="text-align: left;" innerHTML="{{ EventType.Description | highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(EventType.ID)"><img src="/assets/ios-create.svg"
             class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(EventType.ID)"><img

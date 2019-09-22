@@ -79,7 +79,7 @@ export class EventConfirmPage implements OnInit {
             "Event_Reward_ID":res["Event_Reward_ID"],
             
           }
-          this.RandomNumber = Math.floor(Math.random() * 9999999999999999999);
+          this.RandomNumber = Math.floor(Math.random() * 99999999999999999999);
           console.log(this.RandomNumber);
           
           this.RedeemVoucher = {

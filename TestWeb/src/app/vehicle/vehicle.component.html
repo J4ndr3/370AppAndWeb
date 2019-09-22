@@ -38,7 +38,7 @@
                 <br>
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Make" id="Select1" onchange="selectColor()" (change)="select3()" required>
-                        <option selected disabled hidden value="Gender...">Make...</option>
+                        <option selected disabled hidden  [value]="">Make...</option>
                         <option *ngFor="let item of MakeOptions" [(value)]="item.Make_ID">{{item.Name}}</option>
                     </select>
                 </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Model" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Model...</option>
+                        <option selected disabled hidden  [value]="">Model...</option>
                         <option *ngFor="let item of ModelOptions" [(value)]="item.Model_ID">{{item.Model}} {{item.Year}}
                         </option>
                     </select>
@@ -57,7 +57,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Type...</option>
+                        <option selected disabled hidden  [value]="">Type...</option>
                         <option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">
                             {{item.Type_Description}}</option>
                     </select>
@@ -67,7 +67,7 @@
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Color...</option>
+                        <option selected disabled hidden  value="Colour...">Colour...</option>
                         <option>Red</option>
                         <option>White</option>
                         <option>Black</option>
@@ -119,10 +119,10 @@
         </thead>
         <tbody id="mytable">
             <tr *ngFor="let Item of Vehicle |filter:searchText">
-                <td>{{Item.Make}}</td>
-                <td>{{Item.Model}}</td>
-                <td>{{Item.Colour}}</td>
-                <td>{{Item.Registration}}</td>
+                <td innerHTML="{{ Item.Make | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Model | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Colour | highlight :searchText}}"></td>
+                <td innerHTML="{{ Item.Registration | highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Item.Vehicle_ID)"><img
                             src="/assets/ios-create.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Item.Vehicle_ID)"><img src="/assets/ios-trash.svg"

@@ -41,8 +41,10 @@ namespace ERP_API.Controllers
                     m.CheckedIn = Item.Checked_in;
                     m.Lattitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Lattitude).ToArray().LastOrDefault();
                     m.Longitude = db.Trackings.Where(zz => zz.Patrol_Log_ID == Item.Patrol_Log_ID).Select(zz => zz.Longitude).ToArray().LastOrDefault();
-
-
+                    var pas = db.Patrol_Booking.Where(zz => zz.Patrol_Booking_ID == Item.Patrol_Booking_ID).Select(zz => zz.Passenger_ID).FirstOrDefault();
+                    m.PassID = pas;
+                    m.PassName = db.Rangers.Where(zz => zz.Ranger_ID == pas).Select(zz => zz.Name).FirstOrDefault();
+                    m.PassSurname = db.Rangers.Where(zz => zz.Ranger_ID == pas).Select(zz => zz.Surname).FirstOrDefault();
                     m.time = Math.Round(Item.Checkout.Subtract(Item.Checkin).TotalHours, 2);
                     int markercount = db.Patrol_Marker.Count(ZZ => ZZ.Patrol_Log_ID == Item.Patrol_Log_ID);
                     if (markercount > 0)
