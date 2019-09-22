@@ -110,7 +110,34 @@ nID:any;
       },
     });}
 
-   
+    sendBookingNote(title, message) {
+      var notificationData = {
+        to: '/topics/Admin',
+        "notification": {
+          "body": message,
+          "content_available": true,
+          "priority": "high",
+          "title": title
+        },
+        "data": {
+          "body": message,
+          "content_available": true,
+          "priority": "high",
+          "title": title
+        }
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'https://fcm.googleapis.com/fcm/send',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'key=AAAAqtm61OY:APA91bFuJ-nIBwEtNOviWzhO7lJCyeaIS84Ay2XP9CjY-hHe4O6GR7XVHAL7TVzjd5pLwRZ6wQgwFbKYMKrdIFMthWtpLFMRCjOUyONqXvoTkgxqAqfZ-0dyuet0p2s-DhvujLydLfZT'
+        },
+        data: JSON.stringify(notificationData),
+        success: function(response){
+          console.log(response);
+        },
+      });}
   PutRanger(ID,obj){
     return this.http.put('https://2019group4inf370.azurewebsites.net/api/rangers/'+ID,obj)
   }
@@ -192,6 +219,6 @@ nID:any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol')
   }
   GetIncident_Image() {
-    return this.http.get('http://localhost:51389/api/Incident_Image/')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Image/')
   }
 }

@@ -246,7 +246,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
         this.successToast();
         console.log(res["Patrol_Booking_ID"])
         this.addEvent(res["Patrol_Booking_ID"]);
-        this.data.sendNotif("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
+        this.data.sendBookingNote("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
        // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
       });
     }
