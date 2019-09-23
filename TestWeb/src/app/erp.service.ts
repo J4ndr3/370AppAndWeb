@@ -557,4 +557,7 @@ GetStatusDropdown() {
   GetTimers(){
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Settings')
   }
+  GetPatrol_logP() {
+    return this.http.get('http://localhost:51389/api/Patrol_Log/GetPatrol_LogP')
+  }
 }

@@ -188,7 +188,7 @@ export class IncidentsPage implements OnInit {
     var self = this;
 
     const options: CameraOptions = {
-      quality: 50,
+      quality: 25,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE

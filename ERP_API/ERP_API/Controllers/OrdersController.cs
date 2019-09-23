@@ -121,7 +121,7 @@ namespace ERP_API.Controllers
             db.Order_Line.Add(order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = order.Order_ID }, order);
+            return Ok(1);
         }
         // DELETE: api/Orders/5
         [ResponseType(typeof(Order))]

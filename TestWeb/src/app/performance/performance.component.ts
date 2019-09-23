@@ -3,14 +3,16 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { rgb } from '@amcharts/amcharts4/.internal/core/utils/Colors';
-import * as jsPDF from 'jspdf';
+//import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { dateToLocalArray } from '@fullcalendar/core/datelib/marker';
 import { ERPService } from '../erp.service';
 import { collectExternalReferences } from '@angular/compiler';
 import { RouterLink, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+// import * as jsPDF from 'jspdf';
+// import * as jpt from 'jspdf-autotable';
+declare var jsPDF: any
 am4core.useTheme(am4themes_animated);
 @Component({
   selector: 'app-performance',
@@ -44,11 +46,11 @@ export class PerformanceComponent {
     this.chart.exporting.getImage("png").then((data) => {
       img = data;
       
-      document.getElementById('chrt').innerHTML = '<br><br><br> <p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f> <h1 style="margin:auto">RANGER PERFORMANCE REPORT</h1><br><br> <img src="' + img + '"></div><br><br> <br>';
+      document.getElementById('chrt').innerHTML = '<br><br><br> <p class=f1 style="font-size:30px">'+this.myDate+'</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f> <h1 style="margin:auto">RANGER PERFORMANCE REPORT</h1><br><br> <img src="' + img + '" height="40%" width="100%"></div><br><br> <br>';
       document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
-      var data1 = document.getElementById('contentToConvert');
+      var data1 = document.getElementById('chrt');
       var data2 = document.getElementById('contentToConvert1');
-      html2canvas(data1, data2).then(canvas => {
+      html2canvas(data1).then(canvas => {
         // Few necessary setting options  
         var imgWidth = 208;
         var pageHeight = 295;
@@ -56,12 +58,49 @@ export class PerformanceComponent {
         var heightLeft = imgHeight;
 
         const contentDataURL = canvas.toDataURL('image/png')
-        let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        let doc = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
         var position = 0;
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-        pdf.setFontSize(7);
-          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
-        pdf.save('RANGER PERFORMANCE REPORT.pdf'); // Generated PDF  
+        const header = function(data) {
+          doc.setFontSize(7);
+          doc.setTextColor(200, 0, 255);
+          doc.setFontStyle('normal');
+          doc.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+          //doc.text('Report', data.settings.margin.left + 35, 60);
+        };
+      
+        const totalPagesExp = '{total_pages_count_string}';
+        const footer = function(data) {
+          let str = 'Page ' + data.pageCount;
+          // Total page number plugin only available in jspdf v1.0+
+          if (typeof doc.putTotalPages === 'function') {
+            str = str + ' of ' + totalPagesExp;
+            console.log('test');
+          }
+          doc.setFontSize(7);
+          doc.text(str, 98, doc.internal.pageSize.height - 8);
+        };
+      
+        const options = {
+          beforePageContent: header,
+          afterPageContent: footer,
+          margin: {
+            top: 110
+          },styles: {fillColor: [62, 105, 112]}
+        };
+       
+        var res = doc.autoTableHtmlToJson(document.getElementById("Perf"));
+        doc.autoTable(res.columns, res.data, options);
+        doc.setFontSize(7);
+        let finalY = doc.lastAutoTable.finalY; 
+        doc.text("**END OF REPORT**",98,finalY+10)
+        if (typeof doc.putTotalPages === 'function') {
+          doc.putTotalPages(totalPagesExp);
+        }
+        // doc.save('ASSET REPORT.pdf'); // Generated PDF
+        // pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        // pdf.setFontSize(7);
+        //   pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
+        doc.save('RANGER PERFORMANCE REPORT.pdf'); // Generated PDF  
 
         document.getElementById('chrt').innerHTML="";
         document.getElementById('chrt2').innerHTML="";

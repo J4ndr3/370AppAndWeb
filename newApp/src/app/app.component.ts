@@ -25,7 +25,7 @@ export class AppComponent {
       url: '/rangerprofile',
       icon: 'contact'
     },
-    
+
     {
       title: 'Notifications',
       url: '/notifications',
@@ -46,34 +46,19 @@ export class AppComponent {
       url: '/rewards',
       icon: 'star'
     },
-    // {
-    //   title: 'List',
-    //   url: '/list',
-    //   icon: 'list'
-    // },
     {
       title: 'My Vehicles',
       url: '/vehicles',
       icon: 'logo-model-s'
     },
     // {
-    //   title: 'Settings',
-    //   url: '/modifybooking',
-    //   icon: 'build'
+    //   title: 'Logout',
+    //   url: '/login',
+    //   icon: 'log-out'
     // },
-    // {
-    //   title: 'Help',
-    //   url: '/resetpassword',
-    //   icon: 'help'
-    // },
-    {
-      title: 'Logout',
-      url: '/login',
-      icon: 'log-out'
-    },
-    
+
   ];
-    Showsplash =true;
+  Showsplash = true;
 
   constructor(
     private platform: Platform,
@@ -84,32 +69,33 @@ export class AppComponent {
     public toastController: ToastController,
     private router: Router, private data: LoginService,
     public loadingController: LoadingController,
-    public storage:Storage
+    public storage: Storage
   ) {
     this.initializeApp();
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.presentLoading();
         if (event.url != "/login") {
-            if (event.url != "/reset") {
-                // console.log(event)
-                this.data.testlogin();
+          if (event.url != "/resetpassword") {
+            if (event.url != "/registerform") {
+              this.data.testlogin();
             }
+          }
         }
-          
+
       }
 
       if (event instanceof NavigationEnd) {
-          // Hide loading indicator
+        // Hide loading indicator
       }
 
       if (event instanceof NavigationError) {
-          // Hide loading indicator
+        // Hide loading indicator
 
-          // Present error to user
-          console.log(event.error);
+        // Present error to user
+        console.log(event.error);
       }
-  });
+    });
 
 
   }
@@ -161,11 +147,12 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.notificationSetup();
-      timer(3000).subscribe(()=>this.Showsplash = false)
+      timer(3000).subscribe(() => this.Showsplash = false)
     });
   }
-  Logout(){
+  Logout() {
     this.storage.clear();
+    this.fcm.StopNot();
     this.router.navigateByUrl("/login")
   }
 }

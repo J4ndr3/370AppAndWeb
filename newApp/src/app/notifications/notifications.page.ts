@@ -14,7 +14,7 @@ export class NotificationsPage implements OnInit {
   Notifications: object;
   Incidents: object;
   Image:object;
-  Images: Array<string>;
+  Images: Array<object>;
   ImgList : Array<object>
   
   ngOnInit() {
@@ -22,11 +22,20 @@ export class NotificationsPage implements OnInit {
       this.Notifications = res;
       this.data.GetIncident().subscribe(res=>{
         this.Incidents = res;
-        this.data.GetIncident_Image(7).subscribe(res=>{
+        this.data.GetIncident_Image().subscribe(res=>{
           this.Images=[],
           this.ImgList = JSON.parse(JSON.stringify(res));
           console.log(this.ImgList)
-          this.Images.push("data:image/jpeg;base64,"+this.ImgList["Image"]);
+          this.ImgList.forEach(el=>{
+            console.log(el["Incident"])
+            var img={
+              id:el["Incident"],
+              image:"data:image/jpeg;base64,"+el["Image"],
+            }
+            this.Images.push(img);
+            console.log(this.Images)
+          })
+         
         //   this.ImgList.forEach(element => {
         //       this.Image = element["Image"],
         //       console.log(this.Image),
