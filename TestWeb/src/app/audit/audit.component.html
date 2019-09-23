@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tbody id="mytable">
-            <tr *ngFor="let Audit of Audits">
+            <tr *ngFor="let Audit of Audits|filter:searchtext">
                 <td style="text-align: left;">{{Audit.Audit_ID}}</td>
                 <td style="text-align: left;">{{Audit.Date}}</td>
                 <td style="text-align: left;">{{Audit.Ranger}}</td>

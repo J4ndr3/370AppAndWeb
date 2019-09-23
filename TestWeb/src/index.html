@@ -13,27 +13,28 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src='fullcalendar/core/main.js'></script>
+    <!-- <script src='fullcalendar/core/main.js'></script>
     <script src='fullcalendar/daygrid/main.js'></script>
-    <script src='fullcalendar/bootstrap/main.js'></script>
-    <script>
+    <script src='fullcalendar/bootstrap/main.js'></script> -->
+    <!-- <script>
         var calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['bootstrap'],
             themeSystem: 'bootstrap',
             eventClick: function(info) {
                 console.log()
-            alert('Event: ' + info.event.title);
-           
-    // change the border color just for fun
-    info.el.style.borderColor = 'red';},
+                alert('Event: ' + info.event.title);
+
+                // change the border color just for fun
+                info.el.style.borderColor = 'red';
+            },
             eventRender: function(info) {
-            var tooltip = new Tooltip(info.el, {
-            title: info.event.extendedProps.title,
-            placement: 'top',
-            trigger: 'hover',
-            container: 'body'
-            });
-    },
+                var tooltip = new Tooltip(info.el, {
+                    title: info.event.extendedProps.title,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body'
+                });
+            },
 
             eventOverlap: function(stillEvent, movingEvent) {
                 return stillEvent.allDay && movingEvent.allDay;
@@ -47,10 +48,10 @@
                 minute: '2-digit',
                 second: '2-digit'
             },
-            
-            
+
+
         });
-    </script>
+    </script> -->
 
 </head>
 

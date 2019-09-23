@@ -82,8 +82,8 @@ qrcodename : string;
   generateQRCode(ID){
 console.log(ID)
    
-    document.getElementById('chrt2').innerHTML = '<p style="color: black">Asset ID: '+ID+'</p>';
-      var data = document.getElementById('contentToConvert');
+    document.getElementById('chrt2'+ID).innerHTML = '<p style="color: black">Asset ID: '+ID+'</p>';
+      var data = document.getElementById('contentToConvert'+ID);
       html2canvas(data).then(canvas => {
       //Few necessary setting options
       var imgWidth = 50;
@@ -93,7 +93,7 @@ console.log(ID)
        
       const contentDataURL = canvas.toDataURL('image/png');
       var image = contentDataURL.replace("image/png", "image/octet-stream");
-      window.location.href=image;
+      //window.location.href=image;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
@@ -101,7 +101,7 @@ console.log(ID)
       pdf.setPage(1);
       
       pdf.save('QR.pdf'); // Generated PDF
-      document.getElementById('chrt2').innerHTML="";
+      document.getElementById('chrt2'+ID).innerHTML="";
       });
     }
   
@@ -113,7 +113,7 @@ console.log(ID)
       
   
       var Supplier = this.AddForm.get('Supplier').value;
-      if ( Description ==null||Supplier==null||Type==null||Status==null) {
+      if ( Description ==null|| Supplier==null || Type==null||Status==null) {
         document.getElementById("inputErr").click();
       }
       else {
@@ -135,16 +135,17 @@ console.log(ID)
             }
             this.data.PostAsset_Supplier(this.AS).subscribe(res=>
               {
-                // console.log(res)
+                console.log(res)
+                this.ngOnInit();
+            this.showToast();
               })
             // console.log(res)
-            this.ngOnInit();
-            this.showToast();
+            
           }
-          else
-          {
-            document.getElementById("inputErr").click();
-          }
+          // else
+          // {
+          //   document.getElementById("inputErr").click();
+          // }
           
         });
       }}

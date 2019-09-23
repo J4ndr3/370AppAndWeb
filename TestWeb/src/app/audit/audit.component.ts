@@ -7,7 +7,8 @@ import {ERPService} from '..//erp.service';
   styleUrls: ['./audit.component.sass']
 })
 export class AuditComponent implements OnInit {
-  Audits:Array<object>
+  Audits:Array<object>;
+  searchtext;
   constructor(private data: ERPService) { }
 
   ngOnInit() {

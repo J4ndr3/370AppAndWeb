@@ -22,7 +22,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class NavComponent implements OnInit {
-  showme = false;
+  showme;
   rangerName = "";
   display = 'none';
   action: boolean = true;
@@ -57,7 +57,7 @@ export class NavComponent implements OnInit {
   AddForm2: FormGroup;
 
   ngOnInit() {
-
+    this.showme = false;
     this.loggedIn = sessionStorage.getItem("Ranger");
     this.NotificationTimer(this.loggedIn);
 
@@ -251,6 +251,7 @@ export class NavComponent implements OnInit {
     return this.http.post('http://localhost:51389/api/Notifications', obj)
   }
   refresh() {
+    this.showme = true;
     this.count = 0;
     this.GetIncidents().subscribe(res => {
       this.banner = JSON.parse(JSON.stringify(res));

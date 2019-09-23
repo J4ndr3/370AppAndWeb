@@ -20,6 +20,7 @@ export class RewardsReportComponent implements OnInit {
   EventCount=0;
   EventsCount:Array<object>;
   loggedIn:any;
+  TotalCount=0;
   public Download() {
   
     
@@ -63,19 +64,21 @@ export class RewardsReportComponent implements OnInit {
           this.Products = res;
       
     });
+    this.data.GetEventRewardAdd().subscribe(res=>{
+      this.EventsCount = JSON.parse(JSON.stringify(res));
+      // console.log(res);
+      this.EventsCount.forEach(marker => {
+          this.EventCount++;
+          // console.log(this.EventCount)
+          this.Events = res;
+          this.TotalCount = this.EventCount + this.Count;
+    });
   });
-  this.data.GetEventRewardAdd().subscribe(res=>{
-    this.EventsCount = JSON.parse(JSON.stringify(res));
-    // console.log(res);
-    this.EventsCount.forEach(marker => {
-        this.EventCount++;
-        // console.log(this.EventCount)
-        this.Events = res;
-    
   });
-});
+  
 this.loggedIn = sessionStorage.getItem("Ranger");
      this.ReportAccess(this.loggedIn);
+     
   }
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");

@@ -81,6 +81,7 @@ export class modifyVehiclePage implements OnInit {
         var Model = this.EditForm.get('Model').value;
         var CarRegistration = this.EditForm.get('CarRegistration').value;
         var Colour = this.EditForm.get('Colour').value;
+        console.log(Colour)
         var TypeDescription = this.EditForm.get('TypeDescription').value;
         var Status = this.EditForm.get('Status').value;
         var ID = this.EditForm.get('ID').value;
@@ -97,7 +98,7 @@ export class modifyVehiclePage implements OnInit {
                 "Status": Status,
                 "Vehicle_Type_ID": TypeDescription,
             };
-            console.log(this.nVehicle);
+            console.log(1,this.nVehicle);
             this.data.PutVehicle(ID, this.nVehicle).subscribe(res => {
                 this.rcv = res
                 console.log(this.rcv);
