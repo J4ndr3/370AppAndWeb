@@ -16,7 +16,7 @@ import { Storage } from '@ionic/storage';
 
 export class IncidentsPage implements OnInit {
   imgDisp: Array<string>;
-  images: Array<BinaryType>;
+  images: Array<string>;
   base64Image: string;
   AddForm: FormGroup;
   NewIncident: object;
@@ -134,8 +134,8 @@ export class IncidentsPage implements OnInit {
         }
 
         this.data.PostIncident_Patrol(this.newPatrol).subscribe(res => {
-          console.log(2, res);
-          //alert(this.images[1])
+          alert("2"+ res);
+          alert(this.images[1])
           var self = this;
           self.imgarray = [];
           if (this.images.length == null) {
@@ -147,16 +147,15 @@ export class IncidentsPage implements OnInit {
           }
           else {
             this.images.forEach(img => {
-             // alert(3+""+ img)
+              alert(3+""+ img)
               var imga = {
                 "Incident_ID": res["Incident_ID"],
                 "Patrol_Log_ID": this.PL,
                 "Image": img,
               }
-              //alert(4+""+ imga)
+              alert(4+""+ imga)
               this.data.PostIncident_Image(imga).subscribe(res => {
-               // alert(5+" " +res);
-
+                alert(5+" " +res);
               })
             })
 
@@ -201,9 +200,10 @@ export class IncidentsPage implements OnInit {
       
       let filePath: string = imageData;
       this.base64.encodeFile(filePath).then((base64File: BinaryType) => {
-        var base64result = base64File;
+        var base64result = base64File.split(',')[1];
+        
         self.images.push(base64result)
-       // alert(2+" " +base64result);
+        alert(2+" " +base64result);
       }, (err) => {
         console.log(err);
       });
@@ -211,7 +211,7 @@ export class IncidentsPage implements OnInit {
       var blob = (<any>window).Ionic.WebView.convertFileSrc(imageData);
         self.imgDisp.push(blob);
         
-     // alert(1+" "+imageData);
+        alert(1+" "+imageData);
 
     }, (err) => {
       alert(err)
