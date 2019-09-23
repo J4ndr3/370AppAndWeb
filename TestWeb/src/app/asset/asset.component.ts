@@ -135,7 +135,7 @@ console.log(ID)
             }
             this.data.PostAsset_Supplier(this.AS).subscribe(res=>
               {
-                // console.log(res)
+                console.log(res)
                 this.ngOnInit();
             this.showToast();
               })

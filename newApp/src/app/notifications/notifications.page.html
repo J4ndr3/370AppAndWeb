@@ -20,18 +20,20 @@
                     <h4 style="font-size: 85%; color:black; border-bottom: 2px solid rgb(205, 21, 67);padding-bottom:5px; width:100%; padding-top:0px; text-align: left !important;">{{item.Type}}</h4>
                     <p style="font-size: 80%; color:black; text-align: left !important;">{{item.Description}}</p>
                     <small style="font-size: 70%; color:black; float:right;"><i>Reported on {{item.Date}} by {{item.Name}} {{item.Surname}}</i></small>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col *ngFor="let item1 of Images">
-                                <p>{{item1.id}}:{{item.ID}}</p>
-                                <div *ngIf="item1.id == item.ID">
-                                    <ion-thumbnail>
-                                        <img [src]="item1.image" />
-                                    </ion-thumbnail>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                    </ion-grid>
+                    <div *ngFor="let item1 of Images">
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col *ngIf="item1.id == item.ID">
+                                    <div>
+                                        <ion-thumbnail>
+                                            <img [src]="item1.image" />
+                                        </ion-thumbnail>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </div>
+
                 </div>
             </div>
         </ion-card-content>
