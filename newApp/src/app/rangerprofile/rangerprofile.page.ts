@@ -115,7 +115,11 @@ export class RangerprofilePage implements OnInit {
     var selectgender = this.EditForm.get('Gender').value;
     var selectbloodtype = this.EditForm.get('selectbloodtype').value;
     var Organizationtitle = this.EditForm.get('Organizationtitle').value;
-    this.nRangerprofilePage = {
+    console.log(fname);
+    if(fname == "" || lname == "" || rangerId == "" || email == "" || phone == "" || emergencycontactName == "" || EmergencycontactNumber == "" || MedicalAid == "" || password == "" || username == "" || selectgender == "" || selectbloodtype == "" ||  Organizationtitle == ""){
+      this.err()
+      }
+    else{this.nRangerprofilePage = {
       "Ranger_ID":this.loggedIn,
       "ID_Number": rangerId,
       "Name": fname, // Names for your input
@@ -142,6 +146,8 @@ export class RangerprofilePage implements OnInit {
       this.ngOnInit()
     });
   }
+    
+  }
   private async Successtoast() {
     const toast = await this.toastController.create({ message: "Profile Successfully updated", duration: 3000 });
     toast.present();
@@ -150,6 +156,14 @@ export class RangerprofilePage implements OnInit {
     const toast = await this.toastController.create({ message: "Failed to update. Retry.", duration: 3000 });
     toast.present();
   }
+  private async err() {
+    const alert = await this.alertCtrl.create({
+        header: "Error",
+        message: 'The input provided is incorrect. Please try again.',
+        buttons: ['OK']
+    });
+    alert.present();
+}
 
   private async containsmodifications() {
     const alert = await this.alertCtrl.create({

@@ -21,6 +21,10 @@ export class StatusReportComponent implements OnInit {
   Count2=0;
   VehicleCount:Array<object>;
   loggedIn:any;
+  Num:number;
+  Num1:number;
+  Num2:any;
+  TotalStatus=0;
   constructor(private data: ERPService, private router: Router,private toastrService: ToastrService) { }
 
   ngOnInit() {
@@ -33,29 +37,33 @@ export class StatusReportComponent implements OnInit {
           this.Assets = res;
       
     });
+    this.data.GetRanger().subscribe(res=>{
+      this.RangerCount = JSON.parse(JSON.stringify(res));
+      // console.log(res);
+      this.RangerCount.forEach(marker => {
+          this.Count1++;
+          // console.log(this.RangerCount)
+          this.Rangers = res;
+      
+    });
+    this.data.GetRangerVehicle().subscribe(res=>{
+      this.VehicleCount = JSON.parse(JSON.stringify(res));
+      // console.log(res);
+      this.VehicleCount.forEach(marker => {
+        this.Count2++;
+          // console.log(this.VehicleCount)
+          this.Vehicles = res;
+      
+    });
+    this.TotalStatus = this.Count + this.Count1+ this.Count2; 
+    });
   });
-  this.data.GetRanger().subscribe(res=>{
-    this.RangerCount = JSON.parse(JSON.stringify(res));
-    // console.log(res);
-    this.RangerCount.forEach(marker => {
-        this.Count1++;
-        // console.log(this.RangerCount)
-        this.Rangers = res;
-    
   });
-});
-this.data.GetRangerVehicle().subscribe(res=>{
-  this.VehicleCount = JSON.parse(JSON.stringify(res));
-  // console.log(res);
-  this.VehicleCount.forEach(marker => {
-      this.Count2++;
-      // console.log(this.VehicleCount)
-      this.Vehicles = res;
   
-});
-});
+
 this.loggedIn = sessionStorage.getItem("Ranger");
      this.ReportAccess(this.loggedIn);
+    
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{

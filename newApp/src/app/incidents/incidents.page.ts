@@ -16,7 +16,7 @@ import { Storage } from '@ionic/storage';
 
 export class IncidentsPage implements OnInit {
   imgDisp: Array<string>;
-  images: Array<BinaryType>;
+  images: Array<string>;
   base64Image: string;
   AddForm: FormGroup;
   NewIncident: object;
@@ -36,31 +36,16 @@ export class IncidentsPage implements OnInit {
     try{
       this.storage.get("PL").then(res=>{
         this.PL = res;
+        if (res==null)
+        {
+          this.PL = 1;
+        }
       })
     }
     catch{
       this.PL = 1;
     }
     
-    // var onSuccess = function (position) {
-    //    this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    // };
-
-    // function onError(error) {
-    //   alert('code: ' + error.code + '\n' +
-    //     'message: ' + error.message + '\n');
-    // }
-    // navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-    //   enableHighAccuracy: true
-    //   , timeout: 5000
-    // });
-    // this.geolocation.getCurrentPosition().then(pos => {
-    //   this.latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-
-    // }).catch((error) => {
-    //   alert('Error getting location ' + error);
-    // });
 
     this.images = [];
     this.imgDisp=[];
@@ -134,8 +119,8 @@ export class IncidentsPage implements OnInit {
         }
 
         this.data.PostIncident_Patrol(this.newPatrol).subscribe(res => {
-          console.log(2, res);
-          //alert(this.images[1])
+          alert("2"+ res);
+          alert(this.images[1])
           var self = this;
           self.imgarray = [];
           if (this.images.length == null) {
@@ -147,16 +132,15 @@ export class IncidentsPage implements OnInit {
           }
           else {
             this.images.forEach(img => {
-             // alert(3+""+ img)
+              alert(3+""+ img)
               var imga = {
                 "Incident_ID": res["Incident_ID"],
                 "Patrol_Log_ID": this.PL,
                 "Image": img,
               }
-              //alert(4+""+ imga)
+              alert(4+""+ imga)
               this.data.PostIncident_Image(imga).subscribe(res => {
-               // alert(5+" " +res);
-
+                alert(5+" " +res);
               })
             })
 
@@ -188,7 +172,7 @@ export class IncidentsPage implements OnInit {
     var self = this;
 
     const options: CameraOptions = {
-      quality: 50,
+      quality: 25,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -201,9 +185,10 @@ export class IncidentsPage implements OnInit {
       
       let filePath: string = imageData;
       this.base64.encodeFile(filePath).then((base64File: BinaryType) => {
-        var base64result = base64File;
+        var base64result = base64File.split(',')[1];
+        
         self.images.push(base64result)
-       // alert(2+" " +base64result);
+        alert(2+" " +base64result);
       }, (err) => {
         console.log(err);
       });
@@ -211,7 +196,7 @@ export class IncidentsPage implements OnInit {
       var blob = (<any>window).Ionic.WebView.convertFileSrc(imageData);
         self.imgDisp.push(blob);
         
-     // alert(1+" "+imageData);
+        alert(1+" "+imageData);
 
     }, (err) => {
       alert(err)

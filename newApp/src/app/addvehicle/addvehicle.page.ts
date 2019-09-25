@@ -60,6 +60,7 @@ export class AddvehiclePage implements OnInit {
   update() {
     var CarRegistration = this.AddForm.get('CarRegistration').value; // Names for your input
     var SelectColour = this.AddForm.get('SelectColour').value; // Names for your input
+    console.log(SelectColour)
     var Make = this.AddForm.get('Make').value;
     var Model = this.AddForm.get('Model').value;
     var TypeDescription = this.AddForm.get('TypeDescription').value;

@@ -65,13 +65,15 @@ nranger:any;
           selectbloodtype:[""],
           UserRole:[""],
           Status:[""],
-          password:[""]
+          password:[""],
+          Points:[""]
         })
     // })
     this.edt();
   }
   edt(){
-    this.data.GetRangers(this.data.nID).subscribe(res=>{     
+    this.data.GetRangers(this.data.nID).subscribe(res=>{  
+      console.log(res);   
         this.Ranger = JSON.parse(JSON.stringify(res));
       if (res["Status"] == true){
         var Status = "Active";
@@ -95,7 +97,8 @@ nranger:any;
         selectbloodtype:this.Ranger["Blood_Type"],
         UserRole:this.Ranger["User_Role_ID"],
         Status:Status,
-        password:this.Ranger["Password"]
+        password:this.Ranger["Password"],
+        Points:this.Ranger["Points"]
       })    
     })
   }
@@ -123,6 +126,8 @@ nranger:any;
     var Organizationtitle = this.EditForm.get('Organizationtitle').value;
     var UserRole = this.EditForm.get('UserRole').value;
     var ID = this.EditForm.get('ID').value;
+    var Points = this.EditForm.get('Points').value;
+    console.log(Points);
     if (this.EditForm.get('Status').value == "Active"){
         var Status = 1;
     }
@@ -148,7 +153,7 @@ nranger:any;
           "Status":Status,
           "User_Role_ID":UserRole,
           "Medical_Aid_ID": MedicalAid,
-          "Points":0,
+          "Points":Points,
           "Blood_Type": selectbloodtype, 
           "Username": username,
           "Password": password,
