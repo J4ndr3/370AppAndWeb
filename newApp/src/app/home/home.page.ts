@@ -65,7 +65,7 @@ PL:any;
 
   openNote() {
     
-    this.navController.navigateRoot('/registerform')
+    this.navController.navigateRoot('/nav')
   }
  
   private async presentToast() {

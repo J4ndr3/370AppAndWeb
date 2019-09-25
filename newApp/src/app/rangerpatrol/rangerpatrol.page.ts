@@ -640,7 +640,7 @@ export class RangerpatrolPage implements OnInit {
                 this.newFeedback = {
                     "Patrol_Log_ID": this.patrolID, // Names for your input
                     "Description": Feedback, // Names for your input
-                    "EnterQRCode1": new Date()
+                    "Date": new Date()
                 }
                 if (Feedback != null) {
                     this.data.PostFeedback(this.newFeedback).subscribe(res => {

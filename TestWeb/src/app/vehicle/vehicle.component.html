@@ -37,7 +37,7 @@
                 <h2 class="Header">Add Vehicle</h2>
                 <br>
                 <div class="col-sm-10">
-                    <select class="form-control" formControlName="Make" id="Select1" onchange="selectColor()" (change)="select3()" required>
+                    <select class="form-control" formControlName="Make"  id="Select1" onchange="selectColor()" (change)="select3()" required>
                         <option selected disabled hidden  [value]="">Make...</option>
                         <option *ngFor="let item of MakeOptions" [(value)]="item.Make_ID">{{item.Name}}</option>
                     </select>
@@ -56,7 +56,7 @@
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    <select class="form-control" formControlName="Type" id="Select1" onchange="selectColor()" required>
+                    <select class="form-control" formControlName="Type"  id="Select1" onchange="selectColor()" required>
                         <option selected disabled hidden  [value]="">Type...</option>
                         <option *ngFor="let item of TypeOptions" [(value)]="item.Vehicle_Type_ID">
                             {{item.Type_Description}}</option>
@@ -66,7 +66,7 @@
 
             <div class="form-group">
                 <div class="col-sm-10">
-                    <select class="form-control" id="Select1" formControlName="Colour" onchange="selectColor()" required>
+                    <select class="form-control"  formControlName="Colour"  id="Select1" onchange="selectColor()" required>
                         <option selected disabled hidden  value="Colour...">Colour...</option>
                         <option>Red</option>
                         <option>White</option>
@@ -170,44 +170,4 @@
         </div>
     </div>
 
-    <!-- <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg"
-            style="width:40px; margin-top:0px;" />Error</h4>
-        <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p>The input provided is incorrect. Please try again.</p>
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;"
-          id="modalClose">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
-    <!-- <script>
-    function selectColor() {
-    var x = document.getElementById("Select1").value;
-    if(x != "Gender..."){
-      document.getElementById("Select1").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select1").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-    function selectColor1() {
-    var x = document.getElementById("Select2").value;
-    if(x != "Status..."){
-      document.getElementById("Select2").style="color: white !important";
-    }
-    else
-    {
-      document.getElementById("Select2").style.color = "rgb(126,206,208) !important;";
-    }
-    }
-    
-  </script>  -->

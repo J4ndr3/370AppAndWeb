@@ -12,6 +12,7 @@ export class ERPService {
   viewvalidate: any;
   viewvalidate1: any;
   Claimed: any;
+  RewardList:Array<object> =[];
 
 nID: any;
   constructor(private http: HttpClient) { }
@@ -67,7 +68,7 @@ nID: any;
     return this.http.put('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward/' + ID, obj);
   }
   PostRedeem_Reward(obj) {
-    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward', obj);
+    return this.http.post('http://localhost:51389/api/Redeem_Reward', obj);
   }
   GetRangerID(id) {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Rangers/' + id);
