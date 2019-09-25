@@ -67,6 +67,7 @@ export class EventConfirmPage implements OnInit {
   //   }
     Validate1(ID){
       this.data.GetEvent_RewardID(ID).subscribe(res=>{
+        var eventName;
         this.EventPoints = res['Points'];
         this.updateRanger(this.loggedIn,this.EventPoints);
         if( res["Event_Reward_ID"] == ID )
@@ -75,25 +76,28 @@ export class EventConfirmPage implements OnInit {
             console.log(res);
             var EventID = res["Event_Reward_ID"];
           var PQuantity = res["Quantity"] - 1;
+          eventName= res["Name"]
           this.nReward = {
-            "Event_Reward_ID":res["Event_Reward_ID"],
-            
+            "Event_Reward_ID":res["Event_Reward_ID"],      
           }
           this.RandomNumber = Math.floor(Math.random() * 99999999999999999999);
           console.log(this.RandomNumber);
           
           this.RedeemVoucher = {
-            
             "Ranger_ID" : this.loggedIn, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
             "Event_Reward_ID":EventID,
+            "Name":eventName
           };
-          this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
-            console.log(res2)
-            this.data.nvalidate1 = res2["Redeem_ID"];
-            this.router.navigateByUrl("/voucher");
-          });
+          this.data.RewardList.push(this.RedeemVoucher);
+          console.log(this.data.RewardList)
+          this.router.navigateByUrl("/basket");
+          // this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
+          //   console.log(res2)
+          //   this.data.nvalidate1 = res2["Redeem_ID"];
+          //   this.router.navigateByUrl("/voucher");
+          // });
         })
           
         }

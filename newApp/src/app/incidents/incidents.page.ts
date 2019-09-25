@@ -36,31 +36,16 @@ export class IncidentsPage implements OnInit {
     try{
       this.storage.get("PL").then(res=>{
         this.PL = res;
+        if (res==null)
+        {
+          this.PL = 1;
+        }
       })
     }
     catch{
       this.PL = 1;
     }
     
-    // var onSuccess = function (position) {
-    //    this.latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    // };
-
-    // function onError(error) {
-    //   alert('code: ' + error.code + '\n' +
-    //     'message: ' + error.message + '\n');
-    // }
-    // navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-    //   enableHighAccuracy: true
-    //   , timeout: 5000
-    // });
-    // this.geolocation.getCurrentPosition().then(pos => {
-    //   this.latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-
-    // }).catch((error) => {
-    //   alert('Error getting location ' + error);
-    // });
 
     this.images = [];
     this.imgDisp=[];

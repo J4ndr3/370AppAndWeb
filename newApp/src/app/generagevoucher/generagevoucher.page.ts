@@ -205,7 +205,7 @@ export class GeneragevoucherPage implements OnInit {
             "Event_Reward_ID": res2["Event_Reward_ID"],
             "Name": res2["Name"],
           }
-          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "Reward type ID: " + this.EventID;
+          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n"+ "V-code: " + "\n" + this.VoucherCode + "\n" + "Reward type ID: " + this.EventID;
           //this.rewardsqrv.push(this.qrv)
           this.Details = "Reward Name: " + this.QRname;
           this.Details1 = "Date: " + this.DateGenerated;
