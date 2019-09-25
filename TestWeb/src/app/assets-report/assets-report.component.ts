@@ -20,7 +20,7 @@ export class AssetsReportComponent implements OnInit {
   Ass:object;
   Active:Array<object>;
   count= 0;
-  loggedIn:any;
+  loggedIn:any; 
   @ViewChild('content', { static: false }) content: ElementRef;
 
   public Download() {
