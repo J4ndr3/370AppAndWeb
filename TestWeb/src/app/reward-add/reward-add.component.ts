@@ -44,7 +44,7 @@ export class RewardAddComponent implements OnInit {
       PName: [], // Names for your input
       PQuantity: [], // Names for your input 
       PPoints: [],
-      PDescription: []
+      PDescription: ["Type Product..."]
     });
     this.data.GetProductType().subscribe((res) => {
       this.RewardAddOptions = JSON.parse(JSON.stringify(res));
@@ -54,7 +54,7 @@ export class RewardAddComponent implements OnInit {
       EPoints: [], // Names for your input 
       EDate: [],
       ELocation: [],
-      EDescription: []
+      EDescription: ["Type Event..."]
     });
     this.data.GetEventType().subscribe((res) => {
       this.EventRewardAddSelection=0;
