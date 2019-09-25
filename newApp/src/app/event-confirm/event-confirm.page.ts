@@ -23,6 +23,7 @@ export class EventConfirmPage implements OnInit {
   EventPoints:object;
   loggedIn:any;
   Ranger:any;
+  count:number;
   constructor(private data: ERPService, private router:Router,private storage:Storage) { 
     // this.ID = navParams.get('data');
   }
@@ -82,13 +83,15 @@ export class EventConfirmPage implements OnInit {
           }
           this.RandomNumber = Math.floor(Math.random() * 99999999999999999999);
           console.log(this.RandomNumber);
-          
+          this.count = this.data.RewardList.length +1;
           this.RedeemVoucher = {
+            "ID":this.count,
             "Ranger_ID" : this.loggedIn, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
             "Event_Reward_ID":EventID,
-            "Name":eventName
+            "Name":eventName,
+            "Points":this.EventPoints
           };
           this.data.RewardList.push(this.RedeemVoucher);
           console.log(this.data.RewardList)

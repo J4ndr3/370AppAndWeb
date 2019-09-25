@@ -26,7 +26,7 @@ export class ConfirmRewardPage implements OnInit {
  RangerPoints:object;
  loggedIn:any;
 Ranger:any;
-
+count:number;
  myDate= new Date().toISOString();
  Time= new Date().toTimeString();
   constructor(private data: ERPService, private router:Router,private storage:Storage) { 
@@ -79,20 +79,17 @@ Ranger:any;
     }
     console.log(this.nReward);
       this.data.PutRewardAdd(ID,this.nReward).subscribe(res1 => {
- 
-
-        
-        
           this.RandomNumber = Math.floor(Math.random() * 99999999999999999999);
           console.log(this.RandomNumber);
-          
+          this.count = this.data.RewardList.length +1;
           this.RedeemVoucher = {
-            
+            "ID":this.count,
             "Ranger_ID" : this.loggedIn, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
             "Product_Reward_ID":PoductID,
-            "Name":name
+            "Name":name,
+            "Points":this.ProductPoints
           };
           this.data.RewardList.push(this.RedeemVoucher);
           console.log(this.data.RewardList)
