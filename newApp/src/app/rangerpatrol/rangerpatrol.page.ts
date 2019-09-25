@@ -353,7 +353,8 @@ export class RangerpatrolPage implements OnInit {
             this.starttime = 1000000000000000000000000000000;
         }
         const source = timer(0, this.starttime);
-
+       var now: Array<object>;
+       now = [];
         this.isTracking = true;
         this.trackedRoute = [];
         var self = this;
@@ -407,9 +408,13 @@ export class RangerpatrolPage implements OnInit {
         const subscribe = source.subscribe(val => {
 
             self.geolocation.getCurrentPosition().then(pos => {
+               now=[];
                 var m = { Longitude: pos.coords.latitude, Lattitude: pos.coords.longitude, Patrol_Log_ID: this.patrolID }
-                //let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                this.data.PostRoute(m).subscribe();
+                console.log(m)
+                now.push(m)
+                this.data.PostRoute(now).subscribe(res=>{
+                    console.log("res",res)
+                });
             }).catch((error) => {
                 alert('Error getting location ' + error);
             });
@@ -635,7 +640,7 @@ export class RangerpatrolPage implements OnInit {
                 this.newFeedback = {
                     "Patrol_Log_ID": this.patrolID, // Names for your input
                     "Description": Feedback, // Names for your input
-                    "EnterQRCode1": new Date()
+                    "Date": new Date()
                 }
                 if (Feedback != null) {
                     this.data.PostFeedback(this.newFeedback).subscribe(res => {

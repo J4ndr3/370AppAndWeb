@@ -110,6 +110,7 @@ namespace ERP_API.Controllers
         }
         [System.Web.Http.Route("api/Assets/AS")]
         [HttpPost]
+        [ResponseType(typeof(Asset_Supplier))]
         public IHttpActionResult AS(Asset_Supplier Asset)
         {
             db.Configuration.ProxyCreationEnabled = false;
@@ -121,7 +122,7 @@ namespace ERP_API.Controllers
             db.Asset_Supplier.Add(Asset);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = Asset.Asset_Supplier_ID }, Asset);
+            return Ok(1);
         }
         // DELETE: api/Assets/5
         [ResponseType(typeof(Asset))]

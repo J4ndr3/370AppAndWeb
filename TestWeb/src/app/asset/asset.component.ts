@@ -93,7 +93,7 @@ console.log(ID)
        
       const contentDataURL = canvas.toDataURL('image/png');
       var image = contentDataURL.replace("image/png", "image/octet-stream");
-      window.location.href=image;
+      //window.location.href=image;
       let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
       var position = 0;
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
@@ -135,7 +135,7 @@ console.log(ID)
             }
             this.data.PostAsset_Supplier(this.AS).subscribe(res=>
               {
-                // console.log(res)
+                console.log(res)
                 this.ngOnInit();
             this.showToast();
               })

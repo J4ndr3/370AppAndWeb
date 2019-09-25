@@ -21,11 +21,13 @@ import { ERPService } from '..//erp.service';
 
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass']
 })
+
 
 export class HomeComponent implements OnInit {
   bookings: Array<object>;
@@ -105,6 +107,7 @@ export class HomeComponent implements OnInit {
     this.myLatLngList = [];
 
     this.data.GetBookings().subscribe(res => {
+      console.log("BOOKINGS")
       this.bookings = JSON.parse(JSON.stringify(res));
       // console.log(this.bookings);
       this.bookings.forEach(element => {
@@ -131,6 +134,7 @@ export class HomeComponent implements OnInit {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
 
     this.data.GetIncidents().subscribe(res => {
+      console.log("INCIDENTS")
       this.r = [];
       this.CoordList = JSON.parse(JSON.stringify(res));
       this.CoordList.forEach(element => {
@@ -190,7 +194,8 @@ export class HomeComponent implements OnInit {
 
 
 
-    this.data.GetPatrol_log().subscribe(res => {
+    this.data.GetPatrol_logP().subscribe(res => {
+      console.log("Patrols")
       this.r = [];
       this.RangerList=[];
       this.CoordList1 = JSON.parse(JSON.stringify(res));
