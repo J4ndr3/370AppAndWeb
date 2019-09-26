@@ -11,6 +11,8 @@ import { ERPService } from '..//erp.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Geofence } from '@ionic-native/geofence/ngx';
+import { timer } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Component({
     selector: 'app-rangerpatrol',
@@ -22,8 +24,10 @@ export class RangerpatrolPage implements OnInit {
     items;
     RangerpatrolPage: Array<object>;
     hideEverything = false;
+    keepgoing = false;
     AddForm: FormGroup;
     NewRangerpatrolPage: object;
+    newFeedback: object;
     RangerpatrolPageSelection: number = 0;
     RangerpatrolPageOptions: Array<object>; // as jy meer as een dropdown het doen dit vir almal
     Markers: Array<object>;
@@ -34,11 +38,18 @@ export class RangerpatrolPage implements OnInit {
     watchID;
     isTracking = false;
     trackedRoute: Array<object>;
+    patrolID;
     loggedIn: any;
     myroute = [];
     positionSubscription: Subscription;
+    starttime: any;
+    r: Array<object>;
+    CoordList: Array<object>;
+    myLatLngList: any;
+    FDescription: any;
+
     @ViewChild('patrolform') containerEltRef: ElementRef;
-    constructor(private geofence: Geofence, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
+    constructor(private alertCtrl: AlertController, private geofence: Geofence, private navcnt: NavController, private renderer: Renderer2, private qrScanner: QRScanner, @Inject(LOCALE_ID) private locale: string, public navCtrl: NavController, private plt: Platform, private geolocation: Geolocation, private storage: Storage, private data: ERPService, private formBuilder: FormBuilder) {
         geofence.initialize().then(
             // resolved promise does not return a value
             () => console.log('Geofence Plugin Ready'),
@@ -48,6 +59,7 @@ export class RangerpatrolPage implements OnInit {
     currentTab = 0;
     previousTracks: Array<object>;
     ngOnInit() {
+
         this.items = [];
         this.AddForm = this.formBuilder.group({
             BookingReference: [], // your attributes
@@ -57,36 +69,7 @@ export class RangerpatrolPage implements OnInit {
         });
         this.data.GetAssets().subscribe(res => {
             this.assets = JSON.parse(JSON.stringify(res));
-        });
-        this.data.GetMarkers().subscribe(res => {
-            this.Markers = JSON.parse(JSON.stringify(res));
-            this.geofence.removeAll()
-                .then(function () {
-                    console.log('All geofences successfully removed.');
-                }
-                    , function (error) {
-                        console.log('Removing geofences failed', error);
-                    });
-            this.Markers.forEach(element => {
-                let fence = {
-                    id: element["Num"], //any unique ID
-                    latitude: element["Lat"], //center of geofence radius
-                    longitude: element["Long"],
-                    radius: 10, //radius to edge of geofence in meters
-                    transitionType: 3 //see 'Transition Types' below
-                }
-                var circle = new google.maps.Circle({
-                    map: this.map,
-                    center: new google.maps.LatLng(element["Lat"], element["Long"]),
-                    radius: 10,
-                    strokeColor: "green",
-                    fillColor: "green"
-                });
-                this.geofence.addOrUpdate(fence).then(
-                    () => console.log('Geofence added'),
-                    (err) => console.log('Geofence failed to add')
-                );
-            });
+            //this.items = this.assets;
         });
         this.storage.get("Ranger").then(res => {
             this.loggedIn = res;
@@ -103,56 +86,72 @@ export class RangerpatrolPage implements OnInit {
             })
             this.plt.ready().then(() => {
                 var self = this;
-                var onSuccess = function (position) {
-                    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    self.map.setCenter(latLng);
-                    self.map.setZoom(16);
 
-                };
+                this.data.GetMarkers().subscribe(res => {
+                    this.Markers = JSON.parse(JSON.stringify(res));
+                    this.Markers.forEach(element => {
+                        let fence = {
+                            id: element["Num"], //any unique ID
+                            latitude: element["Lat"], //center of geofence radius
+                            longitude: element["Long"],
+                            radius: 20, //radius to edge of geofence in meters
+                            transitionType: 3 //see 'Transition Types' below
+                        }
 
-                // onError Callback receives a PositionError object
-                //
-                function onError(error) {
-                    alert('code: ' + error.code + '\n' +
-                        'message: ' + error.message + '\n');
-                }
+                        this.geofence.addOrUpdate(fence).then(
+                            () => console.log('Geofence added'),
+                            (err) => console.log('Geofence failed to add')
+                        );
+
+                    });
+
+                    var onSuccess = function (position) {
+                        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        self.map.setCenter(latLng);
+                        self.map.setZoom(16);
+
+                    };
+
+                    // onError Callback receives a PositionError object
+                    //
+                    function onError(error) {
+                        alert('code: ' + error.code + '\n' +
+                            'message: ' + error.message + '\n');
+                    }
 
 
-                let mapOptions = {
-                    zoom: 13,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    mapTypeControl: false,
-                    streetViewControl: false,
-                    fullscreenControl: false
-                }
-                self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
-                navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-                    enableHighAccuracy: true
-                    , timeout: 5000
-                });
-                self.geolocation.getCurrentPosition().then(pos => {
-                    let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                    self.map.setCenter(latLng);
-                    self.map.setZoom(16);
-                }).catch((error) => {
-                    alert('Error getting location ' + error);
+                    let mapOptions = {
+                        zoom: 13,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        mapTypeControl: false,
+                        streetViewControl: false,
+                        fullscreenControl: false
+                    }
+                    self.map = new google.maps.Map(self.mapElement.nativeElement, mapOptions);
+                    navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+                        enableHighAccuracy: true
+                        , timeout: 5000
+                    });
+                    self.geolocation.getCurrentPosition().then(pos => {
+                        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                        self.map.setCenter(latLng);
+                        self.map.setZoom(16);
+                    }).catch((error) => {
+                        alert('Error getting location ' + error);
+                    });
                 });
             });
         });
 
 
+
     }
 
     ngAfterViewInit() {
-        // let elt = this.containerEltRef.nativeElement.querySelector('.tab');
-        // this.renderer.addClass(elt, 'newClass'); //Adds new class to element
-        // Current tab is set to be the first tab (0)
         this.showTab(this.currentTab); // Display the current tab
-
-
     }
     showTab(n) {
-
+        var self = this;
         // This function will display the specified tab of the form...
         var x = document.getElementsByClassName("tab");
         console.log(x.length);
@@ -168,16 +167,63 @@ export class RangerpatrolPage implements OnInit {
 
         if (n == 3) {
             this.stopTracking();
-            document.getElementById("nextBtn").innerHTML = "Done";
+            this.keepgoing = false;
+            document.getElementById("nextBtn").style.display = "None";
+            document.getElementById("prevBtn").style.display = "None";
+            // var MarkPass ={
+            //     "Patrol_Log_ID":self.patrolID,
+            //     "Marker_ID":17,
+            //     "Date_Time_Passed":new Date()
+            // }
+            // console.log("hit")
+            // self.data.PostPatrol_Markers(MarkPass).subscribe(res=>{
+            //     console.log(res)
+            //     alert("Marker was added to patroll log")
+
+            //     self.Markers.forEach(element=>{
+            //         console.log(element["Num"],MarkPass["Marker_ID"] )
+            //         if (element["Num"] == MarkPass["Marker_ID"] )
+            //         {
+            //             var points =  "-"+element["Points"];
+            //             this.data.UpdatePoints(self.loggedIn,points).subscribe(res=>{
+            //                 console.log(res)
+            //             })
+            //         }
+            //     })
+
+            // })
+            document.getElementById("nextBtn1").innerHTML = "Done";
             document.getElementById("Steps").style.marginTop = "10%";
 
         }
         if (n == 1) {
             document.getElementById("nextBtn").innerHTML = "Next";
             document.getElementById("Steps").style.marginTop = "10%";
+            var booking = this.AddForm.get("BookingReference").value;
+            // if(booking == null){
+            // n=0;
+            // (x[1] as HTMLElement).style.display = "none";
+            // this.showTab(0);
+            // this.err();
+            // }
+            console.log(booking);
+            var PatrolLog = {
+                "Ranger_ID": this.loggedIn,
+                "Patrol_Booking_ID": booking,
+                "Checkin": new Date(),
+                "Checkout": new Date(),
+                "Checked_in": true
+            }
+            this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
+                this.storage.set("PL", res["Patrol_Log_ID"]);
+                this.patrolID = res["Patrol_Log_ID"];
+            })
+
             this.scanMore();
         }
         if (n == 2) {
+            this.keepgoing = true;
+
             this.hideEverything = false;
             this.startTracking()
             document.getElementById("prevBtn").style.display = "none";
@@ -185,17 +231,36 @@ export class RangerpatrolPage implements OnInit {
             document.getElementById("nextBtn").style.width = "40%";
             //document.getElementById("Steps").style.marginTop = "10%";
             document.getElementById("Steps").style.display = "none";
-
+            var Patrol_assets = []
+            this.items.forEach(element => {
+                Patrol_assets.push({ "Patrol_Log_ID": this.patrolID, "Asset_ID": element["ID"] })
+            });
+            if (Patrol_assets != []) {
+                this.data.PostPatrol_Assets(Patrol_assets).subscribe(res => {
+                    console.log(res)
+                })
+            }
         }
         //... and run a function that will display the correct step indicator:
         this.fixStepIndicator(n)
     }
 
     nextPrev(n) {
+        var booking = this.AddForm.get("BookingReference").value;
         // This function will figure out which tab to display
         var x = document.getElementsByClassName("tab");
+        if((n == 0) && (this.AddForm.get('BookingReference').value == null)){
+            this.err();
+            return false;
+           
+        }
         // Exit the function if any field in the current tab is invalid:
-        if (n == 1 && !this.validateForm()) return false;
+        if (n == 1  && (booking == null))
+        {
+            console.log("Hallooooo")
+            this.err();
+            return false;
+        } 
         // Hide the current tab:
         (x[this.currentTab] as HTMLElement).style.display = "none";
         // Increase or decrease the current tab by 1:
@@ -279,10 +344,57 @@ export class RangerpatrolPage implements OnInit {
             });
         }
     }
+
     startTracking() {
+        if (this.keepgoing == true) {
+            this.starttime = 30000;
+        }
+        else {
+            this.starttime = 1000000000000000000000000000000;
+        }
+        const source = timer(0, this.starttime);
+       var now: Array<object>;
+       now = [];
         this.isTracking = true;
         this.trackedRoute = [];
         var self = this;
+        self.Markers.forEach(element => {
+            var circle = new google.maps.Circle({
+                map: this.map,
+                center: new google.maps.LatLng(element["Lat"], element["Long"]),
+                radius: 10,
+                strokeColor: "green",
+                fillColor: "green"
+            });
+        });
+
+        this.data.GetIncidents().subscribe(res => {
+            this.r = [];
+            this.CoordList = JSON.parse(JSON.stringify(res));
+            this.CoordList.forEach(element => {
+                this.r.push(element);
+            });
+
+            // console.log(this.CoordList);
+
+            this.r.forEach(element => {
+
+                this.myLatLngList = {
+
+                    myLatLng: [{ lat: parseFloat(element["Lat"]), lng: parseFloat(element["lng"]) }]
+
+                }
+                for (const data of this.myLatLngList.myLatLng) {
+                    var marker = new google.maps.Marker({
+                        position: data,
+                        map: this.map,
+                        title: 'Incident reported by ' + element['Name'] + ' ' + element['Surname'] + " at " + element['Time']
+                    });
+
+                }
+            })
+        })
+
         // onSuccess Callback
         //   This method accepts a `Position` object, which contains
         //   the current GPS coordinates
@@ -293,7 +405,21 @@ export class RangerpatrolPage implements OnInit {
             self.trackedRoute.push(locationJ);
             self.redrawPath(self.trackedRoute);
         }
+        const subscribe = source.subscribe(val => {
 
+            self.geolocation.getCurrentPosition().then(pos => {
+               now=[];
+                var m = { Longitude: pos.coords.latitude, Lattitude: pos.coords.longitude, Patrol_Log_ID: this.patrolID }
+                console.log(m)
+                now.push(m)
+                this.data.PostRoute(now).subscribe(res=>{
+                    console.log("res",res)
+                });
+            }).catch((error) => {
+                alert('Error getting location ' + error);
+            });
+
+        })
         // onError Callback receives a PositionError object
         //
         function onError(error) {
@@ -313,24 +439,42 @@ export class RangerpatrolPage implements OnInit {
         this.geofence.onTransitionReceived().subscribe(res => {
 
             res.forEach(function (geo) {
+                console.log(geo["id"]);
                 var count = -1;
                 this.Markers.forEach(element => {
                     count++;
-                    if (element["ID"] == geo["id"]) {
+                    if (element["Num"] == geo["id"]) {
+                        //self.geofence.remove(geo["id"])
+                        // alert("HIT")
+                        var MarkPass = {
+                            "Patrol_Log_ID": self.patrolID,
+                            "Marker_ID": element["Num"],
+                            "Date_Time_Passed": new Date()
+                        }
+                        var points = "-" + element["Points"];
+                        self.data.PostPatrol_Markers(MarkPass).subscribe(res => {
+                            console.log(res)
+                            alert("Marker was added to patroll log")
+                            self.data.UpdatePoints(self.loggedIn, points).subscribe(res => {
+                                console.log(res)
+                            })
+                        })
+                        //alert("Marker was added to patroll log")
                         this.Markers.splice(count, 1)
                     }
                 });
-                alert(geo["id"]);
+
 
             });
 
         },
-            (err) => alert(err),
-            () => alert("done !")
+            (err) => console.log(err),
+            () => console.log("done !")
         );
 
     }
     redrawPath(path) {
+        // var circle
         console.log(path);
         var self = this;
         if (self.currentMapTrack) {
@@ -338,15 +482,8 @@ export class RangerpatrolPage implements OnInit {
         }
         // map should be your map class
         if (path.length > 1) {
-            this.Markers.forEach(element => {
-               var circle   = new google.maps.Circle({
-                    map: this.map,
-                    center: new google.maps.LatLng(element["Lat"], element["Long"]),
-                    radius: 10,
-                    strokeColor: "green",
-                    fillColor: "green"
-                });
-            });
+            // circle.setMap(null)
+
             self.currentMapTrack = new google.maps.Polyline({
                 path: path,
                 geodesic: true,
@@ -372,12 +509,20 @@ export class RangerpatrolPage implements OnInit {
         // self.storage.set('routes', this.previousTracks);
         self.myroute = [];
         myroute.forEach(element => {
-            self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: 1 })
+            self.myroute.push({ Longitude: element.lng, Lattitude: element.lat, Patrol_Log_ID: this.patrolID })
         });
         this.data.PostRoute(self.myroute).subscribe();
         self.isTracking = false;
         navigator.geolocation.clearWatch(this.watchID);
         //self.currentMapTrack.setMap(null);
+        this.geofence.removeAll()
+            .then(function () {
+                console.log('All geofences successfully removed.');
+
+            }
+                , function (error) {
+                    console.log('Removing geofences failed', error);
+                });
     }
     remove(ID) {
         var count = -1;
@@ -390,42 +535,6 @@ export class RangerpatrolPage implements OnInit {
     }
     scanMore() {
         // alert("Scan")
-        // let scanSub
-        // this.qrScanner.prepare()
-        //     .then((status: QRScannerStatus) => {
-        //         if (status.authorized) {
-        //             // (window.document.querySelector('')as HTMLElement).classList.add('cameraView');
-        //             // window.document.body.style.backgroundColor= 'transparent';
-
-        //             // camera permission was granted
-        //             this.hideEverything = true;
-        //             this.qrScanner.show();
-
-        //             // start scanning
-        //             scanSub = this.qrScanner.scan().subscribe((text: string) => {
-        //                 this.assets.forEach(element => {
-        //                     if (element["ID"] == text) {
-        //                         this.items.push(element);
-        //                     }
-        //                 });
-        //                 //this.hideEverything = false;
-        //                 this.qrScanner.hide(); // hide camera preview
-        //                 scanSub.unsubscribe(); // stop scanning
-        //                 scanSub.destroy();
-        //             });
-
-        //         } else if (status.denied) {
-        //             // camera permission was permanently denied
-        //             // you must use QRScanner.openSettings() method to guide the user to the settings page
-        //             // then they can grant the permission from there
-        //         } else {
-        //             // permission was denied, but not permanently. You can ask for permission again at a later time.
-        //         }
-        //     })
-        //     .catch((e: any) => console.log('Error is', e));
-    }
-    scanout() {
-        alert("Scan")
         let scanSub
         this.qrScanner.prepare()
             .then((status: QRScannerStatus) => {
@@ -439,7 +548,43 @@ export class RangerpatrolPage implements OnInit {
 
                     // start scanning
                     scanSub = this.qrScanner.scan().subscribe((text: string) => {
-                        alert('Scanned something' + text);
+                        this.assets.forEach(element => {
+                            if (element["ID"] == text) {
+                                this.items.push(element);
+                            }
+                        });
+                        //this.hideEverything = false;
+                        this.qrScanner.hide(); // hide camera preview
+                        scanSub.unsubscribe(); // stop scanning
+                        scanSub.destroy();
+                    });
+
+                } else if (status.denied) {
+                    // camera permission was permanently denied
+                    // you must use QRScanner.openSettings() method to guide the user to the settings page
+                    // then they can grant the permission from there
+                } else {
+                    // permission was denied, but not permanently. You can ask for permission again at a later time.
+                }
+            })
+            .catch((e: any) => console.log('Error is', e));
+    }
+    scanout() {
+        // alert("Scan")
+        let scanSub
+        this.qrScanner.prepare()
+            .then((status: QRScannerStatus) => {
+                if (status.authorized) {
+                    // (window.document.querySelector('')as HTMLElement).classList.add('cameraView');
+                    // window.document.body.style.backgroundColor= 'transparent';
+
+                    // camera permission was granted
+                    this.hideEverything = true;
+                    this.qrScanner.show();
+
+                    // start scanning
+                    scanSub = this.qrScanner.scan().subscribe((text: string) => {
+                        // alert('Scanned something' + text);
                         var count = -1;
                         this.items.forEach(element => {
                             count++;
@@ -462,5 +607,51 @@ export class RangerpatrolPage implements OnInit {
                 }
             })
             .catch((e: any) => console.log('Error is', e));
+    }
+    report() {
+        this.navcnt.navigateForward("/incidents")
+    }
+
+    private async err() {
+        const alert = await this.alertCtrl.create({
+            header: "Error",
+            message: 'The input provided is incorrect. Please try again.',
+            buttons: ['OK']
+        });
+        alert.present();
+    }
+
+    exit() {
+        this.data.GetPatrol_LOg(this.patrolID).subscribe(res => {
+            var patrol = {
+                "Patrol_Log_ID": this.patrolID,
+                "Ranger_ID": res["Ranger_ID"],
+                "Patrol_Booking_ID": res["Patrol_Booking_ID"],
+                "Checkin": res["Checkin"],
+                "Checkout": new Date(),
+                "Checked_in": false
+            }
+            console.log(res["Checkin"], new Date())
+            this.data.PutPatrol(this.patrolID, patrol).subscribe(res1 => {
+                console.log(res1)
+                //this.FDescription = res1["Description"];
+                var Feedback = this.AddForm.get('Feedback').value;
+               
+                this.newFeedback = {
+                    "Patrol_Log_ID": this.patrolID, // Names for your input
+                    "Description": Feedback, // Names for your input
+                    "Date": new Date()
+                }
+                if (Feedback != null) {
+                    this.data.PostFeedback(this.newFeedback).subscribe(res => {
+                        this.navcnt.navigateForward("/home");
+                    })
+                }
+                else if (Feedback == null) {
+                    this.err()
+                }
+            })
+        })
+
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ERPService } from '../erp.service';
 import { Router } from '@angular/router';
-
+import { Storage } from '@ionic/storage';
 
 // import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // @IonicPage()
@@ -24,10 +24,12 @@ export class ConfirmRewardPage implements OnInit {
  redeemID:any;
  ProductPoints: object;
  RangerPoints:object;
-
- myDate= new Date().toLocaleDateString();
+ loggedIn:any;
+Ranger:any;
+count:number;
+ myDate= new Date().toISOString();
  Time= new Date().toTimeString();
-  constructor(private data: ERPService, private router:Router) { 
+  constructor(private data: ERPService, private router:Router,private storage:Storage) { 
     // this.ID = navParams.get('data');
   }
   // , public navCtrl: NavController, public navParams: NavParams
@@ -35,6 +37,10 @@ export class ConfirmRewardPage implements OnInit {
     console.log('ionViewDidLoad ConfirmRewardPage');
   }
   ngOnInit() {
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;
+      
+    });
   
     this.confirmID = this.data.nvalidate;
     this.data.GetProduct_Reward().subscribe(res=>{
@@ -50,8 +56,9 @@ export class ConfirmRewardPage implements OnInit {
     
     console.log(this.confirmID)
     this.data.GetProduct_RewardID(ID).subscribe(res=>{
-      this.ProductPoints = res['Points']
-      this.updateRanger(3,this.ProductPoints);
+      this.ProductPoints = res['Points'];
+      var name =res["Name"];
+      this.updateRanger(this.loggedIn,this.ProductPoints);
       console.log(res);
       if (res["Quantity"] == 0 )
       {
@@ -72,24 +79,25 @@ export class ConfirmRewardPage implements OnInit {
     }
     console.log(this.nReward);
       this.data.PutRewardAdd(ID,this.nReward).subscribe(res1 => {
- 
-
-        
-        
-          this.RandomNumber = Math.floor(Math.random() * 9999999999999999999);
+          this.RandomNumber = Math.floor(Math.random() * 99999999999999999999);
           console.log(this.RandomNumber);
-          
+          this.count = this.data.RewardList.length +1;
           this.RedeemVoucher = {
-            
-            "Ranger_ID" : 3, // Names for your input
+            "ID":this.count,
+            "Ranger_ID" : this.loggedIn, // Names for your input
             "Voucher_code": this.RandomNumber,
             "DateTime" : this.myDate,
             "Product_Reward_ID":PoductID,
+            "Name":name,
+            "Points":this.ProductPoints
           };
-          this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
-            this.data.nvalidate = res2["Redeem_ID"];
-            this.router.navigateByUrl("/voucher");
-          });
+          this.data.RewardList.push(this.RedeemVoucher);
+          console.log(this.data.RewardList)
+          this.router.navigateByUrl("/basket");
+          // this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
+          //   this.data.nvalidate = res2["Redeem_ID"];
+          //   this.router.navigateByUrl("/voucher");
+          // });
       });
     }
   }) 
@@ -102,6 +110,5 @@ export class ConfirmRewardPage implements OnInit {
        console.log(res)
       });
     }
-   
     
 }

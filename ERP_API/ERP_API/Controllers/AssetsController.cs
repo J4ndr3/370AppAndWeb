@@ -108,7 +108,22 @@ namespace ERP_API.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = asset.Asset_ID }, asset);
         }
+        [System.Web.Http.Route("api/Assets/AS")]
+        [HttpPost]
+        [ResponseType(typeof(Asset_Supplier))]
+        public IHttpActionResult AS(Asset_Supplier Asset)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            db.Asset_Supplier.Add(Asset);
+            db.SaveChanges();
+
+            return Ok(1);
+        }
         // DELETE: api/Assets/5
         [ResponseType(typeof(Asset))]
         public IHttpActionResult DeleteAsset(int id)

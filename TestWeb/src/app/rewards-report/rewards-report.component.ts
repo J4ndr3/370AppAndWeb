@@ -19,7 +19,8 @@ export class RewardsReportComponent implements OnInit {
   Events:object;
   EventCount=0;
   EventsCount:Array<object>;
-
+  loggedIn:any;
+  TotalCount=0;
   public Download() {
   
     
@@ -56,25 +57,28 @@ export class RewardsReportComponent implements OnInit {
   ngOnInit() {
     this.data.GetRewardAdd().subscribe(res=>{
       this.ProductCount = JSON.parse(JSON.stringify(res));
-      console.log(res);
+      // console.log(res);
       this.ProductCount.forEach(marker => {
           this.Count++;
-          console.log(this.ProductCount)
+          // console.log(this.ProductCount)
           this.Products = res;
       
     });
+    this.data.GetEventRewardAdd().subscribe(res=>{
+      this.EventsCount = JSON.parse(JSON.stringify(res));
+      // console.log(res);
+      this.EventsCount.forEach(marker => {
+          this.EventCount++;
+          // console.log(this.EventCount)
+          this.Events = res;
+          this.TotalCount = this.EventCount + this.Count;
+    });
   });
-  this.data.GetEventRewardAdd().subscribe(res=>{
-    this.EventsCount = JSON.parse(JSON.stringify(res));
-    console.log(res);
-    this.EventsCount.forEach(marker => {
-        this.EventCount++;
-        console.log(this.EventCount)
-        this.Events = res;
-    
   });
-});
-this.ReportAccess(10);
+  
+this.loggedIn = sessionStorage.getItem("Ranger");
+     this.ReportAccess(this.loggedIn);
+     
   }
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
@@ -85,8 +89,8 @@ this.ReportAccess(10);
   }
   ReportAccess(ID){
     this.data.GetRangers(ID).subscribe(res=>{
-      console.log(res);
-    if (res['Access_ID'] == 1 ||res['Access_ID'] == 2 ||res['Access_ID'] == 3 ||res['Access_ID'] == 7){
+      // console.log(res);
+      if (res['User_Role_ID'] == 1 ||res['User_Role_ID'] == 2 ||res['User_Role_ID'] == 4){
       
       
   }

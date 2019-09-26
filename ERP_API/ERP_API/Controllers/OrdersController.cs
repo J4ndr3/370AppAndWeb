@@ -31,12 +31,13 @@ namespace ERP_API.Controllers
             {
                 dynamic m = new ExpandoObject();
                 m.ID = Item.Order_ID;
-                m.Date = Item.Date;
+                m.Date = Item.Date.ToShortDateString();
                 var Asset_ID = Item.Order_Line.Where(zz => zz.Order_ID == Item.Order_ID).Select(zz => zz.Asset_ID).FirstOrDefault();
                 m.Asset = db.Assets.Where(zz=>zz.Asset_ID == Asset_ID).Select(zz=>zz.Description).FirstOrDefault();
                 m.Type = db.Assets.Include(zz=>zz.Asset_Type).Where(zz=>zz.Asset_ID == Asset_ID).Select(zz=>zz.Asset_Type.Description).FirstOrDefault();
                 m.Supplier = Item.Supplier.Name;
                 m.Status = Item.Status;
+                
                 toReturn.Add(m);
             }
             return (toReturn);
@@ -107,7 +108,21 @@ namespace ERP_API.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = order.Order_ID }, order);
         }
+        [System.Web.Http.Route("api/Orders/PostOrderL")]
+        [HttpPost]
+        public IHttpActionResult PostOrderL(Order_Line order)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            db.Order_Line.Add(order);
+            db.SaveChanges();
+
+            return Ok(1);
+        }
         // DELETE: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)

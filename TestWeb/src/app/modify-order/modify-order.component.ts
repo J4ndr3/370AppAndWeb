@@ -23,26 +23,35 @@ export class ModifyOrderComponent implements OnInit {
   SupplierOptions:Array<object>;  
   nOrder:object;
   rcv: object;
+  EventRewardAddSelection:number =0;
+  EventRewardAddOptions:Array<object>; 
+  StatusOptions:Array<object>; 
  
   constructor(private router:Router,private data: ERPService, private formBuilder: FormBuilder, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.EditForm = this.formBuilder.group({
-      Date:[], // your attributes
-      ID:[]
-      }); this.edt();
+        ID: [],
+        Date: [],
+        Supplier: [],
+        Status: [],
 
-    this.data.GetAssetDropdown().subscribe(res=>{
-      this.AssetOptions = JSON.parse(JSON.stringify(res));
-    })
-      this.data.GetTypeDropdown().subscribe(res=>{
-        this.TypeOptions = JSON.parse(JSON.stringify(res));
+        });
+      this.data.GetAssets().subscribe(res=>{
+        this.AssetOptions = JSON.parse(JSON.stringify(res));
+        // console.log(res)
       })
-        this.data.GetSupplierDropdown().subscribe(res=>{
-          this.SupplierOptions = JSON.parse(JSON.stringify(res));
-    })
+        this.data.GetTypes().subscribe(res=>{
+          this.TypeOptions = JSON.parse(JSON.stringify(res));
+          // console.log(res)
+        })
+          this.data.GetSupplier().subscribe(res=>{
+            this.SupplierOptions = JSON.parse(JSON.stringify(res));
+            // console.log(res)
+      })
     
-     
+    
+     this.edt();
   }
   edit(ID){
     this.data.GetOrders(ID).subscribe(res=>{ //iets fout met ID
@@ -52,30 +61,47 @@ export class ModifyOrderComponent implements OnInit {
         this.router.navigateByUrl("/order");
       }
       else{
+        this.data.nID = ID;
         this.router.navigateByUrl("/modify-order");
-        this.ngOnInit();
-       this.data.nID = ID;
+        //this.ngOnInit();
+       
       }})
     
   }
   edt(){
      this.data.GetOrders(this.data.nID).subscribe(res=>{     
       this.Order= res;
+      var date = new Date(this.Order.Date);
+          var year = date.getFullYear();
+          
+          if (date.getMonth()<10){
+          var  month = ("0"+date.getMonth()).toString();
+          }
+          else{
+            var month = date.getMonth().toString();
+          }
+          if (date.getDay()<10){
+            var  day = ("0"+date.getDay()).toString();
+            }
+            else{
+              var day = date.getDay().toString();
+            }
+         
+      // console.log(res)
+      var Date1 =year+"-"+month+"-"+day;
       this.EditForm.setValue({ID:this.Order.Order_ID,
-        Date:this.Order.Date,
-        Asset:this.Order.Asset,
-        Type:this.Order.Type,
-        Supplier:this.Order.Supplier})    
+        Date:Date1,
+        Status:this.Order.Status,
+        Supplier:this.Order.Supplier_ID})    
     })
   }
   update(){
     var Date = this.EditForm.get('Date').value; //the name in red the same as on you html
-    var Asset = this.EditForm.get('Asset').value; //the name in red the same as on you html
-    var Type = this.EditForm.get('Type').value;
     var Supplier = this.EditForm.get('Supplier').value;
     var ID = this.EditForm.get('ID').value;
+    var Status = this.EditForm.get('Status').value;
 
-    if (Date==""||Asset==""||Type==""||Supplier==""||ID =="") {
+    if (Date==""||Status==""||Supplier==""||ID =="") {
       document.getElementById("inputErr").click(); //Hy mag dalk nie nou werk nie sal hom in nav gaan declare
     }
     else {
@@ -83,18 +109,17 @@ export class ModifyOrderComponent implements OnInit {
 
         "Order_ID":ID, //selfde as die databasis 
         "Date": Date, //selfde as die databasis
-        "Asset": Asset,
-        "Type": type,
-        "Status" : status,
-        "Supplier" : Supplier
+        "Status" : Status,
+        "Supplier_ID" : Supplier
       };
-      console.log(this.nOrder);
+      // console.log(this.nOrder);
       this.data.PutOrder(ID,this.nOrder).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();
+          this.router.navigateByUrl("/order");
         }
         else
         {
@@ -106,7 +131,7 @@ export class ModifyOrderComponent implements OnInit {
 
   showToast(){
     this.toastrService.show("Record modified successfully.", "Success!");
-    this.router.navigateByUrl("/order");
+
   }
 
 

@@ -36,9 +36,10 @@ export class EventTypeModifyComponent implements OnInit {
         this.router.navigateByUrl("/event-type");
       }
       else{
-        this.router.navigateByUrl("/event-type-modify");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/event-type-modify");
+        // this.ngOnInit();
+       
       }})
     
   }
@@ -63,10 +64,10 @@ export class EventTypeModifyComponent implements OnInit {
           "Type_ID":ID, //selfde as die databasis 
           "Description": Description, //selfde as die databasis
         };
-        console.log(this.nEventType);
+        // console.log(this.nEventType);
         this.data.PutEventType(ID,this.nEventType).subscribe(res => {
           this.rcv = res
-          console.log(this.rcv);
+          // console.log(this.rcv);
           if (this.rcv == null)
           {
             this.showToast();

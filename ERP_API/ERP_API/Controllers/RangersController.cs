@@ -104,6 +104,7 @@ namespace ERP_API.Controllers
         [ResponseType(typeof(Ranger))]
         public IHttpActionResult PostRanger(Ranger ranger)
         {
+            ranger.Password = ranger.Password.Substring(0, 19);
             db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
@@ -147,6 +148,7 @@ namespace ERP_API.Controllers
             return db.Rangers.Count(e => e.Ranger_ID == id) > 0;
         }
         [System.Web.Http.Route("api/Rangers/UpdatePoints")]
+        [HttpGet]
         public HttpResponseMessage UpdatePoints([FromUri] Ranger userDet)
         {
             var points = userDet.Points;

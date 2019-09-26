@@ -15,14 +15,13 @@
             <h2 class="Header">User role Information:</h2>
             <br>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="Level" placeholder="User role Description..." formControlName="Description" required>
+                <input type="text" class="form-control" id="Level" placeholder="User role Description..." formControlName="Description" maxlength="20" required>
                 <input type="text" class="form-control" formControlName="ID" hidden required>
             </div>
-            <br>
             <div class="form-group">
                 <div class="col-sm-10">
                     <select class="form-control" id="Select1" onchange="selectColor()" required formControlName="Access">
-                        <option selected disabled hidden value="Gender...">Access Level...</option>
+                        <option  disabled  [value]="" style="color:white">Access Level...</option>
                         <option *ngFor="let option of AccessOptions" [(value)]="option.ID">{{option.ID}}</option>
                       </select>
                 </div>
@@ -56,3 +55,6 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>

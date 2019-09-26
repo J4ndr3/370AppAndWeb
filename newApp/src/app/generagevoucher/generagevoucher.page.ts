@@ -3,6 +3,8 @@ import { ERPService } from '../erp.service';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ViewVoucharPage } from '../view-vouchar/view-vouchar.page'
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-generagevoucher',
   templateUrl: './generagevoucher.page.html',
@@ -37,10 +39,14 @@ export class GeneragevoucherPage implements OnInit {
   Details: string;
   Details1: string;
   ViewID: any;
+  loggedIn:any;
 
-  constructor(private data: ERPService, private router: Router, private view: ViewVoucharPage) { }
+  constructor(private data: ERPService, private router: Router, private view: ViewVoucharPage,private storage:Storage) { }
 
   ngOnInit() {
+    this.storage.get("Ranger").then(res=>{
+      this.loggedIn = res;      
+    });
     this.rewardsqrv = [];
     // this.confirmID = this.data.nvalidate;
     // this.confirmID1 = this.data.nvalidate1;
@@ -55,7 +61,7 @@ export class GeneragevoucherPage implements OnInit {
       this.r = [];
       this.Redeems = JSON.parse(JSON.stringify(res));
       this.Redeems.forEach(element => {
-        if (element["Ranger_ID"] == 3) {
+        if (element["Ranger_ID"] == this.loggedIn) {
           this.r.push(element);
         }
       });
@@ -95,7 +101,7 @@ export class GeneragevoucherPage implements OnInit {
       this.ProductID = res1["Product_Reward_ID"]
       this.VoucherCode = res1["Voucher_code"];
       this.DateGenerated = res1["DateTime"];
-      this.Ranger = res1["Ranger_ID"];
+      this.Ranger = this.loggedIn;
       this.nReward = {
         "Redeem_ID": res1["Redeem_ID"],
         "Ranger_ID": res1["Ranger_ID"], // Names for your input
@@ -174,7 +180,7 @@ export class GeneragevoucherPage implements OnInit {
       this.VoucherCode = res["Voucher_code"];
       this.DateGenerated = res["DateTime"];
       this.EventID = res["Event_Reward_ID"];
-      this.Ranger1 = res["Ranger_ID"];
+      this.Ranger1 = this.loggedIn;
       this.nReward = {
         "Redeem_ID": res["Redeem_ID"],
         "Ranger_ID": res["Ranger_ID"], // Names for your input
@@ -199,7 +205,7 @@ export class GeneragevoucherPage implements OnInit {
             "Event_Reward_ID": res2["Event_Reward_ID"],
             "Name": res2["Name"],
           }
-          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n" + "Reward type ID: " + this.EventID;
+          this.qrv = "Date Generated: " + this.DateGenerated + "\n" + "Event Name: " + this.QRname + "\n" + "Ranger Name: " + this.RangerName + " " + this.Surname + "\n"+ "V-code: " + "\n" + this.VoucherCode + "\n" + "Reward type ID: " + this.EventID;
           //this.rewardsqrv.push(this.qrv)
           this.Details = "Reward Name: " + this.QRname;
           this.Details1 = "Date: " + this.DateGenerated;

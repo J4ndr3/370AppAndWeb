@@ -34,9 +34,10 @@ export class MarkerTypeModComponent implements OnInit {
         this.router.navigateByUrl("/markertype");
       }
       else{
-        this.router.navigateByUrl("/markertypemod");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/markertypemod");
+        // this.ngOnInit();
+       
       }})
   }
   edt(){
@@ -63,10 +64,10 @@ export class MarkerTypeModComponent implements OnInit {
         "Type": Type, //selfde as die databasis
         "Points_Worth": Points_Worth,
       };
-      console.log(this.nType);
+      // console.log(this.nType);
       this.data.PutMarker_Type(ID,this.nType).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

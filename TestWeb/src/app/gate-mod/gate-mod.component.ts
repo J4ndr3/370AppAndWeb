@@ -40,9 +40,10 @@ rcv: object;
         this.router.navigateByUrl("/gate");
       }
       else{
-        this.router.navigateByUrl("/gatemod");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/gatemod");
+        // this.ngOnInit();
+        
       }})
     
   }
@@ -77,10 +78,10 @@ rcv: object;
         "Longitude": Longitude,
         "Reserve_ID": Reserve
       };
-      console.log(this.nGate);
+      // console.log(this.nGate);
       this.data.PutGates(ID,this.nGate).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

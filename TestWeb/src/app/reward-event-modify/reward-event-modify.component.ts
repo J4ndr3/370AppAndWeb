@@ -42,16 +42,16 @@ export class RewardEventModifyComponent implements OnInit {
             this.router.navigateByUrl("/reward-add");
           }
           else{
-            this.router.navigateByUrl("/reward-event-modify");
-            this.ngOnInit();
             this.data.nID = ID;
+            this.router.navigateByUrl("/reward-event-modify");
+            
           }})
         
       }
   edt(){
     this.data.GetEventRewardAdds(this.data.nID).subscribe(res=>{
       this.RewardEventModify = res;
-      console.log(res);
+      // console.log(res);
       this.EditForm1.setValue({EID:this.RewardEventModify.Event_Reward_ID,
         EName:this.RewardEventModify.Name,
         EDate:this.RewardEventModify.Date,
@@ -81,10 +81,10 @@ export class RewardEventModifyComponent implements OnInit {
         "Date":EDate
         
       };
-      console.log(this.nEventReward);
+      // console.log(this.nEventReward);
       this.data.PutEventRewardAdd(EID,this.nEventReward).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

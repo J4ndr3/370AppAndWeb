@@ -27,7 +27,7 @@ export class UserroleModifyComponent implements OnInit {
     this.EditForm = this.formBuilder.group({
       ID:[], // your attributes NB!!! MOENIE DIE ID UITLOS IN DIE FORMBUILDER NIE. 
       Description: [], // your attributes
-      Access: [] // your attributes
+      Access: ["Access Level..."] // your attributes
       });
       this.edt();
   }
@@ -40,9 +40,10 @@ export class UserroleModifyComponent implements OnInit {
         this.router.navigateByUrl("/userrole");
       }
       else{
-        this.router.navigateByUrl("/userrolemod");
-        this.ngOnInit();
         this.data.nID = ID;
+        this.router.navigateByUrl("/userrolemod");
+        // this.ngOnInit();
+       
       }})
     
   }
@@ -71,10 +72,10 @@ export class UserroleModifyComponent implements OnInit {
         "Description": Description,
         "Access_ID": Access, //selfde as die databasis
       };
-      console.log(this.nRole);
+      // console.log(this.nRole);
       this.data.PutUserRole(ID,this.nRole).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

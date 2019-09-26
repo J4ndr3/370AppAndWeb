@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-        <ion-buttons slot="end" (click)="openNote()">
+        <ion-buttons slot="end" routerLink="/nav">
             <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
         </ion-buttons>
         <ion-buttons slot="end">
@@ -29,10 +29,10 @@
                 <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm">
                     <div class="form-group">
                         <div class="col-sm-10">
-                            <ion-select formControlName="Type_ID" id="Select1" placeholder="Incident type..." class="form-control" style="margin-bottom:2% !important;">
-                                <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.ID">{{item.Description}}</ion-select-option>
+                            <ion-select formControlName="Type_ID" id="Select1" placeholder="Incident type..." class="form-control" style="margin-bottom:2% !important;" required>
+                                <ion-select-option *ngFor="let item of TypeOptions" [(value)]="item.ID" >{{item.Description}}</ion-select-option>
                             </ion-select>
-                            <ion-textarea formControlName="Description" placeholder="Description..." class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
+                            <ion-textarea formControlName="Description" placeholder="Description..." maxlength="200" class="ion-padding-start form-control" style="margin-bottom:5% !important;" autogrow="true"></ion-textarea>
                             <ion-input formControlName="Incident_Status_ID" value="2" hidden></ion-input>
                             <div style="float:left;">
                                 <ion-button style="margin-bottom:10%;" (click)="OpenCamera()">
@@ -54,7 +54,7 @@
             <div>
                 <ion-grid>
                     <ion-row>
-                        <ion-col *ngFor="let item of images">
+                        <ion-col *ngFor="let item of imgDisp">
                             <div>
                                 <ion-thumbnail>
                                     <img [src]="item" />

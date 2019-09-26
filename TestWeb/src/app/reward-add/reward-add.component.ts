@@ -11,6 +11,11 @@ import { RewardEventModifyComponent } from '../reward-event-modify/reward-event-
   templateUrl: './reward-add.component.html',
   styleUrls: ['./reward-add.component.sass']
 })
+
+
+
+
+
 export class RewardAddComponent implements OnInit {
   RewardAdds: object;
   AddForm: FormGroup;
@@ -39,7 +44,7 @@ export class RewardAddComponent implements OnInit {
       PName: [], // Names for your input
       PQuantity: [], // Names for your input 
       PPoints: [],
-      PDescription: []
+      PDescription: ["Type Product..."]
     });
     this.data.GetProductType().subscribe((res) => {
       this.RewardAddOptions = JSON.parse(JSON.stringify(res));
@@ -49,7 +54,7 @@ export class RewardAddComponent implements OnInit {
       EPoints: [], // Names for your input 
       EDate: [],
       ELocation: [],
-      EDescription: []
+      EDescription: ["Type Event..."]
     });
     this.data.GetEventType().subscribe((res) => {
       this.EventRewardAddSelection=0;
@@ -128,6 +133,7 @@ export class RewardAddComponent implements OnInit {
   
       if ((PName||PQuantity||PPoints||PDescription)=="") {
         //Modal popup
+        document.getElementById("inputErr").click();
       }
       else {
         this.NewRewardAdd = {
@@ -137,7 +143,7 @@ export class RewardAddComponent implements OnInit {
           "Prod_ID":PDescription,
           
         };
-        console.log(this.NewRewardAdd)
+        // console.log(this.NewRewardAdd)
         this.data.PostRewardAdd(this.NewRewardAdd).subscribe(res => {
           this.ngOnInit();
           this.Event();
@@ -150,7 +156,7 @@ export class RewardAddComponent implements OnInit {
       var EDate = this.AddForm1.get('EDate').value; // Names for your input
       var ELocation = this.AddForm1.get('ELocation').value;
       var EDescription = this.AddForm1.get('EDescription').value;
-  console.log(EDescription);
+  // console.log(EDescription);
       if ((EName||EPoints||EDate||ELocation||EDescription)=="") {
         //Modal popup
       }
@@ -163,7 +169,7 @@ export class RewardAddComponent implements OnInit {
           "Type_ID": EDescription,
           
         };
-        console.log(this.NewEventRewardAdd)
+        // console.log(this.NewEventRewardAdd)
         this.data.PostEventRewardAdd(this.NewEventRewardAdd).subscribe(res => {
           this.Event();
           this.AddForm1.reset();
@@ -178,3 +184,4 @@ export class RewardAddComponent implements OnInit {
   
   
   
+    

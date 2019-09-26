@@ -20,7 +20,7 @@ export class RangerComponent implements OnInit {
   ngOnInit() {
     this.Rangers=[];
     this.data.GetRanger().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.Rangers1 = JSON.parse(JSON.stringify(res));
       this.Rangers1.forEach(element => {
         if (element["Status"] == true)
@@ -53,11 +53,11 @@ export class RangerComponent implements OnInit {
     this.mod.edit(ID);
   }
   view(ID){
-    console.log("Hallo",ID)
+    // console.log("Hallo",ID)
     this.view1.open(ID);
   }
   sendNote(){
-    console.log("hit");
+    // console.log("hit");
     this.data.sendNotif("Full moon","Tonight is a full moon be on the lookout.");
     
   }

@@ -10,9 +10,9 @@
     </div>
 
     <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" [(ngModel)]="search1" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="search1" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
     </div>
 </div>
 <br>
@@ -32,26 +32,24 @@
         <br>
         <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm1" (ngSubmit)="addRole()">
 
-            <div class="form-group border-lable-flt">
+            <div class="form-group">
                 <h2 class="Header">Add User Role</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="" formControlName="Description" required>
-                    <label for="Desc">User role Description...</label>
+                    <input type="text" class="form-control" id="Level" placeholder="Description..." formControlName="Description" maxlength="20" required>
                 </div>
-               
+
             </div>
-                
-                    <div class="col-sm-10">
-                            <label class="form-group border-lable-flt">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required formControlName="Access">
-                          <option selected disabled hidden value="Gender...">Access Level...</option>
+
+            <div class="col-sm-10">
+                <select class="form-control" id="Select1" onchange="selectColor()" required formControlName="Access">
+                          <option selected disabled hidden [value]="">Access Level...</option>
                           <option *ngFor="let option of AccessOptions" [(value)]="option.ID">{{option.ID}}</option>
                         </select>
-                        <span>Access Level...</span>
-                    </label>
-                    </div>
-        
+
+            </div>
+
+
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
@@ -63,6 +61,7 @@
     <br>
     <br>
 </div>
+<br>
 <!--TABLE-->
 
 <div class="table">
@@ -76,10 +75,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of Role |filter:search1">
-                <td style="text-align: left;">{{item.Description}}</td>
-                <td>{{item.Level}}</td>
+                <td style="text-align: left;" innerHTML="{{ item.Description | highlight :search1}}"></td>
+                <td innerHTML="{{ item.Level | highlight :search1}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit1(item.ID)" ><img src="/assets/ios-create.svg"
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit1(item.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete1(item.ID)"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
             </tr>
@@ -102,9 +101,9 @@
     </div>
 
     <div class="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search2" name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
-            </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="search2" name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+        </div>
     </div>
 </div>
 <br>
@@ -131,7 +130,7 @@
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" formControlName="Web" id="Select1" onchange="selectColor()" required>
-                        <option selected disabled hidden value="Gender...">Web Access...</option>
+                        <option selected disabled hidden [value]="">Web Access...</option>
                         <option>True</option>
                         <option>False</option>
                       </select>
@@ -139,8 +138,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select class="form-control" id="Select1" formControlName="Report" onchange="selectColor()" required>
-                          <option selected disabled hidden value="Gender...">Report Access...</option>
+                        <select class="form-control" formControlName="Report" id="Select1" onchange="selectColor()" required>
+                          <option selected disabled hidden  [value]="">Report Access...</option>
                           <option>True</option>
                           <option>False</option>
                         </select>
@@ -149,7 +148,7 @@
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" formControlName="Write" id="Select1" onchange="selectColor()" required>
-                            <option selected disabled hidden value="Gender...">Write Access...</option>
+                            <option selected disabled hidden [value]="">Write Access...</option>
                             <option>True</option>
                             <option>False</option>
                           </select>
@@ -158,7 +157,7 @@
                 <div class="form-group">
                     <div class="col-sm-10">
                         <select class="form-control" formControlName="App" id="Select1" onchange="selectColor()" required>
-                              <option selected disabled hidden value="Gender...">App Access...</option>
+                              <option selected disabled hidden  [value]="">App Access...</option>
                               <option>True</option>
                               <option>False</option>
                             </select>
@@ -177,6 +176,7 @@
     <br>
     <br>
 </div>
+<br>
 <!--TABLE-->
 <div class="table">
     <table class="table table-striped">
@@ -192,11 +192,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of Level |filter:search2">
-                <td>{{item.ID}}</td>
-                <td>{{item.Web}}</td>
-                <td>{{item.Report}}</td>
-                <td>{{item.Write}}</td>
-                <td>{{item.App}}</td>
+                <td innerHTML="{{ item.ID | highlight :search2}}"></td>
+                <td innerHTML="{{ item.Web | highlight :search2}}"></td>
+                <td innerHTML="{{ item.Report | highlight :search2}}"></td>
+                <td innerHTML="{{ item.Write | highlight :search2}}"></td>
+                <td innerHTML="{{ item.App | highlight :search2}}"></td>
 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edt(item.ID)"><img src="/assets/ios-create.svg"
@@ -209,20 +209,6 @@
 
 </div>
 <!-- Modal- Moenie verander nie. uncomment net die modal vir input error as die duplicate entry message gebruik moet word. Gaan later dit koppel aan waar dit moet wees. -->
-<div class="modal fade" id="Delmodal" data-backdrop="static" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>This record will be permanently deleted. Are you sure you want to continue?</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!--comment en uncomment net om screenshots van die verskillende error messages te kry-->
@@ -248,9 +234,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close " data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
                 <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" (click)="del1()">Delete</button>
             </div>
+        </div>
+    </div>
+</div>

@@ -30,66 +30,40 @@
 
     <div class="inputForm">
         <br>
-        <form class="form-horizontal" id="modifyForm" action="/action_page.php">
+        <form class="form-horizontal" id="modifyForm" [formGroup]="AddForm" (ngSubmit)="addOrder()">
 
             <div class="form-group">
                 <h2 class="Header">Add Order</h2>
                 <br>
-
-
-
-
-                <br>
+                <div class="col-sm-10">
+                <input type="date" class="form-control" id="Level" placeholder="Date..." name="Level" formControlName="Date" required>
+                </div>
 
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="desc" placeholder="Order ID..." name="desc" required>
+                <select formControlName="Asset" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden [value]="">Asset...</option>
+                        <option *ngFor="let opt of AssetOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                    </select>
                 </div>
-                <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <input placeholder="Date..." class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                <div class="col-sm-10">
+                <select formControlName="Type" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden [value]="">Type...</option>
+                        <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
+                    </select>
                 </div>
-
-
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Gender...">Asset...</option>
-                    <option>CAMPMASTER 700L Flashlight</option>
-                    <option>Rechargeable 1040 Lum Spotlight</option>
-                    <option>Patrol Magnet</option>
-                    <option>Acebeam X80 Flashlight & Charger</option>
-                    <option>Add new...</option>
-                            </select>
-                    </div>
+                <div class="col-sm-10">
+                <select formControlName="Status"  class="form-control" id="Select1" onchange="selectColor()" required>
+                    <option selected hidden [value]="">Status...</option>
+                    <option >True</option>
+                    <option >False</option>
+                </select>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Gender...">Type...</option>
-                    <option>Flashlight</option>
-                    <option>Magnet</option>
-                    <option>Spotlight</option>
-                    <option>Add new...</option>
-                            </select>
-                    </div>
+                <div class="col-sm-10">
+                <select formControlName="Supplier" [(value)]="EventRewardAddSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <option selected disabled hidden [value]="">Supplier...</option>
+                        <option *ngFor="let opt of SupplierOptions" [(value)]="opt.ID">{{opt.Name}}</option>
+                    </select>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-sm-10">
-                        <select class="form-control" id="Select1" onchange="selectColor()" required>
-                    <option selected disabled hidden value="Gender...">Supplier...</option>
-                    <option>Makro</option>
-                    <option>Spar</option>
-                    <option>Builders Warehouse</option>
-                    <option>Game</option>
-                    <option>Add new...</option>
-                            </select>
-                    </div>
-                </div>
-
-
-
-
             </div>
 
             <!--Moenie die save button verander nie-->
@@ -122,11 +96,11 @@
         <tbody>
             <tr *ngFor="let Order of Orders |filter:searchText">
 
-                <td>{{Order.Date}}</td>
-                <td>{{Order.Asset}}</td>
-                <td>{{Order.Type}}</td>
-                <td>{{Order.Status}}</td>
-                <td>{{Order.Supplier}}</td>
+                <td innerHTML="{{Order.Date | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Asset| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Type | highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Status| highlight :searchText}}"></td>
+                <td innerHTML="{{Order.Supplier | highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Order.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" (click)="delete(Order.ID)" id="editbtn"><img
@@ -146,7 +120,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>

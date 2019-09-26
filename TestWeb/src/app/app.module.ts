@@ -73,9 +73,12 @@ import { DownloadStatusComponent } from './download-status/download-status.compo
 import { DownloadIncedentComponent } from './download-incedent/download-incedent.component';
 import {Ng2SearchPipe, Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-
 import { LoadingScreenInterceptor } from "./interceptor/loading.interceptor";
 import { CommonModule } from '@angular/common';
+import { AuditComponent } from './audit/audit.component';
+import { SettingsComponent } from './settings/settings.component';
+import { HighlightSearchPipe } from './highlight-search-.pipe';
+
 
 @NgModule({
   declarations: [
@@ -102,9 +105,6 @@ import { CommonModule } from '@angular/common';
     StatusReportComponent,
     RangersReportComponent,
     MarkersReportComponent,
-    
-    
-  
     LoginComponent,
     UserroleComponent,
     UserroleModifyComponent,
@@ -139,6 +139,9 @@ import { CommonModule } from '@angular/common';
     DownloadStatusComponent,
     DownloadIncedentComponent,
     LoadingScreenComponent,
+    AuditComponent,
+    SettingsComponent,
+    HighlightSearchPipe,
    
   ],
   imports: [
@@ -155,13 +158,15 @@ import { CommonModule } from '@angular/common';
      closeButton:true,
      positionClass:"toast-bottom-center",
      timeOut:5000,
+     
       }
     ) ,
     ButtonsModule, WavesModule, CardsFreeModule,  
     NgbModule,
     FullCalendarModule,
     HttpClientModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

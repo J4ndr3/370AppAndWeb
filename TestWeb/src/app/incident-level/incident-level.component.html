@@ -37,7 +37,7 @@
                 <h2 class="Header">Add Incident Level</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="Level Description..." formControlName="Description" name="Level" required>
+                    <input type="text" class="form-control" id="Level" placeholder="Level Description..." formControlName="Description" name="Level" required maxlength="20">
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
         <tbody>
             <tr *ngFor="let Level of IncidentLevel |filter:searchText">
                 <td></td>
-                <td style="text-align: left;">{{Level.Description}}</td>
+                <td style="text-align: left;" innerHTML="{{Level.Description| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)=edit(Level.ID)><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)=delete(Level.ID)><img

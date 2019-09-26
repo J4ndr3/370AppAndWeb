@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-img src="/assets/ERP_LOGO.svg" slot="start" class="erplog"></ion-img>
-        <ion-buttons slot="end" (click)="openNote()">
+        <ion-buttons slot="end" routerLink="/nav">
             <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
         </ion-buttons>
         <ion-buttons slot="end">
@@ -55,17 +55,20 @@
 
                             <div class="form-group">
                                 <div class="col-sm-40">
-                                    <ion-select placeholder="Select Colour..." class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
+                                    <ion-select placeholder="Select Colour..." formControlName="Colour" class=" form-control" id="Select1" style="margin-bottom:2% !important;" onchange="selectColor()" required>
                                         <!-- <ion-select-option selected disabled hidden value="colour..." aria-placeholder="Gender...">G</ion-select-option> -->
-                                        <ion-select-option>Red</ion-select-option>
-                                        <ion-select-option>White</ion-select-option>
-                                        <ion-select-option>Black</ion-select-option>
-                                        <ion-select-option>Green</ion-select-option>
-                                        <ion-select-option>Blue</ion-select-option>
-                                        <ion-select-option>Silver</ion-select-option>
-                                        <ion-select-option>Pink</ion-select-option>
-                                        <ion-select-option>Purple</ion-select-option>
-                                        <ion-select-option>Yellow</ion-select-option>
+                                        <ion-select-option [value]="Red">Red</ion-select-option>
+                                        <ion-select-option [value]="White">White</ion-select-option>
+                                        <ion-select-option [value]="Black">Black</ion-select-option>
+                                        <ion-select-option [value]="Green">Green</ion-select-option>
+                                        <ion-select-option [value]="Blue">Blue</ion-select-option>
+                                        <ion-select-option [value]="Silver">Silver</ion-select-option>
+                                        <ion-select-option [value]="Pink">Pink</ion-select-option>
+                                        <ion-select-option [value]="Purple">Purple</ion-select-option>
+                                        <ion-select-option [value]="Yellow">Yellow</ion-select-option>
+                                        <ion-select-option [value]="Grey">Grey</ion-select-option>
+                                        <ion-select-option [value]="Orange">Orange</ion-select-option>
+                                        <ion-select-option [value]="Metelic">Metelic</ion-select-option>
                                     </ion-select>
                                 </div>
                             </div>
@@ -73,8 +76,8 @@
                                 <div class="col-sm-40">
                                     <ion-select placeholder="Select Status..." class="form-control" id="Select1" formControlName="Status" onchange="selectColor()" required>
                                         <!-- <ion-select-option selected disabled hidden value="Gender...">Status...</ion-select-option> -->
-                                        <ion-select-option value="true">Active</ion-select-option>
-                                        <ion-select-option value="false">Inactive</ion-select-option>
+                                        <ion-select-option [value]="true">Active</ion-select-option>
+                                        <ion-select-option [value]="false">Inactive</ion-select-option>
                                     </ion-select>
                                 </div>
                             </div>

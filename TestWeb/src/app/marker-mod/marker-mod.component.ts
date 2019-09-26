@@ -43,9 +43,10 @@ export class MarkerModComponent implements OnInit {
         this.router.navigateByUrl("/marker");
       }
       else {
-        this.router.navigateByUrl("/markermod");
         this.data.nID = ID;
-        this.ngOnInit();
+        this.router.navigateByUrl("/markermod");
+       
+        // this.ngOnInit();
        
       }
     })
@@ -54,7 +55,7 @@ export class MarkerModComponent implements OnInit {
   edt() {
     this.data.GetMarkers(this.data.nID).subscribe(res => {
       this.Marker = res;
-      console.log(res)
+      // console.log(res)
       this.EditForm.setValue({
         ID: this.Marker.Marker_ID,
         Description: this.Marker.Description,
@@ -95,10 +96,10 @@ export class MarkerModComponent implements OnInit {
         "Status": Status,
         "Modified": new Date().toDateString()
       };
-      console.log(this.nMarker);
+      // console.log(this.nMarker);
       this.data.PutMarker(ID, this.nMarker).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null) {
           this.showToast();
         }

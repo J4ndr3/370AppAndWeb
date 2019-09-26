@@ -4,7 +4,7 @@
         <ion-buttons slot="end">
             <ion-icon ios="ios-notifications" md="md-notifications" style="color: white !important"></ion-icon>
         </ion-buttons>
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" routerLink="/nav">
             <ion-menu-button style="color: white !important"></ion-menu-button>
         </ion-buttons>
         <ion-title>
@@ -69,15 +69,15 @@
                     </div>
                     <div class="tab" style="color:black;">
                         <ion-label align="center" style="margin-bottom:5% !important">My Live Location</ion-label>
-                        <div #map id="map" style="width: 100%;  height: 500px !important;"></div>
+                        <div #map id="map" style="width: 80%; margin: auto;  height: 450px !important;"></div>
 
-                        <ion-button style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
+                        <ion-button (click)="report()" style="--background: rgb(205,21,67); color:white; width:100% !important; margin-bottom:6% !important">
                             Report Incident</ion-button>
                     </div>
                     <div class="tab" style="color:black">
                         <ion-label align="center" style="margin-bottom:5% !important">Check in assets:</ion-label>
-                        <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important">
-                        <ion-button data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
+                        <!-- <img src="./assets/th (2).jpg" alt="Camera" width="auto" height="auto" style="margin-bottom:5% !important"> -->
+                        <ion-button (click)="scanout()" data-toggle="collapse" data-target="#demo2" style="margin-bottom:5% !important; width:100% !important">Enter Code Here</ion-button>
 
                         <div class="collapse" id="demo2">
                             <ion-input class="ion-padding-start form-control" placeholder="QR-Code..." name="EnterQRCode" formControlName="EnterQRCodeO" style="margin-bottom:5% !important;"></ion-input>
@@ -87,10 +87,10 @@
                         </div>
                         <div style="width: 100% " class="col-md-10 ">
                             <!-- Multi-line sliding item with icon options on both sides -->
-                            <ion-item-sliding id="item100">
+                            <ion-item-sliding id="item100" *ngFor="let item of items">
                                 <ion-item href="#">
                                     <ion-label>
-                                        <p>Car Magnet asset</p>
+                                        <p>{{item.Description}}</p>
                                     </ion-label>
                                     <ion-note slot="end">
                                         <h3>
@@ -98,7 +98,7 @@
                                     </ion-note>
                                 </ion-item>
                                 <ion-item-options side="end">
-                                    <ion-item-option color="danger">
+                                    <ion-item-option color="danger" (click)="remove(item.ID)">
                                         <ion-icon slot="icon-only" name="trash"></ion-icon>
                                     </ion-item-option>
                                 </ion-item-options>
@@ -108,6 +108,11 @@
                         <div class="col-md-10 user-container">
                             <ion-textarea placeholder="Feedback..." formControlName="Feedback" name="Feedback" class="ion-padding-start form-control" style="margin-bottom:10% !important;" autogrow="true"></ion-textarea>
                         </div>
+                        <div style="overflow:auto;width: 100%;"></div>
+                        <ion-item lines="none" width="100%">
+                            <ion-button size="Medium" style="float: left" id="prevBtn1" (click)="nextPrev(-1)">Back</ion-button>
+                            <ion-button size="Medium" style="float: right" id="nextBtn1" (click)="exit()">Next</ion-button>
+                        </ion-item>
                     </div>
                     <div style="overflow:auto;width: 100%;"></div>
                     <ion-item lines="none" width="100%">

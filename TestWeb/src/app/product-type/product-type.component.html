@@ -37,7 +37,7 @@
                 <h2 class="Header">Add Product Type</h2>
                 <br>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Level" placeholder="Type Description..." name="Level" formControlName="Description" required>
+                    <input type="text" class="form-control" id="Level" placeholder="Type Description..." name="Level" formControlName="Description" maxlength="200" required>
                 </div>
             </div>
 
@@ -67,7 +67,7 @@
         <tbody>
             <tr *ngFor="let ProductType of ProductTypes|filter: searchText">
                 <td></td>
-                <td style="text-align: left;">{{ProductType.Description}}</td>
+                <td style="text-align: left;" innerHTML="{{ProductType.Description| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(ProductType.ID)"><img src="/assets/ios-create.svg"
           class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(ProductType.ID)"><img

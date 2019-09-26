@@ -47,6 +47,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="INF370Model.Audit">
+        <MappingFragment StoreEntitySet="Audit">
+          <ScalarProperty Name="Critical_data" ColumnName="Critical_data" />
+          <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+          <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="Audit_ID" ColumnName="Audit_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Cellphones">
       <EntityTypeMapping TypeName="INF370Model.Cellphone">
         <MappingFragment StoreEntitySet="Cellphone">
@@ -393,6 +404,15 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Reserve_ID" ColumnName="Reserve_ID" />
           <ScalarProperty Name="Security_ID" ColumnName="Security_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="INF370Model.Setting">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="Timer" ColumnName="Timer" />
+          <ScalarProperty Name="Ranger_ID" ColumnName="Ranger_ID" />
+          <ScalarProperty Name="SettingID" ColumnName="SettingID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

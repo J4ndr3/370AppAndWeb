@@ -33,9 +33,10 @@ export class ReserveModComponent implements OnInit {
         this.router.navigateByUrl("/reserve");
       }
       else{
-        this.router.navigateByUrl("/reservemod");
         this.data.nID = ID;
-        this.ngOnInit();
+        this.router.navigateByUrl("/reservemod");
+        
+        // this.ngOnInit();
       }})
     
   }
@@ -67,10 +68,10 @@ export class ReserveModComponent implements OnInit {
         "Lat": Lattitude,
         "Lng": Longitude
       };
-      console.log(this.nReserve);
+      // console.log(this.nReserve);
       this.data.PutReserve(ID,this.nReserve).subscribe(res => {
         this.rcv = res
-        console.log(this.rcv);
+        // console.log(this.rcv);
         if (this.rcv == null)
         {
           this.showToast();

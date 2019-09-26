@@ -3,12 +3,12 @@
 <hr class="hrow" />
 <div>
     <div #ref>
-        <form #regform id="regForm" [formGroup]="AddForm" (ngSubmit)="add()">
+        <form #regform id="regForm" [formGroup]="AddForm">
             <h1>Register:</h1>
             <!-- One "tab" for each step in the form: -->
             <div class="tab col-sm-10">Step 1 -Ranger Name & Surname
-                <p><input class="form-control" formControlName="fname" placeholder="First Name..." name="fname"></p>
-                <p><input class="form-control" formControlName="lname" placeholder="Last Name..." name="lname"></p>
+                <p><input class="form-control" formControlName="fname" placeholder="First Name..." name="fname" maxlength="50"></p>
+                <p><input class="form-control" formControlName="lname" placeholder="Last Name..." name="lname" maxlength="50"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <select formControlName="UserRole" class="form-control" id="Select1" onchange="selectColor()" required>
@@ -20,9 +20,9 @@
 
             </div>
             <div class="tab col-sm-10">Step 2 - Personal information:
-                <p><input class="form-control" formControlName="rangerId" placeholder="Identification Number..." name="rangerId"></p>
-                <p><input class="form-control" formControlName="email" placeholder="E-mail..." name="email"></p>
-                <p><input class="form-control" formControlName="phone" placeholder="Cellphone..." name="phone"></p>
+                <p><input class="form-control" formControlName="rangerId" placeholder="Identification Number..." name="rangerId" maxlength="13"></p>
+                <p><input class="form-control" type="email" formControlName="email" placeholder="E-mail..." name="email" maxlength="50"></p>
+                <p><input class="form-control" type="tel" formControlName="phone" placeholder="Cellphone..." name="phone" maxlength="10"></p>
                 <div class="form-group">
                     <div class="col-sm-40">
                         <select placeholder="Select Gender..." formControlName="selectgender" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
@@ -46,8 +46,8 @@
                 </div>
             </div>
             <div class="tab col-sm-10">Step 3 - Medical information:
-                <p><input class="form-control" formControlName="emergencycontactName" placeholder="Emergency contact's Name" name="emergencycontactName"></p>
-                <p><input class="form-control" formControlName="EmergencycontactNumber" placeholder="Emergency contact Number" name="EmergencycontactNumber"></p>
+                <p><input class="form-control" formControlName="emergencycontactName" placeholder="Emergency contact's Name" name="emergencycontactName" maxlength="50"></p>
+                <p><input class="form-control" type="tel" formControlName="EmergencycontactNumber" placeholder="Emergency contact Number" name="EmergencycontactNumber" maxlength="10"></p>
                 <select placeholder="Select Medical Aid..." formControlName="MedicalAid" class="form-control" id="Select1" onchange="selectColor()" style="margin-bottom:2% !important;" name="selectgender" required>
                         <option selected disabled hidden value="Medical Aid...">Medical Aid...</option>
                     <option *ngFor="let org of MedicalOptions" [(value)]="org.ID">{{org.Descriprion}}</option>
@@ -69,9 +69,9 @@
                 </div>
             </div>
             <div class="tab col-sm-10">Step 4 - Login Info:
-                <p><input class="form-control" formControlName="username" placeholder="Ranger Username..." name="username"></p>
-                <p><input type="password" class="form-control" formControlName="password" placeholder="Password..." name="password"></p>
-                <p><input type="password" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password..." name="confirmpassword"></p>
+                <p><input class="form-control" formControlName="username" placeholder="Ranger Username..." name="username" maxlength="20"></p>
+                <p><input type="password" class="form-control" formControlName="password" placeholder="Password..." name="password" maxlength="20"></p>
+                <p><input type="password" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password..." name="confirmpassword" maxlength="20"></p>
             </div>
             <div style="overflow:auto;" class="col-sm-10">
                 <div style="float:left;">
@@ -97,7 +97,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-checkmark-circle.svg" style="width:40px; margin-top:0px;" />Success</h4>
-                <button type="button" (click)="openModal(false)" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
             </div>
             <div class="modal-body">
                 <p>The user has been added successfull</p>

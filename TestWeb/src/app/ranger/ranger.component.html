@@ -41,13 +41,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let Ranger of Rangers |filter:searchtext">
-                <td>{{Ranger.Name}} {{Ranger.Surname}}</td>
-                <td>{{Ranger.User_Role}}</td>
-                <td>{{Ranger.Email}}</td>
-                <td>{{Ranger.Cell}}</td>
-                <td>{{Ranger.RID}}</td>
-                <td>{{Ranger.Status}}</td>
-                <td>{{Ranger.Points}}</td>
+                <td innerHTML="{{Ranger.Name | highlight :searchtext}} {{Ranger.Surname | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.User_Role | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Email | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Cell | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.RID | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Status | highlight :searchtext}}"></td>
+                <td innerHTML="{{Ranger.Points | highlight :searchtext}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Ranger.ID)"><img src="/assets/ios-create.svg"
               class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Ranger.ID)"><img

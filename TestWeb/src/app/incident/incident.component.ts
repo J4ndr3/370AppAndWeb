@@ -33,7 +33,7 @@ export class IncidentComponent implements OnInit {
       {
         this.empty = true;
       }
-      console.log(this.Incident);
+      // console.log(this.Incident);
     });
 
     
@@ -43,9 +43,9 @@ export class IncidentComponent implements OnInit {
    this.data.GetIncident(ID).subscribe(res=>{
      this.IndivIncident= res;
      this.IndivIncident["Incident_Status_ID"]= 1;
-     console.log(this.IndivIncident);
+    //  console.log(this.IndivIncident);
      this.data.PutIncident(ID,this.IndivIncident).subscribe(res=>{
-      console.log(this.IndivIncident);
+      // console.log(this.IndivIncident);
       //this.nav.ngOnInit();
       this.nav.count--;
       this.router.navigateByUrl("/incident");

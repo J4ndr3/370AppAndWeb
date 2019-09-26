@@ -34,9 +34,13 @@ namespace ERP_API.Controllers
                     m.Vehicle_ID = Item.Vehicle_ID;
                     m.Registration = Item.Vehicle.Registration;
                     m.Ranger_ID = Item.Ranger_ID;
-                    m.Name = db.Rangers.Where(zz=>zz.Ranger_ID == Item.Ranger_ID).Select(zz=>zz.Name).FirstOrDefault() + " " + db.Rangers.Where(zz => zz.Ranger_ID == Item.Ranger_ID).Select(zz => zz.Surname).FirstOrDefault();
+                    m.Name = Item.Ranger1.Name + " " + Item.Ranger1.Surname;
+                        //db.Rangers.Where(zz=>zz.Ranger_ID == Item.Ranger_ID).Select(zz=>zz.Name).FirstOrDefault() + " " + db.Rangers.Where(zz => zz.Ranger_ID == Item.Ranger_ID).Select(zz => zz.Surname).FirstOrDefault();
                     if (Item.Passenger_ID != null) {
-                        m.Passenger = db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Name).FirstOrDefault();
+                        m.Passenger = Item.Ranger.Name;
+                        //db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Name).FirstOrDefault();
+                        m.PassSurname = Item.Ranger.Surname;
+                            //db.Rangers.Where(zz => zz.Ranger_ID == Item.Passenger_ID).Select(x => x.Surname).FirstOrDefault(); ;
                     }
                     else
                     {

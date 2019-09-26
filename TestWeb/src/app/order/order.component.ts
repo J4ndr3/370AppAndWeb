@@ -23,6 +23,10 @@ export class OrderComponent implements OnInit {
   SupplierOptions:Array<object>;  
   nOrder:object;
   searchText;
+  EventRewardAddSelection:number =0;
+  EventRewardAddOptions:Array<object>; 
+  StatusOptions:Array<object>; 
+
 
   constructor(private toastrService: ToastrService,private data: ERPService, private formBuilder: FormBuilder, private mod: ModifyOrderComponent) { }
 
@@ -37,20 +41,31 @@ export class OrderComponent implements OnInit {
     this.AddForm = this.formBuilder.group({
       ID: [],
       Date: [],
+      Supplier: ["Supplier..."],
+      Status: ["Status..."],
+      Type: ["Type..."],
+      Asset: ["Asset..."],
       });
     this.data.GetAssets().subscribe(res=>{
       this.AssetOptions = JSON.parse(JSON.stringify(res));
+      // console.log(res)
     })
       this.data.GetTypes().subscribe(res=>{
         this.TypeOptions = JSON.parse(JSON.stringify(res));
+        // console.log(res)
       })
         this.data.GetSupplier().subscribe(res=>{
           this.SupplierOptions = JSON.parse(JSON.stringify(res));
+          // console.log(res)
     })
-   
+    this.data.GetOrder().subscribe(res=>{
+      this.StatusOptions = JSON.parse(JSON.stringify(res));
+      // console.log(res)
+})
 
   
   }
+  
   showToast(){
     this.toastrService.show("Record could not be added", "Error!");
   }
@@ -75,26 +90,28 @@ export class OrderComponent implements OnInit {
       this.nOrder = {
        
         "Date": Date,
-        "Asset": Asset,
+        "Asset_ID": Asset,
         "Status" : Status,
-        "Type": Type,
-        "Supplier": Supplier,
+        "Asset_Type_ID": Type,
+        "Supplier_ID": Supplier,
     
       };
-      console.log(this.nOrder);
+      // console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
-        if (res != null)
-        {
-          this.ngOnInit();
-          this.showToast();
+        var OL = {
+          "Asset_ID":Asset,
+          "Order_ID":res["Order_ID"]
         }
-        else
-        {
-          document.getElementById("inputErr").click();
-        }
-        
+        this.data.PostOrderLine(OL).subscribe(res=>{
+          // console.log(res)
+        })
+        this.ngOnInit();
+        this.Event();
       });
     }
+  }
+  Event(){
+    this.toastrService.show("This record was added successfully", "Success!");
   }
   del(){
     this.data.DeleteOrder(this.data.nID).subscribe(res=>{

@@ -14,7 +14,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
    * URLs for which the loading screen should not be enabled
    */
   skippUrls = [
-    //'/authrefresh',
+    '/markers-report'
   ];
 
   constructor(private loadingScreenService: LoadingScreenService) {
@@ -48,14 +48,20 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
               reason: error && error.error.reason ? error.error.reason : '',
               status: error.status
           };
-          console.log(data);
+          // console.log(data);
           if (data["status"] == 0){
             this.hideAll();
             document.getElementById('generalMod').click();
             return throwError(error);
           }
           if (data["status"] == 400){
+            this.hideAll();
             document.getElementById('inputErr').click();      
+            return throwError(error);
+          }
+          if (data["status"] == 500){
+            this.hideAll();
+            document.getElementById('delErr').click();      
             return throwError(error);
           }
           
@@ -67,6 +73,11 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
     
   };
   hideAll(): void {
+    var back = document.querySelectorAll(".modal-backdrop");
+    if(back) {
+      $('.modal-backdrop').remove();
+    }
+
 		//try to hide all active modals
 		var openModals = document.querySelectorAll(".modal.in");
 		if(openModals) {
@@ -78,7 +89,7 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
 					var closeButton : any = modalHeader[0].getElementsByTagName("BUTTON");
 					if(closeButton && closeButton.length > 0) {
 						//simulate click on close button
-						closeButton[0].click();
+            closeButton[0].click();
 					}
 				}
 			}
