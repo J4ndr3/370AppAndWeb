@@ -2,6 +2,7 @@ import { Component, OnInit,Renderer2, ViewChild,ElementRef } from '@angular/core
 import {ERPService} from '..//erp.service';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import CryptoJS from 'crypto-js'
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registerform',
@@ -21,7 +22,7 @@ export class RegisterformPage implements OnInit {
   MedicalSelection: number = 0; //if you have a select list
   MedicalOptions: Array<object>; //if you have a select list
 
-  constructor(private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
+  constructor(private alertCtrl: AlertController,private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
   currentTab = 0;
   
 
@@ -202,10 +203,22 @@ validateForm() {
           };
           console.log(this.NewRegisterformPage)
           this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-              console.log(res)
-            this.ngOnInit()
+            if (res = 7) {
+                document.getElementById('dup').click();
+              }
+              else {
+                console.log(res)
+                this.ngOnInit()
+              }
           });
         }}
     
-        
+        private async err2() {
+            const alert = await this.alertCtrl.create({
+              header: "Error",
+              message: 'The record already exists. Please try again.',
+              buttons: [{text:'Modify'},{text:'OK'}] 
+            });
+            alert.present();
+          }
 }

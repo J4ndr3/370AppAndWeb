@@ -210,7 +210,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   }
 
   private async successToast() {
-    const toast = await this.toastController.create({ message: "Booking created successfully.", duration: 3000 });
+    const toast = await this.toastController.create({ message: "Booking successfully.", duration: 3000 });
     toast.present();
   }
 

@@ -29,16 +29,50 @@ export class IncidentsPage implements OnInit {
   latLng;
   count = 0; // as jy meer as een dropdown het doen dit vir almal
   PL:any;
+  NewShiftbookingsPage:object;
+  loggedIn:any;
   constructor(private storage: Storage,private base64: Base64, private navctr: NavController, public toastController: ToastController, private router: Router, private camera: Camera, private data: ERPService, private formBuilder: FormBuilder, private geolocation: Geolocation) { }
 
 
   ngOnInit() {
     try{
       this.storage.get("PL").then(res=>{
+        console.log(res);
         this.PL = res;
         if (res==null)
         {
-          this.PL = 1;
+          var localOffsetS = new Date();
+          localOffsetS.setHours(localOffsetS.getHours()+2);
+          var localOffsetE = new Date();
+          localOffsetE.setHours(localOffsetE.getHours()+4);
+          this.storage.get("Ranger").then(res=>{
+            this.loggedIn = res;});
+          this.NewShiftbookingsPage = {
+            "Ranger_ID": this.loggedIn,
+            "Passenger_ID": null,
+            "Reserve_ID": 2,
+            "Vehicle_ID": 1,
+            "Start_Time":localOffsetS,
+            "End_Time":localOffsetE 
+          };
+          console.log(this.NewShiftbookingsPage)
+          this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
+            console.log(res["Patrol_Booking_ID"])
+            var PatrolLog = {
+              "Ranger_ID": this.loggedIn,
+              "Patrol_Booking_ID": res["Patrol_Booking_ID"],
+              "Checkin": new Date(),
+              "Checkout": new Date(),
+              "Checked_in": true
+          }
+          this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
+              this.storage.set("PL", res["Patrol_Log_ID"]);
+             // this.patrolID = res["Patrol_Log_ID"];
+          })
+            //this.addEvent(res["Patrol_Booking_ID"]);
+            this.data.sendBookingNote("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
+           // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
+          });
         }
       })
     }
