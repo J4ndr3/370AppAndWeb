@@ -168,7 +168,7 @@ export class RangerprofilePage implements OnInit {
   private async containsmodifications() {
     const alert = await this.alertCtrl.create({
       header: "Warning",
-      message: 'Are you sure you want to apply these changes?',
+      message: 'Are you sure you want to modify this record?',
       buttons: [{ text: 'Cancel',handler: () => {
         this.ngOnInit();
       } }, {

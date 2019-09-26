@@ -225,4 +225,8 @@ nID: any;
   GetIncidents() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol');
   }
+  PostRangVehicle(obj) {
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Ranger_Vehicle/', obj);
+  }
+  
 }
