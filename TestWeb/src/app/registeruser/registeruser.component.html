@@ -75,10 +75,10 @@
             </div>
             <div style="overflow:auto;" class="col-sm-10">
                 <div style="float:left;">
-                    <button class="btn btn-default btn-sm" type="button" id="prevBtn" (click)="nextPrev(-1)">Previous</button>
+                    <button class="btn btn-default btn-sm" type="button" id="prevBtn" (click)="nextPrev(-1)" data-toggle="tooltip" data-placement="top" title="Back">Previous</button>
                 </div>
                 <div style="float:right;">
-                    <button class="btn btn-default btn-sm" type="button" id="nextBtn" (click)="nextPrev(1)">Next</button>
+                    <button class="btn btn-default btn-sm" type="button" id="nextBtn" (click)="nextPrev(1)" data-toggle="tooltip" data-placement="top" title="Proceed" >Next</button>
                 </div>
             </div>
             <!-- Circles which indicates the steps of the form: -->
