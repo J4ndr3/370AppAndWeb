@@ -129,13 +129,18 @@ namespace ERP_API.Controllers
                 dynamic m = new ExpandoObject();
                 m.Lat = Item.Lat;
                 m.Long = Item.Lng;
+                m.Description = Item.Incident.Description;
                 m.Title = Item.Incident.Incident_Type.Description;
                 m.Name = Item.Patrol_Log.Ranger.Name;
                 m.Surname = Item.Patrol_Log.Ranger.Surname;
                 m.Cell = Item.Patrol_Log.Ranger.Cell;
                 m.Date = Item.Date.ToShortDateString();
                 m.Time = Item.Time;
+                m.Type = Item.Incident.Incident_Type.Description;
+                m.Status = Item.Incident.Incident_Status.Description;
+                m.StatID = Item.Incident.Incident_Status_ID;
                 m.Level = Item.Incident.Incident_Type.Incident_Level.Description;
+                m.Patrol_Log_ID = Item.Patrol_Log_ID;
                 toReturn.Add(m);
             }
             return toReturn;
@@ -143,6 +148,7 @@ namespace ERP_API.Controllers
         // GET: api/Incident_Patrol/5
         [ResponseType(typeof(Incident_Patrol))]
         public IHttpActionResult GetIncident_Patrol(int id)
+
         {
 
             db.Configuration.ProxyCreationEnabled = false;

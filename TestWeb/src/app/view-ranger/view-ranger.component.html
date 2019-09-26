@@ -94,9 +94,29 @@
     </table>
 </div>   
 <br>
-<div *ngIf="show">
-    <h2>Incident Information</h2>
+<!-- <div *ngIf="show" style="width:80% !important; margin: auto;  background-color: rgba(62, 105, 112, 0.7)!important" >
+    <p style="color:white; text-align:left; margin-left:5%; font-size: 110%;">Incident Information</p>
     <ul>
-        <li *ngFor="let inc of incidentsList">{{inc.Description}}</li>
+        <li *ngFor="let inc of incidentsList" style="color:white;margin-left:5%;">{{inc.Status}}: {{inc.Description}} - reported on {{inc.Date}} {{inc.Time}}</li>
     </ul>
+</div> -->
+
+<a hidden data-toggle="modal" data-target="#info1" id="info2"></a>
+<div class="modal fade" id="info1" data-backdrop="static" role="dialog">
+    <div class="modal-dialog"  style="width:60% !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Incidents</h4>
+                <button type="button" class="close" data-dismiss="modal" style="float:right !important;">&times;</button>
+            </div>
+            <div class="modal-body">
+                
+    <ul>
+        <li *ngFor="let inc of incidentsList" style="color:black; font-size:90%">{{inc.Status}}: {{inc.Description}} - reported on {{inc.Date}} {{inc.Time}}</li>
+    </ul>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float: right !important;" id="modalClose" >Close</button>
+            </div>
+        </div>
+    </div>
 </div>
