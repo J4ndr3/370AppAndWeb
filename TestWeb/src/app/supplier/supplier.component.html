@@ -4,14 +4,14 @@
 <div class="outer">
 
     <div class="button">
-        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
-      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to add new"> ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
     </div>
 
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -23,8 +23,8 @@
 
 <div class="inner collapse" id="demo">
     <div class="close">
-        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
-      <img src="/assets/ios-close.svg" class="closePic" /></button>
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Close">
+      <img src="/assets/ios-close.svg" class="closePic" /></span></button>
     </div>
 
     <div class="inputForm">
@@ -58,7 +58,7 @@
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo">Save</button>
+                    <button type="submit" class="btn btn-default" id="Save" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to save"> Save </span></button>
                 </div>
             </div>
         </form>
@@ -91,8 +91,8 @@
 
 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" (click)="edit(Supplier.ID)" id="editbtn" routerLink='/modify-supplier'><img src="/assets/ios-create.svg"
-              class="edit" /></button><button (click)="delete(Supplier.ID)" class="btn btn-default btn-sm" id="editbtn"><img
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Supplier.ID)" id="editbtn" routerLink='/modify-supplier' data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button (click)="delete(Supplier.ID)" class="btn btn-default btn-sm" id="editbtn" data-toggle="tooltip" data-placement="top" title="Remove"><img
               src="/assets/ios-trash.svg" class="edit" /></button></td>
             </tr>
         </tbody>

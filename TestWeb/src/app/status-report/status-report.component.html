@@ -5,7 +5,7 @@
 <div align="center">
     <div class="col">
         <div ngbDropdown>
-            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Select Status</button>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose an option">Select Status</button>
             <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
                 <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Ranger</button>
                 <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Asset</button>
@@ -19,7 +19,7 @@
         <h3 align="center">Ranger Status Report</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> PDF</span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
@@ -65,7 +65,7 @@
         <h3 align="center">Asset Status</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
@@ -109,7 +109,7 @@
         <h3 align="center">Vehicle Status</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
@@ -151,4 +151,15 @@
                 </tfoot>
             </table>
         </div>
+    </div>
+    <div class="table">
+        <table class="table table-striped">
+            <tfoot style="background-color:rgba(205, 21, 67);">
+                <td>Total Active Statuses</td>
+                <td></td>
+                <td></td>
+                <td>:</td>
+                <td> {{TotalStatus}}</td>
+            </tfoot>
+        </table>
     </div>

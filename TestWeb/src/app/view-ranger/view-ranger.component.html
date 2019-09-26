@@ -3,12 +3,12 @@
     <table style="border: none !important;">
         <tr style="border: none !important;">
             <td style="border: none !important;">
-                <h5 align="left " style="color: black "> <img src="./assets/ios-call.svg " width="10% "><b>: {{Ranger.Cell}}</b></h5>
+                <h5 align="left " style="color: black " data-toggle="tooltip" data-placement="top" title="Cellphone Number"> <img src="./assets/ios-call.svg " width="10% "><b>: {{Ranger.Cell}}</b></h5>
             </td>
 
 
             <td style="border: none !important;">
-                <h5 align="right " style="color: black "><img src="./assets/ios-mail.svg " width="10% "><b>: {{Ranger.Email}}</b></h5>
+                <h5 align="right " style="color: black "data-toggle="tooltip" data-placement="top" title="Email"><img src="./assets/ios-mail.svg " width="10% "><b>: {{Ranger.Email}}</b></h5>
             </td>
         </tr>
     </table>
@@ -62,7 +62,7 @@
 </div>
 <br>
 <div style="width:40% !important; margin: auto" id="savediv">
-    <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="close()" data-toggle="collapse" data-target="#demo">Done</button>
+    <button style="float: right;" type="submit" class="btn btn-default" id="Save" (click)="close()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to return">Done</span></button>
 </div>
 
 <br>
@@ -86,7 +86,7 @@
                 <td>{{item.MarkerPast}}</td>
                 <td>{{item.Feedback}}</td>
                 <td>
-                    <button style="float: right;" class="btn btn-default" (click)="Incidents(item.Patrol_Log_ID)" >View Incidents</button> 
+                    <button style="float: right;" class="btn btn-default" (click)="Incidents(item.Patrol_Log_ID)" data-toggle="tooltip" data-placement="top" title="View" >View Incidents</button> 
                     
                 </td>
             </tr>
