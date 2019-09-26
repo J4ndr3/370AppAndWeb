@@ -6,14 +6,14 @@
 <div class="outer">
     <!--Moenie buttons en search bar verander nie-->
     <div class="button">
-        <button type="button" class="btn btn-default btn-sm" id="addBTN" routerLink="/registeruser"> ADD NEW
-      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" routerLink="/registeruser"> <span data-toggle="tooltip" data-placement="top" title="Click to add new">ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /> </span> </button>
     </div>
 
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" [(ngModel)]="searchtext" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchtext" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -49,9 +49,9 @@
                 <td innerHTML="{{Ranger.Status | highlight :searchtext}}"></td>
                 <td innerHTML="{{Ranger.Points | highlight :searchtext}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Ranger.ID)"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Ranger.ID)"><img
-              src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn"><img
+                <td> <button class="btn btn-default btn-sm" id="editbtn" (click)="edit(Ranger.ID)" data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Ranger.ID)" data-toggle="tooltip" data-placement="top" title="Remove" ><img
+              src="/assets/ios-trash.svg" class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" data-toggle="tooltip" data-placement="top" title="View"><img
                 src="/assets/ios-eye.svg" class="edit" style="filter: invert(1)" (click)="view(Ranger.ID)"/></button></td>
             </tr>
         </tbody>
@@ -66,7 +66,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close " data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>

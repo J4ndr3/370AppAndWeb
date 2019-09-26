@@ -4,14 +4,14 @@
 <div class="outer">
 
     <div class="button">
-        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo"> ADD NEW
-      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></button>
+        <button type="button" class="btn btn-default btn-sm" id="addBTN" data-toggle="collapse" data-target="#demo" > <span data-toggle="tooltip" data-placement="top" title="Click to add new" >ADD NEW
+      <img src="/assets/ios-add.svg" class="plus" style="background-color: rgb(134,158,195) " /></span></button>
     </div>
 
     <div class="search">
         <form action="/action_page.php" id="searchform">
             <div class="input-group">
-                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+                <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
             </div>
         </form>
     </div>
@@ -23,8 +23,8 @@
 
 <div class="inner collapse" id="demo">
     <div class="close">
-        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo">
-      <img src="/assets/ios-close.svg" class="closePic" /></button>
+        <button class="btn btn-default btn-sm" id="closeBTN" data-toggle="collapse" data-target="#demo" ><span data-toggle="tooltip" data-placement="top" title="Close" >
+         <img src="/assets/ios-close.svg" class="closePic" /></span></button>
     </div>
 
     <div class="inputForm">
@@ -50,7 +50,7 @@
                 <div class="form-group">
 
                     <div class="col-sm-10">
-                        <select formControlName="Type" [(value)]="TypeSelection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <select formControlName="Type" [(value)]="TypeSelection" class="form-control" id="Select1" onchange="selectColor()" required >
                                         <option hidden [value]=""  selected>Type...</option>
                                         <option *ngFor="let opt of TypeOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                                       </select>
@@ -60,7 +60,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-10">
-                        <select formControlName="Status" [(value)]="selection" class="form-control" id="Select1" onchange="selectColor()" required>
+                        <select formControlName="Status" [(value)]="selection" class="form-control" id="Select1" onchange="selectColor()" required >
                                     <option hidden [value]=""  selected>Status...</option>
                                     <option *ngFor="let opt of StatusOptions" [(value)]="opt.ID">{{opt.Description}}</option>
                                   </select>
@@ -72,7 +72,7 @@
             <!--Moenie die save button verander nie-->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10" id="savediv">
-                    <button type="submit" class="btn btn-default" id="Save" (click)="addAsset()" data-toggle="collapse" data-target="#demo">Save</button>
+                    <button type="submit" class="btn btn-default" id="Save" (click)="addAsset()" data-toggle="collapse" data-target="#demo"data-toggle="tooltip" data-placement="top" title="Click to save ">Save</button>
                 </div>
             </div>
         </form>
@@ -83,10 +83,10 @@
 <!--TABLE-->
 <br>
 
-<div class="table">
+<div class="table" >
     <table class="table table-striped">
         <thead>
-            <tr id="header">
+            <tr id="header" >
                 <th>Asset Description</th>
                 <th>Supplier</th>
                 <th>Type</th>
@@ -108,7 +108,7 @@
 
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
                 <td>
-                    <button (click)="generateQRCode(Asset.ID)" type="button" class="btn btn-default btn-xs"><img src="/assets/md-download.svg"
+                    <button (click)="generateQRCode(Asset.ID)" type="button" class="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Download"><img src="/assets/md-download.svg"
                     class="edit"  /></button>
                     <!-- <a [href]="href" *ngIf="display" (click)="downloadImage()" download> -->
                 </td>
@@ -120,15 +120,15 @@
 
 
 
-                            <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID"></ngx-qrcode>
+                            <ngx-qrcode *ngIf="display" id="qrCodeImage" [qrc-element-type]="elementType" [qrc-value]="Asset.ID" data-toggle="tooltip" data-placement="top" title="Asset QR-Code"></ngx-qrcode>
                             <div [attr.id]="'chrt2'+Asset.ID" align="center"></div>
                         </div>
                     </div>
 
                 </td>
 
-                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn"><img src="/assets/ios-create.svg"
-              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Asset.ID)"><img
+                <td> <button class="btn btn-default btn-sm" (click)="edit(Asset.ID)" id="editbtn"data-toggle="tooltip" data-placement="top" title="Modify"><img src="/assets/ios-create.svg"
+              class="edit" /></button><button class="btn btn-default btn-sm" id="editbtn" (click)="delete(Asset.ID)" data-toggle="tooltip" data-placement="top" title="Remove"><img
               src="/assets/ios-trash.svg" class="edit" /></button>
 
             </tr>
@@ -148,7 +148,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" style="text-align: left !important;"><img src="/assets/ios-alert.svg" style="width:40px; margin-top:0px;" />Warning</h4>
-                <button type="button" class="close " data-dismiss="modal " style="float:right !important; ">&times;</button>
+                <button type="button" class="close " data-dismiss="modal" style="float:right !important; ">&times;</button>
             </div>
             <div class="modal-body">
                 <p>This record will be permanently deleted. Are you sure you want to continue?</p>
