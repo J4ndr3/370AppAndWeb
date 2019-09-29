@@ -11,8 +11,8 @@
           <p class="white"><small class="text-white float-r"><i>{{Item.Level}} Severity Level</i></small></p>
           </mdb-card-header> 
             <mdb-card-body>
-              <mdb-card-text>{{Item.Description}} <button class="btn btn-default float" id="resolvedbtn" (click)="Resolve(Item.ID)">Resolved</button></mdb-card-text>
-              <p><a routerLink="/home">View location</a></p>
+              <mdb-card-text>{{Item.Description}} <button class="btn btn-default float" id="resolvedbtn" (click)="Resolve(Item.ID)" data-toggle="tooltip" data-placement="top" title="Click to resolve">Resolved</button></mdb-card-text>
+              <p><a routerLink="/home" data-toggle="tooltip" data-placement="top" title="Show on map">View location</a></p>
             </mdb-card-body>
           </mdb-card>
           

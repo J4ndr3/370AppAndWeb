@@ -644,6 +644,7 @@ export class RangerpatrolPage implements OnInit {
                 }
                 if (Feedback != null) {
                     this.data.PostFeedback(this.newFeedback).subscribe(res => {
+                        this.storage.set("PL",null)
                         this.navcnt.navigateForward("/home");
                     })
                 }

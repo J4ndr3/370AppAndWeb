@@ -100,7 +100,7 @@ export class ViewRangerComponent implements OnInit {
     this.incidentsList=[];
     console.log(ID);
 
-    this.data.GetIncidents().subscribe(res => {
+    this.data.GetIncedent_Patrole().subscribe(res => {
       console.log(res);
     this.incidents = JSON.parse(JSON.stringify(res));
     this.incidents.forEach(element => {
@@ -109,15 +109,17 @@ export class ViewRangerComponent implements OnInit {
           "Description": element["Description"],
           "Type": element["Type"],
           "Status": element["Status"],
-          "Time": element["Time"]
+          "Time": element["Time"],
+          "Date": element["Date"]
           
         }
         
         this.incidentsList.push(this.newIncidents);
-        console.log("hit");
-        this.show =true;
+        
       }
     })
+    document.getElementById('info2').click();
   }
-    )}
+    )
+    }
   }
