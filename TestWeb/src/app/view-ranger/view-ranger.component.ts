@@ -10,7 +10,22 @@ import { element } from 'protractor';
   styleUrls: ['./view-ranger.component.sass']
 })
 export class ViewRangerComponent implements OnInit {
-  Ranger: object;
+  Ranger : {
+    Name:any,
+    Surname:any,
+    Cell:any,
+    Email:any,
+    User_Role_ID:any,
+    ID_Number:any,
+    Emerg_Name:any,
+    Emerg_Contact:any,
+    Medical_Aid_ID:any,
+    Blood_Type:any,
+    genderID:any,
+    Organisation_ID:any,
+    Status:any,
+    Username:any
+  };
   GenderOptions: Array<object>;
   MedicalOptions: Array<object>;
   OrganisationOptions: Array<object>;
@@ -26,6 +41,22 @@ export class ViewRangerComponent implements OnInit {
   constructor(private data: ERPService, private router: Router) { }
 
   ngOnInit() {
+    this.Ranger = {
+      Name:"",
+      Surname:"",
+      Cell:"",
+      Email:"",
+      User_Role_ID:"",
+      ID_Number:"",
+      Emerg_Name:"",
+      Emerg_Contact:"",
+      Medical_Aid_ID:"",
+      Blood_Type:"",
+      genderID:"",
+      Organisation_ID:"",
+      Status:"",
+      Username:""
+    }
     this.show =false;
     this.patrolsList = [];
     this.incidentsList = [];
@@ -48,7 +79,7 @@ export class ViewRangerComponent implements OnInit {
       })
 
     this.data.GetRangers(this.data.nID).subscribe(res => {
-      this.Ranger = res;
+      this.Ranger = JSON.parse(JSON.stringify(res));
       this.data.GetGender().subscribe(res => {
         this.GenderOptions = JSON.parse(JSON.stringify(res));
         // console.log(this.GenderOptions)

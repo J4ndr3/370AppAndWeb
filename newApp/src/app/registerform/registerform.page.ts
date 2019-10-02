@@ -177,47 +177,70 @@ validateForm() {
         var selectbloodtype = this.AddForm.get('selectbloodtype').value;
         var Organizationtitle = this.AddForm.get('Organizationtitle').value;
         password = CryptoJS.SHA256(password);
-        if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="") {
-          //Modal popup
+        confirmpassword = CryptoJS.SHA256(confirmpassword);
+        if (password == confirmpassword){
+          if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="" ) {
+            this.err();
+          }
+          else {
+            this.NewRegisterformPage = {
+              "ID_Number": rangerId,
+              "Name": fname, // Names for your input
+              "Surname": lname, // Names for your input
+              "Email": email,
+              "Cell":phone,
+              "genderID": selectgender,
+              "Emerg_Name": emergencycontactName,
+              "Emerg_Contact": EmergencycontactNumber,
+              "Status":1,
+              "User_Role_ID":5,
+              "Medical_Aid_ID": MedicalAid,
+              "Points":0,
+              "Blood_Type": selectbloodtype, 
+              "Username": username,
+              "Password": password,
+              "Organisation_ID":Organizationtitle,
+              "Smartphone":1,
+              "Access_ID":6
+            };
+            console.log(this.NewRegisterformPage)
+            this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
+              if (res = 7) {
+                  document.getElementById('dup').click();
+                }
+                else {
+                  console.log(res)
+                  this.ngOnInit()
+                }
+            });
+          }
         }
-        else {
-          this.NewRegisterformPage = {
-            "ID_Number": rangerId,
-            "Name": fname, // Names for your input
-            "Surname": lname, // Names for your input
-            "Email": email,
-            "Cell":phone,
-            "genderID": selectgender,
-            "Emerg_Name": emergencycontactName,
-            "Emerg_Contact": EmergencycontactNumber,
-            "Status":1,
-            "User_Role_ID":5,
-            "Medical_Aid_ID": MedicalAid,
-            "Points":0,
-            "Blood_Type": selectbloodtype, 
-            "Username": username,
-            "Password": password,
-            "Organisation_ID":Organizationtitle,
-            "Smartphone":1,
-            "Access_ID":6
-          };
-          console.log(this.NewRegisterformPage)
-          this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-            if (res = 7) {
-                document.getElementById('dup').click();
-              }
-              else {
-                console.log(res)
-                this.ngOnInit()
-              }
-          });
-        }}
+        else{
+          this.errP();
+        }
+        }
     
         private async err2() {
             const alert = await this.alertCtrl.create({
               header: "Error",
               message: 'The record already exists. Please try again.',
               buttons: [{text:'Modify'},{text:'OK'}] 
+            });
+            alert.present();
+          }
+          private async err() {
+            const alert = await this.alertCtrl.create({
+              header: "Error",
+              message: 'The input provided is incorrect. Please try again.',
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+          private async errP() {
+            const alert = await this.alertCtrl.create({
+              header: "Error",
+              message: 'The password and password confirmation fields does not match. Please try again.',
+              buttons: ['OK']
             });
             alert.present();
           }
