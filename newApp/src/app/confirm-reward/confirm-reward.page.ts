@@ -93,7 +93,7 @@ count:number;
           };
           this.data.RewardList.push(this.RedeemVoucher);
           console.log(this.data.RewardList)
-          this.router.navigateByUrl("/basket");
+          
           // this.data.PostRedeem_Reward(this.RedeemVoucher).subscribe(res2 => {
           //   this.data.nvalidate = res2["Redeem_ID"];
           //   this.router.navigateByUrl("/voucher");
@@ -107,7 +107,8 @@ count:number;
     }
     updateRanger(ID,points){
       this.data.UpdatePoints(ID,points).subscribe(res=>{
-       console.log(res)
+       console.log(res);
+       this.router.navigateByUrl("/basket");
       });
     }
     

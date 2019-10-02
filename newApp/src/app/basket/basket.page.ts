@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 export class BasketPage implements OnInit {
 
   constructor(private data: ERPService, private router: Router, private storage: Storage) { }
-  items;
+  items:Array<object>;
   loggedIn: any;
   Name: object;
   Points: Object;
@@ -27,15 +27,18 @@ export class BasketPage implements OnInit {
     });
   }
   claim() {
-    var hallo = this.items.count();
+    var hallo = this.items.length;
+    console.log(hallo)
     var c = 0;
     this.items.forEach(element => {
       c++;
+      console.log(c)
       this.data.PostRedeem_Reward(element).subscribe(res2 => {
         console.log(res2)
         this.data.nvalidate1 = res2["Redeem_ID"];
       });
       if (c == hallo) {
+        this.items = [];
         this.router.navigateByUrl("/generagevoucher");
       }
     });
@@ -50,8 +53,11 @@ export class BasketPage implements OnInit {
       count++;
       if (element["ID"] == ID) {
         this.updateRanger(this.loggedIn,-element["Points"]);
-        this.items.splice(count, 1)
-        
+        this.items.splice(count, 1);
+        if(this.items.length == 0)
+        {
+          this.router.navigateByUrl("/rewards");
+        }
       }
     });
   }
