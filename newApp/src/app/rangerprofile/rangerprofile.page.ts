@@ -165,7 +165,7 @@ export class RangerprofilePage implements OnInit {
     alert.present();
 }
 
-  private async containsmodifications() {
+  public async containsmodifications() {
     const alert = await this.alertCtrl.create({
       header: "Warning",
       message: 'Are you sure you want to modify this record?',

@@ -244,11 +244,11 @@ export class NavComponent implements OnInit {
   }
 
   GetIncidents() {
-    return this.http.get('http://localhost:51389/api/Incident_Patrol')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Incident_Patrol')
   };
 
   PostNotification(obj) {
-    return this.http.post('http://localhost:51389/api/Notifications', obj)
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Notifications', obj)
   }
   refresh() {
     this.showme = true;
@@ -330,10 +330,10 @@ console.log(Timer, ID)
 
   }
   GetTimers(){
-    return this.http.get('http://localhost:51389/api/Settings')
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Settings')
   }
   PutTimer(ID, obj) {
-    return this.http.put('http://localhost:51389/api/Settings/' + ID, obj)
+    return this.http.put('https://2019group4inf370.azurewebsites.net/api/Settings/' + ID, obj)
   }
 }
 

@@ -34,7 +34,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
     startTime: '',
     endTime: '',
   };
- 
+  collapseCard:any;
   minDate = new Date().toISOString();
  
   eventSource = [];

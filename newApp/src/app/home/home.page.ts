@@ -102,7 +102,7 @@ PL:any;
   const toast = await this.toastController.create({ message: "Record added successful.", duration: 3000 });
   toast.present();
 }
-private async hallo(){
+public async hallo(){
   //this.storage.clear();
   //this.login.user = null;
   //this.login.pass = null;
