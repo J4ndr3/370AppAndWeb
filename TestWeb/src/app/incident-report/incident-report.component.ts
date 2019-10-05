@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
-import * as jsPDF from 'jspdf';
+//import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'; 
 import {} from 'googlemaps';
 import { ToastrService } from 'ngx-toastr';
 import {ERPService} from '..//erp.service';  
 import { Router } from '@angular/router';
 import htmlToImage from 'html-to-image';
+declare var jsPDF: any
 @Component({
   selector: 'app-incident-report',
   templateUrl: './incident-report.component.html',
@@ -83,14 +84,15 @@ public Download() {
 
   var htmlToImage = require('html-to-image');
   var node = document.getElementById('my-node');
+  var img = new Image();
   htmlToImage.toPng(node)
     .then(function (dataUrl) {
 
-      var img = new Image();
+      
       img.src = dataUrl;
       // img.style.width = "800px";
       
-      document.getElementById('image123').appendChild(img);
+     // document.getElementById('image123').appendChild(img);
 
     })
     .catch(function (error) {
@@ -103,11 +105,11 @@ public Download() {
       this.timeLeft1--;
     } else if (this.timeLeft1 == 0) {
 
-      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>INCIDENT REPORT</h1><br><br></div><br>';
+      document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>INCIDENT REPORT</h1><br></div> <img src="'+img.src+'" style="width:115%; height:40%; padding-left: 7%; margin: auto;margin-left: auto ; margin-right: auto;display: block"> ';
       document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
       document.getElementById('chrt3').innerHTML = '<br><br>';
 
-      var data1 = document.getElementById('contentToConvert');
+      var data1 = document.getElementById('chrt1');
       var data2 = document.getElementById('contentToConvert1');
       html2canvas(data1).then(canvas => {
         // Few necessary setting options  
@@ -117,17 +119,61 @@ public Download() {
         var heightLeft = imgHeight;
 
         const contentDataURL = canvas.toDataURL('image/png')
-        let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        // let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
         
-        var position = 5;
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-        pdf.setFontSize(7);
-          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
-        pdf.save('INCIDENT REPORT.pdf'); // Generated PDF  
-
+        // var position = 5;
+        // pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        // pdf.setFontSize(7);
+        //   pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
+        // pdf.save('INCIDENT REPORT.pdf'); // Generated PDF  
+        let doc = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        var position = 0;
+        const header = function(data) {
+          doc.setFontSize(7);
+          doc.setTextColor(200, 0, 255);
+          doc.setFontStyle('normal');
+          doc.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+          //doc.text('Report', data.settings.margin.left + 35, 60);
+        };
+      
+        const totalPagesExp = '{total_pages_count_string}';
+        const footer = function(data) {
+          let str = 'Page ' + data.pageCount;
+          // Total page number plugin only available in jspdf v1.0+
+          if (typeof doc.putTotalPages === 'function') {
+            str = str + ' of ' + totalPagesExp;
+            console.log('test');
+          }
+          doc.setFontSize(7);
+          doc.text(str, 98, doc.internal.pageSize.height - 8);
+        };
+      
+        const options = {
+          beforePageContent: header,
+          afterPageContent: footer,
+          margin: {
+            top: 105
+          },styles: {fillColor: [62, 105, 112],    textColor:[255, 255, 255],},alternateRowStyles: {
+            fillColor: [173,184,187]
+        },
+        };
+       
+        var res = doc.autoTableHtmlToJson(document.getElementById("inc"));
+        doc.autoTable(res.columns, res.data, options);
+        doc.setFontSize(7);
+        let finalY = doc.lastAutoTable.finalY; 
+        doc.text("**END OF REPORT**",98,finalY+10)
+        if (typeof doc.putTotalPages === 'function') {
+          doc.putTotalPages(totalPagesExp);
+        }
+        // doc.save('ASSET REPORT.pdf'); // Generated PDF
+        // pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        // pdf.setFontSize(7);
+        //   pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
+        doc.save('RANGER PERFORMANCE REPORT.pdf'); // Generated PDF  
         document.getElementById('chrt1').innerHTML = "";
         document.getElementById('chrt2').innerHTML = "";
-        document.getElementById('image123').innerHTML = "";
+        //document.getElementById('image123').innerHTML = "";
 
         // var doc = new jsPDF();
         // var totalPagesExp = "{total_pages_count_string}";

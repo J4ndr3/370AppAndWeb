@@ -67,7 +67,9 @@ export class AssetsReportComponent implements OnInit {
           afterPageContent: footer,
           margin: {
             top: 30
-          }
+          },styles: {fillColor: [62, 105, 112],    textColor:[255, 255, 255],},alternateRowStyles: {
+            fillColor: [173,184,187]
+        },
         };
        
         var res = doc.autoTableHtmlToJson(document.getElementById("Asset"));
