@@ -111,6 +111,7 @@ public async hallo(){
   //  })
   // const toast = await this.toastController.create({ message:  this.Email, duration: 3000 });
   //     toast.present();
+  this.storage.set("PL",null);
   this.fcm.getNotA();
   
 }
