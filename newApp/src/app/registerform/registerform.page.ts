@@ -178,6 +178,7 @@ validateForm() {
         var Organizationtitle = this.AddForm.get('Organizationtitle').value;
         password = CryptoJS.SHA256(password);
         confirmpassword = CryptoJS.SHA256(confirmpassword);
+        console.log(password,confirmpassword)
         if (password == confirmpassword){
           if ((fname||lname||rangerId||email||emergencycontactName||EmergencycontactNumber||MedicalAid||username||password||confirmpassword||selectgender||selectbloodtype)=="" ) {
             this.err();
