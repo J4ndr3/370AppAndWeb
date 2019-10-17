@@ -22,7 +22,18 @@ export class modifyVehiclePage implements OnInit {
     TypeOptions: Array<object>; //if you have a select list
     nVehicle: object;
     rcv: object;
-
+    Red:"Red";
+    White:"White";
+    Black:"Black";
+    Green:"Green";
+    Blue:"Blue";
+    Silver:"Silver";
+    Pink:"Pink";
+    Purple:"Purple";
+    Yellow:"Yellow";
+    Grey:"Grey";
+    Orange:"Orange";
+    Metelic:"Metelic";
 
     constructor(private alertCtrl: AlertController, public toastController: ToastController,
         private router: Router, private data: ERPService,

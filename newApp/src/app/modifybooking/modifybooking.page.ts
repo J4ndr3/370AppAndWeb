@@ -20,6 +20,7 @@ export class ModifybookingPage implements OnInit {
   ReserveOptions: Array<object>;
   PassengerSelection: number = 0;
   VehicleSelection: number = 0;
+  ReserveSelection:number=0;
   ModifybookingPageSelection: number = 0; //if you have a select list
   ModifybookingPageOptions: Array<object>; //if you have a select list
   nModifybookingPage: object;
@@ -31,7 +32,7 @@ export class ModifybookingPage implements OnInit {
     startTime: '',
     endTime: '',
   };
-
+  minDate = new Date().toISOString();
   constructor(private alertCtrl: AlertController, public toastController: ToastController,
     private router: Router, private data: ERPService, private formBuilder: FormBuilder, private storage: Storage) { }
 
@@ -137,7 +138,7 @@ export class ModifybookingPage implements OnInit {
     const toast = await this.toastController.create({ message: "Booking could not be modified.", duration: 3000 });
     toast.present();
   }
-  private async modifyyesorno() {
+  public async modifyyesorno() {
     const alert = await this.alertCtrl.create({
       header: "Warning",
       message: 'Are you sure you want to modify this record?',

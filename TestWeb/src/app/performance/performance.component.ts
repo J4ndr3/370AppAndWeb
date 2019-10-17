@@ -85,7 +85,9 @@ export class PerformanceComponent {
           afterPageContent: footer,
           margin: {
             top: 110
-          },styles: {fillColor: [62, 105, 112]}
+          },styles: {fillColor: [62, 105, 112],    textColor:[255, 255, 255],},alternateRowStyles: {
+            fillColor: [173,184,187]
+        },
         };
        
         var res = doc.autoTableHtmlToJson(document.getElementById("Perf"));

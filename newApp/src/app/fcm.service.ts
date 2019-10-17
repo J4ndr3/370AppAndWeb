@@ -47,6 +47,9 @@ export class FcmService {
      getNot(){
       this.firebase.subscribe('ERP'); 
     }
+    getNotA(){
+      this.firebase.subscribe('Admin'); 
+    }
     StopNot(){
       this.firebase.unsubscribe('ERP'); 
     }

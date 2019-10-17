@@ -45,6 +45,7 @@ export class RangerprofilePage implements OnInit {
       EmergencycontactNumber: [],
       MedicalAid: [],
       selectbloodtype: [],
+      Points:[]
     });
     this.storage.get("Ranger").then(res=>{
       this.loggedIn = res;
@@ -76,7 +77,8 @@ export class RangerprofilePage implements OnInit {
           EmergencycontactName: res["Emerg_Name"],
           EmergencycontactNumber: res["Emerg_Contact"],
           MedicalAid: res["Medical_Aid_ID"],
-          selectbloodtype: res["Blood_Type"]
+          selectbloodtype: res["Blood_Type"],
+          Points:res["Points"]
         })
         // this.RangerprofilePageOptions = JSON.parse(JSON.stringify(res));
   
@@ -115,6 +117,7 @@ export class RangerprofilePage implements OnInit {
     var selectgender = this.EditForm.get('Gender').value;
     var selectbloodtype = this.EditForm.get('selectbloodtype').value;
     var Organizationtitle = this.EditForm.get('Organizationtitle').value;
+    var Points = this.EditForm.get('Points').value;
     console.log(fname);
     if(fname == "" || lname == "" || rangerId == "" || email == "" || phone == "" || emergencycontactName == "" || EmergencycontactNumber == "" || MedicalAid == "" || password == "" || username == "" || selectgender == "" || selectbloodtype == "" ||  Organizationtitle == ""){
       this.err()
@@ -132,13 +135,13 @@ export class RangerprofilePage implements OnInit {
       "Status":1,
       "User_Role_ID":5,
       "Medical_Aid_ID": MedicalAid,
-      "Points":0,
+      "Points":Points,
       "Blood_Type": selectbloodtype, 
       "Username": username,
       "Password": password,
       "Organisation_ID":Organizationtitle,
       "Smartphone":1,
-      "Access_ID":6
+      "Access_ID":6,
     };
     console.log(this.nRangerprofilePage)
     this.data.PutRanger(this.loggedIn, this.nRangerprofilePage).subscribe(res => {
@@ -165,7 +168,7 @@ export class RangerprofilePage implements OnInit {
     alert.present();
 }
 
-  private async containsmodifications() {
+  public async containsmodifications() {
     const alert = await this.alertCtrl.create({
       header: "Warning",
       message: 'Are you sure you want to modify this record?',

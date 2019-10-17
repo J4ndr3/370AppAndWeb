@@ -347,7 +347,7 @@ export class RangerpatrolPage implements OnInit {
 
     startTracking() {
         if (this.keepgoing == true) {
-            this.starttime = 30000;
+            this.starttime = 50000;
         }
         else {
             this.starttime = 1000000000000000000000000000000;
@@ -441,11 +441,11 @@ export class RangerpatrolPage implements OnInit {
             res.forEach(function (geo) {
                 console.log(geo["id"]);
                 var count = -1;
-                this.Markers.forEach(element => {
+                self.Markers.forEach(element => {
                     count++;
                     if (element["Num"] == geo["id"]) {
                         //self.geofence.remove(geo["id"])
-                        // alert("HIT")
+                        alert(element["Num"]+ "HIT")
                         var MarkPass = {
                             "Patrol_Log_ID": self.patrolID,
                             "Marker_ID": element["Num"],
@@ -454,13 +454,13 @@ export class RangerpatrolPage implements OnInit {
                         var points = "-" + element["Points"];
                         self.data.PostPatrol_Markers(MarkPass).subscribe(res => {
                             console.log(res)
-                            alert("Marker was added to patroll log")
+                            alert("Marker was added to patroll log");
                             self.data.UpdatePoints(self.loggedIn, points).subscribe(res => {
                                 console.log(res)
                             })
                         })
                         //alert("Marker was added to patroll log")
-                        this.Markers.splice(count, 1)
+                        self.Markers.splice(count, 1)
                     }
                 });
 

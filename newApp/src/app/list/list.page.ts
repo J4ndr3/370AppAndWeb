@@ -132,7 +132,7 @@ export class ListPage implements OnInit {
     });
     this.loadHistoricRoutes();
   }
-  private async presentToast() {
+  public async presentToast() {
     const toast = await this.toastController.create({ message: "You have no claimed rewards to view.", duration: 3000 });
     toast.present();
   }
