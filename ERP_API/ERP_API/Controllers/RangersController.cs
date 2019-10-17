@@ -117,6 +117,7 @@ namespace ERP_API.Controllers
             {
                 db.Rangers.Add(ranger);
                 db.SaveChanges();
+                return CreatedAtRoute("DefaultApi", new { id = ranger.Ranger_ID }, ranger);
             }
             else
             {
@@ -124,7 +125,7 @@ namespace ERP_API.Controllers
             }
             
 
-            return CreatedAtRoute("DefaultApi", new { id = ranger.Ranger_ID }, ranger);
+            
         }
 
         // DELETE: api/Rangers/5

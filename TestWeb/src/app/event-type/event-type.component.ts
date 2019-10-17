@@ -29,7 +29,7 @@ export class EventTypeComponent implements OnInit {
     });
 
   }
-    showToast(){
+    showToast2(){
       this.toastrService.show("Record could not be added", "Error!");
     }
     showToast1(){

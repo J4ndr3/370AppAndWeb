@@ -36,15 +36,23 @@ export class LoginComponent implements OnInit {
       this.data.LogIn(User, Pass).subscribe(data => {
         // console.log(data)
         sessionStorage.setItem("Ranger",data[0].Ranger);
-        if (data[0].Correct == true) {
-          // console.log(data[0])
-          this.showToast()
-          this.router.navigateByUrl('/');
+        if (data[0].Web == true)
+        {
+          if (data[0].Correct == true) {
+            // console.log(data[0])
+            this.showToast()
+            this.router.navigateByUrl('/');
+          }
+          else {
+            sessionStorage.clear();
+            this.showToastF();
+          }
         }
-        else {
-          sessionStorage.clear();
-          this.showToastF();
+        else
+        {
+          this.showToastA();
         }
+        
       });
     }
 
@@ -55,5 +63,8 @@ export class LoginComponent implements OnInit {
   }
   showToastF() {
     this.toastrService.show("Failed to Login, check your Username and Password.", "Error!");
+  }
+  showToastA() {
+    this.toastrService.show("You currentely do not have web access.", "Error!");
   }
 }

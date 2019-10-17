@@ -66,9 +66,9 @@ export class OrderComponent implements OnInit {
   
   }
   
-  showToast(){
-    this.toastrService.show("Record could not be added", "Error!");
-  }
+  // showToast(){
+  //   this.toastrService.show("Record could not be added", "Error!");
+  // }
 
   Delete(){
     this.toastrService.show("Record Removed", "Success!");
@@ -96,7 +96,7 @@ export class OrderComponent implements OnInit {
         "Supplier_ID": Supplier,
     
       };
-      // console.log(this.nOrder);
+       console.log(this.nOrder);
       this.data.PostOrder(this.nOrder).subscribe(res => {
         var OL = {
           "Asset_ID":Asset,

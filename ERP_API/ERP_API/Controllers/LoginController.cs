@@ -37,12 +37,21 @@ namespace ERP_API.Controllers
             {
                 userDet = db.Rangers.Where(zz => zz.Email == userDet.Email).FirstOrDefault();
                 RefreshGUID(userDet);
-                userDet = db.Rangers.Where(zz => zz.Email == userDet.Email).FirstOrDefault();
+                userDet = db.Rangers.Include(zz => zz.User_Role).Include(zz=>zz.Access_Level).Where(zz => zz.Email == userDet.Email).FirstOrDefault();
                 List<dynamic> uselit = new List<dynamic>();
                 dynamic user1 = new ExpandoObject();
                 user1.Ranger = userDet.Ranger_ID;
                 user1.GUID = userDet.GUID;
                 user1.Correct = true;
+                if (db.Access_Level.Where(zz=>userDet.User_Role.Access_ID == zz.Access_ID && zz.Web == true).FirstOrDefault() != null)
+                {
+                    user1.Web = true;
+                }
+                else
+                {
+                    user1.Web = false;
+                }
+                //user1.Web = true;
                 uselit.Add(user1);
                 var response1 = Request.CreateResponse(HttpStatusCode.OK, uselit);
                 response1.Headers.Add("Access-Control-Allow-Origin", "*");

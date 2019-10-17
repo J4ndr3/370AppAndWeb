@@ -111,10 +111,12 @@ export class RegisteruserComponent implements OnInit {
       };
       // console.log(this.NewRegisterformPage)
       this.data.PostRanger(this.NewRegisterformPage).subscribe(res => {
-        if (res = 7) {
+        if (res == 7) {
+          
           document.getElementById('dup').click();
         }
         else {
+          this.toastrService.show("Record added successfully.", "Success!");
           this.router.navigate(['rangers']);
         }
 
@@ -167,7 +169,6 @@ export class RegisteruserComponent implements OnInit {
     if (this.currentTab >= x.length) {
       // ... the form gets submitted:
       this.goUsers();
-      this.toastrService.show("Record added successfully.", "Success!");
       return false;
     }
     // Otherwise, display the correct tab:
