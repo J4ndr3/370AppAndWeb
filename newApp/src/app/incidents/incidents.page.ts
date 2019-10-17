@@ -46,33 +46,37 @@ export class IncidentsPage implements OnInit {
           var localOffsetE = new Date();
           localOffsetE.setHours(localOffsetE.getHours()+4);
           this.storage.get("Ranger").then(res=>{
-            this.loggedIn = res;});
-          this.NewShiftbookingsPage = {
-            "Ranger_ID": this.loggedIn,
-            "Passenger_ID": null,
-            "Reserve_ID": 2,
-            "Vehicle_ID": 1,
-            "Start_Time":localOffsetS,
-            "End_Time":localOffsetE 
-          };
-          console.log(this.NewShiftbookingsPage)
-          this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
-            console.log(res["Patrol_Booking_ID"])
-            var PatrolLog = {
+            this.loggedIn = res;
+            this.NewShiftbookingsPage = {
               "Ranger_ID": this.loggedIn,
-              "Patrol_Booking_ID": res["Patrol_Booking_ID"],
-              "Checkin": new Date(),
-              "Checkout": new Date(),
-              "Checked_in": true
-          }
-          this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
-              this.storage.set("PL", res["Patrol_Log_ID"]);
-             // this.patrolID = res["Patrol_Log_ID"];
-          })
-            //this.addEvent(res["Patrol_Booking_ID"]);
-            this.data.sendBookingNote("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
-           // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
+              "Passenger_ID": 3,
+              "Reserve_ID": 2,
+              "Vehicle_ID": 4,
+              "Start_Time":localOffsetS,
+              "End_Time":localOffsetE 
+            };
+            console.log(this.NewShiftbookingsPage)
+            this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
+              console.log(res["Patrol_Booking_ID"])
+              var PatrolLog = {
+                "Ranger_ID": this.loggedIn,
+                "Patrol_Booking_ID": res["Patrol_Booking_ID"],
+                "Checkin": new Date(),
+                "Checkout": new Date(),
+                "Checked_in": true
+            }
+            this.data.PostPatrol_Log(PatrolLog).subscribe(res => {
+                this.storage.set("PL", res["Patrol_Log_ID"]);
+                this.PL = res["Patrol_Log_ID"];
+               // this.patrolID = res["Patrol_Log_ID"];
+            })
+              //this.addEvent(res["Patrol_Booking_ID"]);
+              this.data.sendBookingNote("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
+             // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])
+            });
           });
+          
+         
         }
       })
     }
@@ -153,8 +157,8 @@ export class IncidentsPage implements OnInit {
         }
 
         this.data.PostIncident_Patrol(this.newPatrol).subscribe(res => {
-          alert("2"+ res);
-          alert(this.images[1])
+          //alert("2"+ res);
+         // alert(this.images[1])
           var self = this;
           self.imgarray = [];
           if (this.images.length == null) {
@@ -166,15 +170,15 @@ export class IncidentsPage implements OnInit {
           }
           else {
             this.images.forEach(img => {
-              alert(3+""+ img)
+             // alert(3+""+ img)
               var imga = {
                 "Incident_ID": res["Incident_ID"],
                 "Patrol_Log_ID": this.PL,
                 "Image": img,
               }
-              alert(4+""+ imga)
+              //alert(4+""+ imga)
               this.data.PostIncident_Image(imga).subscribe(res => {
-                alert(5+" " +res);
+              //  alert(5+" " +res);
               })
             })
 
@@ -222,7 +226,7 @@ export class IncidentsPage implements OnInit {
         var base64result = base64File.split(',')[1];
         
         self.images.push(base64result)
-        alert(2+" " +base64result);
+        //alert(2+" " +base64result);
       }, (err) => {
         console.log(err);
       });
@@ -230,7 +234,7 @@ export class IncidentsPage implements OnInit {
       var blob = (<any>window).Ionic.WebView.convertFileSrc(imageData);
         self.imgDisp.push(blob);
         
-        alert(1+" "+imageData);
+       // alert(1+" "+imageData);
 
     }, (err) => {
       alert(err)

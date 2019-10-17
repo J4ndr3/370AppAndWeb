@@ -68,7 +68,7 @@ nID: any;
     return this.http.put('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward/' + ID, obj);
   }
   PostRedeem_Reward(obj) {
-    return this.http.post('http://localhost:51389/api/Redeem_Reward', obj);
+    return this.http.post('https://2019group4inf370.azurewebsites.net/api/Redeem_Reward', obj);
   }
   GetRangerID(id) {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Rangers/' + id);
@@ -161,7 +161,7 @@ nID: any;
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/vehicles/' + ID);
   }
   PutVehicle(ID, obj) {
-    return this.http.put('http://localhost:51389/api/vehicles/' + ID, obj);
+    return this.http.put('https://2019group4inf370.azurewebsites.net/api/vehicles/' + ID, obj);
   }
   GetPatrol_Bookings() {
     return this.http.get('https://2019group4inf370.azurewebsites.net/api/Patrol_Booking/');

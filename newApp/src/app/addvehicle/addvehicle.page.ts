@@ -24,6 +24,18 @@ export class AddvehiclePage implements OnInit {
   nVehicle: object;
   rcv: object;
   Ranger: number;
+  Red:"Red";
+  White:"White";
+  Black:"Black";
+  Green:"Green";
+  Blue:"Blue";
+  Silver:"Silver";
+  Pink:"Pink";
+  Purple:"Purple";
+  Yellow:"Yellow";
+  Grey:"Grey";
+  Orange:"Orange";
+  Metelic:"Metelic";
   @ViewChild('regform') containerEltRef: ElementRef;
 
   constructor(private storage: Storage, private toastcontroler: ToastController, private router: Router, private renderer: Renderer2, private data: ERPService, private formBuilder: FormBuilder) { }
