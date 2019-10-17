@@ -282,3 +282,4 @@ C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\Mi
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\bin\System.Web.Http.Owin.xml
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.dll
 C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.pdb
+C:\Users\Lize Haupt\Desktop\Nuwe 370 Program\370AppAndWeb\ERP_API\ERP_API\obj\Debug\ERP_API.csprojResolveAssemblyReference.cache
