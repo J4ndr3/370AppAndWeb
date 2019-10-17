@@ -9,7 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./patrol-log.component.sass']
 })
 export class PatrolLogComponent implements OnInit {
-  Patrol: object;
+  Patrol: Array<object>;
+  patrols:Array<object>;
   searchText;
   previousTracks: Array<object>;
   currentMapTrack = null;
@@ -21,7 +22,9 @@ export class PatrolLogComponent implements OnInit {
   myroute = [];
   positionSubscription: Subscription;
   newLoc : object;
-
+  Feedback:any;
+  Markers:any;
+  newpatrol:object;
 
 
   @ViewChild('map',{static: false}) mapElement: any;
@@ -43,11 +46,38 @@ export class PatrolLogComponent implements OnInit {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
     this.previousTracks = [];
     this.data.GetPatrol_log().subscribe(res=>{
-      this.Patrol = res;
+     // this.Patrol = res;
+      this.patrols = [];
+      this.Patrol = JSON.parse(JSON.stringify(res));
+      this.Patrol.forEach(element => {
+        if(element["Feedback"]== null){
+          this.Feedback="No Feedback";
+        }
+        else{
+          this.Feedback=element["Feedback"];
+        }
+        if(element["MarkerPast"]== null){
+          this.Markers="0";
+        }
+        else{
+          this.Markers=element["MarkerPast"];
+        }
+          this.newpatrol = {
+          "Name": element["Name"],
+          "Surname": element["Surname"],
+          "Date": element["Date"],
+          "Checkin": element["Checkin"],
+          "Checkout": element["Checkout"],
+          "time": element["time"],
+          "Feedback": this.Feedback,
+          "Patrol_Log_ID": element["Patrol_Log_ID"],
+          "MarkerPast": this.Markers,
+          "Points": element["Points"]
+        }
+        this.patrols.push(this.newpatrol);
+        })})}
     
-      //console.log(res);
-    })
-  }
+
   DrawRoute(ID){
     this.data.GetRoute().subscribe(res=>{
      //console.log(ID)
