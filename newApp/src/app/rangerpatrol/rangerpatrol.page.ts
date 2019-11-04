@@ -555,6 +555,7 @@ export class RangerpatrolPage implements OnInit {
                         });
                         //this.hideEverything = false;
                         this.qrScanner.hide(); // hide camera preview
+                        this.qrScanner.pausePreview();
                         scanSub.unsubscribe(); // stop scanning
                         scanSub.destroy();
                     });
