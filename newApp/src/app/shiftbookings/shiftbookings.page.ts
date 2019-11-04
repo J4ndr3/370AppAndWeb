@@ -34,7 +34,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
     startTime: '',
     endTime: '',
   };
- 
+  collapseCard:any;
   minDate = new Date().toISOString();
  
   eventSource = [];
@@ -210,7 +210,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
   }
 
   private async successToast() {
-    const toast = await this.toastController.create({ message: "Booking created successfully.", duration: 3000 });
+    const toast = await this.toastController.create({ message: "Booking successfully.", duration: 3000 });
     toast.present();
   }
 
@@ -244,7 +244,7 @@ ReserveOptions:Array<object>; // as jy meer as een dropdown het doen dit vir alm
       console.log(this.NewShiftbookingsPage)
       this.data.PostPatrol_Booking(this.NewShiftbookingsPage).subscribe(res => {
         this.successToast();
-        console.log(res["Patrol_Booking_ID"])
+        console.log(res)
         this.addEvent(res["Patrol_Booking_ID"]);
         this.data.sendBookingNote("New Booking","There was a new booking created from "+localOffsetS + " to "+localOffsetE);
        // this.data.sendNotif("New Booking", res["Name"] + " " + "has booked a shift for " + res[])

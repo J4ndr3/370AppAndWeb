@@ -14,32 +14,34 @@
 </ion-header>
 
 <ion-content>
+    <br>
     <ion-img src="/assets/ios-cart.svg" style="margin: auto; width: 35%; filter: invert(46%) sepia(19%) saturate(559%) hue-rotate(181deg) brightness(93%) contrast(85%);"></ion-img>
-    <ion-card>
-        <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 16px ">{{Name}} {{Surname}}</ion-card-title>
-        <p style="margin-left: auto; text-align: center;color:rgb(102,116,143);font-size:20px">Reward Status: <b style="font-size: 24px">{{Points}} Points</b></p>
-        <hr style="height:0pt; visibility:hidden;" />
-        <ion-item-sliding id="item100" *ngFor="let item of items">
-            <ion-item href="#">
-                <ion-label>
-                    <h4>
-                        {{item.Name}}
-                    </h4>
-                </ion-label>
-                <ion-note slot="end">
 
-                </ion-note>
-            </ion-item>
-            <ion-item-options side="end">
-                <ion-item-option color="danger" (click)="remove(item.ID)">
-                    <ion-icon slot="icon-only" name="trash"></ion-icon>
-                </ion-item-option>
-            </ion-item-options>
-        </ion-item-sliding>
-        <br>
-        <ion-item lines="none">
-            <button type="button" (click)="shop()" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Add New</b></button>
-            <button type="button" (click)="claim()" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Confirm</b></button>
+
+    <ion-card-title style="text-transform: uppercase;margin: auto; text-align: center; color: black; font-size: 16px ">{{Name}} {{Surname}}</ion-card-title>
+    <p style="margin-left: auto; text-align: center;color:rgb(102,116,143);font-size:20px">Reward Status: <b style="font-size: 24px">{{Points}} Points</b></p>
+    <hr style="height:0pt; visibility:hidden;" />
+    <ion-item-sliding id="item100" *ngFor="let item of items">
+        <ion-item href="#">
+            <ion-label>
+                <h4>
+                    {{item.Name}}
+                </h4>
+            </ion-label>
+            <ion-note slot="end">
+
+            </ion-note>
         </ion-item>
-    </ion-card>
+        <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="remove(item.ID)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+    <br>
+    <ion-item lines="none">
+        <button type="button" (click)="shop()" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Add New</b></button>
+        <button type="button" (click)="claim()" style="background-color: rgb(102,116,143); width: 40%;margin: auto;padding-bottom:7px; padding-top:8px; color:white; border-radius: 5px !important"><b>Confirm</b></button>
+    </ion-item>
+
 </ion-content>

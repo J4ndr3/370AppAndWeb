@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import * as jsPDF from 'jspdf';
+// import * as jsPDF from 'jspdf';
+declare var jsPDF: any
 import html2canvas from 'html2canvas'; 
 import { } from 'googlemaps';
 import { ERPService } from '..//erp.service';
@@ -39,18 +40,18 @@ export class MarkersReportComponent implements OnInit {
   
   public Download() {
     this.timeLeft1 = 3;
-    
+    var img2 = new Image();
     var htmlToImage = require('html-to-image');
     var node1 = document.getElementById('my-node');
     htmlToImage.toPng(node1)
       .then(function (dataUrl) {
   
-        var img2 = new Image();
+        
         img2.src = dataUrl;
        
         
         
-        document.getElementById('image1234').appendChild(img2);
+       // document.getElementById('image1234').appendChild(img2);
   
       })
       .catch(function (error) {
@@ -62,12 +63,12 @@ export class MarkersReportComponent implements OnInit {
         this.timeLeft1--;
       } else if (this.timeLeft1 == 0) {
 
-        document.getElementById('chrt1').innerHTML = '<br><br><p class=f1 style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class=f><br><h1>MARKER REPORT</h1><br><br></div><br>';
+        document.getElementById('chrt1').innerHTML = '<div><br><br><p class="f1" style="font-size:30px">' + this.myDate + '</p> <img src="./assets/Capturesonderbackground.png" alt="Italian Trulli" style="width:5%" class="f"><br><h1>MARKER REPORT</h1><br><img src="'+img2.src+'" style="width:115%; height:40%; padding-left: 7%; margin: auto;margin-left: auto ; margin-right: auto;display: block"> </div>';
         document.getElementById('chrt2').innerHTML = '<h6>**END OF REPORT**</h6>';
         document.getElementById('chrt3').innerHTML = '<br><br>';
         
 
-        var data1 = document.getElementById('contentToConvert');
+        var data1 = document.getElementById('chrt1');
         var data2 = document.getElementById('contentToConvert1');
         html2canvas(data1).then(canvas => {
           // Few necessary setting options  
@@ -78,22 +79,66 @@ export class MarkersReportComponent implements OnInit {
           var heightLeft = imgHeight;
 
           const contentDataURL = canvas.toDataURL('image/png')
-          let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        //   let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
           
-          pdf.setDrawColor(205, 21, 67);
-          pdf.rect(60, 20, 10, 10);
-          var position = 5;
+        //   pdf.setDrawColor(205, 21, 67);
+        //   pdf.rect(60, 20, 10, 10);
+        //   var position = 5;
           
-          pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
-          pdf.setFontSize(7);
-          pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
-          pdf.save('MARKER REPORT.pdf'); // Generated PDF  
+        //   pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        //   pdf.setFontSize(7);
+        //   pdf.text('Page 1 of 1', 98,pdf.internal.pageSize.height - 8);
+        //   pdf.save('MARKER REPORT.pdf'); // Generated PDF  
           
           
-          document.getElementById('chrt1').innerHTML = "";
-          document.getElementById('chrt2').innerHTML = "";
+        //   document.getElementById('chrt1').innerHTML = "";
+        //   document.getElementById('chrt2').innerHTML = "";
+        //  document.getElementById('image1234').innerHTML = "";
+        let doc = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+        var position = 0;
+        const header = function(data) {
+          doc.setFontSize(7);
+          doc.setTextColor(200, 0, 255);
+          doc.setFontStyle('normal');
+          doc.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+          //doc.text('Report', data.settings.margin.left + 35, 60);
+        };
+      
+        const totalPagesExp = '{total_pages_count_string}';
+        const footer = function(data) {
+          let str = 'Page ' + data.pageCount;
+          // Total page number plugin only available in jspdf v1.0+
+          if (typeof doc.putTotalPages === 'function') {
+            str = str + ' of ' + totalPagesExp;
+            console.log('test');
+          }
+          doc.setFontSize(7);
+          doc.text(str, 98, doc.internal.pageSize.height - 8);
+        };
+      
+        const options = {
+          beforePageContent: header,
+          afterPageContent: footer,
+          margin: {
+            top: 105
+          },styles: {fillColor: [62, 105, 112],    textColor:[255, 255, 255],},alternateRowStyles: {
+            fillColor: [173,184,187]
+        },
+        };
+       
+        var res = doc.autoTableHtmlToJson(document.getElementById("mark"));
+        doc.autoTable(res.columns, res.data, options);
+        doc.setFontSize(7);
+        let finalY = doc.lastAutoTable.finalY; 
+        doc.text("**END OF REPORT**",98,finalY+10)
+        if (typeof doc.putTotalPages === 'function') {
+          doc.putTotalPages(totalPagesExp);
+        }
+        
+        doc.save('MARKER REPORT.pdf'); // Generated PDF  
+        document.getElementById('chrt1').innerHTML = "";
+                  document.getElementById('chrt2').innerHTML = "";
          document.getElementById('image1234').innerHTML = "";
-
           // var doc = new jsPDF();
           // var totalPagesExp = "{total_pages_count_string}";
           // var footer = function (data) {

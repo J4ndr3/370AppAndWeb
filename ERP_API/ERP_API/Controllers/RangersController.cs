@@ -23,7 +23,7 @@ namespace ERP_API.Controllers
         public List<dynamic> GetRangers()
         {
             db.Configuration.ProxyCreationEnabled = false;
-            List<Ranger> Level = db.Rangers.Include(zz=>zz.User_Role).Include(zz=>zz.Medical_Aid).Include(zz=>zz.Organisation).Include(zz=>zz.Gender).Include(zz=>zz.Access_Level).ToList();
+            List<Ranger> Level = db.Rangers.Include(zz => zz.User_Role).Include(zz => zz.Medical_Aid).Include(zz => zz.Organisation).Include(zz => zz.Gender).Include(zz => zz.Access_Level).ToList();
             List<dynamic> toReturn = new List<dynamic>();
             foreach (Ranger Item in Level)
             {
@@ -47,11 +47,11 @@ namespace ERP_API.Controllers
                 toReturn.Add(m);
             }
             return toReturn;
-        
-    }
 
-    // GET: api/Rangers/5
-    [ResponseType(typeof(Ranger))]
+        }
+
+        // GET: api/Rangers/5
+        [ResponseType(typeof(Ranger))]
         public IHttpActionResult GetRanger(int id)
         {
             db.Configuration.ProxyCreationEnabled = false;
@@ -105,16 +105,27 @@ namespace ERP_API.Controllers
         public IHttpActionResult PostRanger(Ranger ranger)
         {
             ranger.Password = ranger.Password.Substring(0, 19);
+            var email = ranger.Email;
+            var cell = ranger.Cell;
+            var RangerID = ranger.ID_Number;
             db.Configuration.ProxyCreationEnabled = false;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            if (db.Rangers.Where(zz=>zz.Cell==cell || zz.Email == email|| zz.ID_Number == RangerID).FirstOrDefault() == null )
+            {
+                db.Rangers.Add(ranger);
+                db.SaveChanges();
+                return CreatedAtRoute("DefaultApi", new { id = ranger.Ranger_ID }, ranger);
+            }
+            else
+            {
+                return Ok(7);
+            }
+            
 
-            db.Rangers.Add(ranger);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = ranger.Ranger_ID }, ranger);
+            
         }
 
         // DELETE: api/Rangers/5
@@ -154,7 +165,7 @@ namespace ERP_API.Controllers
             var points = userDet.Points;
             db.Configuration.ProxyCreationEnabled = false;
             bool UseInDb = false;
-            if (db.Rangers.Where(zz => zz.Ranger_ID == userDet.Ranger_ID ).Count() == 1)
+            if (db.Rangers.Where(zz => zz.Ranger_ID == userDet.Ranger_ID).Count() == 1)
             {
                 UseInDb = true;
             }
@@ -181,15 +192,15 @@ namespace ERP_API.Controllers
             }
 
         }
-        public void RefreshGUID(Ranger use,int points)
+        public void RefreshGUID(Ranger use, int points)
         {
             db.Configuration.ProxyCreationEnabled = false;
             use.Points = use.Points - points;
-            
-                var u = db.Rangers.Where(zz => zz.Ranger_ID == use.Ranger_ID).FirstOrDefault();
-                db.Entry(u).CurrentValues.SetValues(use);
-                db.SaveChanges();
-            
+
+            var u = db.Rangers.Where(zz => zz.Ranger_ID == use.Ranger_ID).FirstOrDefault();
+            db.Entry(u).CurrentValues.SetValues(use);
+            db.SaveChanges();
+
         }
     }
 }

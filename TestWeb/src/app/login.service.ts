@@ -11,11 +11,11 @@ export class LoginService {
 sNav=false;
   constructor(private http: HttpClient,private router:Router, private nav : NavComponent ) { }
   LogIn(user,pass){
-    return this.http.get('http://localhost:51389/api/Login/Login/?Email='+user+'&Password='+pass)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Login/Login/?Email='+user+'&Password='+pass)
   }
   LogedIn(user,pass)
   {
-    return this.http.get('http://localhost:51389/api/Login/LogedIn/?Email='+user+'&Password='+pass)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Login/LogedIn/?Email='+user+'&Password='+pass)
   }
   testlogin(){
     var user = sessionStorage.getItem("user");
@@ -50,10 +50,10 @@ sNav=false;
     return bool;
   }
   resetOTP(email){
-    return this.http.get('http://localhost:51389/api/Login/ResetOTP/?Email='+email)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Login/ResetOTP/?Email='+email)
   }
   ResetPass(email, OTP,Password){
     // alert(OTP)
-    return this.http.get('http://localhost:51389/api/Login/Password/?Email='+email+'&OTP='+OTP+'&Password='+Password)
+    return this.http.get('https://2019group4inf370.azurewebsites.net/api/Login/Password/?Email='+email+'&OTP='+OTP+'&Password='+Password)
   }
 }

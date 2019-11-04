@@ -5,7 +5,7 @@
 <div align="center">
     <div class="col">
         <div ngbDropdown>
-            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Select Status</button>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose an option">Select Status</button>
             <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
                 <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Ranger</button>
                 <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Asset</button>
@@ -15,18 +15,19 @@
     </div>
     <br>
     <div class="collapse" id="demo">
+        <div id="chrt1" align="center"></div>
         <br>
         <h3 align="center">Ranger Status Report</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
         </div>
 
         <div class="table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="tab1">
                 <thead>
                     <tr id="header">
                         <th>Name</th>
@@ -48,14 +49,15 @@
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                     </tr>
+                    <tr style="background-color:rgba(205, 21, 67);">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Active Rangers : {{Count1}}</td>
+                    </tr>
                 </tbody>
-                <tfoot style="background-color:rgba(205, 21, 67);">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Total Active Rangers : {{Count1}}</td>
-                </tfoot>
+
             </table>
         </div>
     </div>
@@ -65,14 +67,14 @@
         <h3 align="center">Asset Status</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
         </div>
 
         <div class="table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="tab2">
                 <thead>
                     <tr id="header">
 
@@ -94,13 +96,14 @@
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                     </tr>
-                </tbody>
-                <tfoot style="background-color:rgba(205, 21, 67);">
+                    <tr style="background-color:rgba(205, 21, 67);">
 
-                    <td></td>
-                    <td></td>
-                    <td>Total Active Assets : {{Count}}</td>
-                </tfoot>
+                        <td></td>
+                        <td></td>
+                        <td>Total Active Assets : {{Count}}</td>
+                    </tr>
+                </tbody>
+
             </table>
         </div>
     </div>
@@ -109,14 +112,14 @@
         <h3 align="center">Vehicle Status</h3>
         <div class="outer">
             <div class="button">
-                <button type="submit" class="btn btn-default" id="Save" routerLink="/download-status" data-toggle="collapse" data-target="#demo">Download PDF</button>
+                <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"> <span data-toggle="tooltip" data-placement="top" title="Click to download"> Download PDF </span></button>
             </div>
             <!--Moenie buttons en search bar verander nie-->
 
         </div>
 
         <div class="table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="tab3">
                 <thead>
                     <tr id="header">
 
@@ -139,27 +142,28 @@
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                     </tr>
+                    <tr style="background-color:rgba(205, 21, 67);">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total Active Vehicles : {{Count2}}</td>
+                    </tr>
                 </tbody>
 
 
-                <tfoot style="background-color:rgba(205, 21, 67);">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Total Active Vehicles : {{Count2}}</td>
-                </tfoot>
+
             </table>
         </div>
     </div>
     <div class="table">
-        <table class="table table-striped">
-            <tfoot style="background-color:rgba(205, 21, 67);">
+        <table class="table table-striped" id="tab4">
+            <tr style="background-color:rgba(205, 21, 67);">
                 <td>Total Active Statuses</td>
                 <td></td>
                 <td></td>
                 <td>:</td>
                 <td> {{TotalStatus}}</td>
-            </tfoot>
+            </tr>
         </table>
     </div>

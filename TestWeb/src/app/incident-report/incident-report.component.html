@@ -2,7 +2,7 @@
 <h1>INCIDENT REPORT</h1>
 <hr class="hrow" />
 <br>
-<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary" (click)="clear()">Date Picker</button></div>
+<div align="center"><button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-outline-secondary" (click)="clear()"><span data-toggle="tooltip" data-placement="top" title="Select Date">Date Picker </span></button></div>
 
 <br>
 <div class="collapse" id="demo" align="center" style="width:474.8px; background-color:rgba(62, 105, 112, 0.3); margin: auto;">
@@ -29,7 +29,7 @@
 <hr class="hrow" />
 <div class="outer">
     <div class="button">
-        <button type="submit" class="btn btn-default" id="Save" (click)="Download()">Download PDF</button>
+        <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</button>
     </div>
     <!--Moenie buttons en search bar verander nie-->
 
@@ -37,16 +37,16 @@
 <br>
 <div id="content" #content>
     <div id="contentToConvert">
-        <div id="chrt1" align="center"></div>
+        <div id="chrt1" style="margin: auto" align="center"></div>
 
         <div id="image123" #img style="width:80%; margin: auto" align="center"></div>
 
         <div id="chrt3"></div>
         <div class="table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="inc">
                 <thead>
                     <tr id="header">
-                        <th style="text-align: left;">Title</th>
+                        <th style="text-align: left;">Incident Title</th>
                         <th style="text-align: left;">Name</th>
                         <th style="text-align: left;">Surname</th>
                         <th style="text-align: left;">Cellphone</th>
@@ -71,10 +71,7 @@
                         <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                     </tr>
-                </tbody>
-                <tbody id="mytable">
-
-                    <tfoot style="background-color:rgba(205, 21, 67);">
+                    <tr style="background-color:rgba(205, 21, 67);">
                         <td></td>
                         <td></td>
                         <td></td>
@@ -82,7 +79,11 @@
                         <td style="text-align: left;">Total incidents</td>
                         <td style="text-align: left;">:</td>
                         <td style="text-align: right;">{{IncedentCount}}</td>
-                    </tfoot>
+                    </tr>
+                </tbody>
+                <tbody id="mytable">
+
+
             </table>
         </div>
         <div id="chrt2" align="center"></div>

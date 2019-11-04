@@ -10,7 +10,7 @@
     <!--Moenie buttons en search bar verander nie-->
     <div class="search">
         <div class="input-group">
-            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." name="search" id="SearchBTN"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
+            <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." name="search" id="SearchBTN" data-toggle="tooltip" data-placement="top" title="Type to search"><button class="btn btn-default" type="submit" id="Search"><img src="/assets/ios-search.svg" class="SearchbtnIMG" /></button>
         </div>
     </div>
 </div>
@@ -33,15 +33,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let patrol of Patrol | filter:searchText">
+            <tr *ngFor="let patrol of patrols | filter:searchText">
                 <td innerHTML="{{patrol.Name| highlight :searchText}} {{patrol.Surname| highlight :searchText}}"></td>
-                <td innerHTML="{{patrol.Date| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.Date| highlight :searchText}} "></td>
                 <td innerHTML="{{patrol.Checkin| highlight :searchText}}"></td>
                 <td innerHTML="{{patrol.Checkout| highlight :searchText}}"></td>
-                <td innerHTML="{{patrol.time| highlight :searchText}}"></td>
+                <td innerHTML="{{patrol.time| highlight :searchText}} hours"></td>
                 <td innerHTML="{{patrol.Feedback| highlight :searchText}}"></td>
                 <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
-                <td> <button class="btn btn-default" style="border:none" (click)="DrawRoute(patrol.Patrol_Log_ID)">Draw Route</button></td>
+                <td> <button class="btn btn-default" style="border:none" (click)="DrawRoute(patrol.Patrol_Log_ID)" data-toggle="tooltip" data-placement="top" title="Click to draw on map">Draw Route</button></td>
                 <td innerHTML="{{patrol.MarkerPast| highlight :searchText}}"></td>
                 <td innerHTML="{{patrol.Points| highlight :searchText}}"></td>
             </tr>

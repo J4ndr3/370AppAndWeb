@@ -4,7 +4,7 @@
 <div align="center">
     <div class="col">
         <div ngbDropdown>
-            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle>Select Reward Type</button>
+            <button class="btn btn-outline-secondary" id="dropdownBasic1" ngbDropdownToggle data-toggle="tooltip" data-placement="top" title="Choose Type">Select Reward Type</button>
             <div ngbDropdownMenu style="background-color:rgba(62, 105, 112)">
                 <button data-toggle="collapse" data-target="#demo" ngbDropdownItem>Product Reward</button>
                 <button data-toggle="collapse" data-target="#demo1" ngbDropdownItem>Event Reward</button>
@@ -21,7 +21,7 @@
 
     <div class="outer">
         <div class="button">
-            <button type="submit" class="btn btn-default" id="Save" routerLink="/download-rewards" data-toggle="collapse" data-target="#demo">Download PDF</button>
+            <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF </span></button>
         </div>
         <!--Moenie buttons en search bar verander nie-->
 
@@ -31,7 +31,7 @@
         <div id="contentToConvert">
             <div id="chrt1" align="center"></div>
             <div class="table">
-                <table class="table table-striped">
+                <table class="table table-striped" id="tab1">
                     <thead>
                         <tr id="header">
 
@@ -54,16 +54,17 @@
                             <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                         </tr>
+                        <tr style="background-color:rgba(205, 21, 67);">
+
+                            <td></td>
+                            <td style="text-align: right;">Product Rewards</td>
+                            <td>:</td>
+                            <td>{{Count}}</td>
+                        </tr>
                     </tbody>
 
 
-                    <tfoot style="background-color:rgba(205, 21, 67);">
 
-                        <td></td>
-                        <td style="text-align: right;">Product Rewards</td>
-                        <td>:</td>
-                        <td>{{Count}}</td>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -75,7 +76,7 @@
     <h3 align="center">Event Reward</h3>
     <div class="outer">
         <div class="button">
-            <button type="submit" class="btn btn-default" id="Save" routerLink="/download-rewards" data-toggle="collapse" data-target="#demo">Download PDF</button>
+            <button type="submit" class="btn btn-default" id="Save" (click)="Download()" data-toggle="collapse" data-target="#demo"><span data-toggle="tooltip" data-placement="top" title="Click to download">Download PDF</span></button>
         </div>
         <!--Moenie buttons en search bar verander nie-->
 
@@ -83,7 +84,7 @@
     <div id="content" #content>
         <div id="contentToConvert">
             <div class="table">
-                <table class="table table-striped">
+                <table class="table table-striped" id="tab2">
                     <thead>
                         <tr id="header">
 
@@ -106,15 +107,16 @@
                             <!--Moenie die code verander nie. Sit net nuwe kollomme bo dit in-->
 
                         </tr>
+                        <tr style="background-color:rgba(205, 21, 67);">
+
+                            <td></td>
+                            <td style="text-align: left;">Event Rewards</td>
+                            <td>:</td>
+                            <td style="text-align: left;">{{EventCount}}</td>
+                        </tr>
                     </tbody>
 
-                    <tfoot style="background-color:rgba(205, 21, 67);">
 
-                        <td></td>
-                        <td style="text-align: left;">Event Rewards</td>
-                        <td>:</td>
-                        <td style="text-align: left;">{{EventCount}}</td>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -122,13 +124,13 @@
 </div>
 <div>
     <div class="table">
-        <table class="table table-striped">
-            <tfoot style="background-color:rgba(205, 21, 67);">
+        <table class="table table-striped" id="tab3">
+            <tr style="background-color:rgba(205, 21, 67);">
                 <td></td>
                 <td style="text-align: left;">Total Rewards</td>
                 <td>:</td>
                 <td style="text-align: left;">{{TotalCount}}</td>
-            </tfoot>
+            </tr>
         </table>
 
     </div>
