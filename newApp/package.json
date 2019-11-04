@@ -166,10 +166,15 @@
             },
             "cordova-plugin-background-mode": {},
             "cordova-plugin-nativestorage": {},
-            "cordova-plugin-geofence": {},
+            "cordova-plugin-geofence": {
+                "GEOFENCE_ALWAYS_USAGE_DESCRIPTION": "${EXECUTABLE_NAME} Would Like to Use Your Current Location Even In Background.",
+                "GEOFENCE_IN_USE_USAGE_DESCRIPTION": "${EXECUTABLE_NAME} Would Like to Use Your Current Location When In Use."
+            },
             "cordova-plugin-add-swift-support": {},
             "com-badrit-base64": {}
         },
-        "platforms": []
+        "platforms": [
+            "ios"
+        ]
     }
 }
