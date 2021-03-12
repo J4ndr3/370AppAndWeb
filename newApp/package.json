@@ -75,7 +75,7 @@
         "ionic-angular": "^3.9.8",
         "ionic2-calendar": "^0.5.2",
         "jquery": "^3.4.1",
-        "jspdf": "^1.5.3",
+        "jspdf": "^2.3.1",
         "moment": "^2.24.0",
         "ng2-search-filter": "^0.5.1",
         "ngx-qrcode2": "0.0.9",
